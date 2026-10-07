@@ -1,7 +1,8 @@
 // Arranque del juego (va al final, después de cargar todo lo demás).
 
 // Abierto con doble clic (file://), Chrome no deja usar imágenes en WebGL: se usa el modo Canvas.
-new Phaser.Game({
+// window.juego queda accesible para las herramientas (por ejemplo, exportar las imágenes a Figma).
+window.juego = new Phaser.Game({
   type: location.protocol === 'file:' ? Phaser.CANVAS : Phaser.AUTO,
   parent: 'game',
   width: 960,
