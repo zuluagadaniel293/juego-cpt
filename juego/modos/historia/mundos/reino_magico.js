@@ -45,7 +45,7 @@ registrarMundo('kingdom', {
     visual: [
       { name: 'libro_volador', kind: 'fly', size: 75 },
       { name: 'escoba_magica', kind: 'fly', size: 100 },
-      { name: 'raton', kind: 'walk', size: 55 }
+      { name: 'raton', kind: 'walk', size: 95 }
     ],
     sounds: {
       campanas() { [523, 659, 784].forEach((f, i) => { sweep('sine', f, f * 1.002, 1.2, 0.06, i * 0.4); sweep('sine', f * 2, f * 2.004, 0.8, 0.02, i * 0.4); }); },

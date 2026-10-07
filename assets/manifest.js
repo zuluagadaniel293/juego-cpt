@@ -26,7 +26,10 @@ window.ASSETS = {
     villain: 'superheroes/sombra.png',
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
-    friend3: 'superheroes/heroe_noche.png'
+    friend3: 'superheroes/heroe_noche.png',
+    distractor_avion:  'superheroes/avion.png',
+    distractor_pajaro: 'superheroes/pajaro.png',
+    distractor_gato:   'superheroes/gato.png'
   },
   fantasy: {            // carpeta assets/dragones
     target:  'dragones/dragon_bebe_dorado.png',
@@ -38,13 +41,19 @@ window.ASSETS = {
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
     bg_1:    'dragones/fondo_1_nido.jpg',
-    bg_2:    'dragones/fondo_2_bosque.jpg'
+    bg_2:    'dragones/fondo_2_bosque.jpg',
+    distractor_mariposa:   'dragones/mariposa.png',
+    distractor_murcielago: 'dragones/murcielago.png',
+    distractor_ardilla:    'dragones/ardilla.png'
   },
   kingdom: {            // carpeta assets/reino_magico
     target:  'reino_magico/hada_rosada_lumi.png',
     dist1:   'reino_magico/hada_azul.png',
     dist2:   'reino_magico/hada_verde.png',
     dist3:   'reino_magico/hada_lila.png',
-    bg_1:    'reino_magico/fondo_1_jardin.jpg'
+    bg_1:    'reino_magico/fondo_1_jardin.jpg',
+    distractor_libro_volador: 'reino_magico/libro_volador.png',
+    distractor_escoba_magica: 'reino_magico/escoba_magica.png',
+    distractor_raton:         'reino_magico/raton.png'
   }
 };

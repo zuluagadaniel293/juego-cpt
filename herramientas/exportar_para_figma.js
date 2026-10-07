@@ -47,7 +47,16 @@ const REAL = [
   ['reino_magico/hada_azul.png', 'reino_magico/objetos/hada_azul (distractor).png'],
   ['reino_magico/hada_verde.png', 'reino_magico/objetos/hada_verde (distractor).png'],
   ['reino_magico/hada_lila.png', 'reino_magico/objetos/hada_lila (distractor dificil).png'],
-  ['reino_magico/fondo_1_jardin.jpg', 'reino_magico/fondos/fondo_1_el_jardin.jpg']
+  ['reino_magico/fondo_1_jardin.jpg', 'reino_magico/fondos/fondo_1_el_jardin.jpg'],
+  ['superheroes/avion.png', 'superheroes/distractores_entorno/avion (cruza arriba).png'],
+  ['superheroes/pajaro.png', 'superheroes/distractores_entorno/pajaro (cruza arriba).png'],
+  ['superheroes/gato.png', 'superheroes/distractores_entorno/gato (camina abajo).png'],
+  ['dragones/mariposa.png', 'dragones/distractores_entorno/mariposa (cruza arriba).png'],
+  ['dragones/murcielago.png', 'dragones/distractores_entorno/murcielago (cruza arriba).png'],
+  ['dragones/ardilla.png', 'dragones/distractores_entorno/ardilla (camina abajo).png'],
+  ['reino_magico/libro_volador.png', 'reino_magico/distractores_entorno/libro_volador (cruza arriba).png'],
+  ['reino_magico/escoba_magica.png', 'reino_magico/distractores_entorno/escoba_magica (cruza arriba).png'],
+  ['reino_magico/raton.png', 'reino_magico/distractores_entorno/raton (camina abajo).png']
 ];
 
 // ---------- Dibujos que el juego genera (provisionales): se exportan desde el juego ----------
@@ -55,15 +64,6 @@ const TEXTURES = {
   'kingdom_villain': 'reino_magico/personajes/duende_picaro (villano - jefe final)_provisional.png',
   'kingdom_friend1': 'reino_magico/personajes/guardia (amigo - distractor jefe)_provisional.png',
   'kingdom_friend2': 'reino_magico/personajes/bufon (amigo - distractor jefe)_provisional.png',
-  'heroes_dv_avion': 'superheroes/distractores_entorno/avion (cruza arriba)_provisional.png',
-  'heroes_dv_pajaro': 'superheroes/distractores_entorno/pajaro (cruza arriba)_provisional.png',
-  'heroes_dv_gato': 'superheroes/distractores_entorno/gato (camina abajo)_provisional.png',
-  'fantasy_dv_mariposa': 'dragones/distractores_entorno/mariposa (cruza arriba)_provisional.png',
-  'fantasy_dv_murcielago': 'dragones/distractores_entorno/murcielago (cruza arriba)_provisional.png',
-  'fantasy_dv_ardilla': 'dragones/distractores_entorno/ardilla (camina abajo)_provisional.png',
-  'kingdom_dv_libro_volador': 'reino_magico/distractores_entorno/libro_volador (cruza arriba)_provisional.png',
-  'kingdom_dv_escoba_magica': 'reino_magico/distractores_entorno/escoba_magica (cruza arriba)_provisional.png',
-  'kingdom_dv_raton': 'reino_magico/distractores_entorno/raton (camina abajo)_provisional.png',
   'basket': 'comunes/canasta (minijuego Atrapa).png',
   'net': 'comunes/red (jefe final).png',
   'fireball': 'comunes/efecto_bola_de_fuego (poder de Chispa).png',

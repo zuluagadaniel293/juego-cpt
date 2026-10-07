@@ -46,8 +46,8 @@ registrarMundo('heroes', {
   distractors: {
     visual: [
       { name: 'avion', kind: 'fly', size: 100 },
-      { name: 'pajaro', kind: 'fly', size: 55 },
-      { name: 'gato', kind: 'walk', size: 70 }
+      { name: 'pajaro', kind: 'fly', size: 65 },
+      { name: 'gato', kind: 'walk', size: 85 }
     ],
     sounds: {
       sirena()  { for (let i = 0; i < 3; i++) { sweep('sine', 650, 1000, 0.35, 0.07, i * 0.7); sweep('sine', 1000, 650, 0.35, 0.07, i * 0.7 + 0.35); } },

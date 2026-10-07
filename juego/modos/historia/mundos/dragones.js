@@ -45,7 +45,7 @@ registrarMundo('fantasy', {
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60 },
       { name: 'murcielago', kind: 'fly', size: 75 },
-      { name: 'ardilla', kind: 'walk', size: 70 }
+      { name: 'ardilla', kind: 'walk', size: 85 }
     ],
     sounds: {
       rugido()  { noise(0.9, 0.22, 'lowpass', 500, 120); sweep('sawtooth', 120, 70, 0.9, 0.08); },
