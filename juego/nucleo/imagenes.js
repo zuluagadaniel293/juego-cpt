@@ -1,16 +1,14 @@
 // Imágenes de la carpeta assets, dibujos provisionales y fondos ambientados.
 
 // ======================= IMÁGENES Y AUDIOS (carpeta assets) =======================
-// Cada imagen tiene un dibujo provisional. Si el archivo está en assets/manifest.js, se usa el archivo.
+// Cada imagen tiene un dibujo provisional. Si assets/manifest.js le asigna un archivo, se usa el archivo.
 const ASSET_NAMES = ['target', 'dist1', 'dist2', 'dist3', 'hero', 'hero_run', 'villain', 'villain_caught',
   'friend1', 'friend2', 'friend3', 'net', 'end', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
-const AVAILABLE = new Set(window.ASSET_FILES || []);
+const ASSETS = window.ASSETS || {};
 
-function assetPath(theme, name) {
-  // en Superhéroes, el objetivo y los distractores de los capítulos 1-4 son señales
-  const signal = { target: 'signal_target', dist1: 'signal_1', dist2: 'signal_2', dist3: 'signal_3' };
-  const file = theme === 'heroes' && signal[name] ? signal[name] : name;
-  return theme + '/' + theme + '_' + file + '.png';
+// Archivo asignado a un papel de un mundo (ruta dentro de assets/), o null si no tiene.
+function assetFile(theme, name) {
+  return (ASSETS[theme] || {})[name] || null;
 }
 function fallbackKey(theme, name) {
   if (name === 'hero' || name === 'hero_run') return 'char_' + theme;
@@ -22,7 +20,7 @@ function fallbackKey(theme, name) {
 const TEX = {};   // TEX[tema][nombre] = textura a usar (archivo o dibujo provisional)
 
 // ======================= FONDOS AMBIENTADOS =======================
-// Un fondo por capítulo (idx 0-4). Si existe assets/<tema>/<tema>_bg_N.png (o .jpg) se usa la imagen;
+// Un fondo por capítulo (idx 0-4). Si assets/manifest.js le asigna una imagen (bg_1 ... bg_5), se usa;
 // si no, se dibuja uno provisional. dim = cuánto se oscurece con el color del mundo (0 a 1).
 function drawBackdrop(scene, theme, idx, dim) {
   const W = scene.scale.width, H = scene.scale.height;

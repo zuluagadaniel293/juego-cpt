@@ -6,8 +6,7 @@ class BootScene extends Phaser.Scene {
     Object.keys(CHAR_SVG).forEach(k =>
       this.load.svg('char_' + k, 'data:image/svg+xml;base64,' + btoa(CHAR_SVG[k]), { width: 220, height: 260 }));
     Object.keys(THEMES).forEach(t => ASSET_NAMES.forEach(n => {
-      const png = assetPath(t, n), jpg = png.replace(/\.png$/, '.jpg');   // los fondos pueden ser JPG
-      const p = AVAILABLE.has(png) ? png : AVAILABLE.has(jpg) ? jpg : null;
+      const p = assetFile(t, n);
       if (p) this.load.image('img_' + t + '_' + n, 'assets/' + p);
     }));
   }

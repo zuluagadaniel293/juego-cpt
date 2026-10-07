@@ -33,7 +33,7 @@ registrarMundo('heroes', {
     noise(0.7, 0.3, 'lowpass', 400, 80, 0.08);
   },
 
-  // Dibujos provisionales (se reemplazan por las imágenes de assets/heroes cuando existen)
+  // Dibujos provisionales (se reemplazan por las imágenes de assets/superheroes cuando existen)
   charSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260"><path d="M50,120 L170,120 L198,258 L22,258 Z" fill="#dc2626"/><path d="M65,120 Q110,106 155,120 L166,258 L54,258 Z" fill="#2563eb"/><polygon points="110,150 134,178 110,206 86,178" fill="#7c3aed"/><polygon points="114,158 100,182 110,182 105,198 120,176 111,176" fill="#fde047"/><rect x="98" y="104" width="24" height="20" fill="#f5c49c"/><circle cx="110" cy="70" r="48" fill="#f5c49c"/><path d="M62,64 Q66,18 110,20 Q156,18 158,64 Q140,42 110,44 Q80,42 62,64 Z" fill="#3f2a1d"/><path d="M62,62 Q110,50 158,62 L158,84 Q110,74 62,84 Z" fill="#7c3aed"/><ellipse cx="92" cy="72" rx="10" ry="7" fill="#ffffff"/><ellipse cx="128" cy="72" rx="10" ry="7" fill="#ffffff"/><circle cx="93" cy="72" r="4" fill="#0f172a"/><circle cx="127" cy="72" r="4" fill="#0f172a"/><path d="M96,98 Q110,110 124,98" stroke="#7c2d12" stroke-width="4" fill="none" stroke-linecap="round"/></svg>',
   people: {
     heroes_villain:  { cape: 0x111827, suit: 0x4c1d95, hair: 0x111827, mask: 0x000000, emblem: 0x7c3aed },

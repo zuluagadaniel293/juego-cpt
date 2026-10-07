@@ -6,7 +6,7 @@
 2. Cuando te guste la hoja, pide cada personaje por separado, adjuntando la hoja:
    > *"Usando exactamente el mismo estilo y diseño de esta imagen, genera solo el personaje N, solo, centrado, de cuerpo entero, sobre fondo blanco liso."*
 3. Si un personaje sale distinto (otra cara, otros colores), dile: *"Mantén el diseño idéntico al de la hoja, solo cambia…"*.
-4. **Guarda cada imagen como PNG** con el **nombre exacto** de la tabla, en su carpeta (`assets/heroes`, `assets/fantasy`, `assets/kingdom`).
+4. **Guarda cada imagen** con un **nombre que diga qué muestra** (por ejemplo `hada_rosada_lumi.png`), en su carpeta (`assets/superheroes`, `assets/dragones`, `assets/reino_magico`).
 5. No te preocupes por quitar el fondo blanco: yo lo quito.
 
 **Tamaños:** personajes y objetos, cuadrados (1024 × 1024 o más). Escenas, horizontales (16:9).
@@ -18,7 +18,7 @@
 
 ---
 
-## 1. Superhéroes → carpeta `assets/heroes/`
+## 1. Superhéroes → carpeta `assets/superheroes/`
 
 ### Hoja de personajes
 > [Estilo base] Hoja de 5 personajes, todos con la misma pose (de frente, de pie, alegres), mismo tamaño y bien separados:
@@ -48,7 +48,7 @@ Archivos: `heroes_signal_target.png`, `heroes_signal_1.png`, `heroes_signal_2.pn
 
 ---
 
-## 2. Dragones y fantasía → carpeta `assets/fantasy/`
+## 2. Dragones y fantasía → carpeta `assets/dragones/`
 
 **Nueva historia (sin huevos):** el hermanito de Chispa es un **dragón bebé dorado** que se perdió entre dragones bebé de otras familias. La hechicera traviesa **Morgana** lo escondió, y en el jefe final hay que atraparla.
 
@@ -83,7 +83,7 @@ Archivos: `heroes_signal_target.png`, `heroes_signal_1.png`, `heroes_signal_2.pn
 
 ---
 
-## 3. Reino mágico → carpeta `assets/kingdom/`
+## 3. Reino mágico → carpeta `assets/reino_magico/`
 
 **Nueva historia (con personajes):** un hechizo dispersó a las hadas del castillo. Hay que encontrar a **Lumi, el hada rosada** que cuida la corona de la Reina Luna. El hechizo lo lanzó el **Duende Pícaro**, y en el jefe final hay que atraparlo.
 
