@@ -5,7 +5,7 @@ class BootScene extends Phaser.Scene {
   preload() {
     Object.keys(CHAR_SVG).forEach(k =>
       this.load.svg('char_' + k, 'data:image/svg+xml;base64,' + btoa(CHAR_SVG[k]), { width: 220, height: 260 }));
-    Object.keys(THEMES).forEach(t => ASSET_NAMES.forEach(n => {
+    Object.keys(THEMES).forEach(t => assetNamesFor(t).forEach(n => {
       const p = assetFile(t, n);
       if (p) this.load.image('img_' + t + '_' + n, 'assets/' + p);
     }));
@@ -14,7 +14,7 @@ class BootScene extends Phaser.Scene {
     buildTextures(this);
     Object.keys(THEMES).forEach(t => {
       TEX[t] = {};
-      ASSET_NAMES.forEach(n => {
+      assetNamesFor(t).forEach(n => {
         const img = 'img_' + t + '_' + n;
         TEX[t][n] = this.textures.exists(img) ? img : fallbackKey(t, n);
       });

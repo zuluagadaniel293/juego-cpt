@@ -14,6 +14,7 @@ Todo lo que usa el juego, **un archivo por personaje, objeto y fondo**, para edi
 <mundo>/personajes/   protagonista, villano y amigos (distractores del jefe final)
 <mundo>/objetos/      lo que el niño busca (objetivo) y los distractores de los capítulos 1-4
 <mundo>/fondos/       un fondo por capítulo (1 a 5)
+<mundo>/distractores_entorno/   cosas del mundo que cruzan por los bordes (no se tocan; distraen)
 comunes/              canasta, red, efectos de los poderes e íconos
 ```
 El nombre de cada archivo dice **qué es** y, entre paréntesis, **para qué se usa en el juego**.

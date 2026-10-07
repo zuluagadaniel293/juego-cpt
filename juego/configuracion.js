@@ -37,8 +37,11 @@ function challengeParams(level, minigame) {
     isiMax: isiMin + 600,
     targetProb: Math.max(0.2, 0.35 - 0.015 * L),     // al principio más objetivos; luego menos (vigilancia)
     similarProb: level >= 4 ? Math.min(0.5, 0.15 + 0.05 * (level - 4)) : 0, // distractor parecido al objetivo
-    audio: level >= 3,
-    audioEvery: [Math.max(8000, 20000 - 1000 * L), Math.max(12000, 35000 - 1500 * L)],
+    // Distractores del entorno (sonidos y cosas que cruzan por los bordes): más seguidos en niveles altos
+    audio: level >= 2,
+    audioEvery: [Math.max(6000, 16000 - 1000 * L), Math.max(10000, 26000 - 1500 * L)],
+    visual: true,
+    visualEvery: [Math.max(3500, 9000 - 600 * L), Math.max(6000, 14000 - 800 * L)],
     travelMs: Math.max(1500, 3400 - 150 * L),        // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla
     spawnMin: Math.max(550, 1300 - 60 * L),
     spawnMax: Math.max(900, 1900 - 70 * L),
@@ -58,6 +61,7 @@ function pruebaParams() {
     similarProb: 0,
     audio: CONFIG.AUDIO_DISTRACTOR,
     audioEvery: CONFIG.AUDIO_EVERY_MS,
+    visual: false,             // la Prueba fija conserva sus condiciones de siempre
     minigame: 'classic'
   };
 }

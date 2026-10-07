@@ -8,8 +8,10 @@ const POWERS = {};         // poder del protagonista
 const POWER_SOUNDS = {};   // sonido del poder
 const PEOPLE = {};         // dibujos provisionales de villanos y amigos
 const WORLD_TEXTURES = []; // funciones que dibujan el objetivo y los distractores de cada mundo
+const DISTRACTORS = {};    // distractores del entorno (visuales en los bordes y sonidos) de cada mundo
 
 function registrarMundo(key, m) {
+  DISTRACTORS[key] = m.distractors || { visual: [], sounds: {} };
   THEMES[key] = m.theme;
   STORY[key] = m.story;
   CHAR_SVG[key] = m.charSvg;

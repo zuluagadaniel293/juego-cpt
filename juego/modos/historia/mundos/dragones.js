@@ -40,8 +40,40 @@ registrarMundo('fantasy', {
     fantasy_friend2: { cape: 0x1d4ed8, suit: 0x2563eb, hat: 0x1e40af, beard: true }   // Mago Abuelo
   },
 
+  // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
+  distractors: {
+    visual: [
+      { name: 'mariposa', kind: 'fly', size: 60 },
+      { name: 'murcielago', kind: 'fly', size: 75 },
+      { name: 'ardilla', kind: 'walk', size: 70 }
+    ],
+    sounds: {
+      rugido()  { noise(0.9, 0.22, 'lowpass', 500, 120); sweep('sawtooth', 120, 70, 0.9, 0.08); },
+      pajaros() { [0, 0.15, 0.3, 0.7, 0.85].forEach(d => sweep('sine', 2500, 3800, 0.1, 0.05, d)); },
+      viento()  { noise(1.6, 0.12, 'bandpass', 300, 900); }
+    }
+  },
+
   // El dragón bebé dorado entre dragones bebé de otros colores (todos iguales, solo cambia el color)
   textures(make) {
+    // distractores del entorno (provisionales, mirando a la derecha)
+    make('fantasy_dv_mariposa', g => {
+      g.fillStyle(0xa855f7, 1); g.fillEllipse(58, 62, 56, 60); g.fillEllipse(102, 62, 56, 60);
+      g.fillStyle(0xf472b6, 1); g.fillEllipse(62, 106, 40, 40); g.fillEllipse(98, 106, 40, 40);
+      g.fillStyle(0x1f2937, 1); g.fillEllipse(80, 84, 12, 70);
+    });
+    make('fantasy_dv_murcielago', g => {
+      g.fillStyle(0x312e81, 1);
+      g.fillPoints([{x:80,y:70},{x:20,y:50},{x:34,y:72},{x:14,y:90},{x:50,y:88},{x:80,y:104},{x:110,y:88},{x:146,y:90},{x:126,y:72},{x:140,y:50}], true);
+      g.fillCircle(80, 78, 16); g.fillTriangle(70, 70, 72, 54, 78, 66); g.fillTriangle(90, 70, 88, 54, 82, 66);
+      g.fillStyle(0xfacc15, 1); g.fillCircle(74, 78, 3); g.fillCircle(86, 78, 3);
+    });
+    make('fantasy_dv_ardilla', g => {
+      g.fillStyle(0xb45309, 1); g.fillEllipse(40, 74, 50, 80);
+      g.fillStyle(0x92400e, 1); g.fillEllipse(86, 106, 70, 44); g.fillCircle(124, 86, 20); g.fillTriangle(116, 70, 120, 56, 128, 70);
+      g.fillRect(64, 118, 9, 22); g.fillRect(100, 118, 9, 22);
+      g.fillStyle(0x0f172a, 1); g.fillCircle(130, 82, 3);
+    });
     make('fantasy_target', g => drawBabyDragon(g, 0xfacc15, 0xfef9c3, 0xf59e0b));
     make('fantasy_dist1', g => drawBabyDragon(g, 0xef4444, 0xfecaca));
     make('fantasy_dist2', g => drawBabyDragon(g, 0x60a5fa, 0xdbeafe));

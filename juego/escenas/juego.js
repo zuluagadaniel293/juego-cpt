@@ -155,6 +155,7 @@ class GameScene extends Phaser.Scene {
     else if (this.mg === 'find') this.nextFindTrial();
     else this.scheduleSpawn();
     this.scheduleAudio();
+    this.scheduleVisual();
   }
 
   elapsed() { return performance.now() - this.t0; }
@@ -406,25 +407,59 @@ class GameScene extends Phaser.Scene {
   }
 
   // ---------- Común ----------
+  // ---------- Distractores del entorno (no se responden; quedan en el CSV para medir la distractibilidad) ----------
+  logDistractor(type, name) {
+    this.log.push({
+      event_type: type,
+      mode: this.mode,
+      theme: this.themeKey,
+      level: this.level || '',
+      chapter: this.chapter === null ? '' : this.chapter + 1,
+      phase: this.boss ? this.phase + 1 : '',
+      minigame: this.mg,
+      stimulus_key: name,
+      onset_ms: Math.round(this.elapsed())
+    });
+  }
+  // Sonidos: en la Prueba fija, el tono de siempre; en los mundos, sonidos del propio mundo
   scheduleAudio() {
     const P = this.params;
     if (!P.audio) return;
     const d = Phaser.Math.Between(P.audioEvery[0], P.audioEvery[1]);
     this.time.delayedCall(d, () => {
       if (this.ended) return;
-      distractorSound();
-      this.log.push({
-        event_type: 'audio_distractor',
-        mode: this.mode,
-        theme: this.themeKey,
-        level: this.level || '',
-        chapter: this.chapter === null ? '' : this.chapter + 1,
-        phase: this.boss ? this.phase + 1 : '',
-        minigame: this.mg,
-        onset_ms: Math.round(this.elapsed())
-      });
+      const sounds = this.mode === 'prueba' ? {} : DISTRACTORS[this.themeKey].sounds;
+      const names = Object.keys(sounds);
+      const name = names.length ? Phaser.Utils.Array.GetRandom(names) : 'tono';
+      if (names.length) sounds[name](); else distractorSound();
+      this.logDistractor('audio_distractor', name);
       this.scheduleAudio();
     });
+  }
+  // Visuales: algo del mundo cruza por el borde de arriba (fly) o de abajo (walk), lejos del centro
+  scheduleVisual() {
+    const P = this.params;
+    const list = DISTRACTORS[this.themeKey].visual
+      .filter(v => !(this.mg === 'catch' && v.kind === 'walk'));   // en Atrapa, abajo está la canasta
+    if (!P.visual || !list.length) return;
+    const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);
+    this.time.delayedCall(d, () => {
+      if (this.ended) return;
+      const v = Phaser.Utils.Array.GetRandom(list);
+      this.showVisualDistractor(v);
+      this.logDistractor('visual_distractor', v.name);
+      this.scheduleVisual();
+    });
+  }
+  showVisualDistractor(v) {
+    const W = this.scale.width, H = this.scale.height;
+    const fromLeft = Math.random() < 0.5;
+    const y = v.kind === 'walk' ? H - 32 : Phaser.Math.Between(62, 112);
+    const img = fit(this.add.image(fromLeft ? -70 : W + 70, y, TEX[this.themeKey]['distractor_' + v.name]), v.size).setDepth(2);
+    img.setFlipX(!fromLeft);   // los dibujos miran a la derecha
+    this.tweens.add({ targets: img, x: fromLeft ? W + 70 : -70, duration: v.kind === 'walk' ? 5500 : 4000,
+      onComplete: () => img.destroy() });
+    if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
   }
 
   finish() {

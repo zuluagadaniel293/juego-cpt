@@ -149,10 +149,30 @@ Guarda cada uno como `<mundo>_bg_<número>.png` (o `.jpg`) en la carpeta de su m
 
 ---
 
+## 5. Distractores del entorno (cosas que cruzan por los bordes)
+
+No son para tocarlos: pasan por arriba o por abajo de la pantalla mientras el niño juega, para entrenar que siga concentrado. Por eso deben ser **llamativos pero claramente distintos del objetivo** (otra forma y otros colores).
+
+Pide **una hoja por mundo** y después sepárala igual que los personajes:
+> [Estilo base] Hoja de 3 elementos **de perfil, mirando hacia la derecha**, bien separados, sin que se corte ninguna parte, fondo blanco liso, sin texto: [los 3 de la tabla].
+
+| Mundo | Elementos | Dónde aparecen |
+|---|---|---|
+| Superhéroes | 1) avión de pasajeros blanco; 2) pájaro negro volando con las alas abiertas; 3) gato negro caminando | avión y pájaro arriba; gato abajo |
+| Dragones | 1) mariposa morada y rosada; 2) murciélago azul oscuro volando; 3) ardilla café caminando | mariposa y murciélago arriba; ardilla abajo |
+| Reino mágico | 1) libro abierto volando; 2) escoba mágica volando sola; 3) ratón gris caminando | libro y escoba arriba; ratón abajo |
+
+**Cuidado:** en Dragones, la mariposa **no** debe ser dorada ni amarilla, para que no se parezca al dragón dorado; en Reino mágico, nada rosado, para que no se confunda con Lumi.
+
+Guárdalos en la carpeta del mundo con su nombre (`avion.png`, `gato.png`, `mariposa.png`…).
+
+---
+
 ## Lista rápida de control
 
 - [ ] Superhéroes: 9 imágenes (+4 señales opcionales)
 - [ ] Dragones: 11 imágenes
 - [ ] Reino mágico: 11 imágenes
 - [ ] Fondos (opcional): 15 imágenes
+- [ ] Distractores del entorno: 3 hojas (9 elementos)
 - [ ] Todos los archivos en PNG con el nombre exacto

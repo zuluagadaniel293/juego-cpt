@@ -17,6 +17,9 @@
 //   end               ilustración del final del mundo
 //   bg_1 ... bg_5     fondo de cada capítulo
 //   voice_1 ... voice_5, voice_end   voz del personaje en cada capítulo y en el final (MP3)
+//   distractor_<nombre>   distractor del entorno (cruza por los bordes). Nombres de cada mundo:
+//                         superheroes: avion, pajaro, gato · dragones: mariposa, murcielago, ardilla
+//                         reino_magico: libro_volador, escoba_magica, raton
 window.ASSETS = {
   heroes: {             // carpeta assets/superheroes
     hero:    'superheroes/heroe_rayo.png',

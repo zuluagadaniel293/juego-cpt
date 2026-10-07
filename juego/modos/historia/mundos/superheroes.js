@@ -42,8 +42,40 @@ registrarMundo('heroes', {
     heroes_friend3:  { cape: 0xffffff, suit: 0x4c1d95, hair: 0x111827, mask: 0x312e81, emblem: 0xfacc15 }  // Héroe Noche (difícil)
   },
 
+  // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
+  distractors: {
+    visual: [
+      { name: 'avion', kind: 'fly', size: 100 },
+      { name: 'pajaro', kind: 'fly', size: 55 },
+      { name: 'gato', kind: 'walk', size: 70 }
+    ],
+    sounds: {
+      sirena()  { for (let i = 0; i < 3; i++) { sweep('sine', 650, 1000, 0.35, 0.07, i * 0.7); sweep('sine', 1000, 650, 0.35, 0.07, i * 0.7 + 0.35); } },
+      bocina()  { sweep('square', 350, 350, 0.45, 0.06); sweep('square', 440, 440, 0.45, 0.04); },
+      silbato() { sweep('sine', 2000, 2400, 0.25, 0.07); sweep('sine', 2400, 2000, 0.3, 0.07, 0.3); }
+    }
+  },
+
   // Capítulos 1-4: la señal de Sombra (su antifaz) entre señales de otros héroes
   textures(make) {
+    // distractores del entorno (provisionales, mirando a la derecha)
+    make('heroes_dv_avion', g => {
+      g.fillStyle(0x94a3b8, 1); g.fillTriangle(22, 80, 14, 48, 44, 76);
+      g.fillStyle(0xe5e7eb, 1); g.fillEllipse(84, 82, 130, 30);
+      g.fillStyle(0x94a3b8, 1); g.fillPoints([{x:72,y:84},{x:104,y:84},{x:84,y:124},{x:66,y:124}], true);
+      g.fillStyle(0x38bdf8, 1); for (let x = 60; x <= 120; x += 15) g.fillCircle(x, 78, 4);
+    });
+    make('heroes_dv_pajaro', g => {
+      g.lineStyle(10, 0x1f2937, 1);
+      g.strokePoints([{x:30,y:66},{x:58,y:84},{x:80,y:90},{x:102,y:84},{x:130,y:66}]);
+    });
+    make('heroes_dv_gato', g => {
+      g.lineStyle(8, 0x1f2937, 1); g.strokePoints([{x:40,y:96},{x:22,y:80},{x:20,y:56}]);
+      g.fillStyle(0x1f2937, 1); g.fillEllipse(78, 100, 84, 40);
+      g.fillRect(48, 110, 9, 30); g.fillRect(62, 112, 9, 28); g.fillRect(92, 112, 9, 28); g.fillRect(106, 110, 9, 30);
+      g.fillCircle(124, 80, 20); g.fillTriangle(108, 70, 114, 46, 124, 64); g.fillTriangle(128, 64, 138, 46, 142, 70);
+      g.fillStyle(0xfde047, 1); g.fillCircle(118, 78, 3); g.fillCircle(132, 78, 3);
+    });
     const rombo = g => { g.fillStyle(0x7c3aed, 1); g.fillPoints([{x:80,y:6},{x:154,y:80},{x:80,y:154},{x:6,y:80}], true); };
     make('heroes_target', g => {
       rombo(g);

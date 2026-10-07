@@ -10,7 +10,12 @@ const ASSETS = window.ASSETS || {};
 function assetFile(theme, name) {
   return (ASSETS[theme] || {})[name] || null;
 }
+// Papeles de un mundo: los comunes + sus distractores del entorno (distractor_avion, distractor_gato...)
+function assetNamesFor(theme) {
+  return ASSET_NAMES.concat((DISTRACTORS[theme] ? DISTRACTORS[theme].visual : []).map(v => 'distractor_' + v.name));
+}
 function fallbackKey(theme, name) {
+  if (name.startsWith('distractor_')) return theme + '_dv_' + name.slice('distractor_'.length);
   if (name === 'hero' || name === 'hero_run') return 'char_' + theme;
   if (name === 'net') return 'net';
   if (name === 'end' || name === 'villain_caught' || name.startsWith('bg_')) return null; // se generan aparte

@@ -40,8 +40,39 @@ registrarMundo('kingdom', {
     kingdom_friend2: { cape: 0xdc2626, suit: 0xfacc15, hat: 0xdc2626, emblem: 0xdc2626 }    // bufón
   },
 
+  // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
+  distractors: {
+    visual: [
+      { name: 'libro_volador', kind: 'fly', size: 75 },
+      { name: 'escoba_magica', kind: 'fly', size: 100 },
+      { name: 'raton', kind: 'walk', size: 55 }
+    ],
+    sounds: {
+      campanas() { [523, 659, 784].forEach((f, i) => { sweep('sine', f, f * 1.002, 1.2, 0.06, i * 0.4); sweep('sine', f * 2, f * 2.004, 0.8, 0.02, i * 0.4); }); },
+      puerta()   { sweep('sawtooth', 90, 140, 0.8, 0.05); noise(0.8, 0.04, 'bandpass', 800, 500); },
+      reloj()    { for (let i = 0; i < 4; i++) noise(0.05, 0.15, 'highpass', 3000, null, i * 0.35); sweep('sine', 880, 880, 0.9, 0.05, 1.4); }
+    }
+  },
+
   // Lumi, el hada rosada, entre hadas de otros colores (todas iguales, solo cambia el color)
   textures(make) {
+    // distractores del entorno (provisionales, mirando a la derecha)
+    make('kingdom_dv_libro_volador', g => {
+      g.fillStyle(0x92400e, 1); g.fillPoints([{x:20,y:60},{x:80,y:76},{x:80,y:124},{x:20,y:108}], true); g.fillPoints([{x:140,y:60},{x:80,y:76},{x:80,y:124},{x:140,y:108}], true);
+      g.fillStyle(0xfef3c7, 1); g.fillPoints([{x:28,y:58},{x:80,y:72},{x:80,y:116},{x:28,y:102}], true); g.fillPoints([{x:132,y:58},{x:80,y:72},{x:80,y:116},{x:132,y:102}], true);
+      g.lineStyle(2, 0xd6d3d1, 1); for (let y = 76; y <= 100; y += 8) { g.lineBetween(36, y - 6, 72, y + 4); g.lineBetween(124, y - 6, 88, y + 4); }
+    });
+    make('kingdom_dv_escoba_magica', g => {
+      g.lineStyle(8, 0x92400e, 1); g.lineBetween(20, 72, 112, 84);
+      g.fillStyle(0xfacc15, 1); g.fillPoints([{x:108,y:72},{x:150,y:62},{x:154,y:104},{x:108,y:94}], true);
+      g.fillStyle(0xfde68a, 1); for (let i = 0; i < 4; i++) g.fillCircle(30 + i * 12, 60 - (i % 2) * 6, 3);
+    });
+    make('kingdom_dv_raton', g => {
+      g.lineStyle(4, 0xf9a8d4, 1); g.strokePoints([{x:40,y:110},{x:20,y:104},{x:10,y:88}]);
+      g.fillStyle(0x9ca3af, 1); g.fillEllipse(80, 106, 84, 46); g.fillTriangle(110, 90, 150, 106, 112, 122);
+      g.fillCircle(104, 84, 14); g.fillStyle(0xf9a8d4, 1); g.fillCircle(104, 84, 8);
+      g.fillStyle(0x0f172a, 1); g.fillCircle(132, 102, 3); g.fillStyle(0xf472b6, 1); g.fillCircle(150, 106, 4);
+    });
     make('kingdom_target', g => drawFairy(g, 0xec4899, 0xfbcfe8));
     make('kingdom_dist1', g => drawFairy(g, 0x3b82f6, 0xbfdbfe));
     make('kingdom_dist2', g => drawFairy(g, 0x22c55e, 0xbbf7d0));
