@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juego de atención sostenida (CPT)</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0f172a; }
+  #game { width: 100%; height: 100%; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+<script src="assets/manifest.js"></script>
+</head>
+<body>
+<div id="game"></div>
+<script>
+// ======================= CONFIGURACIÓN =======================
+// Prueba fija: siempre los mismos parámetros, para poder comparar sesiones.
+// Valores provisionales: confirmarlos con la revisión de literatura del CPT (Fase 1).
+const CONFIG = {
+  SESSION_MS: 120000,        // duración de la sesión (poner 20000 para probar rápido)
+  STIMULUS_MS: 1000,         // tiempo que el estímulo está en pantalla
+  ISI_MIN: 700,              // pausa mínima entre estímulos
+  ISI_MAX: 1400,             // pausa máxima entre estímulos
+  TARGET_PROB: 0.25,         // proporción de estímulos objetivo
+  AUDIO_DISTRACTOR: true,    // distractor auditivo ON/OFF
+  AUDIO_EVERY_MS: [20000, 35000] // cada cuánto suena el distractor (rango aleatorio)
+};
+
+// Minijuegos: cada uno se juega distinto, pero todos miden aciertos, omisiones y comisiones.
+// instr(n, holder): n = qué buscar ("a Sombra"), holder = con qué atrapar ("la canasta" / "la red")
+const MG = {
+  classic: { label: 'Clásico',   verb: 'Encontraste', desc: 'Toca cuando\naparezca',
+             instr: n => 'Toca o presiona ESPACIO solo cuando veas\n' + n },
+  catch:   { label: 'Atrapa',    verb: 'Atrapaste',   desc: 'Mueve la canasta\ny atrapa',
+             instr: (n, holder) => 'Mueve ' + holder + ' con las flechas o el dedo.\nAtrapa solo ' + n + ' y esquiva lo demás' },
+  race:    { label: 'Carrera',   verb: 'Agarraste',   desc: 'Cambia de carril\ny agarra',
+             instr: n => 'Cambia de carril con las flechas o tocando arriba/abajo.\nAgarra solo ' + n },
+  find:    { label: 'Encuentra', verb: 'Encontraste', desc: 'Búscalo entre\nmuchos',
+             instr: n => 'Toca solo ' + n + '.\nSi no está, no toques nada' }
+};
+
+// Dificultad según el nivel (Desafío) o el capítulo (Historia): empieza fácil y corto.
+function challengeParams(level, minigame) {
+  const L = level - 1;
+  const isiMin = Math.max(400, 900 - 40 * L);
+  return {
+    sessionMs: Math.min(45000 + 5000 * L, 120000),   // 45 s en el nivel 1, +5 s por nivel, máx. 2 min
+    stimMs: Math.max(550, 1200 - 50 * L),            // Clásico: tiempo del estímulo en pantalla
+    isiMin: isiMin,
+    isiMax: isiMin + 600,
+    targetProb: Math.max(0.2, 0.35 - 0.015 * L),     // al principio más objetivos; luego menos (vigilancia)
+    similarProb: level >= 4 ? Math.min(0.5, 0.15 + 0.05 * (level - 4)) : 0, // distractor parecido al objetivo
+    audio: level >= 3,
+    audioEvery: [Math.max(8000, 20000 - 1000 * L), Math.max(12000, 35000 - 1500 * L)],
+    travelMs: Math.max(1500, 3400 - 150 * L),        // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla
+    spawnMin: Math.max(550, 1300 - 60 * L),
+    spawnMax: Math.max(900, 1900 - 70 * L),
+    setSize: Math.min(8, 3 + Math.floor(L / 2)),     // Encuentra: cuántos objetos a la vez
+    displayMs: Math.max(1500, 3200 - 120 * L),       // Encuentra: tiempo para buscar
+    minigame: minigame || 'classic'
+  };
+}
+
+function pruebaParams() {
+  return {
+    sessionMs: CONFIG.SESSION_MS,
+    stimMs: CONFIG.STIMULUS_MS,
+    isiMin: CONFIG.ISI_MIN,
+    isiMax: CONFIG.ISI_MAX,
+    targetProb: CONFIG.TARGET_PROB,
+    similarProb: 0,
+    audio: CONFIG.AUDIO_DISTRACTOR,
+    audioEvery: CONFIG.AUDIO_EVERY_MS,
+    minigame: 'classic'
+  };
+}
+
+// targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
+const THEMES = {
+  heroes:  { label: 'Superhéroes', bg: 0x0f2a4a, accent: 0xfde047,
+             targetLabel: 'la señal de Sombra', targetObj: 'la señal de Sombra',
+             villain: 'Sombra', villainObj: 'a Sombra', chase: '¡Persíguelo!' },
+  fantasy: { label: 'Dragones y fantasía', bg: 0x1f3a2a, accent: 0xfacc15,
+             targetLabel: 'el dragón bebé dorado', targetObj: 'al dragón bebé dorado',
+             villain: 'Morgana', villainObj: 'a Morgana', chase: '¡Persíguela!' },
+  kingdom: { label: 'Reino mágico', bg: 0x4a1d4a, accent: 0xf472b6,
+             targetLabel: 'Lumi, el hada rosada', targetObj: 'a Lumi, el hada rosada',
+             villain: 'Duende Pícaro', villainObj: 'al Duende Pícaro', chase: '¡Persíguelo!' }
+};
+const hexColor = n => '#' + n.toString(16).padStart(6, '0');
+
+// ======================= HISTORIA =======================
+// 5 capítulos por mundo, cada uno más largo y difícil. El jefe final tiene dos fases:
+// atrapar al villano con la red y, cuando escapa, perseguirlo en la carrera.
+const CHAPTERS = [
+  { mg: 'classic', level: 1, sec: 45 },
+  { mg: 'catch',   level: 2, sec: 60 },
+  { mg: 'race',    level: 3, sec: 75 },
+  { mg: 'find',    level: 4, sec: 90 },
+  { boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
+];
+
+const STORY = {
+  heroes: {
+    hero: 'Héroe Rayo',
+    voice: { pitch: 1.25 },
+    places: ['El Centro', 'Barrio Norte', 'El Puerto', 'La Torre', 'Guarida de Sombra'],
+    lines: [
+      '¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!',
+      '¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!',
+      '¡Escapó al puerto! Corre por los muelles y agarra solo sus señales. ¡Vamos!',
+      'En la torre hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!',
+      '¡Ahí está Sombra en persona! Atrápalo con la red y, si escapa, ¡persíguelo!'
+    ],
+    ending: '¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!'
+  },
+  fantasy: {
+    hero: 'Chispa, la dragona',
+    voice: { pitch: 1.45 },
+    places: ['El Nido', 'El Bosque', 'El Río', 'La Cueva', 'El Volcán'],
+    lines: [
+      '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?',
+      '¡Los dragoncitos bajan volando del bosque! Atrapa solo a mi hermanito dorado.',
+      '¡Mi hermanito está jugando en el río! Corre por la orilla y alcánzalo solo a él.',
+      'La cueva está llena de dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
+      '¡Fue la hechicera Morgana! Atrápala con la red y, si escapa, ¡persíguela!'
+    ],
+    ending: '¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!'
+  },
+  kingdom: {
+    hero: 'Reina Luna',
+    voice: { pitch: 1.35 },
+    places: ['El Jardín', 'La Cocina', 'La Biblioteca', 'La Torre', 'El Salón del Trono'],
+    lines: [
+      '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.',
+      '¡Las hadas caen como polvo de estrellas en la cocina! Atrapa solo a Lumi.',
+      '¡Lumi vuela entre los libros de la biblioteca! Corre por los pasillos y alcánzala solo a ella.',
+      'En la torre hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!',
+      '¡Fue el Duende Pícaro quien lanzó el hechizo! Atrápalo con la red y, si escapa, ¡persíguelo!'
+    ],
+    ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.'
+  }
+};
+
+// Mundos del mapa: los 3 primeros ya se pueden jugar; el resto llega pronto.
+const MAP_WORLDS = ['heroes', 'fantasy', 'kingdom', 'Espacio', 'Océano', 'Dinosaurios', 'Robots', 'Selva', 'Dulces'];
+
+// Personajes principales provisionales (los dibujos del diseño en Figma)
+const CHAR_SVG = {
+  heroes: '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260"><path d="M50,120 L170,120 L198,258 L22,258 Z" fill="#dc2626"/><path d="M65,120 Q110,106 155,120 L166,258 L54,258 Z" fill="#2563eb"/><polygon points="110,150 134,178 110,206 86,178" fill="#7c3aed"/><polygon points="114,158 100,182 110,182 105,198 120,176 111,176" fill="#fde047"/><rect x="98" y="104" width="24" height="20" fill="#f5c49c"/><circle cx="110" cy="70" r="48" fill="#f5c49c"/><path d="M62,64 Q66,18 110,20 Q156,18 158,64 Q140,42 110,44 Q80,42 62,64 Z" fill="#3f2a1d"/><path d="M62,62 Q110,50 158,62 L158,84 Q110,74 62,84 Z" fill="#7c3aed"/><ellipse cx="92" cy="72" rx="10" ry="7" fill="#ffffff"/><ellipse cx="128" cy="72" rx="10" ry="7" fill="#ffffff"/><circle cx="93" cy="72" r="4" fill="#0f172a"/><circle cx="127" cy="72" r="4" fill="#0f172a"/><path d="M96,98 Q110,110 124,98" stroke="#7c2d12" stroke-width="4" fill="none" stroke-linecap="round"/></svg>',
+  fantasy: '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260"><path d="M50,160 L4,96 L34,108 L22,64 L80,128 Z" fill="#15803d"/><path d="M170,160 L216,96 L186,108 L198,64 L140,128 Z" fill="#15803d"/><ellipse cx="110" cy="204" rx="62" ry="56" fill="#22c55e"/><ellipse cx="110" cy="212" rx="36" ry="42" fill="#fef08a"/><polygon points="72,52 62,14 92,42" fill="#fde68a"/><polygon points="148,52 158,14 128,42" fill="#fde68a"/><ellipse cx="110" cy="90" rx="60" ry="54" fill="#22c55e"/><ellipse cx="110" cy="116" rx="36" ry="22" fill="#4ade80"/><circle cx="100" cy="110" r="3.5" fill="#166534"/><circle cx="120" cy="110" r="3.5" fill="#166534"/><circle cx="88" cy="80" r="13" fill="#ffffff"/><circle cx="132" cy="80" r="13" fill="#ffffff"/><circle cx="90" cy="81" r="7" fill="#0f172a"/><circle cx="130" cy="81" r="7" fill="#0f172a"/><path d="M96,122 Q110,134 124,122" stroke="#166534" stroke-width="4" fill="none" stroke-linecap="round"/></svg>',
+  kingdom: '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260"><path d="M56,84 Q56,24 110,24 Q164,24 164,84 L172,176 L48,176 Z" fill="#78350f"/><path d="M70,132 Q110,120 150,132 L184,258 L36,258 Z" fill="#db2777"/><path d="M88,130 Q110,148 132,130 Z" fill="#f9a8d4"/><rect x="100" y="106" width="20" height="26" fill="#f5c49c"/><circle cx="110" cy="80" r="44" fill="#f5c49c"/><path d="M66,72 Q72,36 110,36 Q148,36 154,72 Q130,54 110,60 Q90,54 66,72 Z" fill="#78350f"/><polygon points="80,42 86,8 100,28 110,4 120,28 134,8 140,42" fill="#facc15"/><polygon points="110,16 117,27 110,38 103,27" fill="#f472b6"/><circle cx="94" cy="84" r="5" fill="#0f172a"/><circle cx="126" cy="84" r="5" fill="#0f172a"/><circle cx="86" cy="98" r="7" fill="#fda4af" fill-opacity="0.7"/><circle cx="134" cy="98" r="7" fill="#fda4af" fill-opacity="0.7"/><path d="M96,102 Q110,114 124,102" stroke="#7c2d12" stroke-width="4" fill="none" stroke-linecap="round"/></svg>'
+};
+
+// ======================= IMÁGENES Y AUDIOS (carpeta assets) =======================
+// Cada imagen tiene un dibujo provisional. Si el archivo está en assets/manifest.js, se usa el archivo.
+const ASSET_NAMES = ['target', 'dist1', 'dist2', 'dist3', 'hero', 'hero_run', 'villain', 'villain_caught',
+  'friend1', 'friend2', 'friend3', 'net', 'end', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
+const AVAILABLE = new Set(window.ASSET_FILES || []);
+
+function assetPath(theme, name) {
+  // en Superhéroes, el objetivo y los distractores de los capítulos 1-4 son señales
+  const signal = { target: 'signal_target', dist1: 'signal_1', dist2: 'signal_2', dist3: 'signal_3' };
+  const file = theme === 'heroes' && signal[name] ? signal[name] : name;
+  return theme + '/' + theme + '_' + file + '.png';
+}
+function fallbackKey(theme, name) {
+  if (name === 'hero' || name === 'hero_run') return 'char_' + theme;
+  if (name === 'net') return 'net';
+  if (name === 'end' || name === 'villain_caught' || name.startsWith('bg_')) return null; // se generan aparte
+  if (name === 'friend3' && theme !== 'heroes') return theme + '_friend1';
+  return theme + '_' + name;
+}
+const TEX = {};   // TEX[tema][nombre] = textura a usar (archivo o dibujo provisional)
+
+// ======================= FONDOS AMBIENTADOS =======================
+// Un fondo por capítulo (idx 0-4). Si existe assets/<tema>/<tema>_bg_N.png (o .jpg) se usa la imagen;
+// si no, se dibuja uno provisional. dim = cuánto se oscurece con el color del mundo (0 a 1).
+function drawBackdrop(scene, theme, idx, dim) {
+  const W = scene.scale.width, H = scene.scale.height;
+  const key = TEX[theme]['bg_' + (idx + 1)];
+  if (key) {
+    const img = scene.add.image(W / 2, H / 2, key).setDepth(-20);
+    img.setScale(Math.max(W / img.width, H / img.height));
+  } else {
+    const g = scene.add.graphics().setDepth(-20);
+    const rng = new Phaser.Math.RandomDataGenerator([theme + idx]);
+    BACKDROPS[theme](g, idx, rng, W, H);
+  }
+  if (dim > 0) scene.add.rectangle(0, 0, W, H, THEMES[theme].bg, dim).setOrigin(0).setDepth(-19);
+}
+
+function mixColor(a, b, t) {
+  const c = (s) => [(s >> 16) & 255, (s >> 8) & 255, s & 255];
+  const A = c(a), B = c(b);
+  return (Math.round(A[0] + (B[0] - A[0]) * t) << 16) | (Math.round(A[1] + (B[1] - A[1]) * t) << 8) | Math.round(A[2] + (B[2] - A[2]) * t);
+}
+function skyGradient(g, top, bottom, W, H) {
+  for (let y = 0; y < H; y += 10) { g.fillStyle(mixColor(top, bottom, y / H), 1); g.fillRect(0, y, W, 10); }
+}
+
+const BACKDROPS = {
+  // Ciudad: Centro (día), Barrio Norte (atardecer), Puerto (tarde), Torre (noche), Guarida (noche de tormenta)
+  heroes(g, idx, rng, W, H) {
+    const skies = [[0x38bdf8, 0xbae6fd], [0xf97316, 0xfde68a], [0x60a5fa, 0xfef3c7], [0x0b1026, 0x1e3a8a], [0x1e1b4b, 0x581c87]];
+    const night = idx >= 3;
+    skyGradient(g, skies[idx][0], skies[idx][1], W, H);
+    if (idx === 0) { g.fillStyle(0xfde047, 1); g.fillCircle(820, 90, 42); }
+    if (idx === 1) { g.fillStyle(0xfb923c, 1); g.fillCircle(480, 360, 70); }
+    if (idx === 2) { g.fillStyle(0xfef08a, 1); g.fillCircle(160, 110, 36); }
+    if (night) {
+      g.fillStyle(0xffffff, 0.8);
+      for (let i = 0; i < 60; i++) g.fillCircle(rng.between(0, W), rng.between(0, 260), rng.realInRange(0.8, 2));
+      g.fillStyle(0xf8fafc, 1); g.fillCircle(820, 80, 30);
+      g.fillStyle(skies[idx][0], 1); g.fillCircle(808, 72, 26);
+    }
+    const base = idx === 2 ? 430 : 480;
+    const far = night ? 0x1e293b : mixColor(skies[idx][1], 0x475569, 0.45);
+    const near = night ? 0x0f172a : mixColor(skies[idx][1], 0x1e293b, 0.6);
+    for (let x = -20; x < W; ) { const w = rng.between(50, 100), h = rng.between(150, 290); g.fillStyle(far, 1); g.fillRect(x, base - h, w - 4, h); x += w; }
+    if (idx === 4) { g.fillStyle(0x0f0f1a, 1); g.fillRect(640, 90, 90, base - 90); g.fillTriangle(630, 95, 740, 95, 685, 40); g.fillStyle(0xa855f7, 1); g.fillRect(670, 130, 30, 20); }
+    for (let x = -10; x < W; ) {
+      const w = rng.between(60, 120), h = rng.between(90, 210);
+      g.fillStyle(near, 1); g.fillRect(x, base - h, w - 6, h);
+      for (let wy = base - h + 14; wy < base - 16; wy += 24)
+        for (let wx = x + 10; wx < x + w - 22; wx += 20) {
+          if (night) g.fillStyle(rng.frac() < 0.45 ? 0xfde047 : 0x334155, 1);
+          else g.fillStyle(0xe0f2fe, 0.55);
+          g.fillRect(wx, wy, 10, 12);
+        }
+      x += w;
+    }
+    if (idx === 2) {
+      g.fillStyle(0x0284c7, 1); g.fillRect(0, base, W, H - base);
+      g.lineStyle(3, 0x7dd3fc, 0.7);
+      for (let y = base + 20; y < H; y += 26) for (let x = rng.between(0, 60); x < W; x += 120) g.lineBetween(x, y, x + 40, y);
+    } else {
+      g.fillStyle(night ? 0x111827 : 0x475569, 1); g.fillRect(0, base, W, H - base);
+      g.fillStyle(0xfde047, 0.6); for (let x = 20; x < W; x += 110) g.fillRect(x, base + 28, 50, 5);
+    }
+  },
+  // Fantasía: Nido (día), Bosque, Río, Cueva, Volcán
+  fantasy(g, idx, rng, W, H) {
+    if (idx === 3) {
+      skyGradient(g, 0x1c1917, 0x44403c, W, H);
+      g.fillStyle(0x57534e, 1);
+      for (let x = 0; x < W; x += 60) { const h = rng.between(40, 130); g.fillTriangle(x, 0, x + 50, 0, x + 25, h); }
+      for (let x = 30; x < W; x += 90) { const h = rng.between(30, 90); g.fillTriangle(x, H, x + 60, H, x + 30, H - h); }
+      g.fillStyle(0x67e8f9, 0.8);
+      for (let i = 0; i < 14; i++) { const x = rng.between(20, W - 20), y = rng.between(380, 520); g.fillTriangle(x, y, x + 10, y, x + 5, y - 22); }
+      return;
+    }
+    if (idx === 4) {
+      skyGradient(g, 0x7f1d1d, 0xf97316, W, H);
+      g.fillStyle(0x6b7280, 0.5); for (let i = 0; i < 6; i++) g.fillCircle(480 + rng.between(-60, 60), 120 - i * 18, 30 + i * 6);
+      g.fillStyle(0x292524, 1); g.fillTriangle(200, 470, 760, 470, 480, 140);
+      g.fillStyle(0xef4444, 1); g.fillTriangle(440, 205, 520, 205, 480, 150); g.fillRect(470, 205, 20, 120);
+      g.fillStyle(0x1c1917, 1); g.fillRect(0, 470, W, H - 470);
+      return;
+    }
+    const skies = [[0x7dd3fc, 0xe0f2fe], [0x84cc16, 0xecfccb], [0x7dd3fc, 0xf0fdf4]];
+    skyGradient(g, skies[idx][0], skies[idx][1], W, H);
+    if (idx !== 1) { g.fillStyle(0xfde047, 1); g.fillCircle(830, 90, 38); }
+    g.fillStyle(0x4ade80, 1); g.fillEllipse(220, 520, 700, 300); g.fillStyle(0x22c55e, 1); g.fillEllipse(760, 540, 760, 320);
+    const trees = idx === 1 ? 16 : 6;
+    for (let i = 0; i < trees; i++) {
+      const x = rng.between(0, W), y = rng.between(330, 430), s = rng.realInRange(0.7, 1.3);
+      g.fillStyle(0x78350f, 1); g.fillRect(x - 6 * s, y, 12 * s, 50 * s);
+      g.fillStyle(i % 2 ? 0x166534 : 0x15803d, 1); g.fillTriangle(x - 45 * s, y + 10, x + 45 * s, y + 10, x, y - 100 * s);
+    }
+    if (idx === 2) {
+      g.fillStyle(0x38bdf8, 1); g.fillPoints([{x:0,y:450},{x:300,y:420},{x:600,y:460},{x:W,y:430},{x:W,y:500},{x:600,y:530},{x:300,y:495},{x:0,y:520}], true);
+    }
+  },
+  // Castillo: Jardín, Cocina, Biblioteca, Torre, Salón del Trono
+  kingdom(g, idx, rng, W, H) {
+    if (idx === 0) {
+      skyGradient(g, 0x7dd3fc, 0xfce7f3, W, H);
+      g.fillStyle(0xe9d5ff, 1); g.fillRect(560, 160, 280, 240);
+      [560, 660, 760].forEach(x => { g.fillRect(x, 110, 80, 60); g.fillStyle(0xc084fc, 1); g.fillTriangle(x - 6, 112, x + 86, 112, x + 40, 50); g.fillStyle(0xe9d5ff, 1); });
+      g.fillStyle(0x16a34a, 1); for (let x = -20; x < W; x += 90) g.fillCircle(x, 450, 60);
+      g.fillStyle(0x15803d, 1); g.fillRect(0, 460, W, H - 460);
+      for (let i = 0; i < 30; i++) { g.fillStyle([0xf472b6, 0xfde047, 0xffffff][i % 3], 1); g.fillCircle(rng.between(0, W), rng.between(420, 530), 5); }
+      return;
+    }
+    if (idx === 1) {
+      g.fillStyle(0xfef3c7, 1); g.fillRect(0, 0, W, 380);
+      g.lineStyle(2, 0xfde68a, 1); for (let x = 0; x < W; x += 40) g.lineBetween(x, 0, x, 380); for (let y = 0; y < 380; y += 40) g.lineBetween(0, y, W, y);
+      for (let x = 0; x < W; x += 60) for (let y = 380; y < H; y += 40) { g.fillStyle(((x / 60 + (y - 380) / 40) % 2) ? 0xd6a26a : 0xb7834d, 1); g.fillRect(x, y, 60, 40); }
+      g.fillStyle(0x92400e, 1); g.fillRect(0, 300, W, 80);
+      g.fillStyle(0x7dd3fc, 1); g.fillRect(380, 60, 200, 150); g.lineStyle(8, 0x92400e, 1); g.strokeRect(380, 60, 200, 150); g.lineBetween(480, 60, 480, 210);
+      [[120, 280], [220, 270], [760, 276], [850, 284]].forEach(([x, y]) => { g.fillStyle(0x64748b, 1); g.fillEllipse(x, y, 70, 40); });
+      return;
+    }
+    if (idx === 2) {
+      skyGradient(g, 0x7c2d12, 0x9a3412, W, H);
+      const colors = [0xef4444, 0x3b82f6, 0x22c55e, 0xfacc15, 0xa855f7, 0xf97316];
+      [[30, 280], [670, 280]].forEach(([sx, sw]) => {
+        g.fillStyle(0x451a03, 1); g.fillRect(sx, 40, sw, 400);
+        for (let sy = 60; sy < 420; sy += 90) for (let bx = sx + 12; bx < sx + sw - 18; ) {
+          const bw = rng.between(10, 18); g.fillStyle(colors[rng.between(0, 5)], 1); g.fillRect(bx, sy + rng.between(0, 14), bw, 66); bx += bw + 3;
+        }
+      });
+      g.fillStyle(0x78350f, 1); g.fillRect(0, 440, W, H - 440);
+      return;
+    }
+    if (idx === 3) {
+      g.fillStyle(0x6b7280, 1); g.fillRect(0, 0, W, H);
+      g.lineStyle(2, 0x4b5563, 1);
+      for (let y = 0; y < H; y += 36) { g.lineBetween(0, y, W, y); for (let x = (y / 36) % 2 ? 0 : 40; x < W; x += 80) g.lineBetween(x, y, x, y + 36); }
+      g.fillStyle(0x1e3a8a, 1); g.fillCircle(480, 200, 120);
+      g.fillStyle(0xffffff, 0.9); for (let i = 0; i < 20; i++) { const a = rng.frac() * Math.PI * 2, r = rng.frac() * 105; g.fillCircle(480 + Math.cos(a) * r, 200 + Math.sin(a) * r, 2); }
+      g.lineStyle(10, 0x374151, 1); g.strokeCircle(480, 200, 120);
+      g.fillStyle(0x4b5563, 1); g.fillRect(0, 460, W, H - 460);
+      return;
+    }
+    skyGradient(g, 0x581c87, 0x7e22ce, W, H);
+    g.fillStyle(0xdc2626, 1); g.fillPoints([{x:400,y:250},{x:560,y:250},{x:760,y:H},{x:200,y:H}], true);
+    [90, 250, 710, 870].forEach(x => { g.fillStyle(0xe9d5ff, 1); g.fillRect(x - 25, 40, 50, 440); g.fillRect(x - 35, 30, 70, 20); });
+    g.fillStyle(0xfacc15, 1); g.fillRect(430, 120, 100, 130); g.fillTriangle(430, 122, 530, 122, 480, 70);
+    g.fillStyle(0xdc2626, 1); g.fillRect(450, 170, 60, 60);
+  }
+};
+
+function fit(img, px) {   // escala una imagen para que su lado mayor mida px
+  img.setScale(px / Math.max(img.width, img.height));
+  return img;
+}
+
+// ======================= GUARDADO (navegador) =======================
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin guardado disponible */ } }
+};
+const getRecords = () => store.get('cpt_records', {});           // { 'heroes_catch': 5, ... }
+const getStory = () => store.get('cpt_story', {});               // { heroes: [3,2,0,0,0], ... }
+const chapterStars = theme => (getStory()[theme] || [0, 0, 0, 0, 0]);
+const totalStars = () => Object.values(getStory()).reduce((a, arr) => a + arr.reduce((x, y) => x + y, 0), 0);
+
+// ======================= VOZ DE LOS PERSONAJES =======================
+// Usa el audio grabado (assets/<tema>/voice_N.mp3) si existe; si no, la voz del navegador.
+let currentVoice = null;
+function bestSpanishVoice() {
+  try {
+    const voices = window.speechSynthesis.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith('es'));
+    const score = v => (/natural|online|neural/i.test(v.name) ? 10 : 0) + (/MX|US|CO|419|AR/i.test(v.lang) ? 3 : 0) + (v.localService ? 0 : 1);
+    return voices.sort((a, b) => score(b) - score(a))[0] || null;
+  } catch (e) { return null; }
+}
+function speakTTS(text, theme) {
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const v = bestSpanishVoice();
+    if (v) u.voice = v;
+    u.lang = v ? v.lang : 'es-MX';
+    u.pitch = STORY[theme].voice.pitch;   // tono más agudo: suena a personaje infantil
+    u.rate = 1.0;
+    window.speechSynthesis.speak(u);
+  } catch (e) { /* sin voz disponible */ }
+}
+function playVoice(theme, id, text) {
+  stopVoice();
+  const file = theme + '/voice_' + id + '.mp3';
+  if (!AVAILABLE.has(file)) { speakTTS(text, theme); return; }
+  currentVoice = new Audio('assets/' + file);
+  currentVoice.play().catch(() => speakTTS(text, theme));
+}
+function stopVoice() {
+  if (currentVoice) { currentVoice.pause(); currentVoice = null; }
+  try { window.speechSynthesis.cancel(); } catch (e) { /* nada */ }
+}
+
+// ======================= AUDIO (Web Audio, sin archivos) =======================
+let audioCtx = null;
+function getCtx() {
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+function tone(freq, dur, vol, type) {
+  const ctx = getCtx();
+  if (!ctx) return;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = type || 'sine';
+  o.frequency.value = freq;
+  g.gain.setValueAtTime(vol, ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+  o.connect(g);
+  g.connect(ctx.destination);
+  o.start();
+  o.stop(ctx.currentTime + dur);
+}
+function distractorSound() {            // sonido disonante que funciona como distractor
+  tone(220, 0.6, 0.25, 'sawtooth');
+  tone(233, 0.6, 0.25, 'sawtooth');
+}
+function rewardSound() {                // refuerzo positivo
+  tone(660, 0.12, 0.12, 'sine');
+  setTimeout(() => tone(880, 0.15, 0.12, 'sine'), 90);
+}
+
+// ======================= DIBUJOS PROVISIONALES =======================
+function starPoints(cx, cy, R, r) {
+  const p = [];
+  for (let i = 0; i < 10; i++) {
+    const a = -Math.PI / 2 + i * Math.PI / 5;
+    const d = i % 2 ? r : R;
+    p.push({ x: cx + d * Math.cos(a), y: cy + d * Math.sin(a) });
+  }
+  return p;
+}
+
+// Dragón bebé: todos iguales, solo cambia el color
+function drawBabyDragon(g, color, belly, spots) {
+  g.fillStyle(color, 0.75);
+  g.fillTriangle(48, 82, 8, 40, 32, 104); g.fillTriangle(112, 82, 152, 40, 128, 104);
+  g.fillStyle(color, 1); g.fillEllipse(80, 114, 74, 62);
+  g.fillStyle(belly, 1); g.fillEllipse(80, 120, 42, 40);
+  g.fillStyle(0xfef3c7, 1); g.fillTriangle(60, 36, 54, 12, 72, 30); g.fillTriangle(100, 36, 106, 12, 88, 30);
+  g.fillStyle(color, 1); g.fillCircle(80, 62, 34);
+  g.fillStyle(0xffffff, 1); g.fillCircle(67, 58, 9); g.fillCircle(93, 58, 9);
+  g.fillStyle(0x0f172a, 1); g.fillCircle(68, 59, 5); g.fillCircle(92, 59, 5);
+  g.fillCircle(74, 76, 2); g.fillCircle(86, 76, 2);
+  if (spots) { g.fillStyle(spots, 1); g.fillCircle(60, 104, 6); g.fillCircle(102, 110, 7); g.fillCircle(84, 140, 5); }
+}
+
+// Hada: todas iguales, solo cambia el color
+function drawFairy(g, color, light) {
+  g.fillStyle(light, 0.8); g.fillEllipse(48, 74, 48, 66); g.fillEllipse(112, 74, 48, 66);
+  g.fillStyle(color, 1); g.fillTriangle(80, 70, 42, 146, 118, 146);
+  g.fillStyle(color, 1); g.fillEllipse(80, 36, 54, 32);
+  g.fillStyle(0xf5c49c, 1); g.fillCircle(80, 52, 22);
+  g.fillStyle(0x0f172a, 1); g.fillCircle(72, 52, 3); g.fillCircle(88, 52, 3);
+  g.fillStyle(0xfde047, 1); g.fillPoints(starPoints(126, 108, 12, 5), true);
+}
+
+// Personaje (villanos y amigos): capa, traje, cabeza, pelo/sombrero, antifaz y emblema
+function drawPerson(g, o) {
+  if (o.cape !== undefined) { g.fillStyle(o.cape, 1); g.fillTriangle(80, 62, 30, 152, 130, 152); }
+  g.fillStyle(o.suit, 1); g.fillRoundedRect(54, 72, 52, 76, 16);
+  if (o.ears) { g.fillStyle(0xf5c49c, 1); g.fillTriangle(54, 44, 34, 30, 58, 58); g.fillTriangle(106, 44, 126, 30, 102, 58); }
+  g.fillStyle(0xf5c49c, 1); g.fillCircle(80, 48, 24);
+  if (o.beard) { g.fillStyle(0xffffff, 1); g.fillTriangle(60, 56, 100, 56, 80, 96); }
+  if (o.hair !== undefined) { g.fillStyle(o.hair, 1); g.fillEllipse(80, 30, 52, 24); }
+  if (o.hat !== undefined) { g.fillStyle(o.hat, 1); g.fillTriangle(80, 0, 52, 32, 108, 32); }
+  if (o.mask !== undefined) { g.fillStyle(o.mask, 1); g.fillRect(56, 40, 48, 12); }
+  g.fillStyle(0xffffff, 1); g.fillCircle(71, 46, 4); g.fillCircle(89, 46, 4);
+  g.fillStyle(0x0f172a, 1); g.fillCircle(71, 46, 2); g.fillCircle(89, 46, 2);
+  if (o.emblem !== undefined) { g.fillStyle(o.emblem, 1); g.fillCircle(80, 100, 11); }
+}
+
+function drawNet(g, villain) {
+  g.lineStyle(10, 0x92400e, 1); g.lineBetween(80, 110, 80, 156);
+  g.lineStyle(6, 0xe5e7eb, 1); g.strokeEllipse(80, 66, 130, 92);
+  g.lineStyle(2, 0xe5e7eb, villain ? 0.9 : 0.6);
+  for (let i = -3; i <= 3; i++) {
+    g.lineBetween(80 + i * 16, 24, 80 + i * 16, 108);
+    g.lineBetween(20, 66 + i * 12, 140, 66 + i * 12);
+  }
+}
+
+const PEOPLE = {
+  heroes_villain:  { cape: 0x111827, suit: 0x4c1d95, hair: 0x111827, mask: 0x000000, emblem: 0x7c3aed },
+  heroes_friend1:  { cape: 0xffffff, suit: 0x2563eb, hair: 0x111827, mask: 0x1d4ed8, emblem: 0xffffff },
+  heroes_friend2:  { cape: 0xfacc15, suit: 0x16a34a, hair: 0xfde68a, mask: 0x166534, emblem: 0x9ca3af },
+  heroes_friend3:  { cape: 0xffffff, suit: 0x4c1d95, hair: 0x111827, mask: 0x312e81, emblem: 0xfacc15 }, // Héroe Noche (difícil)
+  fantasy_villain: { cape: 0x6d28d9, suit: 0x7c3aed, hair: 0x111827, hat: 0x5b21b6, emblem: 0x22c55e },
+  fantasy_friend2: { cape: 0x1d4ed8, suit: 0x2563eb, hat: 0x1e40af, beard: true },
+  kingdom_villain: { suit: 0x7e22ce, hat: 0x166534, ears: true, emblem: 0xfacc15 },
+  kingdom_friend1: { cape: 0x1d4ed8, suit: 0x9ca3af, hat: 0x9ca3af, emblem: 0x1d4ed8 },
+  kingdom_friend2: { cape: 0xdc2626, suit: 0xfacc15, hat: 0xdc2626, emblem: 0xdc2626 }
+};
+
+function buildTextures(scene) {
+  const S = 160;
+  const make = (key, drawFn) => {
+    const g = scene.make.graphics({ x: 0, y: 0, add: false });
+    drawFn(g);
+    g.generateTexture(key, S, S);
+    g.destroy();
+  };
+
+  // --- Superhéroes: la señal de Sombra (su antifaz) entre señales de otros héroes ---
+  const rombo = g => { g.fillStyle(0x7c3aed, 1); g.fillPoints([{x:80,y:6},{x:154,y:80},{x:80,y:154},{x:6,y:80}], true); };
+  make('heroes_target', g => {
+    rombo(g);
+    g.fillStyle(0x0f0f1a, 1);
+    g.fillEllipse(56, 80, 54, 34); g.fillEllipse(104, 80, 54, 34); g.fillRect(56, 70, 48, 16);
+    g.fillStyle(0xffffff, 1); g.fillEllipse(56, 80, 22, 10); g.fillEllipse(104, 80, 22, 10);
+  });
+  make('heroes_dist1', g => {          // Capitán Estrella
+    g.fillStyle(0x2563eb, 1); g.fillCircle(80, 80, 66);
+    g.fillStyle(0xffffff, 1); g.fillPoints(starPoints(80, 84, 44, 18), true);
+  });
+  make('heroes_dist2', g => {          // Escudo Verde
+    g.fillStyle(0x16a34a, 1);
+    g.fillPoints([{x:22,y:18},{x:138,y:18},{x:138,y:80},{x:80,y:150},{x:22,y:80}], true);
+    g.fillStyle(0xffffff, 1);
+    g.fillPoints([{x:80,y:40},{x:116,y:80},{x:94,y:80},{x:94,y:116},{x:66,y:116},{x:66,y:80},{x:44,y:80}], true);
+  });
+  make('heroes_dist3', g => {          // parecido al objetivo: rombo morado con estrella
+    rombo(g);
+    g.fillStyle(0xffffff, 1); g.fillPoints(starPoints(80, 84, 36, 15), true);
+  });
+
+  // --- Dragones: el dragón bebé dorado entre dragones bebé de otros colores ---
+  make('fantasy_target', g => drawBabyDragon(g, 0xfacc15, 0xfef9c3, 0xf59e0b));
+  make('fantasy_dist1', g => drawBabyDragon(g, 0xef4444, 0xfecaca));
+  make('fantasy_dist2', g => drawBabyDragon(g, 0x60a5fa, 0xdbeafe));
+  make('fantasy_dist3', g => drawBabyDragon(g, 0xfde68a, 0xfefce8));     // amarillo pálido (difícil)
+
+  // --- Reino mágico: Lumi, el hada rosada, entre hadas de otros colores ---
+  make('kingdom_target', g => drawFairy(g, 0xec4899, 0xfbcfe8));
+  make('kingdom_dist1', g => drawFairy(g, 0x3b82f6, 0xbfdbfe));
+  make('kingdom_dist2', g => drawFairy(g, 0x22c55e, 0xbbf7d0));
+  make('kingdom_dist3', g => drawFairy(g, 0xc4b5fd, 0xede9fe));          // lila pálido (difícil)
+  make('fantasy_friend1', g => drawFairy(g, 0x16a34a, 0xbbf7d0));        // hada del bosque
+
+  // --- Villanos, amigos y redes ---
+  Object.keys(PEOPLE).forEach(k => make(k, g => drawPerson(g, PEOPLE[k])));
+  make('net', g => drawNet(g, false));
+
+  // --- Canasta del minijuego Atrapa ---
+  make('basket', g => {
+    g.fillStyle(0x92400e, 1);
+    g.fillPoints([{x:12,y:70},{x:148,y:70},{x:128,y:140},{x:32,y:140}], true);
+    g.lineStyle(4, 0x78350f, 1);
+    g.lineBetween(40, 92, 120, 92); g.lineBetween(46, 116, 114, 116);
+    g.fillStyle(0xb45309, 1); g.fillRoundedRect(4, 60, 152, 16, 6);
+  });
+
+  // --- Iconos ---
+  make('icon_map', g => {
+    g.fillStyle(0x38bdf8, 1);
+    g.fillPoints([{x:10,y:40},{x:55,y:28},{x:55,y:128},{x:10,y:140}], true);
+    g.fillPoints([{x:105,y:40},{x:150,y:28},{x:150,y:128},{x:105,y:140}], true);
+    g.fillStyle(0x7dd3fc, 1);
+    g.fillPoints([{x:55,y:28},{x:105,y:40},{x:105,y:140},{x:55,y:128}], true);
+    g.lineStyle(6, 0xef4444, 1);
+    g.lineBetween(116, 54, 132, 70); g.lineBetween(132, 54, 116, 70);
+  });
+  make('icon_trophy', g => {
+    g.lineStyle(8, 0xfb923c, 1);
+    g.strokeCircle(40, 52, 16); g.strokeCircle(120, 52, 16);
+    g.fillStyle(0xfb923c, 1);
+    g.fillRect(44, 24, 72, 40); g.fillCircle(80, 64, 36);
+    g.fillRect(72, 98, 16, 22);
+    g.fillStyle(0xc2410c, 1); g.fillRoundedRect(48, 118, 64, 18, 5);
+    g.fillStyle(0xfff7ed, 1); g.fillPoints(starPoints(80, 58, 18, 8), true);
+  });
+  make('icon_lock', g => {
+    g.lineStyle(14, 0x94a3b8, 1);
+    g.beginPath(); g.arc(80, 66, 28, Math.PI, 0); g.strokePath();
+    g.lineBetween(52, 64, 52, 82); g.lineBetween(108, 64, 108, 82);
+    g.fillStyle(0x94a3b8, 1); g.fillRoundedRect(36, 78, 88, 62, 12);
+  });
+  make('icon_find', g => {
+    g.lineStyle(14, 0x38bdf8, 1); g.strokeCircle(68, 68, 38);
+    g.lineStyle(20, 0x38bdf8, 1); g.lineBetween(98, 98, 140, 140);
+  });
+}
+
+// ======================= UTILIDADES =======================
+function makeButton(scene, x, y, w, h, label, color, cb) {
+  const r = scene.add.rectangle(x, y, w, h, color).setInteractive({ useHandCursor: true });
+  scene.add.text(x, y, label, { font: 'bold 22px Arial', color: '#0f172a' }).setOrigin(0.5);
+  r.on('pointerdown', cb);
+  r.on('pointerover', () => r.setAlpha(0.85));
+  r.on('pointerout', () => r.setAlpha(1));
+  return r;
+}
+
+function drawCard(scene, x, y, w, h, fill, fillAlpha, stroke) {
+  const g = scene.add.graphics();
+  g.fillStyle(fill, fillAlpha);
+  g.fillRoundedRect(x - w / 2, y - h / 2, w, h, 24);
+  if (stroke !== undefined) {
+    g.lineStyle(4, stroke, 1);
+    g.strokeRoundedRect(x - w / 2, y - h / 2, w, h, 24);
+  }
+  return g;
+}
+
+function backLink(scene, label, cb) {
+  scene.add.text(30, 26, '‹ ' + label, { font: 'bold 20px Arial', color: '#ffffff', stroke: '#0f172a', strokeThickness: 5 })
+    .setInteractive({ useHandCursor: true }).on('pointerdown', cb);
+}
+
+function starsText(n) { return '★'.repeat(n) + '☆'.repeat(3 - n); }
+
+function computeStats(log) {
+  const st = log.filter(r => r.event_type === 'stimulus');
+  const targets = st.filter(r => r.stimulus_type === 'target');
+  const dists = st.filter(r => r.stimulus_type === 'distractor');
+  const hits = targets.filter(r => r.outcome === 'hit');
+  const mean = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : NaN;
+  const sd = a => {
+    if (a.length < 2) return NaN;
+    const m = mean(a);
+    return Math.sqrt(a.reduce((s, x) => s + (x - m) ** 2, 0) / (a.length - 1));
+  };
+  const rts = hits.map(r => r.rt_ms);
+  const lastOnset = st.length ? Math.max(...st.map(r => r.onset_ms)) : 0;
+  const half = lastOnset / 2;
+  return {
+    trials: st.length,
+    targets: targets.length,
+    hits: hits.length,
+    omissions: targets.length - hits.length,
+    distractors: dists.length,
+    // 'wrong_tap' = en Encuentra tocó otro objeto en vez del especial
+    commissions: st.filter(r => r.outcome === 'commission' || r.outcome === 'wrong_tap').length,
+    hitRate: targets.length ? hits.length / targets.length : 0,
+    meanRT: mean(rts),
+    sdRT: sd(rts),
+    cv: sd(rts) / mean(rts),
+    rtFirst: mean(hits.filter(r => r.onset_ms <= half).map(r => r.rt_ms)),
+    rtSecond: mean(hits.filter(r => r.onset_ms > half).map(r => r.rt_ms))
+  };
+}
+
+// Estrellas: premian precisión (aciertos y pocas comisiones), no velocidad.
+function starsFor(s, mg) {
+  const hitRate = s.targets ? s.hitRate : 1;
+  const base = mg === 'find' ? s.trials : s.distractors;
+  const commRate = base ? s.commissions / base : 0;
+  if (hitRate >= 0.9 && commRate <= 0.1) return 3;
+  if (hitRate >= 0.75 && commRate <= 0.25) return 2;
+  if (hitRate >= 0.5 && commRate <= 0.4) return 1;
+  return 0;
+}
+
+function downloadCSV(log, name) {
+  const cols = ['event_type', 'mode', 'theme', 'level', 'chapter', 'phase', 'minigame', 'trial', 'stimulus_type', 'stimulus_key',
+    'onset_ms', 'responded', 'rt_ms', 'outcome'];
+  const lines = [cols.join(',')].concat(
+    log.map(r => cols.map(c => (r[c] === undefined ? '' : r[c])).join(','))
+  );
+  const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'cpt_' + name + '_' + Date.now() + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ======================= ESCENAS: INICIO =======================
+class BootScene extends Phaser.Scene {
+  constructor() { super('Boot'); }
+  preload() {
+    Object.keys(CHAR_SVG).forEach(k =>
+      this.load.svg('char_' + k, 'data:image/svg+xml;base64,' + btoa(CHAR_SVG[k]), { width: 220, height: 260 }));
+    Object.keys(THEMES).forEach(t => ASSET_NAMES.forEach(n => {
+      const png = assetPath(t, n), jpg = png.replace(/\.png$/, '.jpg');   // los fondos pueden ser JPG
+      const p = AVAILABLE.has(png) ? png : AVAILABLE.has(jpg) ? jpg : null;
+      if (p) this.load.image('img_' + t + '_' + n, 'assets/' + p);
+    }));
+  }
+  create() {
+    buildTextures(this);
+    Object.keys(THEMES).forEach(t => {
+      TEX[t] = {};
+      ASSET_NAMES.forEach(n => {
+        const img = 'img_' + t + '_' + n;
+        TEX[t][n] = this.textures.exists(img) ? img : fallbackKey(t, n);
+      });
+      // si hay imagen del héroe pero no corriendo, usa la misma
+      if (TEX[t].hero_run === 'char_' + t && TEX[t].hero !== 'char_' + t) TEX[t].hero_run = TEX[t].hero;
+      // villano atrapado: si no hay imagen propia, se arma con el villano + una red encima
+      if (!TEX[t].villain_caught) TEX[t].villain_caught = this.makeCaught(t);
+    });
+    this.scene.start('Mode');
+  }
+  makeCaught(t) {
+    const key = t + '_caught', W = 220, H = 260;
+    const dt = this.textures.addDynamicTexture(key, W, H);
+    const v = fit(this.make.image({ key: TEX[t].villain, add: false }), 240).setPosition(W / 2, H / 2);
+    dt.draw(v);
+    const g = this.make.graphics({ add: false });
+    g.lineStyle(3, 0xf1f5f9, 0.9);
+    for (let x = -H; x < W; x += 22) { g.lineBetween(x, 0, x + H, H); g.lineBetween(x + H, 0, x, H); }
+    g.lineStyle(8, 0xe5e7eb, 1); g.strokeRoundedRect(4, 4, W - 8, H - 8, 40);
+    dt.draw(g);
+    v.destroy(); g.destroy();
+    return key;
+  }
+}
+
+class ModeScene extends Phaser.Scene {
+  constructor() { super('Mode'); }
+  create() {
+    const W = this.scale.width, H = this.scale.height;
+    this.cameras.main.setBackgroundColor(0x0f172a);
+    this.add.text(W / 2, 70, '¿Cómo quieres jugar?', { font: 'bold 42px Arial', color: '#ffffff' }).setOrigin(0.5);
+
+    const modeCard = (x, stroke, icon, title, desc, extra, onClick) => {
+      const card = drawCard(this, x, 290, 360, 300, 0xffffff, 0.06, stroke);
+      this.add.image(x, 220, icon).setScale(0.75);
+      this.add.text(x, 315, title, { font: 'bold 32px Arial', color: '#ffffff' }).setOrigin(0.5);
+      this.add.text(x, 365, desc, { font: '18px Arial', color: '#cbd5e1', align: 'center' }).setOrigin(0.5);
+      if (extra) this.add.text(x, 418, extra, { font: 'bold 17px Arial', color: hexColor(stroke) }).setOrigin(0.5);
+      const zone = this.add.zone(x, 290, 360, 300).setInteractive({ useHandCursor: true });
+      zone.on('pointerover', () => card.setAlpha(0.8));
+      zone.on('pointerout', () => card.setAlpha(1));
+      zone.on('pointerdown', () => { getCtx(); onClick(); });
+    };
+    const stars = totalStars();
+    modeCard(290, 0x38bdf8, 'icon_map', 'Historia', 'Viaja por los mundos\ny sigue la aventura',
+      stars ? 'Tienes ' + stars + ' estrellas' : '', () => this.scene.start('WorldMap'));
+    const best = Math.max(0, ...Object.values(getRecords()));
+    modeCard(670, 0xfb923c, 'icon_trophy', 'Desafío', 'Cada vez más difícil.\n¿Hasta qué nivel llegas?',
+      best ? 'Tu récord: nivel ' + best : '', () => this.scene.start('Menu', { mode: 'desafio' }));
+
+    // Zona de adultos: prueba fija para comparar sesiones
+    this.add.text(W - 30, H - 24, 'Zona de adultos: Prueba fija', { font: 'bold 15px Arial', color: '#94a3b8' })
+      .setOrigin(1, 1).setInteractive({ useHandCursor: true })
+      .on('pointerdown', () => { getCtx(); this.scene.start('Menu', { mode: 'prueba' }); });
+  }
+}
+
+// Elegir mundo (Prueba fija y Desafío)
+class MenuScene extends Phaser.Scene {
+  constructor() { super('Menu'); }
+  init(data) { this.mode = data.mode || 'prueba'; }
+  create() {
+    const W = this.scale.width;
+    const isChallenge = this.mode === 'desafio';
+    this.cameras.main.setBackgroundColor(0x0f172a);
+    backLink(this, 'Volver', () => this.scene.start('Mode'));
+    this.add.text(W / 2, 60, isChallenge ? 'Desafío: elige tu mundo' : 'Elige tu aventura',
+      { font: 'bold 44px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W / 2, 110, isChallenge
+      ? 'Cada nivel es un poco más difícil. ¿Hasta dónde llegas?'
+      : 'Toca la pantalla o presiona ESPACIO solo cuando aparezca el objeto especial',
+      { font: '20px Arial', color: '#cbd5e1' }).setOrigin(0.5);
+
+    Object.keys(THEMES).forEach((key, i) => {
+      const th = THEMES[key];
+      const x = 170 + i * 310;
+      const y = 330;
+      const card = this.add.rectangle(x, y, 270, 330, th.bg).setStrokeStyle(4, th.accent).setInteractive({ useHandCursor: true });
+      fit(this.add.image(x, y - 70, TEX[key].target), 128);
+      this.add.text(x, y + 30, th.label, { font: 'bold 24px Arial', color: '#ffffff' }).setOrigin(0.5);
+      this.add.text(x, y + 75, 'Objeto especial:\n' + th.targetLabel,
+        { font: '17px Arial', color: '#e2e8f0', align: 'center' }).setOrigin(0.5);
+      card.on('pointerover', () => card.setScale(1.04));
+      card.on('pointerout', () => card.setScale(1));
+      card.on('pointerdown', () => {
+        getCtx(); // activa el audio con el primer clic
+        if (isChallenge) this.scene.start('MinigameSelect', { theme: key });
+        else this.scene.start('Game', { mode: 'prueba', theme: key });
+      });
+    });
+  }
+}
+
+// Desafío: elegir minijuego (cada uno con su propio récord)
+class MinigameSelectScene extends Phaser.Scene {
+  constructor() { super('MinigameSelect'); }
+  init(data) { this.themeKey = data.theme; }
+  create() {
+    const W = this.scale.width;
+    const th = THEMES[this.themeKey];
+    const records = getRecords();
+    this.cameras.main.setBackgroundColor(th.bg);
+    drawBackdrop(this, this.themeKey, 0, 0.7);
+    backLink(this, 'Mundos', () => this.scene.start('Menu', { mode: 'desafio' }));
+    this.add.text(W / 2, 65, 'Elige tu juego', { font: 'bold 42px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W / 2, 112, th.label, { font: 'bold 20px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+
+    const icons = { classic: TEX[this.themeKey].target, catch: 'basket', race: TEX[this.themeKey].hero_run, find: 'icon_find' };
+    Object.keys(MG).forEach((mg, i) => {
+      const x = 135 + i * 230, y = 330;
+      const card = drawCard(this, x, y, 200, 300, 0xffffff, 0.07, th.accent);
+      fit(this.add.image(x, y - 70, icons[mg]), 115);
+      this.add.text(x, y + 30, MG[mg].label, { font: 'bold 26px Arial', color: '#ffffff' }).setOrigin(0.5);
+      this.add.text(x, y + 75, MG[mg].desc, { font: '16px Arial', color: '#cbd5e1', align: 'center' }).setOrigin(0.5);
+      const rec = records[this.themeKey + '_' + mg] || 0;
+      this.add.text(x, y + 122, rec ? 'Récord: nivel ' + rec : 'Sin récord', { font: 'bold 16px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+      const zone = this.add.zone(x, y, 200, 300).setInteractive({ useHandCursor: true });
+      zone.on('pointerover', () => card.setAlpha(0.75));
+      zone.on('pointerout', () => card.setAlpha(1));
+      zone.on('pointerdown', () => {
+        this.registry.set('runLog', []);
+        const start = Math.max(1, rec - 2); // retoma cerca de su récord
+        this.scene.start('Game', { mode: 'desafio', theme: this.themeKey, level: start, minigame: mg });
+      });
+    });
+  }
+}
+
+// ======================= ESCENAS: HISTORIA =======================
+class WorldMapScene extends Phaser.Scene {
+  constructor() { super('WorldMap'); }
+  create() {
+    const W = this.scale.width;
+    this.cameras.main.setBackgroundColor(0x0f172a);
+    backLink(this, 'Volver', () => this.scene.start('Mode'));
+    this.add.text(W / 2, 40, 'Mapa de aventuras', { font: 'bold 34px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W - 30, 40, '★ ' + totalStars(), { font: 'bold 24px Arial', color: '#fde047' }).setOrigin(1, 0.5);
+
+    const pos = [[110, 170], [290, 170], [470, 170], [650, 170], [830, 170], [830, 390], [650, 390], [470, 390], [290, 390]];
+    const path = this.add.graphics();
+    path.lineStyle(6, 0xffffff, 0.15);
+    for (let i = 0; i < pos.length - 1; i++) path.lineBetween(pos[i][0], pos[i][1], pos[i + 1][0], pos[i + 1][1]);
+
+    const story = getStory();
+    MAP_WORLDS.forEach((w, i) => {
+      const [x, y] = pos[i];
+      const th = THEMES[w];
+      if (th) {
+        const done = (story[w] || []).filter(s => s > 0).length;
+        const c = this.add.circle(x, y, 52, th.bg).setStrokeStyle(5, th.accent).setInteractive({ useHandCursor: true });
+        fit(this.add.image(x, y, TEX[w].target), 70);
+        this.add.text(x, y + 72, th.label.split(' ')[0], { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5);
+        this.add.text(x, y + 96, done + ' de 5', { font: 'bold 15px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+        c.on('pointerover', () => c.setScale(1.06));
+        c.on('pointerout', () => c.setScale(1));
+        c.on('pointerdown', () => this.scene.start('ChapterMap', { theme: w }));
+      } else {
+        this.add.circle(x, y, 52, 0x1e293b).setStrokeStyle(5, 0x475569);
+        this.add.image(x, y, 'icon_lock').setScale(0.32);
+        this.add.text(x, y + 72, w, { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.55);
+        this.add.text(x, y + 96, 'Pronto', { font: 'bold 15px Arial', color: '#94a3b8' }).setOrigin(0.5);
+      }
+    });
+  }
+}
+
+class ChapterMapScene extends Phaser.Scene {
+  constructor() { super('ChapterMap'); }
+  init(data) { this.themeKey = data.theme; }
+  create() {
+    const W = this.scale.width;
+    const th = THEMES[this.themeKey];
+    const st = STORY[this.themeKey];
+    const stars = chapterStars(this.themeKey);
+    this.cameras.main.setBackgroundColor(th.bg);
+    const cur = stars.findIndex(s => s === 0);
+    drawBackdrop(this, this.themeKey, cur < 0 ? 4 : cur, 0.55);
+    backLink(this, 'Mapa', () => this.scene.start('WorldMap'));
+    this.add.text(W / 2, 40, th.label, { font: 'bold 34px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W - 30, 40, '★ ' + stars.reduce((a, b) => a + b, 0) + ' / 15', { font: 'bold 22px Arial', color: '#fde047' }).setOrigin(1, 0.5);
+
+    const pos = [[110, 400], [290, 210], [470, 400], [650, 210], [830, 310]];
+    const path = this.add.graphics();
+    path.lineStyle(6, 0xffffff, 0.18);
+    for (let i = 0; i < pos.length - 1; i++) path.lineBetween(pos[i][0], pos[i][1], pos[i + 1][0], pos[i + 1][1]);
+
+    const current = stars.findIndex(s => s === 0);  // primer capítulo sin superar
+    CHAPTERS.forEach((ch, i) => {
+      const [x, y] = pos[i];
+      const r = ch.boss ? 62 : 46;
+      const unlocked = i === 0 || stars[i - 1] > 0;
+      const done = stars[i] > 0;
+      let node;
+      if (done) {
+        node = this.add.circle(x, y, r, th.accent);
+        if (ch.boss) fit(this.add.image(x, y, TEX[this.themeKey].villain_caught), 96);
+        else this.add.text(x, y, String(i + 1), { font: 'bold 36px Arial', color: '#0f172a' }).setOrigin(0.5);
+        this.add.text(x, y + r + 48, starsText(stars[i]), { font: '20px Arial', color: '#fde047' }).setOrigin(0.5);
+      } else if (unlocked) {
+        const glow = this.add.circle(x, y, r + 14, th.accent, 0.35);
+        this.tweens.add({ targets: glow, scale: 1.15, alpha: 0.15, duration: 800, yoyo: true, repeat: -1 });
+        node = this.add.circle(x, y, r, ch.boss ? 0x7c3aed : 0xffffff).setStrokeStyle(6, th.accent);
+        if (ch.boss) fit(this.add.image(x, y, TEX[this.themeKey].villain), 96);
+        else this.add.text(x, y, String(i + 1), { font: 'bold 36px Arial', color: '#0f172a' }).setOrigin(0.5);
+        if (i === current) this.add.text(x, y + r + 50, '¡Jugar!', { font: 'bold 18px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+      } else {
+        node = this.add.circle(x, y, r, ch.boss ? 0x3b1f6e : 0xffffff, ch.boss ? 1 : 0.1);
+        this.add.image(x, y, 'icon_lock').setScale(ch.boss ? 0.36 : 0.28);
+      }
+      this.add.text(x, y + r + 22, st.places[i], { font: 'bold 17px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(unlocked ? 1 : 0.55);
+      if (unlocked) {
+        node.setInteractive({ useHandCursor: true });
+        node.on('pointerdown', () => this.scene.start('Story', { theme: this.themeKey, chapter: i }));
+      }
+    });
+  }
+}
+
+// Escena de historia: personaje + globo de diálogo (con voz)
+class StoryScene extends Phaser.Scene {
+  constructor() { super('Story'); }
+  init(data) {
+    this.themeKey = data.theme;
+    this.chapter = data.chapter;
+    this.ending = !!data.ending;
+  }
+  create() {
+    const W = this.scale.width, H = this.scale.height;
+    const th = THEMES[this.themeKey];
+    const st = STORY[this.themeKey];
+    const tex = TEX[this.themeKey];
+    const ch = CHAPTERS[this.chapter];
+    const withVillain = this.ending || ch.boss;
+    this.cameras.main.setBackgroundColor(th.bg);
+    if (!(this.ending && tex.end)) drawBackdrop(this, this.themeKey, this.ending ? 4 : this.chapter, 0.12);
+    this.events.once('shutdown', stopVoice);
+
+    // Final con ilustración propia (si existe el archivo *_end.png)
+    if (this.ending && tex.end) {
+      const bg = this.add.image(W / 2, H / 2, tex.end);
+      bg.setScale(Math.max(W / bg.width, H / bg.height));
+    }
+    backLink(this, 'Capítulos', () => this.scene.start('ChapterMap', { theme: this.themeKey }));
+
+    const label = this.ending ? '¡Mundo completado!'
+      : (ch.boss ? 'Jefe final' : 'Capítulo ' + (this.chapter + 1)) + ' · ' + st.places[this.chapter];
+    const pill = this.add.text(W / 2, 60, label, { font: 'bold 20px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(2);
+    const pg = this.add.graphics().setDepth(1);
+    pg.fillStyle(0x0f172a, 0.55);
+    pg.fillRoundedRect(pill.x - pill.width / 2 - 20, 42, pill.width + 40, 36, 18);
+
+    const text = this.ending ? st.ending : st.lines[this.chapter];
+    const voiceId = this.ending ? 'end' : this.chapter + 1;
+    let bubble, btnY;
+    if (this.ending && tex.end) {
+      bubble = { x: 40, y: 380, w: 620, h: 130, wrap: 580, font: 24, tail: false };
+      makeButton(this, 800, 410, 220, 50, 'Escuchar', 0xcbd5e1, () => playVoice(this.themeKey, voiceId, text));
+      makeButton(this, 800, 480, 220, 50, 'Volver al mapa', th.accent, () => this.scene.start('WorldMap'));
+    } else {
+      const heroX = withVillain ? 150 : 210;
+      const hero = fit(this.add.image(heroX, 300, tex.hero), withVillain ? 230 : 260);
+      this.tweens.add({ targets: hero, y: 292, duration: 900, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+      this.add.text(heroX, 450, st.hero, { font: 'bold 20px Arial', color: '#ffffff', stroke: '#0f172a', strokeThickness: 5 }).setOrigin(0.5);
+      if (withVillain) {
+        const v = fit(this.add.image(820, 300, this.ending ? tex.villain_caught : tex.villain), 210);
+        if (!this.ending) this.tweens.add({ targets: v, angle: { from: -4, to: 4 }, duration: 500, yoyo: true, repeat: -1 });
+        this.add.text(820, 450, th.villain, { font: 'bold 20px Arial', color: '#ffffff', stroke: '#0f172a', strokeThickness: 5 }).setOrigin(0.5);
+        bubble = { x: 290, y: 120, w: 420, h: 250, wrap: 370, font: 24, tail: true };
+        btnY = 455;
+        makeButton(this, 390, btnY, 180, 54, 'Escuchar', 0xcbd5e1, () => playVoice(this.themeKey, voiceId, text));
+      } else {
+        bubble = { x: 380, y: 130, w: 540, h: 230, wrap: 480, font: 26, tail: true };
+        btnY = 430;
+        makeButton(this, 520, btnY, 200, 56, 'Escuchar', 0xcbd5e1, () => playVoice(this.themeKey, voiceId, text));
+      }
+      const goX = withVillain ? 610 : 760;
+      if (this.ending) makeButton(this, goX, btnY, 240, 56, 'Volver al mapa', th.accent, () => this.scene.start('WorldMap'));
+      else makeButton(this, goX, btnY, 240, 56, '¡Vamos!', th.accent,
+        () => this.scene.start('Game', { mode: 'historia', theme: this.themeKey, chapter: this.chapter }));
+    }
+    const b = this.add.graphics();
+    b.fillStyle(0xffffff, 1);
+    b.fillRoundedRect(bubble.x, bubble.y, bubble.w, bubble.h, 28);
+    if (bubble.tail) b.fillTriangle(bubble.x, bubble.y + 100, bubble.x, bubble.y + 140, bubble.x - 30, bubble.y + 120);
+    this.add.text(bubble.x + 28, bubble.y + 26, text,
+      { font: 'bold ' + bubble.font + 'px Arial', color: '#0f172a', wordWrap: { width: bubble.wrap }, lineSpacing: 6 });
+    playVoice(this.themeKey, voiceId, text);
+  }
+}
+
+// ======================= ESCENA DE JUEGO (todos los minijuegos) =======================
+class GameScene extends Phaser.Scene {
+  constructor() { super('Game'); }
+  init(data) {
+    this.mode = data.mode;
+    this.themeKey = data.theme;
+    this.theme = THEMES[data.theme];
+    this.chapter = data.chapter === undefined ? null : data.chapter;
+    this.phase = data.phase || 0;
+    this.prevLog = data.prevLog || [];   // jefe final: registros de la fase anterior
+    this.boss = false;
+    if (this.mode === 'prueba') {
+      this.level = null;
+      this.params = pruebaParams();
+    } else if (this.mode === 'historia') {
+      const ch = CHAPTERS[this.chapter];
+      const spec = ch.phases ? ch.phases[this.phase] : ch;
+      this.boss = !!ch.boss;
+      this.level = ch.level;
+      this.params = challengeParams(ch.level, spec.mg);
+      this.params.sessionMs = spec.sec * 1000;
+    } else {
+      this.level = data.level;
+      this.params = challengeParams(data.level, data.minigame);
+    }
+    this.mg = this.params.minigame;
+    // Qué se busca: en el jefe final, el villano entre personajes amigos
+    const tex = TEX[this.themeKey];
+    this.keys = this.boss
+      ? { target: tex.villain, dists: [tex.friend1, tex.friend2], similar: tex.friend3 }
+      : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3 };
+  }
+
+  create() {
+    const W = this.scale.width, H = this.scale.height;
+    const th = this.theme;
+    this.cameras.main.setBackgroundColor(th.bg);
+    // Fondo del capítulo/nivel: muy oscurecido al principio y más visible en niveles altos (distractor visual).
+    // La Prueba fija queda con fondo liso para no cambiar las condiciones de medición.
+    if (this.mode !== 'prueba') {
+      const idx = this.mode === 'historia' ? this.chapter : (this.level - 1) % 5;
+      drawBackdrop(this, this.themeKey, idx, Math.max(0.4, 0.85 - 0.06 * (this.level - 1)));
+    }
+    this.log = [];
+    this.trial = 0;
+    this.current = null;
+    this.items = [];           // objetos en movimiento (Atrapa / Carrera)
+    this.started = false;
+    this.ended = false;
+    this.spawningDone = false;
+
+    // Barra de progreso, con el nivel o capítulo a la izquierda
+    let barX = 40;
+    const tag = this.mode === 'desafio' ? 'Nivel ' + this.level
+      : this.mode === 'historia' ? (this.boss ? 'Jefe final' : 'Capítulo ' + (this.chapter + 1)) : null;
+    if (tag) {
+      const pill = this.add.graphics();
+      pill.fillStyle(th.accent, 0.18);
+      pill.fillRoundedRect(20, 6, 130, 28, 14);
+      this.add.text(85, 20, tag, { font: 'bold 16px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+      barX = 166;
+    }
+    this.barW = W - barX - 40;
+    this.add.rectangle(barX, 20, this.barW, 10, 0xffffff, 0.2).setOrigin(0, 0.5);
+    this.bar = this.add.rectangle(barX, 20, 0, 10, th.accent).setOrigin(0, 0.5);
+
+    this.fb = this.add.text(W / 2, this.mg === 'classic' ? H / 2 + 140 : 70, '',
+      { font: 'bold 38px Arial', color: '#86efac' }).setOrigin(0.5).setDepth(10);
+
+    this.setupMinigame();
+
+    // Pantalla de preparación
+    let title, what;
+    if (this.boss) {
+      title = this.phase === 0 ? '¡Atrápalo con la red!' : '¡' + th.villain + ' escapó! ' + th.chase;
+      what = th.villainObj;
+    } else {
+      title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
+      what = th.targetObj;
+    }
+    const holder = this.boss ? 'la red' : 'la canasta';
+    this.intro = [
+      fit(this.add.image(W / 2, H / 2 - 100, this.keys.target), 160).setDepth(20),
+      this.add.text(W / 2, H / 2 + 15, title, { font: 'bold 32px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(20),
+      this.add.text(W / 2, H / 2 + 85, MG[this.mg].instr(what, holder),
+        { font: 'bold 24px Arial', color: '#ffffff', align: 'center', lineSpacing: 6 }).setOrigin(0.5).setDepth(20)
+    ];
+    this.time.delayedCall(this.mg === 'classic' ? 3000 : 4500, () => this.begin());
+  }
+
+  setupMinigame() {
+    const W = this.scale.width, H = this.scale.height;
+    this.mgObjects = [];
+    if (this.mg === 'classic') {
+      this.stim = this.add.image(W / 2, H / 2, this.keys.target).setVisible(false);
+      this.input.keyboard.on('keydown-SPACE', () => this.respond());
+      this.input.on('pointerdown', () => this.respond());
+    } else if (this.mg === 'catch') {
+      this.basket = fit(this.add.image(W / 2, H - 60, this.boss ? TEX[this.themeKey].net : 'basket'), this.boss ? 120 : 144).setDepth(3);
+      this.mgObjects.push(this.basket);
+      this.cursors = this.input.keyboard.createCursorKeys();
+      const follow = p => { if (this.started) this.basket.x = Phaser.Math.Clamp(p.x, 70, W - 70); };
+      this.input.on('pointermove', follow);
+      this.input.on('pointerdown', follow);
+      this.fallSpeed = (H - 60 + 60) / this.params.travelMs * 1000;
+    } else if (this.mg === 'race') {
+      this.lanes = [210, 330, 450];
+      this.lane = 1;
+      const road = this.add.graphics();
+      road.fillStyle(0x000000, 0.22);
+      road.fillRect(0, 150, W, 360);
+      road.lineStyle(3, 0xffffff, 0.12);
+      road.lineBetween(0, 270, W, 270); road.lineBetween(0, 390, W, 390);
+      this.mgObjects.push(road);
+      this.dashes = [];
+      for (let i = 0; i < 9; i++) {
+        const d = this.add.rectangle(i * 120, 512, 60, 6, 0xffffff, 0.3).setOrigin(0, 0.5);
+        this.dashes.push(d);
+        this.mgObjects.push(d);
+      }
+      this.runner = fit(this.add.image(170, this.lanes[1], TEX[this.themeKey].hero_run), 104).setDepth(4);
+      this.mgObjects.push(this.runner);
+      this.bob = this.tweens.add({ targets: this.runner, angle: { from: -4, to: 4 }, duration: 160, yoyo: true, repeat: -1 });
+      this.raceSpeed = (W + 60 - 170) / this.params.travelMs * 1000;
+      const move = d => {
+        if (!this.started || this.ended) return;
+        this.lane = Phaser.Math.Clamp(this.lane + d, 0, 2);
+        this.tweens.add({ targets: this.runner, y: this.lanes[this.lane], duration: 110 });
+      };
+      ['UP', 'W'].forEach(k => this.input.keyboard.on('keydown-' + k, () => move(-1)));
+      ['DOWN', 'S'].forEach(k => this.input.keyboard.on('keydown-' + k, () => move(1)));
+      this.input.on('pointerdown', p => {
+        if (p.y < this.runner.y - 30) move(-1);
+        else if (p.y > this.runner.y + 30) move(1);
+      });
+    }
+    // 'find' no necesita elementos fijos: crea los objetos en cada ronda
+    this.mgObjects.forEach(o => o.setVisible(false));
+  }
+
+  begin() {
+    this.intro.forEach(o => o.destroy());
+    this.mgObjects.forEach(o => o.setVisible(true));
+    this.t0 = performance.now();
+    this.started = true;
+    if (this.mg === 'classic') this.nextTrial();
+    else if (this.mg === 'find') this.nextFindTrial();
+    else this.scheduleSpawn();
+    this.scheduleAudio();
+  }
+
+  elapsed() { return performance.now() - this.t0; }
+
+  pickStimulus() {
+    if (Math.random() < this.params.targetProb) return { type: 'target', key: this.keys.target };
+    return { type: 'distractor', key: this.distractorKey() };
+  }
+  distractorKey() {
+    if (Math.random() < this.params.similarProb) return this.keys.similar;
+    return Phaser.Utils.Array.GetRandom(this.keys.dists);
+  }
+
+  logTrial(trial, type, key, onset, responded, rt, outcome) {
+    this.log.push({
+      event_type: 'stimulus',
+      mode: this.mode,
+      theme: this.themeKey,
+      level: this.level || '',
+      chapter: this.chapter === null ? '' : this.chapter + 1,
+      phase: this.boss ? this.phase + 1 : '',
+      minigame: this.mg,
+      trial: trial,
+      stimulus_type: type,
+      stimulus_key: key,
+      onset_ms: Math.round(onset - this.t0),
+      responded: responded ? 1 : 0,
+      rt_ms: rt === null ? '' : Math.round(rt),
+      outcome: outcome
+    });
+  }
+
+  update(time, delta) {
+    if (!this.started || this.ended) return;
+    const dt = delta / 1000;
+    this.bar.width = this.barW * Math.min(1, this.elapsed() / this.params.sessionMs);
+    if (this.mg === 'catch') this.updateCatch(dt);
+    else if (this.mg === 'race') this.updateRace(dt);
+  }
+
+  ring(x, y) {
+    const r = this.add.circle(x, y, 70).setStrokeStyle(8, 0x86efac).setDepth(6);
+    this.tweens.add({ targets: r, scale: 1.6, alpha: 0, duration: 500, onComplete: () => r.destroy() });
+  }
+  praise() {
+    rewardSound();
+    this.fb.setText(this.boss ? '¡Atrapado!' : '¡Bien!').setAlpha(1);
+    this.tweens.add({ targets: this.fb, alpha: 0, duration: 600 });
+  }
+
+  // ---------- Clásico: aparece un objeto; responder solo al especial ----------
+  nextTrial() {
+    const P = this.params;
+    if (this.elapsed() >= P.sessionMs) { this.finish(); return; }
+    this.trial++;
+    const s = this.pickStimulus();
+    fit(this.stim.setTexture(s.key).setVisible(true).setAlpha(1), 160);
+    this.current = { trial: this.trial, type: s.type, key: s.key, onset: performance.now(), responded: false, rt: null };
+    this.time.delayedCall(P.stimMs, () => this.endTrial());
+  }
+  endTrial() {
+    const c = this.current;
+    this.stim.setVisible(false);
+    let outcome;
+    if (c.type === 'target') outcome = c.responded ? 'hit' : 'omission';
+    else outcome = c.responded ? 'commission' : 'correct_rejection';
+    this.logTrial(c.trial, c.type, c.key, c.onset, c.responded, c.rt, outcome);
+    this.current = null;
+    this.time.delayedCall(Phaser.Math.Between(this.params.isiMin, this.params.isiMax), () => this.nextTrial());
+  }
+  respond() {
+    const c = this.current;
+    if (!this.started || this.ended || !c || c.responded) return;
+    c.responded = true;
+    c.rt = performance.now() - c.onset;
+    if (c.type === 'target') {
+      this.praise();
+      this.ring(this.scale.width / 2, this.scale.height / 2);
+    } else {
+      this.stim.setAlpha(0.35);  // error de comisión: feedback neutro, sin castigo
+    }
+  }
+
+  // ---------- Atrapa y Carrera: objetos en movimiento ----------
+  scheduleSpawn() {
+    if (this.elapsed() >= this.params.sessionMs) { this.spawningDone = true; return; }
+    this.spawnItem();
+    this.time.delayedCall(Phaser.Math.Between(this.params.spawnMin, this.params.spawnMax), () => this.scheduleSpawn());
+  }
+  spawnItem() {
+    const W = this.scale.width;
+    const s = this.pickStimulus();
+    let img, lane = null;
+    if (this.mg === 'catch') {
+      const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850]);
+      img = fit(this.add.image(x, -50, s.key), this.boss ? 100 : 88);
+    } else {
+      lane = Phaser.Math.Between(0, 2);
+      img = fit(this.add.image(W + 60, this.lanes[lane], s.key), this.boss ? 96 : 78);
+    }
+    this.trial++;
+    this.items.push({ img, lane, trial: this.trial, type: s.type, key: s.key, onset: performance.now(), resolved: false });
+  }
+  resolveItem(it, got) {
+    it.resolved = true;
+    const rt = got ? performance.now() - it.onset : null;
+    let outcome;
+    if (it.type === 'target') outcome = got ? 'hit' : 'omission';
+    else outcome = got ? 'commission' : 'correct_rejection';
+    this.logTrial(it.trial, it.type, it.key, it.onset, got, rt, outcome);
+    if (!got) return;
+    const holder = this.mg === 'catch' ? this.basket : this.runner;
+    if (it.type === 'target') {
+      this.praise();
+      this.ring(holder.x, holder.y);
+      this.tweens.add({ targets: it.img, x: holder.x, y: holder.y, scale: it.img.scale * 0.2, alpha: 0, duration: 220, onComplete: () => it.img.destroy() });
+    } else {
+      // agarró un distractor: feedback neutro (se desvanece y la canasta/personaje se sacude)
+      this.tweens.add({ targets: it.img, alpha: 0, duration: 250, onComplete: () => it.img.destroy() });
+      this.tweens.add({ targets: holder, x: holder.x + 8, duration: 60, yoyo: true, repeat: 1 });
+    }
+    it.gone = true;
+  }
+  updateCatch(dt) {
+    const W = this.scale.width, H = this.scale.height;
+    if (this.cursors.left.isDown) this.basket.x = Math.max(70, this.basket.x - 650 * dt);
+    if (this.cursors.right.isDown) this.basket.x = Math.min(W - 70, this.basket.x + 650 * dt);
+    for (const it of this.items) {
+      if (it.gone) continue;
+      it.img.y += this.fallSpeed * dt;
+      if (!it.resolved && it.img.y >= this.basket.y - 45 && it.img.y <= this.basket.y + 5 && Math.abs(it.img.x - this.basket.x) < 80) {
+        this.resolveItem(it, true);
+      } else if (!it.resolved && it.img.y > this.basket.y + 5) {
+        this.resolveItem(it, false);
+      }
+      if (!it.gone && it.img.y > H + 60) { it.img.destroy(); it.gone = true; }
+    }
+    this.cleanupItems();
+  }
+  updateRace(dt) {
+    const dx = this.raceSpeed * dt;
+    this.dashes.forEach(d => { d.x -= dx; if (d.x < -60) d.x += 9 * 120; });
+    for (const it of this.items) {
+      if (it.gone) continue;
+      it.img.x -= dx;
+      if (!it.resolved && it.img.x <= this.runner.x + 25) this.resolveItem(it, it.lane === this.lane);
+      if (!it.gone && it.img.x < -60) { it.img.destroy(); it.gone = true; }
+    }
+    this.cleanupItems();
+  }
+  cleanupItems() {
+    this.items = this.items.filter(it => !it.gone);
+    if (this.spawningDone && this.items.every(it => it.resolved)) this.finish();
+  }
+
+  // ---------- Encuentra: varios objetos a la vez; tocar solo el especial ----------
+  nextFindTrial() {
+    const P = this.params;
+    if (this.elapsed() >= P.sessionMs) { this.finish(); return; }
+    this.trial++;
+    const cells = [];
+    for (const y of [190, 390]) for (const x of [150, 370, 590, 810]) cells.push([x, y]);
+    Phaser.Utils.Array.Shuffle(cells);
+    const present = Math.random() < 0.75;
+    const targetIdx = present ? Phaser.Math.Between(0, P.setSize - 1) : -1;
+    const ft = { trial: this.trial, present, onset: performance.now(), imgs: [], done: false };
+    for (let i = 0; i < P.setSize; i++) {
+      const isTarget = i === targetIdx;
+      const key = isTarget ? this.keys.target : this.distractorKey();
+      const [cx, cy] = cells[i];
+      const img = fit(this.add.image(cx + Phaser.Math.Between(-30, 30), cy + Phaser.Math.Between(-20, 20), key), 100)
+        .setInteractive({ useHandCursor: true });
+      img.on('pointerdown', () => this.findTap(ft, isTarget, key, img));
+      ft.imgs.push(img);
+    }
+    ft.timer = this.time.delayedCall(P.displayMs, () => this.findEnd(ft, null));
+    this.findTrial = ft;
+  }
+  findTap(ft, isTarget, key, img) {
+    if (ft.done || this.ended) return;
+    ft.timer.remove();
+    if (isTarget) { this.praise(); this.ring(img.x, img.y); }
+    else img.setAlpha(0.35);  // feedback neutro
+    this.findEnd(ft, { isTarget, key });
+  }
+  findEnd(ft, tap) {
+    if (ft.done) return;
+    ft.done = true;
+    const rt = tap ? performance.now() - ft.onset : null;
+    let outcome;
+    if (ft.present) outcome = !tap ? 'omission' : tap.isTarget ? 'hit' : 'wrong_tap';
+    else outcome = tap ? 'commission' : 'correct_rejection';
+    this.logTrial(ft.trial, ft.present ? 'target' : 'distractor',
+      tap ? tap.key : 'set_' + ft.imgs.length, ft.onset, !!tap, rt, outcome);
+    this.time.delayedCall(tap ? 350 : 0, () => ft.imgs.forEach(i => i.destroy()));
+    this.time.delayedCall(Phaser.Math.Between(this.params.isiMin, this.params.isiMax), () => this.nextFindTrial());
+  }
+
+  // ---------- Común ----------
+  scheduleAudio() {
+    const P = this.params;
+    if (!P.audio) return;
+    const d = Phaser.Math.Between(P.audioEvery[0], P.audioEvery[1]);
+    this.time.delayedCall(d, () => {
+      if (this.ended) return;
+      distractorSound();
+      this.log.push({
+        event_type: 'audio_distractor',
+        mode: this.mode,
+        theme: this.themeKey,
+        level: this.level || '',
+        chapter: this.chapter === null ? '' : this.chapter + 1,
+        phase: this.boss ? this.phase + 1 : '',
+        minigame: this.mg,
+        onset_ms: Math.round(this.elapsed())
+      });
+      this.scheduleAudio();
+    });
+  }
+
+  finish() {
+    if (this.ended) return;
+    this.ended = true;
+    // Jefe final: al terminar la fase de la red, el villano escapa y empieza la persecución
+    const ch = this.mode === 'historia' ? CHAPTERS[this.chapter] : null;
+    if (ch && ch.phases && this.phase < ch.phases.length - 1) {
+      this.scene.start('Game', { mode: 'historia', theme: this.themeKey, chapter: this.chapter,
+        phase: this.phase + 1, prevLog: this.prevLog.concat(this.log) });
+      return;
+    }
+    const data = { log: this.prevLog.concat(this.log), theme: this.themeKey, level: this.level,
+      minigame: this.mg, chapter: this.chapter, boss: this.boss };
+    if (this.mode === 'desafio') this.scene.start('ChallengeResults', data);
+    else if (this.mode === 'historia') this.scene.start('StoryResults', data);
+    else this.scene.start('Results', data);
+  }
+}
+
+// ======================= ESCENAS: RESULTADOS =======================
+// Prueba fija: métricas completas para el adulto
+class ResultsScene extends Phaser.Scene {
+  constructor() { super('Results'); }
+  init(data) {
+    this.log = data.log;
+    this.themeKey = data.theme;
+  }
+  create() {
+    const W = this.scale.width;
+    const th = THEMES[this.themeKey];
+    this.cameras.main.setBackgroundColor(th.bg);
+    const s = computeStats(this.log);
+    const ms = v => (isNaN(v) ? '—' : Math.round(v) + ' ms');
+    const stars = s.hitRate >= 0.9 ? 3 : s.hitRate >= 0.7 ? 2 : 1;
+
+    this.add.text(W / 2, 55, '¡Buen trabajo!', { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W / 2, 120, starsText(stars), { font: '52px Arial', color: '#fde047' }).setOrigin(0.5);
+
+    const lines = [
+      'Objetivos detectados: ' + s.hits + ' de ' + s.targets + ' (' + Math.round(s.hitRate * 100) + '%)',
+      'Omisiones (no detectó el objetivo): ' + s.omissions,
+      'Respuestas a distractores (comisiones): ' + s.commissions + ' de ' + s.distractors,
+      'Tiempo de reacción promedio: ' + ms(s.meanRT),
+      'Variabilidad del TR (desv. estándar): ' + ms(s.sdRT),
+      'TR primera mitad vs. segunda mitad: ' + ms(s.rtFirst) + ' → ' + ms(s.rtSecond)
+    ];
+    this.add.text(W / 2, 290, lines.join('\n'),
+      { font: '24px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 12 }).setOrigin(0.5);
+
+    makeButton(this, W / 2 - 170, 470, 300, 60, 'Descargar CSV', 0xfde047, () => downloadCSV(this.log, 'prueba_' + this.themeKey));
+    makeButton(this, W / 2 + 170, 470, 300, 60, 'Jugar de nuevo', 0x86efac, () => this.scene.start('Menu', { mode: 'prueba' }));
+  }
+}
+
+// Texto común de resultados para el niño (estrellas + qué tan bien le fue)
+function drawKidSummary(scene, s, stars, verb, title) {
+  const W = scene.scale.width;
+  scene.add.text(W / 2, 60, title, { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
+  scene.add.text(W / 2, 130, starsText(stars), { font: '56px Arial', color: '#fde047' }).setOrigin(0.5);
+  scene.add.text(W / 2, 215, verb + ' ' + s.hits + ' de ' + s.targets +
+    '\nTe equivocaste ' + s.commissions + (s.commissions === 1 ? ' vez' : ' veces'),
+    { font: '24px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 8 }).setOrigin(0.5);
+}
+
+// Desafío: estrellas y cambio de nivel automático
+class ChallengeResultsScene extends Phaser.Scene {
+  constructor() { super('ChallengeResults'); }
+  init(data) {
+    this.log = data.log;
+    this.themeKey = data.theme;
+    this.level = data.level;
+    this.mg = data.minigame;
+  }
+  create() {
+    const W = this.scale.width;
+    const th = THEMES[this.themeKey];
+    this.cameras.main.setBackgroundColor(th.bg);
+    drawBackdrop(this, this.themeKey, (this.level - 1) % 5, 0.75);
+
+    const runLog = (this.registry.get('runLog') || []).concat(this.log);
+    this.registry.set('runLog', runLog);
+
+    const s = computeStats(this.log);
+    const stars = starsFor(s, this.mg);
+    // 2 o 3 estrellas: sube · 1: repite · 0: baja para practicar
+    const next = stars >= 2 ? this.level + 1 : stars === 0 ? Math.max(1, this.level - 1) : this.level;
+
+    const records = getRecords();
+    const recKey = this.themeKey + '_' + this.mg;
+    const newRecord = stars >= 2 && this.level > (records[recKey] || 0);
+    if (newRecord) {
+      records[recKey] = this.level;
+      store.set('cpt_records', records);
+    }
+
+    drawKidSummary(this, s, stars, MG[this.mg].verb,
+      stars >= 2 ? '¡Excelente!' : stars === 1 ? '¡Buen intento!' : '¡Sigue practicando!');
+    const msg = next > this.level ? '¡Subes al nivel ' + next + '!'
+      : next < this.level ? 'Bajamos al nivel ' + next + ' para practicar'
+      : 'Repite el nivel ' + this.level + ', ¡tú puedes!';
+    this.add.text(W / 2, 300, msg, { font: 'bold 30px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+    if (newRecord) this.add.text(W / 2, 345, '¡Nuevo récord!', { font: 'bold 22px Arial', color: '#86efac' }).setOrigin(0.5);
+
+    makeButton(this, W / 2, 410, 320, 64, next > this.level ? 'Siguiente nivel' : 'Seguir', th.accent,
+      () => this.scene.start('Game', { mode: 'desafio', theme: this.themeKey, level: next, minigame: this.mg }));
+    makeButton(this, W / 2 - 170, 495, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadCSV(runLog, 'desafio_' + this.themeKey));
+    makeButton(this, W / 2 + 170, 495, 280, 50, 'Otro juego', 0xcbd5e1, () => this.scene.start('MinigameSelect', { theme: this.themeKey }));
+  }
+}
+
+// Historia: guarda estrellas del capítulo y desbloquea el siguiente
+class StoryResultsScene extends Phaser.Scene {
+  constructor() { super('StoryResults'); }
+  init(data) {
+    this.log = data.log;
+    this.themeKey = data.theme;
+    this.chapter = data.chapter;
+    this.mg = data.minigame;
+    this.boss = data.boss;
+  }
+  create() {
+    const W = this.scale.width;
+    const th = THEMES[this.themeKey];
+    this.cameras.main.setBackgroundColor(th.bg);
+    drawBackdrop(this, this.themeKey, this.chapter, 0.75);
+
+    const s = computeStats(this.log);
+    const stars = starsFor(s, this.mg);
+    const story = getStory();
+    const arr = story[this.themeKey] || [0, 0, 0, 0, 0];
+    arr[this.chapter] = Math.max(arr[this.chapter], stars);
+    story[this.themeKey] = arr;
+    store.set('cpt_story', story);
+
+    const passed = stars >= 1;
+    const title = passed ? (this.boss ? '¡Atrapaste a ' + th.villain + '!' : '¡Capítulo superado!') : '¡Casi lo logras!';
+    drawKidSummary(this, s, stars, this.boss ? 'Atrapaste' : MG[this.mg].verb, title);
+    this.add.text(W / 2, 300, passed ? (this.boss ? '¡Venciste el desafío final!' : '¡Se abrió el siguiente capítulo!')
+      : 'Necesitas al menos 1 estrella. ¡Inténtalo otra vez!',
+      { font: 'bold 26px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+
+    if (passed && !this.boss) {
+      makeButton(this, W / 2, 400, 340, 64, 'Siguiente capítulo', th.accent,
+        () => this.scene.start('Story', { theme: this.themeKey, chapter: this.chapter + 1 }));
+    } else if (passed) {
+      makeButton(this, W / 2, 400, 340, 64, 'Ver el final', th.accent,
+        () => this.scene.start('Story', { theme: this.themeKey, chapter: this.chapter, ending: true }));
+    } else {
+      makeButton(this, W / 2, 400, 340, 64, 'Reintentar', th.accent,
+        () => this.scene.start('Game', { mode: 'historia', theme: this.themeKey, chapter: this.chapter }));
+    }
+    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1,
+      () => downloadCSV(this.log, 'historia_' + this.themeKey + '_cap' + (this.chapter + 1)));
+    makeButton(this, W / 2 + 170, 490, 280, 50, 'Capítulos', 0xcbd5e1, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
+  }
+}
+
+// ======================= ARRANQUE =======================
+// Abierto con doble clic (file://), Chrome no deja usar imágenes en WebGL: se usa el modo Canvas.
+new Phaser.Game({
+  type: location.protocol === 'file:' ? Phaser.CANVAS : Phaser.AUTO,
+  parent: 'game',
+  width: 960,
+  height: 540,
+  backgroundColor: '#0f172a',
+  loader: { imageLoadType: 'HTMLImageElement' },
+  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+  scene: [BootScene, ModeScene, MenuScene, MinigameSelectScene, WorldMapScene, ChapterMapScene, StoryScene,
+    GameScene, ResultsScene, ChallengeResultsScene, StoryResultsScene]
+});
+</script>
+</body>
+</html>

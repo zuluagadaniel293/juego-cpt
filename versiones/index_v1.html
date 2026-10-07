@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juego de atención sostenida (CPT)</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0f172a; }
+  #game { width: 100%; height: 100%; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+</head>
+<body>
+<div id="game"></div>
+<script>
+// ======================= CONFIGURACIÓN =======================
+// Valores provisionales: confirmarlos con la revisión de literatura del CPT (Fase 1).
+const CONFIG = {
+  SESSION_MS: 120000,        // duración de la sesión (poner 20000 para probar rápido)
+  STIMULUS_MS: 1000,         // tiempo que el estímulo está en pantalla
+  ISI_MIN: 700,              // pausa mínima entre estímulos
+  ISI_MAX: 1400,             // pausa máxima entre estímulos
+  TARGET_PROB: 0.25,         // proporción de estímulos objetivo
+  AUDIO_DISTRACTOR: true,    // distractor auditivo ON/OFF
+  AUDIO_EVERY_MS: [20000, 35000] // cada cuánto suena el distractor (rango aleatorio)
+};
+
+const THEMES = {
+  heroes:  { label: 'Superhéroes',          bg: 0x0f2a4a, accent: 0xfde047, targetName: 'la señal del villano' },
+  fantasy: { label: 'Dragones y fantasía',  bg: 0x1f3a2a, accent: 0xfacc15, targetName: 'el huevo dorado del dragón' },
+  kingdom: { label: 'Reino mágico',         bg: 0x4a1d4a, accent: 0xf472b6, targetName: 'la joya de la corona' }
+};
+
+// ======================= AUDIO (Web Audio, sin archivos) =======================
+let audioCtx = null;
+function getCtx() {
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+function tone(freq, dur, vol, type) {
+  const ctx = getCtx();
+  if (!ctx) return;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = type || 'sine';
+  o.frequency.value = freq;
+  g.gain.setValueAtTime(vol, ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+  o.connect(g);
+  g.connect(ctx.destination);
+  o.start();
+  o.stop(ctx.currentTime + dur);
+}
+function distractorSound() {            // sonido disonante que funciona como distractor
+  tone(220, 0.6, 0.25, 'sawtooth');
+  tone(233, 0.6, 0.25, 'sawtooth');
+}
+function rewardSound() {                // refuerzo positivo
+  tone(660, 0.12, 0.12, 'sine');
+  setTimeout(() => tone(880, 0.15, 0.12, 'sine'), 90);
+}
+
+// ======================= TEXTURAS (figuras dibujadas por código) =======================
+function buildTextures(scene) {
+  const S = 160;
+  const make = (key, drawFn) => {
+    const g = scene.make.graphics({ x: 0, y: 0, add: false });
+    drawFn(g);
+    g.generateTexture(key, S, S);
+    g.destroy();
+  };
+
+  // --- Superhéroes ---
+  make('heroes_target', g => {
+    g.fillStyle(0x7c3aed, 1);
+    g.fillPoints([{x:80,y:6},{x:154,y:80},{x:80,y:154},{x:6,y:80}], true);
+    g.fillStyle(0xfde047, 1);
+    g.fillPoints([{x:92,y:24},{x:54,y:88},{x:80,y:88},{x:66,y:136},{x:110,y:72},{x:84,y:72}], true);
+  });
+  make('heroes_dist1', g => { g.fillStyle(0x38bdf8, 1); g.fillCircle(80, 80, 58); });
+  make('heroes_dist2', g => {
+    g.fillStyle(0xe2e8f0, 1);
+    g.fillEllipse(58, 95, 70, 50);
+    g.fillEllipse(102, 95, 70, 50);
+    g.fillEllipse(80, 70, 70, 55);
+  });
+
+  // --- Dragones y fantasía ---
+  const egg = (g, color) => { g.fillStyle(color, 1); g.fillEllipse(80, 86, 100, 130); };
+  make('fantasy_target', g => {
+    egg(g, 0xfacc15);
+    g.fillStyle(0xf59e0b, 1);
+    g.fillCircle(65, 70, 8); g.fillCircle(98, 100, 10); g.fillCircle(75, 118, 7);
+    g.fillStyle(0xffffff, 0.5); g.fillEllipse(62, 58, 18, 26);
+  });
+  make('fantasy_dist1', g => egg(g, 0xbbf7d0));
+  make('fantasy_dist2', g => egg(g, 0xbfdbfe));
+
+  // --- Reino mágico ---
+  make('kingdom_target', g => {
+    g.fillStyle(0xf472b6, 1);
+    g.fillPoints([{x:50,y:20},{x:110,y:20},{x:148,y:62},{x:80,y:148},{x:12,y:62}], true);
+    g.fillStyle(0xfbcfe8, 1);
+    g.fillTriangle(50, 20, 110, 20, 80, 62);
+    g.fillStyle(0xffffff, 0.6);
+    g.fillTriangle(50, 20, 12, 62, 80, 62);
+  });
+  make('kingdom_dist1', g => { g.fillStyle(0x94a3b8, 1); g.fillEllipse(80, 95, 110, 80); });
+  make('kingdom_dist2', g => {
+    g.fillStyle(0xa8a29e, 1); g.fillEllipse(80, 100, 100, 70);
+    g.fillStyle(0xd6d3d1, 1); g.fillEllipse(60, 85, 30, 18);
+  });
+}
+
+// ======================= UTILIDADES =======================
+function makeButton(scene, x, y, w, h, label, color, cb) {
+  const r = scene.add.rectangle(x, y, w, h, color).setInteractive({ useHandCursor: true });
+  scene.add.text(x, y, label, { font: 'bold 22px Arial', color: '#0f172a' }).setOrigin(0.5);
+  r.on('pointerdown', cb);
+  r.on('pointerover', () => r.setAlpha(0.85));
+  r.on('pointerout', () => r.setAlpha(1));
+  return r;
+}
+
+function computeStats(log) {
+  const st = log.filter(r => r.event_type === 'stimulus');
+  const targets = st.filter(r => r.stimulus_type === 'target');
+  const dists = st.filter(r => r.stimulus_type === 'distractor');
+  const hits = targets.filter(r => r.outcome === 'hit');
+  const mean = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : NaN;
+  const sd = a => {
+    if (a.length < 2) return NaN;
+    const m = mean(a);
+    return Math.sqrt(a.reduce((s, x) => s + (x - m) ** 2, 0) / (a.length - 1));
+  };
+  const rts = hits.map(r => r.rt_ms);
+  const lastOnset = st.length ? Math.max(...st.map(r => r.onset_ms)) : 0;
+  const half = lastOnset / 2;
+  return {
+    targets: targets.length,
+    hits: hits.length,
+    omissions: targets.length - hits.length,
+    distractors: dists.length,
+    commissions: dists.filter(r => r.outcome === 'commission').length,
+    hitRate: targets.length ? hits.length / targets.length : 0,
+    meanRT: mean(rts),
+    sdRT: sd(rts),
+    cv: sd(rts) / mean(rts),
+    rtFirst: mean(hits.filter(r => r.onset_ms <= half).map(r => r.rt_ms)),
+    rtSecond: mean(hits.filter(r => r.onset_ms > half).map(r => r.rt_ms))
+  };
+}
+
+function downloadCSV(log, themeKey) {
+  const cols = ['event_type', 'theme', 'trial', 'stimulus_type', 'onset_ms', 'responded', 'rt_ms', 'outcome'];
+  const lines = [cols.join(',')].concat(
+    log.map(r => cols.map(c => (r[c] === undefined ? '' : r[c])).join(','))
+  );
+  const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'cpt_' + themeKey + '_' + Date.now() + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ======================= ESCENAS =======================
+class BootScene extends Phaser.Scene {
+  constructor() { super('Boot'); }
+  create() {
+    buildTextures(this);
+    this.scene.start('Menu');
+  }
+}
+
+class MenuScene extends Phaser.Scene {
+  constructor() { super('Menu'); }
+  create() {
+    const W = this.scale.width;
+    this.cameras.main.setBackgroundColor(0x0f172a);
+    this.add.text(W / 2, 60, 'Elige tu aventura', { font: 'bold 44px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W / 2, 110, 'Toca la pantalla o presiona ESPACIO solo cuando aparezca el objeto especial',
+      { font: '20px Arial', color: '#cbd5e1' }).setOrigin(0.5);
+
+    const keys = Object.keys(THEMES);
+    keys.forEach((key, i) => {
+      const th = THEMES[key];
+      const x = 170 + i * 310;
+      const y = 330;
+      const card = this.add.rectangle(x, y, 270, 330, th.bg).setStrokeStyle(4, th.accent).setInteractive({ useHandCursor: true });
+      this.add.image(x, y - 50, key + '_target').setScale(0.9);
+      this.add.text(x, y + 60, th.label, { font: 'bold 24px Arial', color: '#ffffff' }).setOrigin(0.5);
+      this.add.text(x, y + 100, 'Objeto especial:\n' + th.targetName,
+        { font: '17px Arial', color: '#e2e8f0', align: 'center' }).setOrigin(0.5);
+      card.on('pointerover', () => card.setScale(1.04));
+      card.on('pointerout', () => card.setScale(1));
+      card.on('pointerdown', () => {
+        getCtx(); // activa el audio con el primer clic
+        this.scene.start('Game', { theme: key });
+      });
+    });
+  }
+}
+
+class GameScene extends Phaser.Scene {
+  constructor() { super('Game'); }
+  init(data) {
+    this.themeKey = data.theme;
+    this.theme = THEMES[data.theme];
+  }
+  create() {
+    const W = this.scale.width, H = this.scale.height;
+    this.cameras.main.setBackgroundColor(this.theme.bg);
+    this.log = [];
+    this.trial = 0;
+    this.current = null;
+    this.started = false;
+    this.ended = false;
+
+    this.add.rectangle(W / 2, 20, W - 80, 10, 0xffffff, 0.2);
+    this.bar = this.add.rectangle(40, 20, 0, 10, this.theme.accent).setOrigin(0, 0.5);
+
+    this.stim = this.add.image(W / 2, H / 2, this.themeKey + '_target').setVisible(false);
+    this.fb = this.add.text(W / 2, H / 2 + 140, '', { font: 'bold 38px Arial', color: '#86efac' }).setOrigin(0.5);
+
+    this.example = this.add.image(W / 2, H / 2 - 90, this.themeKey + '_target');
+    this.info = this.add.text(W / 2, H / 2 + 60,
+      'Prepárate...\nResponde solo con ' + this.theme.targetName,
+      { font: 'bold 28px Arial', color: '#ffffff', align: 'center' }).setOrigin(0.5);
+
+    this.input.keyboard.on('keydown-SPACE', () => this.respond());
+    this.input.on('pointerdown', () => this.respond());
+    this.time.delayedCall(2500, () => this.begin());
+  }
+
+  begin() {
+    this.example.destroy();
+    this.info.destroy();
+    this.t0 = performance.now();
+    this.started = true;
+    this.nextTrial();
+    this.scheduleAudio();
+  }
+
+  update() {
+    if (this.started && !this.ended) {
+      const el = performance.now() - this.t0;
+      this.bar.width = (this.scale.width - 80) * Math.min(1, el / CONFIG.SESSION_MS);
+    }
+  }
+
+  nextTrial() {
+    if (performance.now() - this.t0 >= CONFIG.SESSION_MS) { this.finish(); return; }
+    this.trial++;
+    const isTarget = Math.random() < CONFIG.TARGET_PROB;
+    const key = isTarget
+      ? this.themeKey + '_target'
+      : this.themeKey + '_dist' + Phaser.Math.Between(1, 2);
+    this.stim.setTexture(key).setVisible(true).setAlpha(1);
+    this.current = {
+      trial: this.trial,
+      type: isTarget ? 'target' : 'distractor',
+      onset: performance.now(),
+      responded: false,
+      rt: null
+    };
+    this.time.delayedCall(CONFIG.STIMULUS_MS, () => this.endTrial());
+  }
+
+  endTrial() {
+    const c = this.current;
+    this.stim.setVisible(false);
+    let outcome;
+    if (c.type === 'target') outcome = c.responded ? 'hit' : 'omission';
+    else outcome = c.responded ? 'commission' : 'correct_rejection';
+    this.log.push({
+      event_type: 'stimulus',
+      theme: this.themeKey,
+      trial: c.trial,
+      stimulus_type: c.type,
+      onset_ms: Math.round(c.onset - this.t0),
+      responded: c.responded ? 1 : 0,
+      rt_ms: c.rt === null ? '' : Math.round(c.rt),
+      outcome: outcome
+    });
+    this.current = null;
+    this.time.delayedCall(Phaser.Math.Between(CONFIG.ISI_MIN, CONFIG.ISI_MAX), () => this.nextTrial());
+  }
+
+  respond() {
+    const c = this.current;
+    if (!this.started || this.ended || !c || c.responded) return;
+    c.responded = true;
+    c.rt = performance.now() - c.onset;
+    if (c.type === 'target') {
+      // refuerzo positivo
+      rewardSound();
+      this.fb.setText('¡Bien!').setAlpha(1);
+      this.tweens.add({ targets: this.fb, alpha: 0, duration: 600 });
+      const ring = this.add.circle(this.scale.width / 2, this.scale.height / 2, 90).setStrokeStyle(8, 0x86efac);
+      this.tweens.add({ targets: ring, scale: 1.6, alpha: 0, duration: 500, onComplete: () => ring.destroy() });
+    } else {
+      // error de comisión: feedback neutro, sin castigo
+      this.stim.setAlpha(0.35);
+    }
+  }
+
+  scheduleAudio() {
+    if (!CONFIG.AUDIO_DISTRACTOR) return;
+    const d = Phaser.Math.Between(CONFIG.AUDIO_EVERY_MS[0], CONFIG.AUDIO_EVERY_MS[1]);
+    this.time.delayedCall(d, () => {
+      if (this.ended) return;
+      distractorSound();
+      this.log.push({
+        event_type: 'audio_distractor',
+        theme: this.themeKey,
+        onset_ms: Math.round(performance.now() - this.t0)
+      });
+      this.scheduleAudio();
+    });
+  }
+
+  finish() {
+    this.ended = true;
+    this.scene.start('Results', { log: this.log, theme: this.themeKey });
+  }
+}
+
+class ResultsScene extends Phaser.Scene {
+  constructor() { super('Results'); }
+  init(data) {
+    this.log = data.log;
+    this.themeKey = data.theme;
+  }
+  create() {
+    const W = this.scale.width;
+    const th = THEMES[this.themeKey];
+    this.cameras.main.setBackgroundColor(th.bg);
+    const s = computeStats(this.log);
+    const ms = v => (isNaN(v) ? '—' : Math.round(v) + ' ms');
+    const stars = s.hitRate >= 0.9 ? 3 : s.hitRate >= 0.7 ? 2 : 1;
+
+    this.add.text(W / 2, 55, '¡Buen trabajo!', { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W / 2, 120, '★'.repeat(stars) + '☆'.repeat(3 - stars),
+      { font: '52px Arial', color: '#fde047' }).setOrigin(0.5);
+
+    const lines = [
+      'Objetivos detectados: ' + s.hits + ' de ' + s.targets + ' (' + Math.round(s.hitRate * 100) + '%)',
+      'Omisiones (no detectó el objetivo): ' + s.omissions,
+      'Respuestas a distractores (comisiones): ' + s.commissions + ' de ' + s.distractors,
+      'Tiempo de reacción promedio: ' + ms(s.meanRT),
+      'Variabilidad del TR (desv. estándar): ' + ms(s.sdRT),
+      'TR primera mitad vs. segunda mitad: ' + ms(s.rtFirst) + ' → ' + ms(s.rtSecond)
+    ];
+    this.add.text(W / 2, 290, lines.join('\n'),
+      { font: '24px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 12 }).setOrigin(0.5);
+
+    makeButton(this, W / 2 - 170, 470, 300, 60, 'Descargar CSV', 0xfde047, () => downloadCSV(this.log, this.themeKey));
+    makeButton(this, W / 2 + 170, 470, 300, 60, 'Jugar de nuevo', 0x86efac, () => this.scene.start('Menu'));
+  }
+}
+
+// ======================= ARRANQUE =======================
+new Phaser.Game({
+  type: Phaser.AUTO,
+  parent: 'game',
+  width: 960,
+  height: 540,
+  backgroundColor: '#0f172a',
+  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+  scene: [BootScene, MenuScene, GameScene, ResultsScene]
+});
+</script>
+</body>
+</html>

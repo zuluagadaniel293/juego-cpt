@@ -1,0 +1,99 @@
+// Mundo: Reino mágico. La Reina Luna busca a Lumi, el hada rosada, y atrapa al Duende Pícaro.
+// Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
+
+registrarMundo('kingdom', {
+  // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
+  theme: { label: 'Reino mágico', bg: 0x4a1d4a, accent: 0xf472b6,
+           targetLabel: 'Lumi, el hada rosada', targetObj: 'a Lumi, el hada rosada',
+           villain: 'Duende Pícaro', villainObj: 'al Duende Pícaro', chase: '¡Persíguelo!' },
+
+  story: {
+    hero: 'Reina Luna',
+    voice: { pitch: 1.35 },
+    chapters: [
+      { place: 'El Jardín', mg: 'classic', level: 1, sec: 45,
+        line: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.' },
+      { place: 'La Cocina', mg: 'catch', level: 2, sec: 60,
+        line: '¡Las hadas caen como polvo de estrellas en la cocina! Atrapa solo a Lumi.' },
+      { place: 'La Biblioteca', mg: 'race', level: 3, sec: 75,
+        line: '¡Lumi vuela entre los libros de la biblioteca! Corre por los pasillos y alcánzala solo a ella.' },
+      { place: 'La Torre', mg: 'find', level: 4, sec: 90,
+        line: 'En la torre hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!' },
+      // Jefe final: primero se atrapa al villano con la red y, cuando escapa, se le persigue
+      { place: 'El Salón del Trono', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
+        line: '¡Fue el Duende Pícaro quien lanzó el hechizo! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+    ],
+    ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.'
+  },
+
+  power: { name: 'Polvo de estrellas', kind: 'stars', color: 0xf472b6, shout: '¡Magia!' },
+  powerSound() {   // campanitas mágicas + brillo
+    [1046, 1318, 1568, 2093].forEach((f, i) => sweep('sine', f, f * 1.01, 0.35, 0.09, i * 0.06));
+    noise(0.5, 0.05, 'highpass', 6000, null, 0.1);
+  },
+
+  // Dibujos provisionales (se reemplazan por las imágenes de assets/kingdom cuando existen)
+  charSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260"><path d="M56,84 Q56,24 110,24 Q164,24 164,84 L172,176 L48,176 Z" fill="#78350f"/><path d="M70,132 Q110,120 150,132 L184,258 L36,258 Z" fill="#db2777"/><path d="M88,130 Q110,148 132,130 Z" fill="#f9a8d4"/><rect x="100" y="106" width="20" height="26" fill="#f5c49c"/><circle cx="110" cy="80" r="44" fill="#f5c49c"/><path d="M66,72 Q72,36 110,36 Q148,36 154,72 Q130,54 110,60 Q90,54 66,72 Z" fill="#78350f"/><polygon points="80,42 86,8 100,28 110,4 120,28 134,8 140,42" fill="#facc15"/><polygon points="110,16 117,27 110,38 103,27" fill="#f472b6"/><circle cx="94" cy="84" r="5" fill="#0f172a"/><circle cx="126" cy="84" r="5" fill="#0f172a"/><circle cx="86" cy="98" r="7" fill="#fda4af" fill-opacity="0.7"/><circle cx="134" cy="98" r="7" fill="#fda4af" fill-opacity="0.7"/><path d="M96,102 Q110,114 124,102" stroke="#7c2d12" stroke-width="4" fill="none" stroke-linecap="round"/></svg>',
+  people: {
+    kingdom_villain: { suit: 0x7e22ce, hat: 0x166534, ears: true, emblem: 0xfacc15 },
+    kingdom_friend1: { cape: 0x1d4ed8, suit: 0x9ca3af, hat: 0x9ca3af, emblem: 0x1d4ed8 },   // guardia
+    kingdom_friend2: { cape: 0xdc2626, suit: 0xfacc15, hat: 0xdc2626, emblem: 0xdc2626 }    // bufón
+  },
+
+  // Lumi, el hada rosada, entre hadas de otros colores (todas iguales, solo cambia el color)
+  textures(make) {
+    make('kingdom_target', g => drawFairy(g, 0xec4899, 0xfbcfe8));
+    make('kingdom_dist1', g => drawFairy(g, 0x3b82f6, 0xbfdbfe));
+    make('kingdom_dist2', g => drawFairy(g, 0x22c55e, 0xbbf7d0));
+    make('kingdom_dist3', g => drawFairy(g, 0xc4b5fd, 0xede9fe));          // lila pálido (difícil)
+  },
+
+  // Fondos del castillo: Jardín, Cocina, Biblioteca, Torre, Salón del Trono
+  backdrop(g, idx, rng, W, H) {
+    if (idx === 0) {
+      skyGradient(g, 0x7dd3fc, 0xfce7f3, W, H);
+      g.fillStyle(0xe9d5ff, 1); g.fillRect(560, 160, 280, 240);
+      [560, 660, 760].forEach(x => { g.fillRect(x, 110, 80, 60); g.fillStyle(0xc084fc, 1); g.fillTriangle(x - 6, 112, x + 86, 112, x + 40, 50); g.fillStyle(0xe9d5ff, 1); });
+      g.fillStyle(0x16a34a, 1); for (let x = -20; x < W; x += 90) g.fillCircle(x, 450, 60);
+      g.fillStyle(0x15803d, 1); g.fillRect(0, 460, W, H - 460);
+      for (let i = 0; i < 30; i++) { g.fillStyle([0xf472b6, 0xfde047, 0xffffff][i % 3], 1); g.fillCircle(rng.between(0, W), rng.between(420, 530), 5); }
+      return;
+    }
+    if (idx === 1) {
+      g.fillStyle(0xfef3c7, 1); g.fillRect(0, 0, W, 380);
+      g.lineStyle(2, 0xfde68a, 1); for (let x = 0; x < W; x += 40) g.lineBetween(x, 0, x, 380); for (let y = 0; y < 380; y += 40) g.lineBetween(0, y, W, y);
+      for (let x = 0; x < W; x += 60) for (let y = 380; y < H; y += 40) { g.fillStyle(((x / 60 + (y - 380) / 40) % 2) ? 0xd6a26a : 0xb7834d, 1); g.fillRect(x, y, 60, 40); }
+      g.fillStyle(0x92400e, 1); g.fillRect(0, 300, W, 80);
+      g.fillStyle(0x7dd3fc, 1); g.fillRect(380, 60, 200, 150); g.lineStyle(8, 0x92400e, 1); g.strokeRect(380, 60, 200, 150); g.lineBetween(480, 60, 480, 210);
+      [[120, 280], [220, 270], [760, 276], [850, 284]].forEach(([x, y]) => { g.fillStyle(0x64748b, 1); g.fillEllipse(x, y, 70, 40); });
+      return;
+    }
+    if (idx === 2) {
+      skyGradient(g, 0x7c2d12, 0x9a3412, W, H);
+      const colors = [0xef4444, 0x3b82f6, 0x22c55e, 0xfacc15, 0xa855f7, 0xf97316];
+      [[30, 280], [670, 280]].forEach(([sx, sw]) => {
+        g.fillStyle(0x451a03, 1); g.fillRect(sx, 40, sw, 400);
+        for (let sy = 60; sy < 420; sy += 90) for (let bx = sx + 12; bx < sx + sw - 18; ) {
+          const bw = rng.between(10, 18); g.fillStyle(colors[rng.between(0, 5)], 1); g.fillRect(bx, sy + rng.between(0, 14), bw, 66); bx += bw + 3;
+        }
+      });
+      g.fillStyle(0x78350f, 1); g.fillRect(0, 440, W, H - 440);
+      return;
+    }
+    if (idx === 3) {
+      g.fillStyle(0x6b7280, 1); g.fillRect(0, 0, W, H);
+      g.lineStyle(2, 0x4b5563, 1);
+      for (let y = 0; y < H; y += 36) { g.lineBetween(0, y, W, y); for (let x = (y / 36) % 2 ? 0 : 40; x < W; x += 80) g.lineBetween(x, y, x, y + 36); }
+      g.fillStyle(0x1e3a8a, 1); g.fillCircle(480, 200, 120);
+      g.fillStyle(0xffffff, 0.9); for (let i = 0; i < 20; i++) { const a = rng.frac() * Math.PI * 2, r = rng.frac() * 105; g.fillCircle(480 + Math.cos(a) * r, 200 + Math.sin(a) * r, 2); }
+      g.lineStyle(10, 0x374151, 1); g.strokeCircle(480, 200, 120);
+      g.fillStyle(0x4b5563, 1); g.fillRect(0, 460, W, H - 460);
+      return;
+    }
+    skyGradient(g, 0x581c87, 0x7e22ce, W, H);
+    g.fillStyle(0xdc2626, 1); g.fillPoints([{x:400,y:250},{x:560,y:250},{x:760,y:H},{x:200,y:H}], true);
+    [90, 250, 710, 870].forEach(x => { g.fillStyle(0xe9d5ff, 1); g.fillRect(x - 25, 40, 50, 440); g.fillRect(x - 35, 30, 70, 20); });
+    g.fillStyle(0xfacc15, 1); g.fillRect(430, 120, 100, 130); g.fillTriangle(430, 122, 530, 122, 480, 70);
+    g.fillStyle(0xdc2626, 1); g.fillRect(450, 170, 60, 60);
+  }
+});

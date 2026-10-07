@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juego de atención sostenida (CPT)</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0f172a; }
+  #game { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div id="game"></div>
+
+<!-- El orden importa: cada archivo usa lo que cargaron los anteriores. -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+<script src="assets/manifest.js"></script>
+
+<!-- Configuración y piezas compartidas -->
+<script src="juego/configuracion.js"></script>
+<script src="juego/nucleo/mundos.js"></script>
+<script src="juego/nucleo/imagenes.js"></script>
+<script src="juego/nucleo/guardado.js"></script>
+<script src="juego/nucleo/sonido.js"></script>
+<script src="juego/nucleo/dibujos.js"></script>
+<script src="juego/nucleo/interfaz.js"></script>
+<script src="juego/nucleo/estadisticas.js"></script>
+
+<!-- Mundos (con sus 5 niveles). También los usa el Desafío. -->
+<script src="juego/modos/historia/mundos/superheroes.js"></script>
+<script src="juego/modos/historia/mundos/dragones.js"></script>
+<script src="juego/modos/historia/mundos/reino_magico.js"></script>
+
+<!-- Pantallas comunes y motor del juego -->
+<script src="juego/escenas/inicio.js"></script>
+<script src="juego/escenas/elegir_modo.js"></script>
+<script src="juego/escenas/elegir_mundo.js"></script>
+<script src="juego/escenas/juego.js"></script>
+
+<!-- Modo Historia -->
+<script src="juego/modos/historia/mapa_mundos.js"></script>
+<script src="juego/modos/historia/mapa_capitulos.js"></script>
+<script src="juego/modos/historia/escena_historia.js"></script>
+<script src="juego/modos/historia/resultados_historia.js"></script>
+
+<!-- Modo Desafío -->
+<script src="juego/modos/desafio/elegir_minijuego.js"></script>
+<script src="juego/modos/desafio/resultados_desafio.js"></script>
+
+<!-- Prueba fija (zona de adultos) -->
+<script src="juego/modos/prueba_fija/resultados_prueba.js"></script>
+
+<script src="juego/arranque.js"></script>
+</body>
+</html>

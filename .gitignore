@@ -1,0 +1,5 @@
+# Archivos que crea Windows / OneDrive y no son parte del juego
+desktop.ini
+Thumbs.db
+*.tmp
+~$*
