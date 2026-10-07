@@ -26,8 +26,9 @@ class ModeScene extends Phaser.Scene {
       best ? 'Tu récord: nivel ' + best : '', () => this.scene.start('Menu', { mode: 'desafio' }));
 
     // Zona de adultos: prueba fija para comparar sesiones
-    this.add.text(W - 30, H - 24, 'Zona de adultos: Prueba fija', { font: 'bold 15px Arial', color: '#94a3b8' })
-      .setOrigin(1, 1).setInteractive({ useHandCursor: true })
+    // (abajo a la izquierda: la esquina derecha la tapa el botón "Powered by Netlify" en la versión publicada)
+    this.add.text(30, H - 24, 'Zona de adultos: Prueba fija', { font: 'bold 15px Arial', color: '#94a3b8' })
+      .setOrigin(0, 1).setInteractive({ useHandCursor: true })
       .on('pointerdown', () => { getCtx(); this.scene.start('Menu', { mode: 'prueba' }); });
   }
 }
