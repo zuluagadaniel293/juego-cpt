@@ -39,7 +39,9 @@ window.ASSETS = {
     bg_5:    'superheroes/fondo_5_guarida_de_sombra.png',
     distractor_avion:  'superheroes/avion.png',
     distractor_pajaro: 'superheroes/pajaro.png',
-    distractor_gato:   'superheroes/gato.png'
+    distractor_gato:   'superheroes/gato.png',
+    voice_1: 'superheroes/voz_capitulo_1.mp3',   // voces generadas por Leidy
+    voice_2: 'superheroes/voz_capitulo_2.mp3'
   },
   fantasy: {            // carpeta assets/dragones
     target:  'dragones/dragon_bebe_dorado.png',
