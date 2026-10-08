@@ -101,4 +101,8 @@ function sweep(type, f0, f1, dur, vol, delay) {           // tono que sube o baj
   o.connect(g); g.connect(ctx.destination);
   o.start(t); o.stop(t + dur);
 }
+function rescueSound() {   // rescatar a un compañero: campanitas suaves que suben
+  [784, 988, 1175, 1568].forEach((f, i) => sweep('sine', f, f * 1.005, 0.3, 0.07, i * 0.07));
+  noise(0.4, 0.03, 'highpass', 5000, null, 0.1);
+}
 function fizzleSound() { noise(0.22, 0.08, 'lowpass', 700, 200); }   // el poder se apaga (sin premio)

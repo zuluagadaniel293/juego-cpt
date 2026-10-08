@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><polygon points="22,18 138,18 138,80 80,150 22,80" fill="#16a34a"/><polygon points="80,40 116,80 94,80 94,116 66,116 66,80 44,80" fill="#ffffff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><polygon id="rombo" points="80,6 154,80 80,154 6,80" fill="#16a34a"/><polygon id="flecha" points="80,46 112,80 92,80 92,112 68,112 68,80 48,80" fill="#ffffff"/></svg>

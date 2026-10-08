@@ -20,33 +20,35 @@ const MG = {
              instr: n => 'Toca o presiona ESPACIO solo cuando veas\n' + n },
   catch:   { label: 'Atrapa',    verb: 'Atrapaste',   desc: 'Mueve la canasta\ny atrapa',
              instr: (n, holder) => 'Mueve ' + holder + ' con las flechas o el dedo.\nAtrapa solo ' + n + ' y esquiva lo demás' },
-  race:    { label: 'Carrera',   verb: 'Agarraste',   desc: 'Cambia de carril\ny agarra',
-             instr: n => 'Cambia de carril con las flechas o tocando arriba/abajo.\nAgarra solo ' + n },
+  race:    { label: 'Carrera',   verb: 'Agarraste',   desc: 'Persigue y agarra\nlo que suelta',
+             instr: n => 'Cambia de carril con las flechas o tocando arriba/abajo.\nAgarra solo ' + n,
+             // con alguien adelante que va soltando los objetos
+             instrChase: (n, who) => '¡Persigue ' + who + '! Va soltando cosas por el camino.\nCambia de carril (flechas o tocando arriba/abajo) y agarra solo ' + n },
   find:    { label: 'Encuentra', verb: 'Encontraste', desc: 'Búscalo entre\nmuchos',
              instr: n => 'Toca solo ' + n + '.\nSi no está, no toques nada' }
 };
 
-// Dificultad según el nivel (Desafío) o el capítulo (Historia): empieza fácil y corto.
+// Dificultad según el nivel (Desafío) o el capítulo (Historia): corto al principio, pero ya con reto.
 function challengeParams(level, minigame) {
   const L = level - 1;
-  const isiMin = Math.max(400, 900 - 40 * L);
+  const isiMin = Math.max(400, 800 - 40 * L);
   return {
     sessionMs: Math.min(45000 + 5000 * L, 120000),   // 45 s en el nivel 1, +5 s por nivel, máx. 2 min
-    stimMs: Math.max(550, 1200 - 50 * L),            // Clásico: tiempo del estímulo en pantalla
+    stimMs: Math.max(500, 1000 - 50 * L),            // Clásico: tiempo del estímulo en pantalla
     isiMin: isiMin,
     isiMax: isiMin + 600,
-    targetProb: Math.max(0.2, 0.35 - 0.015 * L),     // al principio más objetivos; luego menos (vigilancia)
-    similarProb: level >= 4 ? Math.min(0.5, 0.15 + 0.05 * (level - 4)) : 0, // distractor parecido al objetivo
+    targetProb: Math.max(0.2, 0.3 - 0.015 * L),      // al principio más objetivos; luego menos (vigilancia)
+    similarProb: Math.min(0.55, 0.08 + 0.06 * L),    // distractor parecido al objetivo: poco al inicio, cada vez más
     // Distractores del entorno (sonidos y cosas que cruzan por los bordes): más seguidos en niveles altos
     audio: level >= 2,
     audioEvery: [Math.max(6000, 16000 - 1000 * L), Math.max(10000, 26000 - 1500 * L)],
     visual: true,
     visualEvery: [Math.max(3500, 9000 - 600 * L), Math.max(6000, 14000 - 800 * L)],
-    travelMs: Math.max(1500, 3400 - 150 * L),        // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla
-    spawnMin: Math.max(550, 1300 - 60 * L),
-    spawnMax: Math.max(900, 1900 - 70 * L),
-    setSize: Math.min(8, 3 + Math.floor(L / 2)),     // Encuentra: cuántos objetos a la vez
-    displayMs: Math.max(1500, 3200 - 120 * L),       // Encuentra: tiempo para buscar
+    travelMs: Math.max(1400, 3000 - 150 * L),        // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla
+    spawnMin: Math.max(550, 1200 - 60 * L),
+    spawnMax: Math.max(900, 1800 - 70 * L),
+    setSize: Math.min(8, 4 + Math.floor(L / 2)),     // Encuentra: cuántos objetos a la vez
+    displayMs: Math.max(1400, 2800 - 120 * L),       // Encuentra: tiempo para buscar
     minigame: minigame || 'classic'
   };
 }

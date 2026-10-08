@@ -74,6 +74,10 @@ function buildTextures(scene) {
     g.fillStyle(0xffffff, 0.9); g.fillCircle(8, 8, 3);
   }));
   small('puff', 20, g => { g.fillStyle(0x94a3b8, 0.8); g.fillCircle(10, 10, 10); });
+  small('heart', 32, g => {   // rescate de un compañero
+    g.fillStyle(0xf43f5e, 1); g.fillCircle(10, 11, 8); g.fillCircle(22, 11, 8); g.fillTriangle(3, 14, 29, 14, 16, 29);
+    g.fillStyle(0xffffff, 0.6); g.fillCircle(8, 8, 3);
+  });
   small('fireball', 48, g => {
     g.fillStyle(0xef4444, 1); g.fillCircle(24, 24, 22);
     g.fillStyle(0xf97316, 1); g.fillCircle(24, 24, 16);

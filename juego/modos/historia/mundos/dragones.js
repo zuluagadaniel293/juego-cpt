@@ -26,7 +26,9 @@ registrarMundo('fantasy', {
     ending: '¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!'
   },
 
-  power: { name: 'Bola de fuego', kind: 'fire', color: 0xf97316, shout: '¡Fuego!' },
+  // El fuego es solo contra Morgana (jefe final). Al hermanito dorado se le rescata con cariño, no se le ataca.
+  power: { name: 'Bola de fuego', kind: 'fire', color: 0xf97316, shout: '¡Fuego!',
+           rescue: { shout: '¡Te encontré!' } },
   powerSound() {   // llamarada + explosión
     noise(0.25, 0.25, 'bandpass', 300, 2500);
     noise(0.35, 0.35, 'lowpass', 1200, 100, 0.18);

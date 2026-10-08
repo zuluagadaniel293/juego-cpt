@@ -85,7 +85,7 @@ class GameScene extends Phaser.Scene {
     this.intro = [
       fit(this.add.image(W / 2, H / 2 - 100, this.keys.target), 160).setDepth(20),
       this.add.text(W / 2, H / 2 + 15, title, { font: 'bold 32px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(20),
-      this.add.text(W / 2, H / 2 + 85, MG[this.mg].instr(what, holder),
+      this.add.text(W / 2, H / 2 + 85, this.lead ? MG.race.instrChase(what, th.villainObj) : MG[this.mg].instr(what, holder),
         { font: 'bold 24px Arial', color: '#ffffff', align: 'center', lineSpacing: 6 }).setOrigin(0.5).setDepth(20)
     ];
     this.time.delayedCall(this.mg === 'classic' ? 3000 : 4500, () => this.begin());
@@ -124,7 +124,15 @@ class GameScene extends Phaser.Scene {
       this.runner = fit(this.add.image(170, this.lanes[1], TEX[this.themeKey].hero_run), 104).setDepth(4);
       this.mgObjects.push(this.runner);
       this.bob = this.tweens.add({ targets: this.runner, angle: { from: -4, to: 4 }, duration: 160, yoyo: true, repeat: -1 });
-      this.raceSpeed = (W + 60 - 170) / this.params.travelMs * 1000;
+      // El villano corre adelante, cambia de carril y va soltando los objetos.
+      // (En el jefe final se persigue al villano en persona, entre amigos, así que no hay nadie adelante.)
+      if (!this.boss) {
+        this.leadLane = 1;
+        this.lead = fit(this.add.image(840, this.lanes[1], TEX[this.themeKey].villain), 110).setDepth(4);
+        this.mgObjects.push(this.lead);
+        this.tweens.add({ targets: this.lead, angle: { from: -5, to: 5 }, duration: 180, yoyo: true, repeat: -1 });
+      }
+      this.raceSpeed = ((this.lead ? this.lead.x - 40 : W + 60) - 170) / this.params.travelMs * 1000;
       const move = d => {
         if (!this.started || this.ended) return;
         this.lane = Phaser.Math.Clamp(this.lane + d, 0, 2);
@@ -154,6 +162,7 @@ class GameScene extends Phaser.Scene {
     if (this.mg === 'classic') this.nextTrial();
     else if (this.mg === 'find') this.nextFindTrial();
     else this.scheduleSpawn();
+    if (this.lead) this.time.delayedCall(1200, () => this.moveLead());
     this.scheduleAudio();
     this.scheduleVisual();
   }
@@ -222,6 +231,15 @@ class GameScene extends Phaser.Scene {
       this.time.delayedCall(600, () => em.destroy());
       return;
     }
+    // Si el objetivo es un compañero (hermanito de Chispa, Lumi), se le rescata: nada de atacarlo.
+    // El poder de ataque queda para el villano (jefe final) o, en Superhéroes, para la señal de Sombra.
+    if (p.rescue && !this.boss) {
+      rescueSound();
+      this.fb.setText(p.rescue.shout).setAlpha(1);
+      this.tweens.add({ targets: this.fb, alpha: 0, duration: 800 });
+      this.rescueEffect(tx, ty);
+      return;
+    }
     POWER_SOUNDS[this.themeKey]();
     this.fb.setText(this.boss ? '¡Atrapado!' : p.shout).setAlpha(1);
     this.tweens.add({ targets: this.fb, alpha: 0, duration: 700 });
@@ -240,6 +258,18 @@ class GameScene extends Phaser.Scene {
           onComplete: () => { proj.destroy(); if (i === n - 1) this.impact(tx, ty); } });
       }
     }
+  }
+  // Rescate: brillo suave alrededor del compañero y corazones que suben
+  rescueEffect(x, y) {
+    const glow = this.add.circle(x, y, 55, 0xfef08a, 0.45).setDepth(8);
+    this.tweens.add({ targets: glow, scale: 1.7, alpha: 0, duration: 650, onComplete: () => glow.destroy() });
+    const hearts = this.add.particles(x, y, 'heart', { speedX: { min: -70, max: 70 }, speedY: { min: -170, max: -70 },
+      lifespan: 900, scale: { start: 0.9, end: 0.3 }, alpha: { start: 1, end: 0 }, emitting: false }).setDepth(9);
+    hearts.explode(8);
+    const sparks = this.add.particles(x, y, 'spark_' + this.themeKey, { speed: { min: 40, max: 120 }, lifespan: 600,
+      scale: { start: 0.8, end: 0 }, alpha: { start: 0.9, end: 0 }, emitting: false }).setDepth(9);
+    sparks.explode(12);
+    this.time.delayedCall(1000, () => { hearts.destroy(); sparks.destroy(); });
   }
   drawBolt(x0, y0, x1, y1, color) {
     const g = this.add.graphics().setDepth(9);
@@ -305,6 +335,13 @@ class GameScene extends Phaser.Scene {
     if (this.mg === 'catch') {
       const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850]);
       img = fit(this.add.image(x, -50, s.key), this.boss ? 100 : 88);
+    } else if (this.lead) {
+      // lo suelta el que va adelante, en su carril, con un pequeño "pop"
+      lane = this.leadLane;
+      img = fit(this.add.image(this.lead.x - 40, this.lanes[lane], s.key), 78);
+      const sc = img.scale;
+      img.setScale(0);
+      this.tweens.add({ targets: img, scale: sc, duration: 150 });
     } else {
       lane = Phaser.Math.Between(0, 2);
       img = fit(this.add.image(W + 60, this.lanes[lane], s.key), this.boss ? 96 : 78);
@@ -346,6 +383,13 @@ class GameScene extends Phaser.Scene {
       if (!it.gone && it.img.y > H + 60) { it.img.destroy(); it.gone = true; }
     }
     this.cleanupItems();
+  }
+  // El que va adelante cambia de carril cada poco para que el niño tenga que seguirlo
+  moveLead() {
+    if (this.ended) return;
+    this.leadLane = Phaser.Utils.Array.GetRandom([0, 1, 2].filter(l => l !== this.leadLane));
+    this.tweens.add({ targets: this.lead, y: this.lanes[this.leadLane], duration: 260, ease: 'Sine.easeInOut' });
+    this.time.delayedCall(Phaser.Math.Between(900, 2000), () => this.moveLead());
   }
   updateRace(dt) {
     const dx = this.raceSpeed * dt;

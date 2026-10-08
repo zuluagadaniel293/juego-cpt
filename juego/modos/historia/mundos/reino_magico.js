@@ -26,7 +26,9 @@ registrarMundo('kingdom', {
     ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.'
   },
 
-  power: { name: 'Polvo de estrellas', kind: 'stars', color: 0xf472b6, shout: '¡Magia!' },
+  // Las estrellas son solo contra el Duende (jefe final). A Lumi se le rescata con cariño, no se le ataca.
+  power: { name: 'Polvo de estrellas', kind: 'stars', color: 0xf472b6, shout: '¡Magia!',
+           rescue: { shout: '¡Rescatada!' } },
   powerSound() {   // campanitas mágicas + brillo
     [1046, 1318, 1568, 2093].forEach((f, i) => sweep('sine', f, f * 1.01, 0.35, 0.09, i * 0.06));
     noise(0.5, 0.05, 'highpass', 6000, null, 0.1);

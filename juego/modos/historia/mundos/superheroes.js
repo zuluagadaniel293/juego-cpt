@@ -83,19 +83,22 @@ registrarMundo('heroes', {
       g.fillEllipse(56, 80, 54, 34); g.fillEllipse(104, 80, 54, 34); g.fillRect(56, 70, 48, 16);
       g.fillStyle(0xffffff, 1); g.fillEllipse(56, 80, 22, 10); g.fillEllipse(104, 80, 22, 10);
     });
-    make('heroes_dist1', g => {          // Capitán Estrella
-      g.fillStyle(0x2563eb, 1); g.fillCircle(80, 80, 66);
-      g.fillStyle(0xffffff, 1); g.fillPoints(starPoints(80, 84, 44, 18), true);
+    // Todas las señales son rombos del mismo tamaño: solo cambian el color y el símbolo,
+    // así el niño tiene que mirar con atención y no reconocerla de lejos por la forma.
+    const insignia = (g, color) => { g.fillStyle(color, 1); g.fillPoints([{x:80,y:6},{x:154,y:80},{x:80,y:154},{x:6,y:80}], true); };
+    make('heroes_dist1', g => {          // Capitán Estrella: rombo azul con estrella
+      insignia(g, 0x2563eb);
+      g.fillStyle(0xffffff, 1); g.fillPoints(starPoints(80, 84, 38, 15), true);
     });
-    make('heroes_dist2', g => {          // Escudo Verde
-      g.fillStyle(0x16a34a, 1);
-      g.fillPoints([{x:22,y:18},{x:138,y:18},{x:138,y:80},{x:80,y:150},{x:22,y:80}], true);
+    make('heroes_dist2', g => {          // Escudo Verde: rombo verde con flecha
+      insignia(g, 0x16a34a);
       g.fillStyle(0xffffff, 1);
-      g.fillPoints([{x:80,y:40},{x:116,y:80},{x:94,y:80},{x:94,y:116},{x:66,y:116},{x:66,y:80},{x:44,y:80}], true);
+      g.fillPoints([{x:80,y:46},{x:112,y:80},{x:92,y:80},{x:92,y:112},{x:68,y:112},{x:68,y:80},{x:48,y:80}], true);
     });
-    make('heroes_dist3', g => {          // parecido al objetivo: rombo morado con estrella
+    make('heroes_dist3', g => {          // Héroe Noche (difícil): rombo MORADO con luna, igual color que Sombra
       rombo(g);
-      g.fillStyle(0xffffff, 1); g.fillPoints(starPoints(80, 84, 36, 15), true);
+      g.fillStyle(0xffffff, 1); g.fillCircle(76, 80, 32);
+      g.fillStyle(0x7c3aed, 1); g.fillCircle(92, 70, 28);
     });
   },
 

@@ -21,9 +21,10 @@ const SVGS = {
   'superheroes/objetos/senal_de_sombra (objetivo).svg': svg(rombo +
     '<g id="antifaz"><ellipse cx="56" cy="80" rx="27" ry="17" fill="#0f0f1a"/><ellipse cx="104" cy="80" rx="27" ry="17" fill="#0f0f1a"/><rect x="56" y="70" width="48" height="16" fill="#0f0f1a"/>' +
     '<ellipse cx="56" cy="80" rx="11" ry="5" fill="#ffffff"/><ellipse cx="104" cy="80" rx="11" ry="5" fill="#ffffff"/></g>'),
-  'superheroes/objetos/senal_capitan_estrella (distractor).svg': svg('<circle cx="80" cy="80" r="66" fill="#2563eb"/><polygon points="' + star(80, 84, 44, 18) + '" fill="#ffffff"/>'),
-  'superheroes/objetos/senal_escudo_verde (distractor).svg': svg('<polygon points="22,18 138,18 138,80 80,150 22,80" fill="#16a34a"/><polygon points="80,40 116,80 94,80 94,116 66,116 66,80 44,80" fill="#ffffff"/>'),
-  'superheroes/objetos/senal_rombo_estrella (distractor dificil).svg': svg(rombo + '<polygon points="' + star(80, 84, 36, 15) + '" fill="#ffffff"/>')
+  // todas las señales son rombos iguales: solo cambian el color y el símbolo
+  'superheroes/objetos/senal_capitan_estrella (distractor).svg': svg('<polygon id="rombo" points="80,6 154,80 80,154 6,80" fill="#2563eb"/><polygon id="estrella" points="' + star(80, 84, 38, 15) + '" fill="#ffffff"/>'),
+  'superheroes/objetos/senal_escudo_verde (distractor).svg': svg('<polygon id="rombo" points="80,6 154,80 80,154 6,80" fill="#16a34a"/><polygon id="flecha" points="80,46 112,80 92,80 92,112 68,112 68,80 48,80" fill="#ffffff"/>'),
+  'superheroes/objetos/senal_heroe_noche (distractor dificil).svg': svg(rombo + '<g id="luna"><circle cx="76" cy="80" r="32" fill="#ffffff"/><circle cx="92" cy="70" r="28" fill="#7c3aed"/></g>')
 };
 
 // ---------- Archivos reales (copiados tal cual de assets/) ----------
