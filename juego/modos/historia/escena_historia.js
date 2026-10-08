@@ -9,7 +9,7 @@ class StoryScene extends Phaser.Scene {
     this.ending = !!data.ending;
   }
   create() {
-    const W = this.scale.width, H = this.scale.height;
+    const W = GAME_W, H = GAME_H;
     const th = THEMES[this.themeKey];
     const st = STORY[this.themeKey];
     const tex = TEX[this.themeKey];

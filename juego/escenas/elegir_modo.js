@@ -3,7 +3,7 @@
 class ModeScene extends Phaser.Scene {
   constructor() { super('Mode'); }
   create() {
-    const W = this.scale.width, H = this.scale.height;
+    const W = GAME_W, H = GAME_H;
     this.cameras.main.setBackgroundColor(0x0f172a);
     this.add.text(W / 2, 70, '¿Cómo quieres jugar?', { font: 'bold 42px Arial', color: '#ffffff' }).setOrigin(0.5);
 

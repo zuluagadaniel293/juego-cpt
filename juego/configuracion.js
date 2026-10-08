@@ -13,6 +13,9 @@ const CONFIG = {
   AUDIO_EVERY_MS: [20000, 35000] // cada cuánto suena el distractor (rango aleatorio)
 };
 
+// Tamaño del juego: todo se diseña en 960 x 540, pero se dibuja RES veces más grande para que se vea nítido.
+const GAME_W = 960, GAME_H = 540, RES = 2;
+
 // Minijuegos: cada uno se juega distinto, pero todos miden aciertos, omisiones y comisiones.
 // instr(n, holder): n = qué buscar ("a Sombra"), holder = con qué atrapar ("la canasta" / "la red")
 const MG = {

@@ -5,7 +5,7 @@ class MinigameSelectScene extends Phaser.Scene {
   constructor() { super('MinigameSelect'); }
   init(data) { this.themeKey = data.theme; }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const th = THEMES[this.themeKey];
     const records = getRecords();
     this.cameras.main.setBackgroundColor(th.bg);

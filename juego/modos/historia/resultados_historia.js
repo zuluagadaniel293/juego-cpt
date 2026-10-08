@@ -11,7 +11,7 @@ class StoryResultsScene extends Phaser.Scene {
     this.boss = data.boss;
   }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const th = THEMES[this.themeKey];
     this.cameras.main.setBackgroundColor(th.bg);
     drawBackdrop(this, this.themeKey, this.chapter, 0.75);

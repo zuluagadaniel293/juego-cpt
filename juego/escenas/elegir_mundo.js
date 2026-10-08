@@ -5,7 +5,7 @@ class MenuScene extends Phaser.Scene {
   constructor() { super('Menu'); }
   init(data) { this.mode = data.mode || 'prueba'; }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const isChallenge = this.mode === 'desafio';
     this.cameras.main.setBackgroundColor(0x0f172a);
     backLink(this, 'Volver', () => this.scene.start('Mode'));

@@ -30,7 +30,7 @@ function starsText(n) { return '★'.repeat(n) + '☆'.repeat(3 - n); }
 
 // Texto común de resultados para el niño (estrellas + qué tan bien le fue)
 function drawKidSummary(scene, s, stars, verb, title) {
-  const W = scene.scale.width;
+  const W = GAME_W;
   scene.add.text(W / 2, 60, title, { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
   scene.add.text(W / 2, 130, starsText(stars), { font: '56px Arial', color: '#fde047' }).setOrigin(0.5);
   scene.add.text(W / 2, 215, verb + ' ' + s.hits + ' de ' + s.targets +

@@ -10,7 +10,7 @@ class ChallengeResultsScene extends Phaser.Scene {
     this.mg = data.minigame;
   }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const th = THEMES[this.themeKey];
     this.cameras.main.setBackgroundColor(th.bg);
     drawBackdrop(this, this.themeKey, (this.level - 1) % 5, 0.75);

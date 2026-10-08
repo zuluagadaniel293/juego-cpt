@@ -6,7 +6,7 @@ const MAP_WORLDS = ['heroes', 'fantasy', 'kingdom', 'Espacio', 'Océano', 'Dinos
 class WorldMapScene extends Phaser.Scene {
   constructor() { super('WorldMap'); }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     this.cameras.main.setBackgroundColor(0x0f172a);
     backLink(this, 'Volver', () => this.scene.start('Mode'));
     this.add.text(W / 2, 40, 'Mapa de aventuras', { font: 'bold 34px Arial', color: '#ffffff' }).setOrigin(0.5);

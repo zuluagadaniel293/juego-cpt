@@ -29,7 +29,7 @@ const TEX = {};   // TEX[tema][nombre] = textura a usar (archivo o dibujo provis
 // Un fondo por capítulo (idx 0-4). Si assets/manifest.js le asigna una imagen (bg_1 ... bg_5), se usa;
 // si no, se dibuja uno provisional. dim = cuánto se oscurece con el color del mundo (0 a 1).
 function drawBackdrop(scene, theme, idx, dim) {
-  const W = scene.scale.width, H = scene.scale.height;
+  const W = GAME_W, H = GAME_H;
   const key = TEX[theme]['bg_' + (idx + 1)];
   if (key) {
     const img = scene.add.image(W / 2, H / 2, key).setDepth(-20);

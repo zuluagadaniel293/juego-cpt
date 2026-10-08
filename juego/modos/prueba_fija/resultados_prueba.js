@@ -8,7 +8,7 @@ class ResultsScene extends Phaser.Scene {
     this.themeKey = data.theme;
   }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const th = THEMES[this.themeKey];
     this.cameras.main.setBackgroundColor(th.bg);
     const s = computeStats(this.log);

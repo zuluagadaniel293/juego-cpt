@@ -35,7 +35,7 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-    const W = this.scale.width, H = this.scale.height;
+    const W = GAME_W, H = GAME_H;
     const th = this.theme;
     this.cameras.main.setBackgroundColor(th.bg);
     // Fondo del capítulo/nivel: muy oscurecido al principio y más visible en niveles altos (distractor visual).
@@ -82,17 +82,80 @@ class GameScene extends Phaser.Scene {
       what = th.targetObj;
     }
     const holder = this.boss ? 'la red' : 'la canasta';
-    this.intro = [
-      fit(this.add.image(W / 2, H / 2 - 100, this.keys.target), 160).setDepth(20),
-      this.add.text(W / 2, H / 2 + 15, title, { font: 'bold 32px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(20),
-      this.add.text(W / 2, H / 2 + 85, this.lead ? MG.race.instrChase(what, th.villainObj) : MG[this.mg].instr(what, holder),
-        { font: 'bold 24px Arial', color: '#ffffff', align: 'center', lineSpacing: 6 }).setOrigin(0.5).setDepth(20)
-    ];
-    this.time.delayedCall(this.mg === 'classic' ? 3000 : 4500, () => this.begin());
+    this.showHowToPlay(title, what, holder);
+  }
+
+  // ---------- Cómo jugar: qué tocar, qué no, y con qué teclas (o con el dedo en celular) ----------
+  showHowToPlay(title, what, holder) {
+    const W = GAME_W, H = GAME_H, th = this.theme;
+    const touch = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    const D = 20, it = [];
+    const add = o => { o.setDepth(D); it.push(o); return o; };
+    const txt = (x, y, s, size, color, extra) => add(this.add.text(x, y, s, Object.assign({ font: 'bold ' + size + 'px Arial', color: color || '#ffffff', align: 'center' }, extra || {})).setOrigin(0.5));
+    const panel = add(this.add.graphics());
+    panel.fillStyle(0x0f172a, 0.85); panel.fillRoundedRect(40, 22, W - 80, H - 44, 26);
+    txt(W / 2, 58, title, 30, hexColor(th.accent));
+
+    // Ejemplos: el objetivo (sí) y los distractores (no)
+    const exY = 160;
+    add(this.add.circle(260, exY, 64, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e));
+    add(fit(this.add.image(260, exY, this.keys.target), 96));
+    txt(260, exY + 84, '✔ ¡Este sí!', 22, '#86efac');
+    const noKeys = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
+    noKeys.forEach((k, i) => {
+      const x = 560 + i * 150;
+      add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444));
+      add(fit(this.add.image(x, exY, k), 84));
+    });
+    txt(560 + (noKeys.length - 1) * 75, exY + 84, '✘ Estos no', 22, '#fca5a5');
+
+    // Controles: dibujos de las teclas (computador) o del dedo (celular / tableta)
+    const ctrlY = 335;
+    const keycap = (x, y, w, label) => {
+      const g = add(this.add.graphics());
+      g.fillStyle(0x475569, 1); g.fillRoundedRect(x - w / 2, y - 26 + 6, w, 52, 10);
+      g.fillStyle(0xf1f5f9, 1); g.fillRoundedRect(x - w / 2, y - 26, w, 52, 10);
+      g.lineStyle(2, 0x94a3b8, 1); g.strokeRoundedRect(x - w / 2, y - 26, w, 52, 10);
+      txt(x, y, label, label.length > 2 ? 20 : 28, '#0f172a');
+    };
+    const icon = (x, y, s) => txt(x, y, s, 56);
+    let explain;
+    const chase = this.lead ? '¡Persigue ' + th.villainObj + '! ' : '';
+    if (this.mg === 'classic') {
+      if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca la pantalla solo cuando veas ' + what; }
+      else { keycap(220, ctrlY, 210, 'ESPACIO'); explain = 'Presiona ESPACIO solo cuando veas ' + what; }
+    } else if (this.mg === 'catch') {
+      if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Arrastra el dedo para mover ' + holder + '. Atrapa solo ' + what + ' y esquiva lo demás'; }
+      else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
+    } else if (this.mg === 'race') {
+      if (touch) { icon(220, ctrlY, '👆'); explain = chase + 'Toca arriba o abajo de tu personaje para cambiar de carril. Agarra solo ' + what; }
+      else { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = chase + 'Cambia de carril con las flechas. Agarra solo ' + what; }
+    } else {
+      if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca ' + what + '. Si no está, no toques nada'; }
+      else { icon(220, ctrlY, '🖱️'); explain = 'Haz clic sobre ' + what + '. Si no está, no hagas clic'; }
+    }
+    txt(330, ctrlY, explain, 22, '#ffffff', { align: 'left', wordWrap: { width: 560 }, lineSpacing: 6 }).setOrigin(0, 0.5);
+
+    // Empezar cuando el niño esté listo (botón, o ESPACIO / ENTER en computador)
+    const btn = add(this.add.rectangle(W / 2, 462, 260, 62, th.accent).setInteractive({ useHandCursor: true }));
+    txt(W / 2, 462, '¡Empezar!', 26, '#0f172a');
+    if (!touch) txt(W / 2, 506, 'o presiona ESPACIO', 15, '#94a3b8');
+    let gone = false;
+    const go = () => {
+      if (gone) return; gone = true;
+      it.forEach(o => o.destroy());
+      const ya = this.add.text(W / 2, H / 2, '¡Ya!', { font: 'bold 72px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(D);
+      this.tweens.add({ targets: ya, scale: 1.4, alpha: 0, duration: 700, onComplete: () => ya.destroy() });
+      this.time.delayedCall(700, () => this.begin());
+    };
+    btn.on('pointerdown', go);
+    this.input.keyboard.once('keydown-SPACE', go);
+    this.input.keyboard.once('keydown-ENTER', go);
+    this.intro = it;
   }
 
   setupMinigame() {
-    const W = this.scale.width, H = this.scale.height;
+    const W = GAME_W, H = GAME_H;
     this.mgObjects = [];
     if (this.mg === 'classic') {
       this.stim = this.add.image(W / 2, H / 2, this.keys.target).setVisible(false);
@@ -102,7 +165,7 @@ class GameScene extends Phaser.Scene {
       this.basket = fit(this.add.image(W / 2, H - 60, this.boss ? TEX[this.themeKey].net : 'basket'), this.boss ? 120 : 144).setDepth(3);
       this.mgObjects.push(this.basket);
       this.cursors = this.input.keyboard.createCursorKeys();
-      const follow = p => { if (this.started) this.basket.x = Phaser.Math.Clamp(p.x, 70, W - 70); };
+      const follow = p => { if (this.started) this.basket.x = Phaser.Math.Clamp(this.cameras.main.getWorldPoint(p.x, p.y).x, 70, W - 70); };
       this.input.on('pointermove', follow);
       this.input.on('pointerdown', follow);
       this.fallSpeed = (H - 60 + 60) / this.params.travelMs * 1000;
@@ -141,8 +204,9 @@ class GameScene extends Phaser.Scene {
       ['UP', 'W'].forEach(k => this.input.keyboard.on('keydown-' + k, () => move(-1)));
       ['DOWN', 'S'].forEach(k => this.input.keyboard.on('keydown-' + k, () => move(1)));
       this.input.on('pointerdown', p => {
-        if (p.y < this.runner.y - 30) move(-1);
-        else if (p.y > this.runner.y + 30) move(1);
+        const y = this.cameras.main.getWorldPoint(p.x, p.y).y;   // posición del toque dentro del juego
+        if (y < this.runner.y - 30) move(-1);
+        else if (y > this.runner.y + 30) move(1);
       });
     }
     // En Clásico y Encuentra, el protagonista aparece abajo a la izquierda y lanza su poder
@@ -246,7 +310,7 @@ class GameScene extends Phaser.Scene {
     const sx = c ? ox : tx, sy = c ? oy : 0;   // sin lanzador en pantalla, el poder cae desde arriba
     if (p.kind === 'bolt') {
       this.drawBolt(sx, sy, tx, ty, p.color);
-      const fl = this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0xffffff, 0.2).setOrigin(0).setDepth(9);
+      const fl = this.add.rectangle(0, 0, GAME_W, GAME_H, 0xffffff, 0.2).setOrigin(0).setDepth(9);
       this.tweens.add({ targets: fl, alpha: 0, duration: 160, onComplete: () => fl.destroy() });
       this.impact(tx, ty);
     } else {
@@ -321,7 +385,7 @@ class GameScene extends Phaser.Scene {
     if (!this.started || this.ended || !c || c.responded) return;
     c.responded = true;
     c.rt = performance.now() - c.onset;
-    this.castPower(this.scale.width / 2, this.scale.height / 2, c.type === 'target');
+    this.castPower(GAME_W / 2, GAME_H / 2, c.type === 'target');
     if (c.type !== 'target') this.stim.setAlpha(0.35);  // error de comisión: feedback neutro, sin castigo
   }
 
@@ -332,7 +396,7 @@ class GameScene extends Phaser.Scene {
     this.time.delayedCall(Phaser.Math.Between(this.params.spawnMin, this.params.spawnMax), () => this.scheduleSpawn());
   }
   spawnItem() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const s = this.pickStimulus();
     let img, lane = null;
     if (this.mg === 'catch') {
@@ -376,7 +440,7 @@ class GameScene extends Phaser.Scene {
     it.gone = true;
   }
   updateCatch(dt) {
-    const W = this.scale.width, H = this.scale.height;
+    const W = GAME_W, H = GAME_H;
     if (this.cursors.left.isDown) this.basket.x = Math.max(70, this.basket.x - 650 * dt);
     if (this.cursors.right.isDown) this.basket.x = Math.min(W - 70, this.basket.x + 650 * dt);
     for (const it of this.items) {
@@ -503,7 +567,7 @@ class GameScene extends Phaser.Scene {
     });
   }
   showVisualDistractor(v) {
-    const W = this.scale.width, H = this.scale.height;
+    const W = GAME_W, H = GAME_H;
     const fromLeft = Math.random() < 0.5;
     const y = v.kind === 'walk' ? H - 32 : Phaser.Math.Between(62, 112);
     const img = fit(this.add.image(fromLeft ? -70 : W + 70, y, TEX[this.themeKey]['distractor_' + v.name]), v.size).setDepth(2);

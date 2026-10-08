@@ -4,7 +4,7 @@ class ChapterMapScene extends Phaser.Scene {
   constructor() { super('ChapterMap'); }
   init(data) { this.themeKey = data.theme; }
   create() {
-    const W = this.scale.width;
+    const W = GAME_W;
     const th = THEMES[this.themeKey];
     const st = STORY[this.themeKey];
     const stars = chapterStars(this.themeKey);
