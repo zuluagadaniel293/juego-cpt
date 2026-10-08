@@ -336,12 +336,16 @@ class GameScene extends Phaser.Scene {
       const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850]);
       img = fit(this.add.image(x, -50, s.key), this.boss ? 100 : 88);
     } else if (this.lead) {
-      // lo suelta el que va adelante, en su carril, con un pequeño "pop"
-      lane = this.leadLane;
-      img = fit(this.add.image(this.lead.x - 40, this.lanes[lane], s.key), 78);
+      // lo suelta el que va adelante: a veces en su carril y a veces lo lanza a otro (con un pequeño arco),
+      // para que no baste con seguirlo
+      const thrown = Math.random() < 0.45;
+      lane = thrown ? Phaser.Utils.Array.GetRandom([0, 1, 2].filter(l => l !== this.leadLane)) : this.leadLane;
+      img = fit(this.add.image(this.lead.x - 40, this.lead.y, s.key), 78);
       const sc = img.scale;
       img.setScale(0);
       this.tweens.add({ targets: img, scale: sc, duration: 150 });
+      if (thrown) this.tweens.add({ targets: img, y: this.lanes[lane], duration: 320, ease: 'Back.easeOut' });
+      else img.y = this.lanes[lane];
     } else {
       lane = Phaser.Math.Between(0, 2);
       img = fit(this.add.image(W + 60, this.lanes[lane], s.key), this.boss ? 96 : 78);
