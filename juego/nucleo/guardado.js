@@ -6,6 +6,7 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin guardado disponible */ } }
 };
 const getRecords = () => store.get('cpt_records', {});           // { 'heroes_catch': 5, ... }
+const getChallengeLevels = () => store.get('cpt_challenge_level', {}); // nivel en que va cada mundo+minijuego del Desafío
 const getStory = () => store.get('cpt_story', {});               // { heroes: [3,2,0,0,0], ... }
 const chapterStars = theme => (getStory()[theme] || [0, 0, 0, 0, 0]);
 const totalStars = () => Object.values(getStory()).reduce((a, arr) => a + arr.reduce((x, y) => x + y, 0), 0);

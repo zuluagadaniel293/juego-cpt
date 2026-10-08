@@ -25,6 +25,10 @@ class ChallengeResultsScene extends Phaser.Scene {
 
     const records = getRecords();
     const recKey = this.themeKey + '_' + this.mg;
+    // guardar en qué nivel quedó, para continuar desde ahí aunque salga del juego
+    const levels = getChallengeLevels();
+    levels[recKey] = next;
+    store.set('cpt_challenge_level', levels);
     const newRecord = stars >= 2 && this.level > (records[recKey] || 0);
     if (newRecord) {
       records[recKey] = this.level;
