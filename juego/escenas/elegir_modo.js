@@ -5,7 +5,11 @@ class ModeScene extends Phaser.Scene {
   create() {
     const W = GAME_W, H = GAME_H;
     this.cameras.main.setBackgroundColor(0x0f172a);
-    this.add.text(W / 2, 70, '¿Cómo quieres jugar?', { font: 'bold 42px Arial', color: '#ffffff' }).setOrigin(0.5);
+    // Nombre del juego
+    const logo = this.add.text(W / 2, 52, 'MISIÓN FOCO', { font: 'bold 54px Arial', color: '#fde047', stroke: '#7c3aed', strokeThickness: 10 })
+      .setOrigin(0.5).setShadow(0, 6, '#000000', 0, true, true);
+    this.tweens.add({ targets: logo, scale: 1.04, duration: 900, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+    this.add.text(W / 2, 104, '¡Concéntrate y salva tu mundo!  ·  ¿Cómo quieres jugar?', { font: 'bold 20px Arial', color: '#cbd5e1' }).setOrigin(0.5);
 
     const modeCard = (x, stroke, icon, title, desc, extra, onClick) => {
       const card = drawCard(this, x, 290, 360, 300, 0xffffff, 0.06, stroke);
