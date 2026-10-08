@@ -32,7 +32,7 @@ class WorldMapScene extends Phaser.Scene {
         c.on('pointerdown', () => this.scene.start('ChapterMap', { theme: w }));
       } else {
         this.add.circle(x, y, 52, 0x1e293b).setStrokeStyle(5, 0x475569);
-        this.add.image(x, y, 'icon_lock').setScale(0.32);
+        fit(this.add.image(x, y, 'icon_lock'), 46);
         this.add.text(x, y + 72, w, { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.55);
         this.add.text(x, y + 96, 'Pronto', { font: 'bold 15px Arial', color: '#94a3b8' }).setOrigin(0.5);
       }

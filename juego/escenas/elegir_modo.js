@@ -9,7 +9,7 @@ class ModeScene extends Phaser.Scene {
 
     const modeCard = (x, stroke, icon, title, desc, extra, onClick) => {
       const card = drawCard(this, x, 290, 360, 300, 0xffffff, 0.06, stroke);
-      this.add.image(x, 220, icon).setScale(0.75);
+      fit(this.add.image(x, 220, icon), 120);
       this.add.text(x, 315, title, { font: 'bold 32px Arial', color: '#ffffff' }).setOrigin(0.5);
       this.add.text(x, 365, desc, { font: '18px Arial', color: '#cbd5e1', align: 'center' }).setOrigin(0.5);
       if (extra) this.add.text(x, 418, extra, { font: 'bold 17px Arial', color: hexColor(stroke) }).setOrigin(0.5);

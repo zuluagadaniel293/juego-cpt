@@ -41,7 +41,7 @@ class ChapterMapScene extends Phaser.Scene {
         if (i === current) this.add.text(x, y + r + 50, '¡Jugar!', { font: 'bold 18px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
       } else {
         node = this.add.circle(x, y, r, ch.boss ? 0x3b1f6e : 0xffffff, ch.boss ? 1 : 0.1);
-        this.add.image(x, y, 'icon_lock').setScale(ch.boss ? 0.36 : 0.28);
+        fit(this.add.image(x, y, 'icon_lock'), ch.boss ? 52 : 40);
       }
       this.add.text(x, y + r + 22, ch.place, { font: 'bold 17px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(unlocked ? 1 : 0.55);
       if (unlocked) {

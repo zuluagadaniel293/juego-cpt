@@ -134,11 +134,11 @@ Como referencia de estilo para los fondos, adjunta uno de los que ya tienes (por
 ---
 
 ## Lista de control
-- [ ] Mensaje 1: 4 personajes del Reino
-- [ ] Mensaje 2: 2 amigos parecidos al villano
-- [ ] Mensaje 3: 3 villanos atrapados
-- [ ] Mensaje 4: 4 señales de Superhéroes
-- [ ] Mensaje 5: 7 objetos del juego
-- [ ] Mensaje 6: 4 íconos
-- [ ] Mensajes 7-18: 12 fondos
+- [x] Mensaje 1: 4 personajes del Reino
+- [x] Mensaje 2: 2 amigos parecidos al villano
+- [x] Mensaje 3: 3 villanos atrapados
+- [x] Mensaje 4: 4 señales de Superhéroes
+- [ ] Mensaje 5: 7 objetos del juego → llegaron 6; **falta la nubecita de humo gris** (`humo.png`), que aparece cuando el niño toca el objeto equivocado
+- [x] Mensaje 6: 4 íconos
+- [x] Mensajes 7-18: 12 fondos
 - [ ] Opcional: 3 escenas finales

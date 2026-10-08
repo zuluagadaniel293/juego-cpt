@@ -9,9 +9,17 @@ class BootScene extends Phaser.Scene {
       const p = assetFile(t, n);
       if (p) this.load.image('img_' + t + '_' + n, 'assets/' + p);
     }));
+    // objetos e íconos comunes (canasta, red, efectos, íconos)
+    Object.entries(COMMON_ASSETS).forEach(([k, p]) => this.load.image('img_common_' + k, 'assets/' + p));
   }
   create() {
     buildTextures(this);
+    // si hay imagen común, reemplaza al dibujo provisional con el mismo nombre ('basket', 'net', 'icon_map'...)
+    Object.keys(COMMON_ASSETS).forEach(k => {
+      if (!this.textures.exists('img_common_' + k)) return;
+      if (this.textures.exists(k)) this.textures.remove(k);
+      this.textures.renameTexture('img_common_' + k, k);
+    });
     Object.keys(THEMES).forEach(t => {
       TEX[t] = {};
       assetNamesFor(t).forEach(n => {

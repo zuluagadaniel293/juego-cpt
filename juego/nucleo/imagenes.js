@@ -5,6 +5,7 @@
 const ASSET_NAMES = ['target', 'dist1', 'dist2', 'dist3', 'hero', 'hero_run', 'villain', 'villain_caught',
   'friend1', 'friend2', 'friend3', 'net', 'end', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
 const ASSETS = window.ASSETS || {};
+const COMMON_ASSETS = ASSETS.comunes || {};   // objetos e íconos de todos los mundos
 
 // Archivo asignado a un papel de un mundo (ruta dentro de assets/), o null si no tiene.
 function assetFile(theme, name) {
@@ -53,4 +54,13 @@ function skyGradient(g, top, bottom, W, H) {
 function fit(img, px) {   // escala una imagen para que su lado mayor mida px
   img.setScale(px / Math.max(img.width, img.height));
   return img;
+}
+// Escala para partículas: que la textura (dibujo o imagen) mida unos px en pantalla
+function sizeScale(scene, key, px) {
+  const f = scene.textures.getFrame(key);
+  return px / Math.max(f.width, f.height);
+}
+// Chispa de los efectos: la imagen común si existe; si no, la chispa del color de cada mundo
+function sparkKey(scene, theme) {
+  return scene.textures.exists('spark') ? 'spark' : 'spark_' + theme;
 }

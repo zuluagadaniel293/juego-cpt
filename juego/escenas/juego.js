@@ -252,7 +252,7 @@ class GameScene extends Phaser.Scene {
     } else {
       const n = p.kind === 'stars' ? 5 : 1;
       for (let i = 0; i < n; i++) {
-        const proj = this.add.image(sx, sy, p.kind === 'fire' ? 'fireball' : 'magicstar').setDepth(9);
+        const proj = fit(this.add.image(sx, sy, p.kind === 'fire' ? 'fireball' : 'magicstar'), p.kind === 'fire' ? 56 : 40).setDepth(9);
         const jitter = () => (n > 1 ? Phaser.Math.Between(-30, 30) : 0);
         this.tweens.add({ targets: proj, x: tx + jitter(), y: ty + jitter(), angle: 360, duration: 170, delay: i * 35,
           onComplete: () => { proj.destroy(); if (i === n - 1) this.impact(tx, ty); } });
@@ -263,11 +263,13 @@ class GameScene extends Phaser.Scene {
   rescueEffect(x, y) {
     const glow = this.add.circle(x, y, 55, 0xfef08a, 0.45).setDepth(8);
     this.tweens.add({ targets: glow, scale: 1.7, alpha: 0, duration: 650, onComplete: () => glow.destroy() });
+    const hk = sizeScale(this, 'heart', 30);
     const hearts = this.add.particles(x, y, 'heart', { speedX: { min: -70, max: 70 }, speedY: { min: -170, max: -70 },
-      lifespan: 900, scale: { start: 0.9, end: 0.3 }, alpha: { start: 1, end: 0 }, emitting: false }).setDepth(9);
+      lifespan: 900, scale: { start: 0.9 * hk, end: 0.3 * hk }, alpha: { start: 1, end: 0 }, emitting: false }).setDepth(9);
     hearts.explode(8);
-    const sparks = this.add.particles(x, y, 'spark_' + this.themeKey, { speed: { min: 40, max: 120 }, lifespan: 600,
-      scale: { start: 0.8, end: 0 }, alpha: { start: 0.9, end: 0 }, emitting: false }).setDepth(9);
+    const sk = sparkKey(this, this.themeKey), ss = sizeScale(this, sk, 18);
+    const sparks = this.add.particles(x, y, sk, { speed: { min: 40, max: 120 }, lifespan: 600,
+      scale: { start: 0.8 * ss, end: 0 }, alpha: { start: 0.9, end: 0 }, emitting: false }).setDepth(9);
     sparks.explode(12);
     this.time.delayedCall(1000, () => { hearts.destroy(); sparks.destroy(); });
   }
@@ -285,8 +287,9 @@ class GameScene extends Phaser.Scene {
     this.tweens.add({ targets: g, alpha: 0, duration: 260, delay: 60, onComplete: () => g.destroy() });
   }
   impact(x, y) {
-    const em = this.add.particles(x, y, 'spark_' + this.themeKey, { speed: { min: 120, max: 340 }, lifespan: 520,
-      scale: { start: 1, end: 0 }, alpha: { start: 1, end: 0 }, emitting: false }).setDepth(9);
+    const sk = sparkKey(this, this.themeKey), ss = sizeScale(this, sk, 18);
+    const em = this.add.particles(x, y, sk, { speed: { min: 120, max: 340 }, lifespan: 520,
+      scale: { start: ss, end: 0 }, alpha: { start: 1, end: 0 }, emitting: false }).setDepth(9);
     em.explode(26);
     this.time.delayedCall(800, () => em.destroy());
     const r = this.add.circle(x, y, 60).setStrokeStyle(8, POWERS[this.themeKey].color).setDepth(8);
