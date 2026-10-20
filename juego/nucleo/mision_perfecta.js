@@ -37,7 +37,7 @@ function drawTreasure(scene, theme, x, y, r, pieces, depth) {
   const D = depth || 0, style = TREASURES[theme].style, deg = Phaser.Math.DegToRad;
   const imgKey = TEX[theme].treasure;
   const ghost = scene.add.graphics().setDepth(D);
-  const g = scene.add.graphics().setDepth(D + 1);
+  const g = scene.add.graphics().setDepth(D + 2);   // encima de la imagen: cortes y brillo
   const objects = [ghost, g];
   let img = null, maskG = null;
   if (imgKey) {   // con imagen: la imagen se ve tenue y los pedazos ganados se ven a todo color
@@ -64,10 +64,24 @@ function drawTreasure(scene, theme, x, y, r, pieces, depth) {
 
   const redraw = ps => {
     g.clear();
-    if (maskG) maskG.clear();
+    if (maskG) {
+      // todos los pedazos en una sola figura: en modo Canvas el recorte solo usa la última figura
+      maskG.clear();
+      maskG.fillStyle(0xffffff, 1);
+      maskG.beginPath();
+      for (let i = 0; i < 3; i++) {
+        const f = Math.min(1, ps[i] || 0), a0 = -90 + 120 * i;
+        if (f <= 0) continue;
+        maskG.moveTo(x, y);
+        for (let a = a0; a < a0 + 120 * f; a += 4) maskG.lineTo(...polar(a, r));
+        maskG.lineTo(...polar(a0 + 120 * f, r));
+        maskG.lineTo(x, y);
+      }
+      maskG.fillPath();
+    }
     for (let i = 0; i < 3; i++) {
       const f = ps[i] || 0;
-      if (maskG) { slice(maskG, r, i, f, 0xffffff); continue; }
+      if (maskG) continue;
       if (style === 'shield') {          // escudo: anillos rojo, blanco, azul y centro amarillo
         slice(g, r, i, f, 0xdc2626); slice(g, r * 0.8, i, f, 0xf1f5f9); slice(g, r * 0.6, i, f, 0x2563eb); slice(g, r * 0.32, i, f, 0xfde047);
       } else if (style === 'gem') {      // gema: naranja con centro dorado y facetas
@@ -89,15 +103,15 @@ function drawTreasure(scene, theme, x, y, r, pieces, depth) {
         if (f >= 1) { const [cx, cy] = polar(-30 + 120 * i, r * 0.6); g.fillStyle(0xe11d48, 1); g.fillCircle(cx, cy, r / 8); }
       }
     }
-    // Cortes entre pedazos (para que se vea que son 3)
-    if (!maskG) {
+    // Cortes entre pedazos (para que se vea que son 3); completo, el tesoro se ve entero
+    if (perfectCount(ps) < 3) {
       g.lineStyle(Math.max(1.5, r / 25), 0x0f172a, 0.55);
       for (let i = 0; i < 3; i++) if (ps[i] > 0 || ps[(i + 2) % 3] >= 1) { const [px, py] = polar(-90 + 120 * i, r); g.lineBetween(x, y, px, py); }
     }
     // Completo: brillo dorado alrededor y estrella al centro
     if (ps.length >= 3 && perfectCount(ps) >= 3) {
       g.lineStyle(Math.max(3, r / 12), 0xfde047, 1); g.strokeCircle(x, y, r + r / 14);
-      if (style === 'shield') {
+      if (style === 'shield' && !imgKey) {   // la imagen ya trae su estrella
         const pts = [];
         for (let k = 0; k < 10; k++) pts.push(new Phaser.Math.Vector2(...polar(-90 + 36 * k, k % 2 ? r * 0.13 : r * 0.3)));
         g.fillStyle(0xffffff, 1); g.fillPoints(pts, true);

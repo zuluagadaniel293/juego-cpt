@@ -29,6 +29,7 @@ window.ASSETS = {
     hero:    'superheroes/heroe_rayo.png',
     villain: 'superheroes/sombra.png',
     villain_caught: 'superheroes/sombra_atrapado.png',
+    treasure: 'superheroes/tesoro_escudo.png',   // Misión perfecta
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
     friend3: 'superheroes/heroe_noche.png',
@@ -51,6 +52,7 @@ window.ASSETS = {
     hero:    'dragones/chispa_la_dragona.png',
     villain: 'dragones/morgana_la_hechicera.png',
     villain_caught: 'dragones/morgana_atrapada.png',
+    treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
     friend3: 'dragones/hechicera_buena.png',
@@ -71,6 +73,7 @@ window.ASSETS = {
     hero:    'reino_magico/reina_luna.png',
     villain: 'reino_magico/duende_picaro.png',
     villain_caught: 'reino_magico/duende_atrapado.png',
+    treasure: 'reino_magico/tesoro_pastel.png',
     friend1: 'reino_magico/guardia.png',
     friend2: 'reino_magico/bufon.png',
     friend3: 'reino_magico/duende_amable.png',
@@ -94,6 +97,7 @@ window.ASSETS = {
     icon_map:    'comunes/icono_mapa.png',
     icon_trophy: 'comunes/icono_trofeo.png',
     icon_lock:   'comunes/icono_candado.png',
-    icon_find:   'comunes/icono_lupa.png'
+    icon_find:   'comunes/icono_lupa.png',
+    icon_memory: 'comunes/icono_memoria.png'     // modo Memoria
   }
 };
