@@ -40,8 +40,16 @@ class ChapterMapScene extends Phaser.Scene {
         else this.add.text(x, y, String(i + 1), { font: 'bold 36px Arial', color: '#0f172a' }).setOrigin(0.5);
         if (i === current) this.add.text(x, y + r + 50, '¡Jugar!', { font: 'bold 18px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
       } else {
-        node = this.add.circle(x, y, r, ch.boss ? 0x3b1f6e : 0xffffff, ch.boss ? 1 : 0.1);
-        fit(this.add.image(x, y, 'icon_lock'), ch.boss ? 52 : 40);
+        // Bloqueado: la silueta de lo que hay adentro (el villano en el jefe final, el objeto del minijuego
+        // en los demás), con un "?" y un candado pequeño, para dar curiosidad
+        const what = ch.boss ? TEX[this.themeKey].villain
+          : { classic: TEX[this.themeKey].target, catch: 'basket', race: TEX[this.themeKey].hero_run, find: 'icon_find' }[ch.mg];
+        const objs = mysteryNode(this, x, y, r, silhouetteOf(this, what), ch.boss ? 0x7c3aed : undefined);
+        objs.push(fit(this.add.image(x - r * 0.7, y + r * 0.7, 'icon_lock'), ch.boss ? 30 : 24));
+        node = objs[0].setInteractive({ useHandCursor: true });
+        node.on('pointerdown', () => teaseLocked(this, objs, ch.boss
+          ? '¿Quién se esconde aquí? Supera los capítulos para descubrirlo'
+          : '¿Qué habrá aquí? Supera el capítulo anterior para descubrirlo'));
       }
       this.add.text(x, y + r + 22, ch.place, { font: 'bold 17px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(unlocked ? 1 : 0.55);
       if (unlocked) {

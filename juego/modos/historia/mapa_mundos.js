@@ -2,6 +2,8 @@
 
 // Mundos del mapa: los 3 primeros ya se pueden jugar; el resto llega pronto.
 const MAP_WORLDS = ['heroes', 'fantasy', 'kingdom', 'Espacio', 'Océano', 'Dinosaurios', 'Robots', 'Selva', 'Dulces'];
+// Silueta de cada mundo que viene (emoji pintado de sombra), para dar curiosidad sin decir el nombre
+const COMING_WORLDS = { 'Espacio': '🚀', 'Océano': '🐙', 'Dinosaurios': '🦖', 'Robots': '🤖', 'Selva': '🐒', 'Dulces': '🍭' };
 
 class WorldMapScene extends Phaser.Scene {
   constructor() { super('WorldMap'); }
@@ -31,10 +33,11 @@ class WorldMapScene extends Phaser.Scene {
         c.on('pointerout', () => c.setScale(1));
         c.on('pointerdown', () => this.scene.start('ChapterMap', { theme: w }));
       } else {
-        this.add.circle(x, y, 52, 0x1e293b).setStrokeStyle(5, 0x475569);
-        fit(this.add.image(x, y, 'icon_lock'), 46);
-        this.add.text(x, y + 72, w, { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.55);
+        const objs = mysteryNode(this, x, y, 52, silhouetteEmoji(this, COMING_WORLDS[w]));
+        this.add.text(x, y + 72, '¿ ? ? ?', { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.7);
         this.add.text(x, y + 96, 'Pronto', { font: 'bold 15px Arial', color: '#94a3b8' }).setOrigin(0.5);
+        objs[0].setInteractive({ useHandCursor: true })
+          .on('pointerdown', () => teaseLocked(this, objs, '¿Qué mundo será? ¡Muy pronto lo descubrirás!'));
       }
     });
   }
