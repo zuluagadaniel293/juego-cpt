@@ -44,6 +44,7 @@ class StoryResultsScene extends Phaser.Scene {
     makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1,
       () => downloadCSV(this.log, 'historia_' + this.themeKey + '_cap' + (this.chapter + 1)));
     makeButton(this, W / 2 + 170, 490, 280, 50, 'Capítulos', 0xcbd5e1, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
+    perfectMissionPanel(this, this.themeKey, this.log);
     missionCheck(this);
   }
 }

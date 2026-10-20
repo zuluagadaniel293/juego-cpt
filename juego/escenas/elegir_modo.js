@@ -32,7 +32,8 @@ class ModeScene extends Phaser.Scene {
     modeCard(790, 0xa78bfa, this.memoryIcon(), 'Memoria', 'Recuerda el camino\ny repítelo',
       mem ? 'Tu récord: ' + mem + ' pasos' : '', () => this.scene.start('Menu', { mode: 'memoria' }));
 
-    drawDailyMission(this, W / 2, 466);
+    drawDailyMission(this, 330, 466);
+    drawPerfectMission(this, 660, 466);
 
     // Zona de adultos: prueba fija para comparar sesiones
     // (abajo a la izquierda: la esquina derecha la tapa el botón "Powered by Netlify" en la versión publicada)

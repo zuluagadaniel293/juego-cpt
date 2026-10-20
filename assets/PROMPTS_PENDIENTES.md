@@ -133,6 +133,20 @@ Como referencia de estilo para los fondos, adjunta uno de los que ya tienes (por
 
 ---
 
+## Opcional · Tesoros de la Misión perfecta (uno por mundo)
+Hoy se dibujan solos; si llega la imagen, el juego la recorta en 3 pedazos. Debe ser **redonda y vista de frente o desde arriba**, ocupando todo el cuadro.
+> [Reglas] Un solo objeto **redondo**, visto de frente, centrado y ocupando casi toda la imagen, fondo blanco liso: [descripción].
+
+| Archivo | Descripción |
+|---|---|
+| `superheroes/tesoro_escudo.png` | Escudo redondo de superhéroe con anillos rojo, blanco y azul, y una estrella blanca en el centro amarillo |
+| `dragones/tesoro_gema.png` | Gema de fuego redonda y facetada, naranja y dorada, con brillo interior como lava |
+| `reino_magico/tesoro_pastel.png` | Pastel real redondo visto desde arriba: betún rosado, borde de crema, chispas de colores y fresas |
+
+Después agrégalo en `assets/manifest.js` como `treasure: 'superheroes/tesoro_escudo.png'` (y así en cada mundo).
+
+---
+
 ## Lista de control
 - [x] Mensaje 1: 4 personajes del Reino
 - [x] Mensaje 2: 2 amigos parecidos al villano

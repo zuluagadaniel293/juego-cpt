@@ -3,7 +3,7 @@
 // ======================= IMÁGENES Y AUDIOS (carpeta assets) =======================
 // Cada imagen tiene un dibujo provisional. Si assets/manifest.js le asigna un archivo, se usa el archivo.
 const ASSET_NAMES = ['target', 'dist1', 'dist2', 'dist3', 'hero', 'hero_run', 'villain', 'villain_caught',
-  'friend1', 'friend2', 'friend3', 'net', 'end', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
+  'friend1', 'friend2', 'friend3', 'net', 'end', 'treasure', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
 const ASSETS = window.ASSETS || {};
 const COMMON_ASSETS = ASSETS.comunes || {};   // objetos e íconos de todos los mundos
 
@@ -19,7 +19,7 @@ function fallbackKey(theme, name) {
   if (name.startsWith('distractor_')) return theme + '_dv_' + name.slice('distractor_'.length);
   if (name === 'hero' || name === 'hero_run') return 'char_' + theme;
   if (name === 'net') return 'net';
-  if (name === 'end' || name === 'villain_caught' || name.startsWith('bg_')) return null; // se generan aparte
+  if (name === 'end' || name === 'villain_caught' || name === 'treasure' || name.startsWith('bg_')) return null; // se generan aparte
   if (name === 'friend3' && theme !== 'heroes') return theme + '_friend1';
   return theme + '_' + name;
 }
