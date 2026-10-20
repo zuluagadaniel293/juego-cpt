@@ -10,7 +10,13 @@ const CONFIG = {
   ISI_MAX: 1400,             // pausa máxima entre estímulos
   TARGET_PROB: 0.25,         // proporción de estímulos objetivo
   AUDIO_DISTRACTOR: true,    // distractor auditivo ON/OFF
-  AUDIO_EVERY_MS: [20000, 35000] // cada cuánto suena el distractor (rango aleatorio)
+  AUDIO_EVERY_MS: [20000, 35000], // cada cuánto suena el distractor (rango aleatorio)
+  // Misión del día (ver nucleo/mision_del_dia.js): minutos por día y días por semana recomendados
+  DAILY_GOAL_MIN: 20,
+  WEEKLY_DAYS_GOAL: 5,
+  // Modo Memoria (tipo Corsi): tiempo que se ve cada paso de la secuencia y pausa entre pasos
+  MEMORY_SHOW_MS: 700,
+  MEMORY_GAP_MS: 300
 };
 
 // Tamaño del juego: todo se diseña en 960 x 540, pero se dibuja RES veces más grande para que se vea nítido.

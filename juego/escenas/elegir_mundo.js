@@ -6,13 +6,14 @@ class MenuScene extends Phaser.Scene {
   init(data) { this.mode = data.mode || 'prueba'; }
   create() {
     const W = GAME_W;
-    const isChallenge = this.mode === 'desafio';
+    const isChallenge = this.mode === 'desafio', isMemory = this.mode === 'memoria';
     this.cameras.main.setBackgroundColor(0x0f172a);
     backLink(this, 'Volver', () => this.scene.start('Mode'));
-    this.add.text(W / 2, 60, isChallenge ? 'Desafío: elige tu mundo' : 'Elige tu aventura',
+    this.add.text(W / 2, 60, isChallenge ? 'Desafío: elige tu mundo' : isMemory ? 'Memoria: elige tu mundo' : 'Elige tu aventura',
       { font: 'bold 44px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 110, isChallenge
       ? 'Cada nivel es un poco más difícil. ¿Hasta dónde llegas?'
+      : isMemory ? 'Recuerda el camino del objeto especial y repítelo'
       : 'Toca la pantalla o presiona ESPACIO solo cuando aparezca el objeto especial',
       { font: '20px Arial', color: '#cbd5e1' }).setOrigin(0.5);
 
@@ -30,6 +31,7 @@ class MenuScene extends Phaser.Scene {
       card.on('pointerdown', () => {
         getCtx(); // activa el audio con el primer clic
         if (isChallenge) this.scene.start('MinigameSelect', { theme: key });
+        else if (isMemory) this.scene.start('Memory', { theme: key });
         else this.scene.start('Game', { mode: 'prueba', theme: key });
       });
     });

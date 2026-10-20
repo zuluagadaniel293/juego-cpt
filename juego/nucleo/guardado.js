@@ -7,6 +7,7 @@ const store = {
 };
 const getRecords = () => store.get('cpt_records', {});           // { 'heroes_catch': 5, ... }
 const getChallengeLevels = () => store.get('cpt_challenge_level', {}); // nivel en que va cada mundo+minijuego del Desafío
-const getStory = () => store.get('cpt_story', {});               // { heroes: [3,2,0,0,0], ... }
+const getMemory = () => store.get('cpt_memory', {});             // { heroes: { fwd: 5, bwd: 4 }, ... } mejor secuencia en Memoria
+const getStory =() => store.get('cpt_story', {});               // { heroes: [3,2,0,0,0], ... }
 const chapterStars = theme => (getStory()[theme] || [0, 0, 0, 0, 0]);
 const totalStars = () => Object.values(getStory()).reduce((a, arr) => a + arr.reduce((x, y) => x + y, 0), 0);

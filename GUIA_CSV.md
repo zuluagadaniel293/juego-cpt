@@ -56,3 +56,25 @@ Activa **Datos → Filtro** y filtra `tipo_evento = estimulo`.
 | **Distractibilidad** | mira si hay más `omision` o `error_impulsivo` en los 2-3 segundos siguientes a un `distractor_sonido` o `distractor_visual` (compara su `momento_ms`) |
 
 La pantalla de resultados de la **Prueba fija** ya muestra estas medidas calculadas para el adulto.
+
+## CSV del modo Memoria
+El modo **Memoria** es una tarea tipo **Corsi** (memoria de trabajo visoespacial): el objetivo del mundo aparece en varias de las 9 casillas, una tras otra, y el niño las toca en el mismo orden (**adelante**) y luego del último al primero (**al revés**). La secuencia crece de a 1 al acertar; con 2 fallos seguidos en el mismo largo termina la fase.
+
+Nombre del archivo: `cpt_memoria_<mundo>_<fecha>_<hora>.csv`. Cada fila es **un camino** (ensayo).
+
+| Columna | Qué significa |
+|---|---|
+| `fase` | `adelante` (memoria a corto plazo) o `al_reves` (memoria de trabajo: hay que manipular lo recordado) |
+| `ensayo` | Número de camino dentro de la partida |
+| `largo_secuencia` | Cuántas casillas tenía el camino |
+| `casillas_mostradas` | Casillas en el orden en que aparecieron (numeradas 1 a 9, por ejemplo `4-8-6`) |
+| `respuesta_esperada` | Lo que debía tocar (en `al_reves` es la secuencia invertida) |
+| `respuesta_del_nino` | Lo que tocó |
+| `correcto` | `si` / `no` |
+| `tiempo_primer_toque_ms` | Cuánto tardó en empezar a responder |
+| `tiempo_total_respuesta_ms` | Cuánto tardó en tocar todo el camino |
+
+**Medidas principales:**
+- **Span adelante** = el `largo_secuencia` más alto con `correcto = si` en `adelante`. Referencia aproximada para 8-12 años: ~5.
+- **Span al revés** = lo mismo en `al_reves`. Referencia aproximada: ~4. En TDAH suele ser el más afectado.
+- **Total correcto** = cantidad de `si`.

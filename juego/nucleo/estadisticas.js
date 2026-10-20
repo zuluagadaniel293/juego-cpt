@@ -79,6 +79,26 @@ function downloadCSV(log, name) {
     ['tiempo_reaccion_ms', r => r.rt_ms],
     ['resultado', r => CSV_TEXT.outcome[r.outcome] || r.outcome]
   ];
+  saveCSV(cols, log, name);
+}
+// Memoria (tipo Corsi): una fila por camino. Las casillas van numeradas del 1 al 9.
+function downloadMemoryCSV(log, theme) {
+  const cols = [
+    ['modo', () => 'Memoria'],
+    ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
+    ['fase', r => (r.direction === 'fwd' ? 'adelante' : 'al_reves')],
+    ['ensayo', r => r.trial],
+    ['largo_secuencia', r => r.length],
+    ['casillas_mostradas', r => r.shown],
+    ['respuesta_esperada', r => r.expected],
+    ['respuesta_del_nino', r => r.answered],
+    ['correcto', r => (r.correct ? 'si' : 'no')],
+    ['tiempo_primer_toque_ms', r => r.first_tap_ms],
+    ['tiempo_total_respuesta_ms', r => r.total_ms]
+  ];
+  saveCSV(cols, log, 'memoria_' + theme);
+}
+function saveCSV(cols, log, name) {
   const cell = v => (v === undefined || v === null ? '' : String(v).replace(/;/g, ','));
   const lines = [cols.map(c => c[0]).join(';')].concat(log.map(r => cols.map(c => cell(c[1](r))).join(';')));
   // BOM + punto y coma: Excel en español lo abre en columnas y con tildes correctas

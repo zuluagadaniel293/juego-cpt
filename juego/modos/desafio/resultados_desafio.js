@@ -47,5 +47,6 @@ class ChallengeResultsScene extends Phaser.Scene {
       () => this.scene.start('Game', { mode: 'desafio', theme: this.themeKey, level: next, minigame: this.mg }));
     makeButton(this, W / 2 - 170, 495, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadCSV(runLog, 'desafio_' + this.themeKey));
     makeButton(this, W / 2 + 170, 495, 280, 50, 'Otro juego', 0xcbd5e1, () => this.scene.start('MinigameSelect', { theme: this.themeKey }));
+    missionCheck(this);
   }
 }

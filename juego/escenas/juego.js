@@ -580,6 +580,7 @@ class GameScene extends Phaser.Scene {
   finish() {
     if (this.ended) return;
     this.ended = true;
+    if (this.started) addPlayTime(this, this.elapsed());   // tiempo para la Misión del día
     // Jefe final: al terminar la fase de la red, el villano escapa y empieza la persecución
     const ch = this.mode === 'historia' ? STORY[this.themeKey].chapters[this.chapter] : null;
     if (ch && ch.phases && this.phase < ch.phases.length - 1) {

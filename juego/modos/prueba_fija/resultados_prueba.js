@@ -31,5 +31,6 @@ class ResultsScene extends Phaser.Scene {
 
     makeButton(this, W / 2 - 170, 470, 300, 60, 'Descargar CSV', 0xfde047, () => downloadCSV(this.log, 'prueba_' + this.themeKey));
     makeButton(this, W / 2 + 170, 470, 300, 60, 'Jugar de nuevo', 0x86efac, () => this.scene.start('Menu', { mode: 'prueba' }));
+    missionCheck(this);
   }
 }
