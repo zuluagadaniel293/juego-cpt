@@ -32,7 +32,7 @@ class MemoryResultsScene extends Phaser.Scene {
       { font: 'bold 24px Arial', color: newRecord ? '#86efac' : hexColor(th.accent) }).setOrigin(0.5);
 
     makeButton(this, W / 2, 400, 320, 64, 'Jugar otra vez', th.accent, () => this.scene.start('Memory', { theme: this.themeKey }));
-    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadMemoryCSV(this.log, this.themeKey));
+    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadMemoryCSV(this.log, 'memoria_' + this.themeKey));
     makeButton(this, W / 2 + 170, 490, 280, 50, 'Otro mundo', 0xcbd5e1, () => this.scene.start('Menu', { mode: 'memoria' }));
     missionCheck(this);
   }

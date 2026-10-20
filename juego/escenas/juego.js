@@ -16,7 +16,8 @@ class GameScene extends Phaser.Scene {
       this.params = pruebaParams();
     } else if (this.mode === 'historia') {
       const ch = STORY[this.themeKey].chapters[this.chapter];
-      const spec = ch.phases ? ch.phases[this.phase] : ch;
+      // el juego del capítulo sale del orden aleatorio del mundo; la dificultad, del capítulo
+      const spec = ch.phases ? ch.phases[this.phase] : { mg: chapterGame(this.themeKey, this.chapter), sec: ch.sec };
       this.boss = !!ch.boss;
       this.level = ch.level;
       this.params = challengeParams(ch.level, spec.mg);
@@ -393,20 +394,23 @@ class GameScene extends Phaser.Scene {
   scheduleSpawn() {
     if (this.elapsed() >= this.params.sessionMs) { this.spawningDone = true; return; }
     this.spawnItem();
+    // en niveles altos, a veces sale otro distractor al mismo tiempo (en otra columna o carril)
+    if (Math.random() < (this.params.extraProb || 0)) this.spawnItem(true);
     this.time.delayedCall(Phaser.Math.Between(this.params.spawnMin, this.params.spawnMax), () => this.scheduleSpawn());
   }
-  spawnItem() {
+  spawnItem(extra) {
     const W = GAME_W;
-    const s = this.pickStimulus();
+    const s = extra ? { type: 'distractor', key: this.distractorKey() } : this.pickStimulus();
     let img, lane = null;
     if (this.mg === 'catch') {
-      const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850]);
+      const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850].filter(v => !extra || v !== this.lastX));
+      this.lastX = x;
       img = fit(this.add.image(x, -50, s.key), this.boss ? 100 : 88);
     } else if (this.lead) {
       // lo suelta el que va adelante: a veces en su carril y a veces lo lanza a otro (con un pequeño arco),
       // para que no baste con seguirlo
-      const thrown = Math.random() < 0.45;
-      lane = thrown ? Phaser.Utils.Array.GetRandom([0, 1, 2].filter(l => l !== this.leadLane)) : this.leadLane;
+      const thrown = extra || Math.random() < 0.45;
+      lane = thrown ? Phaser.Utils.Array.GetRandom([0, 1, 2].filter(l => l !== this.leadLane && (!extra || l !== this.lastLane))) : this.leadLane;
       img = fit(this.add.image(this.lead.x - 40, this.lead.y, s.key), 78);
       const sc = img.scale;
       img.setScale(0);
@@ -414,9 +418,10 @@ class GameScene extends Phaser.Scene {
       if (thrown) this.tweens.add({ targets: img, y: this.lanes[lane], duration: 320, ease: 'Back.easeOut' });
       else img.y = this.lanes[lane];
     } else {
-      lane = Phaser.Math.Between(0, 2);
+      lane = Phaser.Utils.Array.GetRandom([0, 1, 2].filter(l => !extra || l !== this.lastLane));
       img = fit(this.add.image(W + 60, this.lanes[lane], s.key), this.boss ? 96 : 78);
     }
+    if (lane !== null) this.lastLane = lane;
     this.trial++;
     this.items.push({ img, lane, trial: this.trial, type: s.type, key: s.key, onset: performance.now(), resolved: false });
   }
@@ -555,14 +560,20 @@ class GameScene extends Phaser.Scene {
   scheduleVisual() {
     const P = this.params;
     const list = DISTRACTORS[this.themeKey].visual
-      .filter(v => !(this.mg === 'catch' && v.kind === 'walk'));   // en Atrapa, abajo está la canasta
+      .filter(v => !((this.mg === 'catch' || this.mg === 'memory') && v.kind === 'walk'));   // abajo está la canasta / las casillas
     if (!P.visual || !list.length) return;
     const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);
     this.time.delayedCall(d, () => {
       if (this.ended) return;
-      const v = Phaser.Utils.Array.GetRandom(list);
-      this.showVisualDistractor(v);
-      this.logDistractor('visual_distractor', v.name);
+      // en niveles altos cruzan varias cosas a la vez (una detrás de otra)
+      for (let k = 0; k < (P.visualCount || 1); k++) {
+        this.time.delayedCall(k * 450, () => {
+          if (this.ended) return;
+          const v = Phaser.Utils.Array.GetRandom(list);
+          this.showVisualDistractor(v);
+          this.logDistractor('visual_distractor', v.name);
+        });
+      }
       this.scheduleVisual();
     });
   }

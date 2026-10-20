@@ -15,24 +15,25 @@ class MinigameSelectScene extends Phaser.Scene {
     this.add.text(W / 2, 65, 'Elige tu juego', { font: 'bold 42px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 112, th.label, { font: 'bold 20px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
 
-    const icons = { classic: TEX[this.themeKey].target, catch: 'basket', race: TEX[this.themeKey].hero_run, find: 'icon_find' };
+    const icons = { classic: TEX[this.themeKey].target, catch: 'basket', race: TEX[this.themeKey].hero_run, find: 'icon_find',
+      memory: 'icon_memory' };
     Object.keys(MG).forEach((mg, i) => {
-      const x = 135 + i * 230, y = 330;
-      const card = drawCard(this, x, y, 200, 300, 0xffffff, 0.07, th.accent);
-      fit(this.add.image(x, y - 70, icons[mg]), 115);
-      this.add.text(x, y + 30, MG[mg].label, { font: 'bold 26px Arial', color: '#ffffff' }).setOrigin(0.5);
+      const x = 104 + i * 188, y = 330;
+      const card = drawCard(this, x, y, 172, 300, 0xffffff, 0.07, th.accent);
+      fit(this.add.image(x, y - 70, icons[mg]), 105);
+      this.add.text(x, y + 30, MG[mg].label, { font: 'bold 24px Arial', color: '#ffffff' }).setOrigin(0.5);
       this.add.text(x, y + 75, MG[mg].desc, { font: '16px Arial', color: '#cbd5e1', align: 'center' }).setOrigin(0.5);
       const rec = records[this.themeKey + '_' + mg] || 0;
       const current = levels[this.themeKey + '_' + mg] || 1;   // nivel en que quedó la última vez
-      this.add.text(x, y + 112, current > 1 ? 'Sigues en el nivel ' + current : 'Empiezas en el nivel 1',
+      this.add.text(x, y + 112, current > 1 ? 'Vas en el nivel ' + current : 'Empiezas: nivel 1',
         { font: 'bold 15px Arial', color: '#ffffff' }).setOrigin(0.5);
       this.add.text(x, y + 132, rec ? 'Récord: nivel ' + rec : 'Sin récord', { font: 'bold 14px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
-      const zone = this.add.zone(x, y, 200, 300).setInteractive({ useHandCursor: true });
+      const zone = this.add.zone(x, y, 172, 300).setInteractive({ useHandCursor: true });
       zone.on('pointerover', () => card.setAlpha(0.75));
       zone.on('pointerout', () => card.setAlpha(1));
       zone.on('pointerdown', () => {
         this.registry.set('runLog', []);
-        this.scene.start('Game', { mode: 'desafio', theme: this.themeKey, level: current, minigame: mg });
+        startMinigame(this, { mode: 'desafio', theme: this.themeKey, level: current, minigame: mg });
       });
     });
   }

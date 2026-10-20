@@ -10,6 +10,15 @@ registrarMundo('fantasy', {
   story: {
     hero: 'Chispa, la dragona',
     voice: { pitch: 1.45 },
+    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
+    intro: '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ',
+    mgLines: {
+      classic: 'Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!',
+      catch: '¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.',
+      race: '¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.',
+      find: 'Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
+      memory: '¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.'
+    },
     chapters: [
       { place: 'El Nido', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?' },

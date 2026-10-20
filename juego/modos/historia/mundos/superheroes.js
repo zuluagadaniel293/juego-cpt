@@ -10,6 +10,15 @@ registrarMundo('heroes', {
   story: {
     hero: 'Héroe Rayo',
     voice: { pitch: 1.25 },
+    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
+    intro: '¡Hola! ¡Soy Héroe Rayo! ',
+    mgLines: {
+      classic: 'El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!',
+      catch: '¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!',
+      race: '¡Sombra escapó corriendo! Persíguelo y agarra solo sus señales. ¡Vamos!',
+      find: 'Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!',
+      memory: '¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.'
+    },
     chapters: [
       { place: 'El Centro', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!' },

@@ -13,6 +13,7 @@ const PERFECT_LEVELS = 3;
 // Precisión del nivel: respuestas correctas (aciertos + distractores bien ignorados) sobre todos los estímulos.
 // Así el 100% exige no despistarse y tampoco responder de más.
 function levelAccuracy(log) {
+  if (log.some(r => r.event_type === 'memory_trial')) return memoryStats(log).hitRate;   // caminos recordados
   const st = log.filter(r => r.event_type === 'stimulus');
   if (!st.length) return 0;
   return st.filter(r => r.outcome === 'hit' || r.outcome === 'correct_rejection').length / st.length;

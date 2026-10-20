@@ -57,13 +57,21 @@ Activa **Datos → Filtro** y filtra `tipo_evento = estimulo`.
 
 La pantalla de resultados de la **Prueba fija** ya muestra estas medidas calculadas para el adulto.
 
-## CSV del modo Memoria
-El modo **Memoria** es una tarea tipo **Corsi** (memoria de trabajo visoespacial): el objetivo del mundo aparece en varias de las 9 casillas, una tras otra, y el niño las toca en el mismo orden (**adelante**) y luego del último al primero (**al revés**). La secuencia crece de a 1 al acertar; con 2 fallos seguidos en el mismo largo termina la fase.
+## CSV de Memoria
+Memoria es una tarea tipo **Corsi** (memoria de trabajo visoespacial): el objetivo del mundo aparece en varias de las 9 casillas, una tras otra, y el niño las toca en el mismo orden (**adelante**) y luego del último al primero (**al revés**).
 
-Nombre del archivo: `cpt_memoria_<mundo>_<fecha>_<hora>.csv`. Cada fila es **un camino** (ensayo).
+Se juega de dos formas:
+- **Modo Memoria** (pantalla inicial): la secuencia crece de a 1 al acertar; con 2 fallos seguidos en el mismo largo termina la fase. Sirve para medir el *span*.
+- **Historia y Desafío**: la dificultad la pone el nivel. Nivel 1: caminos de 2, lentos, sin distractores. Desde el 2: sonidos del mundo y cosas que cruzan. Desde el 3: fase al revés. Desde el 4: objetos distractores que se encienden en las casillas (hay que ignorarlos). Nivel 6: esos distractores se parecen al objetivo. Hay una cantidad fija de caminos; el largo sube 1 al acertar y baja 1 con 2 fallos seguidos.
+
+Nombre del archivo: `cpt_memoria_<mundo>_<fecha>_<hora>.csv` (o `cpt_historia_...` / `cpt_desafio_...`). Cada fila es **un camino**, o un sonido o una cosa que cruzó la pantalla.
 
 | Columna | Qué significa |
 |---|---|
+| `tipo_evento` | `camino`, `distractor_sonido` o `distractor_visual` |
+| `modo`, `mundo`, `nivel`, `capitulo` | Dónde se jugó |
+| `distractores_en_casillas` | Cuántos objetos distractores se encendieron en las casillas durante ese camino |
+| `que_aparecio` | En las filas de distractores: qué sonó o qué cruzó |
 | `fase` | `adelante` (memoria a corto plazo) o `al_reves` (memoria de trabajo: hay que manipular lo recordado) |
 | `ensayo` | Número de camino dentro de la partida |
 | `largo_secuencia` | Cuántas casillas tenía el camino |

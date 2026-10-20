@@ -33,8 +33,9 @@ class StoryScene extends Phaser.Scene {
     pg.fillStyle(0x0f172a, 0.55);
     pg.fillRoundedRect(pill.x - pill.width / 2 - 20, 42, pill.width + 40, 36, 18);
 
-    const text = this.ending ? st.ending : ch.line;
-    const voiceId = this.ending ? 'end' : this.chapter + 1;
+    const said = this.ending ? { text: st.ending, voice: 'end' } : chapterLine(this.themeKey, this.chapter);
+    const text = said.text;
+    const voiceId = said.voice;
     let bubble, btnY;
     if (this.ending && tex.end) {
       bubble = { x: 40, y: 380, w: 620, h: 130, wrap: 580, font: 24, tail: false };
@@ -62,7 +63,8 @@ class StoryScene extends Phaser.Scene {
       const goX = withVillain ? 610 : 760;
       if (this.ending) makeButton(this, goX, btnY, 240, 56, 'Volver al mapa', th.accent, () => this.scene.start('WorldMap'));
       else makeButton(this, goX, btnY, 240, 56, '¡Vamos!', th.accent,
-        () => this.scene.start('Game', { mode: 'historia', theme: this.themeKey, chapter: this.chapter }));
+        () => startMinigame(this, { mode: 'historia', theme: this.themeKey, chapter: this.chapter,
+          minigame: chapterGame(this.themeKey, this.chapter) }));
     }
     const b = this.add.graphics();
     b.fillStyle(0xffffff, 1);

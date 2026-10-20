@@ -31,8 +31,19 @@ function computeStats(log) {
   };
 }
 
+// Memoria: caminos recordados (con los mismos nombres que computeStats, para las pantallas de resultados)
+function memoryStats(log) {
+  const t = log.filter(r => r.event_type === 'memory_trial');
+  const ok = t.filter(r => r.correct).length;
+  return { trials: t.length, targets: t.length, hits: ok, commissions: t.length - ok, distractors: 0,
+    hitRate: t.length ? ok / t.length : 0 };
+}
+// Resultados de un nivel, sea cual sea el juego
+const levelStats = (log, mg) => (mg === 'memory' ? memoryStats(log) : computeStats(log));
+
 // Estrellas: premian precisión (aciertos y pocas comisiones), no velocidad.
 function starsFor(s, mg) {
+  if (mg === 'memory') return s.hitRate >= 0.8 ? 3 : s.hitRate >= 0.6 ? 2 : s.hitRate >= 0.4 ? 1 : 0;
   const hitRate = s.targets ? s.hitRate : 1;
   const base = mg === 'find' ? s.trials : s.distractors;
   const commRate = base ? s.commissions / base : 0;
@@ -63,6 +74,7 @@ function stimulusLabel(theme, key) {
   return key;
 }
 function downloadCSV(log, name) {
+  if (log.some(r => r.event_type === 'memory_trial')) return downloadMemoryCSV(log, name);
   const cols = [
     ['tipo_evento', r => CSV_TEXT.event_type[r.event_type] || r.event_type],
     ['modo', r => CSV_TEXT.mode[r.mode] || r.mode],
@@ -81,22 +93,30 @@ function downloadCSV(log, name) {
   ];
   saveCSV(cols, log, name);
 }
-// Memoria (tipo Corsi): una fila por camino. Las casillas van numeradas del 1 al 9.
-function downloadMemoryCSV(log, theme) {
+// Memoria (tipo Corsi): una fila por camino (y por cada sonido o cosa que cruzó, si hubo).
+// Las casillas van numeradas del 1 al 9.
+function downloadMemoryCSV(log, name) {
+  const trial = f => r => (r.event_type === 'memory_trial' ? f(r) : '');
   const cols = [
-    ['modo', () => 'Memoria'],
+    ['tipo_evento', r => (r.event_type === 'memory_trial' ? 'camino' : CSV_TEXT.event_type[r.event_type] || r.event_type)],
+    ['modo', r => (r.mode === 'memoria' ? 'Memoria' : CSV_TEXT.mode[r.mode] || r.mode)],
     ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
-    ['fase', r => (r.direction === 'fwd' ? 'adelante' : 'al_reves')],
+    ['nivel', r => r.level],
+    ['capitulo', r => r.chapter],
+    ['fase', trial(r => (r.direction === 'fwd' ? 'adelante' : 'al_reves'))],
     ['ensayo', r => r.trial],
     ['largo_secuencia', r => r.length],
+    ['distractores_en_casillas', r => r.flashes],
+    ['que_aparecio', r => (r.event_type === 'memory_trial' ? '' : stimulusLabel(r.theme, r.stimulus_key))],
+    ['momento_ms', r => r.onset_ms],
     ['casillas_mostradas', r => r.shown],
     ['respuesta_esperada', r => r.expected],
     ['respuesta_del_nino', r => r.answered],
-    ['correcto', r => (r.correct ? 'si' : 'no')],
+    ['correcto', trial(r => (r.correct ? 'si' : 'no'))],
     ['tiempo_primer_toque_ms', r => r.first_tap_ms],
     ['tiempo_total_respuesta_ms', r => r.total_ms]
   ];
-  saveCSV(cols, log, 'memoria_' + theme);
+  saveCSV(cols, log, name);
 }
 function saveCSV(cols, log, name) {
   const cell = v => (v === undefined || v === null ? '' : String(v).replace(/;/g, ','));

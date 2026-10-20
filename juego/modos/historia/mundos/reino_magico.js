@@ -10,6 +10,15 @@ registrarMundo('kingdom', {
   story: {
     hero: 'Reina Luna',
     voice: { pitch: 1.35 },
+    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
+    intro: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ',
+    mgLines: {
+      classic: 'Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!',
+      catch: '¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.',
+      race: '¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.',
+      find: 'Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!',
+      memory: '¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.'
+    },
     chapters: [
       { place: 'El Jardín', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.' },

@@ -34,7 +34,9 @@ const MG = {
              // con alguien adelante que va soltando los objetos
              instrChase: (n, who) => '¡Persigue ' + who + '! Va soltando cosas por el camino.\nCambia de carril (flechas o tocando arriba/abajo) y agarra solo ' + n },
   find:    { label: 'Encuentra', verb: 'Encontraste', desc: 'Búscalo entre\nmuchos',
-             instr: n => 'Toca solo ' + n + '.\nSi no está, no toques nada' }
+             instr: n => 'Toca solo ' + n + '.\nSi no está, no toques nada' },
+  // Memoria (tipo Corsi): se juega en su propia escena (modos/memoria/memoria.js)
+  memory:  { label: 'Memoria',   verb: 'Recordaste',  desc: 'Recuerda el\ncamino' }
 };
 
 // Dificultad según el nivel (Desafío) o el capítulo (Historia): corto al principio, pero ya con reto.
@@ -53,6 +55,8 @@ function challengeParams(level, minigame) {
     audioEvery: [Math.max(6000, 16000 - 1000 * L), Math.max(10000, 26000 - 1500 * L)],
     visual: true,
     visualEvery: [Math.max(3500, 9000 - 600 * L), Math.max(6000, 14000 - 800 * L)],
+    visualCount: 1 + Math.floor(L / 3),              // cosas que cruzan a la vez: 1 (niv. 1-3), 2 (4-6), 3 (7-9)...
+    extraProb: level >= 3 ? Math.min(0.6, 0.12 * (level - 2)) : 0,   // Atrapa/Carrera: otro distractor sale junto
     travelMs: Math.max(1400, 3000 - 150 * L),        // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla
     spawnMin: Math.max(550, 1200 - 60 * L),
     spawnMax: Math.max(900, 1800 - 70 * L),
@@ -60,6 +64,23 @@ function challengeParams(level, minigame) {
     displayMs: Math.max(1400, 2800 - 120 * L),       // Encuentra: tiempo para buscar
     minigame: minigame || 'classic'
   };
+}
+
+// Memoria en Historia y Desafío: la dificultad sube con el nivel, igual que en los otros juegos.
+// Nivel 1: caminos cortos, lentos y sin distractores. Luego: más rápido, al revés, sonidos y cosas que cruzan,
+// y objetos distractores que se encienden en las casillas (hay que recordar solo el objetivo).
+function memoryParams(level) {
+  const L = level - 1;
+  return Object.assign(challengeParams(level, 'memory'), {
+    showMs: Math.max(450, 1000 - 70 * L),          // tiempo que se ve cada paso
+    gapMs: Math.max(150, 350 - 30 * L),            // pausa entre pasos
+    startLen: Math.min(5, 2 + Math.floor(L / 2)),  // largo inicial: 2 (niv. 1-2), 3 (3-4), 4 (5-6)...
+    fwdTrials: level >= 3 ? 4 : 6,                 // caminos "adelante"
+    bwdTrials: level >= 3 ? 4 : 0,                 // caminos "al revés" desde el nivel 3
+    flashes: level >= 4 ? Math.min(3, Math.floor((level - 2) / 2)) : 0,   // distractores en las casillas
+    similarFlash: level >= 6,                      // el distractor de las casillas se parece al objetivo
+    visual: level >= 2                             // nivel 1 sin cosas que crucen
+  });
 }
 
 function pruebaParams() {

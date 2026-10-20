@@ -16,7 +16,7 @@ class StoryResultsScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(th.bg);
     drawBackdrop(this, this.themeKey, this.chapter, 0.75);
 
-    const s = computeStats(this.log);
+    const s = levelStats(this.log, this.mg);
     const stars = starsFor(s, this.mg);
     const story = getStory();
     const arr = story[this.themeKey] || [0, 0, 0, 0, 0];
@@ -25,6 +25,7 @@ class StoryResultsScene extends Phaser.Scene {
     store.set('cpt_story', story);
 
     const passed = stars >= 1;
+    if (passed && this.boss) newChapterOrder(this.themeKey);   // al volver a jugar el mundo, otro orden de juegos
     const title = passed ? (this.boss ? '¡Atrapaste a ' + th.villain + '!' : '¡Capítulo superado!') : '¡Casi lo logras!';
     drawKidSummary(this, s, stars, this.boss ? 'Atrapaste' : MG[this.mg].verb, title);
     this.add.text(W / 2, 300, passed ? (this.boss ? '¡Venciste el desafío final!' : '¡Se abrió el siguiente capítulo!')
@@ -39,7 +40,8 @@ class StoryResultsScene extends Phaser.Scene {
         () => this.scene.start('Story', { theme: this.themeKey, chapter: this.chapter, ending: true }));
     } else {
       makeButton(this, W / 2, 400, 340, 64, 'Reintentar', th.accent,
-        () => this.scene.start('Game', { mode: 'historia', theme: this.themeKey, chapter: this.chapter }));
+        () => startMinigame(this, { mode: 'historia', theme: this.themeKey, chapter: this.chapter,
+          minigame: chapterGame(this.themeKey, this.chapter) }));
     }
     makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1,
       () => downloadCSV(this.log, 'historia_' + this.themeKey + '_cap' + (this.chapter + 1)));
