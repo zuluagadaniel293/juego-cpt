@@ -614,9 +614,12 @@ class GameScene extends Phaser.Scene {
     if (c.kind === 'fight') {
       // en Memoria, más arriba para no tapar las casillas de los lados
       const y = this.mg === 'memory' ? 205 : Phaser.Math.Between(260, 320);
-      const fx = left ? 36 : W - 36, vx = left ? 92 : W - 92, off = left ? -90 : W + 90;
-      const friend = fit(this.add.image(off, y, tex[c.friend]), 100).setDepth(DEPTH).setFlipX(!left);
-      const villain = fit(this.add.image(off, y, tex.villain), 100).setDepth(DEPTH).setFlipX(left);   // se miran de frente
+      const fx = left ? 36 : W - 36, vx = left ? 92 : W - 92, off = left ? -90 : W + 90, feet = y + 50;
+      // el amigo llega pidiendo ayuda y, cuando el villano lo ataca, se cubre (si hay esas poses)
+      const friend = fit(this.add.image(off, feet, tex.friend_help || tex[c.friend]).setOrigin(0.5, 1), 100)
+        .setDepth(DEPTH).setFlipX(!left);
+      const villain = fit(this.add.image(off, feet, tex.villain).setOrigin(0.5, 1), 100).setDepth(DEPTH).setFlipX(left);   // se miran de frente
+      if (tex.friend_cower) this.time.delayedCall(950, () => { if (friend.active) fit(friend.setTexture(tex.friend_cower), 80); });
       objs.push(friend, villain);
       this.tweens.add({ targets: friend, x: fx, duration: 350 });
       this.tweens.add({ targets: villain, x: vx, duration: 350, onComplete: () => {
