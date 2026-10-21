@@ -1,5 +1,10 @@
 # Guion de voces (ElevenLabs u otra IA de voz)
 
+> **Actualización:** las voces ya se generan solas con `node herramientas/generar_voces.js` (voces neuronales de
+> Microsoft, una fija por personaje). Graba todos los textos, incluidos los de los juegos en orden aleatorio, y los
+> deja en `assets/voces/`. Los textos exactos quedan en `herramientas/voces_textos.json`.
+> Este guion queda como referencia por si algún día se graban con ElevenLabs o con voces reales.
+
 ## Cómo generarlas
 
 1. En ElevenLabs, ve a **Voice Library** y busca voces con las etiquetas *child*, *kid*, *young* o *cartoon* en **español (latino)**.

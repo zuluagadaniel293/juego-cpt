@@ -1,0 +1,224 @@
+{
+  "heroes": {
+    "1": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
+      "firma": "d046fac21c"
+    },
+    "2": {
+      "texto": "¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!",
+      "firma": "8f47307802"
+    },
+    "3": {
+      "texto": "¡Escapó al puerto! Corre por los muelles y agarra solo sus señales. ¡Vamos!",
+      "firma": "75e4a97171"
+    },
+    "4": {
+      "texto": "En la torre hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!",
+      "firma": "f58a90aff2"
+    },
+    "5": {
+      "texto": "¡Ahí está Sombra en persona! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "e30a3d2ddc"
+    },
+    "end": {
+      "texto": "¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!",
+      "firma": "3a2613b20a"
+    },
+    "classic": {
+      "texto": "El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
+      "firma": "f4bbd6647f"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
+      "firma": "d046fac21c"
+    },
+    "catch": {
+      "texto": "¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!",
+      "firma": "8f47307802"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!",
+      "firma": "a3d3faea3e"
+    },
+    "race": {
+      "texto": "¡Sombra escapó corriendo! Persíguelo y agarra solo sus señales. ¡Vamos!",
+      "firma": "be3bd3a14b"
+    },
+    "intro_race": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra escapó corriendo! Persíguelo y agarra solo sus señales. ¡Vamos!",
+      "firma": "9a28f3352f"
+    },
+    "find": {
+      "texto": "Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!",
+      "firma": "9eb85baa54"
+    },
+    "intro_find": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!",
+      "firma": "91ee58b8bd"
+    },
+    "memory": {
+      "texto": "¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.",
+      "firma": "6aed8eb3e5"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.",
+      "firma": "a35d33a41b"
+    },
+    "boss_classic": {
+      "texto": "¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Toca solo cuando aparezca él y, si escapa, ¡persíguelo!",
+      "firma": "563123ea39"
+    },
+    "boss_find": {
+      "texto": "¡Sombra se mezcló entre mis amigos héroes! Encuéntralo y, si escapa, ¡persíguelo!",
+      "firma": "5d65527388"
+    }
+  },
+  "fantasy": {
+    "1": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?",
+      "firma": "c7734535ff"
+    },
+    "2": {
+      "texto": "¡Los dragoncitos bajan volando del bosque! Atrapa solo a mi hermanito dorado.",
+      "firma": "0929dddb3b"
+    },
+    "3": {
+      "texto": "¡Mi hermanito está jugando en el río! Corre por la orilla y alcánzalo solo a él.",
+      "firma": "2610c72be9"
+    },
+    "4": {
+      "texto": "La cueva está llena de dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
+      "firma": "dd3e658e99"
+    },
+    "5": {
+      "texto": "¡Fue la hechicera Morgana! Atrápala con la red y, si escapa, ¡persíguela!",
+      "firma": "0e8b983f29"
+    },
+    "end": {
+      "texto": "¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!",
+      "firma": "0d77828e3e"
+    },
+    "classic": {
+      "texto": "Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!",
+      "firma": "89ab155b90"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!",
+      "firma": "e5c39faf62"
+    },
+    "catch": {
+      "texto": "¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.",
+      "firma": "f8633d7d8e"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.",
+      "firma": "4d27178827"
+    },
+    "race": {
+      "texto": "¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.",
+      "firma": "e103a690c6"
+    },
+    "intro_race": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.",
+      "firma": "3f0ba4ac8d"
+    },
+    "find": {
+      "texto": "Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
+      "firma": "581a17c0a2"
+    },
+    "intro_find": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
+      "firma": "b610fc1c64"
+    },
+    "memory": {
+      "texto": "¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.",
+      "firma": "ad811ba561"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.",
+      "firma": "afa42e3959"
+    },
+    "boss_classic": {
+      "texto": "¡Fue la hechicera Morgana! Se esconde entre los magos buenos del bosque. Toca solo cuando aparezca ella y, si escapa, ¡persíguela!",
+      "firma": "496e28b423"
+    },
+    "boss_find": {
+      "texto": "¡Morgana se mezcló entre los magos buenos del bosque! Encuéntrala y, si escapa, ¡persíguela!",
+      "firma": "1df8220537"
+    }
+  },
+  "kingdom": {
+    "1": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.",
+      "firma": "48fcdb4afe"
+    },
+    "2": {
+      "texto": "¡Las hadas caen como polvo de estrellas en la cocina! Atrapa solo a Lumi.",
+      "firma": "b7a39a0be3"
+    },
+    "3": {
+      "texto": "¡Lumi vuela entre los libros de la biblioteca! Corre por los pasillos y alcánzala solo a ella.",
+      "firma": "6c18c0fc60"
+    },
+    "4": {
+      "texto": "En la torre hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!",
+      "firma": "eca1b14470"
+    },
+    "5": {
+      "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "8615d3d37b"
+    },
+    "end": {
+      "texto": "¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.",
+      "firma": "3ce2ce39de"
+    },
+    "classic": {
+      "texto": "Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!",
+      "firma": "1d8e679c68"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!",
+      "firma": "75929bdcde"
+    },
+    "catch": {
+      "texto": "¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.",
+      "firma": "bdfd51fbcb"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.",
+      "firma": "21745eaff2"
+    },
+    "race": {
+      "texto": "¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.",
+      "firma": "4aa2f0804e"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.",
+      "firma": "2050dd142c"
+    },
+    "find": {
+      "texto": "Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!",
+      "firma": "21d65ef922"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!",
+      "firma": "e8ab6e8ee4"
+    },
+    "memory": {
+      "texto": "¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "c076f03b4a"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "8f607eea07"
+    },
+    "boss_classic": {
+      "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. Toca solo cuando aparezca él y, si escapa, ¡persíguelo!",
+      "firma": "c8e22248c9"
+    },
+    "boss_find": {
+      "texto": "¡El Duende Pícaro se mezcló con la gente del castillo! Encuéntralo y, si escapa, ¡persíguelo!",
+      "firma": "8670bef203"
+    }
+  }
+}

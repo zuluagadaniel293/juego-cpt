@@ -1,8 +1,8 @@
 // Voces de los personajes, sonidos del juego y sonidos de los poderes.
 
 // ======================= VOZ DE LOS PERSONAJES =======================
-// Usa el audio grabado si assets/manifest.js le asigna uno (voice_1 ... voice_5, voice_end);
-// si no, la voz del navegador.
+// Usa las voces generadas (assets/voces.js, con herramientas/generar_voces.js): una voz fija por personaje.
+// Si no hay, el audio que assets/manifest.js le asigne (voice_1 ... voice_5, voice_end); si no, la voz del navegador.
 let currentVoice = null;
 function bestSpanishVoice() {
   try {
@@ -25,7 +25,7 @@ function speakTTS(text, theme) {
 }
 function playVoice(theme, id, text) {
   stopVoice();
-  const file = assetFile(theme, 'voice_' + id);
+  const file = ((window.VOICES || {})[theme] || {})[id] || assetFile(theme, 'voice_' + id);
   if (!file) { speakTTS(text, theme); return; }
   currentVoice = new Audio('assets/' + file);
   currentVoice.play().catch(() => speakTTS(text, theme));

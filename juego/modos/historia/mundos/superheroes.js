@@ -19,6 +19,11 @@ registrarMundo('heroes', {
       find: 'Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!',
       memory: '¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.'
     },
+    // Jefe final: su primera fase es el juego que no salió en los capítulos (si es Atrapa o Carrera, usa el texto original)
+    bossLines: {
+      classic: '¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Toca solo cuando aparezca él y, si escapa, ¡persíguelo!',
+      find: '¡Sombra se mezcló entre mis amigos héroes! Encuéntralo y, si escapa, ¡persíguelo!'
+    },
     chapters: [
       { place: 'El Centro', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!' },

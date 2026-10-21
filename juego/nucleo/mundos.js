@@ -23,9 +23,10 @@ function registrarMundo(key, m) {
 }
 
 // ---------- Orden de los juegos en la Historia ----------
-// Los capítulos 1 a 4 de cada mundo traen los juegos en orden aleatorio (siempre con Memoria).
-// La dificultad la pone el capítulo (nivel 1, 2, 3, 4), no el juego. El orden se guarda para que el mapa
-// no cambie mientras el niño avanza, y se vuelve a sortear cuando vence al jefe final.
+// Los capítulos 1 a 4 de cada mundo traen los juegos en orden aleatorio (siempre con Memoria), y el jefe final
+// (que tiene 2 fases) empieza con el juego que quedó por fuera: así salen los 5 juegos en cada mundo.
+// La dificultad la pone el capítulo (nivel 1, 2, 3, 4 y 6 el jefe), no el juego. El orden se guarda para que
+// el mapa no cambie mientras el niño avanza, y se vuelve a sortear cuando vence al jefe final.
 function chapterGames(theme) {
   const all = store.get('cpt_order', {});
   if (!all[theme]) {
@@ -38,21 +39,35 @@ function chapterGames(theme) {
 function chapterGame(theme, i) {
   return STORY[theme].chapters[i].boss ? null : chapterGames(theme)[i];
 }
+// Fases del jefe final: primero el juego que no salió en los capítulos y luego la persecución (Carrera).
+// Si el que faltó es Atrapa o Carrera, queda como siempre: atrapar con la red y perseguir.
+function bossPhases(theme) {
+  const left = ['classic', 'catch', 'race', 'find'].find(g => !chapterGames(theme).includes(g));
+  const games = left === 'classic' || left === 'find' ? [left, 'race'] : ['catch', 'race'];
+  const boss = STORY[theme].chapters.find(c => c.boss);
+  return boss.phases.map((p, k) => ({ mg: games[k], sec: p.sec }));
+}
 function newChapterOrder(theme) {
   const all = store.get('cpt_order', {});
   delete all[theme];
   store.set('cpt_order', all);
 }
-// Lo que dice el personaje al empezar el capítulo. Si el juego es el original del capítulo, usa su texto
-// y su voz grabada; si no, el texto de ese juego en el mundo (con la voz del navegador).
+// Lo que dice el personaje al empezar el capítulo, y el nombre de su audio (ver herramientas/generar_voces.js):
+// '1'...'5' = texto original del capítulo · 'race' = texto del juego · 'intro_race' = saludo + texto del juego
+// (capítulo 1) · 'boss_find' = jefe final que empieza con otro juego
 function chapterLine(theme, i) {
-  const st = STORY[theme], ch = st.chapters[i], mg = chapterGame(theme, i);
-  if (ch.boss || mg === ch.mg) return { text: ch.line, voice: i + 1 };
-  return { text: (i === 0 ? st.intro : '') + st.mgLines[mg], voice: null };
+  const st = STORY[theme], ch = st.chapters[i];
+  if (ch.boss) {
+    const first = bossPhases(theme)[0].mg;
+    return first === 'catch' ? { text: ch.line, voice: String(i + 1) } : { text: st.bossLines[first], voice: 'boss_' + first };
+  }
+  const mg = chapterGame(theme, i);
+  if (mg === ch.mg) return { text: ch.line, voice: String(i + 1) };
+  return i === 0 ? { text: st.intro + st.mgLines[mg], voice: 'intro_' + mg } : { text: st.mgLines[mg], voice: mg };
 }
 // Empieza un capítulo o nivel: Memoria tiene su propia escena
 function startMinigame(scene, data) {
   scene.scene.start(data.minigame === 'memory' ? 'Memory' : 'Game', data);
 }
 
-const hexColor =n => '#' + n.toString(16).padStart(6, '0');
+const hexColor = n => '#' + n.toString(16).padStart(6, '0');

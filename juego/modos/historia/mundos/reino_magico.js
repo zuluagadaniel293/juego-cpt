@@ -19,6 +19,11 @@ registrarMundo('kingdom', {
       find: 'Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!',
       memory: '¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.'
     },
+    // Jefe final: su primera fase es el juego que no salió en los capítulos (si es Atrapa o Carrera, usa el texto original)
+    bossLines: {
+      classic: '¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. Toca solo cuando aparezca él y, si escapa, ¡persíguelo!',
+      find: '¡El Duende Pícaro se mezcló con la gente del castillo! Encuéntralo y, si escapa, ¡persíguelo!'
+    },
     chapters: [
       { place: 'El Jardín', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.' },

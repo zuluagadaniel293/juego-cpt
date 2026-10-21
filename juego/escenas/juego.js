@@ -17,7 +17,7 @@ class GameScene extends Phaser.Scene {
     } else if (this.mode === 'historia') {
       const ch = STORY[this.themeKey].chapters[this.chapter];
       // el juego del capítulo sale del orden aleatorio del mundo; la dificultad, del capítulo
-      const spec = ch.phases ? ch.phases[this.phase] : { mg: chapterGame(this.themeKey, this.chapter), sec: ch.sec };
+      const spec = ch.phases ? bossPhases(this.themeKey)[this.phase] : { mg: chapterGame(this.themeKey, this.chapter), sec: ch.sec };
       this.boss = !!ch.boss;
       this.level = ch.level;
       this.params = challengeParams(ch.level, spec.mg);
@@ -76,7 +76,8 @@ class GameScene extends Phaser.Scene {
     // Pantalla de preparación
     let title, what;
     if (this.boss) {
-      title = this.phase === 0 ? '¡Atrápalo con la red!' : '¡' + th.villain + ' escapó! ' + th.chase;
+      title = this.phase > 0 ? '¡' + th.villain + ' escapó! ' + th.chase
+        : this.mg === 'catch' ? '¡Atrápalo con la red!' : '¡Encuentra ' + th.villainObj + '!';
       what = th.villainObj;
     } else {
       title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
