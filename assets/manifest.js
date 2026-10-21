@@ -13,7 +13,10 @@
 //   villain_caught    villano atrapado en la red; si falta, se arma solo
 //   villain_sneak     villano de puntillas, escabulléndose (escenas de fondo); si falta, usa "villain"
 //   villain_laugh     villano riéndose (se asoma por una esquina); si falta, usa "villain"
-//   friend_help       el amigo de la pelea pidiendo ayuda; friend_cower: cubriéndose del ataque (si faltan, su imagen normal)
+//   villain_taunt     villano burlándose (presenta el capítulo 4); villain_run: corriendo; villain_scared: asustado
+//                     (si faltan, usan "villain") · villain_face: solo la cara, espiando desde un lado (si falta, no sale)
+//   friend1_help, friend1_cower, friend1_flee   poses del amigo 1 (igual friend2_..., friend3_...): pidiendo ayuda,
+//                     cubriéndose del ataque, huyendo asustado. Si faltan, se usa su imagen normal.
 //   friend1, friend2  amigos: distractores del jefe final
 //   friend3           amigo parecido al villano (distractor difícil del jefe final)
 //   net               red para atrapar al villano
@@ -34,8 +37,12 @@ window.ASSETS = {
     villain_caught: 'superheroes/sombra_atrapado.png',
     villain_sneak: 'superheroes/sombra_puntillas.png',   // escenas de fondo: se escabulle
     villain_laugh: 'superheroes/sombra_risa.png',        // escenas de fondo: se asoma riéndose
-    friend_help:  'superheroes/capitan_ayuda.png',       // pelea: el amigo pide ayuda
-    friend_cower: 'superheroes/capitan_cubriendose.png', // pelea: el amigo se cubre cuando lo atacan
+    villain_taunt: 'superheroes/sombra_encorvado.png',   // presenta el capítulo 4
+    villain_run:   'superheroes/sombra_corriendo.png',   // persigue a la Capitana
+    villain_face:  'superheroes/sombra_cara.png',        // espía desde un lado
+    friend1_help:  'superheroes/capitan_ayuda.png',      // pelea: la Capitana pide ayuda
+    friend1_cower: 'superheroes/capitan_cubriendose.png',// pelea: se cubre cuando la atacan
+    friend1_flee:  'superheroes/capitan_huye.png',       // huye llorando de Sombra
     treasure: 'superheroes/tesoro_escudo.png',   // Misión perfecta
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
@@ -61,7 +68,9 @@ window.ASSETS = {
     villain_caught: 'dragones/morgana_atrapada.png',
     villain_sneak: 'dragones/morgana_puntillas.png',     // escenas de fondo: se escabulle
     villain_laugh: 'dragones/morgana_risa.png',          // escenas de fondo: se asoma con la varita
-    friend_help:  'dragones/mago_ayuda.png',             // pelea: el mago abuelo suplica asustado
+    villain_taunt: 'dragones/morgana_agachada.png',      // presenta el capítulo 4
+    villain_scared: 'dragones/morgana_asustada.png',     // huye del Hada del Bosque
+    friend2_help:  'dragones/mago_ayuda.png',            // pelea: el Mago Abuelo suplica asustado
     treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',

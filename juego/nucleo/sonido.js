@@ -11,7 +11,7 @@ function bestSpanishVoice() {
     return voices.sort((a, b) => score(b) - score(a))[0] || null;
   } catch (e) { return null; }
 }
-function speakTTS(text, theme) {
+function speakTTS(text, theme, onEnd) {
   try {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -20,15 +20,21 @@ function speakTTS(text, theme) {
     u.lang = v ? v.lang : 'es-MX';
     u.pitch = STORY[theme].voice.pitch;   // tono más agudo: suena a personaje infantil
     u.rate = 1.0;
+    if (onEnd) u.onend = onEnd;
     window.speechSynthesis.speak(u);
-  } catch (e) { /* sin voz disponible */ }
+  } catch (e) { if (onEnd) onEnd(); }
 }
-function playVoice(theme, id, text) {
+// onEnd: se llama al terminar de hablar (para encadenar diálogos). Si otra voz la interrumpe, no se llama.
+let voiceTurn = 0;
+function playVoice(theme, id, text, onEnd) {
   stopVoice();
+  const turn = ++voiceTurn;
+  const done = () => { if (onEnd && turn === voiceTurn) onEnd(); };
   const file = ((window.VOICES || {})[theme] || {})[id] || assetFile(theme, 'voice_' + id);
-  if (!file) { speakTTS(text, theme); return; }
+  if (!file) { speakTTS(text, theme, done); return; }
   currentVoice = new Audio('assets/' + file);
-  currentVoice.play().catch(() => speakTTS(text, theme));
+  currentVoice.onended = done;
+  currentVoice.play().catch(() => speakTTS(text, theme, done));
 }
 // Voz de un distractor (risa del villano, "¡ayuda!"...): suena encima de todo, sin cortar al narrador
 function playClip(theme, id, volume) {
@@ -40,6 +46,7 @@ function playClip(theme, id, volume) {
   return true;
 }
 function stopVoice() {
+  voiceTurn++;   // lo que estaba esperando a que terminara esta voz ya no sigue
   if (currentVoice) { currentVoice.pause(); currentVoice = null; }
   try { window.speechSynthesis.cancel(); } catch (e) { /* nada */ }
 }

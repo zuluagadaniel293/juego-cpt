@@ -58,6 +58,7 @@ class MemoryScene extends Phaser.Scene {
       t.on('pointerdown', () => this.tap(i));
       return t;
     });
+    this.setupBuddy();   // compañero del capítulo o del nivel, como en los otros juegos
     this.showIntro('fwd');
   }
 
@@ -183,6 +184,7 @@ class MemoryScene extends Phaser.Scene {
 
     if (ok) {
       rewardSound();
+      this.buddyCheer();
       this.msg.setText('¡Muy bien!').setColor('#86efac');
       this.phaseBest = Math.max(this.phaseBest, this.len);
       this.fails = 0;
@@ -222,7 +224,8 @@ class MemoryScene extends Phaser.Scene {
     else this.scene.start('MemoryResults', Object.assign(data, { result: this.result }));
   }
 }
-// Sonidos y cosas que cruzan por los bordes: los mismos del motor del juego (y quedan en el CSV)
-['logDistractor', 'scheduleAudio', 'scheduleVisual', 'showVisualDistractor', 'showCastScene'].forEach(m => {
+// Sonidos, cosas que cruzan, escenas de personajes y compañero: los mismos del motor del juego (y quedan en el CSV)
+['logDistractor', 'scheduleAudio', 'scheduleVisual', 'showVisualDistractor', 'showCastScene',
+  'setupBuddy', 'buddyCheer', 'castFriend', 'castVoice'].forEach(m => {
   MemoryScene.prototype[m] = GameScene.prototype[m];
 });

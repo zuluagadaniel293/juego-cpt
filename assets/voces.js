@@ -20,10 +20,16 @@ window.VOICES = {
     "intro_memory": "voces/superheroes/intro_memory.mp3",
     "boss_classic": "voces/superheroes/boss_classic.mp3",
     "boss_find": "voces/superheroes/boss_find.mp3",
+    "comp_1": "voces/superheroes/comp_1.mp3",
+    "comp_2": "voces/superheroes/comp_2.mp3",
+    "comp_3": "voces/superheroes/comp_3.mp3",
+    "comp_4": "voces/superheroes/comp_4.mp3",
     "dist_risa": "voces/superheroes/dist_risa.mp3",
     "dist_burla": "voces/superheroes/dist_burla.mp3",
     "dist_amenaza": "voces/superheroes/dist_amenaza.mp3",
-    "dist_ayuda": "voces/superheroes/dist_ayuda.mp3"
+    "dist_ayuda_friend1": "voces/superheroes/dist_ayuda_friend1.mp3",
+    "dist_ayuda_friend2": "voces/superheroes/dist_ayuda_friend2.mp3",
+    "dist_ayuda_friend3": "voces/superheroes/dist_ayuda_friend3.mp3"
   },
   "fantasy": {
     "1": "voces/dragones/1.mp3",
@@ -44,10 +50,17 @@ window.VOICES = {
     "intro_memory": "voces/dragones/intro_memory.mp3",
     "boss_classic": "voces/dragones/boss_classic.mp3",
     "boss_find": "voces/dragones/boss_find.mp3",
+    "comp_1": "voces/dragones/comp_1.mp3",
+    "comp_2": "voces/dragones/comp_2.mp3",
+    "comp_3": "voces/dragones/comp_3.mp3",
+    "comp_4": "voces/dragones/comp_4.mp3",
     "dist_risa": "voces/dragones/dist_risa.mp3",
     "dist_burla": "voces/dragones/dist_burla.mp3",
     "dist_amenaza": "voces/dragones/dist_amenaza.mp3",
-    "dist_ayuda": "voces/dragones/dist_ayuda.mp3"
+    "dist_ayuda_friend1": "voces/dragones/dist_ayuda_friend1.mp3",
+    "dist_ayuda_friend2": "voces/dragones/dist_ayuda_friend2.mp3",
+    "dist_ayuda_friend3": "voces/dragones/dist_ayuda_friend3.mp3",
+    "dist_alto": "voces/dragones/dist_alto.mp3"
   },
   "kingdom": {
     "1": "voces/reino_magico/1.mp3",
@@ -68,9 +81,15 @@ window.VOICES = {
     "intro_memory": "voces/reino_magico/intro_memory.mp3",
     "boss_classic": "voces/reino_magico/boss_classic.mp3",
     "boss_find": "voces/reino_magico/boss_find.mp3",
+    "comp_1": "voces/reino_magico/comp_1.mp3",
+    "comp_2": "voces/reino_magico/comp_2.mp3",
+    "comp_3": "voces/reino_magico/comp_3.mp3",
+    "comp_4": "voces/reino_magico/comp_4.mp3",
     "dist_risa": "voces/reino_magico/dist_risa.mp3",
     "dist_burla": "voces/reino_magico/dist_burla.mp3",
     "dist_amenaza": "voces/reino_magico/dist_amenaza.mp3",
-    "dist_ayuda": "voces/reino_magico/dist_ayuda.mp3"
+    "dist_ayuda_friend1": "voces/reino_magico/dist_ayuda_friend1.mp3",
+    "dist_ayuda_friend2": "voces/reino_magico/dist_ayuda_friend2.mp3",
+    "dist_ayuda_friend3": "voces/reino_magico/dist_ayuda_friend3.mp3"
   }
 };

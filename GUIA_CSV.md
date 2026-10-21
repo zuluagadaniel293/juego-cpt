@@ -15,11 +15,14 @@ Cada fila es **un evento**:
 - `distractor_sonido`: sonó un ruido del mundo (sirena, rugido, campanas...).
 - `distractor_visual`: algo cruzó por el borde de la pantalla (avión, mariposa, ratón...).
   Desde el nivel 2 también aparecen **los personajes del mundo**: `pelea_sombra_capitan`, `pelea_morgana_mago`,
-  `guardia_persigue_duende` (escena en un borde o arriba), `*_se_asoma` (el villano se asoma riéndose por una esquina)
+  `guardia_persigue_duende`, `sombra_persigue_capitana`, `hada_persigue_morgana` (escena en un borde o arriba),
+  `*_se_asoma` (el villano se asoma riéndose por una esquina), `sombra_espia` (su cara espía desde un lado, nivel 4+)
   y `*_escabulle` (el villano cruza por arriba de puntillas, desde el nivel 3).
   No salen en Carrera (el villano ya va adelante), en el jefe final ni en la Prueba fija.
+  Además, en cada capítulo (y en cada nivel del Desafío) hay un **compañero** en una esquina que salta al acertar:
+  no es un distractor y no queda en el CSV.
 - En `distractor_sonido`, las filas `voz_...` son **voces** de los personajes: `voz_risa` (nivel 2+), `voz_burla` y
-  `voz_ayuda` (nivel 3+), `voz_amenaza` (nivel 4+). Una voz humana distrae más que un ruido: sirve para comparar
+  `voz_ayuda` / `voz_alto` (nivel 3+), `voz_amenaza` (nivel 4+). Cada personaje tiene su propia voz. Una voz humana distrae más que un ruido: sirve para comparar
   cómo afecta cada tipo de distractor.
 
 ## Columnas

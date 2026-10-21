@@ -31,7 +31,7 @@ class BootScene extends Phaser.Scene {
       // villano atrapado: si no hay imagen propia, se arma con el villano + una red encima
       if (!TEX[t].villain_caught) TEX[t].villain_caught = this.makeCaught(t);
       // poses del villano para las escenas de fondo (escabulléndose, riéndose): si faltan, la imagen normal
-      ['villain_sneak', 'villain_laugh'].forEach(n => { if (!TEX[t][n]) TEX[t][n] = TEX[t].villain; });
+      ['villain_sneak', 'villain_laugh', 'villain_taunt', 'villain_run', 'villain_scared'].forEach(n => { if (!TEX[t][n]) TEX[t][n] = TEX[t].villain; });
     });
     this.scene.start('Mode');
   }

@@ -72,21 +72,45 @@
       "texto": "¡Sombra se mezcló entre mis amigos héroes! Encuéntralo y, si escapa, ¡persíguelo!",
       "firma": "5d65527388"
     },
+    "comp_1": {
+      "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
+      "firma": "b509144b07"
+    },
+    "comp_2": {
+      "texto": "¡Soy Escudo Verde! Yo te cubro con mi escudo. ¡Tú concéntrate y no te distraigas con nada!",
+      "firma": "de286f04ee"
+    },
+    "comp_3": {
+      "texto": "Soy Héroe Noche. Me parezco un poco a Sombra, ¡pero soy de los buenos! Vamos juntos.",
+      "firma": "fce379236b"
+    },
+    "comp_4": {
+      "texto": "¡Ja, ja! ¿Creen que pueden atraparme? ¡Nunca encontrarán todas mis señales!",
+      "firma": "f647ae10ae"
+    },
     "dist_risa": {
       "texto": "¡Ja, ja, ja, ja! ¡Nunca me atraparás, Héroe Rayo!",
-      "firma": "5cd29d6641"
+      "firma": "97144a8b57"
     },
     "dist_burla": {
       "texto": "¡Mi señal está por todas partes! ¿Podrás encontrarla?",
-      "firma": "bafd7a5283"
+      "firma": "a9c67b1f33"
     },
     "dist_amenaza": {
       "texto": "¡Esta ciudad pronto será mía! ¡Ja, ja, ja!",
-      "firma": "84cec0fc41"
+      "firma": "840b691836"
     },
-    "dist_ayuda": {
+    "dist_ayuda_friend1": {
       "texto": "¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!",
-      "firma": "8194ea5bcd"
+      "firma": "d732c1b7c1"
+    },
+    "dist_ayuda_friend2": {
+      "texto": "¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!",
+      "firma": "05828a3140"
+    },
+    "dist_ayuda_friend3": {
+      "texto": "¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!",
+      "firma": "6e29726ea8"
     }
   },
   "fantasy": {
@@ -162,21 +186,49 @@
       "texto": "¡Morgana se mezcló entre los magos buenos del bosque! Encuéntrala y, si escapa, ¡persíguela!",
       "firma": "1df8220537"
     },
+    "comp_1": {
+      "texto": "¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.",
+      "firma": "1d2277e855"
+    },
+    "comp_2": {
+      "texto": "Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!",
+      "firma": "9efa33984a"
+    },
+    "comp_3": {
+      "texto": "Soy la Hechicera Buena. Me visto parecido a Morgana, ¡pero yo protejo a los dragones!",
+      "firma": "efc4476570"
+    },
+    "comp_4": {
+      "texto": "¡Ja, ja, ja! ¡Ese dragoncito dorado será mío! ¡Nadie podrá detenerme!",
+      "firma": "a62044d7de"
+    },
     "dist_risa": {
       "texto": "¡Ja, ja, ja! ¡Jamás encontrarás a tu hermanito!",
-      "firma": "ca7d9cb4bd"
+      "firma": "7758ee275a"
     },
     "dist_burla": {
       "texto": "¡Abracadabra! ¡Que todos los dragones se confundan!",
-      "firma": "1685dfa4b6"
+      "firma": "26b98ec812"
     },
     "dist_amenaza": {
       "texto": "¡El bosque entero caerá bajo mi hechizo!",
-      "firma": "efbfe45083"
+      "firma": "61bad8db6e"
     },
-    "dist_ayuda": {
+    "dist_ayuda_friend1": {
       "texto": "¡Ayuda, Chispa! ¡Morgana me quiere hechizar!",
-      "firma": "a8bf7ee24f"
+      "firma": "7517fc45eb"
+    },
+    "dist_ayuda_friend2": {
+      "texto": "¡Ayuda, Chispa! ¡Morgana me quiere hechizar!",
+      "firma": "8a7971369a"
+    },
+    "dist_ayuda_friend3": {
+      "texto": "¡Ayuda, Chispa! ¡Morgana me quiere hechizar!",
+      "firma": "0e411c8ee6"
+    },
+    "dist_alto": {
+      "texto": "¡Alto ahí, Morgana! ¡Deja en paz a los dragones!",
+      "firma": "91f648e2bb"
     }
   },
   "kingdom": {
@@ -252,21 +304,45 @@
       "texto": "¡El Duende Pícaro se mezcló con la gente del castillo! Encuéntralo y, si escapa, ¡persíguelo!",
       "firma": "8670bef203"
     },
+    "comp_1": {
+      "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!",
+      "firma": "10c83aba02"
+    },
+    "comp_2": {
+      "texto": "¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.",
+      "firma": "8f5cd66494"
+    },
+    "comp_3": {
+      "texto": "Hola, soy el Duende Amable. No todos los duendes somos traviesos. ¡Yo te ayudo!",
+      "firma": "fe01b7ade7"
+    },
+    "comp_4": {
+      "texto": "¡Ji, ji, ji! ¡Escondí a las hadas por todo el castillo! ¡A ver si las encuentras!",
+      "firma": "6d5fa480cb"
+    },
     "dist_risa": {
       "texto": "¡Ji, ji, ji, ji! ¡No me pueden atrapar!",
-      "firma": "3678ebf1a7"
+      "firma": "a21cfcfaff"
     },
     "dist_burla": {
       "texto": "¡Psst! ¡Por aquí! ¡No, por allá! ¡Ji, ji, ji!",
-      "firma": "d3cbe70a0a"
+      "firma": "72d6146e4b"
     },
     "dist_amenaza": {
       "texto": "¡Voy a esconder la corona de la reina! ¡Ji, ji!",
-      "firma": "f835290c23"
+      "firma": "9f4375d158"
     },
-    "dist_ayuda": {
+    "dist_ayuda_friend1": {
       "texto": "¡Ayuda, majestad! ¡El duende se está escapando!",
-      "firma": "215afc8e9c"
+      "firma": "01f8996661"
+    },
+    "dist_ayuda_friend2": {
+      "texto": "¡Ayuda, majestad! ¡El duende se está escapando!",
+      "firma": "7866d89a83"
+    },
+    "dist_ayuda_friend3": {
+      "texto": "¡Ayuda, majestad! ¡El duende se está escapando!",
+      "firma": "bde4d72cd0"
     }
   }
 }

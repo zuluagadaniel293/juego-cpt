@@ -37,7 +37,15 @@ registrarMundo('kingdom', {
       { place: 'El Salón del Trono', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
         line: '¡Fue el Duende Pícaro quien lanzó el hechizo! Atrápalo con la red y, si escapa, ¡persíguelo!' }
     ],
-    ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.'
+    ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.',
+    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
+    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    companions: [
+      { role: 'friend1', name: 'Guardia', line: '¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!' },
+      { role: 'friend2', name: 'Bufón', line: '¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.' },
+      { role: 'friend3', name: 'Duende Amable', line: 'Hola, soy el Duende Amable. No todos los duendes somos traviesos. ¡Yo te ayudo!' },
+      { role: 'villain', name: 'Duende Pícaro', line: '¡Ji, ji, ji! ¡Escondí a las hadas por todo el castillo! ¡A ver si las encuentras!' }
+    ]
   },
 
   // Las estrellas son solo contra el Duende (jefe final). A Lumi se le rescata con cariño, no se le ataca.

@@ -73,6 +73,7 @@ class GameScene extends Phaser.Scene {
       { font: 'bold 38px Arial', color: '#86efac' }).setOrigin(0.5).setDepth(10);
 
     this.setupMinigame();
+    this.setupBuddy();
 
     // Pantalla de preparación
     let title, what;
@@ -262,6 +263,7 @@ class GameScene extends Phaser.Scene {
       rt_ms: rt === null ? '' : Math.round(rt),
       outcome: outcome
     });
+    if (outcome === 'hit') this.buddyCheer();   // el compañero celebra
   }
 
   update(time, delta) {
@@ -543,7 +545,47 @@ class GameScene extends Phaser.Scene {
       onset_ms: Math.round(this.elapsed())
     });
   }
+  // ---------- Compañero del capítulo (Historia) o del nivel (Desafío) ----------
+  // Está en una esquina de abajo mientras se juega (detrás de todo, para no tapar nada) y salta al acertar.
+  setupBuddy() {
+    this.buddy = null;
+    this.buddyRole = null;
+    this.buddyJumping = false;
+    if (this.mode === 'historia' && !this.boss) {
+      const c = (STORY[this.themeKey].companions || [])[this.chapter];
+      if (c && c.role !== 'villain') this.buddyRole = c.role;   // en el capítulo 4 presenta el villano: sin compañero
+    } else if (this.mode === 'desafio') {
+      this.buddyRole = ['friend1', 'friend2', 'friend3'][(this.level - 1) % 3];
+    }
+    if (!this.buddyRole) return;
+    const x = this.caster ? 170 : 66;   // en Clásico y Encuentra, al lado del protagonista
+    this.buddy = fit(this.add.image(x, GAME_H - 6, TEX[this.themeKey][this.buddyRole]).setOrigin(0.5, 1), 104).setDepth(-1);
+    this.buddyY = this.buddy.y;
+    this.tweens.add({ targets: this.buddy, angle: { from: -3, to: 3 }, duration: 900, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+  }
+  buddyCheer() {
+    if (!this.buddy || this.buddyJumping) return;
+    this.buddyJumping = true;
+    this.tweens.add({ targets: this.buddy, y: this.buddyY - 28, duration: 170, yoyo: true, ease: 'Quad.easeOut',
+      onComplete: () => { this.buddyJumping = false; } });
+  }
+  // Un amigo para una escena de fondo: el pedido, salvo que sea el compañero que ya está en pantalla
+  castFriend(pref) {
+    if (pref && pref !== this.buddyRole) return pref;
+    return Phaser.Utils.Array.GetRandom(['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole && f !== pref));
+  }
+  // Voz de un distractor. Las del amigo ("¡ayuda!") están grabadas con la voz de cada amigo.
+  // No suena si es la voz de un amigo en particular que ahora es el compañero (no puede estar en dos lados).
+  castVoice(name, friendRole) {
+    const v = (DISTRACTORS[this.themeKey].voices || {})[name];
+    if (!v) return;
+    if (v.who !== 'friend' && v.who !== 'villain' && v.who === this.buddyRole) return;
+    const id = v.who === 'friend' ? 'dist_' + name + '_' + (friendRole || this.castFriend()) : 'dist_' + name;
+    if (playClip(this.themeKey, id)) this.logDistractor('audio_distractor', 'voz_' + name);
+  }
+
   // Sonidos: en la Prueba fija, el tono de siempre; en los mundos, sonidos del propio mundo
+  // y voces del villano y de los amigos (risa, burla, "¡ayuda!"), cada una desde su nivel
   scheduleAudio() {
     const P = this.params;
     if (!P.audio) return;
@@ -552,14 +594,15 @@ class GameScene extends Phaser.Scene {
       if (this.ended) return;
       const D = DISTRACTORS[this.themeKey];
       const sounds = this.mode === 'prueba' ? {} : D.sounds;
-      // voces del villano y del amigo (risa, burla, "¡ayuda!"), cada una desde su nivel
       const voices = this.mode === 'prueba' ? [] : Object.keys(D.voices || {})
         .filter(n => (this.level || 0) >= D.voices[n].minLevel).map(n => 'voz_' + n);
       const names = Object.keys(sounds).concat(voices);
       const name = names.length ? Phaser.Utils.Array.GetRandom(names) : 'tono';
-      if (name.startsWith('voz_')) playClip(this.themeKey, 'dist_' + name.slice(4));
-      else if (names.length) sounds[name](); else distractorSound();
-      this.logDistractor('audio_distractor', name);
+      if (name.startsWith('voz_')) this.castVoice(name.slice(4));
+      else {
+        if (names.length) sounds[name](); else distractorSound();
+        this.logDistractor('audio_distractor', name);
+      }
       this.scheduleAudio();
     });
   }
@@ -581,7 +624,7 @@ class GameScene extends Phaser.Scene {
       for (let k = 0; k < (P.visualCount || 1); k++) {
         this.time.delayedCall(k * 450, () => {
           if (this.ended) return;
-          let v = Phaser.Utils.Array.GetRandom(this.castBusy ? list : list.concat(cast));
+          const v = Phaser.Utils.Array.GetRandom(this.castBusy ? list : list.concat(cast));
           this.showVisualDistractor(v);
           this.logDistractor('visual_distractor', v.name);
         });
@@ -590,7 +633,7 @@ class GameScene extends Phaser.Scene {
     });
   }
   showVisualDistractor(v) {
-    if (['fight', 'sneak', 'chase', 'peek'].includes(v.kind)) { this.showCastScene(v); return; }
+    if (['fight', 'sneak', 'chase', 'peek', 'face'].includes(v.kind)) { this.showCastScene(v); return; }
     const W = GAME_W, H = GAME_H;
     const fromLeft = Math.random() < 0.5;
     const y = v.kind === 'walk' ? H - 32 : Phaser.Math.Between(62, 112);
@@ -601,25 +644,28 @@ class GameScene extends Phaser.Scene {
     if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
   }
   // Escenas "de fondo" con los personajes del mundo (detrás de los objetos del juego, para no taparlos):
-  // fight = el villano pelea con un amigo en un borde · sneak = el villano cruza por arriba de puntillas ·
-  // chase = el villano huye por arriba y el amigo lo persigue · peek = el villano se asoma por una esquina de abajo
-  // y se ríe. Cada una con su voz (queda en el CSV).
+  // fight = el villano pelea con un amigo en un borde (el amigo pide ayuda y se cubre) · peek = el villano se asoma
+  // por una esquina de abajo y se ríe · sneak = cruza por arriba de puntillas · chase = uno huye por arriba y el otro
+  // lo persigue (flee: huye el amigo) · face = la cara del villano espía desde un lado. Cada una con su voz (en el CSV).
   showCastScene(c) {
-    const W = GAME_W, tex = TEX[this.themeKey], DEPTH = -1;
+    const W = GAME_W, H = GAME_H, tex = TEX[this.themeKey], DEPTH = -1;
+    if (c.kind === 'face' && !tex.villain_face) c = Object.assign({}, c, { kind: 'peek' });   // sin la imagen de la cara
     this.castBusy = true;
     const objs = [];
     const end = () => { objs.forEach(o => o.destroy()); this.castBusy = false; };
-    if (c.voice && playClip(this.themeKey, 'dist_' + c.voice)) this.logDistractor('audio_distractor', 'voz_' + c.voice);
+    const friendRole = c.friend || c.kind === 'fight' || c.kind === 'chase' ? this.castFriend(c.friend) : null;
+    const pose = (role, p) => tex[role + '_' + p] || tex[role];   // pose del amigo, o su imagen normal
+    if (c.voice) this.castVoice(c.voice, friendRole);
     const left = Math.random() < 0.5, dir = left ? 1 : -1;
     if (c.kind === 'fight') {
       // en Memoria, más arriba para no tapar las casillas de los lados
       const y = this.mg === 'memory' ? 205 : Phaser.Math.Between(260, 320);
       const fx = left ? 36 : W - 36, vx = left ? 92 : W - 92, off = left ? -90 : W + 90, feet = y + 50;
       // el amigo llega pidiendo ayuda y, cuando el villano lo ataca, se cubre (si hay esas poses)
-      const friend = fit(this.add.image(off, feet, tex.friend_help || tex[c.friend]).setOrigin(0.5, 1), 100)
-        .setDepth(DEPTH).setFlipX(!left);
-      const villain = fit(this.add.image(off, feet, tex.villain).setOrigin(0.5, 1), 100).setDepth(DEPTH).setFlipX(left);   // se miran de frente
-      if (tex.friend_cower) this.time.delayedCall(950, () => { if (friend.active) fit(friend.setTexture(tex.friend_cower), 80); });
+      const friend = fit(this.add.image(off, feet, pose(friendRole, 'help')).setOrigin(0.5, 1), 100).setDepth(DEPTH).setFlipX(!left);
+      const villain = fit(this.add.image(off, feet, tex.villain_run).setOrigin(0.5, 1), 100).setDepth(DEPTH).setFlipX(left);   // se miran de frente
+      const cower = tex[friendRole + '_cower'];
+      if (cower) this.time.delayedCall(950, () => { if (friend.active) fit(friend.setTexture(cower), 80); });
       objs.push(friend, villain);
       this.tweens.add({ targets: friend, x: fx, duration: 350 });
       this.tweens.add({ targets: villain, x: vx, duration: 350, onComplete: () => {
@@ -635,33 +681,48 @@ class GameScene extends Phaser.Scene {
       } });
       this.time.delayedCall(2600, () => this.tweens.add({ targets: [friend, villain], x: off, duration: 350, onComplete: end }));
     } else if (c.kind === 'peek') {
-      // sube desde abajo en una esquina, se ríe (se sacude) y se vuelve a esconder
-      const side = left && !this.caster;   // abajo a la izquierda está el protagonista en Clásico y Encuentra
-      const x = side ? 70 : W - 70, H = GAME_H;
+      // sube desde abajo en una esquina, se ríe (se sacude) y se vuelve a esconder.
+      // Abajo a la izquierda están el protagonista (Clásico y Encuentra) y el compañero: sale por la derecha.
+      const side = left && !this.caster && !this.buddy;
+      const x = side ? 70 : W - 70;
       const img = fit(this.add.image(x, H + 80, tex.villain_laugh), 120).setDepth(DEPTH).setFlipX(!side);
       objs.push(img);
       this.tweens.add({ targets: img, y: H - 60, duration: 450, ease: 'Back.easeOut', onComplete: () => {
         this.tweens.add({ targets: img, angle: { from: -5, to: 5 }, duration: 120, yoyo: true, repeat: 7 });
         this.time.delayedCall(2000, () => this.tweens.add({ targets: img, y: H + 80, duration: 400, onComplete: end }));
       } });
+    } else if (c.kind === 'face') {
+      // la cara del villano se asoma por un lado, mira un momento y se vuelve a esconder
+      const y = this.mg === 'memory' ? 200 : Phaser.Math.Between(180, 330);
+      const off = left ? -70 : W + 70, inX = left ? 40 : W - 40;
+      const img = fit(this.add.image(off, y, tex.villain_face), 110).setDepth(DEPTH).setFlipX(!left).setAngle(18 * dir);
+      objs.push(img);
+      this.tweens.add({ targets: img, x: inX, duration: 500, ease: 'Sine.easeOut', onComplete: () => {
+        this.tweens.add({ targets: img, angle: 8 * dir, duration: 300, yoyo: true, repeat: 2 });
+        this.time.delayedCall(1800, () => this.tweens.add({ targets: img, x: off, duration: 400, onComplete: end }));
+      } });
     } else {
       // por la franja de arriba, de un lado al otro
       const y = Phaser.Math.Between(78, 98), from = left ? -80 : W + 80, to = left ? W + 80 : -80;
       const sneak = c.kind === 'sneak';
-      const runner = role => {
-        const img = fit(this.add.image(from, y, tex[role]), sneak ? 84 : 78).setDepth(DEPTH).setFlipX(!left);
+      const runner = key => {
+        const img = fit(this.add.image(from, y, key), sneak ? 84 : 78).setDepth(DEPTH).setFlipX(!left);
         // saltitos al correr; de puntillas, pasos lentos
         this.tweens.add({ targets: img, y: y - (sneak ? 4 : 7), duration: sneak ? 320 : 180, yoyo: true, repeat: -1 });
         objs.push(img);
         return img;
       };
-      const villain = runner(sneak ? 'villain_sneak' : 'villain');
-      this.tweens.add({ targets: villain, x: to, duration: sneak ? 5200 : 4200, onComplete: () => { if (sneak) end(); } });
-      if (c.kind === 'chase') {
+      if (sneak) {
+        this.tweens.add({ targets: runner(tex.villain_sneak), x: to, duration: 5200, onComplete: end });
+      } else {
+        // chase: adelante huye uno y detrás lo persigue el otro
+        const villainKey = c.villainPose ? tex[c.villainPose] : tex.villain_run;
+        const first = c.flee ? pose(friendRole, 'flee') : villainKey;
+        const second = c.flee ? tex.villain_run : tex[friendRole];
+        this.tweens.add({ targets: runner(first), x: to, duration: 4200 });
         this.time.delayedCall(700, () => {
           if (!this.scene.isActive()) return;
-          const friend = runner(c.friend);
-          this.tweens.add({ targets: friend, x: to, duration: 4200, onComplete: end });
+          this.tweens.add({ targets: runner(second), x: to, duration: 4200, onComplete: end });
         });
       }
     }

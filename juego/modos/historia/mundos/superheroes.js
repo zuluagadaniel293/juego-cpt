@@ -37,7 +37,15 @@ registrarMundo('heroes', {
       { place: 'Guarida de Sombra', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
         line: '¡Ahí está Sombra en persona! Atrápalo con la red y, si escapa, ¡persíguelo!' }
     ],
-    ending: '¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!'
+    ending: '¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!',
+    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
+    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    companions: [
+      { role: 'friend1', name: 'Capitana Estrella', line: '¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!' },
+      { role: 'friend2', name: 'Escudo Verde', line: '¡Soy Escudo Verde! Yo te cubro con mi escudo. ¡Tú concéntrate y no te distraigas con nada!' },
+      { role: 'friend3', name: 'Héroe Noche', line: 'Soy Héroe Noche. Me parezco un poco a Sombra, ¡pero soy de los buenos! Vamos juntos.' },
+      { role: 'villain', name: 'Sombra', line: '¡Ja, ja! ¿Creen que pueden atraparme? ¡Nunca encontrarán todas mis señales!' }
+    ]
   },
 
   power: { name: 'Rayo eléctrico', kind: 'bolt', color: 0xfde047, shout: '¡Zas!' },
@@ -60,13 +68,15 @@ registrarMundo('heroes', {
   distractors: {
     // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba de puntillas ·
-    // chase = el villano huye y el amigo lo persigue
+    // chase = uno huye por arriba y el otro lo persigue (flee: huye el amigo) · face = la cara del villano espía desde un lado
     cast: [
       { name: 'pelea_sombra_capitan', kind: 'fight', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
       { name: 'sombra_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'sombra_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 }
+      { name: 'sombra_persigue_capitana', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 3 },
+      { name: 'sombra_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
+      { name: 'sombra_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
     ],
-    // Voces (las graba herramientas/generar_voces.js): who = villain o friend
+    // Voces (las graba herramientas/generar_voces.js): who = villain, o friend (se graba con la voz de cada amigo)
     voices: {
       risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja, ja, ja! ¡Nunca me atraparás, Héroe Rayo!' },
       burla:   { who: 'villain', minLevel: 3, text: '¡Mi señal está por todas partes! ¿Podrás encontrarla?' },

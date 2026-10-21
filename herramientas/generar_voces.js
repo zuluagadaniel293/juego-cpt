@@ -26,15 +26,29 @@ const VOCES = {
   fantasy: { carpeta: 'dragones',     voz: 'es-CO-SalomeNeural',  tono: '+35Hz', velocidad: '+6%' },   // Chispa
   kingdom: { carpeta: 'reino_magico', voz: 'es-MX-DaliaNeural',   tono: '+12Hz', velocidad: '+0%' }    // Reina Luna
 };
-// Voces del villano y del amigo que pide ayuda (distractores auditivos: distractors.voices de cada mundo)
+// Voces del villano y de los 3 amigos de cada mundo (presentan capítulos y hacen de distractores auditivos).
+// Voces latinoamericanas con cambios de tono pequeños: si se cambia mucho el tono, suenan a robot.
 const VOCES_REPARTO = {
-  heroes:  { villain: { voz: 'es-MX-JorgeNeural',  tono: '-12Hz', velocidad: '-4%' },    // Sombra
-             friend:  { voz: 'es-US-PalomaNeural', tono: '+15Hz', velocidad: '+8%' } },  // Capitán Estrella
-  fantasy: { villain: { voz: 'es-ES-ElviraNeural', tono: '-15Hz', velocidad: '-6%' },    // Morgana
-             friend:  { voz: 'es-ES-AlvaroNeural', tono: '-8Hz',  velocidad: '-8%' } },  // Mago abuelo
-  kingdom: { villain: { voz: 'es-US-AlonsoNeural', tono: '+40Hz', velocidad: '+15%' },   // Duende Pícaro
-             friend:  { voz: 'es-MX-JorgeNeural',  tono: '+0Hz',  velocidad: '+5%' } }   // Guardia
+  heroes: {
+    villain: { voz: 'es-VE-SebastianNeural', tono: '-4Hz',  velocidad: '+0%' },   // Sombra
+    friend1: { voz: 'es-VE-PaolaNeural',     tono: '+10Hz', velocidad: '+3%' },   // Capitana Estrella
+    friend2: { voz: 'es-PE-AlexNeural',      tono: '+10Hz', velocidad: '+3%' },   // Escudo Verde
+    friend3: { voz: 'es-EC-LuisNeural',      tono: '+6Hz',  velocidad: '+0%' }    // Héroe Noche
+  },
+  fantasy: {
+    villain: { voz: 'es-PE-CamilaNeural',    tono: '+4Hz',  velocidad: '-2%' },   // Morgana
+    friend1: { voz: 'es-CR-MariaNeural',     tono: '+10Hz', velocidad: '+3%' },   // Hada del Bosque
+    friend2: { voz: 'es-MX-JorgeNeural',     tono: '-8Hz',  velocidad: '-8%' },   // Mago Abuelo
+    friend3: { voz: 'es-VE-PaolaNeural',     tono: '+4Hz',  velocidad: '+0%' }    // Hechicera Buena
+  },
+  kingdom: {
+    villain: { voz: 'es-EC-LuisNeural',      tono: '+12Hz', velocidad: '+6%' },   // Duende Pícaro
+    friend1: { voz: 'es-CR-JuanNeural',      tono: '+0Hz',  velocidad: '+0%' },   // Guardia
+    friend2: { voz: 'es-PE-AlexNeural',      tono: '+10Hz', velocidad: '+6%' },   // Bufón
+    friend3: { voz: 'es-VE-SebastianNeural', tono: '+12Hz', velocidad: '+3%' }    // Duende Amable
+  }
 };
+const AMIGOS = ['friend1', 'friend2', 'friend3'];
 const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory'];
 
 // 1. Leer los mundos (solo hace falta lo que pasan a registrarMundo)
@@ -56,7 +70,14 @@ function textos(key, m) {
     t['intro_' + mg] = [st.intro + st.mgLines[mg], yo];
   });
   Object.entries(st.bossLines || {}).forEach(([mg, line]) => { t['boss_' + mg] = [line, yo]; });
-  Object.entries((m.distractors || {}).voices || {}).forEach(([name, v]) => { t['dist_' + name] = [v.text, VOCES_REPARTO[key][v.who]]; });
+  const reparto = VOCES_REPARTO[key];
+  // quien presenta cada capítulo: 'comp_1' ... 'comp_4'
+  (st.companions || []).forEach((c, i) => { t['comp_' + (i + 1)] = [c.line, reparto[c.role]]; });
+  // distractores: 'dist_risa' (villano o un amigo en particular) · 'dist_ayuda_friend2' (who: 'friend' = cada amigo)
+  Object.entries((m.distractors || {}).voices || {}).forEach(([name, v]) => {
+    if (v.who === 'friend') AMIGOS.forEach(f => { t['dist_' + name + '_' + f] = [v.text, reparto[f]]; });
+    else t['dist_' + name] = [v.text, reparto[v.who]];
+  });
   return t;
 }
 

@@ -3,7 +3,8 @@
 // ======================= IMÁGENES Y AUDIOS (carpeta assets) =======================
 // Cada imagen tiene un dibujo provisional. Si assets/manifest.js le asigna un archivo, se usa el archivo.
 const ASSET_NAMES = ['target', 'dist1', 'dist2', 'dist3', 'hero', 'hero_run', 'villain', 'villain_caught',
-  'villain_sneak', 'villain_laugh', 'friend_help', 'friend_cower',
+  'villain_sneak', 'villain_laugh', 'villain_taunt', 'villain_run', 'villain_scared', 'villain_face',
+  ...['friend1', 'friend2', 'friend3'].flatMap(f => [f + '_help', f + '_cower', f + '_flee']),
   'friend1', 'friend2', 'friend3', 'net', 'end', 'treasure', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
 const ASSETS = window.ASSETS || {};
 const COMMON_ASSETS = ASSETS.comunes || {};   // objetos e íconos de todos los mundos
@@ -20,8 +21,8 @@ function fallbackKey(theme, name) {
   if (name.startsWith('distractor_')) return theme + '_dv_' + name.slice('distractor_'.length);
   if (name === 'hero' || name === 'hero_run') return 'char_' + theme;
   if (name === 'net') return 'net';
-  if (name === 'villain_sneak' || name === 'villain_laugh') return null;   // si faltan, usan la imagen del villano
-  if (name === 'friend_help' || name === 'friend_cower') return null;      // si faltan, usan la imagen del amigo
+  if (/^villain_(sneak|laugh|taunt|run|scared|face)$/.test(name)) return null;   // poses: si faltan, la imagen del villano
+  if (/^friend\d_(help|cower|flee)$/.test(name)) return null;                    // poses: si faltan, la imagen del amigo
   if (name === 'end' || name === 'villain_caught' || name === 'treasure' || name.startsWith('bg_')) return null; // se generan aparte
   if (name === 'friend3' && theme !== 'heroes') return theme + '_friend1';
   return theme + '_' + name;

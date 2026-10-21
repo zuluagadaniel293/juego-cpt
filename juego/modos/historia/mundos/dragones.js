@@ -37,7 +37,15 @@ registrarMundo('fantasy', {
       { place: 'El Volcán', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
         line: '¡Fue la hechicera Morgana! Atrápala con la red y, si escapa, ¡persíguela!' }
     ],
-    ending: '¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!'
+    ending: '¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!',
+    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
+    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    companions: [
+      { role: 'friend1', name: 'Hada del Bosque', line: '¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.' },
+      { role: 'friend2', name: 'Mago Abuelo', line: 'Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!' },
+      { role: 'friend3', name: 'Hechicera Buena', line: 'Soy la Hechicera Buena. Me visto parecido a Morgana, ¡pero yo protejo a los dragones!' },
+      { role: 'villain', name: 'Morgana', line: '¡Ja, ja, ja! ¡Ese dragoncito dorado será mío! ¡Nadie podrá detenerme!' }
+    ]
   },
 
   // El fuego es solo contra Morgana (jefe final). Al hermanito dorado se le rescata con cariño, no se le ataca.
@@ -64,6 +72,7 @@ registrarMundo('fantasy', {
     cast: [
       { name: 'pelea_morgana_mago', kind: 'fight', friend: 'friend2', voice: 'ayuda', minLevel: 2 },
       { name: 'morgana_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
+      { name: 'hada_persigue_morgana', kind: 'chase', friend: 'friend1', villainPose: 'villain_scared', voice: 'alto', minLevel: 3 },
       { name: 'morgana_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 }
     ],
     // Voces (las graba herramientas/generar_voces.js): who = villain o friend
@@ -71,7 +80,8 @@ registrarMundo('fantasy', {
       risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja, ja! ¡Jamás encontrarás a tu hermanito!' },
       burla:   { who: 'villain', minLevel: 3, text: '¡Abracadabra! ¡Que todos los dragones se confundan!' },
       amenaza: { who: 'villain', minLevel: 4, text: '¡El bosque entero caerá bajo mi hechizo!' },
-      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Chispa! ¡Morgana me quiere hechizar!' }
+      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Chispa! ¡Morgana me quiere hechizar!' },
+      alto:    { who: 'friend1', minLevel: 3, text: '¡Alto ahí, Morgana! ¡Deja en paz a los dragones!' }
     },
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60 },
