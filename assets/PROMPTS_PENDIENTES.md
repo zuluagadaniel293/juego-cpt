@@ -155,7 +155,7 @@ cuadritos o textos, no importa: yo los quito. Mejor si es de **alta resolución*
 | Mundo | Villano (`villain_sneak`, `villain_laugh`) | Amigo pidiendo ayuda (opcional) |
 |---|---|---|
 | Superhéroes | ✅ `superheroes/sombra_puntillas.png`, `superheroes/sombra_risa.png` | ✅ `superheroes/capitan_ayuda.png`, `superheroes/capitan_cubriendose.png` |
-| Dragones | Morgana → `dragones/morgana_puntillas.png`, `dragones/morgana_risa.png` | Mago abuelo asustado |
+| Dragones | ✅ `dragones/morgana_puntillas.png`, `dragones/morgana_risa.png` | Mago abuelo asustado |
 | Reino mágico | Duende → `reino_magico/duende_puntillas.png`, `reino_magico/duende_risa.png` | Guardia corriendo y gritando |
 
 ---

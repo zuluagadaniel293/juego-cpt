@@ -59,6 +59,8 @@ window.ASSETS = {
     hero:    'dragones/chispa_la_dragona.png',
     villain: 'dragones/morgana_la_hechicera.png',
     villain_caught: 'dragones/morgana_atrapada.png',
+    villain_sneak: 'dragones/morgana_puntillas.png',     // escenas de fondo: se escabulle
+    villain_laugh: 'dragones/morgana_risa.png',          // escenas de fondo: se asoma con la varita
     treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
