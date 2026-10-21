@@ -46,6 +46,7 @@ class GameScene extends Phaser.Scene {
       drawBackdrop(this, this.themeKey, idx, Math.max(0.4, 0.85 - 0.06 * (this.level - 1)));
     }
     this.log = [];
+    this.castBusy = false;     // escena de personajes en curso (una a la vez)
     this.trial = 0;
     this.current = null;
     this.items = [];           // objetos en movimiento (Atrapa / Carrera)
@@ -549,10 +550,15 @@ class GameScene extends Phaser.Scene {
     const d = Phaser.Math.Between(P.audioEvery[0], P.audioEvery[1]);
     this.time.delayedCall(d, () => {
       if (this.ended) return;
-      const sounds = this.mode === 'prueba' ? {} : DISTRACTORS[this.themeKey].sounds;
-      const names = Object.keys(sounds);
+      const D = DISTRACTORS[this.themeKey];
+      const sounds = this.mode === 'prueba' ? {} : D.sounds;
+      // voces del villano y del amigo (risa, burla, "¡ayuda!"), cada una desde su nivel
+      const voices = this.mode === 'prueba' ? [] : Object.keys(D.voices || {})
+        .filter(n => (this.level || 0) >= D.voices[n].minLevel).map(n => 'voz_' + n);
+      const names = Object.keys(sounds).concat(voices);
       const name = names.length ? Phaser.Utils.Array.GetRandom(names) : 'tono';
-      if (names.length) sounds[name](); else distractorSound();
+      if (name.startsWith('voz_')) playClip(this.themeKey, 'dist_' + name.slice(4));
+      else if (names.length) sounds[name](); else distractorSound();
       this.logDistractor('audio_distractor', name);
       this.scheduleAudio();
     });
@@ -560,17 +566,22 @@ class GameScene extends Phaser.Scene {
   // Visuales: algo del mundo cruza por el borde de arriba (fly) o de abajo (walk), lejos del centro
   scheduleVisual() {
     const P = this.params;
-    const list = DISTRACTORS[this.themeKey].visual
+    const D = DISTRACTORS[this.themeKey];
+    const list = D.visual
       .filter(v => !((this.mg === 'catch' || this.mg === 'memory') && v.kind === 'walk'));   // abajo está la canasta / las casillas
+    // Personajes del mundo (villano y amigos) desde su nivel. No en el jefe final (ahí ya son el objetivo y los
+    // distractores) ni en Carrera (el villano ya va adelante).
+    const cast = this.mode === 'prueba' || this.boss || this.mg === 'race' ? []
+      : (D.cast || []).filter(c => (this.level || 0) >= c.minLevel);
     if (!P.visual || !list.length) return;
     const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);
     this.time.delayedCall(d, () => {
       if (this.ended) return;
-      // en niveles altos cruzan varias cosas a la vez (una detrás de otra)
+      // en niveles altos cruzan varias cosas a la vez (una detrás de otra); una sola escena de personajes a la vez
       for (let k = 0; k < (P.visualCount || 1); k++) {
         this.time.delayedCall(k * 450, () => {
           if (this.ended) return;
-          const v = Phaser.Utils.Array.GetRandom(list);
+          let v = Phaser.Utils.Array.GetRandom(this.castBusy ? list : list.concat(cast));
           this.showVisualDistractor(v);
           this.logDistractor('visual_distractor', v.name);
         });
@@ -579,6 +590,7 @@ class GameScene extends Phaser.Scene {
     });
   }
   showVisualDistractor(v) {
+    if (v.kind === 'fight' || v.kind === 'sneak' || v.kind === 'chase') { this.showCastScene(v); return; }
     const W = GAME_W, H = GAME_H;
     const fromLeft = Math.random() < 0.5;
     const y = v.kind === 'walk' ? H - 32 : Phaser.Math.Between(62, 112);
@@ -587,6 +599,56 @@ class GameScene extends Phaser.Scene {
     this.tweens.add({ targets: img, x: fromLeft ? W + 70 : -70, duration: v.kind === 'walk' ? 5500 : 4000,
       onComplete: () => img.destroy() });
     if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+  }
+  // Escenas "de fondo" con los personajes del mundo (detrás de los objetos del juego, para no taparlos):
+  // fight = el villano pelea con un amigo en un borde · sneak = el villano cruza por arriba riéndose ·
+  // chase = el villano huye por arriba y el amigo lo persigue. Cada una con su voz (queda en el CSV).
+  showCastScene(c) {
+    const W = GAME_W, tex = TEX[this.themeKey], DEPTH = -1;
+    this.castBusy = true;
+    const objs = [];
+    const end = () => { objs.forEach(o => o.destroy()); this.castBusy = false; };
+    if (c.voice && playClip(this.themeKey, 'dist_' + c.voice)) this.logDistractor('audio_distractor', 'voz_' + c.voice);
+    const left = Math.random() < 0.5, dir = left ? 1 : -1;
+    if (c.kind === 'fight') {
+      // en Memoria, más arriba para no tapar las casillas de los lados
+      const y = this.mg === 'memory' ? 205 : Phaser.Math.Between(260, 320);
+      const fx = left ? 36 : W - 36, vx = left ? 92 : W - 92, off = left ? -90 : W + 90;
+      const friend = fit(this.add.image(off, y, tex[c.friend]), 100).setDepth(DEPTH).setFlipX(!left);
+      const villain = fit(this.add.image(off, y, tex.villain), 100).setDepth(DEPTH).setFlipX(left);   // se miran de frente
+      objs.push(friend, villain);
+      this.tweens.add({ targets: friend, x: fx, duration: 350 });
+      this.tweens.add({ targets: villain, x: vx, duration: 350, onComplete: () => {
+        this.tweens.add({ targets: villain, x: vx - 18 * dir, duration: 140, yoyo: true, repeat: 5 });
+        this.tweens.add({ targets: friend, angle: { from: -8, to: 8 }, duration: 140, yoyo: true, repeat: 5 });
+        [0, 600, 1200].forEach(t => this.time.delayedCall(t, () => {
+          if (!this.scene.isActive()) return;
+          const pow = this.add.text((fx + vx) / 2, y - 62, Phaser.Utils.Array.GetRandom(['¡POW!', '¡PUM!', '¡ZAS!']),
+            { font: 'bold 22px Arial', color: '#fde047', stroke: '#7c2d12', strokeThickness: 5 }).setOrigin(0.5).setDepth(DEPTH).setScale(0.4);
+          objs.push(pow);
+          this.tweens.add({ targets: pow, scale: 1.1, alpha: 0, duration: 550 });
+        }));
+      } });
+      this.time.delayedCall(2600, () => this.tweens.add({ targets: [friend, villain], x: off, duration: 350, onComplete: end }));
+    } else {
+      // por la franja de arriba, de un lado al otro
+      const y = Phaser.Math.Between(78, 98), from = left ? -80 : W + 80, to = left ? W + 80 : -80;
+      const runner = role => {
+        const img = fit(this.add.image(from, y, tex[role]), 78).setDepth(DEPTH).setFlipX(!left);
+        this.tweens.add({ targets: img, y: y - 7, duration: 180, yoyo: true, repeat: -1 });   // saltitos al correr
+        objs.push(img);
+        return img;
+      };
+      const villain = runner('villain');
+      this.tweens.add({ targets: villain, x: to, duration: 4200, onComplete: () => { if (c.kind === 'sneak') end(); } });
+      if (c.kind === 'chase') {
+        this.time.delayedCall(700, () => {
+          if (!this.scene.isActive()) return;
+          const friend = runner(c.friend);
+          this.tweens.add({ targets: friend, x: to, duration: 4200, onComplete: end });
+        });
+      }
+    }
   }
 
   finish() {

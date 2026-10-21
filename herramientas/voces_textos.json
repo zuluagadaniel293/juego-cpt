@@ -71,6 +71,22 @@
     "boss_find": {
       "texto": "¡Sombra se mezcló entre mis amigos héroes! Encuéntralo y, si escapa, ¡persíguelo!",
       "firma": "5d65527388"
+    },
+    "dist_risa": {
+      "texto": "¡Ja, ja, ja, ja! ¡Nunca me atraparás, Héroe Rayo!",
+      "firma": "5cd29d6641"
+    },
+    "dist_burla": {
+      "texto": "¡Mi señal está por todas partes! ¿Podrás encontrarla?",
+      "firma": "bafd7a5283"
+    },
+    "dist_amenaza": {
+      "texto": "¡Esta ciudad pronto será mía! ¡Ja, ja, ja!",
+      "firma": "84cec0fc41"
+    },
+    "dist_ayuda": {
+      "texto": "¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!",
+      "firma": "8194ea5bcd"
     }
   },
   "fantasy": {
@@ -145,6 +161,22 @@
     "boss_find": {
       "texto": "¡Morgana se mezcló entre los magos buenos del bosque! Encuéntrala y, si escapa, ¡persíguela!",
       "firma": "1df8220537"
+    },
+    "dist_risa": {
+      "texto": "¡Ja, ja, ja! ¡Jamás encontrarás a tu hermanito!",
+      "firma": "ca7d9cb4bd"
+    },
+    "dist_burla": {
+      "texto": "¡Abracadabra! ¡Que todos los dragones se confundan!",
+      "firma": "1685dfa4b6"
+    },
+    "dist_amenaza": {
+      "texto": "¡El bosque entero caerá bajo mi hechizo!",
+      "firma": "efbfe45083"
+    },
+    "dist_ayuda": {
+      "texto": "¡Ayuda, Chispa! ¡Morgana me quiere hechizar!",
+      "firma": "a8bf7ee24f"
     }
   },
   "kingdom": {
@@ -219,6 +251,22 @@
     "boss_find": {
       "texto": "¡El Duende Pícaro se mezcló con la gente del castillo! Encuéntralo y, si escapa, ¡persíguelo!",
       "firma": "8670bef203"
+    },
+    "dist_risa": {
+      "texto": "¡Ji, ji, ji, ji! ¡No me pueden atrapar!",
+      "firma": "3678ebf1a7"
+    },
+    "dist_burla": {
+      "texto": "¡Psst! ¡Por aquí! ¡No, por allá! ¡Ji, ji, ji!",
+      "firma": "d3cbe70a0a"
+    },
+    "dist_amenaza": {
+      "texto": "¡Voy a esconder la corona de la reina! ¡Ji, ji!",
+      "firma": "f835290c23"
+    },
+    "dist_ayuda": {
+      "texto": "¡Ayuda, majestad! ¡El duende se está escapando!",
+      "firma": "215afc8e9c"
     }
   }
 }

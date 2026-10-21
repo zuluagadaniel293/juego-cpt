@@ -58,6 +58,19 @@ registrarMundo('kingdom', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // fight = pelea en un borde · sneak = el villano cruza por arriba · chase = el villano huye y el amigo lo persigue
+    cast: [
+      { name: 'guardia_persigue_duende', kind: 'chase', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
+      { name: 'duende_escabulle', kind: 'sneak', voice: 'risa', minLevel: 3 }
+    ],
+    // Voces (las graba herramientas/generar_voces.js): who = villain o friend
+    voices: {
+      risa:    { who: 'villain', minLevel: 2, text: '¡Ji, ji, ji, ji! ¡No me pueden atrapar!' },
+      burla:   { who: 'villain', minLevel: 3, text: '¡Psst! ¡Por aquí! ¡No, por allá! ¡Ji, ji, ji!' },
+      amenaza: { who: 'villain', minLevel: 4, text: '¡Voy a esconder la corona de la reina! ¡Ji, ji!' },
+      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, majestad! ¡El duende se está escapando!' }
+    },
     visual: [
       { name: 'libro_volador', kind: 'fly', size: 75 },
       { name: 'escoba_magica', kind: 'fly', size: 100 },

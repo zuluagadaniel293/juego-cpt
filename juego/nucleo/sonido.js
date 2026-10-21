@@ -30,6 +30,15 @@ function playVoice(theme, id, text) {
   currentVoice = new Audio('assets/' + file);
   currentVoice.play().catch(() => speakTTS(text, theme));
 }
+// Voz de un distractor (risa del villano, "¡ayuda!"...): suena encima de todo, sin cortar al narrador
+function playClip(theme, id, volume) {
+  const file = ((window.VOICES || {})[theme] || {})[id];
+  if (!file) return false;
+  const a = new Audio('assets/' + file);
+  a.volume = volume === undefined ? 0.8 : volume;
+  a.play().catch(() => {});
+  return true;
+}
 function stopVoice() {
   if (currentVoice) { currentVoice.pause(); currentVoice = null; }
   try { window.speechSynthesis.cancel(); } catch (e) { /* nada */ }

@@ -14,6 +14,12 @@ Cada fila es **un evento**:
 - `estimulo`: apareció algo que el niño debía tocar (objetivo) o ignorar (distractor).
 - `distractor_sonido`: sonó un ruido del mundo (sirena, rugido, campanas...).
 - `distractor_visual`: algo cruzó por el borde de la pantalla (avión, mariposa, ratón...).
+  Desde el nivel 2 también aparecen **los personajes del mundo**: `pelea_sombra_capitan`, `pelea_morgana_mago`,
+  `guardia_persigue_duende` (escena en un borde o arriba) y `*_escabulle` (el villano cruza por arriba, desde el nivel 3).
+  No salen en Carrera (el villano ya va adelante), en el jefe final ni en la Prueba fija.
+- En `distractor_sonido`, las filas `voz_...` son **voces** de los personajes: `voz_risa` (nivel 2+), `voz_burla` y
+  `voz_ayuda` (nivel 3+), `voz_amenaza` (nivel 4+). Una voz humana distrae más que un ruido: sirve para comparar
+  cómo afecta cada tipo de distractor.
 
 ## Columnas
 | Columna | Qué significa |

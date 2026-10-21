@@ -58,6 +58,19 @@ registrarMundo('fantasy', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // fight = pelea en un borde · sneak = el villano cruza por arriba · chase = el villano huye y el amigo lo persigue
+    cast: [
+      { name: 'pelea_morgana_mago', kind: 'fight', friend: 'friend2', voice: 'ayuda', minLevel: 2 },
+      { name: 'morgana_escabulle', kind: 'sneak', voice: 'risa', minLevel: 3 }
+    ],
+    // Voces (las graba herramientas/generar_voces.js): who = villain o friend
+    voices: {
+      risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja, ja! ¡Jamás encontrarás a tu hermanito!' },
+      burla:   { who: 'villain', minLevel: 3, text: '¡Abracadabra! ¡Que todos los dragones se confundan!' },
+      amenaza: { who: 'villain', minLevel: 4, text: '¡El bosque entero caerá bajo mi hechizo!' },
+      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Chispa! ¡Morgana me quiere hechizar!' }
+    },
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60 },
       { name: 'murcielago', kind: 'fly', size: 75 },

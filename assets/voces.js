@@ -19,7 +19,11 @@ window.VOICES = {
     "memory": "voces/superheroes/memory.mp3",
     "intro_memory": "voces/superheroes/intro_memory.mp3",
     "boss_classic": "voces/superheroes/boss_classic.mp3",
-    "boss_find": "voces/superheroes/boss_find.mp3"
+    "boss_find": "voces/superheroes/boss_find.mp3",
+    "dist_risa": "voces/superheroes/dist_risa.mp3",
+    "dist_burla": "voces/superheroes/dist_burla.mp3",
+    "dist_amenaza": "voces/superheroes/dist_amenaza.mp3",
+    "dist_ayuda": "voces/superheroes/dist_ayuda.mp3"
   },
   "fantasy": {
     "1": "voces/dragones/1.mp3",
@@ -39,7 +43,11 @@ window.VOICES = {
     "memory": "voces/dragones/memory.mp3",
     "intro_memory": "voces/dragones/intro_memory.mp3",
     "boss_classic": "voces/dragones/boss_classic.mp3",
-    "boss_find": "voces/dragones/boss_find.mp3"
+    "boss_find": "voces/dragones/boss_find.mp3",
+    "dist_risa": "voces/dragones/dist_risa.mp3",
+    "dist_burla": "voces/dragones/dist_burla.mp3",
+    "dist_amenaza": "voces/dragones/dist_amenaza.mp3",
+    "dist_ayuda": "voces/dragones/dist_ayuda.mp3"
   },
   "kingdom": {
     "1": "voces/reino_magico/1.mp3",
@@ -59,6 +67,10 @@ window.VOICES = {
     "memory": "voces/reino_magico/memory.mp3",
     "intro_memory": "voces/reino_magico/intro_memory.mp3",
     "boss_classic": "voces/reino_magico/boss_classic.mp3",
-    "boss_find": "voces/reino_magico/boss_find.mp3"
+    "boss_find": "voces/reino_magico/boss_find.mp3",
+    "dist_risa": "voces/reino_magico/dist_risa.mp3",
+    "dist_burla": "voces/reino_magico/dist_burla.mp3",
+    "dist_amenaza": "voces/reino_magico/dist_amenaza.mp3",
+    "dist_ayuda": "voces/reino_magico/dist_ayuda.mp3"
   }
 };

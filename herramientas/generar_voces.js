@@ -26,6 +26,15 @@ const VOCES = {
   fantasy: { carpeta: 'dragones',     voz: 'es-CO-SalomeNeural',  tono: '+35Hz', velocidad: '+6%' },   // Chispa
   kingdom: { carpeta: 'reino_magico', voz: 'es-MX-DaliaNeural',   tono: '+12Hz', velocidad: '+0%' }    // Reina Luna
 };
+// Voces del villano y del amigo que pide ayuda (distractores auditivos: distractors.voices de cada mundo)
+const VOCES_REPARTO = {
+  heroes:  { villain: { voz: 'es-MX-JorgeNeural',  tono: '-12Hz', velocidad: '-4%' },    // Sombra
+             friend:  { voz: 'es-US-PalomaNeural', tono: '+15Hz', velocidad: '+8%' } },  // Capitán Estrella
+  fantasy: { villain: { voz: 'es-ES-ElviraNeural', tono: '-15Hz', velocidad: '-6%' },    // Morgana
+             friend:  { voz: 'es-ES-AlvaroNeural', tono: '-8Hz',  velocidad: '-8%' } },  // Mago abuelo
+  kingdom: { villain: { voz: 'es-US-AlonsoNeural', tono: '+40Hz', velocidad: '+15%' },   // Duende Pícaro
+             friend:  { voz: 'es-MX-JorgeNeural',  tono: '+0Hz',  velocidad: '+5%' } }   // Guardia
+};
 const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory'];
 
 // 1. Leer los mundos (solo hace falta lo que pasan a registrarMundo)
@@ -36,16 +45,18 @@ for (const f of ['superheroes', 'dragones', 'reino_magico']) {
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f + '.js'), 'utf8'), sandbox);
 }
 
-// 2. Todos los textos posibles de cada mundo (los mismos ids que usa chapterLine en juego/nucleo/mundos.js)
-function textos(st) {
-  const t = {};
-  st.chapters.forEach((ch, i) => { t[String(i + 1)] = ch.line; });
-  t.end = st.ending;
+// 2. Todos los textos posibles de cada mundo (los mismos ids que usa chapterLine en juego/nucleo/mundos.js),
+// con la voz de quien lo dice: el protagonista, o el villano / el amigo ('dist_<nombre>', distractores)
+function textos(key, m) {
+  const st = m.story, yo = VOCES[key], t = {};
+  st.chapters.forEach((ch, i) => { t[String(i + 1)] = [ch.line, yo]; });
+  t.end = [st.ending, yo];
   JUEGOS.forEach(mg => {
-    t[mg] = st.mgLines[mg];
-    t['intro_' + mg] = st.intro + st.mgLines[mg];
+    t[mg] = [st.mgLines[mg], yo];
+    t['intro_' + mg] = [st.intro + st.mgLines[mg], yo];
   });
-  Object.entries(st.bossLines || {}).forEach(([mg, line]) => { t['boss_' + mg] = line; });
+  Object.entries(st.bossLines || {}).forEach(([mg, line]) => { t['boss_' + mg] = [line, yo]; });
+  Object.entries((m.distractors || {}).voices || {}).forEach(([name, v]) => { t['dist_' + name] = [v.text, VOCES_REPARTO[key][v.who]]; });
   return t;
 }
 
@@ -59,12 +70,12 @@ for (const [key, cfg] of Object.entries(VOCES)) {
   const dir = path.join(ROOT, 'assets/voces', cfg.carpeta);
   fs.mkdirSync(dir, { recursive: true });
   mapa[key] = {}; todos[key] = {};
-  for (const [id, texto] of Object.entries(textos(mundos[key].story))) {
+  for (const [id, [texto, v]] of Object.entries(textos(key, mundos[key]))) {
     const file = path.join(dir, id + '.mp3');
-    const firma = crypto.createHash('md5').update(cfg.voz + cfg.tono + cfg.velocidad + texto).digest('hex').slice(0, 10);
+    const firma = crypto.createHash('md5').update(v.voz + v.tono + v.velocidad + texto).digest('hex').slice(0, 10);
     todos[key][id] = { texto, firma };
     if (!(fs.existsSync(file) && antes[key] && antes[key][id] && antes[key][id].firma === firma)) {
-      const r = spawnSync(cmd[0], cmd.slice(1).concat(['--voice', cfg.voz, '--pitch=' + cfg.tono, '--rate=' + cfg.velocidad,
+      const r = spawnSync(cmd[0], cmd.slice(1).concat(['--voice', v.voz, '--pitch=' + v.tono, '--rate=' + v.velocidad,
         '--text', texto, '--write-media', file]), { encoding: 'utf8' });
       if (r.status !== 0) { console.error('No se pudo grabar', key, id, r.stderr || r.error); process.exit(1); }
       grabados++;

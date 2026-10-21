@@ -46,6 +46,7 @@ class MemoryScene extends Phaser.Scene {
       this.add.text(W - 90, 27, tag, { font: 'bold 16px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
     }
     this.log = [];
+    this.castBusy = false;     // escena de personajes en curso (una a la vez)
     this.trial = 0;
     this.result = { fwd: 0, bwd: 0 };
     this.t0 = null;
@@ -222,6 +223,6 @@ class MemoryScene extends Phaser.Scene {
   }
 }
 // Sonidos y cosas que cruzan por los bordes: los mismos del motor del juego (y quedan en el CSV)
-['logDistractor', 'scheduleAudio', 'scheduleVisual', 'showVisualDistractor'].forEach(m => {
+['logDistractor', 'scheduleAudio', 'scheduleVisual', 'showVisualDistractor', 'showCastScene'].forEach(m => {
   MemoryScene.prototype[m] = GameScene.prototype[m];
 });
