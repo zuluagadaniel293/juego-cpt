@@ -61,6 +61,7 @@ window.ASSETS = {
     villain_caught: 'dragones/morgana_atrapada.png',
     villain_sneak: 'dragones/morgana_puntillas.png',     // escenas de fondo: se escabulle
     villain_laugh: 'dragones/morgana_risa.png',          // escenas de fondo: se asoma con la varita
+    friend_help:  'dragones/mago_ayuda.png',             // pelea: el mago abuelo suplica asustado
     treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
