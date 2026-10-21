@@ -590,7 +590,7 @@ class GameScene extends Phaser.Scene {
     });
   }
   showVisualDistractor(v) {
-    if (v.kind === 'fight' || v.kind === 'sneak' || v.kind === 'chase') { this.showCastScene(v); return; }
+    if (['fight', 'sneak', 'chase', 'peek'].includes(v.kind)) { this.showCastScene(v); return; }
     const W = GAME_W, H = GAME_H;
     const fromLeft = Math.random() < 0.5;
     const y = v.kind === 'walk' ? H - 32 : Phaser.Math.Between(62, 112);
@@ -601,8 +601,9 @@ class GameScene extends Phaser.Scene {
     if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
   }
   // Escenas "de fondo" con los personajes del mundo (detrás de los objetos del juego, para no taparlos):
-  // fight = el villano pelea con un amigo en un borde · sneak = el villano cruza por arriba riéndose ·
-  // chase = el villano huye por arriba y el amigo lo persigue. Cada una con su voz (queda en el CSV).
+  // fight = el villano pelea con un amigo en un borde · sneak = el villano cruza por arriba de puntillas ·
+  // chase = el villano huye por arriba y el amigo lo persigue · peek = el villano se asoma por una esquina de abajo
+  // y se ríe. Cada una con su voz (queda en el CSV).
   showCastScene(c) {
     const W = GAME_W, tex = TEX[this.themeKey], DEPTH = -1;
     this.castBusy = true;
@@ -630,17 +631,29 @@ class GameScene extends Phaser.Scene {
         }));
       } });
       this.time.delayedCall(2600, () => this.tweens.add({ targets: [friend, villain], x: off, duration: 350, onComplete: end }));
+    } else if (c.kind === 'peek') {
+      // sube desde abajo en una esquina, se ríe (se sacude) y se vuelve a esconder
+      const side = left && !this.caster;   // abajo a la izquierda está el protagonista en Clásico y Encuentra
+      const x = side ? 70 : W - 70, H = GAME_H;
+      const img = fit(this.add.image(x, H + 80, tex.villain_laugh), 120).setDepth(DEPTH).setFlipX(!side);
+      objs.push(img);
+      this.tweens.add({ targets: img, y: H - 60, duration: 450, ease: 'Back.easeOut', onComplete: () => {
+        this.tweens.add({ targets: img, angle: { from: -5, to: 5 }, duration: 120, yoyo: true, repeat: 7 });
+        this.time.delayedCall(2000, () => this.tweens.add({ targets: img, y: H + 80, duration: 400, onComplete: end }));
+      } });
     } else {
       // por la franja de arriba, de un lado al otro
       const y = Phaser.Math.Between(78, 98), from = left ? -80 : W + 80, to = left ? W + 80 : -80;
+      const sneak = c.kind === 'sneak';
       const runner = role => {
-        const img = fit(this.add.image(from, y, tex[role]), 78).setDepth(DEPTH).setFlipX(!left);
-        this.tweens.add({ targets: img, y: y - 7, duration: 180, yoyo: true, repeat: -1 });   // saltitos al correr
+        const img = fit(this.add.image(from, y, tex[role]), sneak ? 84 : 78).setDepth(DEPTH).setFlipX(!left);
+        // saltitos al correr; de puntillas, pasos lentos
+        this.tweens.add({ targets: img, y: y - (sneak ? 4 : 7), duration: sneak ? 320 : 180, yoyo: true, repeat: -1 });
         objs.push(img);
         return img;
       };
-      const villain = runner('villain');
-      this.tweens.add({ targets: villain, x: to, duration: 4200, onComplete: () => { if (c.kind === 'sneak') end(); } });
+      const villain = runner(sneak ? 'villain_sneak' : 'villain');
+      this.tweens.add({ targets: villain, x: to, duration: sneak ? 5200 : 4200, onComplete: () => { if (sneak) end(); } });
       if (c.kind === 'chase') {
         this.time.delayedCall(700, () => {
           if (!this.scene.isActive()) return;

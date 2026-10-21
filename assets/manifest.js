@@ -11,6 +11,8 @@
 //   hero_run          protagonista corriendo (Carrera); si falta, usa "hero"
 //   villain           villano: objetivo del jefe final
 //   villain_caught    villano atrapado en la red; si falta, se arma solo
+//   villain_sneak     villano de puntillas, escabulléndose (escenas de fondo); si falta, usa "villain"
+//   villain_laugh     villano riéndose (se asoma por una esquina); si falta, usa "villain"
 //   friend1, friend2  amigos: distractores del jefe final
 //   friend3           amigo parecido al villano (distractor difícil del jefe final)
 //   net               red para atrapar al villano
@@ -29,6 +31,8 @@ window.ASSETS = {
     hero:    'superheroes/heroe_rayo.png',
     villain: 'superheroes/sombra.png',
     villain_caught: 'superheroes/sombra_atrapado.png',
+    villain_sneak: 'superheroes/sombra_puntillas.png',   // escenas de fondo: se escabulle
+    villain_laugh: 'superheroes/sombra_risa.png',        // escenas de fondo: se asoma riéndose
     treasure: 'superheroes/tesoro_escudo.png',   // Misión perfecta
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
