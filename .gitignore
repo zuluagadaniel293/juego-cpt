@@ -3,3 +3,6 @@ desktop.ini
 Thumbs.db
 *.tmp
 ~$*
+muestras_voces/
+.env
+herramientas/.elevenlabs_key
