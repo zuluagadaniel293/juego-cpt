@@ -69,7 +69,7 @@ function textos(key, m) {
     t[mg] = [st.mgLines[mg], yo];
     t['intro_' + mg] = [st.intro + st.mgLines[mg], yo];
   });
-  Object.entries(st.bossLines || {}).forEach(([mg, line]) => { t['boss_' + mg] = [line, yo]; });
+  if (st.bossLine) t.boss = [st.bossLine, yo];
   const reparto = VOCES_REPARTO[key];
   // quien presenta cada capítulo: 'comp_1' ... 'comp_4'
   (st.companions || []).forEach((c, i) => { t['comp_' + (i + 1)] = [c.line, reparto[c.role]]; });

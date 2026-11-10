@@ -24,33 +24,35 @@ function registrarMundo(key, m) {
 
 // ---------- Orden de los juegos en la Historia ----------
 // Los 5 niveles de cada mundo sacan sus juegos al azar entre los 7 (Clásico, Atrapa, Carrera, Encuentra, Memoria,
-// Menos uno y Pista); no tienen que salir todos. Capítulos 1 a 4: un juego distinto cada uno. Nivel 5 (jefe final,
-// 2 fases): empieza con uno de los que no salieron y sirven para encontrar al villano entre sus amigos (Clásico,
-// Atrapa o Encuentra) y termina persiguiéndolo (Carrera).
+// Menos uno y Pista); no tienen que salir todos. Capítulos 1 a 4: un juego distinto cada uno. Nivel 5 (jefe final):
+// 2 fases al azar entre los juegos donde se busca al villano entre sus amigos (Clásico, Atrapa, Carrera, Encuentra,
+// Memoria), de preferencia los que no salieron en los capítulos. Así ningún mundo repite siempre lo mismo.
 // La dificultad la pone el nivel (1, 2, 3, 4 y 6 el jefe), no el juego. El orden se guarda para que el mapa
 // no cambie mientras el niño avanza, y se vuelve a sortear cuando vence al jefe final.
 const STORY_GAMES = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax'];
-const BOSS_FIRST = ['classic', 'catch', 'find'];
-const ORDER_KEY = 'cpt_order_v2';   // v2: todos los juegos al azar (el orden anterior siempre traía Memoria)
-function chapterGames(theme) {
+const BOSS_GAMES = ['classic', 'catch', 'race', 'find', 'memory'];
+const ORDER_KEY = 'cpt_order_v3';   // v3: el jefe también sortea sus 2 fases
+function storyOrder(theme) {
   const all = store.get(ORDER_KEY, {});
-  if (!all[theme] || !all[theme].boss) {
-    const chapters = Phaser.Utils.Array.Shuffle(STORY_GAMES.slice()).slice(0, 4);
-    const rest = BOSS_FIRST.filter(g => !chapters.includes(g));
-    all[theme] = { chapters, boss: rest.length ? Phaser.Utils.Array.GetRandom(rest) : Phaser.Utils.Array.GetRandom(BOSS_FIRST) };
+  if (!all[theme] || !Array.isArray(all[theme].boss)) {
+    const shuffle = a => Phaser.Utils.Array.Shuffle(a.slice());
+    const chapters = shuffle(STORY_GAMES).slice(0, 4);
+    const boss = shuffle(BOSS_GAMES.filter(g => !chapters.includes(g)))
+      .concat(shuffle(BOSS_GAMES.filter(g => chapters.includes(g)))).slice(0, 2);
+    all[theme] = { chapters, boss };
     store.set(ORDER_KEY, all);
   }
-  return all[theme].chapters;
+  return all[theme];
 }
+const chapterGames = theme => storyOrder(theme).chapters;
 function chapterGame(theme, i) {
   return STORY[theme].chapters[i].boss ? null : chapterGames(theme)[i];
 }
-// Fases del jefe final: el juego sorteado para él y luego la persecución (Carrera)
+// Fases del jefe final: los 2 juegos sorteados, con la duración de cada fase
 function bossPhases(theme) {
-  chapterGames(theme);
-  const first = store.get(ORDER_KEY, {})[theme].boss;
+  const games = storyOrder(theme).boss;
   const boss = STORY[theme].chapters.find(c => c.boss);
-  return boss.phases.map((p, k) => ({ mg: k === 0 ? first : 'race', sec: p.sec }));
+  return boss.phases.map((p, k) => ({ mg: games[k], sec: p.sec }));
 }
 function newChapterOrder(theme) {
   const all = store.get(ORDER_KEY, {});
@@ -58,14 +60,11 @@ function newChapterOrder(theme) {
   store.set(ORDER_KEY, all);
 }
 // Lo que dice el personaje al empezar el capítulo, y el nombre de su audio (ver herramientas/generar_voces.js):
-// '1'...'5' = texto original del capítulo · 'race' = texto del juego · 'intro_race' = saludo + texto del juego
-// (capítulo 1) · 'boss_find' = jefe final que empieza con otro juego
+// '1'...'4' = texto original del capítulo · 'race' = texto del juego · 'intro_race' = saludo + texto del juego
+// (capítulo 1) · 'boss' = jefe final
 function chapterLine(theme, i) {
   const st = STORY[theme], ch = st.chapters[i];
-  if (ch.boss) {
-    const first = bossPhases(theme)[0].mg;
-    return first === 'catch' ? { text: ch.line, voice: String(i + 1) } : { text: st.bossLines[first], voice: 'boss_' + first };
-  }
+  if (ch.boss) return { text: st.bossLine, voice: 'boss' };
   const mg = chapterGame(theme, i);
   if (mg === ch.mg) return { text: ch.line, voice: String(i + 1) };
   return i === 0 ? { text: st.intro + st.mgLines[mg], voice: 'intro_' + mg } : { text: st.mgLines[mg], voice: mg };

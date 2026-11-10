@@ -41,12 +41,12 @@ function paintSilhouette(scene, key, w, h, draw, color) {
   return key;
 }
 // Silueta de una textura del juego (personaje, objeto...). Si no se puede leer la imagen, devuelve null.
-function silhouetteOf(scene, texKey) {
+function silhouetteOf(scene, texKey, color) {
   try {
     const src = scene.textures.get(texKey).getSourceImage();
     const s = 256 / Math.max(src.width, src.height);
     const w = Math.round(src.width * s), h = Math.round(src.height * s);
-    return paintSilhouette(scene, 'sil_' + texKey, w, h, ctx => ctx.drawImage(src, 0, 0, w, h));
+    return paintSilhouette(scene, 'sil_' + texKey + (color || ''), w, h, ctx => ctx.drawImage(src, 0, 0, w, h), color);
   } catch (e) { return null; }
 }
 // Silueta de un emoji (para los mundos que todavía no existen)

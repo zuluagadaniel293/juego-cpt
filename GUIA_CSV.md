@@ -122,3 +122,14 @@ Mide atención sostenida y **memoria de trabajo** (hay que recordar la pista).
 En la **Zona de adultos** se puede elegir cualquiera de las tres pruebas fijas (CPT clásico, Menos uno, Pista), siempre
 con los mismos parámetros para comparar sesiones. La pantalla de resultados muestra los errores por condición.
 **No es un diagnóstico**: sirve para seguir el progreso del niño.
+
+## Atrapa: objetos que se descubren al cruzar la línea
+Desde el nivel 2, en Atrapa los objetos caen como **sombras iguales** y solo muestran qué son al cruzar una línea
+amarilla, que baja con cada nivel (hay menos tiempo para decidir). Por eso, en Atrapa, `momento_ms` y
+`tiempo_reaccion_ms` se cuentan **desde que el objeto se descubre**, no desde que empieza a caer: así el tiempo de
+reacción mide cuánto tarda el niño en decidir y moverse, no cuánto se demora el objeto en caer.
+
+## Jefe final
+Sus dos fases salen al azar entre Clásico, Atrapa, Carrera, Encuentra y Memoria (la columna `fase_jefe` dice cuál
+fue la 1 y cuál la 2). Si una fase es Memoria, sus caminos aparecen en el mismo CSV como `camino_memoria`, con
+resultado `recordo_el_camino` o `se_equivoco_de_camino`.

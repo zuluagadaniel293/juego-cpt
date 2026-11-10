@@ -39,7 +39,16 @@ function memoryStats(log) {
     hitRate: t.length ? ok / t.length : 0 };
 }
 // Resultados de un nivel, sea cual sea el juego
-const levelStats = (log, mg) => (mg === 'memory' ? memoryStats(log) : computeStats(log));
+function levelStats(log) {
+  const mem = log.some(r => r.event_type === 'memory_trial'), stim = log.some(r => r.event_type === 'stimulus');
+  if (mem && !stim) return memoryStats(log);
+  if (!mem) return computeStats(log);
+  // jefe final con una fase de Memoria y otra de otro juego: se suman los dos
+  const a = computeStats(log), m = memoryStats(log);
+  const targets = a.targets + m.targets, hits = a.hits + m.hits;
+  return Object.assign({}, a, { trials: a.trials + m.trials, targets, hits, omissions: targets - hits,
+    commissions: a.commissions + m.commissions, hitRate: targets ? hits / targets : 0 });
+}
 
 // Estrellas: premian precisión (aciertos y pocas comisiones), no velocidad.
 function starsFor(s, mg) {
@@ -55,7 +64,8 @@ function starsFor(s, mg) {
 
 // ---------- CSV en español, listo para abrir en Excel (ver GUIA_CSV.md) ----------
 const CSV_TEXT = {
-  event_type: { stimulus: 'estimulo', audio_distractor: 'distractor_sonido', visual_distractor: 'distractor_visual' },
+  event_type: { stimulus: 'estimulo', audio_distractor: 'distractor_sonido', visual_distractor: 'distractor_visual',
+    memory_trial: 'camino_memoria' },
   mode: { historia: 'Historia', desafio: 'Desafío', prueba: 'Prueba fija' },
   stimulus_type: { target: 'objetivo', distractor: 'distractor' },
   // Menos uno y Pista: qué tipo de estímulo era (ver GUIA_CSV.md)
@@ -68,7 +78,9 @@ const CSV_TEXT = {
     omission: 'omision',                  // no respondió al objetivo (despiste)
     commission: 'error_impulsivo',        // respondió a un distractor
     correct_rejection: 'ignoro_bien',     // no respondió a un distractor (correcto)
-    wrong_tap: 'toco_otro'                // en Encuentra tocó otro objeto en vez del objetivo
+    wrong_tap: 'toco_otro',               // en Encuentra tocó otro objeto en vez del objetivo
+    memory_ok: 'recordo_el_camino',        // Memoria (en el jefe final): repitió bien el camino
+    memory_fail: 'se_equivoco_de_camino'
   }
 };
 // Nombre legible de lo que apareció: el nombre del archivo de la imagen (sin la ruta)
@@ -79,7 +91,8 @@ function stimulusLabel(theme, key) {
   return key;
 }
 function downloadCSV(log, name) {
-  if (log.some(r => r.event_type === 'memory_trial')) return downloadMemoryCSV(log, name);
+  // solo Memoria: su propio CSV (si se mezcla con otro juego, como en el jefe final, va en este con todo lo demás)
+  if (log.some(r => r.event_type === 'memory_trial') && !log.some(r => r.event_type === 'stimulus')) return downloadMemoryCSV(log, name);
   const cols = [
     ['tipo_evento', r => CSV_TEXT.event_type[r.event_type] || r.event_type],
     ['modo', r => CSV_TEXT.mode[r.mode] || r.mode],

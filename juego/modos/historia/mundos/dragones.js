@@ -21,11 +21,8 @@ registrarMundo('fantasy', {
       ax: 'Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
       memory: '¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.'
     },
-    // Jefe final: su primera fase es el juego que no salió en los capítulos (si es Atrapa o Carrera, usa el texto original)
-    bossLines: {
-      classic: '¡Fue la hechicera Morgana! Se esconde entre los magos buenos del bosque. Toca solo cuando aparezca ella y, si escapa, ¡persíguela!',
-      find: '¡Morgana se mezcló entre los magos buenos del bosque! Encuéntrala y, si escapa, ¡persíguela!'
-    },
+    // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
+    bossLine: '¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!',
     chapters: [
       { place: 'El Nido', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?' },

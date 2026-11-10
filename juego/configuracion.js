@@ -64,7 +64,11 @@ function challengeParams(level, minigame) {
     visualEvery: [Math.max(3500, 9000 - 600 * L), Math.max(6000, 14000 - 800 * L)],
     visualCount: 1 + Math.floor(L / 3),              // cosas que cruzan a la vez: 1 (niv. 1-3), 2 (4-6), 3 (7-9)...
     extraProb: level >= 3 ? Math.min(0.6, 0.12 * (level - 2)) : 0,   // Atrapa/Carrera: otro distractor sale junto
-    travelMs: Math.max(1400, 3000 - 150 * L),        // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla
+    // Atrapa/Carrera: tiempo que tarda en cruzar la pantalla (en Atrapa, más rápido: si no, sobra tiempo para decidir)
+    travelMs: minigame === 'catch' ? Math.max(1300, 2500 - 140 * L) : Math.max(1400, 3000 - 150 * L),
+    // Atrapa: desde el nivel 2 los objetos caen como sombras iguales y se descubren al cruzar una línea, que baja
+    // con el nivel: cada vez hay menos tiempo para decidir si atraparlo (atención y control de impulsos)
+    revealY: level >= 2 ? Math.min(300, 110 + 35 * L) : 0,
     spawnMin: Math.max(550, 1200 - 60 * L),
     spawnMax: Math.max(900, 1800 - 70 * L),
     setSize: Math.min(8, 4 + Math.floor(L / 2)),     // Encuentra: cuántos objetos a la vez

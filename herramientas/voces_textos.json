@@ -80,13 +80,9 @@
       "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
       "firma": "f17050833b"
     },
-    "boss_classic": {
-      "texto": "¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Toca solo cuando aparezca él y, si escapa, ¡persíguelo!",
-      "firma": "563123ea39"
-    },
-    "boss_find": {
-      "texto": "¡Sombra se mezcló entre mis amigos héroes! Encuéntralo y, si escapa, ¡persíguelo!",
-      "firma": "5d65527388"
+    "boss": {
+      "texto": "¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Esta vez no se escapará. ¡Vamos a atraparlo!",
+      "firma": "ae269d0e8d"
     },
     "comp_1": {
       "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
@@ -210,13 +206,9 @@
       "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
       "firma": "ba491424ba"
     },
-    "boss_classic": {
-      "texto": "¡Fue la hechicera Morgana! Se esconde entre los magos buenos del bosque. Toca solo cuando aparezca ella y, si escapa, ¡persíguela!",
-      "firma": "496e28b423"
-    },
-    "boss_find": {
-      "texto": "¡Morgana se mezcló entre los magos buenos del bosque! Encuéntrala y, si escapa, ¡persíguela!",
-      "firma": "1df8220537"
+    "boss": {
+      "texto": "¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!",
+      "firma": "4eca549e5e"
     },
     "comp_1": {
       "texto": "¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.",
@@ -344,13 +336,9 @@
       "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
       "firma": "073ba349f2"
     },
-    "boss_classic": {
-      "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. Toca solo cuando aparezca él y, si escapa, ¡persíguelo!",
-      "firma": "c8e22248c9"
-    },
-    "boss_find": {
-      "texto": "¡El Duende Pícaro se mezcló con la gente del castillo! Encuéntralo y, si escapa, ¡persíguelo!",
-      "firma": "8670bef203"
+    "boss": {
+      "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. ¡Atrapémoslo!",
+      "firma": "a55255d653"
     },
     "comp_1": {
       "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!",

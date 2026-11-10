@@ -26,8 +26,16 @@ class MemoryScene extends Phaser.Scene {
       : memoryParams(this.level);
     // lo usan los distractores del entorno (prestados del motor del juego)
     this.mg = 'memory';
-    this.boss = false;
-    this.phase = 0;
+    // Jefe final: Memoria puede ser una de sus fases. Ahí el villano es quien salta de escondite en escondite
+    // y los amigos se encienden en las casillas como distractores.
+    const ch = this.mode === 'historia' ? STORY[this.themeKey].chapters[this.chapter] : null;
+    this.boss = !!(ch && ch.boss);
+    this.phase = data.phase || 0;
+    this.prevLog = data.prevLog || [];
+    const tex = TEX[this.themeKey];
+    this.keys = this.boss
+      ? { target: tex.villain, dists: [tex.friend1, tex.friend2], similar: tex.friend3, label: this.theme.villain }
+      : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3, label: this.theme.targetLabel };
   }
   create() {
     const W = GAME_W, th = this.theme;
@@ -35,7 +43,7 @@ class MemoryScene extends Phaser.Scene {
     const idx = this.mode === 'historia' ? this.chapter : this.mode === 'desafio' ? (this.level - 1) % 5 : 0;
     drawBackdrop(this, this.themeKey, idx, this.adaptive ? 0.82 : Math.max(0.55, 0.85 - 0.05 * (this.level - 1)));
     addExitButton(this);   // ✕ Salir (pausa) arriba a la derecha, o ESC
-    const tag = this.mode === 'desafio' ? 'Nivel ' + this.level : this.mode === 'historia' ? 'Capítulo ' + (this.chapter + 1) : null;
+    const tag = this.mode === 'desafio' ? 'Nivel ' + this.level : this.mode === 'historia' ? (this.boss ? 'Jefe final' : 'Capítulo ' + (this.chapter + 1)) : null;
     if (tag) {
       const pill = this.add.graphics();
       pill.fillStyle(0x0f172a, 0.6); pill.fillRoundedRect(20, 12, 140, 30, 15);
@@ -81,22 +89,22 @@ class MemoryScene extends Phaser.Scene {
     const panel = add(this.add.graphics());
     panel.fillStyle(0x0f172a, 0.9); panel.fillRoundedRect(80, 50, W - 160, H - 100, 26);
     this.tiles.forEach(t => t.setVisible(false));
-    add(this.add.text(W / 2, 100, dir === 'fwd' ? 'Memoria: ¡sigue el camino!' : '¡Ahora al revés!',
+    add(this.add.text(W / 2, 100, dir === 'fwd' ? (this.boss ? (this.phase > 0 ? '¡' + th.villain + ' escapó! ' : '') + '¡Sigue su camino!' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!',
       { font: 'bold 34px Arial', color: hexColor(th.accent) }).setOrigin(0.5));
     const tex = TEX[this.themeKey];
     if (flashes) {   // el objetivo (sí) y el distractor de las casillas (no)
       add(this.add.circle(W / 2 - 110, 200, 62, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e));
-      add(fit(this.add.image(W / 2 - 110, 200, tex.target), 96));
+      add(fit(this.add.image(W / 2 - 110, 200, this.keys.target), 96));
       add(this.add.text(W / 2 - 110, 278, '✔ Recuerda este', { font: 'bold 18px Arial', color: '#86efac' }).setOrigin(0.5));
       add(this.add.circle(W / 2 + 110, 200, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444));
-      add(fit(this.add.image(W / 2 + 110, 200, this.params.similarFlash ? tex.dist3 : tex.dist1), 84));
+      add(fit(this.add.image(W / 2 + 110, 200, this.params.similarFlash ? this.keys.similar : this.keys.dists[0]), 84));
       add(this.add.text(W / 2 + 110, 278, '✘ Ignora los demás', { font: 'bold 18px Arial', color: '#fca5a5' }).setOrigin(0.5));
     } else {
-      add(fit(this.add.image(W / 2, 200, tex.target), 110));
+      add(fit(this.add.image(W / 2, 200, this.keys.target), 110));
     }
     const tapWord = touch ? 'tócalas' : 'haz clic en ellas';
     add(this.add.text(W / 2, 345, dir === 'fwd'
-      ? 'Mira en qué casillas aparece ' + this.theme.targetObj + '.\nLuego ' + tapWord + ' en el mismo orden.'
+      ? 'Mira en qué casillas aparece ' + this.keys.label + '.\nLuego ' + tapWord + ' en el mismo orden.'
       : 'Ahora ' + tapWord + ' del último al primero.\nEjemplo: si apareció 1 → 2 → 3, tocas 3 → 2 → 1.',
       { font: '24px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 10 }).setOrigin(0.5));
     const btn = add(this.add.rectangle(W / 2, 440, 260, 62, th.accent).setInteractive({ useHandCursor: true }));
@@ -142,10 +150,10 @@ class MemoryScene extends Phaser.Scene {
     // pasos a mostrar: la secuencia + distractores en otras casillas, intercalados al azar
     const tex = TEX[this.themeKey];
     const free = [...Array(MEMORY_SPOTS.length).keys()].filter(i => !this.seq.includes(i));
-    const steps = this.seq.map(i => ({ i, key: tex.target }));
+    const steps = this.seq.map(i => ({ i, key: this.keys.target }));
     this.flashCount = Math.min(this.params.flashes, free.length);
     Phaser.Utils.Array.Shuffle(free).slice(0, this.flashCount).forEach(i => {
-      const key = this.params.similarFlash ? tex.dist3 : Phaser.Utils.Array.GetRandom([tex.dist1, tex.dist2]);
+      const key = this.params.similarFlash ? this.keys.similar : Phaser.Utils.Array.GetRandom(this.keys.dists);
       steps.splice(Phaser.Math.Between(1, steps.length), 0, { i, key });   // nunca de primero
     });
     this.msg.setText('Mira con atención...').setColor('#ffffff');
@@ -186,7 +194,7 @@ class MemoryScene extends Phaser.Scene {
       chapter: this.chapter === null ? '' : this.chapter + 1, minigame: 'memory',
       direction: this.dir, trial: this.trial, length: this.len, flashes: this.flashCount,
       shown: num(this.seq), expected: num(expected), answered: num(this.answer.map(a => a.i)),
-      correct: ok, first_tap_ms: Math.round(this.answer[0].ms), total_ms: Math.round(this.answer[this.answer.length - 1].ms),
+      correct: ok, outcome: ok ? 'memory_ok' : 'memory_fail', phase: this.boss ? this.phase + 1 : '', first_tap_ms: Math.round(this.answer[0].ms), total_ms: Math.round(this.answer[this.answer.length - 1].ms),
       onset_ms: Math.round(this.elapsed())
     });
 
@@ -226,8 +234,14 @@ class MemoryScene extends Phaser.Scene {
     if (this.dir === 'fwd' && (this.adaptive || this.params.bwdTrials > 0)) { this.showIntro('bwd'); return; }
     this.ended = true;
     addPlayTime(this, this.elapsed());
-    const data = { log: this.log, theme: this.themeKey, minigame: 'memory' };
-    if (this.mode === 'historia') this.scene.start('StoryResults', Object.assign(data, { chapter: this.chapter, boss: false }));
+    const data = { log: this.prevLog.concat(this.log), theme: this.themeKey, minigame: 'memory' };
+    // jefe final: si queda otra fase, sigue con ese juego
+    if (this.boss && this.phase < bossPhases(this.themeKey).length - 1) {
+      startMinigame(this, { mode: 'historia', theme: this.themeKey, chapter: this.chapter, phase: this.phase + 1,
+        prevLog: data.log, minigame: bossPhases(this.themeKey)[this.phase + 1].mg });
+      return;
+    }
+    if (this.mode === 'historia') this.scene.start('StoryResults', Object.assign(data, { chapter: this.chapter, boss: this.boss }));
     else if (this.mode === 'desafio') this.scene.start('ChallengeResults', Object.assign(data, { level: this.level }));
     else this.scene.start('MemoryResults', Object.assign(data, { result: this.result }));
   }

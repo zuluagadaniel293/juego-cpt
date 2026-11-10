@@ -80,8 +80,10 @@ class GameScene extends Phaser.Scene {
     // Pantalla de preparación
     let title, what;
     if (this.boss) {
-      title = this.phase > 0 ? '¡' + th.villain + ' escapó! ' + th.chase
-        : this.mg === 'catch' ? '¡Atrápalo con la red!' : '¡Encuentra ' + th.villainObj + '!';
+      // cada fase del jefe es un juego al azar; en la segunda, el villano se escapó la primera vez
+      const again = this.phase > 0 ? '¡' + th.villain + ' escapó! ' : '';
+      title = this.mg === 'race' ? again + th.chase
+        : this.mg === 'catch' ? again + '¡Atrápalo con la red!' : again + '¡Encuentra ' + th.villainObj + '!';
       what = th.villainObj;
     } else {
       title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
@@ -137,6 +139,7 @@ class GameScene extends Phaser.Scene {
     } else if (this.mg === 'catch') {
       if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Arrastra el dedo para mover ' + holder + '. Atrapa solo ' + what + ' y esquiva lo demás'; }
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
+      if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
     } else if (this.mg === 'race') {
       if (touch) { icon(220, ctrlY, '👆'); explain = chase + 'Toca arriba o abajo de tu personaje para cambiar de carril. Agarra solo ' + what; }
       else { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = chase + 'Cambia de carril con las flechas. Agarra solo ' + what; }
@@ -226,6 +229,14 @@ class GameScene extends Phaser.Scene {
       this.input.on('pointermove', follow);
       this.input.on('pointerdown', follow);
       this.fallSpeed = (H - 60 + 60) / this.params.travelMs * 1000;
+      // línea donde los objetos se descubren (desde el nivel 2; no en el jefe ni en la Prueba fija)
+      this.revealY = this.boss || this.mode === 'prueba' ? 0 : (this.params.revealY || 0);
+      if (this.revealY) {
+        const line = this.add.graphics().setDepth(1);
+        line.lineStyle(3, 0xfde047, 0.45);
+        for (let x = 0; x < W; x += 28) line.lineBetween(x, this.revealY, x + 16, this.revealY);
+        this.mgObjects.push(line);
+      }
     } else if (this.mg === 'race') {
       this.lanes = [210, 330, 450];
       this.lane = 1;
@@ -504,7 +515,8 @@ class GameScene extends Phaser.Scene {
     if (this.mg === 'catch') {
       const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850].filter(v => !extra || v !== this.lastX));
       this.lastX = x;
-      img = fit(this.add.image(x, -50, s.key), this.boss ? 100 : 88);
+      // si hay línea, cae como sombra (todas iguales) y se descubre al cruzarla
+      img = fit(this.add.image(x, -50, this.revealY ? (silhouetteOf(this, s.key, '#cbd5e1') || s.key) : s.key), this.boss ? 100 : 88);
     } else if (this.lead) {
       // lo suelta el que va adelante: a veces en su carril y a veces lo lanza a otro (con un pequeño arco),
       // para que no baste con seguirlo
@@ -522,7 +534,8 @@ class GameScene extends Phaser.Scene {
     }
     if (lane !== null) this.lastLane = lane;
     this.trial++;
-    this.items.push({ img, lane, trial: this.trial, type: s.type, key: s.key, onset: performance.now(), resolved: false });
+    this.items.push({ img, lane, trial: this.trial, type: s.type, key: s.key, onset: performance.now(), resolved: false,
+      hidden: this.mg === 'catch' && !!this.revealY });
   }
   resolveItem(it, got) {
     it.resolved = true;
@@ -550,6 +563,13 @@ class GameScene extends Phaser.Scene {
     for (const it of this.items) {
       if (it.gone) continue;
       it.img.y += this.fallSpeed * dt;
+      if (it.hidden && it.img.y >= this.revealY) {
+        // se descubre: el tiempo de reacción se cuenta desde aquí (cuando ya se puede saber qué es)
+        it.hidden = false;
+        it.onset = performance.now();
+        fit(it.img.setTexture(it.key), 88);
+        this.tweens.add({ targets: it.img, scale: { from: it.img.scale * 1.3, to: it.img.scale }, duration: 160 });
+      }
       if (!it.resolved && it.img.y >= this.basket.y - 45 && it.img.y <= this.basket.y + 5 && Math.abs(it.img.x - this.basket.x) < 80) {
         this.resolveItem(it, true);
       } else if (!it.resolved && it.img.y > this.basket.y + 5) {
@@ -830,8 +850,8 @@ class GameScene extends Phaser.Scene {
     // Jefe final: al terminar la fase de la red, el villano escapa y empieza la persecución
     const ch = this.mode === 'historia' ? STORY[this.themeKey].chapters[this.chapter] : null;
     if (ch && ch.phases && this.phase < ch.phases.length - 1) {
-      this.scene.start('Game', { mode: 'historia', theme: this.themeKey, chapter: this.chapter,
-        phase: this.phase + 1, prevLog: this.prevLog.concat(this.log) });
+      startMinigame(this, { mode: 'historia', theme: this.themeKey, chapter: this.chapter, phase: this.phase + 1,
+        prevLog: this.prevLog.concat(this.log), minigame: bossPhases(this.themeKey)[this.phase + 1].mg });
       return;
     }
     const data = { log: this.prevLog.concat(this.log), theme: this.themeKey, level: this.level,
