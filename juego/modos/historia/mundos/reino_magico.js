@@ -21,7 +21,8 @@ registrarMundo('kingdom', {
       ax: 'Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!',
       memory: '¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.'
     },
-    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal)
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
+    // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
     mgLinesCast: {
       classic: '¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.',
       catch: '¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!',
@@ -29,7 +30,7 @@ registrarMundo('kingdom', {
       find: 'La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!',
-      ax: 'El Duende Pícaro solo aparece después del Guardia. ¡Tócalo solo si justo antes salió el Guardia!'
+      ax: 'El Duende Pícaro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. ¡Atrapémoslo!',
@@ -50,9 +51,9 @@ registrarMundo('kingdom', {
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Guardia', line: '¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!' },
-      { role: 'friend2', name: 'Bufón', line: '¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.' },
-      { role: 'friend3', name: 'Duende Amable', line: 'Hola, soy el Duende Amable. No todos los duendes somos traviesos. ¡Yo te ayudo!' },
+      { role: 'friend1', name: 'Guardia', the: 'el Guardia', line: '¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!' },
+      { role: 'friend2', name: 'Bufón', the: 'el Bufón', line: '¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.' },
+      { role: 'friend3', name: 'Duende Amable', the: 'el Duende Amable', line: 'Hola, soy el Duende Amable. No todos los duendes somos traviesos. ¡Yo te ayudo!' },
       { role: 'villain', name: 'Duende Pícaro', line: '¡Ji, ji, ji! ¡Escondí a las hadas por todo el castillo! ¡A ver si las encuentras!' }
     ]
   },
@@ -91,9 +92,12 @@ registrarMundo('kingdom', {
       ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, majestad! ¡El duende se está escapando!' }
     },
     visual: [
-      { name: 'libro_volador', kind: 'fly', size: 75 },
-      { name: 'escoba_magica', kind: 'fly', size: 100 },
-      { name: 'raton', kind: 'walk', size: 95 }
+      { name: 'libro_volador', kind: 'fly', size: 75,
+        sound() { for (let i = 0; i < 6; i++) noise(0.09, 0.07, 'bandpass', 1600, 900, i * 0.2); } },   // páginas que aletean,
+      { name: 'escoba_magica', kind: 'fly', size: 100,
+        sound() { noise(1.6, 0.08, 'bandpass', 500, 2500); [0.3, 0.6, 0.9].forEach(d => sweep('sine', 2200, 3300, 0.12, 0.03, d)); } },   // zumbido y chispas mágicas,
+      { name: 'raton', kind: 'walk', size: 95,
+        sound() { [0, 0.18, 0.7].forEach(d => sweep('sine', 3400, 4300, 0.08, 0.06, d)); } }   // ñic ñic
     ],
     sounds: {
       campanas() { [523, 659, 784].forEach((f, i) => { sweep('sine', f, f * 1.002, 1.2, 0.06, i * 0.4); sweep('sine', f * 2, f * 2.004, 0.8, 0.02, i * 0.4); }); },

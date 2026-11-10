@@ -21,7 +21,8 @@ registrarMundo('heroes', {
       ax: 'Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!',
       memory: '¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.'
     },
-    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal)
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
+    // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
     mgLinesCast: {
       classic: '¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.',
       catch: '¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!',
@@ -29,7 +30,7 @@ registrarMundo('heroes', {
       find: 'Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!',
       memory: '¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!',
-      ax: 'Sombra solo aparece después de la Capitana Estrella. ¡Tócalo solo si justo antes salió ella!'
+      ax: 'Sombra solo aparece justo después de {pista}: esa es la pista. ¡Toca a Sombra solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Esta vez no se escapará. ¡Vamos a atraparlo!',
@@ -50,9 +51,9 @@ registrarMundo('heroes', {
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Capitana Estrella', line: '¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!' },
-      { role: 'friend2', name: 'Escudo Verde', line: '¡Soy Escudo Verde! Yo te cubro con mi escudo. ¡Tú concéntrate y no te distraigas con nada!' },
-      { role: 'friend3', name: 'Héroe Noche', line: 'Soy Héroe Noche. Me parezco un poco a Sombra, ¡pero soy de los buenos! Vamos juntos.' },
+      { role: 'friend1', name: 'Capitana Estrella', the: 'la Capitana Estrella', line: '¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!' },
+      { role: 'friend2', name: 'Escudo Verde', the: 'Escudo Verde', line: '¡Soy Escudo Verde! Yo te cubro con mi escudo. ¡Tú concéntrate y no te distraigas con nada!' },
+      { role: 'friend3', name: 'Héroe Noche', the: 'Héroe Noche', line: 'Soy Héroe Noche. Me parezco un poco a Sombra, ¡pero soy de los buenos! Vamos juntos.' },
       { role: 'villain', name: 'Sombra', line: '¡Ja, ja! ¿Creen que pueden atraparme? ¡Nunca encontrarán todas mis señales!' }
     ]
   },
@@ -93,9 +94,12 @@ registrarMundo('heroes', {
       ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!' }
     },
     visual: [
-      { name: 'avion', kind: 'fly', size: 100 },
-      { name: 'pajaro', kind: 'fly', size: 65 },
-      { name: 'gato', kind: 'walk', size: 85 }
+      { name: 'avion', kind: 'fly', size: 100,
+        sound() { noise(3.2, 0.07, 'bandpass', 350, 1100); sweep('sawtooth', 140, 95, 3.2, 0.015); } },   // avión que pasa,
+      { name: 'pajaro', kind: 'fly', size: 65,
+        sound() { [0, 0.22, 0.44, 1.2, 1.42].forEach(d => sweep('sine', 2600, 3900, 0.11, 0.06, d)); } },   // pío pío,
+      { name: 'gato', kind: 'walk', size: 85,
+        sound() { sweep('triangle', 480, 820, 0.28, 0.08); sweep('triangle', 820, 430, 0.42, 0.08, 0.28); } }   // miau
     ],
     sounds: {
       sirena()  { for (let i = 0; i < 3; i++) { sweep('sine', 650, 1000, 0.35, 0.07, i * 0.7); sweep('sine', 1000, 650, 0.35, 0.07, i * 0.7 + 0.35); } },

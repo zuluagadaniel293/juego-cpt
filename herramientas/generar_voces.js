@@ -72,6 +72,15 @@ function textos(key, m) {
   if (st.bossLine) t.boss = [st.bossLine, yo];
   // niveles de personajes (el villano entre los amigos): 'cast_race', y en el capítulo 1 'intro_cast_race'
   Object.entries(st.mgLinesCast || {}).forEach(([mg, line]) => {
+    if (line.includes('{pista}')) {
+      // Pista: una versión por cada amigo que puede ser la pista ('cast_ax_friend2'...)
+      (st.companions || []).filter(c => c.role !== 'villain').forEach(c => {
+        const l = line.split('{pista}').join(c.the || c.name).replace(/\bde el /g, 'del ');   // "de el Hada" → "del Hada"
+        t['cast_' + mg + '_' + c.role] = [l, yo];
+        t['intro_cast_' + mg + '_' + c.role] = [st.intro + l, yo];
+      });
+      return;
+    }
     t['cast_' + mg] = [line, yo];
     t['intro_cast_' + mg] = [st.intro + line, yo];
   });

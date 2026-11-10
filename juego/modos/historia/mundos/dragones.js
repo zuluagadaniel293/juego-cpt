@@ -21,7 +21,8 @@ registrarMundo('fantasy', {
       ax: 'Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
       memory: '¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.'
     },
-    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal)
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
+    // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
     mgLinesCast: {
       classic: '¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.',
       catch: '¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!',
@@ -29,7 +30,7 @@ registrarMundo('fantasy', {
       find: 'Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!',
       memory: '¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!',
-      ax: 'Morgana solo aparece después del Hada del Bosque. ¡Tócala solo si justo antes salió el hada!'
+      ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!',
@@ -50,9 +51,9 @@ registrarMundo('fantasy', {
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Hada del Bosque', line: '¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.' },
-      { role: 'friend2', name: 'Mago Abuelo', line: 'Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!' },
-      { role: 'friend3', name: 'Hechicera Buena', line: 'Soy la Hechicera Buena. Me visto parecido a Morgana, ¡pero yo protejo a los dragones!' },
+      { role: 'friend1', name: 'Hada del Bosque', the: 'el Hada del Bosque', line: '¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.' },
+      { role: 'friend2', name: 'Mago Abuelo', the: 'el Mago Abuelo', line: 'Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!' },
+      { role: 'friend3', name: 'Hechicera Buena', the: 'la Hechicera Buena', line: 'Soy la Hechicera Buena. Me visto parecido a Morgana, ¡pero yo protejo a los dragones!' },
       { role: 'villain', name: 'Morgana', line: '¡Ja, ja, ja! ¡Ese dragoncito dorado será mío! ¡Nadie podrá detenerme!' }
     ]
   },
@@ -93,9 +94,12 @@ registrarMundo('fantasy', {
       alto:    { who: 'friend1', minLevel: 3, text: '¡Alto ahí, Morgana! ¡Deja en paz a los dragones!' }
     },
     visual: [
-      { name: 'mariposa', kind: 'fly', size: 60 },
-      { name: 'murcielago', kind: 'fly', size: 75 },
-      { name: 'ardilla', kind: 'walk', size: 85 }
+      { name: 'mariposa', kind: 'fly', size: 60,
+        sound() { [0, 0.3, 0.6, 0.9].forEach(d => { sweep('sine', 1800, 2400, 0.15, 0.03, d); noise(0.12, 0.03, 'highpass', 5000, null, d); }); } },   // aleteo y brillito,
+      { name: 'murcielago', kind: 'fly', size: 75,
+        sound() { [0, 0.15, 0.3, 0.9, 1.05].forEach(d => sweep('sine', 6200, 4200, 0.06, 0.05, d)); noise(1.2, 0.04, 'bandpass', 700, 500, 0.2); } },   // chillidos y aleteo,
+      { name: 'ardilla', kind: 'walk', size: 85,
+        sound() { for (let i = 0; i < 9; i++) noise(0.035, 0.14, 'highpass', 2800, null, i * 0.08 + (i > 4 ? 0.4 : 0)); } }   // parloteo de ardilla
     ],
     sounds: {
       rugido()  { noise(0.9, 0.22, 'lowpass', 500, 120); sweep('sawtooth', 120, 70, 0.9, 0.08); },

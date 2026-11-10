@@ -132,13 +132,29 @@
       "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!",
       "firma": "713537e33b"
     },
-    "cast_ax": {
-      "texto": "Sombra solo aparece después de la Capitana Estrella. ¡Tócalo solo si justo antes salió ella!",
-      "firma": "7825b50c88"
+    "cast_ax_friend1": {
+      "texto": "Sombra solo aparece justo después de la Capitana Estrella: esa es la pista. ¡Toca a Sombra solo si justo antes salió la Capitana Estrella!",
+      "firma": "06183f98f0"
     },
-    "intro_cast_ax": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece después de la Capitana Estrella. ¡Tócalo solo si justo antes salió ella!",
-      "firma": "bd7c278161"
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece justo después de la Capitana Estrella: esa es la pista. ¡Toca a Sombra solo si justo antes salió la Capitana Estrella!",
+      "firma": "5ed6b94f03"
+    },
+    "cast_ax_friend2": {
+      "texto": "Sombra solo aparece justo después de Escudo Verde: esa es la pista. ¡Toca a Sombra solo si justo antes salió Escudo Verde!",
+      "firma": "48a27c3fa0"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece justo después de Escudo Verde: esa es la pista. ¡Toca a Sombra solo si justo antes salió Escudo Verde!",
+      "firma": "29030c89c1"
+    },
+    "cast_ax_friend3": {
+      "texto": "Sombra solo aparece justo después de Héroe Noche: esa es la pista. ¡Toca a Sombra solo si justo antes salió Héroe Noche!",
+      "firma": "c3d85d90f7"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece justo después de Héroe Noche: esa es la pista. ¡Toca a Sombra solo si justo antes salió Héroe Noche!",
+      "firma": "5fca3498cc"
     },
     "comp_1": {
       "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
@@ -314,13 +330,29 @@
       "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!",
       "firma": "a1ca4295b3"
     },
-    "cast_ax": {
-      "texto": "Morgana solo aparece después del Hada del Bosque. ¡Tócala solo si justo antes salió el hada!",
-      "firma": "94b9dc2bf5"
+    "cast_ax_friend1": {
+      "texto": "Morgana solo aparece justo después del Hada del Bosque: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Hada del Bosque!",
+      "firma": "66683e082b"
     },
-    "intro_cast_ax": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece después del Hada del Bosque. ¡Tócala solo si justo antes salió el hada!",
-      "firma": "3dc5c99ffb"
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece justo después del Hada del Bosque: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Hada del Bosque!",
+      "firma": "785638199e"
+    },
+    "cast_ax_friend2": {
+      "texto": "Morgana solo aparece justo después del Mago Abuelo: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Mago Abuelo!",
+      "firma": "d7af3f1d49"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece justo después del Mago Abuelo: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Mago Abuelo!",
+      "firma": "66e66c6d91"
+    },
+    "cast_ax_friend3": {
+      "texto": "Morgana solo aparece justo después de la Hechicera Buena: esa es la pista. ¡Toca a Morgana solo si justo antes salió la Hechicera Buena!",
+      "firma": "13ffe3bb50"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece justo después de la Hechicera Buena: esa es la pista. ¡Toca a Morgana solo si justo antes salió la Hechicera Buena!",
+      "firma": "3f0a53e1e2"
     },
     "comp_1": {
       "texto": "¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.",
@@ -500,13 +532,29 @@
       "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!",
       "firma": "f67413c102"
     },
-    "cast_ax": {
-      "texto": "El Duende Pícaro solo aparece después del Guardia. ¡Tócalo solo si justo antes salió el Guardia!",
-      "firma": "919828d78f"
+    "cast_ax_friend1": {
+      "texto": "El Duende Pícaro solo aparece justo después del Guardia: esa es la pista. ¡Tócalo solo si justo antes salió el Guardia!",
+      "firma": "2ebaf65469"
     },
-    "intro_cast_ax": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece después del Guardia. ¡Tócalo solo si justo antes salió el Guardia!",
-      "firma": "1641409a9d"
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece justo después del Guardia: esa es la pista. ¡Tócalo solo si justo antes salió el Guardia!",
+      "firma": "bd1a77633f"
+    },
+    "cast_ax_friend2": {
+      "texto": "El Duende Pícaro solo aparece justo después del Bufón: esa es la pista. ¡Tócalo solo si justo antes salió el Bufón!",
+      "firma": "f00f1609f4"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece justo después del Bufón: esa es la pista. ¡Tócalo solo si justo antes salió el Bufón!",
+      "firma": "0a22b3bb5f"
+    },
+    "cast_ax_friend3": {
+      "texto": "El Duende Pícaro solo aparece justo después del Duende Amable: esa es la pista. ¡Tócalo solo si justo antes salió el Duende Amable!",
+      "firma": "4069f3d5d9"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece justo después del Duende Amable: esa es la pista. ¡Tócalo solo si justo antes salió el Duende Amable!",
+      "firma": "c181d02bd9"
     },
     "comp_1": {
       "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!",

@@ -76,10 +76,22 @@ function chapterLine(theme, i) {
   if (ch.boss) return { text: st.bossLine, voice: 'boss' };
   const mg = chapterGame(theme, i);
   if (chapterChars(theme, i)) {   // nivel de personajes: el villano entre los amigos
-    return i === 0 ? { text: st.intro + st.mgLinesCast[mg], voice: 'intro_cast_' + mg } : { text: st.mgLinesCast[mg], voice: 'cast_' + mg };
+    let line = st.mgLinesCast[mg], id = 'cast_' + mg;
+    if (line.includes('{pista}')) {   // Pista: nombra al amigo que hace de pista en este capítulo
+      const cue = axCueRole(theme, i), c = st.companions.find(k => k.role === cue);
+      line = line.split('{pista}').join(c.the || c.name).replace(/\bde el /g, 'del ');   // "de el Hada" → "del Hada"
+      id += '_' + cue;
+    }
+    return i === 0 ? { text: st.intro + line, voice: 'intro_' + id } : { text: line, voice: id };
   }
   if (mg === ch.mg) return { text: ch.line, voice: String(i + 1) };
   return i === 0 ? { text: st.intro + st.mgLines[mg], voice: 'intro_' + mg } : { text: st.mgLines[mg], voice: mg };
+}
+// Pista con personajes: la pista es el primer amigo que no es el compañero del capítulo (igual que en el juego)
+function axCueRole(theme, i) {
+  const c = (STORY[theme].companions || [])[i];
+  const buddy = c && c.role !== 'villain' ? c.role : null;
+  return ['friend1', 'friend2', 'friend3'].find(f => f !== buddy);
 }
 // Empieza un capítulo o nivel: Memoria tiene su propia escena
 function startMinigame(scene, data) {

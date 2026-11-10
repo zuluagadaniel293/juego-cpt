@@ -21,7 +21,10 @@ Cada fila es **un evento**:
   No salen en Carrera (el villano ya va adelante), en el jefe final ni en la Prueba fija.
   Además, en cada capítulo (y en cada nivel del Desafío) hay un **compañero** en una esquina que salta al acertar:
   no es un distractor y no queda en el CSV.
-- En `distractor_sonido`, las filas `voz_...` son **voces** de los personajes: `voz_risa` (nivel 2+), `voz_burla` y
+- En `distractor_sonido`, las filas `sonido_...` (`sonido_avion`, `sonido_gato`, `sonido_murcielago`...) son el sonido de
+  lo que va cruzando la pantalla (desde el nivel 2): distractor **visual y auditivo a la vez**.
+- Las filas `voz_...` son **voces** de los personajes, y siempre suenan con ese personaje a la vista (en su escena de fondo
+  o, en Carrera, el villano que va adelante): `voz_risa` (nivel 2+), `voz_burla` y
   `voz_ayuda` / `voz_alto` (nivel 3+), `voz_amenaza` (nivel 4+). Cada personaje tiene su propia voz. Una voz humana distrae más que un ruido: sirve para comparar
   cómo afecta cada tipo de distractor.
 

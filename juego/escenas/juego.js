@@ -34,8 +34,11 @@ class GameScene extends Phaser.Scene {
     this.chars = this.boss || (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
       : this.mode === 'desafio' ? Math.random() < 0.5 : false);
     const tex = TEX[this.themeKey];
+    // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
+    this.buddyRole = this.companionRole();
+    const pals = ['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole);
     this.keys = this.chars
-      ? { target: tex.villain, dists: [tex.friend1, tex.friend2], similar: tex.friend3 }
+      ? { target: tex.villain, dists: [tex[pals[0]], tex[pals[1]]], similar: tex[pals.includes('friend3') ? 'friend3' : pals[1]] }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3 };
   }
 
@@ -668,16 +671,18 @@ class GameScene extends Phaser.Scene {
   }
   // ---------- Compañero del capítulo (Historia) o del nivel (Desafío) ----------
   // Está en una esquina de abajo mientras se juega (detrás de todo, para no tapar nada) y salta al acertar.
-  setupBuddy() {
-    this.buddy = null;
-    this.buddyRole = null;
-    this.buddyJumping = false;
+  // Qué amigo acompaña: el que presenta el capítulo (Historia) o uno según el nivel (Desafío)
+  companionRole() {
     if (this.mode === 'historia' && !this.boss) {
       const c = (STORY[this.themeKey].companions || [])[this.chapter];
-      if (c && c.role !== 'villain') this.buddyRole = c.role;   // en el capítulo 4 presenta el villano: sin compañero
-    } else if (this.mode === 'desafio') {
-      this.buddyRole = ['friend1', 'friend2', 'friend3'][(this.level - 1) % 3];
+      return c && c.role !== 'villain' ? c.role : null;   // en el capítulo 4 presenta el villano: sin compañero
     }
+    return this.mode === 'desafio' ? ['friend1', 'friend2', 'friend3'][(this.level - 1) % 3] : null;
+  }
+  setupBuddy() {
+    this.buddy = null;
+    this.buddyRole = this.companionRole();
+    this.buddyJumping = false;
     if (!this.buddyRole) return;
     const x = this.caster ? 170 : 66;   // en Clásico y Encuentra, al lado del protagonista
     this.buddy = fit(this.add.image(x, GAME_H - 6, TEX[this.themeKey][this.buddyRole]).setOrigin(0.5, 1), 104).setDepth(-1);
@@ -715,17 +720,36 @@ class GameScene extends Phaser.Scene {
       if (this.ended) return;
       const D = DISTRACTORS[this.themeKey];
       const sounds = this.mode === 'prueba' ? {} : D.sounds;
-      const voices = this.mode === 'prueba' ? [] : Object.keys(D.voices || {})
-        .filter(n => (this.level || 0) >= D.voices[n].minLevel).map(n => 'voz_' + n);
+      // Voces del villano (risa, burla, amenaza): solo si se le puede ver hablando. Sale en una escena de fondo
+      // (se asoma, cruza o espía) o, en Carrera, ya va corriendo adelante. Las de los amigos ("¡ayuda!") solo
+      // suenan con su escena (pelea, persecución), con la voz del amigo que está en peligro.
+      const canShow = this.mode !== 'prueba' && !this.chars && (this.mg === 'race' ? !!this.lead : !this.castBusy);
+      const voices = !canShow ? [] : Object.keys(D.voices || {})
+        .filter(n => D.voices[n].who === 'villain' && (this.level || 0) >= D.voices[n].minLevel).map(n => 'voz_' + n);
       const names = Object.keys(sounds).concat(voices);
       const name = names.length ? Phaser.Utils.Array.GetRandom(names) : 'tono';
-      if (name.startsWith('voz_')) this.castVoice(name.slice(4));
+      if (name.startsWith('voz_')) this.villainSpeaks(name.slice(4));
       else {
         if (names.length) sounds[name](); else distractorSound();
         this.logDistractor('audio_distractor', name);
       }
       this.scheduleAudio();
     });
+  }
+  // El villano dice algo y se le ve: en Carrera ya está adelante (se sacude riéndose); en los demás juegos sale
+  // en su escena de fondo con esa voz (o se asoma por una esquina si esa voz no tiene escena propia)
+  villainSpeaks(name) {
+    if (this.mg === 'race') {
+      this.castVoice(name);
+      if (this.lead) this.tweens.add({ targets: this.lead, scale: this.lead.scale * 1.15, duration: 150, yoyo: true, repeat: 3 });
+      return;
+    }
+    const D = DISTRACTORS[this.themeKey];
+    const villainName = this.theme.villain.toLowerCase().replace(/[^a-záéíóúñ]+/g, '_');
+    const c = (D.cast || []).find(k => k.voice === name && ['peek', 'sneak', 'face'].includes(k.kind))
+      || { name: villainName + '_se_asoma', kind: 'peek', voice: name };
+    this.showCastScene(c);
+    this.logDistractor('visual_distractor', c.name);
   }
   // Visuales: algo del mundo cruza por el borde de arriba (fly) o de abajo (walk), lejos del centro
   scheduleVisual() {
@@ -764,6 +788,11 @@ class GameScene extends Phaser.Scene {
     this.tweens.add({ targets: img, x: fromLeft ? W + 70 : -70, duration: v.kind === 'walk' ? 5500 : 4000,
       onComplete: () => img.destroy() });
     if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+    // Desde el nivel 2 suena mientras pasa (avión, pájaro, gato, murciélago...): distractor visual y auditivo a la vez
+    if (v.sound && (this.level || 0) >= 2 && this.mode !== 'prueba') {
+      v.sound();
+      this.logDistractor('audio_distractor', 'sonido_' + v.name);
+    }
   }
   // Escenas "de fondo" con los personajes del mundo (detrás de los objetos del juego, para no taparlos):
   // fight = el villano pelea con un amigo en un borde (el amigo pide ayuda y se cubre) · peek = el villano se asoma

@@ -36,8 +36,11 @@ class MemoryScene extends Phaser.Scene {
     // nivel de personajes (como en los otros juegos): el villano salta de escondite y los amigos distraen
     this.chars = this.boss || (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
       : this.mode === 'desafio' ? Math.random() < 0.5 : false);
+    // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
+    this.buddyRole = this.companionRole();
+    const pals = ['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole);
     this.keys = this.chars
-      ? { target: tex.villain, dists: [tex.friend1, tex.friend2], similar: tex.friend3, label: this.theme.villain }
+      ? { target: tex.villain, dists: [tex[pals[0]], tex[pals[1]]], similar: tex[pals.includes('friend3') ? 'friend3' : pals[1]], label: this.theme.villain }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3, label: this.theme.targetLabel };
   }
   create() {
@@ -251,6 +254,6 @@ class MemoryScene extends Phaser.Scene {
 }
 // Sonidos, cosas que cruzan, escenas de personajes y compañero: los mismos del motor del juego (y quedan en el CSV)
 ['logDistractor', 'scheduleAudio', 'scheduleVisual', 'showVisualDistractor', 'showCastScene',
-  'setupBuddy', 'buddyCheer', 'castFriend', 'castVoice'].forEach(m => {
+  'setupBuddy', 'buddyCheer', 'castFriend', 'castVoice', 'companionRole', 'villainSpeaks'].forEach(m => {
   MemoryScene.prototype[m] = GameScene.prototype[m];
 });
