@@ -42,7 +42,7 @@ class ChapterMapScene extends Phaser.Scene {
       } else {
         // Bloqueado: la silueta de lo que hay adentro (el villano en el jefe final, el objeto del minijuego
         // en los demás), con un "?" y un candado pequeño, para dar curiosidad
-        const what = ch.boss ? TEX[this.themeKey].villain
+        const what = ch.boss || chapterChars(this.themeKey, i) ? TEX[this.themeKey].villain
           : { classic: TEX[this.themeKey].target, catch: 'basket', race: TEX[this.themeKey].hero_run, find: 'icon_find',
               memory: 'icon_memory', notx: TEX[this.themeKey].target, ax: TEX[this.themeKey].dist1 }[chapterGame(this.themeKey, i)];
         const objs = mysteryNode(this, x, y, r, silhouetteOf(this, what), ch.boss ? 0x7c3aed : undefined);

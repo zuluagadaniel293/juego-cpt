@@ -21,6 +21,16 @@ registrarMundo('kingdom', {
       ax: 'Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!',
       memory: '¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.'
     },
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal)
+    mgLinesCast: {
+      classic: '¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.',
+      catch: '¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!',
+      race: '¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Atrápalo solo a él.',
+      find: 'La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
+      memory: '¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.',
+      notx: '¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!',
+      ax: 'El Duende Pícaro solo aparece después del Guardia. ¡Tócalo solo si justo antes salió el Guardia!'
+    },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. ¡Atrapémoslo!',
     chapters: [

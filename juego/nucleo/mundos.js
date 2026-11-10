@@ -40,9 +40,18 @@ function storyOrder(theme) {
     const boss = shuffle(BOSS_GAMES.filter(g => !chapters.includes(g)))
       .concat(shuffle(BOSS_GAMES.filter(g => chapters.includes(g)))).slice(0, 2);
     all[theme] = { chapters, boss };
-    store.set(ORDER_KEY, all);
   }
+  if (!Array.isArray(all[theme].chars)) {
+    // en cada capítulo: ¿se busca la señal/objetivo de siempre o al villano entre los amigos (personajes)?
+    // Al menos uno de cada tipo por mundo, el resto al azar.
+    all[theme].chars = Phaser.Utils.Array.Shuffle([true, false, Math.random() < 0.5, Math.random() < 0.5]);
+  }
+  store.set(ORDER_KEY, all);
   return all[theme];
+}
+// ¿El capítulo i es de personajes (el villano escondido entre los amigos)?
+function chapterChars(theme, i) {
+  return !STORY[theme].chapters[i].boss && storyOrder(theme).chars[i];
 }
 const chapterGames = theme => storyOrder(theme).chapters;
 function chapterGame(theme, i) {
@@ -66,6 +75,9 @@ function chapterLine(theme, i) {
   const st = STORY[theme], ch = st.chapters[i];
   if (ch.boss) return { text: st.bossLine, voice: 'boss' };
   const mg = chapterGame(theme, i);
+  if (chapterChars(theme, i)) {   // nivel de personajes: el villano entre los amigos
+    return i === 0 ? { text: st.intro + st.mgLinesCast[mg], voice: 'intro_cast_' + mg } : { text: st.mgLinesCast[mg], voice: 'cast_' + mg };
+  }
   if (mg === ch.mg) return { text: ch.line, voice: String(i + 1) };
   return i === 0 ? { text: st.intro + st.mgLines[mg], voice: 'intro_' + mg } : { text: st.mgLines[mg], voice: mg };
 }

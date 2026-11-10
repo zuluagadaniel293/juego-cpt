@@ -101,6 +101,7 @@ function downloadCSV(log, name) {
     ['capitulo', r => r.chapter],
     ['fase_jefe', r => r.phase],
     ['minijuego', r => (MG[r.minigame] ? MG[r.minigame].label : r.minigame)],
+    ['estimulos', r => r.stim_set],   // senales (lo de siempre) o personajes (el villano entre los amigos)
     ['ensayo', r => r.trial],
     ['tipo_estimulo', r => CSV_TEXT.stimulus_type[r.stimulus_type] || r.stimulus_type],
     ['que_aparecio', r => stimulusLabel(r.theme, r.stimulus_key)],
@@ -122,6 +123,7 @@ function downloadMemoryCSV(log, name) {
     ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
     ['nivel', r => r.level],
     ['capitulo', r => r.chapter],
+    ['estimulos', r => r.stim_set],
     ['fase', trial(r => (r.direction === 'fwd' ? 'adelante' : 'al_reves'))],
     ['ensayo', r => r.trial],
     ['largo_secuencia', r => r.length],

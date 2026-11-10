@@ -84,6 +84,62 @@
       "texto": "¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Esta vez no se escapará. ¡Vamos a atraparlo!",
       "firma": "ae269d0e8d"
     },
+    "cast_classic": {
+      "texto": "¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.",
+      "firma": "b41a17683d"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.",
+      "firma": "1847cb39c3"
+    },
+    "cast_catch": {
+      "texto": "¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "89ee782bf1"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "33f1bab3e5"
+    },
+    "cast_race": {
+      "texto": "¡Sombra corre entre mis amigos héroes! Cambia de carril y atrápalo solo a él.",
+      "firma": "aeabf5fd3a"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra corre entre mis amigos héroes! Cambia de carril y atrápalo solo a él.",
+      "firma": "a1b6944842"
+    },
+    "cast_find": {
+      "texto": "Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!",
+      "firma": "9e445f09d3"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!",
+      "firma": "b9faa98f3c"
+    },
+    "cast_memory": {
+      "texto": "¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.",
+      "firma": "67bcc73b7b"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.",
+      "firma": "d4369e394d"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!",
+      "firma": "eda43ec353"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!",
+      "firma": "713537e33b"
+    },
+    "cast_ax": {
+      "texto": "Sombra solo aparece después de la Capitana Estrella. ¡Tócalo solo si justo antes salió ella!",
+      "firma": "7825b50c88"
+    },
+    "intro_cast_ax": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece después de la Capitana Estrella. ¡Tócalo solo si justo antes salió ella!",
+      "firma": "bd7c278161"
+    },
     "comp_1": {
       "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
       "firma": "b509144b07"
@@ -209,6 +265,62 @@
     "boss": {
       "texto": "¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!",
       "firma": "4eca549e5e"
+    },
+    "cast_classic": {
+      "texto": "¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.",
+      "firma": "e64df23632"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.",
+      "firma": "e3ff3bee52"
+    },
+    "cast_catch": {
+      "texto": "¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!",
+      "firma": "89fbfb9bdd"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!",
+      "firma": "ff2345b090"
+    },
+    "cast_race": {
+      "texto": "¡Morgana huye entre los magos del bosque! Cambia de camino y atrápala solo a ella.",
+      "firma": "e514d946a6"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana huye entre los magos del bosque! Cambia de camino y atrápala solo a ella.",
+      "firma": "ac64785ab9"
+    },
+    "cast_find": {
+      "texto": "Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!",
+      "firma": "b6c520700d"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!",
+      "firma": "9ed0950310"
+    },
+    "cast_memory": {
+      "texto": "¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.",
+      "firma": "72ac6fd4ba"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.",
+      "firma": "991b37314b"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!",
+      "firma": "6f5f94f938"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!",
+      "firma": "a1ca4295b3"
+    },
+    "cast_ax": {
+      "texto": "Morgana solo aparece después del Hada del Bosque. ¡Tócala solo si justo antes salió el hada!",
+      "firma": "94b9dc2bf5"
+    },
+    "intro_cast_ax": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece después del Hada del Bosque. ¡Tócala solo si justo antes salió el hada!",
+      "firma": "3dc5c99ffb"
     },
     "comp_1": {
       "texto": "¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.",
@@ -339,6 +451,62 @@
     "boss": {
       "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. ¡Atrapémoslo!",
       "firma": "a55255d653"
+    },
+    "cast_classic": {
+      "texto": "¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.",
+      "firma": "2f0849a34c"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.",
+      "firma": "d71e2bcaad"
+    },
+    "cast_catch": {
+      "texto": "¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "c00941e691"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "e5a925a0ee"
+    },
+    "cast_race": {
+      "texto": "¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Atrápalo solo a él.",
+      "firma": "828277399d"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Atrápalo solo a él.",
+      "firma": "2d4046f6ab"
+    },
+    "cast_find": {
+      "texto": "La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "849d6d9639"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "b5ec771a7e"
+    },
+    "cast_memory": {
+      "texto": "¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.",
+      "firma": "d9c32b2be7"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.",
+      "firma": "b288622d4c"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!",
+      "firma": "4720af6dff"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!",
+      "firma": "f67413c102"
+    },
+    "cast_ax": {
+      "texto": "El Duende Pícaro solo aparece después del Guardia. ¡Tócalo solo si justo antes salió el Guardia!",
+      "firma": "919828d78f"
+    },
+    "intro_cast_ax": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece después del Guardia. ¡Tócalo solo si justo antes salió el Guardia!",
+      "firma": "1641409a9d"
     },
     "comp_1": {
       "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!",

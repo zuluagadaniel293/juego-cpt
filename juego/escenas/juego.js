@@ -28,9 +28,13 @@ class GameScene extends Phaser.Scene {
     }
     this.mg = this.params.minigame;
     this.powers = this.mode !== 'prueba';   // la Prueba fija conserva el feedback simple de siempre
-    // Qué se busca: en el jefe final, el villano entre personajes amigos
+    // Qué se busca: la señal/objetivo de siempre, o el villano escondido entre los amigos ("nivel de personajes").
+    // El jefe final siempre es de personajes; en la Historia lo sortea cada capítulo; en el Desafío, cada nivel al
+    // azar; la Prueba fija siempre con señales, para comparar sesiones.
+    this.chars = this.boss || (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
+      : this.mode === 'desafio' ? Math.random() < 0.5 : false);
     const tex = TEX[this.themeKey];
-    this.keys = this.boss
+    this.keys = this.chars
       ? { target: tex.villain, dists: [tex.friend1, tex.friend2], similar: tex.friend3 }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3 };
   }
@@ -87,9 +91,9 @@ class GameScene extends Phaser.Scene {
       what = th.villainObj;
     } else {
       title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
-      what = th.targetObj;
+      what = this.chars ? th.villainObj : th.targetObj;
     }
-    const holder = this.boss ? 'la red' : 'la canasta';
+    const holder = this.chars ? 'la red' : 'la canasta';
     this.showHowToPlay(title, what, holder);
   }
 
@@ -133,7 +137,7 @@ class GameScene extends Phaser.Scene {
     if (CLASSIC_LIKE.includes(this.mg)) {
       const act = touch ? 'Toca la pantalla' : 'Presiona ESPACIO';
       if (touch) icon(220, ctrlY, '👆'); else keycap(220, ctrlY, 210, 'ESPACIO');
-      explain = this.mg === 'notx' ? act + ' con cada señal que aparezca, MENOS cuando veas ' + what
+      explain = this.mg === 'notx' ? act + ' con cada ' + (this.chars ? 'personaje' : 'señal') + ' que aparezca, MENOS cuando veas ' + what
         : this.mg === 'ax' ? act + ' cuando veas ' + what + ' justo después de la pista. Si sale sin la pista, ¡no toques!'
         : act + ' solo cuando veas ' + what;
     } else if (this.mg === 'catch') {
@@ -171,7 +175,8 @@ class GameScene extends Phaser.Scene {
   // Demostración de Menos uno y Pista: una pantallita muestra una secuencia de ejemplo y dice qué hacer con
   // cada señal (verde = tocar, rojo = no tocar, amarillo = la pista). En Pista se ve también lo que salió antes.
   playDemo(add, txt) {
-    const th = this.theme, k = this.keys, label = th.targetLabel;
+    // con personajes: 'el Duende Pícaro', 'Sombra', 'Morgana' (sin el 'a' de villainObj)
+    const th = this.theme, k = this.keys, label = this.chars ? th.villainObj.replace(/^al /, 'el ').replace(/^a /, '') : th.targetLabel;
     const steps = this.mg === 'notx' ? [
       { key: k.dists[0], ok: true, say: '✔ No es ' + label + ': ¡toca!' },
       { key: k.dists[1], ok: true, say: '✔ Tampoco es: ¡toca!' },
@@ -222,7 +227,7 @@ class GameScene extends Phaser.Scene {
       this.input.keyboard.on('keydown-SPACE', () => this.respond());
       this.input.on('pointerdown', () => this.respond());
     } else if (this.mg === 'catch') {
-      this.basket = fit(this.add.image(W / 2, H - 60, this.boss ? TEX[this.themeKey].net : 'basket'), this.boss ? 120 : 144).setDepth(3);
+      this.basket = fit(this.add.image(W / 2, H - 60, this.chars ? TEX[this.themeKey].net : 'basket'), this.chars ? 120 : 144).setDepth(3);
       this.mgObjects.push(this.basket);
       this.cursors = this.input.keyboard.createCursorKeys();
       const follow = p => { if (this.started) this.basket.x = Phaser.Math.Clamp(this.cameras.main.getWorldPoint(p.x, p.y).x, 70, W - 70); };
@@ -256,8 +261,8 @@ class GameScene extends Phaser.Scene {
       this.mgObjects.push(this.runner);
       this.bob = this.tweens.add({ targets: this.runner, angle: { from: -4, to: 4 }, duration: 160, yoyo: true, repeat: -1 });
       // El villano corre adelante, cambia de carril y va soltando los objetos.
-      // (En el jefe final se persigue al villano en persona, entre amigos, así que no hay nadie adelante.)
-      if (!this.boss) {
+      // (Con personajes se persigue al villano en persona, entre amigos, así que no hay nadie adelante.)
+      if (!this.chars) {
         this.leadLane = 1;
         this.lead = fit(this.add.image(840, this.lanes[1], TEX[this.themeKey].villain), 110).setDepth(4);
         this.mgObjects.push(this.lead);
@@ -360,6 +365,7 @@ class GameScene extends Phaser.Scene {
       chapter: this.chapter === null ? '' : this.chapter + 1,
       phase: this.boss ? this.phase + 1 : '',
       minigame: this.mg,
+      stim_set: this.chars ? 'personajes' : 'senales',
       trial: trial,
       stimulus_type: type,
       stimulus_key: key,
@@ -385,7 +391,7 @@ class GameScene extends Phaser.Scene {
   }
   praise() {
     rewardSound();
-    this.fb.setText(this.boss ? '¡Atrapado!' : '¡Bien!').setAlpha(1);
+    this.fb.setText(this.chars ? '¡Atrapado!' : '¡Bien!').setAlpha(1);
     this.tweens.add({ targets: this.fb, alpha: 0, duration: 600 });
   }
 
@@ -407,7 +413,7 @@ class GameScene extends Phaser.Scene {
     }
     // Si el objetivo es un compañero (hermanito de Chispa, Lumi), se le rescata: nada de atacarlo.
     // El poder de ataque queda para el villano (jefe final) o, en Superhéroes, para la señal de Sombra.
-    if (p.rescue && !this.boss) {
+    if (p.rescue && !this.chars) {
       rescueSound();
       this.fb.setText(p.rescue.shout).setAlpha(1);
       this.tweens.add({ targets: this.fb, alpha: 0, duration: 800 });
@@ -415,7 +421,7 @@ class GameScene extends Phaser.Scene {
       return;
     }
     POWER_SOUNDS[this.themeKey]();
-    this.fb.setText(this.boss ? '¡Atrapado!' : p.shout).setAlpha(1);
+    this.fb.setText(this.chars ? '¡Atrapado!' : p.shout).setAlpha(1);
     this.tweens.add({ targets: this.fb, alpha: 0, duration: 700 });
     const sx = c ? ox : tx, sy = c ? oy : 0;   // sin lanzador en pantalla, el poder cae desde arriba
     if (p.kind === 'bolt') {
@@ -516,7 +522,7 @@ class GameScene extends Phaser.Scene {
       const x = Phaser.Utils.Array.GetRandom([130, 290, 450, 610, 770, 850].filter(v => !extra || v !== this.lastX));
       this.lastX = x;
       // si hay línea, cae como sombra (todas iguales) y se descubre al cruzarla
-      img = fit(this.add.image(x, -50, this.revealY ? (silhouetteOf(this, s.key, '#cbd5e1') || s.key) : s.key), this.boss ? 100 : 88);
+      img = fit(this.add.image(x, -50, this.revealY ? (silhouetteOf(this, s.key, '#cbd5e1') || s.key) : s.key), this.chars ? 100 : 88);
     } else if (this.lead) {
       // lo suelta el que va adelante: a veces en su carril y a veces lo lanza a otro (con un pequeño arco),
       // para que no baste con seguirlo
@@ -530,7 +536,7 @@ class GameScene extends Phaser.Scene {
       else img.y = this.lanes[lane];
     } else {
       lane = Phaser.Utils.Array.GetRandom([0, 1, 2].filter(l => !extra || l !== this.lastLane));
-      img = fit(this.add.image(W + 60, this.lanes[lane], s.key), this.boss ? 96 : 78);
+      img = fit(this.add.image(W + 60, this.lanes[lane], s.key), this.chars ? 96 : 78);
     }
     if (lane !== null) this.lastLane = lane;
     this.trial++;
@@ -567,7 +573,7 @@ class GameScene extends Phaser.Scene {
         // se descubre: el tiempo de reacción se cuenta desde aquí (cuando ya se puede saber qué es)
         it.hidden = false;
         it.onset = performance.now();
-        fit(it.img.setTexture(it.key), 88);
+        fit(it.img.setTexture(it.key), this.chars ? 100 : 88);
         this.tweens.add({ targets: it.img, scale: { from: it.img.scale * 1.3, to: it.img.scale }, duration: 160 });
       }
       if (!it.resolved && it.img.y >= this.basket.y - 45 && it.img.y <= this.basket.y + 5 && Math.abs(it.img.x - this.basket.x) < 80) {
@@ -729,7 +735,8 @@ class GameScene extends Phaser.Scene {
       .filter(v => !((this.mg === 'catch' || this.mg === 'memory') && v.kind === 'walk'));   // abajo está la canasta / las casillas
     // Personajes del mundo (villano y amigos) desde su nivel. No en el jefe final (ahí ya son el objetivo y los
     // distractores) ni en Carrera (el villano ya va adelante).
-    const cast = this.mode === 'prueba' || this.boss || this.mg === 'race' ? []
+    // (con personajes tampoco: el villano y los amigos ya son los estímulos)
+    const cast = this.mode === 'prueba' || this.chars || this.mg === 'race' ? []
       : (D.cast || []).filter(c => (this.level || 0) >= c.minLevel);
     if (!P.visual || !list.length) return;
     const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);

@@ -21,6 +21,16 @@ registrarMundo('fantasy', {
       ax: 'Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
       memory: '¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.'
     },
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal)
+    mgLinesCast: {
+      classic: '¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.',
+      catch: '¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!',
+      race: '¡Morgana huye entre los magos del bosque! Cambia de camino y atrápala solo a ella.',
+      find: 'Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!',
+      memory: '¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.',
+      notx: '¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!',
+      ax: 'Morgana solo aparece después del Hada del Bosque. ¡Tócala solo si justo antes salió el hada!'
+    },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!',
     chapters: [

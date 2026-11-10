@@ -33,7 +33,10 @@ class MemoryScene extends Phaser.Scene {
     this.phase = data.phase || 0;
     this.prevLog = data.prevLog || [];
     const tex = TEX[this.themeKey];
-    this.keys = this.boss
+    // nivel de personajes (como en los otros juegos): el villano salta de escondite y los amigos distraen
+    this.chars = this.boss || (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
+      : this.mode === 'desafio' ? Math.random() < 0.5 : false);
+    this.keys = this.chars
       ? { target: tex.villain, dists: [tex.friend1, tex.friend2], similar: tex.friend3, label: this.theme.villain }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3, label: this.theme.targetLabel };
   }
@@ -89,7 +92,7 @@ class MemoryScene extends Phaser.Scene {
     const panel = add(this.add.graphics());
     panel.fillStyle(0x0f172a, 0.9); panel.fillRoundedRect(80, 50, W - 160, H - 100, 26);
     this.tiles.forEach(t => t.setVisible(false));
-    add(this.add.text(W / 2, 100, dir === 'fwd' ? (this.boss ? (this.phase > 0 ? '¡' + th.villain + ' escapó! ' : '') + '¡Sigue su camino!' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!',
+    add(this.add.text(W / 2, 100, dir === 'fwd' ? (this.chars ? (this.phase > 0 ? '¡' + th.villain + ' escapó! ' : '') + '¡Sigue el camino de ' + th.villain + '!' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!',
       { font: 'bold 34px Arial', color: hexColor(th.accent) }).setOrigin(0.5));
     const tex = TEX[this.themeKey];
     if (flashes) {   // el objetivo (sí) y el distractor de las casillas (no)
@@ -192,7 +195,7 @@ class MemoryScene extends Phaser.Scene {
     this.log.push({
       event_type: 'memory_trial', mode: this.mode, theme: this.themeKey, level: this.level || '',
       chapter: this.chapter === null ? '' : this.chapter + 1, minigame: 'memory',
-      direction: this.dir, trial: this.trial, length: this.len, flashes: this.flashCount,
+      stim_set: this.chars ? 'personajes' : 'senales', direction: this.dir, trial: this.trial, length: this.len, flashes: this.flashCount,
       shown: num(this.seq), expected: num(expected), answered: num(this.answer.map(a => a.i)),
       correct: ok, outcome: ok ? 'memory_ok' : 'memory_fail', phase: this.boss ? this.phase + 1 : '', first_tap_ms: Math.round(this.answer[0].ms), total_ms: Math.round(this.answer[this.answer.length - 1].ms),
       onset_ms: Math.round(this.elapsed())

@@ -21,6 +21,16 @@ registrarMundo('heroes', {
       ax: 'Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!',
       memory: '¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.'
     },
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal)
+    mgLinesCast: {
+      classic: '¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.',
+      catch: '¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!',
+      race: '¡Sombra corre entre mis amigos héroes! Cambia de carril y atrápalo solo a él.',
+      find: 'Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!',
+      memory: '¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.',
+      notx: '¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!',
+      ax: 'Sombra solo aparece después de la Capitana Estrella. ¡Tócalo solo si justo antes salió ella!'
+    },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Esta vez no se escapará. ¡Vamos a atraparlo!',
     chapters: [

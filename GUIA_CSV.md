@@ -133,3 +133,11 @@ reacción mide cuánto tarda el niño en decidir y moverse, no cuánto se demora
 Sus dos fases salen al azar entre Clásico, Atrapa, Carrera, Encuentra y Memoria (la columna `fase_jefe` dice cuál
 fue la 1 y cuál la 2). Si una fase es Memoria, sus caminos aparecen en el mismo CSV como `camino_memoria`, con
 resultado `recordo_el_camino` o `se_equivoco_de_camino`.
+
+## Niveles de señales y niveles de personajes
+La columna `estimulos` dice qué se buscaba en ese nivel:
+- `senales`: el objetivo de siempre (la señal de Sombra, el dragoncito dorado, Lumi) entre otros parecidos.
+- `personajes`: **el villano escondido entre sus amigos** (Sombra entre la Capitana Estrella, Escudo Verde y Héroe Noche, etc.).
+En la Historia cada capítulo sortea el tipo (al menos uno de cada uno por mundo); en el Desafío, cada nivel al azar.
+La Prueba fija usa siempre señales, para poder comparar sesiones. Sirve para ver si al niño le cuesta más distinguir
+señales (símbolos) o personajes (figuras parecidas, como Héroe Noche y Sombra).

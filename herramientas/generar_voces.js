@@ -70,6 +70,11 @@ function textos(key, m) {
     t['intro_' + mg] = [st.intro + st.mgLines[mg], yo];
   });
   if (st.bossLine) t.boss = [st.bossLine, yo];
+  // niveles de personajes (el villano entre los amigos): 'cast_race', y en el capítulo 1 'intro_cast_race'
+  Object.entries(st.mgLinesCast || {}).forEach(([mg, line]) => {
+    t['cast_' + mg] = [line, yo];
+    t['intro_cast_' + mg] = [st.intro + line, yo];
+  });
   const reparto = VOCES_REPARTO[key];
   // quien presenta cada capítulo: 'comp_1' ... 'comp_4'
   (st.companions || []).forEach((c, i) => { t['comp_' + (i + 1)] = [c.line, reparto[c.role]]; });
