@@ -34,16 +34,12 @@ class MemoryScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(th.bg);
     const idx = this.mode === 'historia' ? this.chapter : this.mode === 'desafio' ? (this.level - 1) % 5 : 0;
     drawBackdrop(this, this.themeKey, idx, this.adaptive ? 0.82 : Math.max(0.55, 0.85 - 0.05 * (this.level - 1)));
-    backLink(this, 'Salir', () => {
-      if (this.mode === 'historia') this.scene.start('ChapterMap', { theme: this.themeKey });
-      else if (this.mode === 'desafio') this.scene.start('MinigameSelect', { theme: this.themeKey });
-      else this.scene.start('Menu', { mode: 'memoria' });
-    });
+    addExitButton(this);   // ✕ Salir (pausa) arriba a la derecha, o ESC
     const tag = this.mode === 'desafio' ? 'Nivel ' + this.level : this.mode === 'historia' ? 'Capítulo ' + (this.chapter + 1) : null;
     if (tag) {
       const pill = this.add.graphics();
-      pill.fillStyle(0x0f172a, 0.6); pill.fillRoundedRect(W - 160, 12, 140, 30, 15);
-      this.add.text(W - 90, 27, tag, { font: 'bold 16px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
+      pill.fillStyle(0x0f172a, 0.6); pill.fillRoundedRect(20, 12, 140, 30, 15);
+      this.add.text(90, 27, tag, { font: 'bold 16px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
     }
     this.log = [];
     this.castBusy = false;     // escena de personajes en curso (una a la vez)
@@ -63,6 +59,18 @@ class MemoryScene extends Phaser.Scene {
   }
 
   elapsed() { return performance.now() - this.t0; }
+
+  // Pausa (botón Salir): al seguir, se corren los tiempos para no contar la pausa
+  resumeFromPause(ms) {
+    if (this.t0 !== null) this.t0 += ms;
+    if (this.respT0) this.respT0 += ms;
+  }
+  exitGame() {
+    this.ended = true;
+    if (this.t0 !== null) addPlayTime(this, this.elapsed());
+    const [scene, data] = exitTarget(this);
+    this.scene.start(scene, data);
+  }
 
   // Explicación antes de cada fase
   showIntro(dir) {

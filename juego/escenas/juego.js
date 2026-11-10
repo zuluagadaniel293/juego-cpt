@@ -66,7 +66,8 @@ class GameScene extends Phaser.Scene {
       this.add.text(85, 20, tag, { font: 'bold 16px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
       barX = 166;
     }
-    this.barW = W - barX - 40;
+    this.barW = W - barX - 140;   // a la derecha va el botón de salir
+    addExitButton(this);
     this.add.rectangle(barX, 20, this.barW, 10, 0xffffff, 0.2).setOrigin(0, 0.5);
     this.bar = this.add.rectangle(barX, 20, 0, 10, th.accent).setOrigin(0, 0.5);
 
@@ -106,20 +107,8 @@ class GameScene extends Phaser.Scene {
     const yes = (x, k, r) => { add(this.add.circle(x, exY, r || 64, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e)); add(fit(this.add.image(x, exY, k), (r || 64) * 1.5)); };
     const no = (x, k) => { add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444)); add(fit(this.add.image(x, exY, k), 84)); };
     const dists = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
-    if (this.mg === 'notx') {
-      // Menos uno: se responde a todo menos al objetivo
-      dists.forEach((k, i) => yes(230 + i * 150, k, 56));
-      txt(230 + (dists.length - 1) * 75, exY + 84, '✔ Toca todos estos', 22, '#86efac');
-      no(680, this.keys.target);
-      txt(680, exY + 84, '✘ ¡Este NO!', 22, '#fca5a5');
-    } else if (this.mg === 'ax') {
-      // Pista: la pista y justo después el objetivo = sí; el objetivo sin pista = no
-      yes(200, this.keys.dists[0], 50);
-      txt(275, exY, '→', 40, '#86efac');
-      yes(350, this.keys.target, 50);
-      txt(275, exY + 84, '✔ Pista y luego esta: ¡toca!', 20, '#86efac');
-      no(680, this.keys.target);
-      txt(680, exY + 84, '✘ Sin pista antes, no', 20, '#fca5a5');
+    if (this.mg === 'notx' || this.mg === 'ax') {
+      this.playDemo(add, txt);   // demostración animada paso a paso
     } else {
       yes(260, this.keys.target);
       txt(260, exY + 84, '✔ ¡Este sí!', 22, '#86efac');
@@ -164,6 +153,7 @@ class GameScene extends Phaser.Scene {
     let gone = false;
     const go = () => {
       if (gone) return; gone = true;
+      if (this.demoTimer) { this.demoTimer.remove(); this.demoTimer = null; }
       it.forEach(o => o.destroy());
       const ya = this.add.text(W / 2, H / 2, '¡Ya!', { font: 'bold 72px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(D);
       this.tweens.add({ targets: ya, scale: 1.4, alpha: 0, duration: 700, onComplete: () => ya.destroy() });
@@ -173,6 +163,52 @@ class GameScene extends Phaser.Scene {
     this.input.keyboard.once('keydown-SPACE', go);
     this.input.keyboard.once('keydown-ENTER', go);
     this.intro = it;
+  }
+
+  // Demostración de Menos uno y Pista: una pantallita muestra una secuencia de ejemplo y dice qué hacer con
+  // cada señal (verde = tocar, rojo = no tocar, amarillo = la pista). En Pista se ve también lo que salió antes.
+  playDemo(add, txt) {
+    const th = this.theme, k = this.keys, label = th.targetLabel;
+    const steps = this.mg === 'notx' ? [
+      { key: k.dists[0], ok: true, say: '✔ No es ' + label + ': ¡toca!' },
+      { key: k.dists[1], ok: true, say: '✔ Tampoco es: ¡toca!' },
+      { key: k.target, ok: false, say: '✘ ¡Es ' + label + '! NO toques' },
+      { key: k.dists[0], ok: true, say: '✔ ¡Toca!' }
+    ] : [
+      { key: k.dists[0], cue: true, say: '★ Esta es la PISTA: no toques, ¡recuérdala!' },
+      { key: k.target, ok: true, say: '✔ Salió después de la pista: ¡toca!' },
+      { key: k.dists[1], ok: false, say: '✘ Otra cosa: no toques' },
+      { key: k.target, ok: false, say: '✘ Sin la pista antes: ¡NO toques!' },
+      { key: k.dists[0], cue: true, say: '★ La pista otra vez: ¡recuérdala!' },
+      { key: k.dists[1], ok: false, say: '✘ Después de la pista vino otra cosa: no toques' }
+    ];
+    const cx = 480, cy = 150;
+    txt(cx, 96, 'Mira cómo se juega:', 18, '#cbd5e1');
+    const box = add(this.add.graphics());
+    box.fillStyle(0x1e293b, 1); box.fillRoundedRect(cx - 110, cy - 42, 220, 108, 16);
+    const frame = add(this.add.graphics());
+    const img = add(this.add.image(cx, cy + 12, steps[0].key));
+    const say = txt(cx, cy + 92, '', 21, '#ffffff');
+    const tap = txt(cx + 150, cy + 12, '', 40);   // 👆 cuando hay que tocar
+    let prev = null, prevLbl = null;
+    if (this.mg === 'ax') {   // lo que salió justo antes (hay que recordarlo)
+      prevLbl = txt(cx - 175, cy - 24, 'antes salió:', 15, '#94a3b8');
+      prev = add(this.add.image(cx - 175, cy + 22, steps[0].key).setAlpha(0));
+    }
+    let i = 0;
+    const show = () => {
+      const st = steps[i % steps.length], before = steps[(i + steps.length - 1) % steps.length];
+      const color = st.cue ? 0xfacc15 : st.ok ? 0x22c55e : 0xef4444;
+      frame.clear(); frame.lineStyle(5, color, 1); frame.strokeRoundedRect(cx - 110, cy - 42, 220, 108, 16);
+      fit(img.setTexture(st.key), 84).setScale(img.scale * 0.6);
+      this.tweens.add({ targets: img, scale: img.scale / 0.6, duration: 220, ease: 'Back.easeOut' });
+      say.setText(st.say).setColor(st.cue ? '#fde047' : st.ok ? '#86efac' : '#fca5a5');
+      tap.setText(st.ok ? '👆' : '');
+      if (prev) { if (i > 0) fit(prev.setTexture(before.key), 54).setAlpha(0.8); else prev.setAlpha(0); }
+      i++;
+    };
+    show();
+    this.demoTimer = this.time.addEvent({ delay: 1900, loop: true, callback: show });
   }
 
   setupMinigame() {
@@ -253,6 +289,22 @@ class GameScene extends Phaser.Scene {
   }
 
   elapsed() { return performance.now() - this.t0; }
+
+  // Pausa (botón Salir): al seguir, se corren los tiempos para no contar la pausa en la sesión ni en los TR
+  resumeFromPause(ms) {
+    if (this.t0 === undefined || !this.started) return;
+    this.t0 += ms;
+    if (this.current) this.current.onset += ms;
+    this.items.forEach(it => { it.onset += ms; });
+    if (this.ft) this.ft.onset += ms;
+  }
+  exitGame() {
+    this.ended = true;
+    if (this.started) addPlayTime(this, this.elapsed());   // el tiempo jugado cuenta para la Misión del día
+    stopVoice();
+    const [scene, data] = exitTarget(this);
+    this.scene.start(scene, data);
+  }
 
   // type: 'target' = hay que responder · 'distractor' = no hay que responder. cond: condición (queda en el CSV)
   pickStimulus() {
@@ -540,7 +592,7 @@ class GameScene extends Phaser.Scene {
     Phaser.Utils.Array.Shuffle(cells);
     const present = Math.random() < 0.75;
     const targetIdx = present ? Phaser.Math.Between(0, P.setSize - 1) : -1;
-    const ft = { trial: this.trial, present, onset: performance.now(), imgs: [], done: false };
+    const ft = this.ft = { trial: this.trial, present, onset: performance.now(), imgs: [], done: false };
     for (let i = 0; i < P.setSize; i++) {
       const isTarget = i === targetIdx;
       const key = isTarget ? this.keys.target : this.distractorKey();
