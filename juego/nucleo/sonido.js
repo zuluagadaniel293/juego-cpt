@@ -36,9 +36,12 @@ function playVoice(theme, id, text, onEnd) {
   currentVoice.onended = done;
   currentVoice.play().catch(() => speakTTS(text, theme, done));
 }
-// Voz de un distractor (risa del villano, "¡ayuda!"...): suena encima de todo, sin cortar al narrador
+// Voz de un distractor (risa del villano, "¡ayuda!"...): suena encima de todo, sin cortar al narrador.
+// Primero la versión con emoción de ElevenLabs (si hay varias, una al azar); si no, la voz gratuita.
 function playClip(theme, id, volume) {
-  const file = ((window.VOICES || {})[theme] || {})[id];
+  const eleven = ((window.VOICES_ELEVEN || {})[theme] || {})[id];
+  const file = (eleven && eleven.length ? eleven[Math.floor(Math.random() * eleven.length)] : null)
+    || ((window.VOICES || {})[theme] || {})[id];
   if (!file) return false;
   const a = new Audio('assets/' + file);
   a.volume = volume === undefined ? 0.8 : volume;
