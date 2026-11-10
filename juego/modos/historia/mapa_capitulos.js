@@ -44,7 +44,7 @@ class ChapterMapScene extends Phaser.Scene {
         // en los demás), con un "?" y un candado pequeño, para dar curiosidad
         const what = ch.boss ? TEX[this.themeKey].villain
           : { classic: TEX[this.themeKey].target, catch: 'basket', race: TEX[this.themeKey].hero_run, find: 'icon_find',
-              memory: 'icon_memory' }[chapterGame(this.themeKey, i)];
+              memory: 'icon_memory', notx: TEX[this.themeKey].target, ax: TEX[this.themeKey].dist1 }[chapterGame(this.themeKey, i)];
         const objs = mysteryNode(this, x, y, r, silhouetteOf(this, what), ch.boss ? 0x7c3aed : undefined);
         objs.push(fit(this.add.image(x - r * 0.7, y + r * 0.7, 'icon_lock'), ch.boss ? 30 : 24));
         node = objs[0].setInteractive({ useHandCursor: true });

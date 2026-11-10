@@ -17,6 +17,8 @@ registrarMundo('kingdom', {
       catch: '¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.',
       race: '¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.',
       find: 'Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Toca a todas las hadas... ¡menos a Lumi!',
+      ax: 'Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!',
       memory: '¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.'
     },
     // Jefe final: su primera fase es el juego que no salió en los capítulos (si es Atrapa o Carrera, usa el texto original)

@@ -17,6 +17,8 @@ registrarMundo('heroes', {
       catch: '¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!',
       race: '¡Sombra escapó corriendo! Persíguelo y agarra solo sus señales. ¡Vamos!',
       find: 'Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!',
+      notx: '¡Esta vez es al revés! Toca todas las señales de mis amigos héroes... ¡pero NUNCA la de Sombra!',
+      ax: 'Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!',
       memory: '¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.'
     },
     // Jefe final: su primera fase es el juego que no salió en los capítulos (si es Atrapa o Carrera, usa el texto original)

@@ -36,8 +36,15 @@ const MG = {
   find:    { label: 'Encuentra', verb: 'Encontraste', desc: 'Búscalo entre\nmuchos',
              instr: n => 'Toca solo ' + n + '.\nSi no está, no toques nada' },
   // Memoria (tipo Corsi): se juega en su propia escena (modos/memoria/memoria.js)
-  memory:  { label: 'Memoria',   verb: 'Recordaste',  desc: 'Recuerda el\ncamino' }
+  memory:  { label: 'Memoria',   verb: 'Recordaste',  desc: 'Recuerda el\ncamino' },
+  // Formatos de CPT de los exámenes, para que el niño los practique (se juegan como el Clásico):
+  // Menos uno = como el Conners CPT-3: se responde a todo MENOS al objetivo (aparece 1 de cada 10 veces)
+  notx:    { label: 'Menos uno', verb: 'Acertaste',   desc: 'Toca todo menos\nla del villano' },
+  // Pista = como el AX-CPT: se responde al objetivo SOLO si justo antes apareció la pista (memoria de trabajo)
+  ax:      { label: 'Pista',     verb: 'Encontraste', desc: 'Solo si antes\nsalió la pista' }
 };
+// Juegos que funcionan como el Clásico (un estímulo en el centro; se responde con ESPACIO o tocando)
+const CLASSIC_LIKE = ['classic', 'notx', 'ax'];
 
 // Dificultad según el nivel (Desafío) o el capítulo (Historia): corto al principio, pero ya con reto.
 function challengeParams(level, minigame) {
@@ -62,7 +69,12 @@ function challengeParams(level, minigame) {
     spawnMax: Math.max(900, 1800 - 70 * L),
     setSize: Math.min(8, 4 + Math.floor(L / 2)),     // Encuentra: cuántos objetos a la vez
     displayMs: Math.max(1400, 2800 - 120 * L),       // Encuentra: tiempo para buscar
-    minigame: minigame || 'classic'
+    minigame: minigame || 'classic',
+    // Menos uno: proporción de veces que sale el objetivo (al que NO se responde). Conners: ~10%
+    noGoProb: 0.1,
+    // Pista (AX-CPT): tras la pista sale el objetivo el 70% de las veces (AX); sin pista, a veces sale la pista
+    // (A) o el objetivo solo (BX, la trampa que mide si recordó la pista)
+    axCueProb: 0.3, axAfterCue: 0.7, axLureProb: 0.12
   };
 }
 
@@ -83,8 +95,11 @@ function memoryParams(level) {
   });
 }
 
-function pruebaParams() {
+// Prueba fija: siempre igual, para comparar sesiones. mg = 'classic' (como el TOVA), 'notx' (como el Conners)
+// o 'ax' (AX-CPT). Valores provisionales: confirmarlos con la literatura de cada prueba.
+function pruebaParams(mg) {
   return {
+    noGoProb: 0.1, axCueProb: 0.3, axAfterCue: 0.7, axLureProb: 0.12,
     sessionMs: CONFIG.SESSION_MS,
     stimMs: CONFIG.STIMULUS_MS,
     isiMin: CONFIG.ISI_MIN,
@@ -94,6 +109,6 @@ function pruebaParams() {
     audio: CONFIG.AUDIO_DISTRACTOR,
     audioEvery: CONFIG.AUDIO_EVERY_MS,
     visual: false,             // la Prueba fija conserva sus condiciones de siempre
-    minigame: 'classic'
+    minigame: mg || 'classic'
   };
 }

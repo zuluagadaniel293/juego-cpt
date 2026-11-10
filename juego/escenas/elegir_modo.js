@@ -39,7 +39,7 @@ class ModeScene extends Phaser.Scene {
     // (abajo a la izquierda: la esquina derecha la tapa el botón "Powered by Netlify" en la versión publicada)
     this.add.text(30, H - 24, 'Zona de adultos: Prueba fija', { font: 'bold 15px Arial', color: '#94a3b8' })
       .setOrigin(0, 1).setInteractive({ useHandCursor: true })
-      .on('pointerdown', () => { getCtx(); this.scene.start('Menu', { mode: 'prueba' }); });
+      .on('pointerdown', () => { getCtx(); this.scene.start('PruebaSelect'); });
   }
   // Ícono de Memoria: tablero de casillas con un camino encendido (si no hay imagen icon_memory en comunes)
   memoryIcon() {

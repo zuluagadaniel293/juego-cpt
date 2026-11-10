@@ -17,6 +17,8 @@ registrarMundo('fantasy', {
       catch: '¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.',
       race: '¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.',
       find: 'Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
+      notx: '¡Ahora es al revés! Toca a todos los dragoncitos... ¡menos a mi hermanito dorado!',
+      ax: 'Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
       memory: '¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.'
     },
     // Jefe final: su primera fase es el juego que no salió en los capítulos (si es Atrapa o Carrera, usa el texto original)

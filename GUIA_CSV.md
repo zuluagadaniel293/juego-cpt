@@ -96,3 +96,29 @@ Nombre del archivo: `cpt_memoria_<mundo>_<fecha>_<hora>.csv` (o `cpt_historia_..
 - **Span adelante** = el `largo_secuencia` más alto con `correcto = si` en `adelante`. Referencia aproximada para 8-12 años: ~5.
 - **Span al revés** = lo mismo en `al_reves`. Referencia aproximada: ~4. En TDAH suele ser el más afectado.
 - **Total correcto** = cantidad de `si`.
+
+## Modos "Menos uno" y "Pista" (formatos de CPT de las evaluaciones)
+Se juegan como el Clásico y su CSV tiene las mismas columnas, más **`condicion`**. En estos modos, `objetivo`
+significa "lo que sí había que responder".
+
+**Menos uno** (formato tipo **Conners CPT-3**): se responde a todo **menos** al objetivo del mundo, que sale 1 de cada 10 veces.
+
+| `condicion` | Qué era | Respuesta correcta |
+|---|---|---|
+| `responder` | Una señal de un amigo | Responder (si no, es `omision`) |
+| `no_responder` | El objetivo del mundo | No responder (si responde, es `error_impulsivo`: **impulsividad**) |
+
+**Pista** (formato tipo **AX-CPT**): se responde al objetivo **solo si justo antes salió la pista** (la señal del primer amigo).
+Mide atención sostenida y **memoria de trabajo** (hay que recordar la pista).
+
+| `condicion` | Qué era | Si responde… |
+|---|---|---|
+| `pista` | La pista (A) | error (no se responde a la pista) |
+| `pista_y_objetivo` | Pista y luego el objetivo (AX) | **acierto** (es lo único que se responde) |
+| `objetivo_sin_pista` | El objetivo sin pista antes (BX) | error: **no recordó la pista** (falla de memoria de trabajo) |
+| `pista_sin_objetivo` | Pista y luego otra cosa (AY) | error: respondió por anticipación |
+| `ni_pista_ni_objetivo` | Ninguno (BY) | error al azar o por impulsividad |
+
+En la **Zona de adultos** se puede elegir cualquiera de las tres pruebas fijas (CPT clásico, Menos uno, Pista), siempre
+con los mismos parámetros para comparar sesiones. La pantalla de resultados muestra los errores por condición.
+**No es un diagnóstico**: sirve para seguir el progreso del niño.

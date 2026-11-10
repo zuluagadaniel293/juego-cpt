@@ -13,7 +13,7 @@ class GameScene extends Phaser.Scene {
     this.boss = false;
     if (this.mode === 'prueba') {
       this.level = null;
-      this.params = pruebaParams();
+      this.params = pruebaParams(data.minigame);   // Clásico, Menos uno o Pista, siempre igual
     } else if (this.mode === 'historia') {
       const ch = STORY[this.themeKey].chapters[this.chapter];
       // el juego del capítulo sale del orden aleatorio del mundo; la dificultad, del capítulo
@@ -47,6 +47,7 @@ class GameScene extends Phaser.Scene {
     }
     this.log = [];
     this.castBusy = false;     // escena de personajes en curso (una a la vez)
+    this.lastWasCue = false;   // Pista: si lo anterior fue la pista
     this.trial = 0;
     this.current = null;
     this.items = [];           // objetos en movimiento (Atrapa / Carrera)
@@ -69,7 +70,7 @@ class GameScene extends Phaser.Scene {
     this.add.rectangle(barX, 20, this.barW, 10, 0xffffff, 0.2).setOrigin(0, 0.5);
     this.bar = this.add.rectangle(barX, 20, 0, 10, th.accent).setOrigin(0, 0.5);
 
-    this.fb = this.add.text(W / 2, this.mg === 'classic' ? H / 2 + 140 : 70, '',
+    this.fb = this.add.text(W / 2, CLASSIC_LIKE.includes(this.mg) ? H / 2 + 140 : 70, '',
       { font: 'bold 38px Arial', color: '#86efac' }).setOrigin(0.5).setDepth(10);
 
     this.setupMinigame();
@@ -100,18 +101,31 @@ class GameScene extends Phaser.Scene {
     panel.fillStyle(0x0f172a, 0.85); panel.fillRoundedRect(40, 22, W - 80, H - 44, 26);
     txt(W / 2, 58, title, 30, hexColor(th.accent));
 
-    // Ejemplos: el objetivo (sí) y los distractores (no)
+    // Ejemplos: lo que sí se responde (verde) y lo que no (rojo)
     const exY = 160;
-    add(this.add.circle(260, exY, 64, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e));
-    add(fit(this.add.image(260, exY, this.keys.target), 96));
-    txt(260, exY + 84, '✔ ¡Este sí!', 22, '#86efac');
-    const noKeys = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
-    noKeys.forEach((k, i) => {
-      const x = 560 + i * 150;
-      add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444));
-      add(fit(this.add.image(x, exY, k), 84));
-    });
-    txt(560 + (noKeys.length - 1) * 75, exY + 84, '✘ Estos no', 22, '#fca5a5');
+    const yes = (x, k, r) => { add(this.add.circle(x, exY, r || 64, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e)); add(fit(this.add.image(x, exY, k), (r || 64) * 1.5)); };
+    const no = (x, k) => { add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444)); add(fit(this.add.image(x, exY, k), 84)); };
+    const dists = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
+    if (this.mg === 'notx') {
+      // Menos uno: se responde a todo menos al objetivo
+      dists.forEach((k, i) => yes(230 + i * 150, k, 56));
+      txt(230 + (dists.length - 1) * 75, exY + 84, '✔ Toca todos estos', 22, '#86efac');
+      no(680, this.keys.target);
+      txt(680, exY + 84, '✘ ¡Este NO!', 22, '#fca5a5');
+    } else if (this.mg === 'ax') {
+      // Pista: la pista y justo después el objetivo = sí; el objetivo sin pista = no
+      yes(200, this.keys.dists[0], 50);
+      txt(275, exY, '→', 40, '#86efac');
+      yes(350, this.keys.target, 50);
+      txt(275, exY + 84, '✔ Pista y luego esta: ¡toca!', 20, '#86efac');
+      no(680, this.keys.target);
+      txt(680, exY + 84, '✘ Sin pista antes, no', 20, '#fca5a5');
+    } else {
+      yes(260, this.keys.target);
+      txt(260, exY + 84, '✔ ¡Este sí!', 22, '#86efac');
+      dists.forEach((k, i) => no(560 + i * 150, k));
+      txt(560 + (dists.length - 1) * 75, exY + 84, '✘ Estos no', 22, '#fca5a5');
+    }
 
     // Controles: dibujos de las teclas (computador) o del dedo (celular / tableta)
     const ctrlY = 335;
@@ -125,9 +139,12 @@ class GameScene extends Phaser.Scene {
     const icon = (x, y, s) => txt(x, y, s, 56);
     let explain;
     const chase = this.lead ? '¡Persigue ' + th.villainObj + '! ' : '';
-    if (this.mg === 'classic') {
-      if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca la pantalla solo cuando veas ' + what; }
-      else { keycap(220, ctrlY, 210, 'ESPACIO'); explain = 'Presiona ESPACIO solo cuando veas ' + what; }
+    if (CLASSIC_LIKE.includes(this.mg)) {
+      const act = touch ? 'Toca la pantalla' : 'Presiona ESPACIO';
+      if (touch) icon(220, ctrlY, '👆'); else keycap(220, ctrlY, 210, 'ESPACIO');
+      explain = this.mg === 'notx' ? act + ' con cada señal que aparezca, MENOS cuando veas ' + what
+        : this.mg === 'ax' ? act + ' cuando veas ' + what + ' justo después de la pista. Si sale sin la pista, ¡no toques!'
+        : act + ' solo cuando veas ' + what;
     } else if (this.mg === 'catch') {
       if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Arrastra el dedo para mover ' + holder + '. Atrapa solo ' + what + ' y esquiva lo demás'; }
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
@@ -161,7 +178,7 @@ class GameScene extends Phaser.Scene {
   setupMinigame() {
     const W = GAME_W, H = GAME_H;
     this.mgObjects = [];
-    if (this.mg === 'classic') {
+    if (CLASSIC_LIKE.includes(this.mg)) {
       this.stim = this.add.image(W / 2, H / 2, this.keys.target).setVisible(false);
       this.input.keyboard.on('keydown-SPACE', () => this.respond());
       this.input.on('pointerdown', () => this.respond());
@@ -214,7 +231,7 @@ class GameScene extends Phaser.Scene {
       });
     }
     // En Clásico y Encuentra, el protagonista aparece abajo a la izquierda y lanza su poder
-    if (this.powers && (this.mg === 'classic' || this.mg === 'find')) {
+    if (this.powers && (CLASSIC_LIKE.includes(this.mg) || this.mg === 'find')) {
       this.caster = fit(this.add.image(70, H - 70, TEX[this.themeKey].hero), 120).setDepth(7);
       this.mgObjects.push(this.caster);
     }
@@ -227,7 +244,7 @@ class GameScene extends Phaser.Scene {
     this.mgObjects.forEach(o => o.setVisible(true));
     this.t0 = performance.now();
     this.started = true;
-    if (this.mg === 'classic') this.nextTrial();
+    if (CLASSIC_LIKE.includes(this.mg)) this.nextTrial();
     else if (this.mg === 'find') this.nextFindTrial();
     else this.scheduleSpawn();
     if (this.lead) this.time.delayedCall(1200, () => this.moveLead());
@@ -237,8 +254,33 @@ class GameScene extends Phaser.Scene {
 
   elapsed() { return performance.now() - this.t0; }
 
+  // type: 'target' = hay que responder · 'distractor' = no hay que responder. cond: condición (queda en el CSV)
   pickStimulus() {
-    if (Math.random() < this.params.targetProb) return { type: 'target', key: this.keys.target };
+    const P = this.params;
+    if (this.mg === 'notx') {
+      // Menos uno (como el Conners): casi todo se responde (señales de los amigos); al objetivo, NO
+      if (Math.random() < P.noGoProb) return { type: 'distractor', key: this.keys.target, cond: 'no_responder' };
+      return { type: 'target', key: this.distractorKey(), cond: 'responder' };
+    }
+    if (this.mg === 'ax') {
+      // Pista (AX-CPT): la pista (A) es la señal del primer amigo; el objetivo (X) se responde solo si viene
+      // justo después de la pista. AX = responder · AY = pista sin objetivo · BX = objetivo sin pista (trampa:
+      // si responde, no recordó la pista) · BY = ni pista ni objetivo
+      const other = () => (Math.random() < P.similarProb ? this.keys.similar : this.keys.dists[1]);
+      let s;
+      if (this.lastWasCue) {
+        s = Math.random() < P.axAfterCue ? { type: 'target', key: this.keys.target, cond: 'AX' }
+          : { type: 'distractor', key: other(), cond: 'AY' };
+      } else {
+        const r = Math.random();
+        s = r < P.axCueProb ? { type: 'distractor', key: this.keys.dists[0], cond: 'A' }
+          : r < P.axCueProb + P.axLureProb ? { type: 'distractor', key: this.keys.target, cond: 'BX' }
+          : { type: 'distractor', key: other(), cond: 'BY' };
+      }
+      this.lastWasCue = s.cond === 'A';
+      return s;
+    }
+    if (Math.random() < P.targetProb) return { type: 'target', key: this.keys.target };
     return { type: 'distractor', key: this.distractorKey() };
   }
   distractorKey() {
@@ -372,7 +414,7 @@ class GameScene extends Phaser.Scene {
     this.trial++;
     const s = this.pickStimulus();
     fit(this.stim.setTexture(s.key).setVisible(true).setAlpha(1), 160);
-    this.current = { trial: this.trial, type: s.type, key: s.key, onset: performance.now(), responded: false, rt: null };
+    this.current = { trial: this.trial, type: s.type, key: s.key, cond: s.cond, onset: performance.now(), responded: false, rt: null };
     this.time.delayedCall(P.stimMs, () => this.endTrial());
   }
   endTrial() {
@@ -382,6 +424,7 @@ class GameScene extends Phaser.Scene {
     if (c.type === 'target') outcome = c.responded ? 'hit' : 'omission';
     else outcome = c.responded ? 'commission' : 'correct_rejection';
     this.logTrial(c.trial, c.type, c.key, c.onset, c.responded, c.rt, outcome);
+    if (c.cond) this.log[this.log.length - 1].condition = c.cond;   // Menos uno y Pista
     this.current = null;
     this.time.delayedCall(Phaser.Math.Between(this.params.isiMin, this.params.isiMax), () => this.nextTrial());
   }

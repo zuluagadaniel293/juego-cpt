@@ -64,6 +64,22 @@
       "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.",
       "firma": "a35d33a41b"
     },
+    "notx": {
+      "texto": "¡Esta vez es al revés! Toca todas las señales de mis amigos héroes... ¡pero NUNCA la de Sombra!",
+      "firma": "102e81027f"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Esta vez es al revés! Toca todas las señales de mis amigos héroes... ¡pero NUNCA la de Sombra!",
+      "firma": "b0f2b4ad67"
+    },
+    "ax": {
+      "texto": "Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
+      "firma": "dc07f0b301"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
+      "firma": "f17050833b"
+    },
     "boss_classic": {
       "texto": "¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Toca solo cuando aparezca él y, si escapa, ¡persíguelo!",
       "firma": "563123ea39"
@@ -177,6 +193,22 @@
     "intro_memory": {
       "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.",
       "firma": "afa42e3959"
+    },
+    "notx": {
+      "texto": "¡Ahora es al revés! Toca a todos los dragoncitos... ¡menos a mi hermanito dorado!",
+      "firma": "907727c85a"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Ahora es al revés! Toca a todos los dragoncitos... ¡menos a mi hermanito dorado!",
+      "firma": "63b0c74b4a"
+    },
+    "ax": {
+      "texto": "Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
+      "firma": "ce1141781b"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
+      "firma": "ba491424ba"
     },
     "boss_classic": {
       "texto": "¡Fue la hechicera Morgana! Se esconde entre los magos buenos del bosque. Toca solo cuando aparezca ella y, si escapa, ¡persíguela!",
@@ -295,6 +327,22 @@
     "intro_memory": {
       "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.",
       "firma": "8f607eea07"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todas las hadas... ¡menos a Lumi!",
+      "firma": "85ad1f9fc2"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Al revés! Toca a todas las hadas... ¡menos a Lumi!",
+      "firma": "0dd07cb444"
+    },
+    "ax": {
+      "texto": "Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
+      "firma": "be5d0a8221"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
+      "firma": "073ba349f2"
     },
     "boss_classic": {
       "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. Toca solo cuando aparezca él y, si escapa, ¡persíguelo!",

@@ -30,7 +30,8 @@ function registrarMundo(key, m) {
 function chapterGames(theme) {
   const all = store.get('cpt_order', {});
   if (!all[theme]) {
-    const others = Phaser.Utils.Array.Shuffle(['classic', 'catch', 'race', 'find']).slice(0, 3);
+    // Memoria siempre; los otros 3, al azar entre los demás juegos (incluye los formatos de CPT Menos uno y Pista)
+    const others = Phaser.Utils.Array.Shuffle(['classic', 'catch', 'race', 'find', 'notx', 'ax']).slice(0, 3);
     all[theme] = Phaser.Utils.Array.Shuffle(others.concat('memory'));
     store.set('cpt_order', all);
   }

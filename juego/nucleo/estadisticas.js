@@ -58,6 +58,11 @@ const CSV_TEXT = {
   event_type: { stimulus: 'estimulo', audio_distractor: 'distractor_sonido', visual_distractor: 'distractor_visual' },
   mode: { historia: 'Historia', desafio: 'Desafío', prueba: 'Prueba fija' },
   stimulus_type: { target: 'objetivo', distractor: 'distractor' },
+  // Menos uno y Pista: qué tipo de estímulo era (ver GUIA_CSV.md)
+  condition: {
+    responder: 'responder', no_responder: 'no_responder',
+    A: 'pista', AX: 'pista_y_objetivo', AY: 'pista_sin_objetivo', BX: 'objetivo_sin_pista', BY: 'ni_pista_ni_objetivo'
+  },
   outcome: {
     hit: 'acierto',                       // respondió al objetivo
     omission: 'omision',                  // no respondió al objetivo (despiste)
@@ -86,6 +91,7 @@ function downloadCSV(log, name) {
     ['ensayo', r => r.trial],
     ['tipo_estimulo', r => CSV_TEXT.stimulus_type[r.stimulus_type] || r.stimulus_type],
     ['que_aparecio', r => stimulusLabel(r.theme, r.stimulus_key)],
+    ['condicion', r => CSV_TEXT.condition[r.condition] || r.condition],
     ['momento_ms', r => r.onset_ms],
     ['respondio', r => (r.responded === undefined ? '' : r.responded ? 'si' : 'no')],
     ['tiempo_reaccion_ms', r => r.rt_ms],
