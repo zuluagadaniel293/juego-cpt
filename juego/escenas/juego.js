@@ -692,8 +692,14 @@ class GameScene extends Phaser.Scene {
   buddyCheer() {
     if (!this.buddy || this.buddyJumping) return;
     this.buddyJumping = true;
-    this.tweens.add({ targets: this.buddy, y: this.buddyY - 28, duration: 170, yoyo: true, ease: 'Quad.easeOut',
-      onComplete: () => { this.buddyJumping = false; } });
+    // si tiene pose celebrando, la usa mientras salta y luego vuelve a la normal
+    const tex = TEX[this.themeKey], cheer = tex[this.buddyRole + '_cheer'];
+    if (cheer) fit(this.buddy.setTexture(cheer), 110);
+    this.tweens.add({ targets: this.buddy, y: this.buddyY - 28, duration: 170, yoyo: true, hold: cheer ? 260 : 0, ease: 'Quad.easeOut',
+      onComplete: () => {
+        if (cheer) fit(this.buddy.setTexture(tex[this.buddyRole]), 104);
+        this.buddyJumping = false;
+      } });
   }
   // Un amigo para una escena de fondo: el pedido, salvo que sea el compañero que ya está en pantalla
   castFriend(pref) {

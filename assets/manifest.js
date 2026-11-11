@@ -17,6 +17,7 @@
 //                     (si faltan, usan "villain") · villain_face: solo la cara, espiando desde un lado (si falta, no sale)
 //   friend1_help, friend1_cower, friend1_flee   poses del amigo 1 (igual friend2_..., friend3_...): pidiendo ayuda,
 //                     cubriéndose del ataque, huyendo asustado. Si faltan, se usa su imagen normal.
+//   friend1_cheer ...  amigo celebrando: el compañero de la esquina cambia a esta pose al saltar cuando el niño acierta
 //   friend1, friend2  amigos: distractores del jefe final
 //   friend3           amigo parecido al villano (distractor difícil del jefe final)
 //   net               red para atrapar al villano
@@ -47,6 +48,9 @@ window.ASSETS = {
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
     friend3: 'superheroes/heroe_noche.png',
+    friend1_cheer: 'superheroes/capitana_celebra.png',   // el compañero celebra cuando el niño acierta
+    friend2_cheer: 'superheroes/escudo_celebra.png',
+    friend3_cheer: 'superheroes/heroe_noche_celebra.png',
     bg_1:    'superheroes/fondo_1_el_centro.png',
     bg_2:    'superheroes/fondo_2_barrio_norte.png',
     bg_3:    'superheroes/fondo_3_el_puerto.png',
@@ -75,6 +79,9 @@ window.ASSETS = {
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
     friend3: 'dragones/hechicera_buena.png',
+    friend1_cheer: 'dragones/hada_celebra.png',
+    friend2_cheer: 'dragones/mago_celebra.png',
+    friend3_cheer: 'dragones/hechicera_celebra.png',
     bg_1:    'dragones/fondo_1_nido.jpg',
     bg_2:    'dragones/fondo_2_bosque.jpg',
     bg_3:    'dragones/fondo_3_el_rio.png',
@@ -101,6 +108,9 @@ window.ASSETS = {
     friend1: 'reino_magico/guardia.png',
     friend2: 'reino_magico/bufon.png',
     friend3: 'reino_magico/duende_amable.png',
+    friend1_cheer: 'reino_magico/guardia_celebra.png',
+    friend2_cheer: 'reino_magico/bufon_celebra.png',
+    friend3_cheer: 'reino_magico/duende_celebra.png',
     bg_1:    'reino_magico/fondo_1_jardin.jpg',
     bg_2:    'reino_magico/fondo_2_la_cocina.png',
     bg_3:    'reino_magico/fondo_3_la_biblioteca.png',
