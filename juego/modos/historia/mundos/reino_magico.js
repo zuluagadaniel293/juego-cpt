@@ -76,21 +76,60 @@ registrarMundo('kingdom', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
-    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen (cada escena dice la frase de su capítulo).
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba de puntillas ·
     // chase = el villano huye y el amigo lo persigue
     cast: [
       { name: 'guardia_persigue_duende', kind: 'chase', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
-      { name: 'duende_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'duende_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
-      { name: 'duende_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
+      { name: 'duende_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
+      { name: 'duende_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
+      { name: 'duende_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
-    // Voces (las graba herramientas/generar_voces.js): who = villain o friend
+    // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
+    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
+    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
-      risa:    { who: 'villain', minLevel: 2, text: '¡Ji, ji, ji, ji! ¡No me pueden atrapar!' },
-      burla:   { who: 'villain', minLevel: 3, text: '¡Psst! ¡Por aquí! ¡No, por allá! ¡Ji, ji, ji!' },
-      amenaza: { who: 'villain', minLevel: 4, text: '¡Voy a esconder la corona de la reina! ¡Ji, ji!' },
-      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, majestad! ¡El duende se está escapando!' }
+      risa:    { who: 'villain', text: [
+        '¡Ji, ji, ji! ¡No me pueden atrapar!',
+        '¡Je, je! ¿Dónde estaré?',
+        '¡Ji, ji! ¡Me escondí detrás de los libros!',
+        '¡Je, je, je! ¡Desde la torre se ve todo!',
+        '¡Ji, ji, ji! ¡Me senté en el trono!'
+      ] },
+      burla:   { who: 'villain', text: [
+        '¡Psst! ¡Por aquí! ¡No, por allá!',
+        '¡Me comí el pastel de la reina! ¡Ñam!',
+        '¡Escondí a Lumi entre las páginas! ¿O no?',
+        '¡Subí todas las escaleras y tú no!',
+        '¡Majestad, la corona me queda mejor a mí!'
+      ] },
+      amenaza: { who: 'villain', text: [
+        '¡Voy a esconder la corona!',
+        '¡Voy a revolver todas las ollas!',
+        '¡Desordenaré todos los libros del castillo!',
+        '¡Cerraré la torre con llave!',
+        '¡Ahora el castillo es mío!'
+      ] },
+      ayuda:   { who: 'friend', text: {
+        friend1: [
+          '¡Alto ahí, duende! ¡Ayuda, majestad, se escapa!',
+          '¡Majestad, el duende se metió en la cocina! ¡Ayuda!',
+          '¡Me tiró los libros encima! ¡Socorro!',
+          '¡El duende me encerró en la torre! ¡Ayuda!'
+        ],
+        friend2: [
+          '¡Esto no es un chiste! ¡Ayuda, majestad!',
+          '¡Me cayó la sopa en el gorro! ¡Ayuda!',
+          '¡El duende me escondió los cascabeles! ¡Socorro!',
+          '¡Majestad, no me puedo bajar de la torre!'
+        ],
+        friend3: [
+          '¡Yo soy el duende bueno! ¡Socorro!',
+          '¡No fui yo, majestad! ¡Fue el otro duende!',
+          '¡El Duende Pícaro me quiere atrapar! ¡Ayuda!',
+          '¡Majestad, me confunden con el pícaro! ¡Ayuda!'
+        ]
+      } }
     },
     visual: [
       { name: 'libro_volador', kind: 'fly', size: 75,

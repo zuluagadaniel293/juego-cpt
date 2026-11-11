@@ -7,9 +7,10 @@
 // Requiere la llave de API en herramientas/.elevenlabs_key (no se sube a GitHub) con permiso de "Texto a voz".
 // Uso: node herramientas/generar_voces_elevenlabs.js            (genera lo que falte)
 //      node herramientas/generar_voces_elevenlabs.js --costo    (solo cuenta los créditos, no genera nada)
+//      node herramientas/generar_voces_elevenlabs.js --mapa     (no genera nada; solo actualiza voces_eleven.js)
 //
-// Genera assets/voces/<mundo>/eleven/<id>.mp3 y assets/voces_eleven.js (window.VOICES_ELEVEN). Si un id tiene
-// varias versiones (por ejemplo dos risas), el juego elige una al azar cada vez.
+// Genera assets/voces/<mundo>/eleven/<id>.mp3 y assets/voces_eleven.js (window.VOICES_ELEVEN). Las frases que aún
+// no tienen versión de ElevenLabs suenan con la voz gratuita de generar_voces.js.
 
 const fs = require('fs');
 const path = require('path');
@@ -23,74 +24,56 @@ const VOZ = {
   lily: 'pFZP5JQG7iQjIQuC4Bku', roger: 'CwhRBWXzGAHq8TQ4Fs17'
 };
 
-// [mundo, carpeta, id del juego, versión, quién, voz, texto]. Los ids son los de distractors.voices de cada mundo:
-// dist_ayuda_friendN = "¡ayuda!" del amigo N (suena con su escena) · dist_risa, dist_burla, dist_amenaza = villano
-const FRASES = [
-  ['heroes', 'superheroes', 'dist_ayuda_friend1', 1, 'Capitana Estrella', 'jessica', '[scared] ¡Ay, no! [panicked] ¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!'],
-  ['heroes', 'superheroes', 'dist_ayuda_friend1', 2, 'Capitana Estrella', 'jessica', '[panicked] ¡Héroe Rayo, por aquí! ¡No puedo soltarme!'],
-  ['heroes', 'superheroes', 'dist_ayuda_friend2', 1, 'Escudo Verde', 'charlie', '[scared] ¡Mi escudo no aguanta más! ¡Ayúdame!'],
-  ['heroes', 'superheroes', 'dist_ayuda_friend3', 1, 'Héroe Noche', 'will', '[nervous] ¡Yo no soy Sombra! [panicked] ¡Socorro!'],
-  ['heroes', 'superheroes', 'dist_risa', 1, 'Sombra', 'liam', '[evil laugh] ¡Ja, ja, ja! ¡Nunca me atraparás!'],
-  ['heroes', 'superheroes', 'dist_risa', 2, 'Sombra', 'liam', '[laughs] ¡Jo, jo, jo! [whispers] Aquí estoy... ¿o no?'],
-  ['heroes', 'superheroes', 'dist_burla', 1, 'Sombra', 'liam', '[sarcastic] ¡Mi señal está por todas partes!'],
-  ['heroes', 'superheroes', 'dist_amenaza', 1, 'Sombra', 'liam', '[menacing] ¡Esta ciudad será mía!'],
+// Quién habla con qué voz en cada mundo (villano y los 3 amigos)
+const REPARTO = {
+  heroes:  { carpeta: 'superheroes',  villain: 'liam',    friend1: 'jessica', friend2: 'charlie', friend3: 'will' },
+  fantasy: { carpeta: 'dragones',     villain: 'sarah',   friend1: 'laura',   friend2: 'bill',    friend3: 'matilda' },
+  kingdom: { carpeta: 'reino_magico', villain: 'callum',  friend1: 'chris',   friend2: 'eric',    friend3: 'river' },
+  space:   { carpeta: 'espacio',      villain: 'charlie', friend1: 'river',   friend2: 'lily',    friend3: 'will' },
+  ocean:   { carpeta: 'oceano',       villain: 'roger',   friend1: 'laura',   friend2: 'eric',    friend3: 'chris' }
+};
+// Emoción de cada tipo de frase (etiqueta de Eleven v3 que va antes del texto)
+const EMOCION = { risa: '[evil laugh]', burla: '[mischievously]', amenaza: '[menacing]', ayuda: '[scared]', alto: '[shouting]' };
 
-  ['fantasy', 'dragones', 'dist_ayuda_friend1', 1, 'Hada del Bosque', 'laura', '[scared] ¡Ay, mis alas! [panicked] ¡Ayuda, Chispa!'],
-  ['fantasy', 'dragones', 'dist_alto', 1, 'Hada del Bosque', 'laura', '[shouting] ¡Alto ahí, Morgana! ¡Deja a los dragones!'],
-  ['fantasy', 'dragones', 'dist_ayuda_friend2', 1, 'Mago Abuelo', 'bill', '[scared] ¡Ay, ay, ay, mi barba! ¡Chispa, ayúdame!'],
-  ['fantasy', 'dragones', 'dist_ayuda_friend3', 1, 'Hechicera Buena', 'matilda', '[panicked] ¡Morgana me quitó la varita! ¡Ayuda!'],
-  ['fantasy', 'dragones', 'dist_risa', 1, 'Morgana', 'sarah', '[evil laugh] ¡Ja, ja, ja! ¡Jamás lo encontrarás!'],
-  ['fantasy', 'dragones', 'dist_risa', 2, 'Morgana', 'sarah', '[giggles] ¡Ji, ji! ¡Mis hechizos nunca fallan!'],
-  ['fantasy', 'dragones', 'dist_burla', 1, 'Morgana', 'sarah', '[whispers] ¿Buscas al dragón dorado? Yo sé dónde está...'],
-  ['fantasy', 'dragones', 'dist_amenaza', 1, 'Morgana', 'sarah', '[menacing] ¡El bosque caerá bajo mi hechizo!'],
+// Los textos son los de distractors.voices de cada mundo (juego/modos/historia/mundos/), uno por capítulo:
+// 'dist_risa_c2' = risa del villano en el capítulo 2 · 'dist_ayuda_c2_friend3' = "¡ayuda!" del amigo 3 en el capítulo 2
+const vm = require('vm');
+const mundos = {};
+const sandbox = { registrarMundo: (key, m) => { mundos[key] = m; } };
+vm.createContext(sandbox);
+for (const f of Object.values(REPARTO)) {
+  vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f.carpeta + '.js'), 'utf8'), sandbox);
+}
+// [mundo, carpeta, id, quién, voz, texto]
+const FRASES = [];
+for (const [key, r] of Object.entries(REPARTO)) {
+  for (const [name, v] of Object.entries(mundos[key].distractors.voices)) {
+    const add = (id, role, s) => FRASES.push([key, r.carpeta, id, role, r[role], EMOCION[name] + ' ' + s]);
+    if (v.who === 'friend') ['friend1', 'friend2', 'friend3'].forEach(f => v.text[f].forEach((s, k) => add('dist_' + name + '_c' + (k + 1) + '_' + f, f, s)));
+    else v.text.forEach((s, k) => add('dist_' + name + '_c' + (k + 1), v.who, s));
+  }
+}
 
-  ['kingdom', 'reino_magico', 'dist_ayuda_friend1', 1, 'Guardia', 'chris', '[shouting] ¡Alto ahí, duende! ¡Ayuda, majestad, se escapa!'],
-  ['kingdom', 'reino_magico', 'dist_ayuda_friend2', 1, 'Bufón', 'eric', '[scared] ¡Esto no es un chiste! [panicked] ¡Ayuda, majestad!'],
-  ['kingdom', 'reino_magico', 'dist_ayuda_friend3', 1, 'Duende Amable', 'river', '[nervous] ¡Yo soy el duende bueno! ¡Socorro!'],
-  ['kingdom', 'reino_magico', 'dist_risa', 1, 'Duende Pícaro', 'callum', '[giggles] ¡Ji, ji, ji! ¡No me pueden atrapar!'],
-  ['kingdom', 'reino_magico', 'dist_risa', 2, 'Duende Pícaro', 'callum', '[laughs] ¡Je, je! [whispers] ¿Dónde estaré?'],
-  ['kingdom', 'reino_magico', 'dist_burla', 1, 'Duende Pícaro', 'callum', '[whispers] ¡Psst! ¡Por aquí! ¡No, por allá!'],
-  ['kingdom', 'reino_magico', 'dist_amenaza', 1, 'Duende Pícaro', 'callum', '[mischievously] ¡Voy a esconder la corona!'],
-
-  ['space', 'espacio', 'dist_ayuda_friend1', 1, 'Robi', 'river', '[scared] ¡Ay, no! [panicked] ¡Ayuda, Nova! ¡Me atraparon!'],
-  ['space', 'espacio', 'dist_ayuda_friend1', 2, 'Robi', 'river', '[panicked] ¡Nova, mis circuitos fallan!'],
-  ['space', 'espacio', 'dist_ayuda_friend2', 1, 'Zuri', 'lily', '[scared] ¡Me quitaron mi nave! ¡Ayuda!'],
-  ['space', 'espacio', 'dist_ayuda_friend3', 1, 'Cometa', 'will', '[nervous] ¡Yo no soy el pirata! [panicked] ¡Socorro!'],
-  ['space', 'espacio', 'dist_risa', 1, 'Capitán Meteoro', 'charlie', '[evil laugh] ¡Ja, ja, ja! ¡Bip será mío!'],
-  ['space', 'espacio', 'dist_risa', 2, 'Capitán Meteoro', 'charlie', '[laughs] ¡Jo, jo! [whispers] Estoy en otra galaxia...'],
-  ['space', 'espacio', 'dist_burla', 1, 'Capitán Meteoro', 'charlie', '[sarcastic] ¡Nunca me alcanzarás, astronauta!'],
-  ['space', 'espacio', 'dist_amenaza', 1, 'Capitán Meteoro', 'charlie', '[menacing] ¡Todo el espacio será mío!'],
-
-  ['ocean', 'oceano', 'dist_ayuda_friend1', 1, 'Delfi', 'laura', '[scared] ¡Ay, no! [panicked] ¡Ayuda, Coral! ¡La tinta no me deja ver!'],
-  ['ocean', 'oceano', 'dist_ayuda_friend1', 2, 'Delfi', 'laura', '[panicked] ¡Coral, por aquí, rápido!'],
-  ['ocean', 'oceano', 'dist_ayuda_friend2', 1, 'Pinzas', 'eric', '[scared] ¡Me enredé en las algas! ¡Ayuda!'],
-  ['ocean', 'oceano', 'dist_ayuda_friend3', 1, 'Pulpi', 'chris', '[nervous] ¡Yo soy el pulpo bueno! [panicked] ¡Socorro!'],
-  ['ocean', 'oceano', 'dist_risa', 1, 'Pulpo Tinta', 'roger', '[evil laugh] ¡Ja, ja! ¡Más tinta para todos!'],
-  ['ocean', 'oceano', 'dist_risa', 2, 'Pulpo Tinta', 'roger', '[giggles] ¡Je, je! ¡No me ves, no me ves!'],
-  ['ocean', 'oceano', 'dist_burla', 1, 'Pulpo Tinta', 'roger', '[sarcastic] ¿Buscas a Perla? ¡Qué lástima!'],
-  ['ocean', 'oceano', 'dist_amenaza', 1, 'Pulpo Tinta', 'roger', '[menacing] ¡El mar entero será oscuro!']
-];
-
-const archivo = f => path.join('voces', f[1], 'eleven', f[2] + (f[3] > 1 ? '_' + f[3] : '') + '.mp3');
+const archivo = f => path.join('voces', f[1], 'eleven', f[2] + '.mp3');
 
 (async () => {
   const faltan = FRASES.filter(f => !fs.existsSync(path.join(ROOT, 'assets', archivo(f))));
-  const costo = faltan.reduce((n, f) => n + f[6].length, 0);
+  const costo = faltan.reduce((n, f) => n + f[5].length, 0);
   console.log('Frases: ' + FRASES.length + ' · faltan: ' + faltan.length + ' · costo: ' + costo + ' créditos');
   if (process.argv.includes('--costo')) return;
 
-  const key = fs.readFileSync(path.join(__dirname, '.elevenlabs_key'), 'utf8').trim();
-  for (const f of faltan) {
+  const key = process.argv.includes('--mapa') ? null : fs.readFileSync(path.join(__dirname, '.elevenlabs_key'), 'utf8').trim();
+  for (const f of key ? faltan : []) {
     const out = path.join(ROOT, 'assets', archivo(f));
     fs.mkdirSync(path.dirname(out), { recursive: true });
-    const r = await fetch('https://api.elevenlabs.io/v1/text-to-speech/' + VOZ[f[5]] + '?output_format=mp3_44100_128', {
+    const r = await fetch('https://api.elevenlabs.io/v1/text-to-speech/' + VOZ[f[4]] + '?output_format=mp3_44100_128', {
       method: 'POST', headers: { 'xi-api-key': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: f[6], model_id: 'eleven_v3', language_code: 'es' })
+      body: JSON.stringify({ text: f[5], model_id: 'eleven_v3', language_code: 'es' })
     });
     const buf = Buffer.from(await r.arrayBuffer());
-    if (!r.ok) { console.error('No se pudo generar', f[4], f[2], r.status, buf.toString().slice(0, 300)); process.exit(1); }
+    if (!r.ok) { console.error('No se pudo generar', f[3], f[2], r.status, buf.toString().slice(0, 300)); process.exit(1); }
     fs.writeFileSync(out, buf);
-    console.log('generado', archivo(f), '(' + f[4] + ')');
+    console.log('generado', archivo(f), '(' + f[3] + ')');
   }
 
   // Qué archivos usa el juego (solo los que existen)

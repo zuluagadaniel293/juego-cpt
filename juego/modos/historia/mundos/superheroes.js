@@ -76,22 +76,61 @@ registrarMundo('heroes', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
-    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen (cada escena dice la frase de su capítulo).
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba de puntillas ·
     // chase = uno huye por arriba y el otro lo persigue (flee: huye el amigo) · face = la cara del villano espía desde un lado
     cast: [
       { name: 'pelea_sombra_capitan', kind: 'fight', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
-      { name: 'sombra_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'sombra_persigue_capitana', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 3 },
-      { name: 'sombra_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
-      { name: 'sombra_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
+      { name: 'sombra_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
+      { name: 'sombra_persigue_capitana', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 2 },
+      { name: 'sombra_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
+      { name: 'sombra_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
-    // Voces (las graba herramientas/generar_voces.js): who = villain, o friend (se graba con la voz de cada amigo)
+    // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
+    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
+    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
-      risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja, ja, ja! ¡Nunca me atraparás, Héroe Rayo!' },
-      burla:   { who: 'villain', minLevel: 3, text: '¡Mi señal está por todas partes! ¿Podrás encontrarla?' },
-      amenaza: { who: 'villain', minLevel: 4, text: '¡Esta ciudad pronto será mía! ¡Ja, ja, ja!' },
-      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!' }
+      risa:    { who: 'villain', text: [
+        '¡Ja, ja, ja! ¡Nunca me atraparás!',
+        '¡Jo, jo, jo! Aquí estoy... ¿o no?',
+        '¡Je, je, je! ¡El puerto es mi escondite favorito!',
+        '¡Ja, ja! ¡De noche nadie me ve!',
+        '¡Ja, ja, ja! ¡Bienvenido a mi guarida, Héroe Rayo!'
+      ] },
+      burla:   { who: 'villain', text: [
+        '¡Mi señal está por todas partes!',
+        '¿Buscas mi señal? ¡Está detrás de ti! ¡Mentira!',
+        '¡Los barcos se llevaron mi señal! ¿O fui yo?',
+        '¡Desde la torre lo veo todo!',
+        '¡Ni con tu rayo me vas a encontrar!'
+      ] },
+      amenaza: { who: 'villain', text: [
+        '¡Esta ciudad será mía!',
+        '¡Pintaré mi señal en cada casa del barrio!',
+        '¡Me llevaré todos los barcos del puerto!',
+        '¡Apagaré todas las luces de la ciudad!',
+        '¡Nadie sale de mi guarida!'
+      ] },
+      ayuda:   { who: 'friend', text: {
+        friend1: [
+          '¡Héroe Rayo, por aquí! ¡No puedo soltarme!',
+          '¡Ay, no! ¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!',
+          '¡Sombra me empujó al muelle! ¡Ayuda!',
+          '¡Está muy oscuro! ¡Héroe Rayo, ayúdame!'
+        ],
+        friend2: [
+          '¡Mi escudo no aguanta más! ¡Ayúdame!',
+          '¡Sombra me quitó el escudo! ¡Ayuda!',
+          '¡Me atraparon entre las cajas del puerto! ¡Socorro!',
+          '¡Héroe Rayo, Sombra está en la torre! ¡Ayuda!'
+        ],
+        friend3: [
+          '¡Yo no soy Sombra! ¡Socorro!',
+          '¡Me confunden con Sombra! ¡Ayúdame, Héroe Rayo!',
+          '¡Sombra me dejó atrapado en un barco! ¡Ayuda!',
+          '¡Mi luna no brilla! ¡Ayúdame, Héroe Rayo!'
+        ]
+      } }
     },
     visual: [
       { name: 'avion', kind: 'fly', size: 100,

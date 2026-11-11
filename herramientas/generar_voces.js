@@ -101,10 +101,11 @@ function textos(key, m) {
   const reparto = VOCES_REPARTO[key];
   // quien presenta cada capítulo: 'comp_1' ... 'comp_4'
   (st.companions || []).forEach((c, i) => { t['comp_' + (i + 1)] = [c.line, reparto[c.role]]; });
-  // distractores: 'dist_risa' (villano o un amigo en particular) · 'dist_ayuda_friend2' (who: 'friend' = cada amigo)
+  // distractores, una frase por capítulo: 'dist_risa_c2' (villano o un amigo en particular, capítulo 2) ·
+  // 'dist_ayuda_c2_friend3' (who: 'friend' = cada amigo con su propio texto)
   Object.entries((m.distractors || {}).voices || {}).forEach(([name, v]) => {
-    if (v.who === 'friend') AMIGOS.forEach(f => { t['dist_' + name + '_' + f] = [v.text, reparto[f]]; });
-    else t['dist_' + name] = [v.text, reparto[v.who]];
+    if (v.who === 'friend') AMIGOS.forEach(f => v.text[f].forEach((s, k) => { t['dist_' + name + '_c' + (k + 1) + '_' + f] = [s, reparto[f]]; }));
+    else v.text.forEach((s, k) => { t['dist_' + name + '_c' + (k + 1)] = [s, reparto[v.who]]; });
   });
   return t;
 }

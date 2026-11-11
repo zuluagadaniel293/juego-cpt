@@ -709,13 +709,24 @@ class GameScene extends Phaser.Scene {
     if (pref && pref !== this.buddyRole) return pref;
     return Phaser.Utils.Array.GetRandom(['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole && f !== pref));
   }
+  // Qué frases dicen los personajes: cada capítulo las suyas (0-3, y 4 el jefe final), para que no se repitan
+  // entre capítulos. En el Desafío, los niveles van pasando por las frases de los capítulos 1 a 4.
+  voiceChapter() {
+    return this.mode === 'historia' ? this.chapter : ((this.level || 1) - 1) % 4;
+  }
+  // ¿Tiene frase en este capítulo? (las de los amigos van hasta el capítulo 4: en el jefe ellos son los distractores)
+  hasVoice(name) {
+    const v = (DISTRACTORS[this.themeKey].voices || {})[name], k = this.voiceChapter();
+    return !!v && (Array.isArray(v.text) ? !!v.text[k] : !!v.text.friend1[k]);
+  }
   // Voz de un distractor. Las del amigo ("¡ayuda!") están grabadas con la voz de cada amigo.
   // No suena si es la voz de un amigo en particular que ahora es el compañero (no puede estar en dos lados).
   castVoice(name, friendRole) {
     const v = (DISTRACTORS[this.themeKey].voices || {})[name];
-    if (!v) return;
+    if (!v || !this.hasVoice(name)) return;
     if (v.who !== 'friend' && v.who !== 'villain' && v.who === this.buddyRole) return;
-    const id = v.who === 'friend' ? 'dist_' + name + '_' + (friendRole || this.castFriend()) : 'dist_' + name;
+    const base = 'dist_' + name + '_c' + (this.voiceChapter() + 1);
+    const id = v.who === 'friend' ? base + '_' + (friendRole || this.castFriend()) : base;
     if (playClip(this.themeKey, id)) this.logDistractor('audio_distractor', 'voz_' + name);
   }
 
@@ -729,15 +740,18 @@ class GameScene extends Phaser.Scene {
       if (this.ended) return;
       const D = DISTRACTORS[this.themeKey];
       const sounds = this.mode === 'prueba' ? {} : D.sounds;
-      // Voces del villano (risa, burla, amenaza): solo si se le puede ver hablando. Sale en una escena de fondo
-      // (se asoma, cruza o espía) o, en Carrera, ya va corriendo adelante. Las de los amigos ("¡ayuda!") solo
-      // suenan con su escena (pelea, persecución), con la voz del amigo que está en peligro.
+      // Voces del villano (risa, burla, amenaza): se le ve hablando. Sale en una escena de fondo (se asoma, cruza
+      // o espía) o, en Carrera, ya va corriendo adelante. Las de los amigos ("¡ayuda!") suenan con su escena
+      // (pelea, persecución), con la voz del amigo que está en peligro.
+      // En los niveles de personajes (y el jefe final) el villano y los amigos ya están en pantalla como objetivo y
+      // distractores: no hay escenas de fondo, así que sus frases se oyen solas (las de todos los personajes).
+      const onlyVoice = this.mode !== 'prueba' && this.chars;
       const canShow = this.mode !== 'prueba' && !this.chars && (this.mg === 'race' ? !!this.lead : !this.castBusy);
-      const voices = !canShow ? [] : Object.keys(D.voices || {})
-        .filter(n => D.voices[n].who === 'villain' && (this.level || 0) >= D.voices[n].minLevel).map(n => 'voz_' + n);
+      const voices = Object.keys(D.voices || {})
+        .filter(n => this.hasVoice(n) && (onlyVoice || (canShow && D.voices[n].who === 'villain'))).map(n => 'voz_' + n);
       const names = Object.keys(sounds).concat(voices);
       const name = names.length ? Phaser.Utils.Array.GetRandom(names) : 'tono';
-      if (name.startsWith('voz_')) this.villainSpeaks(name.slice(4));
+      if (name.startsWith('voz_')) { if (onlyVoice) this.castVoice(name.slice(4)); else this.villainSpeaks(name.slice(4)); }
       else {
         if (names.length) sounds[name](); else distractorSound();
         this.logDistractor('audio_distractor', name);

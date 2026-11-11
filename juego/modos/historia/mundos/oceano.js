@@ -70,22 +70,61 @@ registrarMundo('ocean', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
-    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen (cada escena dice la frase de su capítulo).
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba ·
     // chase = uno huye por arriba y el otro lo persigue (flee: huye el amigo) · face = la cara del villano espía desde un lado
     cast: [
       { name: 'pelea_pulpo_delfi', kind: 'fight', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
-      { name: 'pulpo_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'pulpo_persigue_delfi', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 3 },
-      { name: 'pulpo_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
-      { name: 'pulpo_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
+      { name: 'pulpo_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
+      { name: 'pulpo_persigue_delfi', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 2 },
+      { name: 'pulpo_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
+      { name: 'pulpo_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
-    // Voces (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js): who = villain o friend
+    // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
+    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
+    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
-      risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja! ¡Más tinta para todos!' },
-      burla:   { who: 'villain', minLevel: 3, text: '¿Buscas a Perla? ¡Qué lástima!' },
-      amenaza: { who: 'villain', minLevel: 4, text: '¡El mar entero será oscuro! ¡Je, je!' },
-      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Coral! ¡La tinta no me deja ver!' }
+      risa:    { who: 'villain', text: [
+        '¡Ja, ja! ¡Más tinta para todos!',
+        '¡Je, je! ¡No me ves, no me ves!',
+        '¡Ja, ja, ja! ¡Las algas me hacen cosquillas!',
+        '¡Je, je! ¡En la cueva me escondo mejor!',
+        '¡Ja, ja, ja! ¡Bienvenida a la fosa oscura!'
+      ] },
+      burla:   { who: 'villain', text: [
+        '¿Buscas a Perla? ¡Qué lástima!',
+        '¡Encontré un tesoro en el barco y no te lo doy!',
+        '¡Tengo ocho brazos y tú solo dos!',
+        '¡Los cristales son míos, y Perla también!',
+        '¡Tus burbujas no me asustan!'
+      ] },
+      amenaza: { who: 'villain', text: [
+        '¡El mar entero será oscuro!',
+        '¡Hundiré otro barco con mi tinta!',
+        '¡Enredaré a todos en las algas!',
+        '¡Taparé la cueva con tinta!',
+        '¡De la fosa nadie sale!'
+      ] },
+      ayuda:   { who: 'friend', text: {
+        friend1: [
+          '¡Coral, por aquí, rápido!',
+          '¡Ay, no! ¡Ayuda, Coral! ¡La tinta no me deja ver!',
+          '¡Me atoré entre las algas! ¡Ayuda!',
+          '¡Está muy oscuro en la cueva! ¡Coral!'
+        ],
+        friend2: [
+          '¡Una ola me volteó! ¡Ayuda, Coral!',
+          '¡Me quedé atrapado en el barco! ¡Socorro!',
+          '¡Me enredé en las algas! ¡Ayuda!',
+          '¡Se me cayeron las gafas en la cueva! ¡Ayuda!'
+        ],
+        friend3: [
+          '¡Yo soy el pulpo bueno! ¡Socorro!',
+          '¡No fui yo, fue el Pulpo Tinta! ¡Ayuda!',
+          '¡Me confunden con el Pulpo Tinta! ¡Ayuda, Coral!',
+          '¡El Pulpo Tinta me pintó de negro! ¡Socorro!'
+        ]
+      } }
     },
     visual: [
       { name: 'medusa', kind: 'fly', size: 85,

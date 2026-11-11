@@ -72,22 +72,61 @@ registrarMundo('space', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
-    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen (cada escena dice la frase de su capítulo).
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba ·
     // chase = uno huye por arriba y el otro lo persigue (flee: huye el amigo) · face = la cara del villano espía desde un lado
     cast: [
       { name: 'pelea_meteoro_robi', kind: 'fight', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
-      { name: 'meteoro_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'meteoro_persigue_robi', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 3 },
-      { name: 'meteoro_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
-      { name: 'meteoro_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
+      { name: 'meteoro_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
+      { name: 'meteoro_persigue_robi', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 2 },
+      { name: 'meteoro_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
+      { name: 'meteoro_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
-    // Voces (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js): who = villain o friend
+    // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
+    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
+    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
-      risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja, ja! ¡Bip será mío!' },
-      burla:   { who: 'villain', minLevel: 3, text: '¡Nunca me alcanzarás, astronauta!' },
-      amenaza: { who: 'villain', minLevel: 4, text: '¡Todo el espacio será mío! ¡Ja, ja, ja!' },
-      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Nova! ¡El pirata me atrapó!' }
+      risa:    { who: 'villain', text: [
+        '¡Ja, ja, ja! ¡Bip será mío!',
+        '¡Jo, jo! Estoy en otra galaxia...',
+        '¡Ja, ja! ¡Me colé en tu nave nodriza!',
+        '¡Je, je, je! ¡Los cristales me esconden!',
+        '¡Ja, ja, ja! ¡Bienvenida a mi nave pirata!'
+      ] },
+      burla:   { who: 'villain', text: [
+        '¡Nunca me alcanzarás, astronauta!',
+        '¡Esquiva las rocas si puedes!',
+        '¡Apreté todos los botones de tu nave!',
+        '¡Bip brilla, pero yo brillo más!',
+        '¡Tu cohete es más lento que una tortuga!'
+      ] },
+      amenaza: { who: 'villain', text: [
+        '¡Todo el espacio será mío!',
+        '¡Lanzaré los asteroides contra tu base!',
+        '¡Me llevaré tu nave nodriza!',
+        '¡Me quedaré con todos los cristales!',
+        '¡Nadie escapa del Capitán Meteoro!'
+      ] },
+      ayuda:   { who: 'friend', text: {
+        friend1: [
+          '¡Ay, no! ¡Ayuda, Nova! ¡Me atraparon!',
+          '¡Nova, mis circuitos fallan!',
+          '¡Se me acabó la batería! ¡Ayuda, Nova!',
+          '¡Me resbalo en los cristales! ¡Ayuda!'
+        ],
+        friend2: [
+          '¡Me quitaron mi nave! ¡Ayuda!',
+          '¡Un asteroide viene hacia mí! ¡Ayuda, Nova!',
+          '¡Me encerraron en la nave! ¡Socorro!',
+          '¡Mis cuatro brazos no alcanzan! ¡Ayuda!'
+        ],
+        friend3: [
+          '¡Yo no soy el pirata! ¡Socorro!',
+          '¡Mi cohete se apagó! ¡Ayuda, Nova!',
+          '¡Me confunden con el Capitán Meteoro! ¡Ayuda!',
+          '¡El pirata me robó la capa! ¡Socorro!'
+        ]
+      } }
     },
     visual: [
       { name: 'cohete', kind: 'fly', size: 100,

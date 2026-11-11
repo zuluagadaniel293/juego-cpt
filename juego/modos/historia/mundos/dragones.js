@@ -76,22 +76,66 @@ registrarMundo('fantasy', {
 
   // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
   distractors: {
-    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen (cada escena dice la frase de su capítulo).
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba de puntillas ·
     // chase = el villano huye y el amigo lo persigue
     cast: [
       { name: 'pelea_morgana_mago', kind: 'fight', friend: 'friend2', voice: 'ayuda', minLevel: 2 },
-      { name: 'morgana_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'hada_persigue_morgana', kind: 'chase', friend: 'friend1', villainPose: 'villain_scared', voice: 'alto', minLevel: 3 },
-      { name: 'morgana_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 }
+      { name: 'morgana_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
+      { name: 'hada_persigue_morgana', kind: 'chase', friend: 'friend1', villainPose: 'villain_scared', voice: 'alto', minLevel: 2 },
+      { name: 'morgana_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 }
     ],
-    // Voces (las graba herramientas/generar_voces.js): who = villain o friend
+    // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
+    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
+    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
-      risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja, ja! ¡Jamás encontrarás a tu hermanito!' },
-      burla:   { who: 'villain', minLevel: 3, text: '¡Abracadabra! ¡Que todos los dragones se confundan!' },
-      amenaza: { who: 'villain', minLevel: 4, text: '¡El bosque entero caerá bajo mi hechizo!' },
-      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Chispa! ¡Morgana me quiere hechizar!' },
-      alto:    { who: 'friend1', minLevel: 3, text: '¡Alto ahí, Morgana! ¡Deja en paz a los dragones!' }
+      risa:    { who: 'villain', text: [
+        '¡Ja, ja, ja! ¡Jamás lo encontrarás!',
+        '¡Ji, ji! ¡Mis hechizos nunca fallan!',
+        '¡Ja, ja! ¡El río se llevó a tu hermanito!',
+        '¡Je, je, je! ¡En la cueva nadie me encuentra!',
+        '¡Ja, ja, ja! ¡El volcán es mi casa, dragoncita!'
+      ] },
+      burla:   { who: 'villain', text: [
+        '¿Buscas al dragón dorado? Yo sé dónde está...',
+        '¡Abracadabra! ¡Que todos los árboles se confundan!',
+        '¡Pintaré a todos los dragones de dorado!',
+        '¡Los cristales brillan más que tu hermanito!',
+        '¡Tu fuego no me hace ni cosquillas!'
+      ] },
+      amenaza: { who: 'villain', text: [
+        '¡Me llevaré todos los dragones del nido!',
+        '¡El bosque caerá bajo mi hechizo!',
+        '¡Congelaré el río con mi varita!',
+        '¡Cerraré la cueva para siempre!',
+        '¡Nadie escapa de mi volcán!'
+      ] },
+      ayuda:   { who: 'friend', text: {
+        friend1: [
+          '¡Ay, mis alas! ¡Ayuda, Chispa!',
+          '¡Morgana me enredó en las ramas! ¡Ayuda!',
+          '¡Se me mojaron las alas en el río! ¡Chispa!',
+          '¡Me perdí en la cueva! ¡Ayúdame, Chispa!'
+        ],
+        friend2: [
+          '¡Ay, ay, ay, mi barba! ¡Chispa, ayúdame!',
+          '¡Morgana convirtió mi sombrero en un sapo! ¡Ayuda!',
+          '¡Me caigo al río! ¡Chispa, ayúdame!',
+          '¡Mi varita no funciona en la cueva! ¡Socorro!'
+        ],
+        friend3: [
+          '¡Morgana me quitó la varita! ¡Ayuda!',
+          '¡Yo no soy Morgana! ¡Soy la hechicera buena! ¡Socorro!',
+          '¡Morgana hechizó mi escoba! ¡Ayuda, Chispa!',
+          '¡Morgana me encerró en un cristal! ¡Ayuda!'
+        ]
+      } },
+      alto:    { who: 'friend1', text: [
+        '¡Alto ahí, Morgana! ¡Deja a los dragones!',
+        '¡Morgana, devuélvele el hermanito a Chispa!',
+        '¡No huyas, Morgana! ¡Te vi en el río!',
+        '¡Sal de la cueva, Morgana! ¡Te tengo!'
+      ] }
     },
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60,

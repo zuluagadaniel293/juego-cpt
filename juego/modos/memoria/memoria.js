@@ -254,6 +254,6 @@ class MemoryScene extends Phaser.Scene {
 }
 // Sonidos, cosas que cruzan, escenas de personajes y compañero: los mismos del motor del juego (y quedan en el CSV)
 ['logDistractor', 'scheduleAudio', 'scheduleVisual', 'showVisualDistractor', 'showCastScene',
-  'setupBuddy', 'buddyCheer', 'castFriend', 'castVoice', 'companionRole', 'villainSpeaks'].forEach(m => {
+  'setupBuddy', 'buddyCheer', 'castFriend', 'castVoice', 'voiceChapter', 'hasVoice', 'companionRole', 'villainSpeaks'].forEach(m => {
   MemoryScene.prototype[m] = GameScene.prototype[m];
 });
