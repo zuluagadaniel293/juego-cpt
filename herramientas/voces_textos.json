@@ -596,5 +596,401 @@
       "texto": "¡Ayuda, majestad! ¡El duende se está escapando!",
       "firma": "bde4d72cd0"
     }
+  },
+  "space": {
+    "1": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió en la base lunar... Búscalo: es verde y tiene una estrella en la antena.",
+      "firma": "a79f20c1cb"
+    },
+    "2": {
+      "texto": "¡Los aliens caen entre los asteroides! Atrapa solo a Bip.",
+      "firma": "f43fa68b02"
+    },
+    "3": {
+      "texto": "¡Bip flota por los pasillos de la nave nodriza! Corre y alcánzalo solo a él.",
+      "firma": "a496cc8e74"
+    },
+    "4": {
+      "texto": "En el planeta de cristal hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!",
+      "firma": "639d5115f2"
+    },
+    "5": {
+      "texto": "¡El Capitán Meteoro quiere llevarse a Bip! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "4428b9375d"
+    },
+    "end": {
+      "texto": "¡Atrapamos al Capitán Meteoro y Bip volvió a casa! Toda la galaxia está feliz gracias a ti.",
+      "firma": "779314736e"
+    },
+    "classic": {
+      "texto": "Bip es el alien verde con una estrella en la antena. ¡Toca solo cuando lo veas a él!",
+      "firma": "d31f226cbd"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. Bip es el alien verde con una estrella en la antena. ¡Toca solo cuando lo veas a él!",
+      "firma": "4aad399c5e"
+    },
+    "catch": {
+      "texto": "¡Los aliens caen como lluvia de estrellas! Atrapa solo a Bip.",
+      "firma": "49b2ab5409"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Los aliens caen como lluvia de estrellas! Atrapa solo a Bip.",
+      "firma": "9d689b8e7e"
+    },
+    "race": {
+      "texto": "¡Bip flota por la estación espacial! Corre y alcánzalo solo a él.",
+      "firma": "e94a6aa80a"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Bip flota por la estación espacial! Corre y alcánzalo solo a él.",
+      "firma": "43f923c603"
+    },
+    "find": {
+      "texto": "Aquí hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!",
+      "firma": "4c2990b8ea"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. Aquí hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!",
+      "firma": "139188598d"
+    },
+    "memory": {
+      "texto": "¡Bip salta de planeta en planeta! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "26d7e4d500"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Bip salta de planeta en planeta! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "06cdcd3eb9"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todos los aliens... ¡menos a Bip!",
+      "firma": "10a20af67d"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Al revés! Toca a todos los aliens... ¡menos a Bip!",
+      "firma": "5c23391c61"
+    },
+    "ax": {
+      "texto": "Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!",
+      "firma": "e1b03bb3fb"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!",
+      "firma": "fdad8e827f"
+    },
+    "boss": {
+      "texto": "¡El Capitán Meteoro quiere llevarse a Bip en su nave pirata! Se esconde entre la tripulación. ¡Atrapémoslo!",
+      "firma": "7e07917fed"
+    },
+    "cast_classic": {
+      "texto": "¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.",
+      "firma": "f8cb0ce5bb"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.",
+      "firma": "c05c02416d"
+    },
+    "cast_catch": {
+      "texto": "¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "f1df16dcdd"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "c69394d4af"
+    },
+    "cast_race": {
+      "texto": "¡El Capitán Meteoro corre por la nave entre la tripulación! Atrápalo solo a él.",
+      "firma": "c797433223"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro corre por la nave entre la tripulación! Atrápalo solo a él.",
+      "firma": "8987c5cdad"
+    },
+    "cast_find": {
+      "texto": "La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "4d9e8d0245"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "d40ad1b017"
+    },
+    "cast_memory": {
+      "texto": "¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.",
+      "firma": "a3f26e6a55"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.",
+      "firma": "efe2412537"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!",
+      "firma": "81f8b73551"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!",
+      "firma": "3446e6b50c"
+    },
+    "cast_ax_friend1": {
+      "texto": "El Capitán Meteoro solo aparece justo después de Robi: esa es la pista. ¡Tócalo solo si justo antes salió Robi!",
+      "firma": "c5d025d226"
+    },
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. El Capitán Meteoro solo aparece justo después de Robi: esa es la pista. ¡Tócalo solo si justo antes salió Robi!",
+      "firma": "c4faeb1c4e"
+    },
+    "cast_ax_friend2": {
+      "texto": "El Capitán Meteoro solo aparece justo después de Zuri: esa es la pista. ¡Tócalo solo si justo antes salió Zuri!",
+      "firma": "8e57936a65"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. El Capitán Meteoro solo aparece justo después de Zuri: esa es la pista. ¡Tócalo solo si justo antes salió Zuri!",
+      "firma": "781ccb0d67"
+    },
+    "cast_ax_friend3": {
+      "texto": "El Capitán Meteoro solo aparece justo después de Cometa: esa es la pista. ¡Tócalo solo si justo antes salió Cometa!",
+      "firma": "7777ce088b"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. El Capitán Meteoro solo aparece justo después de Cometa: esa es la pista. ¡Tócalo solo si justo antes salió Cometa!",
+      "firma": "2929ed0c73"
+    },
+    "comp_1": {
+      "texto": "¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y busquemos a Bip!",
+      "firma": "bdbe9196f1"
+    },
+    "comp_2": {
+      "texto": "¡Hola, terrícola! Soy Zuri. En el espacio todo brilla y se mueve... ¡pero tú no te distraigas!",
+      "firma": "7c9025d1db"
+    },
+    "comp_3": {
+      "texto": "Soy Cometa, piloto de la galaxia. Mi casco se parece al del pirata, ¡pero yo soy de los buenos!",
+      "firma": "c001e8b8e3"
+    },
+    "comp_4": {
+      "texto": "¡Ja, ja, ja! ¡Bip será mío! ¡A ver si lo encuentras antes que yo, astronauta!",
+      "firma": "9490231960"
+    },
+    "dist_risa": {
+      "texto": "¡Ja, ja, ja! ¡Bip será mío!",
+      "firma": "1e16960aa1"
+    },
+    "dist_burla": {
+      "texto": "¡Nunca me alcanzarás, astronauta!",
+      "firma": "72701b4ea7"
+    },
+    "dist_amenaza": {
+      "texto": "¡Todo el espacio será mío! ¡Ja, ja, ja!",
+      "firma": "8d0fd25d27"
+    },
+    "dist_ayuda_friend1": {
+      "texto": "¡Ayuda, Nova! ¡El pirata me atrapó!",
+      "firma": "8e8d3112be"
+    },
+    "dist_ayuda_friend2": {
+      "texto": "¡Ayuda, Nova! ¡El pirata me atrapó!",
+      "firma": "0c61559a04"
+    },
+    "dist_ayuda_friend3": {
+      "texto": "¡Ayuda, Nova! ¡El pirata me atrapó!",
+      "firma": "b9ebd6143e"
+    }
+  },
+  "ocean": {
+    "1": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla... Búscala: es el caballito de mar rosado con una perla en la cola.",
+      "firma": "9a42b6a870"
+    },
+    "2": {
+      "texto": "¡Los caballitos bajan entre las burbujas del barco hundido! Atrapa solo a Perla.",
+      "firma": "e3dfe6e434"
+    },
+    "3": {
+      "texto": "¡Perla nada entre las algas! Corre y alcánzala solo a ella.",
+      "firma": "b657f48f7e"
+    },
+    "4": {
+      "texto": "En la cueva hay muchos caballitos juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!",
+      "firma": "c4aae622a4"
+    },
+    "5": {
+      "texto": "¡Fue el Pulpo Tinta quien escondió a Perla! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "5c84dd6a45"
+    },
+    "end": {
+      "texto": "¡Atrapamos al Pulpo Tinta y Perla volvió al arrecife! Todo el mar está feliz gracias a ti.",
+      "firma": "91706e0181"
+    },
+    "classic": {
+      "texto": "Perla es el caballito de mar rosado con una perla en la cola. ¡Toca solo cuando la veas a ella!",
+      "firma": "4d0fbf3a8f"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Perla es el caballito de mar rosado con una perla en la cola. ¡Toca solo cuando la veas a ella!",
+      "firma": "4bbed0ba23"
+    },
+    "catch": {
+      "texto": "¡Los caballitos bajan con las burbujas! Atrapa solo a Perla.",
+      "firma": "3fec83bf26"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Los caballitos bajan con las burbujas! Atrapa solo a Perla.",
+      "firma": "3b7c434a0f"
+    },
+    "race": {
+      "texto": "¡Perla nada entre las corrientes! Corre y alcánzala solo a ella.",
+      "firma": "c7d7c75120"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Perla nada entre las corrientes! Corre y alcánzala solo a ella.",
+      "firma": "9ddbb25d5c"
+    },
+    "find": {
+      "texto": "Aquí hay muchos caballitos de mar juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!",
+      "firma": "9917d2219e"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Aquí hay muchos caballitos de mar juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!",
+      "firma": "73d9812f66"
+    },
+    "memory": {
+      "texto": "¡Perla va dejando burbujas por donde nada! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "89b32e18e2"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Perla va dejando burbujas por donde nada! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "8260e362aa"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todos los caballitos... ¡menos a Perla!",
+      "firma": "de35c9fba5"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Al revés! Toca a todos los caballitos... ¡menos a Perla!",
+      "firma": "5e1666e8a1"
+    },
+    "ax": {
+      "texto": "Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!",
+      "firma": "d5158989c5"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!",
+      "firma": "3c3cf6f19c"
+    },
+    "boss": {
+      "texto": "¡Fue el Pulpo Tinta quien escondió a Perla! Se esconde entre los animales del mar. ¡Atrapémoslo!",
+      "firma": "421d44870c"
+    },
+    "cast_classic": {
+      "texto": "¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.",
+      "firma": "3a80a4516b"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.",
+      "firma": "1dd2767908"
+    },
+    "cast_catch": {
+      "texto": "¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "cd1d12669f"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "1957e9a02f"
+    },
+    "cast_race": {
+      "texto": "¡El Pulpo Tinta nada entre los animales del mar! Atrápalo solo a él.",
+      "firma": "0a523df65b"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta nada entre los animales del mar! Atrápalo solo a él.",
+      "firma": "7c59f2aff6"
+    },
+    "cast_find": {
+      "texto": "Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "254f441a6d"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "e6536f9b5e"
+    },
+    "cast_memory": {
+      "texto": "¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.",
+      "firma": "3b2d662dff"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.",
+      "firma": "a312811836"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!",
+      "firma": "7898327afb"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!",
+      "firma": "d1314f9490"
+    },
+    "cast_ax_friend1": {
+      "texto": "El Pulpo Tinta solo aparece justo después de Delfi: esa es la pista. ¡Tócalo solo si justo antes salió Delfi!",
+      "firma": "fcac4ee8ac"
+    },
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. El Pulpo Tinta solo aparece justo después de Delfi: esa es la pista. ¡Tócalo solo si justo antes salió Delfi!",
+      "firma": "58fe34b8e1"
+    },
+    "cast_ax_friend2": {
+      "texto": "El Pulpo Tinta solo aparece justo después de Pinzas: esa es la pista. ¡Tócalo solo si justo antes salió Pinzas!",
+      "firma": "33c4aa56d6"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. El Pulpo Tinta solo aparece justo después de Pinzas: esa es la pista. ¡Tócalo solo si justo antes salió Pinzas!",
+      "firma": "ff2e694833"
+    },
+    "cast_ax_friend3": {
+      "texto": "El Pulpo Tinta solo aparece justo después de Pulpi: esa es la pista. ¡Tócalo solo si justo antes salió Pulpi!",
+      "firma": "4282125569"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. El Pulpo Tinta solo aparece justo después de Pulpi: esa es la pista. ¡Tócalo solo si justo antes salió Pulpi!",
+      "firma": "20ffbf0136"
+    },
+    "comp_1": {
+      "texto": "¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y busquemos a Perla!",
+      "firma": "548a69cab2"
+    },
+    "comp_2": {
+      "texto": "¡Clic, clac! Soy Pinzas. Con mis gafas lo veo todo... ¡y tú también puedes si te concentras!",
+      "firma": "9e91c9e4ac"
+    },
+    "comp_3": {
+      "texto": "Hola, soy Pulpi. No todos los pulpos somos traviesos. ¡Yo te ayudo a encontrar a Perla!",
+      "firma": "bb1c7f0b87"
+    },
+    "comp_4": {
+      "texto": "¡Je, je, je! ¡Escondí a Perla con mi tinta! ¡A ver si la encuentras!",
+      "firma": "1dd28cccc0"
+    },
+    "dist_risa": {
+      "texto": "¡Ja, ja! ¡Más tinta para todos!",
+      "firma": "e19f72754d"
+    },
+    "dist_burla": {
+      "texto": "¿Buscas a Perla? ¡Qué lástima!",
+      "firma": "cbdaae393c"
+    },
+    "dist_amenaza": {
+      "texto": "¡El mar entero será oscuro! ¡Je, je!",
+      "firma": "741a46007d"
+    },
+    "dist_ayuda_friend1": {
+      "texto": "¡Ayuda, Coral! ¡La tinta no me deja ver!",
+      "firma": "13b77d2eeb"
+    },
+    "dist_ayuda_friend2": {
+      "texto": "¡Ayuda, Coral! ¡La tinta no me deja ver!",
+      "firma": "54db6837a7"
+    },
+    "dist_ayuda_friend3": {
+      "texto": "¡Ayuda, Coral! ¡La tinta no me deja ver!",
+      "firma": "ce956e09af"
+    }
   }
 }

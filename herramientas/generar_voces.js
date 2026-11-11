@@ -24,7 +24,9 @@ const ROOT = path.join(__dirname, '..');
 const VOCES = {
   heroes:  { carpeta: 'superheroes',  voz: 'es-CO-GonzaloNeural', tono: '+25Hz', velocidad: '+6%' },   // Héroe Rayo
   fantasy: { carpeta: 'dragones',     voz: 'es-CO-SalomeNeural',  tono: '+35Hz', velocidad: '+6%' },   // Chispa
-  kingdom: { carpeta: 'reino_magico', voz: 'es-MX-DaliaNeural',   tono: '+12Hz', velocidad: '+0%' }    // Reina Luna
+  kingdom: { carpeta: 'reino_magico', voz: 'es-MX-DaliaNeural',   tono: '+12Hz', velocidad: '+0%' },   // Reina Luna
+  space:   { carpeta: 'espacio',      voz: 'es-AR-ElenaNeural',   tono: '+25Hz', velocidad: '+4%' },   // Nova
+  ocean:   { carpeta: 'oceano',       voz: 'es-US-PalomaNeural',  tono: '+25Hz', velocidad: '+4%' }    // Coral
 };
 // Voces del villano y de los 3 amigos de cada mundo (presentan capítulos y hacen de distractores auditivos).
 // Voces latinoamericanas con cambios de tono pequeños: si se cambia mucho el tono, suenan a robot.
@@ -46,6 +48,18 @@ const VOCES_REPARTO = {
     friend1: { voz: 'es-CR-JuanNeural',      tono: '+0Hz',  velocidad: '+0%' },   // Guardia
     friend2: { voz: 'es-PE-AlexNeural',      tono: '+10Hz', velocidad: '+6%' },   // Bufón
     friend3: { voz: 'es-VE-SebastianNeural', tono: '+12Hz', velocidad: '+3%' }    // Duende Amable
+  },
+  space: {
+    villain: { voz: 'es-MX-JorgeNeural',     tono: '+10Hz', velocidad: '+4%' },   // Capitán Meteoro
+    friend1: { voz: 'es-PE-AlexNeural',      tono: '+14Hz', velocidad: '+4%' },   // Robi
+    friend2: { voz: 'es-CR-MariaNeural',     tono: '+12Hz', velocidad: '+3%' },   // Zuri
+    friend3: { voz: 'es-EC-LuisNeural',      tono: '+6Hz',  velocidad: '+0%' }    // Cometa
+  },
+  ocean: {
+    villain: { voz: 'es-VE-SebastianNeural', tono: '-2Hz',  velocidad: '-2%' },   // Pulpo Tinta
+    friend1: { voz: 'es-US-AlonsoNeural',    tono: '+14Hz', velocidad: '+6%' },   // Delfi
+    friend2: { voz: 'es-CO-GonzaloNeural',   tono: '+8Hz',  velocidad: '+4%' },   // Pinzas
+    friend3: { voz: 'es-EC-LuisNeural',      tono: '+12Hz', velocidad: '+3%' }    // Pulpi
   }
 };
 const AMIGOS = ['friend1', 'friend2', 'friend3'];
@@ -55,7 +69,7 @@ const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax'];
 const mundos = {};
 const sandbox = { registrarMundo: (key, m) => { mundos[key] = m; } };
 vm.createContext(sandbox);
-for (const f of ['superheroes', 'dragones', 'reino_magico']) {
+for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano']) {
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f + '.js'), 'utf8'), sandbox);
 }
 

@@ -19,15 +19,19 @@ class MenuScene extends Phaser.Scene {
       : 'Toca la pantalla o presiona ESPACIO solo cuando aparezca el objeto especial',
       { font: '20px Arial', color: '#cbd5e1' }).setOrigin(0.5);
 
-    Object.keys(THEMES).forEach((key, i) => {
+    // las tarjetas se reparten a lo ancho según cuántos mundos haya
+    const keys = Object.keys(THEMES), gap = 14;
+    const cw = Math.min(270, (W - 40 - gap * (keys.length - 1)) / keys.length), small = cw < 220;
+    keys.forEach((key, i) => {
       const th = THEMES[key];
-      const x = 170 + i * 310;
+      const x = W / 2 + (i - (keys.length - 1) / 2) * (cw + gap);
       const y = 330;
-      const card = this.add.rectangle(x, y, 270, 330, th.bg).setStrokeStyle(4, th.accent).setInteractive({ useHandCursor: true });
-      fit(this.add.image(x, y - 70, TEX[key].target), 128);
-      this.add.text(x, y + 30, th.label, { font: 'bold 24px Arial', color: '#ffffff' }).setOrigin(0.5);
-      this.add.text(x, y + 75, 'Objeto especial:\n' + th.targetLabel,
-        { font: '17px Arial', color: '#e2e8f0', align: 'center' }).setOrigin(0.5);
+      const card = this.add.rectangle(x, y, cw, 330, th.bg).setStrokeStyle(4, th.accent).setInteractive({ useHandCursor: true });
+      fit(this.add.image(x, y - 70, TEX[key].target), small ? 110 : 128);
+      const name = this.add.text(x, y + 30, th.label, { font: 'bold ' + (small ? 21 : 24) + 'px Arial', color: '#ffffff' }).setOrigin(0.5);
+      if (name.width > cw - 14) name.setScale((cw - 14) / name.width);   // nombres largos: se encogen para caber
+      this.add.text(x, y + 85, 'Objeto especial:\n' + th.targetLabel,
+        { font: (small ? 15 : 17) + 'px Arial', color: '#e2e8f0', align: 'center', wordWrap: { width: cw - 20 } }).setOrigin(0.5);
       card.on('pointerover', () => card.setScale(1.04));
       card.on('pointerout', () => card.setScale(1));
       card.on('pointerdown', () => {

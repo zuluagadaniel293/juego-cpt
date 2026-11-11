@@ -67,5 +67,49 @@ window.VOICES_ELEVEN = {
     "dist_amenaza": [
       "voces/reino_magico/eleven/dist_amenaza.mp3"
     ]
+  },
+  "space": {
+    "dist_ayuda_friend1": [
+      "voces/espacio/eleven/dist_ayuda_friend1.mp3",
+      "voces/espacio/eleven/dist_ayuda_friend1_2.mp3"
+    ],
+    "dist_ayuda_friend2": [
+      "voces/espacio/eleven/dist_ayuda_friend2.mp3"
+    ],
+    "dist_ayuda_friend3": [
+      "voces/espacio/eleven/dist_ayuda_friend3.mp3"
+    ],
+    "dist_risa": [
+      "voces/espacio/eleven/dist_risa.mp3",
+      "voces/espacio/eleven/dist_risa_2.mp3"
+    ],
+    "dist_burla": [
+      "voces/espacio/eleven/dist_burla.mp3"
+    ],
+    "dist_amenaza": [
+      "voces/espacio/eleven/dist_amenaza.mp3"
+    ]
+  },
+  "ocean": {
+    "dist_ayuda_friend1": [
+      "voces/oceano/eleven/dist_ayuda_friend1.mp3",
+      "voces/oceano/eleven/dist_ayuda_friend1_2.mp3"
+    ],
+    "dist_ayuda_friend2": [
+      "voces/oceano/eleven/dist_ayuda_friend2.mp3"
+    ],
+    "dist_ayuda_friend3": [
+      "voces/oceano/eleven/dist_ayuda_friend3.mp3"
+    ],
+    "dist_risa": [
+      "voces/oceano/eleven/dist_risa.mp3",
+      "voces/oceano/eleven/dist_risa_2.mp3"
+    ],
+    "dist_burla": [
+      "voces/oceano/eleven/dist_burla.mp3"
+    ],
+    "dist_amenaza": [
+      "voces/oceano/eleven/dist_amenaza.mp3"
+    ]
   }
 };

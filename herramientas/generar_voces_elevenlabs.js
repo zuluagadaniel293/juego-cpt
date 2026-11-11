@@ -19,7 +19,8 @@ const ROOT = path.join(__dirname, '..');
 const VOZ = {
   jessica: 'cgSgspJ2msm6clMCkdW9', laura: 'FGY2WhTYpPnrIDTdsKH5', matilda: 'XrExE9yKIg1WjnnlVkGX', aria: '9BWtsMINqrJLrRacOk9x',
   sarah: 'EXAVITQu4vr4xnSDxMaL', river: 'SAz9YHcvj6GT2YYXdXww', charlie: 'IKne3meq5aSn9XLyUdCD', will: 'bIHbv24MWmeRgasZH58o', liam: 'TX3LPaxmHKxFdv7VOQHJ',
-  bill: 'pqHfZKP75CvOlQylNhV4', chris: 'iP95p4xoKVk53GoZ742B', eric: 'cjVigY5qzO86Huf0OWal', callum: 'N2lVS1w4EtoT3dr4eOWO'
+  bill: 'pqHfZKP75CvOlQylNhV4', chris: 'iP95p4xoKVk53GoZ742B', eric: 'cjVigY5qzO86Huf0OWal', callum: 'N2lVS1w4EtoT3dr4eOWO',
+  lily: 'pFZP5JQG7iQjIQuC4Bku', roger: 'CwhRBWXzGAHq8TQ4Fs17'
 };
 
 // [mundo, carpeta, id del juego, versión, quién, voz, texto]. Los ids son los de distractors.voices de cada mundo:
@@ -49,7 +50,25 @@ const FRASES = [
   ['kingdom', 'reino_magico', 'dist_risa', 1, 'Duende Pícaro', 'callum', '[giggles] ¡Ji, ji, ji! ¡No me pueden atrapar!'],
   ['kingdom', 'reino_magico', 'dist_risa', 2, 'Duende Pícaro', 'callum', '[laughs] ¡Je, je! [whispers] ¿Dónde estaré?'],
   ['kingdom', 'reino_magico', 'dist_burla', 1, 'Duende Pícaro', 'callum', '[whispers] ¡Psst! ¡Por aquí! ¡No, por allá!'],
-  ['kingdom', 'reino_magico', 'dist_amenaza', 1, 'Duende Pícaro', 'callum', '[mischievously] ¡Voy a esconder la corona!']
+  ['kingdom', 'reino_magico', 'dist_amenaza', 1, 'Duende Pícaro', 'callum', '[mischievously] ¡Voy a esconder la corona!'],
+
+  ['space', 'espacio', 'dist_ayuda_friend1', 1, 'Robi', 'river', '[scared] ¡Ay, no! [panicked] ¡Ayuda, Nova! ¡Me atraparon!'],
+  ['space', 'espacio', 'dist_ayuda_friend1', 2, 'Robi', 'river', '[panicked] ¡Nova, mis circuitos fallan!'],
+  ['space', 'espacio', 'dist_ayuda_friend2', 1, 'Zuri', 'lily', '[scared] ¡Me quitaron mi nave! ¡Ayuda!'],
+  ['space', 'espacio', 'dist_ayuda_friend3', 1, 'Cometa', 'will', '[nervous] ¡Yo no soy el pirata! [panicked] ¡Socorro!'],
+  ['space', 'espacio', 'dist_risa', 1, 'Capitán Meteoro', 'charlie', '[evil laugh] ¡Ja, ja, ja! ¡Bip será mío!'],
+  ['space', 'espacio', 'dist_risa', 2, 'Capitán Meteoro', 'charlie', '[laughs] ¡Jo, jo! [whispers] Estoy en otra galaxia...'],
+  ['space', 'espacio', 'dist_burla', 1, 'Capitán Meteoro', 'charlie', '[sarcastic] ¡Nunca me alcanzarás, astronauta!'],
+  ['space', 'espacio', 'dist_amenaza', 1, 'Capitán Meteoro', 'charlie', '[menacing] ¡Todo el espacio será mío!'],
+
+  ['ocean', 'oceano', 'dist_ayuda_friend1', 1, 'Delfi', 'laura', '[scared] ¡Ay, no! [panicked] ¡Ayuda, Coral! ¡La tinta no me deja ver!'],
+  ['ocean', 'oceano', 'dist_ayuda_friend1', 2, 'Delfi', 'laura', '[panicked] ¡Coral, por aquí, rápido!'],
+  ['ocean', 'oceano', 'dist_ayuda_friend2', 1, 'Pinzas', 'eric', '[scared] ¡Me enredé en las algas! ¡Ayuda!'],
+  ['ocean', 'oceano', 'dist_ayuda_friend3', 1, 'Pulpi', 'chris', '[nervous] ¡Yo soy el pulpo bueno! [panicked] ¡Socorro!'],
+  ['ocean', 'oceano', 'dist_risa', 1, 'Pulpo Tinta', 'roger', '[evil laugh] ¡Ja, ja! ¡Más tinta para todos!'],
+  ['ocean', 'oceano', 'dist_risa', 2, 'Pulpo Tinta', 'roger', '[giggles] ¡Je, je! ¡No me ves, no me ves!'],
+  ['ocean', 'oceano', 'dist_burla', 1, 'Pulpo Tinta', 'roger', '[sarcastic] ¿Buscas a Perla? ¡Qué lástima!'],
+  ['ocean', 'oceano', 'dist_amenaza', 1, 'Pulpo Tinta', 'roger', '[menacing] ¡El mar entero será oscuro!']
 ];
 
 const archivo = f => path.join('voces', f[1], 'eleven', f[2] + (f[3] > 1 ? '_' + f[3] : '') + '.mp3');

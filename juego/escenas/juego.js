@@ -433,9 +433,12 @@ class GameScene extends Phaser.Scene {
       this.tweens.add({ targets: fl, alpha: 0, duration: 160, onComplete: () => fl.destroy() });
       this.impact(tx, ty);
     } else {
-      const n = p.kind === 'stars' ? 5 : 1;
+      const n = p.kind === 'stars' || p.kind === 'bubbles' ? 5 : 1;
       for (let i = 0; i < n; i++) {
-        const proj = fit(this.add.image(sx, sy, p.kind === 'fire' ? 'fireball' : 'magicstar'), p.kind === 'fire' ? 56 : 40).setDepth(9);
+        // burbujas (Coral): círculos transparentes con borde blanco; si no, estrellas o bola de fuego
+        const proj = p.kind === 'bubbles'
+          ? this.add.circle(sx, sy, Phaser.Math.Between(10, 18), p.color, 0.35).setStrokeStyle(3, 0xffffff, 0.9).setDepth(9)
+          : fit(this.add.image(sx, sy, p.kind === 'fire' ? 'fireball' : 'magicstar'), p.kind === 'fire' ? 56 : 40).setDepth(9);
         const jitter = () => (n > 1 ? Phaser.Math.Between(-30, 30) : 0);
         this.tweens.add({ targets: proj, x: tx + jitter(), y: ty + jitter(), angle: 360, duration: 170, delay: i * 35,
           onComplete: () => { proj.destroy(); if (i === n - 1) this.impact(tx, ty); } });

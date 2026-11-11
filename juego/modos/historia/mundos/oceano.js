@@ -1,0 +1,129 @@
+// Mundo: Océano. Coral, la niña buzo, busca a Perla, el caballito de mar rosado, y atrapa al Pulpo Tinta.
+// Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
+
+registrarMundo('ocean', {
+  // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
+  theme: { label: 'Océano', bg: 0x083344, accent: 0x2dd4bf,
+           targetLabel: 'Perla, el caballito rosado', targetObj: 'a Perla, el caballito rosado',
+           villain: 'Pulpo Tinta', villainObj: 'al Pulpo Tinta', chase: '¡Persíguelo!' },
+
+  story: {
+    hero: 'Coral',
+    voice: { pitch: 1.3 },
+    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
+    intro: '¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ',
+    mgLines: {
+      classic: 'Perla es el caballito de mar rosado con una perla en la cola. ¡Toca solo cuando la veas a ella!',
+      catch: '¡Los caballitos bajan con las burbujas! Atrapa solo a Perla.',
+      race: '¡Perla nada entre las corrientes! Corre y alcánzala solo a ella.',
+      find: 'Aquí hay muchos caballitos de mar juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Toca a todos los caballitos... ¡menos a Perla!',
+      ax: 'Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!',
+      memory: '¡Perla va dejando burbujas por donde nada! Mira bien su camino y repítelo en el mismo orden.'
+    },
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
+    // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
+    mgLinesCast: {
+      classic: '¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.',
+      catch: '¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!',
+      race: '¡El Pulpo Tinta nada entre los animales del mar! Atrápalo solo a él.',
+      find: 'Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
+      memory: '¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.',
+      notx: '¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!',
+      ax: 'El Pulpo Tinta solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
+    },
+    // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
+    bossLine: '¡Fue el Pulpo Tinta quien escondió a Perla! Se esconde entre los animales del mar. ¡Atrapémoslo!',
+    chapters: [
+      { place: 'El Arrecife de Coral', mg: 'classic', level: 1, sec: 45,
+        line: '¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla... Búscala: es el caballito de mar rosado con una perla en la cola.' },
+      { place: 'El Barco Hundido', mg: 'catch', level: 2, sec: 60,
+        line: '¡Los caballitos bajan entre las burbujas del barco hundido! Atrapa solo a Perla.' },
+      { place: 'El Bosque de Algas', mg: 'race', level: 3, sec: 75,
+        line: '¡Perla nada entre las algas! Corre y alcánzala solo a ella.' },
+      { place: 'La Cueva de Cristales', mg: 'find', level: 4, sec: 90,
+        line: 'En la cueva hay muchos caballitos juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!' },
+      { place: 'La Fosa Oscura', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
+        line: '¡Fue el Pulpo Tinta quien escondió a Perla! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+    ],
+    ending: '¡Atrapamos al Pulpo Tinta y Perla volvió al arrecife! Todo el mar está feliz gracias a ti.',
+    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
+    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    companions: [
+      { role: 'friend1', name: 'Delfi', the: 'Delfi', line: '¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y busquemos a Perla!' },
+      { role: 'friend2', name: 'Pinzas', the: 'Pinzas', line: '¡Clic, clac! Soy Pinzas. Con mis gafas lo veo todo... ¡y tú también puedes si te concentras!' },
+      { role: 'friend3', name: 'Pulpi', the: 'Pulpi', line: 'Hola, soy Pulpi. No todos los pulpos somos traviesos. ¡Yo te ayudo a encontrar a Perla!' },
+      { role: 'villain', name: 'Pulpo Tinta', line: '¡Je, je, je! ¡Escondí a Perla con mi tinta! ¡A ver si la encuentras!' }
+    ]
+  },
+
+  // Las burbujas son solo contra el Pulpo Tinta (jefe final). A Perla se le rescata, no se le ataca.
+  power: { name: 'Burbujas mágicas', kind: 'bubbles', color: 0x67e8f9, shout: '¡Burbujas!',
+           rescue: { shout: '¡Te encontré!' } },
+  powerSound() {   // burbujas que suben
+    for (let i = 0; i < 6; i++) sweep('sine', 400 + i * 90, 1400 + i * 120, 0.12, 0.07, i * 0.06);
+  },
+
+  // Dibujo provisional de Coral (se reemplaza por assets/oceano/coral.png)
+  charSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260"><rect x="60" y="120" width="100" height="130" rx="30" fill="#14b8a6"/><circle cx="110" cy="80" r="50" fill="#f5c49c"/><rect x="70" y="60" width="80" height="34" rx="14" fill="#a5f3fc" stroke="#0f172a" stroke-width="5"/><circle cx="96" cy="77" r="5" fill="#0f172a"/><circle cx="124" cy="77" r="5" fill="#0f172a"/></svg>',
+  people: {},
+
+  // Distractores del entorno: cruzan por los bordes (fly = arriba, walk = abajo) y suenan de vez en cuando
+  distractors: {
+    // Personajes del mundo como distractores (no en la Prueba fija). minLevel: desde qué nivel aparecen.
+    // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba ·
+    // chase = uno huye por arriba y el otro lo persigue (flee: huye el amigo) · face = la cara del villano espía desde un lado
+    cast: [
+      { name: 'pelea_pulpo_delfi', kind: 'fight', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
+      { name: 'pulpo_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
+      { name: 'pulpo_persigue_delfi', kind: 'chase', flee: true, friend: 'friend1', voice: 'ayuda', minLevel: 3 },
+      { name: 'pulpo_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
+      { name: 'pulpo_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
+    ],
+    // Voces (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js): who = villain o friend
+    voices: {
+      risa:    { who: 'villain', minLevel: 2, text: '¡Ja, ja! ¡Más tinta para todos!' },
+      burla:   { who: 'villain', minLevel: 3, text: '¿Buscas a Perla? ¡Qué lástima!' },
+      amenaza: { who: 'villain', minLevel: 4, text: '¡El mar entero será oscuro! ¡Je, je!' },
+      ayuda:   { who: 'friend',  minLevel: 3, text: '¡Ayuda, Coral! ¡La tinta no me deja ver!' }
+    },
+    visual: [
+      { name: 'medusa', kind: 'fly', size: 85,
+        sound() { [0, 0.4, 0.8].forEach(d => sweep('sine', 300, 600, 0.3, 0.05, d)); } },   // medusa que flota (blub)
+      { name: 'banco_de_peces', kind: 'fly', size: 110,
+        sound() { noise(1.8, 0.05, 'bandpass', 1200, 2400); for (let i = 0; i < 5; i++) sweep('sine', 900, 1800, 0.06, 0.04, i * 0.3); } },   // peces que pasan rápido
+      { name: 'estrella_de_mar', kind: 'walk', size: 80,
+        sound() { [0, 0.35, 0.7, 1.05].forEach(d => noise(0.08, 0.06, 'lowpass', 900, 400, d)); } }   // pasitos en la arena
+    ],
+    sounds: {
+      burbujas() { for (let i = 0; i < 8; i++) sweep('sine', 500 + Math.random() * 300, 1500 + Math.random() * 500, 0.08, 0.05, i * 0.12); },
+      ballena()  { sweep('sine', 300, 180, 1.6, 0.05); sweep('sine', 180, 260, 1.2, 0.04, 1.4); },
+      corriente() { noise(2.0, 0.05, 'lowpass', 600, 250); }
+    }
+  },
+
+  // Provisionales (solo si faltan las imágenes): Perla y los otros caballitos
+  textures(make) {
+    const horse = (body, pearl) => g => {
+      g.fillStyle(body, 1); g.fillCircle(84, 40, 24); g.fillEllipse(78, 84, 46, 60);
+      g.lineStyle(14, body, 1); g.beginPath(); g.arc(90, 118, 18, Math.PI, Math.PI * 2.4, true); g.strokePath();
+      g.fillStyle(0x0f172a, 1); g.fillCircle(90, 36, 4);
+      if (pearl) { g.fillStyle(0xffffff, 1); g.fillCircle(108, 132, 7); }
+    };
+    make('ocean_target', horse(0xf472b6, true));
+    make('ocean_dist1', horse(0x38bdf8, false));
+    make('ocean_dist2', horse(0x4ade80, false));
+    make('ocean_dist3', horse(0xd8b4fe, false));          // lila (difícil)
+    make('ocean_dv_medusa', g => { g.fillStyle(0xf9a8d4, 1); g.fillEllipse(80, 60, 80, 50); g.lineStyle(4, 0xc4b5fd, 1); [55, 70, 85, 100].forEach(x => g.lineBetween(x, 80, x, 130)); });
+    make('ocean_dv_banco_de_peces', g => { g.fillStyle(0xfb923c, 1); [[50, 60], [100, 50], [70, 100], [120, 95]].forEach(([x, y]) => { g.fillEllipse(x, y, 34, 18); g.fillTriangle(x - 16, y, x - 28, y - 9, x - 28, y + 9); }); });
+    make('ocean_dv_estrella_de_mar', g => { g.fillStyle(0xf97316, 1); const p = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? 22 : 55; p.push({ x: 80 + Math.cos(a) * r, y: 85 + Math.sin(a) * r }); } g.fillPoints(p, true); });
+  },
+
+  // Fondos provisionales (solo si faltan las imágenes): agua que se oscurece capítulo a capítulo
+  backdrop(g, idx, rng, W, H) {
+    const tops = [0x67e8f9, 0x22d3ee, 0x0891b2, 0x155e75, 0x0c1a3a];
+    skyGradient(g, tops[idx], 0x083344, W, H);
+    g.fillStyle(0xffffff, 0.25); for (let i = 0; i < 30; i++) g.fillCircle(rng.between(0, W), rng.between(0, H), rng.between(3, 8));
+    g.fillStyle(0xfde68a, 1); g.fillRect(0, 480, W, H - 480);
+  }
+});

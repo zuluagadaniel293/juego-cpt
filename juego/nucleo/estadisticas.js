@@ -149,8 +149,8 @@ function saveCSV(cols, log, name) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  const world = { heroes: 'superheroes', fantasy: 'dragones', kingdom: 'reino_magico' };
-  a.download = 'cpt_' + name.replace(/heroes|fantasy|kingdom/, m => world[m]) + '_' + stamp + '.csv';
+  const world = { heroes: 'superheroes', fantasy: 'dragones', kingdom: 'reino_magico', space: 'espacio', ocean: 'oceano' };
+  a.download = 'cpt_' + name.replace(/heroes|fantasy|kingdom|space|ocean/, m => world[m]) + '_' + stamp + '.csv';
   a.click();
   URL.revokeObjectURL(url);
 }
