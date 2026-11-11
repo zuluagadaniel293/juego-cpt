@@ -6,7 +6,7 @@ Prompts para volver a pedirle a Gemini, desde cero, las imágenes de **Superhér
 
 **No hace falta adjuntar ninguna imagen.** Cada recuadro es un mensaje completo, con el estilo y el personaje descritos: cópialo tal cual y pégalo en Gemini.
 
-**Un chat por mundo, en orden.** Haz todos los mensajes de un mismo mundo en el mismo chat de Gemini, empezando por el mensaje 1. Así Gemini recuerda cómo dibujó a cada personaje y las poses le salen iguales. Cada mundo son 14 mensajes: los personajes (protagonista, villano y los 3 amigos), lo que el niño busca, las poses, lo que cruza la pantalla, el tesoro, los 5 fondos y la escena final.
+**Un chat por mundo, en orden.** Haz todos los mensajes de un mismo mundo en el mismo chat de Gemini, empezando por el mensaje 1. Así Gemini recuerda cómo dibujó a cada personaje y las poses le salen iguales. Cada mundo son 13 mensajes: los personajes (protagonista, villano y los 3 amigos), lo que el niño busca, las poses, lo que cruza la pantalla, el tesoro, los 5 fondos y la escena final.
 
 **Nombres:** guarda cada imagen con el **nombre exacto** que aparece después de la flecha (→). Si Gemini entrega una hoja con varios personajes bien separados, no hace falta pedirlos uno por uno: yo los recorto.
 
@@ -108,15 +108,7 @@ Mismo estilo y mismo personaje que dibujaste en esta conversación. Fondo blanco
 Personaje: la Capitana Estrella, una superheroína joven de pelo negro largo y liso, con traje azul brillante, una estrella blanca en el pecho, capa roja, cinturón rojo y botas rojas. Hoja de 3 poses: 1) asustada, con los brazos arriba pidiendo ayuda; 2) arrodillada, cubriéndose la cabeza con los brazos; 3) huyendo asustada, de perfil mirando hacia la izquierda.
 ```
 
-**Mensaje 7 · Los amigos celebrando** → `capitana_celebra.png`, `escudo_celebra.png`, `heroe_noche_celebra.png`
-
-```
-Mismo estilo y mismos personajes que dibujaste en esta conversación. Fondo blanco liso (sin cuadrícula ni transparencia). Sin textos ni etiquetas. Cada personaje completo, de cuerpo entero, bien separado de los demás y sin que se corte ninguna parte. Máxima resolución.
-
-Hoja de la Capitana Estrella, Escudo Verde y Héroe Noche celebrando felices: saltando con los brazos arriba y una gran sonrisa.
-```
-
-**Mensaje 8 · Lo que cruza la pantalla y el tesoro** → `avion.png`, `pajaro.png`, `gato.png`, `tesoro_escudo.png`
+**Mensaje 7 · Lo que cruza la pantalla y el tesoro** → `avion.png`, `pajaro.png`, `gato.png`, `tesoro_escudo.png`
 
 ```
 Mismo estilo de esta conversación: caricatura 2D moderna para un videojuego infantil, contornos oscuros gruesos y limpios, colores vivos, sombreado suave con pequeños brillos. Fondo blanco liso (sin cuadrícula ni transparencia). Sin textos ni etiquetas. Cada elemento completo, bien separado de los demás y sin que se corte ninguna parte. Máxima resolución.
@@ -124,7 +116,7 @@ Mismo estilo de esta conversación: caricatura 2D moderna para un videojuego inf
 Hoja de 4 elementos bien separados: 1) un avión de pasajeros blanco, de perfil mirando a la derecha; 2) un pájaro negro volando con las alas abiertas, de perfil mirando a la derecha; 3) un gato negro caminando, de perfil mirando a la derecha; 4) el Escudo del Héroe: un escudo perfectamente redondo, visto de frente, con anillos rojo, blanco y azul y una estrella dorada en el centro, que llene todo su espacio.
 ```
 
-**Mensaje 9 · Fondo 1** → `fondo_1_el_centro.png`
+**Mensaje 8 · Fondo 1** → `fondo_1_el_centro.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -132,7 +124,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 El centro de una ciudad moderna de día: cielo azul con sol y edificios a los lados.
 ```
 
-**Mensaje 10 · Fondo 2** → `fondo_2_barrio_norte.png`
+**Mensaje 9 · Fondo 2** → `fondo_2_barrio_norte.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -140,7 +132,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 Un barrio de casas y edificios bajos al atardecer, con el cielo naranja.
 ```
 
-**Mensaje 11 · Fondo 3** → `fondo_3_el_puerto.png`
+**Mensaje 10 · Fondo 3** → `fondo_3_el_puerto.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -148,7 +140,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 El puerto de la ciudad por la tarde: muelles, barcos y mar.
 ```
 
-**Mensaje 12 · Fondo 4** → `fondo_4_la_torre.png`
+**Mensaje 11 · Fondo 4** → `fondo_4_la_torre.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -156,7 +148,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 La ciudad de noche con ventanas iluminadas, la luna y una torre alta a un costado.
 ```
 
-**Mensaje 13 · Fondo 5** → `fondo_5_guarida_de_sombra.png`
+**Mensaje 12 · Fondo 5** → `fondo_5_guarida_de_sombra.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -164,7 +156,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 La guarida de Sombra: un edificio oscuro con luces moradas en una noche de tormenta; misterioso, pero apto para niños.
 ```
 
-**Mensaje 14 · Escena final** → `final.jpg`
+**Mensaje 13 · Escena final** → `final.jpg`
 
 ```
 Mismo estilo y mismos personajes que dibujaste en esta conversación: ilustración de videojuego infantil 2D, caricatura moderna, colores vivos y alegres, contornos oscuros limpios, formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin textos. Máxima resolución.
@@ -223,15 +215,7 @@ Mismo estilo y mismo personaje que dibujaste en esta conversación. Fondo blanco
 Personaje: el Mago Abuelo, un mago anciano y amable, con túnica azul larga, sombrero puntiagudo azul y una barba blanca muy larga. Hoja de 3 poses: 1) asustado, con las manos juntas suplicando ayuda; 2) agachado, cubriéndose la cabeza con los brazos; 3) huyendo asustado, de perfil mirando hacia la izquierda.
 ```
 
-**Mensaje 7 · Los amigos celebrando** → `hada_celebra.png`, `mago_celebra.png`, `hechicera_celebra.png`
-
-```
-Mismo estilo y mismos personajes que dibujaste en esta conversación. Fondo blanco liso (sin cuadrícula ni transparencia). Sin textos ni etiquetas. Cada personaje completo, de cuerpo entero, bien separado de los demás y sin que se corte ninguna parte. Máxima resolución.
-
-Hoja de el Hada del Bosque, el Mago Abuelo y la Hechicera Buena celebrando felices: saltando con los brazos arriba y una gran sonrisa.
-```
-
-**Mensaje 8 · Lo que cruza la pantalla y el tesoro** → `mariposa.png`, `murcielago.png`, `ardilla.png`, `tesoro_gema.png`
+**Mensaje 7 · Lo que cruza la pantalla y el tesoro** → `mariposa.png`, `murcielago.png`, `ardilla.png`, `tesoro_gema.png`
 
 ```
 Mismo estilo de esta conversación: caricatura 2D moderna para un videojuego infantil, contornos oscuros gruesos y limpios, colores vivos, sombreado suave con pequeños brillos. Fondo blanco liso (sin cuadrícula ni transparencia). Sin textos ni etiquetas. Cada elemento completo, bien separado de los demás y sin que se corte ninguna parte. Máxima resolución.
@@ -239,7 +223,7 @@ Mismo estilo de esta conversación: caricatura 2D moderna para un videojuego inf
 Hoja de 4 elementos bien separados: 1) una mariposa morada y rosada (nada dorado ni amarillo), de perfil mirando a la derecha; 2) un murciélago azul oscuro volando, de perfil mirando a la derecha; 3) una ardilla café caminando, de perfil mirando a la derecha; 4) la Gema de Fuego: una gema naranja perfectamente redonda, vista de frente, con facetas y centro dorado, que llene todo su espacio.
 ```
 
-**Mensaje 9 · Fondo 1** → `fondo_1_nido.png`
+**Mensaje 8 · Fondo 1** → `fondo_1_nido.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -247,7 +231,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 El nido de los dragones en lo alto de una colina, en un día soleado.
 ```
 
-**Mensaje 10 · Fondo 2** → `fondo_2_bosque.png`
+**Mensaje 9 · Fondo 2** → `fondo_2_bosque.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -255,7 +239,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 Un bosque mágico con árboles grandes y luz que entra entre las hojas.
 ```
 
-**Mensaje 11 · Fondo 3** → `fondo_3_el_rio.png`
+**Mensaje 10 · Fondo 3** → `fondo_3_el_rio.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -263,7 +247,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 Un río que cruza un valle verde.
 ```
 
-**Mensaje 12 · Fondo 4** → `fondo_4_la_cueva.png`
+**Mensaje 11 · Fondo 4** → `fondo_4_la_cueva.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -271,7 +255,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 Una cueva con cristales brillantes celestes en las paredes.
 ```
 
-**Mensaje 13 · Fondo 5** → `fondo_5_el_volcan.png`
+**Mensaje 12 · Fondo 5** → `fondo_5_el_volcan.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -279,7 +263,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 Un volcán con ríos de lava y el cielo rojo y anaranjado; emocionante, pero apto para niños.
 ```
 
-**Mensaje 14 · Escena final** → `final.jpg`
+**Mensaje 13 · Escena final** → `final.jpg`
 
 ```
 Mismo estilo y mismos personajes que dibujaste en esta conversación: ilustración de videojuego infantil 2D, caricatura moderna, colores vivos y alegres, contornos oscuros limpios, formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin textos. Máxima resolución.
@@ -338,15 +322,7 @@ Mismo estilo y mismo personaje que dibujaste en esta conversación. Fondo blanco
 Personaje: el Guardia del castillo, un soldado joven y amable con armadura plateada completa y un casco plateado con la visera levantada y una pluma azul. Hoja de 3 poses: 1) corriendo de perfil, mirando hacia la derecha, gritando con una mano levantada, persiguiendo a alguien; 2) asustado, con los brazos arriba pidiendo ayuda; 3) agachado, cubriéndose la cabeza con los brazos.
 ```
 
-**Mensaje 7 · Los amigos celebrando** → `guardia_celebra.png`, `bufon_celebra.png`, `duende_celebra.png`
-
-```
-Mismo estilo y mismos personajes que dibujaste en esta conversación. Fondo blanco liso (sin cuadrícula ni transparencia). Sin textos ni etiquetas. Cada personaje completo, de cuerpo entero, bien separado de los demás y sin que se corte ninguna parte. Máxima resolución.
-
-Hoja de el Guardia, el Bufón y el Duende Amable celebrando felices: saltando con los brazos arriba y una gran sonrisa.
-```
-
-**Mensaje 8 · Lo que cruza la pantalla y el tesoro** → `libro_volador.png`, `escoba_magica.png`, `raton.png`, `tesoro_pastel.png`
+**Mensaje 7 · Lo que cruza la pantalla y el tesoro** → `libro_volador.png`, `escoba_magica.png`, `raton.png`, `tesoro_pastel.png`
 
 ```
 Mismo estilo de esta conversación: caricatura 2D moderna para un videojuego infantil, contornos oscuros gruesos y limpios, colores vivos, sombreado suave con pequeños brillos. Fondo blanco liso (sin cuadrícula ni transparencia). Sin textos ni etiquetas. Cada elemento completo, bien separado de los demás y sin que se corte ninguna parte. Máxima resolución.
@@ -354,7 +330,7 @@ Mismo estilo de esta conversación: caricatura 2D moderna para un videojuego inf
 Hoja de 4 elementos bien separados (nada rosado en los tres primeros): 1) un libro abierto volando, de perfil mirando a la derecha; 2) una escoba mágica volando sola, de perfil mirando a la derecha; 3) un ratón gris caminando, de perfil mirando a la derecha; 4) el Pastel Real visto desde arriba: un pastel perfectamente redondo con betún rosado, fresas, chispas de colores y una pequeña corona dorada en el centro, que llene todo su espacio.
 ```
 
-**Mensaje 9 · Fondo 1** → `fondo_1_jardin.png`
+**Mensaje 8 · Fondo 1** → `fondo_1_jardin.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -362,7 +338,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 El jardín del castillo con flores y setos, y el castillo al fondo.
 ```
 
-**Mensaje 10 · Fondo 2** → `fondo_2_la_cocina.png`
+**Mensaje 9 · Fondo 2** → `fondo_2_la_cocina.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -370,7 +346,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 La cocina del castillo: azulejos, ollas y una ventana.
 ```
 
-**Mensaje 11 · Fondo 3** → `fondo_3_la_biblioteca.png`
+**Mensaje 10 · Fondo 3** → `fondo_3_la_biblioteca.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -378,7 +354,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 La biblioteca del castillo, con estanterías llenas de libros a los lados.
 ```
 
-**Mensaje 12 · Fondo 4** → `fondo_4_la_torre.png`
+**Mensaje 11 · Fondo 4** → `fondo_4_la_torre.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -386,7 +362,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 Una habitación de la torre: paredes de piedra y una ventana redonda con el cielo de noche.
 ```
 
-**Mensaje 13 · Fondo 5** → `fondo_5_el_salon_del_trono.png`
+**Mensaje 12 · Fondo 5** → `fondo_5_el_salon_del_trono.png`
 
 ```
 Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actual: contornos oscuros limpios, colores vivos pero suaves, sombreado suave y buen nivel de detalle. Formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin personajes, sin textos. El centro debe quedar más despejado y menos detallado (ahí aparecen los objetos del juego); los detalles van hacia los bordes y la parte de abajo.
@@ -394,7 +370,7 @@ Fondo de videojuego infantil 2D, caricatura moderna como una serie animada actua
 El salón del trono: alfombra roja, columnas y un trono dorado al fondo.
 ```
 
-**Mensaje 14 · Escena final** → `final.jpg`
+**Mensaje 13 · Escena final** → `final.jpg`
 
 ```
 Mismo estilo y mismos personajes que dibujaste en esta conversación: ilustración de videojuego infantil 2D, caricatura moderna, colores vivos y alegres, contornos oscuros limpios, formato horizontal 16:9, de 1920 × 1080 píxeles o más. Sin textos. Máxima resolución.
