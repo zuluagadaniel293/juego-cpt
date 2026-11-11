@@ -92,6 +92,11 @@ window.ASSETS = {
     hero:    'reino_magico/reina_luna.png',
     villain: 'reino_magico/duende_picaro.png',
     villain_caught: 'reino_magico/duende_atrapado.png',
+    villain_sneak: 'reino_magico/duende_puntillas.png',  // escenas de fondo: se escabulle
+    villain_laugh: 'reino_magico/duende_risa.png',       // escenas de fondo: se asoma riéndose
+    villain_taunt: 'reino_magico/duende_burla.png',      // presenta el capítulo 4
+    villain_run:   'reino_magico/duende_corriendo.png',  // huye del Guardia
+    villain_face:  'reino_magico/duende_cara.png',       // espía desde un lado
     treasure: 'reino_magico/tesoro_pastel.png',
     friend1: 'reino_magico/guardia.png',
     friend2: 'reino_magico/bufon.png',

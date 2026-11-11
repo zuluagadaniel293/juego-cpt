@@ -82,7 +82,8 @@ registrarMundo('kingdom', {
     cast: [
       { name: 'guardia_persigue_duende', kind: 'chase', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
       { name: 'duende_se_asoma', kind: 'peek', voice: 'risa', minLevel: 2 },
-      { name: 'duende_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 }
+      { name: 'duende_escabulle', kind: 'sneak', voice: 'burla', minLevel: 3 },
+      { name: 'duende_espia', kind: 'face', voice: 'amenaza', minLevel: 4 }
     ],
     // Voces (las graba herramientas/generar_voces.js): who = villain o friend
     voices: {
