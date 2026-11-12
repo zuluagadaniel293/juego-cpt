@@ -58,14 +58,6 @@ window.SFX_FILES = {
 window.SFX_AMBIENT = {
   "heroes": [
     {
-      "name": "pajaro",
-      "file": "sonidos/ambiente/heroes_pajaro_1.mp3"
-    },
-    {
-      "name": "pajaro",
-      "file": "sonidos/ambiente/heroes_pajaro_3.mp3"
-    },
-    {
       "name": "gato",
       "file": "sonidos/ambiente/heroes_gato_1.mp3"
     },
@@ -74,12 +66,8 @@ window.SFX_AMBIENT = {
       "file": "sonidos/ambiente/heroes_gato_2.mp3"
     },
     {
-      "name": "gato",
-      "file": "sonidos/ambiente/heroes_gato_4.mp3"
-    },
-    {
       "name": "sirena",
-      "file": "sonidos/ambiente/heroes_sirena_1.mp3"
+      "file": "sonidos/ambiente/heroes_sirena_2.mp3"
     },
     {
       "name": "bocina",
@@ -104,14 +92,6 @@ window.SFX_AMBIENT = {
       "file": "sonidos/ambiente/fantasy_mariposa_3.mp3"
     },
     {
-      "name": "murcielago",
-      "file": "sonidos/ambiente/fantasy_murcielago_1.mp3"
-    },
-    {
-      "name": "murcielago",
-      "file": "sonidos/ambiente/fantasy_murcielago_3.mp3"
-    },
-    {
       "name": "ardilla",
       "file": "sonidos/ambiente/fantasy_ardilla_1.mp3"
     },
@@ -125,7 +105,7 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "rugido",
-      "file": "sonidos/ambiente/fantasy_rugido_2.mp3"
+      "file": "sonidos/ambiente/fantasy_rugido_3.mp3"
     },
     {
       "name": "pajaros",
@@ -151,27 +131,23 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "libro_volador",
-      "file": "sonidos/ambiente/kingdom_libro_volador_3.mp3"
-    },
-    {
-      "name": "escoba_magica",
-      "file": "sonidos/ambiente/kingdom_escoba_magica_1.mp3"
+      "file": "sonidos/ambiente/kingdom_libro_volador_2.mp3"
     },
     {
       "name": "escoba_magica",
       "file": "sonidos/ambiente/kingdom_escoba_magica_2.mp3"
     },
     {
+      "name": "escoba_magica",
+      "file": "sonidos/ambiente/kingdom_escoba_magica_3.mp3"
+    },
+    {
       "name": "raton",
       "file": "sonidos/ambiente/kingdom_raton_1.mp3"
     },
     {
-      "name": "raton",
-      "file": "sonidos/ambiente/kingdom_raton_3.mp3"
-    },
-    {
       "name": "campanas",
-      "file": "sonidos/ambiente/kingdom_campanas_1.mp3"
+      "file": "sonidos/ambiente/kingdom_campanas_2.mp3"
     },
     {
       "name": "campanas",
@@ -191,45 +167,45 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "reloj",
-      "file": "sonidos/ambiente/kingdom_reloj_3.mp3"
+      "file": "sonidos/ambiente/kingdom_reloj_2.mp3"
     }
   ],
   "space": [
     {
       "name": "cohete",
-      "file": "sonidos/ambiente/space_cohete_1.mp3"
-    },
-    {
-      "name": "cohete",
-      "file": "sonidos/ambiente/space_cohete_3.mp3"
-    },
-    {
-      "name": "satelite",
-      "file": "sonidos/ambiente/space_satelite_1.mp3"
+      "file": "sonidos/ambiente/space_cohete_2.mp3"
     },
     {
       "name": "satelite",
       "file": "sonidos/ambiente/space_satelite_2.mp3"
     },
     {
+      "name": "satelite",
+      "file": "sonidos/ambiente/space_satelite_3.mp3"
+    },
+    {
+      "name": "rover",
+      "file": "sonidos/ambiente/space_rover_1.mp3"
+    },
+    {
       "name": "rover",
       "file": "sonidos/ambiente/space_rover_2.mp3"
     },
     {
-      "name": "rover",
-      "file": "sonidos/ambiente/space_rover_3.mp3"
+      "name": "radio",
+      "file": "sonidos/ambiente/space_radio_1.mp3"
     },
     {
       "name": "radio",
       "file": "sonidos/ambiente/space_radio_2.mp3"
     },
     {
-      "name": "radio",
-      "file": "sonidos/ambiente/space_radio_3.mp3"
+      "name": "alarma",
+      "file": "sonidos/ambiente/space_alarma_2.mp3"
     },
     {
       "name": "alarma",
-      "file": "sonidos/ambiente/space_alarma_2.mp3"
+      "file": "sonidos/ambiente/space_alarma_3.mp3"
     },
     {
       "name": "motor",
@@ -237,7 +213,7 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "motor",
-      "file": "sonidos/ambiente/space_motor_3.mp3"
+      "file": "sonidos/ambiente/space_motor_2.mp3"
     }
   ],
   "ocean": [
@@ -251,19 +227,19 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "banco_de_peces",
+      "file": "sonidos/ambiente/ocean_banco_de_peces_2.mp3"
+    },
+    {
+      "name": "banco_de_peces",
       "file": "sonidos/ambiente/ocean_banco_de_peces_3.mp3"
     },
     {
       "name": "estrella_de_mar",
-      "file": "sonidos/ambiente/ocean_estrella_de_mar_1.mp3"
-    },
-    {
-      "name": "estrella_de_mar",
-      "file": "sonidos/ambiente/ocean_estrella_de_mar_3.mp3"
+      "file": "sonidos/ambiente/ocean_estrella_de_mar_2.mp3"
     },
     {
       "name": "burbujas",
-      "file": "sonidos/ambiente/ocean_burbujas_2.mp3"
+      "file": "sonidos/ambiente/ocean_burbujas_1.mp3"
     },
     {
       "name": "burbujas",
@@ -271,21 +247,17 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "ballena",
-      "file": "sonidos/ambiente/ocean_ballena_1.mp3"
-    },
-    {
-      "name": "ballena",
-      "file": "sonidos/ambiente/ocean_ballena_3.mp3"
+      "file": "sonidos/ambiente/ocean_ballena_2.mp3"
     },
     {
       "name": "corriente",
-      "file": "sonidos/ambiente/ocean_corriente_3.mp3"
+      "file": "sonidos/ambiente/ocean_corriente_2.mp3"
     }
   ],
   "dinos": [
     {
       "name": "libelula",
-      "file": "sonidos/ambiente/dinos_libelula_2.mp3"
+      "file": "sonidos/ambiente/dinos_libelula_1.mp3"
     },
     {
       "name": "libelula",
@@ -293,7 +265,7 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "arqueopterix",
-      "file": "sonidos/ambiente/dinos_arqueopterix_2.mp3"
+      "file": "sonidos/ambiente/dinos_arqueopterix_1.mp3"
     },
     {
       "name": "arqueopterix",
@@ -301,19 +273,15 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "lagartija",
-      "file": "sonidos/ambiente/dinos_lagartija_2.mp3"
+      "file": "sonidos/ambiente/dinos_lagartija_1.mp3"
     },
     {
       "name": "lagartija",
-      "file": "sonidos/ambiente/dinos_lagartija_3.mp3"
+      "file": "sonidos/ambiente/dinos_lagartija_2.mp3"
     },
     {
       "name": "pisada",
-      "file": "sonidos/ambiente/dinos_pisada_1.mp3"
-    },
-    {
-      "name": "pisada",
-      "file": "sonidos/ambiente/dinos_pisada_2.mp3"
+      "file": "sonidos/ambiente/dinos_pisada_3.mp3"
     },
     {
       "name": "rugido",
@@ -321,29 +289,21 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "rugido",
-      "file": "sonidos/ambiente/dinos_rugido_2.mp3"
-    },
-    {
-      "name": "volcan",
-      "file": "sonidos/ambiente/dinos_volcan_1.mp3"
-    },
-    {
-      "name": "volcan",
-      "file": "sonidos/ambiente/dinos_volcan_3.mp3"
+      "file": "sonidos/ambiente/dinos_rugido_3.mp3"
     }
   ],
   "robots": [
     {
       "name": "engranaje",
-      "file": "sonidos/ambiente/robots_engranaje_2.mp3"
+      "file": "sonidos/ambiente/robots_engranaje_1.mp3"
     },
     {
       "name": "engranaje",
-      "file": "sonidos/ambiente/robots_engranaje_3.mp3"
+      "file": "sonidos/ambiente/robots_engranaje_2.mp3"
     },
     {
       "name": "avion_de_papel",
-      "file": "sonidos/ambiente/robots_avion_de_papel_1.mp3"
+      "file": "sonidos/ambiente/robots_avion_de_papel_2.mp3"
     },
     {
       "name": "avion_de_papel",
@@ -371,10 +331,6 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "maquina",
-      "file": "sonidos/ambiente/robots_maquina_2.mp3"
-    },
-    {
-      "name": "maquina",
       "file": "sonidos/ambiente/robots_maquina_3.mp3"
     }
   ],
@@ -389,50 +345,22 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "guacamaya",
-      "file": "sonidos/ambiente/jungle_guacamaya_1.mp3"
-    },
-    {
-      "name": "guacamaya",
       "file": "sonidos/ambiente/jungle_guacamaya_2.mp3"
     },
     {
-      "name": "rana",
-      "file": "sonidos/ambiente/jungle_rana_2.mp3"
-    },
-    {
-      "name": "rana",
-      "file": "sonidos/ambiente/jungle_rana_3.mp3"
-    },
-    {
-      "name": "mono",
-      "file": "sonidos/ambiente/jungle_mono_2.mp3"
-    },
-    {
-      "name": "mono",
-      "file": "sonidos/ambiente/jungle_mono_3.mp3"
+      "name": "guacamaya",
+      "file": "sonidos/ambiente/jungle_guacamaya_3.mp3"
     },
     {
       "name": "lluvia",
       "file": "sonidos/ambiente/jungle_lluvia_2.mp3"
     },
     {
-      "name": "lluvia",
-      "file": "sonidos/ambiente/jungle_lluvia_3.mp3"
-    },
-    {
       "name": "tambor",
       "file": "sonidos/ambiente/jungle_tambor_2.mp3"
-    },
-    {
-      "name": "tambor",
-      "file": "sonidos/ambiente/jungle_tambor_3.mp3"
     }
   ],
   "candy": [
-    {
-      "name": "caramelo",
-      "file": "sonidos/ambiente/candy_caramelo_2.mp3"
-    },
     {
       "name": "caramelo",
       "file": "sonidos/ambiente/candy_caramelo_3.mp3"
@@ -442,16 +370,8 @@ window.SFX_AMBIENT = {
       "file": "sonidos/ambiente/candy_osito_verde_2.mp3"
     },
     {
-      "name": "osito_verde",
-      "file": "sonidos/ambiente/candy_osito_verde_3.mp3"
-    },
-    {
       "name": "campanita",
       "file": "sonidos/ambiente/candy_campanita_1.mp3"
-    },
-    {
-      "name": "campanita",
-      "file": "sonidos/ambiente/candy_campanita_3.mp3"
     },
     {
       "name": "burbujeo",

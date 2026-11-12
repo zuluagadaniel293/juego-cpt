@@ -1,0 +1,193 @@
+{
+ "pajaro": {
+  "principal": 2,
+  "quitar": [
+   1,
+   3
+  ]
+ },
+ "gato": {
+  "principal": 3,
+  "quitar": [
+   4
+  ]
+ },
+ "sirena": {
+  "principal": 1,
+  "quitar": [
+   3
+  ]
+ },
+ "murcielago": {
+  "principal": 3,
+  "quitar": [
+   1,
+   2
+  ]
+ },
+ "rugido": {
+  "principal": 2,
+  "quitar": []
+ },
+ "libro_volador": {
+  "principal": 3,
+  "quitar": []
+ },
+ "escoba_magica": {
+  "principal": 1,
+  "quitar": []
+ },
+ "raton": {
+  "principal": 3,
+  "quitar": [
+   2
+  ]
+ },
+ "campanas": {
+  "principal": 1,
+  "quitar": []
+ },
+ "reloj": {
+  "principal": 3,
+  "quitar": []
+ },
+ "cohete": {
+  "principal": 1,
+  "quitar": [
+   3
+  ]
+ },
+ "satelite": {
+  "principal": 1,
+  "quitar": []
+ },
+ "rover": {
+  "principal": 3,
+  "quitar": []
+ },
+ "radio": {
+  "principal": 3,
+  "quitar": []
+ },
+ "alarma": {
+  "principal": 1,
+  "quitar": []
+ },
+ "motor": {
+  "principal": 3,
+  "quitar": []
+ },
+ "banco_de_peces": {
+  "principal": 1,
+  "quitar": []
+ },
+ "estrella_de_mar": {
+  "principal": 3,
+  "quitar": [
+   1
+  ]
+ },
+ "burbujas": {
+  "principal": 2,
+  "quitar": []
+ },
+ "ballena": {
+  "principal": 3,
+  "quitar": [
+   1
+  ]
+ },
+ "corriente": {
+  "principal": 3,
+  "quitar": [
+   1
+  ]
+ },
+ "libelula": {
+  "principal": 2,
+  "quitar": []
+ },
+ "arqueopterix": {
+  "principal": 2,
+  "quitar": []
+ },
+ "lagartija": {
+  "principal": 3,
+  "quitar": []
+ },
+ "pisada": {
+  "principal": 1,
+  "quitar": [
+   2
+  ]
+ },
+ "volcan": {
+  "principal": 2,
+  "quitar": [
+   1,
+   3
+  ]
+ },
+ "engranaje": {
+  "principal": 3,
+  "quitar": []
+ },
+ "avion_de_papel": {
+  "principal": 1,
+  "quitar": []
+ },
+ "maquina": {
+  "principal": 2,
+  "quitar": [
+   1
+  ]
+ },
+ "guacamaya": {
+  "principal": 1,
+  "quitar": []
+ },
+ "rana": {
+  "principal": 1,
+  "quitar": [
+   2,
+   3
+  ]
+ },
+ "mono": {
+  "principal": 1,
+  "quitar": [
+   2,
+   3
+  ]
+ },
+ "lluvia": {
+  "principal": 3,
+  "quitar": [
+   1
+  ]
+ },
+ "tambor": {
+  "principal": 3,
+  "quitar": [
+   1
+  ]
+ },
+ "caramelo": {
+  "principal": 2,
+  "quitar": [
+   1
+  ]
+ },
+ "osito_verde": {
+  "principal": 1,
+  "quitar": [
+   3
+  ]
+ },
+ "campanita": {
+  "principal": 2,
+  "quitar": [
+   3
+  ]
+ }
+}

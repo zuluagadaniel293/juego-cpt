@@ -5,14 +5,19 @@
  },
  "pajaro": {
   "principal": 2,
-  "quitar": []
+  "quitar": [
+   1,
+   3
+  ]
  },
  "gato": {
   "principal": 3,
-  "quitar": []
+  "quitar": [
+   4
+  ]
  },
  "sirena": {
-  "principal": 2,
+  "principal": 1,
   "quitar": [
    3
   ]
@@ -32,15 +37,18 @@
   "quitar": []
  },
  "murcielago": {
-  "principal": 2,
-  "quitar": []
+  "principal": 3,
+  "quitar": [
+   1,
+   2
+  ]
  },
  "ardilla": {
   "principal": 3,
   "quitar": []
  },
  "rugido": {
-  "principal": 3,
+  "principal": 2,
   "quitar": []
  },
  "pajaros": {
@@ -52,19 +60,21 @@
   "quitar": []
  },
  "libro_volador": {
-  "principal": 2,
-  "quitar": []
- },
- "escoba_magica": {
   "principal": 3,
   "quitar": []
  },
- "raton": {
-  "principal": 2,
+ "escoba_magica": {
+  "principal": 1,
   "quitar": []
  },
+ "raton": {
+  "principal": 3,
+  "quitar": [
+   2
+  ]
+ },
  "campanas": {
-  "principal": 2,
+  "principal": 1,
   "quitar": []
  },
  "puerta": {
@@ -72,33 +82,33 @@
   "quitar": []
  },
  "reloj": {
-  "principal": 2,
+  "principal": 3,
   "quitar": []
  },
  "cohete": {
-  "principal": 2,
-  "quitar": []
+  "principal": 1,
+  "quitar": [
+   3
+  ]
  },
  "satelite": {
-  "principal": 3,
+  "principal": 1,
   "quitar": []
  },
  "rover": {
-  "principal": 1,
+  "principal": 3,
   "quitar": []
  },
  "radio": {
-  "principal": 1,
+  "principal": 3,
   "quitar": []
  },
  "alarma": {
-  "principal": 3,
-  "quitar": [
-   1
-  ]
+  "principal": 1,
+  "quitar": []
  },
  "motor": {
-  "principal": 2,
+  "principal": 3,
   "quitar": []
  },
  "medusa": {
@@ -106,55 +116,62 @@
   "quitar": []
  },
  "banco_de_peces": {
-  "principal": 2,
+  "principal": 1,
+  "quitar": []
+ },
+ "estrella_de_mar": {
+  "principal": 3,
   "quitar": [
    1
   ]
  },
- "estrella_de_mar": {
-  "principal": 2,
-  "quitar": []
- },
  "burbujas": {
-  "principal": 1,
+  "principal": 2,
   "quitar": []
  },
  "ballena": {
-  "principal": 2,
-  "quitar": []
+  "principal": 3,
+  "quitar": [
+   1
+  ]
  },
  "corriente": {
-  "principal": 2,
+  "principal": 3,
   "quitar": [
    1
   ]
  },
  "libelula": {
-  "principal": 1,
+  "principal": 2,
   "quitar": []
  },
  "arqueopterix": {
-  "principal": 1,
+  "principal": 2,
   "quitar": []
  },
  "lagartija": {
-  "principal": 1,
-  "quitar": []
- },
- "pisada": {
   "principal": 3,
   "quitar": []
  },
+ "pisada": {
+  "principal": 1,
+  "quitar": [
+   2
+  ]
+ },
  "volcan": {
   "principal": 2,
-  "quitar": []
+  "quitar": [
+   1,
+   3
+  ]
  },
  "engranaje": {
-  "principal": 1,
+  "principal": 3,
   "quitar": []
  },
  "avion_de_papel": {
-  "principal": 2,
+  "principal": 1,
   "quitar": []
  },
  "aspiradora": {
@@ -170,36 +187,50 @@
   "quitar": []
  },
  "maquina": {
-  "principal": 1,
-  "quitar": []
+  "principal": 2,
+  "quitar": [
+   1
+  ]
  },
  "mariposa_azul": {
   "principal": 3,
   "quitar": []
  },
  "guacamaya": {
-  "principal": 3,
+  "principal": 1,
   "quitar": []
  },
  "rana": {
   "principal": 1,
-  "quitar": []
+  "quitar": [
+   2,
+   3
+  ]
  },
  "mono": {
   "principal": 1,
-  "quitar": []
+  "quitar": [
+   2,
+   3
+  ]
  },
  "lluvia": {
-  "principal": 1,
-  "quitar": []
+  "principal": 3,
+  "quitar": [
+   1
+  ]
  },
  "tambor": {
-  "principal": 1,
-  "quitar": []
+  "principal": 3,
+  "quitar": [
+   1
+  ]
  },
  "caramelo": {
-  "principal": 1,
-  "quitar": []
+  "principal": 2,
+  "quitar": [
+   1
+  ]
  },
  "globo_chicle": {
   "principal": 1,
@@ -207,11 +238,15 @@
  },
  "osito_verde": {
   "principal": 1,
-  "quitar": []
+  "quitar": [
+   3
+  ]
  },
  "campanita": {
   "principal": 2,
-  "quitar": []
+  "quitar": [
+   3
+  ]
  },
  "burbujeo": {
   "principal": 1,

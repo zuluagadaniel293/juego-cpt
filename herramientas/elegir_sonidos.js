@@ -40,7 +40,7 @@ const ELECCION_PATH = path.join(CAND, 'eleccion.json');
 const ELECCION = fs.existsSync(ELECCION_PATH) ? JSON.parse(fs.readFileSync(ELECCION_PATH, 'utf8')) : {};
 for (const [name, e] of Object.entries(ELECCION)) {
   if (e.principal) ELEGIDO[name] = e.principal;
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= (fichas[name] || []).length; i++) {   // algunos sonidos tienen 4 opciones
     const id = name + '_' + i, k = DESCARTAR.indexOf(id);
     if ((e.quitar || []).includes(i)) { if (k < 0) DESCARTAR.push(id); } else if (k >= 0) DESCARTAR.splice(k, 1);
   }
