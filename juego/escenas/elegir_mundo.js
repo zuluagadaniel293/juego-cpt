@@ -8,7 +8,7 @@ class MenuScene extends Phaser.Scene {
     const W = GAME_W;
     const isChallenge = this.mode === 'desafio', isMemory = this.mode === 'memoria';
     this.cameras.main.setBackgroundColor(0x0f172a);
-    backLink(this, 'Volver', () => this.scene.start(this.mode === 'prueba' ? 'PruebaSelect' : 'Mode'));
+    backLink(this, 'Volver', () => this.scene.start(this.mode === 'prueba' || this.mode === 'memoria' ? 'PruebaSelect' : 'Mode'));
     this.add.text(W / 2, 60, isChallenge ? 'Desafío: elige tu mundo' : isMemory ? 'Memoria: elige tu mundo' : 'Elige tu aventura',
       { font: 'bold 44px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 110, isChallenge

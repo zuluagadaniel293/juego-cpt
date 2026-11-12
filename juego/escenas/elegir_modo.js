@@ -1,4 +1,5 @@
-// Pantalla inicial: Historia, Desafío o Zona de adultos.
+// Pantalla inicial: Historia, Desafío o Zona de adultos. (Memoria se juega en el Desafío, y la de medir el span
+// de memoria está en la Zona de adultos, con las otras pruebas fijas.)
 
 class ModeScene extends Phaser.Scene {
   constructor() { super('Mode'); }
@@ -23,14 +24,12 @@ class ModeScene extends Phaser.Scene {
       zone.on('pointerdown', () => { getCtx(); onClick(); });
     };
     const stars = totalStars();
-    modeCard(170, 0x38bdf8, 'icon_map', 'Historia', 'Viaja por los mundos\ny sigue la aventura',
+    modeCard(300, 0x38bdf8, 'icon_map', 'Historia', 'Viaja por los mundos\ny sigue la aventura',
       stars ? 'Tienes ' + stars + ' estrellas' : '', () => this.scene.start('WorldMap'));
     const best = Math.max(0, ...Object.values(getRecords()));
-    modeCard(480, 0xfb923c, 'icon_trophy', 'Desafío', 'Cada vez más difícil.\n¿Hasta qué nivel llegas?',
+    modeCard(660, 0xfb923c, 'icon_trophy', 'Desafío', 'Cada vez más difícil.\n¿Hasta qué nivel llegas?',
       best ? 'Tu récord: nivel ' + best : '', () => this.scene.start('Menu', { mode: 'desafio' }));
-    const mem = Math.max(0, ...Object.values(getMemory()).map(m => m.fwd));
-    modeCard(790, 0xa78bfa, this.memoryIcon(), 'Memoria', 'Recuerda el camino\ny repítelo',
-      mem ? 'Tu récord: ' + mem + ' pasos' : '', () => this.scene.start('Menu', { mode: 'memoria' }));
+    this.memoryIcon();   // deja lista la imagen del ícono de Memoria (la usan el Desafío y la Prueba fija)
 
     drawDailyMission(this, 330, 466);
     drawPerfectMission(this, 660, 466);

@@ -24,6 +24,8 @@ class MemoryScene extends Phaser.Scene {
     this.params = this.adaptive
       ? { showMs: CONFIG.MEMORY_SHOW_MS, gapMs: CONFIG.MEMORY_GAP_MS, flashes: 0, audio: false, visual: false }
       : memoryParams(this.level);
+    // En la Historia, Memoria va solo hacia adelante (1, 2, 3): el "al revés" queda para el Desafío
+    if (this.mode === 'historia') this.params = Object.assign({}, this.params, { fwdTrials: 6, bwdTrials: 0 });
     // lo usan los distractores del entorno (prestados del motor del juego)
     this.mg = 'memory';
     // Jefe final: Memoria puede ser una de sus fases. Ahí el villano es quien salta de escondite en escondite
