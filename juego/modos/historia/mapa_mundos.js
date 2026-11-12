@@ -1,9 +1,9 @@
 // Historia: mapa con todos los mundos.
 
-// Mundos del mapa: los 8 primeros ya se pueden jugar; Dulces llega pronto.
-const MAP_WORLDS = ['heroes', 'fantasy', 'kingdom', 'space', 'ocean', 'dinos', 'robots', 'jungle', 'Dulces'];
+// Mundos del mapa (todos se pueden jugar). Si se agrega uno que aún no existe, sale como "Pronto" con su silueta.
+const MAP_WORLDS = ['heroes', 'fantasy', 'kingdom', 'space', 'ocean', 'dinos', 'robots', 'jungle', 'candy'];
 // Silueta de cada mundo que viene (emoji pintado de sombra), para dar curiosidad sin decir el nombre
-const COMING_WORLDS = { 'Dulces': '🍭' };
+const COMING_WORLDS = {};
 
 class WorldMapScene extends Phaser.Scene {
   constructor() { super('WorldMap'); }

@@ -2270,5 +2270,287 @@
       "texto": "¡La Silbona me quitó la flor! ¡Socorro!",
       "firma": "c838ff3dd6"
     }
+  },
+  "candy": {
+    "1": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido escondió a Chispita... Búscala: es la gomita estrella dorada.",
+      "firma": "d3df0e5108"
+    },
+    "2": {
+      "texto": "¡Las gomitas caen al río de chocolate! Atrapa solo a Chispita.",
+      "firma": "12b1e46900"
+    },
+    "3": {
+      "texto": "¡Chispita se desliza por la montaña de helado! Corre y alcánzala solo a ella.",
+      "firma": "4d8cb734f8"
+    },
+    "4": {
+      "texto": "En el castillo hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!",
+      "firma": "4bf75a120c"
+    },
+    "5": {
+      "texto": "¡Ácido llevó a Chispita a su fábrica agria! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "f78d7a8bb8"
+    },
+    "end": {
+      "texto": "¡Atrapamos a Ácido y Chispita volvió a brillar! Todo el reino de los dulces está feliz gracias a ti.",
+      "firma": "7c66c3b727"
+    },
+    "classic": {
+      "texto": "Chispita es la gomita estrella dorada. ¡Toca solo cuando la veas a ella!",
+      "firma": "c3dabf2b32"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Chispita es la gomita estrella dorada. ¡Toca solo cuando la veas a ella!",
+      "firma": "ffb2d253d4"
+    },
+    "catch": {
+      "texto": "¡Llueven gomitas del cielo! Atrapa solo a Chispita.",
+      "firma": "3c6783e840"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Llueven gomitas del cielo! Atrapa solo a Chispita.",
+      "firma": "7a66acd08c"
+    },
+    "race": {
+      "texto": "¡Chispita rueda por el camino de azúcar! Corre y alcánzala solo a ella.",
+      "firma": "b9af738cbd"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Chispita rueda por el camino de azúcar! Corre y alcánzala solo a ella.",
+      "firma": "cd8f3f07cf"
+    },
+    "find": {
+      "texto": "Aquí hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!",
+      "firma": "6cba5d2b3d"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Aquí hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!",
+      "firma": "9b7e52bf2e"
+    },
+    "memory": {
+      "texto": "¡Chispita salta de dulce en dulce! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "3e5ce4d46b"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Chispita salta de dulce en dulce! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "c8f468a6c5"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todas las gomitas... ¡menos a Chispita!",
+      "firma": "ff9ff7566c"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Al revés! Toca a todas las gomitas... ¡menos a Chispita!",
+      "firma": "ee26ba1abb"
+    },
+    "ax": {
+      "texto": "Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!",
+      "firma": "026db569d7"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!",
+      "firma": "c0afc3ea6d"
+    },
+    "boss": {
+      "texto": "¡Ácido quiere volver agria a Chispita! Se esconde entre mis amigos dulces. ¡Atrapémoslo!",
+      "firma": "a24bba2d7f"
+    },
+    "cast_classic": {
+      "texto": "¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.",
+      "firma": "e64c7f9748"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.",
+      "firma": "248e4981d7"
+    },
+    "cast_catch": {
+      "texto": "¡Ácido cae entre mis amigos dulces! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "abf3779943"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido cae entre mis amigos dulces! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "bbe9f4e429"
+    },
+    "cast_race": {
+      "texto": "¡Ácido corre entre mis amigos dulces! Atrápalo solo a él.",
+      "firma": "54a2311172"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido corre entre mis amigos dulces! Atrápalo solo a él.",
+      "firma": "957b21794d"
+    },
+    "cast_find": {
+      "texto": "Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "9f555cc0db"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "12a9dffe46"
+    },
+    "cast_memory": {
+      "texto": "¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.",
+      "firma": "b69e7a0170"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.",
+      "firma": "20055e59a6"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!",
+      "firma": "1f25b03f5c"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!",
+      "firma": "c1ff668f3b"
+    },
+    "cast_ax_friend1": {
+      "texto": "Ácido solo aparece justo después de Jengi: esa es la pista. ¡Tócalo solo si justo antes salió Jengi!",
+      "firma": "745826c7a4"
+    },
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Ácido solo aparece justo después de Jengi: esa es la pista. ¡Tócalo solo si justo antes salió Jengi!",
+      "firma": "0ce07b1a60"
+    },
+    "cast_ax_friend2": {
+      "texto": "Ácido solo aparece justo después de Nube: esa es la pista. ¡Tócalo solo si justo antes salió Nube!",
+      "firma": "afff44b9e8"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Ácido solo aparece justo después de Nube: esa es la pista. ¡Tócalo solo si justo antes salió Nube!",
+      "firma": "00c9079e66"
+    },
+    "cast_ax_friend3": {
+      "texto": "Ácido solo aparece justo después de Limonada: esa es la pista. ¡Tócalo solo si justo antes salió Limonada!",
+      "firma": "6d082b115a"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Ácido solo aparece justo después de Limonada: esa es la pista. ¡Tócalo solo si justo antes salió Limonada!",
+      "firma": "74231bfc1b"
+    },
+    "comp_1": {
+      "texto": "¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a buscar a Chispita!",
+      "firma": "8bb25204f2"
+    },
+    "comp_2": {
+      "texto": "Hola, soy Nube, de algodón de azúcar. Aquí todo es dulce y de colores... ¡pero tú no te distraigas!",
+      "firma": "cbe984bb3c"
+    },
+    "comp_3": {
+      "texto": "Soy Limonada. Soy un limón como Ácido, pero yo llevo moño y soy muy dulce. ¡Te ayudo!",
+      "firma": "e5f99874d7"
+    },
+    "comp_4": {
+      "texto": "¡Grrr! ¡Los dulces me empalagan! ¡Escondí a Chispita y todo será agrio!",
+      "firma": "b7cae0f506"
+    },
+    "dist_risa_c1": {
+      "texto": "¡Ja, ja, ja! ¡Chispita es mía!",
+      "firma": "3b1c269c45"
+    },
+    "dist_risa_c2": {
+      "texto": "¡Je, je! ¡Le eché limón al chocolate!",
+      "firma": "5e4713672b"
+    },
+    "dist_risa_c3": {
+      "texto": "¡Ja, ja! ¡Derretí tu montaña de helado!",
+      "firma": "705ba62461"
+    },
+    "dist_risa_c4": {
+      "texto": "¡Je, je, je! ¡Mordí tu castillo de galleta!",
+      "firma": "0be0569806"
+    },
+    "dist_risa_c5": {
+      "texto": "¡Ja, ja, ja! ¡Bienvenido a mi fábrica agria!",
+      "firma": "21a3edd494"
+    },
+    "dist_burla_c1": {
+      "texto": "¡Qué empalagoso eres, osito!",
+      "firma": "3845ad6011"
+    },
+    "dist_burla_c2": {
+      "texto": "¡Te vas a quedar pegado en el chocolate!",
+      "firma": "4a29f720f4"
+    },
+    "dist_burla_c3": {
+      "texto": "¡Brrr! ¿Tienes frío, osito?",
+      "firma": "2c9c469e50"
+    },
+    "dist_burla_c4": {
+      "texto": "¡Tu castillo se desmorona como galleta!",
+      "firma": "416d776246"
+    },
+    "dist_burla_c5": {
+      "texto": "¡Tus chispitas no me hacen nada!",
+      "firma": "f119667912"
+    },
+    "dist_amenaza_c1": {
+      "texto": "¡Volveré agrios todos los dulces!",
+      "firma": "5cddb2086d"
+    },
+    "dist_amenaza_c2": {
+      "texto": "¡Convertiré el río en jugo de limón!",
+      "firma": "4ef65d38e8"
+    },
+    "dist_amenaza_c3": {
+      "texto": "¡Todo el helado sabrá a limón!",
+      "firma": "66027e9a28"
+    },
+    "dist_amenaza_c4": {
+      "texto": "¡Me quedaré con el castillo!",
+      "firma": "f9ae293ccc"
+    },
+    "dist_amenaza_c5": {
+      "texto": "¡De mi fábrica nadie sale dulce!",
+      "firma": "eb0633cf05"
+    },
+    "dist_ayuda_c1_friend1": {
+      "texto": "¡Ay, no! ¡Ayuda, Gomi! ¡Me quiere morder!",
+      "firma": "659cab3b61"
+    },
+    "dist_ayuda_c2_friend1": {
+      "texto": "¡Me caí al chocolate! ¡Ayuda!",
+      "firma": "61bdbfee03"
+    },
+    "dist_ayuda_c3_friend1": {
+      "texto": "¡Me estoy congelando en el helado! ¡Gomi!",
+      "firma": "62a8cfa1c5"
+    },
+    "dist_ayuda_c4_friend1": {
+      "texto": "¡Se me rompió un brazo de galleta! ¡Ayuda!",
+      "firma": "a051af88c8"
+    },
+    "dist_ayuda_c1_friend2": {
+      "texto": "¡Me está deshaciendo! ¡Ayuda, Gomi!",
+      "firma": "9562d8aa87"
+    },
+    "dist_ayuda_c2_friend2": {
+      "texto": "¡El chocolate me empapa! ¡Socorro!",
+      "firma": "ee67409ebb"
+    },
+    "dist_ayuda_c3_friend2": {
+      "texto": "¡Me resbalo en el helado! ¡Ayuda!",
+      "firma": "970d54eff3"
+    },
+    "dist_ayuda_c4_friend2": {
+      "texto": "¡Me quedé atorada en el castillo! ¡Gomi!",
+      "firma": "aee847baaf"
+    },
+    "dist_ayuda_c1_friend3": {
+      "texto": "¡Yo no soy Ácido! ¡Socorro!",
+      "firma": "bbeee9763d"
+    },
+    "dist_ayuda_c2_friend3": {
+      "texto": "¡Mira mi moño, soy Limonada! ¡Ayuda!",
+      "firma": "372343cb59"
+    },
+    "dist_ayuda_c3_friend3": {
+      "texto": "¡Me confunden con Ácido! ¡Ayuda, Gomi!",
+      "firma": "a3fae1091a"
+    },
+    "dist_ayuda_c4_friend3": {
+      "texto": "¡Ácido me quitó el moño! ¡Socorro!",
+      "firma": "28f73d602a"
+    }
   }
 }

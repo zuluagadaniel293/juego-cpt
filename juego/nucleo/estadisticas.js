@@ -150,8 +150,8 @@ function saveCSV(cols, log, name) {
   const a = document.createElement('a');
   a.href = url;
   const world = { heroes: 'superheroes', fantasy: 'dragones', kingdom: 'reino_magico', space: 'espacio', ocean: 'oceano',
-                  dinos: 'dinosaurios', robots: 'robots', jungle: 'selva' };
-  a.download = 'cpt_' + name.replace(/heroes|fantasy|kingdom|space|ocean|dinos|robots|jungle/, m => world[m]) + '_' + stamp + '.csv';
+                  dinos: 'dinosaurios', robots: 'robots', jungle: 'selva', candy: 'dulces' };
+  a.download = 'cpt_' + name.replace(/heroes|fantasy|kingdom|space|ocean|dinos|robots|jungle|candy/, m => world[m]) + '_' + stamp + '.csv';
   a.click();
   URL.revokeObjectURL(url);
 }

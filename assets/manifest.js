@@ -276,6 +276,33 @@ window.ASSETS = {
     distractor_guacamaya:'selva/guacamaya.png',
     distractor_rana:'selva/rana.png'
   },
+  candy: {             // carpeta assets/dulces · Gomi busca a Chispita
+    target:        'dulces/chispita_estrella_dorada.png',
+    dist1:         'dulces/estrella_verde.png',
+    dist2:         'dulces/corazon_rosado.png',
+    dist3:         'dulces/estrella_amarilla.png',
+    hero:          'dulces/gomi.png',
+    villain:       'dulces/acido_limon.png',
+    villain_caught:'dulces/acido_atrapado.png',
+    villain_sneak: 'dulces/acido_puntillas.png',
+    villain_laugh: 'dulces/acido_risa.png',
+    villain_taunt: 'dulces/acido_burla.png',
+    villain_run:   'dulces/acido_corriendo.png',
+    villain_scared:'dulces/acido_asustado.png',
+    treasure:      'dulces/tesoro_galleta.png',
+    friend1:       'dulces/jengi.png',
+    friend2:       'dulces/nube.png',
+    friend3:       'dulces/limonada.png',
+    end:           'dulces/final.jpg',
+    bg_1:          'dulces/fondo_1_chupetines.jpg',
+    bg_2:          'dulces/fondo_2_rio_chocolate.jpg',
+    bg_3:          'dulces/fondo_3_montana_helado.jpg',
+    bg_4:          'dulces/fondo_4_castillo_galleta.jpg',
+    bg_5:          'dulces/fondo_5_fabrica_agria.jpg',
+    distractor_caramelo:'dulces/caramelo.png',
+    distractor_globo_chicle:'dulces/globo_chicle.png',
+    distractor_osito_verde:'dulces/osito_verde.png'
+  },
   // Objetos e íconos que comparten todos los mundos (carpeta assets/comunes)
   comunes: {
     basket:      'comunes/canasta.png',          // minijuego Atrapa

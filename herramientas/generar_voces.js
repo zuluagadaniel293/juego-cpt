@@ -29,7 +29,8 @@ const VOCES = {
   ocean:   { carpeta: 'oceano',       voz: 'es-US-PalomaNeural',  tono: '+25Hz', velocidad: '+4%' },   // Coral
   dinos:   { carpeta: 'dinosaurios',  voz: 'es-AR-TomasNeural',   tono: '+25Hz', velocidad: '+6%' },   // Tito
   robots:  { carpeta: 'robots',       voz: 'es-US-AlonsoNeural',  tono: '+25Hz', velocidad: '+6%' },   // Chip
-  jungle:  { carpeta: 'selva',        voz: 'es-EC-AndreaNeural',  tono: '+25Hz', velocidad: '+4%' }    // Kiara
+  jungle:  { carpeta: 'selva',        voz: 'es-EC-AndreaNeural',  tono: '+25Hz', velocidad: '+4%' },   // Kiara
+  candy:   { carpeta: 'dulces',       voz: 'es-MX-JorgeNeural',   tono: '+30Hz', velocidad: '+6%' }    // Gomi
 };
 // Voces del villano y de los 3 amigos de cada mundo (presentan capítulos y hacen de distractores auditivos).
 // Voces latinoamericanas con cambios de tono pequeños: si se cambia mucho el tono, suenan a robot.
@@ -81,6 +82,12 @@ const VOCES_REPARTO = {
     friend1: { voz: 'es-PE-AlexNeural',      tono: '+14Hz', velocidad: '+6%' },   // Jaguarcito
     friend2: { voz: 'es-MX-JorgeNeural',     tono: '-6Hz',  velocidad: '-25%' },  // Lento
     friend3: { voz: 'es-CR-MariaNeural',     tono: '+8Hz',  velocidad: '+0%' }    // Silvia
+  },
+  candy: {
+    villain: { voz: 'es-CR-JuanNeural',      tono: '-4Hz',  velocidad: '+0%' },   // Ácido
+    friend1: { voz: 'es-US-AlonsoNeural',    tono: '+14Hz', velocidad: '+8%' },   // Jengi
+    friend2: { voz: 'es-CO-SalomeNeural',    tono: '+14Hz', velocidad: '+0%' },   // Nube
+    friend3: { voz: 'es-VE-PaolaNeural',     tono: '+10Hz', velocidad: '+3%' }    // Limonada
   }
 };
 const AMIGOS = ['friend1', 'friend2', 'friend3'];
@@ -90,7 +97,7 @@ const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax'];
 const mundos = {};
 const sandbox = { registrarMundo: (key, m) => { mundos[key] = m; } };
 vm.createContext(sandbox);
-for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano', 'dinosaurios', 'robots', 'selva']) {
+for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano', 'dinosaurios', 'robots', 'selva', 'dulces']) {
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f + '.js'), 'utf8'), sandbox);
 }
 

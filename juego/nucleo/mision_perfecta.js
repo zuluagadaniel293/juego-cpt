@@ -11,7 +11,8 @@ const TREASURES = {
   ocean:   { name: 'la Brújula del Capitán',   style: 'gem' },
   dinos:   { name: 'el Fósil Dorado',          style: 'gem' },
   robots:  { name: 'el Engranaje Dorado',      style: 'gem' },
-  jungle:  { name: 'el Medallón de Jade',      style: 'gem' }
+  jungle:  { name: 'el Medallón de Jade',      style: 'gem' },
+  candy:   { name: 'la Galleta Gigante',       style: 'gem' }
 };
 const PERFECT_LEVELS = 3;
 

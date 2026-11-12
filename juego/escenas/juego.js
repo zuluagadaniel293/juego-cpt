@@ -442,12 +442,14 @@ class GameScene extends Phaser.Scene {
       }
       this.cameras.main.shake(180, 0.006);
     } else {
-      const n = p.kind === 'stars' || p.kind === 'bubbles' || p.kind === 'leaves' ? 5 : 1;
+      const n = p.kind === 'sprinkles' ? 9 : p.kind === 'stars' || p.kind === 'bubbles' || p.kind === 'leaves' ? 5 : 1;
       for (let i = 0; i < n; i++) {
         // burbujas (Coral): círculos transparentes con borde blanco · hojas (Kiara): óvalos verdes con borde oscuro ·
         // si no, estrellas o bola de fuego
         const proj = p.kind === 'bubbles'
           ? this.add.circle(sx, sy, Phaser.Math.Between(10, 18), p.color, 0.35).setStrokeStyle(3, 0xffffff, 0.9).setDepth(9)
+          : p.kind === 'sprinkles'   // chispas de azúcar (Gomi): palitos de colores, como confites
+          ? this.add.rectangle(sx, sy, 20, 7, Phaser.Utils.Array.GetRandom([0xf472b6, 0x60a5fa, 0xfde047, 0x4ade80, 0xf97316, 0xffffff]), 1).setStrokeStyle(2, 0x0f172a, 0.6).setDepth(9)
           : p.kind === 'leaves'
           ? this.add.ellipse(sx, sy, 34, 16, Phaser.Utils.Array.GetRandom([p.color, 0x22c55e, 0x86efac]), 1).setStrokeStyle(3, 0x14532d, 1).setDepth(9)
           : fit(this.add.image(sx, sy, p.kind === 'fire' ? 'fireball' : 'magicstar'), p.kind === 'fire' ? 56 : 40).setDepth(9);
