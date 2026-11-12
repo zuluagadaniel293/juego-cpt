@@ -230,6 +230,10 @@ class GameScene extends Phaser.Scene {
   setupMinigame() {
     const W = GAME_W, H = GAME_H;
     this.mgObjects = [];
+    this.caster = null;
+    // Carrera: corre el amigo que acompaña el capítulo (si hay) y el protagonista, arriba a la izquierda, le lanza
+    // su poder a lo que agarra. Sin amigo (jefe final, capítulo 4, Prueba fija), corre el protagonista.
+    this.runnerRole = this.mg === 'race' && this.powers ? this.companionRole() : null;
     if (CLASSIC_LIKE.includes(this.mg)) {
       this.stim = this.add.image(W / 2, H / 2, this.keys.target).setVisible(false);
       this.input.keyboard.on('keydown-SPACE', () => this.respond());
@@ -265,7 +269,9 @@ class GameScene extends Phaser.Scene {
         this.dashes.push(d);
         this.mgObjects.push(d);
       }
-      this.runner = fit(this.add.image(170, this.lanes[1], TEX[this.themeKey].hero_run), 104).setDepth(4);
+      const tex = TEX[this.themeKey];
+      const runKey = this.runnerRole ? tex[this.runnerRole + '_flee'] || tex[this.runnerRole] : tex.hero_run;
+      this.runner = fit(this.add.image(170, this.lanes[1], runKey), 104).setDepth(4);
       this.mgObjects.push(this.runner);
       this.bob = this.tweens.add({ targets: this.runner, angle: { from: -4, to: 4 }, duration: 160, yoyo: true, repeat: -1 });
       // El villano corre adelante, cambia de carril y va soltando los objetos.
@@ -290,9 +296,11 @@ class GameScene extends Phaser.Scene {
         else if (y > this.runner.y + 30) move(1);
       });
     }
-    // En Clásico y Encuentra, el protagonista aparece abajo a la izquierda y lanza su poder
-    if (this.powers && (CLASSIC_LIKE.includes(this.mg) || this.mg === 'find')) {
-      this.caster = fit(this.add.image(70, H - 70, TEX[this.themeKey].hero), 120).setDepth(7);
+    // En Clásico y Encuentra, el protagonista aparece abajo a la izquierda y lanza su poder.
+    // En Carrera, si corre el amigo, el protagonista va arriba a la izquierda (encima de la pista) y le lanza el poder.
+    if (this.powers && (CLASSIC_LIKE.includes(this.mg) || this.mg === 'find' || this.runnerRole)) {
+      this.caster = this.runnerRole ? fit(this.add.image(62, 92, TEX[this.themeKey].hero), 104).setDepth(7)
+        : fit(this.add.image(70, H - 70, TEX[this.themeKey].hero), 120).setDepth(7);
       this.mgObjects.push(this.caster);
     }
     // 'find' no necesita elementos fijos: crea los objetos en cada ronda
@@ -430,6 +438,12 @@ class GameScene extends Phaser.Scene {
     if ((p.rescue && !this.chars) || friendly) {
       rescueSound();
       this.fb.setText(friendly ? CAST_WORD.notx : p.rescue.shout).setAlpha(1);
+      // si el protagonista está en pantalla, de él salen unas estrellitas hacia el rescatado
+      if (c) for (let i = 0; i < 3; i++) {
+        const s = fit(this.add.image(ox, oy, 'magicstar'), 26).setDepth(9);
+        this.tweens.add({ targets: s, x: tx + Phaser.Math.Between(-20, 20), y: ty + Phaser.Math.Between(-20, 20), angle: 360,
+          duration: 200, delay: i * 50, onComplete: () => s.destroy() });
+      }
       this.tweens.add({ targets: this.fb, alpha: 0, duration: 800 });
       this.rescueEffect(tx, ty);
       return;
@@ -715,7 +729,7 @@ class GameScene extends Phaser.Scene {
     this.buddy = null;
     this.buddyRole = this.companionRole();
     this.buddyJumping = false;
-    if (!this.buddyRole) return;
+    if (!this.buddyRole || this.runnerRole) return;   // en Carrera el amigo es el que corre
     const x = this.caster ? 170 : 66;   // en Clásico y Encuentra, al lado del protagonista
     this.buddy = fit(this.add.image(x, GAME_H - 6, TEX[this.themeKey][this.buddyRole]).setOrigin(0.5, 1), 104).setDepth(-1);
     this.buddyY = this.buddy.y;
