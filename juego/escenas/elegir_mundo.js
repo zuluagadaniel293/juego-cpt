@@ -28,9 +28,9 @@ class MenuScene extends Phaser.Scene {
       const row = Math.floor(i / perRow), inRow = row ? keys.length - perRow : perRow, col = i - row * perRow;
       const x = W / 2 + (col - (inRow - 1) / 2) * (cw + gap);
       const y = rows > 1 ? 240 + row * (ch + 12) : 330;
-      // Desafío y Memoria: los mundos cerrados (se abren al vencer al jefe del anterior) salen como silueta con candado.
-      // La Prueba fija (adultos) siempre los tiene todos.
-      const locked = this.mode !== 'prueba' && !worldUnlocked(key);
+      // Desafío, Memoria y Prueba fija abren los mismos mundos que la Historia (se abren al vencer al jefe del anterior);
+      // los cerrados salen como silueta con candado. El modo demostración de la Zona de adultos los abre todos.
+      const locked = !worldUnlocked(key);
       const card = this.add.rectangle(x, y, cw, ch, locked ? 0x334155 : th.bg).setStrokeStyle(4, locked ? 0x64748b : th.accent)
         .setInteractive({ useHandCursor: true });
       const pic = locked ? silhouetteOf(this, TEX[key].target) || TEX[key].target : TEX[key].target;
