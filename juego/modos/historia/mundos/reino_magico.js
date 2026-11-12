@@ -105,9 +105,9 @@ registrarMundo('kingdom', {
         '¡Majestad, la corona me queda mejor a mí!'
       ] },
       amenaza: { who: 'villain', text: [
-        '¡Voy a esconder la corona!',
-        '¡Voy a revolver todas las ollas!',
-        '¡Desordenaré todos los libros del castillo!',
+        '¡Haré que anochezca en el jardín!',
+        '¡Haré volar todas las escobas de la cocina!',
+        '¡Haré volar todos los libros del castillo!',
         '¡Cerraré la torre con llave!',
         '¡Ahora el castillo es mío!'
       ] },

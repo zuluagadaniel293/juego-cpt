@@ -162,3 +162,12 @@ La Prueba fija y el modo Memoria nunca tienen giro. Al comparar mundos, conviene
 
 Escenas nuevas de los personajes (columna `que_aparecio` en los distractores): `<villano>_roba_tesoro`, `<villano>_lanza_<algo>`
 (escena propia de cada mundo, por un borde) y `..._gana_amigo` cuando en la pelea o la persecución el amigo se salva.
+
+## Hechizos: lo que el villano amenaza, pasa
+Cuando el villano dice su amenaza del capítulo ("¡Congelaré el río!"), el fondo cambia unos 5 segundos (el río se congela)
+y luego vuelve a la normalidad. Pasa detrás de los objetos del juego y queda como distractor `hechizo_<efecto>`:
+`dark` (se apagan las luces), `freeze` (hielo), `fire` (fuego o calor), `ink` (tinta), `sour` (todo agrio), `glitch` (falla de
+computador), `hypno` (espirales), `vines` (enredaderas o algas), `seal` (paredes que cierran los lados), `meteors` (lluvia de
+rocas), `stamp` (marcas del villano), `mess_<cosa>` (cosas volando), `steal` (roba el tesoro), `kidnap` (se lleva al
+personaje), `takeover` (el fondo se tiñe con su color), `flood` (sube el agua), `smoke` (humo).
+

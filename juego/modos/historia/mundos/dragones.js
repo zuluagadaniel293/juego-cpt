@@ -106,7 +106,7 @@ registrarMundo('fantasy', {
       ] },
       amenaza: { who: 'villain', text: [
         '¡Me llevaré todos los dragones del nido!',
-        '¡El bosque caerá bajo mi hechizo!',
+        '¡Llenaré el bosque de enredaderas!',
         '¡Congelaré el río con mi varita!',
         '¡Cerraré la cueva para siempre!',
         '¡Nadie escapa de mi volcán!'

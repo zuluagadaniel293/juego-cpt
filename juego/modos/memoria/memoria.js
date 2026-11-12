@@ -57,7 +57,7 @@ class MemoryScene extends Phaser.Scene {
     }
     this.log = [];
     this.castBusy = false;     // escena de personajes en curso (una a la vez)
-    this.lastCast = null; this.friendSceneDone = false;   // la escena del amigo, una vez por nivel
+    this.lastCast = null; this.friendSceneDone = false; this.threatBusy = false;   // la escena del amigo, una vez por nivel
     this.trial = 0;
     this.result = { fwd: 0, bwd: 0 };
     this.t0 = null;

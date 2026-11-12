@@ -101,8 +101,8 @@ registrarMundo('jungle', {
       ] },
       amenaza: { who: 'villain', text: [
         '¡Hipnotizaré a todos los animales!',
-        '¡Me llevaré todos los nidos!',
-        '¡Taparé la cascada!',
+        '¡Me llevaré a Arcoíris a mi cueva!',
+        '¡Taparé la cascada con lianas!',
         '¡Me quedaré con el tesoro del templo!',
         '¡De mi cueva nadie sale!'
       ] },

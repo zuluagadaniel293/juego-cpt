@@ -108,7 +108,7 @@ registrarMundo('heroes', {
       amenaza: { who: 'villain', text: [
         '¡Esta ciudad será mía!',
         '¡Pintaré mi señal en cada casa del barrio!',
-        '¡Me llevaré todos los barcos del puerto!',
+        '¡Cubriré el puerto de humo!',
         '¡Apagaré todas las luces de la ciudad!',
         '¡Nadie sale de mi guarida!'
       ] },

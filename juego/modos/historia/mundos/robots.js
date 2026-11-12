@@ -103,7 +103,7 @@ registrarMundo('robots', {
       amenaza: { who: 'villain', text: [
         '¡Desconfiguraré todos tus robots!',
         '¡Romperé todas las máquinas!',
-        '¡Toda la ciudad será mía!',
+        '¡Apagaré todas las luces de la ciudad!',
         '¡Borraré todos tus inventos!',
         '¡Apagaré a todos los robots para siempre!'
       ] },

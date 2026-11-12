@@ -103,7 +103,7 @@ registrarMundo('candy', {
       amenaza: { who: 'villain', text: [
         '¡Volveré agrios todos los dulces!',
         '¡Convertiré el río en jugo de limón!',
-        '¡Todo el helado sabrá a limón!',
+        '¡Derretiré tu montaña de helado!',
         '¡Me quedaré con el castillo!',
         '¡De mi fábrica nadie sale dulce!'
       ] },

@@ -57,7 +57,7 @@ class GameScene extends Phaser.Scene {
     this.log = [];
     this.castBusy = false;     // escena de personajes en curso (una a la vez)
     // Phaser reutiliza la escena: lo de la partida anterior se borra aquí
-    this.lead = null; this.lastCast = null; this.friendSceneDone = false;
+    this.lead = null; this.lastCast = null; this.friendSceneDone = false; this.threatBusy = false;
     this.lastWasCue = false;   // Pista: si lo anterior fue la pista
     this.trial = 0;
     this.current = null;
@@ -756,6 +756,7 @@ class GameScene extends Phaser.Scene {
     const base = 'dist_' + name + '_c' + (this.voiceChapter() + 1);
     const id = v.who === 'friend' ? base + '_' + (friendRole || this.castFriend()) : base;
     if (playClip(this.themeKey, id)) this.logDistractor('audio_distractor', 'voz_' + name);
+    if (name === 'amenaza') runThreatFx(this, this.voiceChapter());   // lo que amenaza pasa en el fondo (juego/nucleo/hechizos.js)
   }
 
   // Sonidos: en la Prueba fija, el tono de siempre; en los mundos, sonidos del propio mundo

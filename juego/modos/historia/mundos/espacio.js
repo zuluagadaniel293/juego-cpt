@@ -103,8 +103,8 @@ registrarMundo('space', {
       amenaza: { who: 'villain', text: [
         '¡Todo el espacio será mío!',
         '¡Lanzaré los asteroides contra tu base!',
-        '¡Me llevaré tu nave nodriza!',
-        '¡Me quedaré con todos los cristales!',
+        '¡Apagaré las luces de tu nave nodriza!',
+        '¡Congelaré el planeta de cristal!',
         '¡Nadie escapa del Capitán Meteoro!'
       ] },
       ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue

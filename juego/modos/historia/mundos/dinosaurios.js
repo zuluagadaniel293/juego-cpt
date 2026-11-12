@@ -102,9 +102,9 @@ registrarMundo('dinos', {
       ] },
       amenaza: { who: 'villain', text: [
         '¡Me llevaré a todos los bebés!',
-        '¡Me robaré todos los huevos del río!',
+        '¡Haré que el río se desborde!',
         '¡Despertaré al volcán!',
-        '¡Borraré todas las pinturas de la cueva!',
+        '¡Apagaré las antorchas de la cueva!',
         '¡Nadie sube a mi montaña!'
       ] },
       ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue

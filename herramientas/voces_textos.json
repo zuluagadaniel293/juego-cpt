@@ -221,8 +221,8 @@
       "firma": "0bbbde5763"
     },
     "dist_amenaza_c3": {
-      "texto": "¡Me llevaré todos los barcos del puerto!",
-      "firma": "46c93b8ca0"
+      "texto": "¡Cubriré el puerto de humo!",
+      "firma": "ae856da650"
     },
     "dist_amenaza_c4": {
       "texto": "¡Apagaré todas las luces de la ciudad!",
@@ -467,8 +467,8 @@
       "firma": "46120d8682"
     },
     "dist_amenaza_c2": {
-      "texto": "¡El bosque caerá bajo mi hechizo!",
-      "firma": "4b516ba8ad"
+      "texto": "¡Llenaré el bosque de enredaderas!",
+      "firma": "7a15d46928"
     },
     "dist_amenaza_c3": {
       "texto": "¡Congelaré el río con mi varita!",
@@ -713,16 +713,16 @@
       "firma": "5b79588ebf"
     },
     "dist_amenaza_c1": {
-      "texto": "¡Voy a esconder la corona!",
-      "firma": "6323b25a7a"
+      "texto": "¡Haré que anochezca en el jardín!",
+      "firma": "3f11659ddc"
     },
     "dist_amenaza_c2": {
-      "texto": "¡Voy a revolver todas las ollas!",
-      "firma": "4301fff28e"
+      "texto": "¡Haré volar todas las escobas de la cocina!",
+      "firma": "e6617c7145"
     },
     "dist_amenaza_c3": {
-      "texto": "¡Desordenaré todos los libros del castillo!",
-      "firma": "49ae42d161"
+      "texto": "¡Haré volar todos los libros del castillo!",
+      "firma": "329fbc7f18"
     },
     "dist_amenaza_c4": {
       "texto": "¡Cerraré la torre con llave!",
@@ -971,12 +971,12 @@
       "firma": "b74857eeb8"
     },
     "dist_amenaza_c3": {
-      "texto": "¡Me llevaré tu nave nodriza!",
-      "firma": "ddd07ff947"
+      "texto": "¡Apagaré las luces de tu nave nodriza!",
+      "firma": "dd0438361c"
     },
     "dist_amenaza_c4": {
-      "texto": "¡Me quedaré con todos los cristales!",
-      "firma": "6057b88998"
+      "texto": "¡Congelaré el planeta de cristal!",
+      "firma": "4de325b182"
     },
     "dist_amenaza_c5": {
       "texto": "¡Nadie escapa del Capitán Meteoro!",
@@ -1467,16 +1467,16 @@
       "firma": "02fb6e037d"
     },
     "dist_amenaza_c2": {
-      "texto": "¡Me robaré todos los huevos del río!",
-      "firma": "7ca3037fc2"
+      "texto": "¡Haré que el río se desborde!",
+      "firma": "b85af56c11"
     },
     "dist_amenaza_c3": {
       "texto": "¡Despertaré al volcán!",
       "firma": "6ca3d5d7ac"
     },
     "dist_amenaza_c4": {
-      "texto": "¡Borraré todas las pinturas de la cueva!",
-      "firma": "07d4412597"
+      "texto": "¡Apagaré las antorchas de la cueva!",
+      "firma": "8bad19709c"
     },
     "dist_amenaza_c5": {
       "texto": "¡Nadie sube a mi montaña!",
@@ -1721,8 +1721,8 @@
       "firma": "8cae987fb7"
     },
     "dist_amenaza_c3": {
-      "texto": "¡Toda la ciudad será mía!",
-      "firma": "a199e8f249"
+      "texto": "¡Apagaré todas las luces de la ciudad!",
+      "firma": "a88ba4002e"
     },
     "dist_amenaza_c4": {
       "texto": "¡Borraré todos tus inventos!",
@@ -1967,12 +1967,12 @@
       "firma": "246036a89f"
     },
     "dist_amenaza_c2": {
-      "texto": "¡Me llevaré todos los nidos!",
-      "firma": "da5db01628"
+      "texto": "¡Me llevaré a Arcoíris a mi cueva!",
+      "firma": "7529130e2c"
     },
     "dist_amenaza_c3": {
-      "texto": "¡Taparé la cascada!",
-      "firma": "e8ce4e0ae7"
+      "texto": "¡Taparé la cascada con lianas!",
+      "firma": "55bfe4d9ee"
     },
     "dist_amenaza_c4": {
       "texto": "¡Me quedaré con el tesoro del templo!",
@@ -2221,8 +2221,8 @@
       "firma": "4ef65d38e8"
     },
     "dist_amenaza_c3": {
-      "texto": "¡Todo el helado sabrá a limón!",
-      "firma": "66027e9a28"
+      "texto": "¡Derretiré tu montaña de helado!",
+      "firma": "1556ad68d8"
     },
     "dist_amenaza_c4": {
       "texto": "¡Me quedaré con el castillo!",
