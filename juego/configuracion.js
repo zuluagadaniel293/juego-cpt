@@ -93,13 +93,15 @@ function challengeParams(level, minigame) {
 function memoryParams(level) {
   const L = level - 1;
   return Object.assign(challengeParams(level, 'memory'), {
-    showMs: Math.max(450, 1000 - 70 * L),          // tiempo que se ve cada paso
-    gapMs: Math.max(150, 350 - 30 * L),            // pausa entre pasos
-    startLen: Math.min(5, 2 + Math.floor(L / 2)),  // largo inicial: 2 (niv. 1-2), 3 (3-4), 4 (5-6)...
-    fwdTrials: level >= 3 ? 4 : 6,                 // caminos "adelante"
-    bwdTrials: level >= 3 ? 4 : 0,                 // caminos "al revés" desde el nivel 3
-    flashes: level >= 4 ? Math.min(3, Math.floor((level - 2) / 2)) : 0,   // distractores en las casillas
-    similarFlash: level >= 6,                      // el distractor de las casillas se parece al objetivo
+    // Pensado para 8 años en adelante con TDAH (span de Corsi típico ~4 adelante y ~3-4 al revés a esa edad,
+    // algo menos con TDAH): pasos de casi 1 s como en el Corsi, empieza corto y sube solo si acierta.
+    showMs: Math.max(750, 1000 - 50 * L),          // tiempo que se ve cada paso (1 s en el nivel 1, mín. 0,75 s)
+    gapMs: Math.max(250, 350 - 20 * L),            // pausa entre pasos
+    startLen: Math.min(4, 2 + Math.floor(L / 3)),  // largo inicial: 2 (niv. 1-3), 3 (4-6), 4 (7 en adelante)
+    fwdTrials: level >= 4 ? 4 : 6,                 // caminos "adelante"
+    bwdTrials: level >= 4 ? 3 : 0,                 // caminos "al revés" desde el nivel 4
+    flashes: level >= 4 ? Math.min(2, Math.floor((level - 2) / 2)) : 0,   // distractores en las casillas (máx. 2)
+    similarFlash: level >= 8,                      // el distractor de las casillas se parece al objetivo (solo Desafío alto)
     visual: level >= 2                             // nivel 1 sin cosas que crucen
   });
 }

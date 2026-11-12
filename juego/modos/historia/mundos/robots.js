@@ -3,7 +3,7 @@
 
 registrarMundo('robots', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Robots', bg: 0x1e1b4b, accent: 0x22d3ee,
+  theme: { label: 'Robots', mission: 'recargar a Botón', catcherName: 'la estación de carga', bg: 0x1e1b4b, accent: 0x22d3ee,
            targetLabel: 'Botón, el robotito azul', targetObj: 'a Botón, el robotito azul',
            villain: 'Glitch', villainObj: 'a Glitch', chase: '¡Persíguelo!' },
 
@@ -46,7 +46,7 @@ registrarMundo('robots', {
       { place: 'El Centro de Control', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
         line: '¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.' }
     ],
-    ending: '¡Atrapamos a Glitch y Botón volvió a sonreír! Todos los robots funcionan gracias a ti.',
+    ending: '¡Atrapamos a Glitch y Botón está recargado y brillando! Todos los robots funcionan gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [

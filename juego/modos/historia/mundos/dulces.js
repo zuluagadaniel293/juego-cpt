@@ -3,7 +3,7 @@
 
 registrarMundo('candy', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Dulces', bg: 0x831843, accent: 0xf9a8d4,
+  theme: { label: 'Dulces', mission: 'encender a Chispita', catcherName: 'el frasco de brillo', bg: 0x831843, accent: 0xf9a8d4,
            targetLabel: 'Chispita, la estrella dorada', targetObj: 'a Chispita, la estrella dorada',
            villain: 'Ácido', villainObj: 'a Ácido', chase: '¡Persíguelo!' },
 

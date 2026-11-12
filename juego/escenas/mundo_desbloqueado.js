@@ -82,7 +82,7 @@ class WorldUnlockedScene extends Phaser.Scene {
       .setOrigin(0.5).setAlpha(0).setScale(1.6);
     this.tweens.add({ targets: name, alpha: 1, scale: 1, duration: 450, delay: 350, ease: 'Back.easeOut' });
     // quién necesita ayuda, en una franja oscura entre el protagonista y los amigos
-    const who = this.add.text(W / 2, 385, st.hero.split(',')[0] + ' necesita tu ayuda para encontrar ' + th.targetObj.replace(/^a /, 'a ').replace(/^al /, 'al '),
+    const who = this.add.text(W / 2, 385, st.hero.split(',')[0] + ' necesita tu ayuda para ' + (th.mission || 'encontrar ' + th.targetObj),
       { font: 'bold 19px Arial', color: '#ffffff', align: 'center', wordWrap: { width: 380 } }).setOrigin(0.5).setAlpha(0).setDepth(2);
     const pill = this.add.graphics().setAlpha(0).setDepth(1);
     pill.fillStyle(0x0f172a, 0.75);

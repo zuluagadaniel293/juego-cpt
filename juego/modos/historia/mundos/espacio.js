@@ -3,7 +3,7 @@
 
 registrarMundo('space', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Espacio', bg: 0x172554, accent: 0xfb923c,
+  theme: { label: 'Espacio', mission: 'llevar a Bip y sus hermanitos a la base', catcherName: 'la nave de rescate', bg: 0x172554, accent: 0xfb923c,
            targetLabel: 'Bip, el alien verde', targetObj: 'a Bip, el alien verde',
            villain: 'Capitán Meteoro', villainObj: 'al Capitán Meteoro', chase: '¡Persíguelo!' },
 

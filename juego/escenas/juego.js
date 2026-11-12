@@ -102,7 +102,7 @@ class GameScene extends Phaser.Scene {
       title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
       what = this.chars ? th.villainObj : th.targetObj;
     }
-    const holder = this.chars ? 'la red' : 'la canasta';
+    const holder = this.chars ? 'la red' : (th.catcherName || 'la canasta');
     this.showHowToPlay(title, what, holder);
   }
 
@@ -239,7 +239,7 @@ class GameScene extends Phaser.Scene {
       this.input.keyboard.on('keydown-SPACE', () => this.respond());
       this.input.on('pointerdown', () => this.respond());
     } else if (this.mg === 'catch') {
-      this.basket = fit(this.add.image(W / 2, H - 60, this.chars ? TEX[this.themeKey].net : 'basket'), this.chars ? 120 : 144).setDepth(3);
+      this.basket = fit(this.add.image(W / 2, H - 60, this.chars ? TEX[this.themeKey].net : TEX[this.themeKey].catcher), this.chars ? 120 : 160).setDepth(3);
       this.mgObjects.push(this.basket);
       this.cursors = this.input.keyboard.createCursorKeys();
       const follow = p => { if (this.started) this.basket.x = Phaser.Math.Clamp(this.cameras.main.getWorldPoint(p.x, p.y).x, 70, W - 70); };

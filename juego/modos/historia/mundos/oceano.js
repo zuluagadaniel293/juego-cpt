@@ -3,7 +3,7 @@
 
 registrarMundo('ocean', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Océano', bg: 0x083344, accent: 0x2dd4bf,
+  theme: { label: 'Océano', mission: 'proteger a Perla del Pulpo Tinta', catcherName: 'la concha', bg: 0x083344, accent: 0x2dd4bf,
            targetLabel: 'Perla, el caballito rosado', targetObj: 'a Perla, el caballito rosado',
            villain: 'Pulpo Tinta', villainObj: 'al Pulpo Tinta', chase: '¡Persíguelo!' },
 

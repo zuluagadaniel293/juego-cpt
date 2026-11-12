@@ -75,7 +75,7 @@ Memoria es una tarea tipo **Corsi** (memoria de trabajo visoespacial): el objeti
 
 Se juega de dos formas:
 - **Modo Memoria** (pantalla inicial): la secuencia crece de a 1 al acertar; con 2 fallos seguidos en el mismo largo termina la fase. Sirve para medir el *span*.
-- **Historia y Desafío**: la dificultad la pone el nivel. Nivel 1: caminos de 2, lentos, sin distractores. Desde el 2: sonidos del mundo y cosas que cruzan. Desde el 3: fase al revés. Desde el 4: objetos distractores que se encienden en las casillas (hay que ignorarlos). Nivel 6: esos distractores se parecen al objetivo. Hay una cantidad fija de caminos; el largo sube 1 al acertar y baja 1 con 2 fallos seguidos.
+- **Historia y Desafío**: la dificultad la pone el nivel. Ajustada para niños de 8 años en adelante con TDAH (desde 2026-11-12): cada paso se ve entre 1 s (nivel 1) y 0,75 s como mínimo. Niveles 1 a 3: caminos que empiezan en 2; del 4 al 6, en 3; desde el 7, en 4. Desde el 2: sonidos del mundo y cosas que cruzan. Desde el 4: fase al revés (3 caminos) y 1 o 2 objetos distractores que se encienden en las casillas (hay que ignorarlos). Desde el 8 (solo Desafío): esos distractores se parecen al objetivo. Hay una cantidad fija de caminos; el largo sube 1 al acertar y baja 1 con 2 fallos seguidos.
 
 Nombre del archivo: `cpt_memoria_<mundo>_<fecha>_<hora>.csv` (o `cpt_historia_...` / `cpt_desafio_...`). Cada fila es **un camino**, o un sonido o una cosa que cruzó la pantalla.
 

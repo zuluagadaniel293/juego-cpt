@@ -3,7 +3,7 @@
 
 registrarMundo('jungle', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Selva', bg: 0x064e3b, accent: 0xfacc15,
+  theme: { label: 'Selva', mission: 'devolverle los colores a Arcoíris', catcherName: 'el nido', bg: 0x064e3b, accent: 0xfacc15,
            targetLabel: 'Arcoíris, el tucán', targetObj: 'a Arcoíris, el tucán',
            villain: 'Serpiente Silbona', villainObj: 'a la Serpiente Silbona', chase: '¡Persíguela!' },
 

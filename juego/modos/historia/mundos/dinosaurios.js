@@ -1,65 +1,66 @@
-// Mundo: Dinosaurios. Tito, el niño explorador, busca a Dino, el triceratops bebé naranja, y atrapa al Pterodáctilo Ladrón.
+// Mundo: Dinosaurios. El Pterodáctilo Ladrón se robó las hojas doradas, la comida que le da fuerzas a Dino (el triceratops
+// bebé). Tito, el niño explorador, las recupera para alimentarlo y al final atrapa al ladrón.
 // Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
 
 registrarMundo('dinos', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Dinosaurios', bg: 0x14532d, accent: 0xf97316,
-           targetLabel: 'Dino, el triceratops naranja', targetObj: 'a Dino, el triceratops naranja',
+  theme: { label: 'Dinosaurios', mission: 'darle hojas doradas a Dino', catcherName: 'la boca de Dino', bg: 0x14532d, accent: 0xf97316,
+           targetLabel: 'la hoja dorada', targetObj: 'la hoja dorada', rescueTitle: '¡Recupera las hojas doradas!',
            villain: 'Pterodáctilo Ladrón', villainObj: 'al Pterodáctilo Ladrón', chase: '¡Persíguelo!' },
 
   story: {
     hero: 'Tito',
     voice: { pitch: 1.3 },
     // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ',
+    intro: '¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ',
     mgLines: {
-      classic: 'Dino es el triceratops naranja con manchas amarillas. ¡Toca solo cuando lo veas a él!',
-      catch: '¡Los triceratops bebés ruedan por la colina! Atrapa solo a Dino.',
-      race: '¡Dino corre entre los helechos! Corre y alcánzalo solo a él.',
-      find: 'Aquí hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Toca a todos los triceratops... ¡menos a Dino!',
-      ax: 'Dino siempre llega después del triceratops azul. ¡Toca a Dino solo si justo antes salió el triceratops azul!',
-      memory: '¡Dino deja huellas de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.'
+      classic: 'Las hojas doradas brillan con destellos. ¡Toca solo cuando veas una hoja dorada, para dársela a Dino!',
+      catch: '¡El viento hace caer hojas de los árboles! Mueve a Dino para que atrape con la boca solo las hojas doradas.',
+      race: '¡El Pterodáctilo Ladrón huye y deja caer hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas para que no se las lleve.',
+      find: 'El ladrón escondió las hojas entre los helechos... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Los dinosaurios del valle tienen hambre: dales todas las hojas... ¡menos las doradas, que son para Dino!',
+      ax: 'Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!',
+      memory: '¡El viento lleva la hoja dorada de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.'
     },
-    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
+    // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la hoja dorada).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
     mgLinesCast: {
-      classic: '¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.',
+      classic: '¡El Pterodáctilo Ladrón se mezcla con los dinosaurios para robar más hojas! Toca solo cuando aparezca él.',
       catch: '¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Pterodáctilo Ladrón corre entre los dinosaurios! Alcánzalo solo a él.',
-      find: 'Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
-      memory: '¡El Pterodáctilo Ladrón salta de roca en roca! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!',
+      race: '¡El Pterodáctilo Ladrón corre con la bolsa de hojas! Alcánzalo solo a él.',
+      find: 'El Pterodáctilo Ladrón se esconde entre los dinosaurios con su bolsa de hojas... ¡Encuéntralo! Y si no está, ¡no toques nada!',
+      memory: '¡El Pterodáctilo Ladrón salta de roca en roca escondiendo hojas! Mira bien por dónde pasó y repite su camino.',
+      notx: '¡Al revés! Saluda a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!',
       ax: 'El Pterodáctilo Ladrón solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.',
+    bossLine: '¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.',
     chapters: [
       { place: 'El Valle de Helechos', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino... Búscalo: es el triceratops naranja con manchas amarillas.' },
+        line: '¡Hola! Soy Tito. Dino está débil porque el Pterodáctilo Ladrón se robó las hojas doradas. ¡Toca solo las hojas doradas para dárselas!' },
       { place: 'El Río Prehistórico', mg: 'catch', level: 2, sec: 60,
-        line: '¡Los triceratops bebés cruzan el río! Atrapa solo a Dino.' },
+        line: '¡Caen hojas sobre el río! Mueve a Dino para que atrape con la boca solo las hojas doradas.' },
       { place: 'El Volcán Humeante', mg: 'race', level: 3, sec: 75,
-        line: '¡Dino corre cerca del volcán! Corre y alcánzalo solo a él.' },
+        line: '¡El ladrón huye por el volcán soltando hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas.' },
       { place: 'La Cueva de las Pinturas', mg: 'find', level: 4, sec: 90,
-        line: 'En la cueva hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!' },
+        line: 'En la cueva hay hojas escondidas por todas partes... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!' },
       { place: 'El Nido en la Montaña', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.' }
+        line: '¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.' }
     ],
-    ending: '¡Atrapamos al Pterodáctilo Ladrón y Dino volvió con su familia! Todo el valle está feliz gracias a ti.',
+    ending: '¡Atrapamos al Pterodáctilo Ladrón! Dino comió todas sus hojas doradas y ya está fuerte otra vez. ¡Todo el valle está feliz gracias a ti!',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Cuello Largo', the: 'Cuello Largo', line: '¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos a Dino juntos!' },
+      { role: 'friend1', name: 'Cuello Largo', the: 'Cuello Largo', line: '¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos las hojas doradas para Dino!' },
       { role: 'friend2', name: 'Pinchos', the: 'Pinchos', line: '¡Hola! Soy Pinchos. Tengo picos en la espalda, pero soy muy amigable. ¡Mira con atención!' },
       { role: 'friend3', name: 'Plumi', the: 'Plumi', line: 'Hola, soy Plumi. Me parezco al ladrón, pero yo llevo bufanda y no antifaz. ¡Soy de los buenos!' },
-      { role: 'villain', name: 'Pterodáctilo Ladrón', line: '¡Ja, ja, ja! ¡Dino ya está en mi bolsa! ¡A ver si lo encuentras, explorador!' }
+      { role: 'villain', name: 'Pterodáctilo Ladrón', line: '¡Ja, ja, ja! ¡Todas las hojas doradas están en mi bolsa! ¡Dino se quedará sin comer!' }
     ]
   },
 
-  // El rugido es solo contra el Pterodáctilo Ladrón (jefe final). A Dino se le rescata, no se le ataca.
+  // El rugido es solo contra el Pterodáctilo Ladrón. Las hojas doradas se recogen para Dino.
   power: { name: 'Rugido de dinosaurio', kind: 'roar', color: 0xfb923c, shout: '¡Groaar!',
-           rescue: { shout: '¡Te encontré!' } },
+           rescue: { shout: '¡Ñam, para Dino!' } },
   powerSound() {   // rugido grave que retumba
     sweep('sawtooth', 160, 60, 0.7, 0.07);
     sweep('square', 110, 50, 0.6, 0.03, 0.05);
@@ -87,7 +88,7 @@ registrarMundo('dinos', {
     // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
       risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Dino ya es mío!',
+        '¡Ja, ja, ja! ¡Las hojas doradas son mías!',
         '¡Je, je! ¡Vuelo sobre el río y tú no!',
         '¡Ja, ja! ¡El humo del volcán me esconde!',
         '¡Je, je, je! ¡Yo también sé pintar en la cueva!',
@@ -101,7 +102,7 @@ registrarMundo('dinos', {
         '¡Tu lupa no te sirve contra mí!'
       ] },
       amenaza: { who: 'villain', text: [
-        '¡Me llevaré a todos los bebés!',
+        '¡Me llevaré todas las hojas!',
         '¡Haré que el río se desborde!',
         '¡Despertaré al volcán!',
         '¡Apagaré las antorchas de la cueva!',

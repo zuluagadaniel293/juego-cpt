@@ -32,6 +32,7 @@
 //                         reino_magico: libro_volador, escoba_magica, raton
 window.ASSETS = {
   heroes: {             // carpeta assets/superheroes
+    catcher:       'superheroes/escudo_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:  'superheroes/senal_de_sombra.png',
     dist1:   'superheroes/senal_capitan_estrella.png',
     dist2:   'superheroes/senal_escudo_verde.png',
@@ -69,6 +70,7 @@ window.ASSETS = {
     voice_2: 'superheroes/voz_capitulo_2.mp3'
   },
   fantasy: {            // carpeta assets/dragones
+    catcher:       'dragones/nido_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:  'dragones/dragon_bebe_dorado.png',
     dist1:   'dragones/dragon_bebe_rojo.png',
     dist2:   'dragones/dragon_bebe_azul.png',
@@ -104,6 +106,7 @@ window.ASSETS = {
     distractor_ardilla:    'dragones/ardilla.png'
   },
   kingdom: {            // carpeta assets/reino_magico
+    catcher:       'reino_magico/flor_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:  'reino_magico/hada_rosada_lumi.png',
     dist1:   'reino_magico/hada_azul.png',
     dist2:   'reino_magico/hada_verde.png',
@@ -139,6 +142,7 @@ window.ASSETS = {
     distractor_raton:         'reino_magico/raton.png'
   },
   space: {            // carpeta assets/espacio · Nova busca a Bip
+    catcher:       'espacio/nave_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:        'espacio/bip_alien_verde.png',
     dist1:         'espacio/alien_azul.png',
     dist2:         'espacio/alien_naranja.png',
@@ -175,6 +179,7 @@ window.ASSETS = {
     distractor_rover:'espacio/rover.png'
   },
   ocean: {            // carpeta assets/oceano · Coral busca a Perla
+    catcher:       'oceano/concha_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:        'oceano/perla_caballito_rosado.png',
     dist1:         'oceano/caballito_azul.png',
     dist2:         'oceano/caballito_verde.png',
@@ -211,10 +216,11 @@ window.ASSETS = {
     distractor_estrella_de_mar:'oceano/estrella_de_mar.png'
   },
   dinos: {            // carpeta assets/dinosaurios · Tito busca a Dino
-    target:        'dinosaurios/dino_triceratops_naranja.png',
-    dist1:         'dinosaurios/triceratops_verde.png',
-    dist2:         'dinosaurios/triceratops_azul.png',
-    dist3:         'dinosaurios/triceratops_naranja_claro.png',
+    catcher:       'dinosaurios/dino_boca_abierta.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    target:        'dinosaurios/hoja_dorada.png',      // la comida que le da fuerzas a Dino
+    dist1:         'dinosaurios/helecho_verde.png',
+    dist2:         'dinosaurios/hoja_seca.png',
+    dist3:         'dinosaurios/hoja_amarilla_palida.png',   // parecida a la dorada (difícil)
     hero:          'dinosaurios/tito.png',
     villain:       'dinosaurios/pterodactilo_ladron.png',
     villain_caught:'dinosaurios/ptero_atrapado.png',
@@ -247,6 +253,7 @@ window.ASSETS = {
     distractor_lagartija:'dinosaurios/lagartija.png'
   },
   robots: {            // carpeta assets/robots · Chip busca a Botón
+    catcher:       'robots/carga_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:        'robots/boton_robot_azul.png',
     dist1:         'robots/robot_rojo.png',
     dist2:         'robots/robot_amarillo.png',
@@ -282,6 +289,7 @@ window.ASSETS = {
     distractor_aspiradora:'robots/aspiradora.png'
   },
   jungle: {            // carpeta assets/selva · Kiara busca a Arcoíris
+    catcher:       'selva/nido_rama_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:        'selva/arcoiris_tucan.png',
     dist1:         'selva/tucan_naranja.png',
     dist2:         'selva/loro_verde.png',
@@ -319,6 +327,7 @@ window.ASSETS = {
     distractor_rana:'selva/rana.png'
   },
   candy: {             // carpeta assets/dulces · Gomi busca a Chispita
+    catcher:       'dulces/frasco_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
     target:        'dulces/chispita_estrella_dorada.png',
     dist1:         'dulces/estrella_verde.png',
     dist2:         'dulces/corazon_rosado.png',

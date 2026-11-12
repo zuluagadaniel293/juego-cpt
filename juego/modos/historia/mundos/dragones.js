@@ -3,7 +3,7 @@
 
 registrarMundo('fantasy', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Dragones y fantasía', bg: 0x1f3a2a, accent: 0xfacc15,
+  theme: { label: 'Dragones y fantasía', mission: 'llevar a los dragoncitos dorados a su nido', catcherName: 'el nido', bg: 0x1f3a2a, accent: 0xfacc15,
            targetLabel: 'el dragón bebé dorado', targetObj: 'al dragón bebé dorado',
            villain: 'Morgana', villainObj: 'a Morgana', chase: '¡Persíguela!' },
 

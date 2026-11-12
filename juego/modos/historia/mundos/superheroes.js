@@ -3,7 +3,7 @@
 
 registrarMundo('heroes', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Superhéroes', bg: 0x0f2a4a, accent: 0xfde047,
+  theme: { label: 'Superhéroes', mission: 'detener las señales de Sombra', catcherName: 'el escudo', bg: 0x0f2a4a, accent: 0xfde047,
            targetLabel: 'la señal de Sombra', targetObj: 'la señal de Sombra',
            villain: 'Sombra', villainObj: 'a Sombra', chase: '¡Persíguelo!',
            rescueTitle: '¡Sigue la señal de Sombra!' },   // jefe final, 1.ª fase (aquí no se rescata a nadie)
