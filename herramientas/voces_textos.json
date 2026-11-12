@@ -85,12 +85,12 @@
       "firma": "bd7b95fc05"
     },
     "dodge": {
-      "texto": "¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
-      "firma": "785cee72e7"
+      "texto": "¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "678fff2740"
     },
     "intro_dodge": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
-      "firma": "2a323c2de8"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "cac9030dae"
     },
     "path": {
       "texto": "¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.",
@@ -177,12 +177,12 @@
       "firma": "b2dd004cfb"
     },
     "cast_dodge": {
-      "texto": "¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
-      "firma": "785cee72e7"
+      "texto": "¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "678fff2740"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
-      "firma": "2a323c2de8"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "cac9030dae"
     },
     "cast_path": {
       "texto": "¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.",
@@ -371,12 +371,12 @@
       "firma": "8b06f9d9f9"
     },
     "dodge": {
-      "texto": "¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
-      "firma": "b2ca9c5200"
+      "texto": "¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "e8b94ab2b6"
     },
     "intro_dodge": {
-      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
-      "firma": "d7bc272c56"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "a430e6a193"
     },
     "path": {
       "texto": "¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.",
@@ -463,12 +463,12 @@
       "firma": "c011a8e4f9"
     },
     "cast_dodge": {
-      "texto": "¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
-      "firma": "b2ca9c5200"
+      "texto": "¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "e8b94ab2b6"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
-      "firma": "d7bc272c56"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!",
+      "firma": "a430e6a193"
     },
     "cast_path": {
       "texto": "¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.",
@@ -657,12 +657,12 @@
       "firma": "e9949d4315"
     },
     "dodge": {
-      "texto": "¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "45d6c20a07"
+      "texto": "¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "cf2905cd1b"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "471406ed45"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "fe74247721"
     },
     "path": {
       "texto": "¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.",
@@ -749,12 +749,12 @@
       "firma": "259c2d5495"
     },
     "cast_dodge": {
-      "texto": "¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "45d6c20a07"
+      "texto": "¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "cf2905cd1b"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "471406ed45"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "fe74247721"
     },
     "cast_path": {
       "texto": "¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.",
@@ -943,12 +943,12 @@
       "firma": "45af49022b"
     },
     "dodge": {
-      "texto": "¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
-      "firma": "3e1630e549"
+      "texto": "¡El Capitán Meteoro deja caer tres meteoritos! A mitad de camino uno se detiene: ¡ponte debajo de ese!",
+      "firma": "23eac4c704"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
-      "firma": "ef7a17963d"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro deja caer tres meteoritos! A mitad de camino uno se detiene: ¡ponte debajo de ese!",
+      "firma": "fdace583c9"
     },
     "path": {
       "texto": "¡Bip flota lejos de la nave! Pilota por la ruta segura entre los asteroides hasta él, sin salirte.",
@@ -1035,12 +1035,12 @@
       "firma": "cb1491ae54"
     },
     "cast_dodge": {
-      "texto": "¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
-      "firma": "3e1630e549"
+      "texto": "¡El Capitán Meteoro deja caer tres meteoritos! A mitad de camino uno se detiene: ¡ponte debajo de ese!",
+      "firma": "23eac4c704"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
-      "firma": "ef7a17963d"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro deja caer tres meteoritos! A mitad de camino uno se detiene: ¡ponte debajo de ese!",
+      "firma": "fdace583c9"
     },
     "cast_path": {
       "texto": "¡Bip flota lejos de la nave! Pilota por la ruta segura entre los asteroides hasta él, sin salirte.",
@@ -1229,12 +1229,12 @@
       "firma": "62cc2056e9"
     },
     "dodge": {
-      "texto": "¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
-      "firma": "0227ff0af2"
+      "texto": "¡El Pulpo Tinta lanza tres bolas de tinta! A mitad de camino una se detiene: ¡nada a su carril!",
+      "firma": "0f2a9fa697"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
-      "firma": "5db27f7cbd"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta lanza tres bolas de tinta! A mitad de camino una se detiene: ¡nada a su carril!",
+      "firma": "be47acb3fe"
     },
     "path": {
       "texto": "¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.",
@@ -1321,12 +1321,12 @@
       "firma": "60f096d8c6"
     },
     "cast_dodge": {
-      "texto": "¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
-      "firma": "0227ff0af2"
+      "texto": "¡El Pulpo Tinta lanza tres bolas de tinta! A mitad de camino una se detiene: ¡nada a su carril!",
+      "firma": "0f2a9fa697"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
-      "firma": "5db27f7cbd"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta lanza tres bolas de tinta! A mitad de camino una se detiene: ¡nada a su carril!",
+      "firma": "be47acb3fe"
     },
     "cast_path": {
       "texto": "¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.",
@@ -1515,12 +1515,12 @@
       "firma": "2c619fbd2e"
     },
     "dodge": {
-      "texto": "¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
-      "firma": "b197c9645f"
+      "texto": "¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "90063b8359"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
-      "firma": "c2d64ec2d2"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "02bb93184d"
     },
     "path": {
       "texto": "¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.",
@@ -1607,12 +1607,12 @@
       "firma": "3170ceb707"
     },
     "cast_dodge": {
-      "texto": "¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
-      "firma": "b197c9645f"
+      "texto": "¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "90063b8359"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
-      "firma": "c2d64ec2d2"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "02bb93184d"
     },
     "cast_path": {
       "texto": "¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.",
@@ -1801,12 +1801,12 @@
       "firma": "3cbcdd0dc5"
     },
     "dodge": {
-      "texto": "¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "3397dc86e3"
+      "texto": "¡Glitch lanza tres errores a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para no fallar!",
+      "firma": "0826b27332"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "c9077e2bda"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch lanza tres errores a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para no fallar!",
+      "firma": "2c44af9d8d"
     },
     "path": {
       "texto": "¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.",
@@ -1893,12 +1893,12 @@
       "firma": "a8e905d628"
     },
     "cast_dodge": {
-      "texto": "¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "3397dc86e3"
+      "texto": "¡Glitch lanza tres errores a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para no fallar!",
+      "firma": "0826b27332"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
-      "firma": "c9077e2bda"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch lanza tres errores a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para no fallar!",
+      "firma": "2c44af9d8d"
     },
     "cast_path": {
       "texto": "¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.",
@@ -2087,12 +2087,12 @@
       "firma": "263884b441"
     },
     "dodge": {
-      "texto": "¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
-      "firma": "e537d40338"
+      "texto": "¡La Serpiente Silbona lanza tres hipnosis! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "ac20ef6313"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
-      "firma": "c82c4da08e"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona lanza tres hipnosis! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "e0f6e1294b"
     },
     "path": {
       "texto": "¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.",
@@ -2179,12 +2179,12 @@
       "firma": "cb96a11b5f"
     },
     "cast_dodge": {
-      "texto": "¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
-      "firma": "e537d40338"
+      "texto": "¡La Serpiente Silbona lanza tres hipnosis! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "ac20ef6313"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
-      "firma": "c82c4da08e"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona lanza tres hipnosis! A mitad de camino una se detiene: ¡ponte en su carril!",
+      "firma": "e0f6e1294b"
     },
     "cast_path": {
       "texto": "¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.",
@@ -2373,12 +2373,12 @@
       "firma": "1727b2b9ef"
     },
     "dodge": {
-      "texto": "¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
-      "firma": "c571b2124c"
+      "texto": "¡Ácido lanza tres chorros de jugo agrio! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "a64f428f1e"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
-      "firma": "501c0f959a"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido lanza tres chorros de jugo agrio! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "ee2a57c707"
     },
     "path": {
       "texto": "¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.",
@@ -2465,12 +2465,12 @@
       "firma": "b7767fd777"
     },
     "cast_dodge": {
-      "texto": "¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
-      "firma": "c571b2124c"
+      "texto": "¡Ácido lanza tres chorros de jugo agrio! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "a64f428f1e"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
-      "firma": "501c0f959a"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido lanza tres chorros de jugo agrio! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "ee2a57c707"
     },
     "cast_path": {
       "texto": "¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.",
