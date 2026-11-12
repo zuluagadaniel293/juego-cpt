@@ -93,12 +93,12 @@
       "firma": "cac9030dae"
     },
     "path": {
-      "texto": "¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.",
-      "firma": "7c1a4ad7ca"
+      "texto": "Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "bdd81ab8ce"
     },
     "intro_path": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.",
-      "firma": "0558f5f1e7"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "e4b4e5cfeb"
     },
     "boss": {
       "texto": "¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.",
@@ -185,12 +185,12 @@
       "firma": "cac9030dae"
     },
     "cast_path": {
-      "texto": "¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.",
-      "firma": "7c1a4ad7ca"
+      "texto": "Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "bdd81ab8ce"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.",
-      "firma": "0558f5f1e7"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "e4b4e5cfeb"
     },
     "comp_1": {
       "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
@@ -379,12 +379,12 @@
       "firma": "a430e6a193"
     },
     "path": {
-      "texto": "¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.",
-      "firma": "9c1913e784"
+      "texto": "El Hada del Bosque sabe dónde está un dragoncito dorado. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "743a3bdd5f"
     },
     "intro_path": {
-      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.",
-      "firma": "43d73c246f"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! El Hada del Bosque sabe dónde está un dragoncito dorado. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "21b6d9e00d"
     },
     "boss": {
       "texto": "¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.",
@@ -471,12 +471,12 @@
       "firma": "a430e6a193"
     },
     "cast_path": {
-      "texto": "¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.",
-      "firma": "9c1913e784"
+      "texto": "El Hada del Bosque sabe dónde está un dragoncito dorado. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "743a3bdd5f"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.",
-      "firma": "43d73c246f"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! El Hada del Bosque sabe dónde está un dragoncito dorado. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "21b6d9e00d"
     },
     "comp_1": {
       "texto": "¡Hola, Chispa! Soy el Hada del Bosque. ¡Te ayudaré a llevar a tus hermanitos al nido!",
@@ -665,12 +665,12 @@
       "firma": "fe74247721"
     },
     "path": {
-      "texto": "¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.",
-      "firma": "2f5bf69af6"
+      "texto": "El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "83c04cb85e"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.",
-      "firma": "aef8bf0199"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "2f077925e1"
     },
     "boss": {
       "texto": "¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.",
@@ -757,12 +757,12 @@
       "firma": "fe74247721"
     },
     "cast_path": {
-      "texto": "¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.",
-      "firma": "2f5bf69af6"
+      "texto": "El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "83c04cb85e"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.",
-      "firma": "aef8bf0199"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "2f077925e1"
     },
     "comp_1": {
       "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a liberar a Lumi!",
@@ -951,12 +951,12 @@
       "firma": "fdace583c9"
     },
     "path": {
-      "texto": "¡Bip flota lejos de la nave! Pilota por la ruta segura entre los asteroides hasta él, sin salirte.",
-      "firma": "2727b85836"
+      "texto": "Zuri conoce la ruta entre los asteroides hasta Bip. ¡Mira por dónde salta y repítela de memoria!",
+      "firma": "59b32bf3c7"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡Bip flota lejos de la nave! Pilota por la ruta segura entre los asteroides hasta él, sin salirte.",
-      "firma": "9c62062983"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! Zuri conoce la ruta entre los asteroides hasta Bip. ¡Mira por dónde salta y repítela de memoria!",
+      "firma": "58fb9aea91"
     },
     "boss": {
       "texto": "¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.",
@@ -1043,12 +1043,12 @@
       "firma": "fdace583c9"
     },
     "cast_path": {
-      "texto": "¡Bip flota lejos de la nave! Pilota por la ruta segura entre los asteroides hasta él, sin salirte.",
-      "firma": "2727b85836"
+      "texto": "Zuri conoce la ruta entre los asteroides hasta Bip. ¡Mira por dónde salta y repítela de memoria!",
+      "firma": "59b32bf3c7"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡Bip flota lejos de la nave! Pilota por la ruta segura entre los asteroides hasta él, sin salirte.",
-      "firma": "9c62062983"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! Zuri conoce la ruta entre los asteroides hasta Bip. ¡Mira por dónde salta y repítela de memoria!",
+      "firma": "58fb9aea91"
     },
     "comp_1": {
       "texto": "¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y llevemos a Bip a la base!",
@@ -1237,12 +1237,12 @@
       "firma": "be47acb3fe"
     },
     "path": {
-      "texto": "¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.",
-      "firma": "11e838a8d0"
+      "texto": "Pinzas conoce el camino de rocas hasta Perla. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "40271e3ca9"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.",
-      "firma": "546977d6d5"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Pinzas conoce el camino de rocas hasta Perla. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "10e7ba9ba0"
     },
     "boss": {
       "texto": "¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.",
@@ -1329,12 +1329,12 @@
       "firma": "be47acb3fe"
     },
     "cast_path": {
-      "texto": "¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.",
-      "firma": "11e838a8d0"
+      "texto": "Pinzas conoce el camino de rocas hasta Perla. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "40271e3ca9"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.",
-      "firma": "546977d6d5"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Pinzas conoce el camino de rocas hasta Perla. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "10e7ba9ba0"
     },
     "comp_1": {
       "texto": "¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y protejamos a Perla!",
@@ -1523,12 +1523,12 @@
       "firma": "02bb93184d"
     },
     "path": {
-      "texto": "¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.",
-      "firma": "316ac88ba7"
+      "texto": "Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "6e9c1fa1e2"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.",
-      "firma": "1377c93c87"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "d031f5f85e"
     },
     "boss": {
       "texto": "¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.",
@@ -1615,12 +1615,12 @@
       "firma": "02bb93184d"
     },
     "cast_path": {
-      "texto": "¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.",
-      "firma": "316ac88ba7"
+      "texto": "Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "6e9c1fa1e2"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.",
-      "firma": "1377c93c87"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!",
+      "firma": "d031f5f85e"
     },
     "comp_1": {
       "texto": "¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos las hojas doradas para Dino!",
@@ -1809,12 +1809,12 @@
       "firma": "2c44af9d8d"
     },
     "path": {
-      "texto": "¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.",
-      "firma": "d22d204944"
+      "texto": "Zumbi conoce el camino del circuito hasta Botón. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "eb8d34db66"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.",
-      "firma": "07d3c8a667"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Zumbi conoce el camino del circuito hasta Botón. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "3edc4926c5"
     },
     "boss": {
       "texto": "¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.",
@@ -1901,12 +1901,12 @@
       "firma": "2c44af9d8d"
     },
     "cast_path": {
-      "texto": "¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.",
-      "firma": "d22d204944"
+      "texto": "Zumbi conoce el camino del circuito hasta Botón. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "eb8d34db66"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.",
-      "firma": "07d3c8a667"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Zumbi conoce el camino del circuito hasta Botón. ¡Mira por dónde pasa y repítelo de memoria!",
+      "firma": "3edc4926c5"
     },
     "comp_1": {
       "texto": "¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica encontrará a Botón para recargarlo!",
@@ -2095,12 +2095,12 @@
       "firma": "e0f6e1294b"
     },
     "path": {
-      "texto": "¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.",
-      "firma": "62eb1f35e5"
+      "texto": "Lento conoce el camino hasta Arcoíris. ¡Mira por dónde pasa, despacito, y repítelo de memoria!",
+      "firma": "777c21dac3"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.",
-      "firma": "497d7cbba3"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Lento conoce el camino hasta Arcoíris. ¡Mira por dónde pasa, despacito, y repítelo de memoria!",
+      "firma": "d7f908f5d9"
     },
     "boss": {
       "texto": "¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.",
@@ -2187,12 +2187,12 @@
       "firma": "e0f6e1294b"
     },
     "cast_path": {
-      "texto": "¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.",
-      "firma": "62eb1f35e5"
+      "texto": "Lento conoce el camino hasta Arcoíris. ¡Mira por dónde pasa, despacito, y repítelo de memoria!",
+      "firma": "777c21dac3"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.",
-      "firma": "497d7cbba3"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Lento conoce el camino hasta Arcoíris. ¡Mira por dónde pasa, despacito, y repítelo de memoria!",
+      "firma": "d7f908f5d9"
     },
     "comp_1": {
       "texto": "¡Grrr... hola! Soy Jaguarcito. Tengo ojos de cazador. ¡Vamos a devolverle los colores a Arcoíris!",
@@ -2381,12 +2381,12 @@
       "firma": "ee2a57c707"
     },
     "path": {
-      "texto": "¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.",
-      "firma": "82bbe1ef3e"
+      "texto": "Nube conoce el camino de caramelo hasta Chispita. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "44de2fb9b2"
     },
     "intro_path": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.",
-      "firma": "7852706e8b"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Nube conoce el camino de caramelo hasta Chispita. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "0fab446f2a"
     },
     "boss": {
       "texto": "¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.",
@@ -2473,12 +2473,12 @@
       "firma": "ee2a57c707"
     },
     "cast_path": {
-      "texto": "¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.",
-      "firma": "82bbe1ef3e"
+      "texto": "Nube conoce el camino de caramelo hasta Chispita. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "44de2fb9b2"
     },
     "intro_cast_path": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.",
-      "firma": "7852706e8b"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Nube conoce el camino de caramelo hasta Chispita. ¡Mira por dónde salta y repítelo de memoria!",
+      "firma": "0fab446f2a"
     },
     "comp_1": {
       "texto": "¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a encender a Chispita!",
