@@ -73,19 +73,21 @@ window.ASSETS = {
     villain_laugh: 'dragones/morgana_risa.png',          // escenas de fondo: se asoma con la varita
     villain_taunt: 'dragones/morgana_agachada.png',      // presenta el capítulo 4
     villain_scared: 'dragones/morgana_asustada.png',     // huye del Hada del Bosque
+    villain_run:   'dragones/morgana_corriendo.png',
+    villain_face:  'dragones/morgana_cara.png',          // espía desde un lado
     friend2_help:  'dragones/mago_ayuda.png',            // pelea: el Mago Abuelo suplica asustado
+    friend2_cower: 'dragones/mago_cubre.png',            // pelea: se cubre cuando lo atacan
+    friend2_flee:  'dragones/mago_huye.png',
     treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
     friend3: 'dragones/hechicera_buena.png',
-    friend1_cheer: 'dragones/hada_celebra.png',
-    friend2_cheer: 'dragones/mago_celebra.png',
-    friend3_cheer: 'dragones/hechicera_celebra.png',
+    end:     'dragones/final.jpg',
     bg_1:    'dragones/fondo_1_nido.jpg',
     bg_2:    'dragones/fondo_2_bosque.jpg',
-    bg_3:    'dragones/fondo_3_el_rio.png',
-    bg_4:    'dragones/fondo_4_la_cueva.png',
-    bg_5:    'dragones/fondo_5_el_volcan.png',
+    bg_3:    'dragones/fondo_3_el_rio.jpg',
+    bg_4:    'dragones/fondo_4_la_cueva.jpg',
+    bg_5:    'dragones/fondo_5_el_volcan.jpg',
     distractor_mariposa:   'dragones/mariposa.png',
     distractor_murcielago: 'dragones/murcielago.png',
     distractor_ardilla:    'dragones/ardilla.png'

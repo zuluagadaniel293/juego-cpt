@@ -83,7 +83,8 @@ registrarMundo('fantasy', {
       { name: 'pelea_morgana_mago', kind: 'fight', friend: 'friend2', voice: 'ayuda', minLevel: 2 },
       { name: 'morgana_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
       { name: 'hada_persigue_morgana', kind: 'chase', friend: 'friend1', villainPose: 'villain_scared', voice: 'alto', minLevel: 2 },
-      { name: 'morgana_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 }
+      { name: 'morgana_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
+      { name: 'morgana_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
     // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
