@@ -35,9 +35,10 @@ class MenuScene extends Phaser.Scene {
         .setInteractive({ useHandCursor: true });
       const pic = locked ? silhouetteOf(this, TEX[key].target) || TEX[key].target : TEX[key].target;
       const img = rows > 1 ? fit(this.add.image(x, y - 34, pic), 86) : fit(this.add.image(x, y - 70, pic), small ? 110 : 128);
+      const title = locked ? '¿ ? ? ?' : th.label;   // el nombre se descubre al abrir el mundo
       const name = rows > 1
-        ? this.add.text(x, y + 28, th.label, { font: 'bold 20px Arial', color: '#ffffff' }).setOrigin(0.5)
-        : this.add.text(x, y + 30, th.label, { font: 'bold ' + (small ? 21 : 24) + 'px Arial', color: '#ffffff' }).setOrigin(0.5);
+        ? this.add.text(x, y + 28, title, { font: 'bold 20px Arial', color: '#ffffff' }).setOrigin(0.5)
+        : this.add.text(x, y + 30, title, { font: 'bold ' + (small ? 21 : 24) + 'px Arial', color: '#ffffff' }).setOrigin(0.5);
       if (name.width > cw - 14) name.setScale((cw - 14) / name.width);   // nombres largos: se encogen para caber
       const sub = this.add.text(x, rows > 1 ? y + 58 : y + 85,
         locked ? 'Cerrado' : rows > 1 ? th.targetLabel : 'Objeto especial:\n' + th.targetLabel,

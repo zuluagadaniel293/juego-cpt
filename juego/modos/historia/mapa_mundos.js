@@ -9,6 +9,9 @@ class WorldMapScene extends Phaser.Scene {
   constructor() { super('WorldMap'); }
   create() {
     const W = GAME_W;
+    // si se acaba de abrir un mundo, primero su pantalla de "¡Mundo desbloqueado!"
+    const pending = store.get('cpt_pending_unlock', null);
+    if (pending && THEMES[pending]) { store.set('cpt_pending_unlock', null); this.scene.start('WorldUnlocked', { theme: pending }); return; }
     this.cameras.main.setBackgroundColor(0x0f172a);
     backLink(this, 'Volver', () => this.scene.start('Mode'));
     this.add.text(W / 2, 40, 'Mapa de aventuras', { font: 'bold 34px Arial', color: '#ffffff' }).setOrigin(0.5);
@@ -27,7 +30,8 @@ class WorldMapScene extends Phaser.Scene {
         // mundo cerrado: la silueta de lo que se busca ahí, con candado; se abre al vencer al jefe del anterior
         const objs = mysteryNode(this, x, y, 52, silhouetteOf(this, TEX[w].target), th.accent);
         objs.push(fit(this.add.image(x - 37, y + 37, 'icon_lock'), 26));
-        this.add.text(x, y + 72, th.label.split(' ')[0], { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.55);
+        // el nombre se descubre al abrirlo (pantalla de mundo desbloqueado)
+        this.add.text(x, y + 72, '¿ ? ? ?', { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.55);
         this.add.text(x, y + 96, 'Cerrado', { font: 'bold 15px Arial', color: '#94a3b8' }).setOrigin(0.5);
         objs[0].setInteractive({ useHandCursor: true }).on('pointerdown', () => teaseLocked(this, objs, lockedWorldHint(w)));
       } else if (th) {

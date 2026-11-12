@@ -51,6 +51,7 @@ window.ASSETS = {
     // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
     fx_fly_1: 'superheroes/giro_humo_volando.png',
     fx_splat: 'superheroes/giro_humo_mancha.png',
+    friend2_run: 'superheroes/escudo_verde_corre.png',   // corre decidido en la Carrera
     treasure: 'superheroes/tesoro_escudo.png',   // Misión perfecta
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
@@ -87,6 +88,7 @@ window.ASSETS = {
     // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
     fx_fly_1: 'dragones/giro_hechizo.png',
     fx_amb_1: 'dragones/giro_niebla.png',
+    friend1_run: 'dragones/hada_corre.png',   // corre decidido en la Carrera
     treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
@@ -121,6 +123,7 @@ window.ASSETS = {
     // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
     fx_fly_1: 'reino_magico/giro_pastelazo.png',
     fx_splat: 'reino_magico/giro_pastelazo_mancha.png',
+    friend2_run: 'reino_magico/bufon_corre.png',   // corre decidido en la Carrera
     treasure: 'reino_magico/tesoro_pastel.png',
     friend1: 'reino_magico/guardia.png',
     friend2: 'reino_magico/bufon.png',
@@ -153,6 +156,7 @@ window.ASSETS = {
     fx_fly_1: 'espacio/giro_meteorito_1.png',
     fx_fly_2: 'espacio/giro_meteorito_2.png',
     fx_fly_3: 'espacio/giro_meteorito_3.png',
+    friend2_run: 'espacio/zuri_corre.png',   // corre decidido en la Carrera
     treasure:      'espacio/tesoro_medalla.png',
     friend1:       'espacio/robi.png',
     friend1_help:  'espacio/robi_ayuda.png',
@@ -188,6 +192,7 @@ window.ASSETS = {
     fx_fly_1: 'oceano/giro_tinta_volando.png',
     fx_splat: 'oceano/giro_tinta_mancha.png',
     fx_amb_1: 'oceano/giro_burbuja.png',
+    friend2_run: 'oceano/pinzas_corre.png',   // corre decidido en la Carrera
     treasure:      'oceano/tesoro_brujula.png',
     friend1:       'oceano/delfi.png',
     friend1_help:  'oceano/delfi_ayuda.png',
@@ -223,6 +228,7 @@ window.ASSETS = {
     fx_fly_1: 'dinosaurios/giro_barro_volando.png',
     fx_splat: 'dinosaurios/giro_barro_mancha.png',
     fx_dust: 'dinosaurios/giro_polvo.png',
+    friend2_run: 'dinosaurios/pinchos_corre.png',   // corre decidido en la Carrera
     treasure:      'dinosaurios/tesoro_amonite.png',
     friend1:       'dinosaurios/cuello_largo.png',
     friend1_help:  'dinosaurios/cuello_largo_ayuda.png',
@@ -257,6 +263,7 @@ window.ASSETS = {
     // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
     fx_fly_1: 'robots/giro_error_volando.png',
     fx_splat: 'robots/giro_error_mancha.png',
+    friend2_run: 'robots/zumbi_corre.png',   // corre decidido en la Carrera
     treasure:      'robots/tesoro_engranaje.png',
     friend1:       'robots/cable.png',
     friend1_help:  'robots/cable_ayuda.png',
@@ -293,6 +300,7 @@ window.ASSETS = {
     fx_amb_1: 'selva/giro_hoja_1.png',
     fx_amb_2: 'selva/giro_hoja_2.png',
     fx_amb_3: 'selva/giro_hoja_3.png',
+    friend2_run: 'selva/lento_corre.png',   // corre decidido en la Carrera
     treasure:      'selva/tesoro_medallon.png',
     friend1:       'selva/jaguarcito.png',
     friend1_help:  'selva/jaguarcito_ayuda.png',
@@ -335,6 +343,7 @@ window.ASSETS = {
     fx_amb_3: 'dulces/giro_chispa_3.png',
     fx_amb_4: 'dulces/giro_chispa_4.png',
     fx_amb_5: 'dulces/giro_chispa_5.png',
+    friend2_run: 'dulces/nube_corre.png',   // corre decidido en la Carrera
     treasure:      'dulces/tesoro_galleta.png',
     friend1:       'dulces/jengi.png',
     friend2:       'dulces/nube.png',

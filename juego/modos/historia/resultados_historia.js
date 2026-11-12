@@ -19,6 +19,9 @@ class StoryResultsScene extends Phaser.Scene {
     const s = levelStats(this.log, this.mg);
     const stars = starsFor(s, this.mg);
     const story = getStory();
+    // el mundo siguiente: ¿ya estaba abierto antes de este resultado? (si se abre ahora, sale la pantalla de desbloqueo)
+    const ks = Object.keys(THEMES), next = ks[ks.indexOf(this.themeKey) + 1];
+    const nextWasOpen = !next || worldUnlocked(next);
     const arr = story[this.themeKey] || [0, 0, 0, 0, 0];
     arr[this.chapter] = Math.max(arr[this.chapter], stars);
     story[this.themeKey] = arr;
@@ -28,9 +31,10 @@ class StoryResultsScene extends Phaser.Scene {
     if (passed && this.boss) newChapterOrder(this.themeKey);   // al volver a jugar el mundo, otro orden de juegos
     const title = passed ? (this.boss ? '¡Misión cumplida!' : '¡Capítulo superado!') : '¡Casi lo logras!';
     drawKidSummary(this, s, stars, this.boss ? 'Acertaste' : MG[this.mg].verb, title);
-    // al vencer al jefe se abre el mundo siguiente del mapa (si hay)
-    const ks = Object.keys(THEMES), next = ks[ks.indexOf(this.themeKey) + 1];
-    const bossMsg = next ? '¡Se abrió el mundo ' + THEMES[next].label + '!' : '¡Venciste el desafío final!';
+    // al vencer al jefe se abre el mundo siguiente del mapa (si hay). Su nombre se descubre en la pantalla de
+    // "¡Mundo desbloqueado!", que sale al volver al mapa.
+    if (!nextWasOpen && worldUnlocked(next)) store.set('cpt_pending_unlock', next);
+    const bossMsg = next ? '¡Se abrió un mundo nuevo!' : '¡Venciste el desafío final!';
     this.add.text(W / 2, 300, passed ? (this.boss ? bossMsg : '¡Se abrió el siguiente capítulo!')
       : 'Necesitas al menos ' + PASS_STARS + ' estrellas. ¡Inténtalo otra vez!',
       { font: 'bold 26px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
