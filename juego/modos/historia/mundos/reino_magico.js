@@ -1,25 +1,27 @@
-// Mundo: Reino mágico. La Reina Luna busca a Lumi, el hada rosada, y atrapa al Duende Pícaro.
+// Mundo: Reino mágico. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas; la Reina Luna
+// rompe el hechizo y atrapa al duende.
 // Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
 
 registrarMundo('kingdom', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Reino mágico', mission: 'liberar a Lumi del hechizo', catcherName: 'la flor mágica', bg: 0x4a1d4a, accent: 0xf472b6,
+  theme: { label: 'Reino mágico', mission: 'liberar a Lumi del hechizo', missionCount: 'Burbujas rotas', catcherName: 'la flor mágica', bg: 0x4a1d4a, accent: 0xf472b6,
            targetLabel: 'Lumi, el hada rosada', targetObj: 'a Lumi, el hada rosada',
-           villain: 'Duende Pícaro', villainObj: 'al Duende Pícaro', chase: '¡Persíguelo!' },
+           villain: 'Duende Pícaro', villainObj: 'al Duende Pícaro', chase: '¡Persíguelo!',
+           rescueTitle: '¡Libera a Lumi!' },
 
   story: {
     hero: 'Reina Luna',
     voice: { pitch: 1.35 },
     // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ',
+    intro: '¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ',
     mgLines: {
-      classic: 'Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!',
-      catch: '¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.',
-      race: '¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.',
-      find: 'Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Toca a todas las hadas... ¡menos a Lumi!',
+      classic: 'Lumi aparece entre otras hadas. ¡Tócala solo a ella para romper la burbuja del hechizo!',
+      catch: '¡Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi para liberarla.',
+      race: '¡El Duende Pícaro huye llevándose a Lumi! El Bufón lo persigue: alcanza solo a Lumi.',
+      find: 'El Duende escondió a Lumi entre muchas hadas... ¡Encuéntrala para romper el hechizo! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Saluda a todas las hadas del castillo... ¡pero no a Lumi, que está rompiendo su hechizo!',
       ax: 'Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!',
-      memory: '¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.'
+      memory: '¡El hechizo hace saltar a Lumi de ventana en ventana! Mira bien su camino y repítelo para romperlo.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,34 +35,34 @@ registrarMundo('kingdom', {
       ax: 'El Duende Pícaro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.',
+    bossLine: '¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.',
     chapters: [
       { place: 'El Jardín', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.' },
+        line: '¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada. ¡Tócala solo a ella para romper el hechizo!' },
       { place: 'La Cocina', mg: 'catch', level: 2, sec: 60,
-        line: '¡Las hadas caen como polvo de estrellas en la cocina! Atrapa solo a Lumi.' },
+        line: '¡En la cocina, Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi.' },
       { place: 'La Biblioteca', mg: 'race', level: 3, sec: 75,
-        line: '¡Lumi vuela entre los libros de la biblioteca! Corre por los pasillos y alcánzala solo a ella.' },
+        line: '¡El Duende huye por la biblioteca con Lumi! El Bufón lo persigue: alcanza solo a Lumi.' },
       { place: 'La Torre', mg: 'find', level: 4, sec: 90,
-        line: 'En la torre hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!' },
+        line: 'En la torre hay muchas hadas... ¡Encuentra a Lumi para liberarla! Y si no está, ¡no toques nada!' },
       // Jefe final: primero se atrapa al villano con la red y, cuando escapa, se le persigue
       { place: 'El Salón del Trono', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.' }
+        line: '¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.' }
     ],
-    ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.',
+    ending: '¡Atrapamos al Duende Pícaro y Lumi quedó libre del hechizo! Todo el castillo brilla de nuevo gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Guardia', the: 'el Guardia', line: '¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!' },
+      { role: 'friend1', name: 'Guardia', the: 'el Guardia', line: '¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a liberar a Lumi!' },
       { role: 'friend2', name: 'Bufón', the: 'el Bufón', line: '¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.' },
       { role: 'friend3', name: 'Duende Amable', the: 'el Duende Amable', line: 'Hola, soy el Duende Amable. No todos los duendes somos traviesos. ¡Yo te ayudo!' },
-      { role: 'villain', name: 'Duende Pícaro', line: '¡Ji, ji, ji! ¡Escondí a las hadas por todo el castillo! ¡A ver si las encuentras!' }
+      { role: 'villain', name: 'Duende Pícaro', line: '¡Ji, ji, ji! ¡Mi hechizo encierra a Lumi en burbujas! ¡Nunca la liberarás!' }
     ]
   },
 
   // Las estrellas son solo contra el Duende (jefe final). A Lumi se le rescata con cariño, no se le ataca.
   power: { name: 'Polvo de estrellas', kind: 'stars', color: 0xf472b6, shout: '¡Magia!',
-           rescue: { shout: '¡Rescatada!' } },
+           rescue: { shout: '¡Libre!' } },
   powerSound() {   // campanitas mágicas + brillo
     [1046, 1318, 1568, 2093].forEach((f, i) => sweep('sine', f, f * 1.01, 0.35, 0.09, i * 0.06));
     noise(0.5, 0.05, 'highpass', 6000, null, 0.1);
@@ -100,7 +102,7 @@ registrarMundo('kingdom', {
       burla:   { who: 'villain', text: [
         '¡Psst! ¡Por aquí! ¡No, por allá!',
         '¡Me comí el pastel de la reina! ¡Ñam!',
-        '¡Escondí a Lumi entre las páginas! ¿O no?',
+        '¡Encerré a Lumi en una burbuja entre las páginas!',
         '¡Subí todas las escaleras y tú no!',
         '¡Majestad, la corona me queda mejor a mí!'
       ] },

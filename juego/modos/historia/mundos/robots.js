@@ -1,25 +1,26 @@
-// Mundo: Robots. Chip, el niño inventor, busca a Botón, el robotito azul, y atrapa a Glitch, el virus travieso.
+// Mundo: Robots. Glitch, el virus travieso, le robó la energía a Botón, el robotito azul; Chip lo recarga y atrapa a Glitch.
 // Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
 
 registrarMundo('robots', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Robots', mission: 'recargar a Botón', catcherName: 'la estación de carga', bg: 0x1e1b4b, accent: 0x22d3ee,
+  theme: { label: 'Robots', mission: 'recargar a Botón', missionCount: 'Energía de Botón', catcherName: 'la estación de carga', bg: 0x1e1b4b, accent: 0x22d3ee,
            targetLabel: 'Botón, el robotito azul', targetObj: 'a Botón, el robotito azul',
-           villain: 'Glitch', villainObj: 'a Glitch', chase: '¡Persíguelo!' },
+           villain: 'Glitch', villainObj: 'a Glitch', chase: '¡Persíguelo!',
+           rescueTitle: '¡Recarga a Botón!' },
 
   story: {
     hero: 'Chip',
     voice: { pitch: 1.3 },
     // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ',
+    intro: '¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ',
     mgLines: {
-      classic: 'Botón es el robotito azul con la cara sonriente en su pantalla. ¡Toca solo cuando lo veas a él!',
-      catch: '¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.',
-      race: '¡Botón rueda por la ciudad! Corre y alcánzalo solo a él.',
-      find: 'Aquí hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Toca a todos los robotitos... ¡menos a Botón!',
+      classic: 'Botón aparece entre otros robotitos. ¡Tócalo solo a él para darle un rayo de energía!',
+      catch: '¡Los robotitos caen de la banda de la fábrica! Mueve la estación de carga y recibe solo a Botón.',
+      race: '¡Glitch huye con la energía de Botón! Zumbi lo persigue: alcanza solo a Botón para recargarlo.',
+      find: 'Glitch escondió a Botón entre muchos robots... ¡Encuéntralo para recargarlo! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Saluda a todos los robots... ¡pero no a Botón, que se está cargando!',
       ax: 'Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!',
-      memory: '¡Botón salta de máquina en máquina! Mira bien su camino y repítelo en el mismo orden.'
+      memory: '¡Botón salta de enchufe en enchufe buscando energía! Mira bien su camino y repítelo.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,33 +34,33 @@ registrarMundo('robots', {
       ax: 'Glitch solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.',
+    bossLine: '¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.',
     chapters: [
       { place: 'El Taller de Inventos', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Chip, inventor. Glitch escondió a Botón... Búscalo: es el robotito azul con la cara sonriente en su pantalla.' },
+        line: '¡Hola! Soy Chip. Glitch le robó la energía a Botón, mi robotito azul. ¡Tócalo solo a él para recargarlo!' },
       { place: 'La Fábrica de Engranajes', mg: 'catch', level: 2, sec: 60,
-        line: '¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.' },
+        line: '¡Los robotitos caen en la fábrica de engranajes! Mueve la estación de carga y recibe solo a Botón.' },
       { place: 'La Ciudad Digital', mg: 'race', level: 3, sec: 75,
-        line: '¡Botón rueda por las calles de la ciudad digital! Corre y alcánzalo solo a él.' },
+        line: '¡Glitch huye por la ciudad digital con la energía de Botón! Zumbi lo persigue: alcanza solo a Botón.' },
       { place: 'El Laboratorio', mg: 'find', level: 4, sec: 90,
-        line: 'En el laboratorio hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!' },
+        line: 'En el laboratorio hay muchos robots... ¡Encuentra a Botón para recargarlo! Y si no está, ¡no toques nada!' },
       { place: 'El Centro de Control', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.' }
+        line: '¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.' }
     ],
     ending: '¡Atrapamos a Glitch y Botón está recargado y brillando! Todos los robots funcionan gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Cable', the: 'Cable', line: '¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica nos ayudará a encontrar a Botón!' },
+      { role: 'friend1', name: 'Cable', the: 'Cable', line: '¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica encontrará a Botón para recargarlo!' },
       { role: 'friend2', name: 'Zumbi', the: 'Zumbi', line: '¡Bzzz! Soy Zumbi, el dron. Vuelo rápido y miro desde arriba... ¡tú mira con mucha atención!' },
       { role: 'friend3', name: 'Antivirus', the: 'Antivirus', line: 'Soy Antivirus. Estoy hecho de cuadritos como Glitch, pero yo tengo escudo. ¡Protejo a los robots!' },
-      { role: 'villain', name: 'Glitch', line: '¡Ji, ji, ji! ¡Desordené todos los robots! ¡A ver si encuentras a Botón, inventor!' }
+      { role: 'villain', name: 'Glitch', line: '¡Ji, ji, ji! ¡Me comí la energía de Botón! ¡Nunca lo recargarás, inventor!' }
     ]
   },
 
   // El rayo es solo contra Glitch (jefe final). A Botón se le rescata, no se le ataca.
   power: { name: 'Rayo electromagnético', kind: 'bolt', color: 0x22d3ee, shout: '¡Bzzt!',
-           rescue: { shout: '¡Te encontré!' } },
+           rescue: { shout: '¡Energía!' } },
   powerSound() {   // descarga eléctrica con zumbido
     sweep('square', 300, 1200, 0.15, 0.05);
     sweep('sawtooth', 1200, 200, 0.35, 0.04, 0.12);
@@ -87,7 +88,7 @@ registrarMundo('robots', {
     // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
       risa:    { who: 'villain', text: [
-        '¡Ji, ji, ji! ¡Botón es mío!',
+        '¡Ji, ji, ji! ¡La energía de Botón es mía!',
         '¡Je, je! ¡Desordené todos los engranajes!',
         '¡Ja, ja! ¡Apagué las luces de la ciudad!',
         '¡Ji, ji! ¡Mezclé todas tus pociones!',

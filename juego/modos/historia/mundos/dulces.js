@@ -1,25 +1,27 @@
-// Mundo: Dulces. Gomi, el osito de gomita, busca a Chispita, la gomita estrella dorada, y atrapa a Ácido, el limón gruñón.
+// Mundo: Dulces. Ácido, el limón gruñón, le apagó el brillo a Chispita, la estrella dorada; Gomi la vuelve a encender
+// y atrapa a Ácido.
 // Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
 
 registrarMundo('candy', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Dulces', mission: 'encender a Chispita', catcherName: 'el frasco de brillo', bg: 0x831843, accent: 0xf9a8d4,
+  theme: { label: 'Dulces', mission: 'encender a Chispita', missionCount: 'Brillo de Chispita', catcherName: 'el frasco de brillo', bg: 0x831843, accent: 0xf9a8d4,
            targetLabel: 'Chispita, la estrella dorada', targetObj: 'a Chispita, la estrella dorada',
-           villain: 'Ácido', villainObj: 'a Ácido', chase: '¡Persíguelo!' },
+           villain: 'Ácido', villainObj: 'a Ácido', chase: '¡Persíguelo!',
+           rescueTitle: '¡Enciende a Chispita!' },
 
   story: {
     hero: 'Gomi',
     voice: { pitch: 1.3 },
     // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ',
+    intro: '¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ',
     mgLines: {
-      classic: 'Chispita es la gomita estrella dorada. ¡Toca solo cuando la veas a ella!',
-      catch: '¡Llueven gomitas del cielo! Atrapa solo a Chispita.',
-      race: '¡Chispita rueda por el camino de azúcar! Corre y alcánzala solo a ella.',
-      find: 'Aquí hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Toca a todas las gomitas... ¡menos a Chispita!',
+      classic: 'Chispita aparece entre otros dulces. ¡Tócala solo a ella para darle una chispa de brillo!',
+      catch: '¡Llueven dulces del cielo! Mueve el frasco de brillo y guarda solo a Chispita.',
+      race: '¡Ácido huye con el brillo de Chispita! Nube lo persigue: alcanza solo a Chispita.',
+      find: 'Ácido escondió a Chispita entre muchos dulces... ¡Encuéntrala para encenderla! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Saluda a todos los dulces... ¡pero no a Chispita, que está guardando su brillo!',
       ax: 'Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!',
-      memory: '¡Chispita salta de dulce en dulce! Mira bien su camino y repítelo en el mismo orden.'
+      memory: '¡Chispita salta de dulce en dulce dejando chispitas! Mira bien su camino y repítelo.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,33 +35,33 @@ registrarMundo('candy', {
       ax: 'Ácido solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.',
+    bossLine: '¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.',
     chapters: [
       { place: 'El Bosque de Chupetines', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Gomi, un osito de gomita. Ácido escondió a Chispita... Búscala: es la gomita estrella dorada.' },
+        line: '¡Hola! Soy Gomi. Ácido le apagó el brillo a Chispita, mi amiga estrella. ¡Tócala solo a ella para encenderla!' },
       { place: 'El Río de Chocolate', mg: 'catch', level: 2, sec: 60,
-        line: '¡Las gomitas caen al río de chocolate! Atrapa solo a Chispita.' },
+        line: '¡Llueven dulces sobre el río de chocolate! Mueve el frasco de brillo y guarda solo a Chispita.' },
       { place: 'La Montaña de Helado', mg: 'race', level: 3, sec: 75,
-        line: '¡Chispita se desliza por la montaña de helado! Corre y alcánzala solo a ella.' },
+        line: '¡Ácido huye por la montaña de helado con el brillo de Chispita! Nube lo persigue: alcanza solo a Chispita.' },
       { place: 'El Castillo de Galleta', mg: 'find', level: 4, sec: 90,
-        line: 'En el castillo hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!' },
+        line: 'En el castillo de galleta hay muchos dulces... ¡Encuentra a Chispita para encenderla! Y si no está, ¡no toques nada!' },
       { place: 'La Fábrica Agria', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.' }
+        line: '¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.' }
     ],
-    ending: '¡Atrapamos a Ácido y Chispita volvió a brillar! Todo el reino de los dulces está feliz gracias a ti.',
+    ending: '¡Atrapamos a Ácido y Chispita brilla más que nunca! Todo el mundo de dulces es feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Jengi', the: 'Jengi', line: '¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a buscar a Chispita!' },
+      { role: 'friend1', name: 'Jengi', the: 'Jengi', line: '¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a encender a Chispita!' },
       { role: 'friend2', name: 'Nube', the: 'Nube', line: 'Hola, soy Nube, de algodón de azúcar. Aquí todo es dulce y de colores... ¡pero tú no te distraigas!' },
       { role: 'friend3', name: 'Limonada', the: 'Limonada', line: 'Soy Limonada. Soy un limón como Ácido, pero yo llevo moño y soy muy dulce. ¡Te ayudo!' },
-      { role: 'villain', name: 'Ácido', line: '¡Grrr! ¡Los dulces me empalagan! ¡Escondí a Chispita y todo será agrio!' }
+      { role: 'villain', name: 'Ácido', line: '¡Grrr! ¡Los dulces me empalagan! ¡Le apagué el brillo a Chispita y todo será agrio!' }
     ]
   },
 
   // Las chispas de azúcar son solo contra Ácido (jefe final). A Chispita se le rescata, no se le ataca.
   power: { name: 'Lluvia de chispas de azúcar', kind: 'sprinkles', color: 0xf472b6, shout: '¡Chispas!',
-           rescue: { shout: '¡Te encontré!' } },
+           rescue: { shout: '¡Brilla!' } },
   powerSound() {   // chispitas que caen tintineando
     [1568, 2093, 1760, 2349, 1976].forEach((f, i) => sweep('sine', f, f * 1.05, 0.12, 0.05, i * 0.05));
     noise(0.35, 0.03, 'highpass', 5000, null, 0.05);
@@ -87,7 +89,7 @@ registrarMundo('candy', {
     // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
       risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Chispita es mía!',
+        '¡Ja, ja, ja! ¡El brillo de Chispita es mío!',
         '¡Je, je! ¡Le eché limón al chocolate!',
         '¡Ja, ja! ¡Derretí tu montaña de helado!',
         '¡Je, je, je! ¡Mordí tu castillo de galleta!',

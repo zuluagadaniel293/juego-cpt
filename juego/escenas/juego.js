@@ -84,6 +84,15 @@ class GameScene extends Phaser.Scene {
     addExitButton(this);
     this.add.rectangle(barX, 20, this.barW, 10, 0xffffff, 0.2).setOrigin(0, 0.5);
     this.bar = this.add.rectangle(barX, 20, 0, 10, th.accent).setOrigin(0, 0.5);
+    // Contador de la misión del mundo ("Hojas para Dino: 3"): solo para motivar, no cambia estrellas ni datos.
+    // No sale en la Prueba fija, ni cuando se busca al villano, ni en Menos uno (ahí se toca a los demás).
+    this.missionCount = 0; this.missionText = null;
+    if (this.mode !== 'prueba' && !this.chars && th.missionCount && this.mg !== 'notx') {
+      // arriba a la derecha, bajo el botón de salir (a la izquierda están el protagonista y el compañero)
+      this.missionText = this.add.text(W - 20, 54, th.missionCount + ': 0',
+        { font: 'bold 17px Arial', color: '#ffffff', stroke: '#0f172a', strokeThickness: 4 }).setOrigin(1, 0.5).setDepth(5);
+      this.missionIcon = fit(this.add.image(W - 20 - this.missionText.width - 20, 54, this.keys.target), 30).setDepth(5);
+    }
 
     this.fb = this.add.text(W / 2, CLASSIC_LIKE.includes(this.mg) ? H / 2 + 140 : 70, '',
       { font: 'bold 38px Arial', color: '#86efac' }).setOrigin(0.5).setDepth(10);
@@ -142,7 +151,9 @@ class GameScene extends Phaser.Scene {
     };
     const icon = (x, y, s) => txt(x, y, s, 56);
     let explain;
-    const chase = this.lead ? '¡Persigue ' + th.villainObj + '! ' : '';
+    // En la Carrera con amigo, quien persigue es el amigo (el protagonista lanza el poder)
+    const helper = this.runnerRole && (STORY[this.themeKey].companions || []).find(c => c.role === this.runnerRole);
+    const chase = !this.lead ? '' : helper ? '¡' + helper.name + ' persigue ' + th.villainObj + '! ' : '¡Persigue ' + th.villainObj + '! ';
     if (CLASSIC_LIKE.includes(this.mg)) {
       const act = touch ? 'Toca la pantalla' : 'Presiona ESPACIO';
       if (touch) icon(220, ctrlY, '👆'); else keycap(220, ctrlY, 210, 'ESPACIO');
@@ -154,8 +165,8 @@ class GameScene extends Phaser.Scene {
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
       if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
     } else if (this.mg === 'race') {
-      if (touch) { icon(220, ctrlY, '👆'); explain = chase + 'Toca arriba o abajo de tu personaje para cambiar de carril. Agarra solo ' + what; }
-      else { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = chase + 'Cambia de carril con las flechas. Agarra solo ' + what; }
+      if (touch) { icon(220, ctrlY, '👆'); explain = chase + 'Toca arriba o abajo de tu personaje para cambiar de carril. Alcanza solo ' + what; }
+      else { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = chase + 'Cambia de carril con las flechas. Alcanza solo ' + what; }
     } else {
       if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca ' + what + '. Si no está, no toques nada'; }
       else { icon(220, ctrlY, '🖱️'); explain = 'Haz clic sobre ' + what + '. Si no está, no hagas clic'; }
@@ -395,6 +406,11 @@ class GameScene extends Phaser.Scene {
       outcome: outcome
     });
     if (outcome === 'hit') this.buddyCheer();   // el compañero celebra
+    if (outcome === 'hit' && this.missionText) {
+      this.missionText.setText(this.theme.missionCount + ': ' + (++this.missionCount));
+      this.missionIcon.x = GAME_W - 40 - this.missionText.width;
+      this.tweens.add({ targets: this.missionIcon, scale: { from: this.missionIcon.scale * 1.5, to: this.missionIcon.scale }, duration: 250 });
+    }
   }
 
   update(time, delta) {

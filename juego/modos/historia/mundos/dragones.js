@@ -1,25 +1,27 @@
-// Mundo: Dragones y fantasía. Chispa busca a su hermanito, un dragón bebé dorado, y atrapa a Morgana.
+// Mundo: Dragones y fantasía. Morgana asustó a los dragoncitos dorados (los hermanitos de Chispa) y se escaparon
+// del nido; Chispa los lleva de vuelta y atrapa a Morgana.
 // Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
 
 registrarMundo('fantasy', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Dragones y fantasía', mission: 'llevar a los dragoncitos dorados a su nido', catcherName: 'el nido', bg: 0x1f3a2a, accent: 0xfacc15,
-           targetLabel: 'el dragón bebé dorado', targetObj: 'al dragón bebé dorado',
-           villain: 'Morgana', villainObj: 'a Morgana', chase: '¡Persíguela!' },
+  theme: { label: 'Dragones y fantasía', mission: 'llevar a los dragoncitos dorados a su nido', missionCount: 'Dragoncitos en el nido', catcherName: 'el nido', bg: 0x1f3a2a, accent: 0xfacc15,
+           targetLabel: 'el dragón bebé dorado', targetObj: 'a los dragoncitos dorados',
+           villain: 'Morgana', villainObj: 'a Morgana', chase: '¡Persíguela!',
+           rescueTitle: '¡Lleva a los dragoncitos al nido!' },
 
   story: {
     hero: 'Chispa, la dragona',
     voice: { pitch: 1.45 },
     // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ',
+    intro: '¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ',
     mgLines: {
-      classic: 'Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!',
-      catch: '¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.',
-      race: '¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.',
-      find: 'Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
-      notx: '¡Ahora es al revés! Toca a todos los dragoncitos... ¡menos a mi hermanito dorado!',
-      ax: 'Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
-      memory: '¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.'
+      classic: 'Mis hermanitos se mezclaron con dragones de otras familias... ¡Toca solo a los dorados para guiarlos al nido!',
+      catch: '¡Mis hermanitos bajan volando! Mueve el nido y recibe solo a los dragoncitos dorados.',
+      race: '¡Morgana huye y se lleva a mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.',
+      find: 'Mis hermanitos se escondieron entre muchos dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Los dragoncitos de otras familias van a su casa: tócalos a todos... ¡menos a los dorados, que van a mi nido!',
+      ax: 'Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
+      memory: '¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,34 +35,34 @@ registrarMundo('fantasy', {
       ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.',
+    bossLine: '¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.',
     chapters: [
       { place: 'El Nido', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?' },
+        line: '¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos dorados y se escaparon del nido. ¡Toca solo a los dorados para llevarlos a casa!' },
       { place: 'El Bosque', mg: 'catch', level: 2, sec: 60,
-        line: '¡Los dragoncitos bajan volando del bosque! Atrapa solo a mi hermanito dorado.' },
+        line: '¡Mis hermanitos vuelan sobre el bosque! Mueve el nido y recibe solo a los dragoncitos dorados.' },
       { place: 'El Río', mg: 'race', level: 3, sec: 75,
-        line: '¡Mi hermanito está jugando en el río! Corre por la orilla y alcánzalo solo a él.' },
+        line: '¡Morgana huye por el río con mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.' },
       { place: 'La Cueva', mg: 'find', level: 4, sec: 90,
-        line: 'La cueva está llena de dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!' },
+        line: 'En la cueva hay muchos dragoncitos... ¡Busca a los dorados! Y si no hay ninguno, ¡no toques nada!' },
       // Jefe final: primero se atrapa a la villana con la red y, cuando escapa, se la persigue
       { place: 'El Volcán', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.' }
+        line: '¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.' }
     ],
-    ending: '¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!',
+    ending: '¡Atrapamos a Morgana y todos mis hermanitos volvieron al nido! ¡Ahora eres parte de la familia de los dragones!',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Hada del Bosque', the: 'el Hada del Bosque', line: '¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.' },
+      { role: 'friend1', name: 'Hada del Bosque', the: 'el Hada del Bosque', line: '¡Hola, Chispa! Soy el Hada del Bosque. ¡Te ayudaré a llevar a tus hermanitos al nido!' },
       { role: 'friend2', name: 'Mago Abuelo', the: 'el Mago Abuelo', line: 'Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!' },
       { role: 'friend3', name: 'Hechicera Buena', the: 'la Hechicera Buena', line: 'Soy la Hechicera Buena. Me visto parecido a Morgana, ¡pero yo protejo a los dragones!' },
-      { role: 'villain', name: 'Morgana', line: '¡Ja, ja, ja! ¡Ese dragoncito dorado será mío! ¡Nadie podrá detenerme!' }
+      { role: 'villain', name: 'Morgana', line: '¡Ja, ja, ja! ¡Esos dragoncitos dorados serán míos! ¡Nunca volverán a su nido!' }
     ]
   },
 
   // El fuego es solo contra Morgana (jefe final). Al hermanito dorado se le rescata con cariño, no se le ataca.
   power: { name: 'Bola de fuego', kind: 'fire', color: 0xf97316, shout: '¡Fuego!',
-           rescue: { shout: '¡Te encontré!' } },
+           rescue: { shout: '¡Al nido!' } },
   powerSound() {   // llamarada + explosión
     noise(0.25, 0.25, 'bandpass', 300, 2500);
     noise(0.35, 0.35, 'lowpass', 1200, 100, 0.18);
@@ -91,14 +93,14 @@ registrarMundo('fantasy', {
     // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
     voices: {
       risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Jamás lo encontrarás!',
+        '¡Ja, ja, ja! ¡Jamás volverán al nido!',
         '¡Ji, ji! ¡Mis hechizos nunca fallan!',
         '¡Ja, ja! ¡El río se llevó a tu hermanito!',
         '¡Je, je, je! ¡En la cueva nadie me encuentra!',
         '¡Ja, ja, ja! ¡El volcán es mi casa, dragoncita!'
       ] },
       burla:   { who: 'villain', text: [
-        '¿Buscas al dragón dorado? Yo sé dónde está...',
+        '¿Quieres llevar a los dragoncitos al nido? ¡Primero atrápame!',
         '¡Abracadabra! ¡Que todos los árboles se confundan!',
         '¡Pintaré a todos los dragones de dorado!',
         '¡Los cristales brillan más que tu hermanito!',

@@ -4,7 +4,7 @@
 
 registrarMundo('dinos', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Dinosaurios', mission: 'darle hojas doradas a Dino', catcherName: 'la boca de Dino', bg: 0x14532d, accent: 0xf97316,
+  theme: { label: 'Dinosaurios', mission: 'darle hojas doradas a Dino', missionCount: 'Hojas para Dino', catcherName: 'la boca de Dino', bg: 0x14532d, accent: 0xf97316,
            targetLabel: 'la hoja dorada', targetObj: 'la hoja dorada', rescueTitle: '¡Recupera las hojas doradas!',
            villain: 'Pterodáctilo Ladrón', villainObj: 'al Pterodáctilo Ladrón', chase: '¡Persíguelo!' },
 

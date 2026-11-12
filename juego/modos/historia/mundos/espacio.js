@@ -1,25 +1,27 @@
-// Mundo: Espacio. Nova, la niña astronauta, busca a Bip, el alien bebé verde, y atrapa al Capitán Meteoro.
+// Mundo: Espacio. Bip y sus hermanitos (aliens verdes) se perdieron por culpa del Capitán Meteoro; Nova los lleva
+// a la base en su nave de rescate y atrapa al pirata.
 // Cada capítulo (nivel) define su lugar, el texto del personaje, el minijuego, la dificultad y la duración.
 
 registrarMundo('space', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
-  theme: { label: 'Espacio', mission: 'llevar a Bip y sus hermanitos a la base', catcherName: 'la nave de rescate', bg: 0x172554, accent: 0xfb923c,
-           targetLabel: 'Bip, el alien verde', targetObj: 'a Bip, el alien verde',
-           villain: 'Capitán Meteoro', villainObj: 'al Capitán Meteoro', chase: '¡Persíguelo!' },
+  theme: { label: 'Espacio', mission: 'llevar a Bip y sus hermanitos a la base', missionCount: 'Aliens a bordo', catcherName: 'la nave de rescate', bg: 0x172554, accent: 0xfb923c,
+           targetLabel: 'Bip, el alien verde', targetObj: 'a Bip y sus hermanitos',
+           villain: 'Capitán Meteoro', villainObj: 'al Capitán Meteoro', chase: '¡Persíguelo!',
+           rescueTitle: '¡Sube a Bip a la nave!' },
 
   story: {
     hero: 'Nova',
     voice: { pitch: 1.3 },
     // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ',
+    intro: '¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ',
     mgLines: {
-      classic: 'Bip es el alien verde con una estrella en la antena. ¡Toca solo cuando lo veas a él!',
-      catch: '¡Los aliens caen como lluvia de estrellas! Atrapa solo a Bip.',
-      race: '¡Bip flota por la estación espacial! Corre y alcánzalo solo a él.',
-      find: 'Aquí hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Toca a todos los aliens... ¡menos a Bip!',
+      classic: 'Bip y sus hermanitos flotan entre otros aliens. ¡Toca solo a los verdes para subirlos con el rayo de la nave!',
+      catch: '¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.',
+      race: '¡El Capitán Meteoro huye con Bip y sus hermanitos! Zuri lo persigue: alcanza solo a los aliens verdes.',
+      find: 'Bip y sus hermanitos se esconden entre muchos aliens... ¡Encuentra al verde! Y si no está, ¡no toques nada!',
+      notx: '¡Al revés! Los otros aliens vuelven a sus planetas: tócalos a todos... ¡menos a Bip, que viene a la base!',
       ax: 'Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!',
-      memory: '¡Bip salta de planeta en planeta! Mira bien su camino y repítelo en el mismo orden.'
+      memory: '¡Bip salta de asteroide en asteroide! Mira bien su camino y repítelo para guiar la nave.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,33 +35,33 @@ registrarMundo('space', {
       ax: 'El Capitán Meteoro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.',
+    bossLine: '¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.',
     chapters: [
       { place: 'La Base Lunar', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió en la base lunar... Búscalo: es verde y tiene una estrella en la antena.' },
+        line: '¡Hola! Soy Nova. Bip y sus hermanitos se perdieron cerca de la base. ¡Toca solo a los aliens verdes para subirlos con el rayo!' },
       { place: 'El Cinturón de Asteroides', mg: 'catch', level: 2, sec: 60,
-        line: '¡Los aliens caen entre los asteroides! Atrapa solo a Bip.' },
+        line: '¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.' },
       { place: 'La Nave Nodriza', mg: 'race', level: 3, sec: 75,
-        line: '¡Bip flota por los pasillos de la nave nodriza! Corre y alcánzalo solo a él.' },
+        line: '¡El Capitán Meteoro huye por la nave nodriza con los hermanitos de Bip! Zuri lo persigue: alcanza solo a los aliens verdes.' },
       { place: 'El Planeta de Cristal', mg: 'find', level: 4, sec: 90,
-        line: 'En el planeta de cristal hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!' },
+        line: 'En el planeta de cristal hay muchos aliens... ¡Encuentra a los verdes! Y si no hay ninguno, ¡no toques nada!' },
       { place: 'La Nave Pirata', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.' }
+        line: '¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.' }
     ],
-    ending: '¡Atrapamos al Capitán Meteoro y Bip volvió a casa! Toda la galaxia está feliz gracias a ti.',
+    ending: '¡Atrapamos al Capitán Meteoro y Bip y sus hermanitos llegaron a la base! Toda la galaxia te lo agradece.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
     // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Robi', the: 'Robi', line: '¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y busquemos a Bip!' },
+      { role: 'friend1', name: 'Robi', the: 'Robi', line: '¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y llevemos a Bip a la base!' },
       { role: 'friend2', name: 'Zuri', the: 'Zuri', line: '¡Hola, terrícola! Soy Zuri. En el espacio todo brilla y se mueve... ¡pero tú no te distraigas!' },
       { role: 'friend3', name: 'Cometa', the: 'Cometa', line: 'Soy Cometa, piloto de la galaxia. Mi casco se parece al del pirata, ¡pero yo soy de los buenos!' },
-      { role: 'villain', name: 'Capitán Meteoro', line: '¡Ja, ja, ja! ¡Bip será mío! ¡A ver si lo encuentras antes que yo, astronauta!' }
+      { role: 'villain', name: 'Capitán Meteoro', line: '¡Ja, ja, ja! ¡Me llevaré a Bip y a todos sus hermanitos! ¡Nunca llegarán a la base!' }
     ]
   },
 
   // Las estrellas son solo contra el Capitán Meteoro (jefe final). A Bip se le rescata, no se le ataca.
   power: { name: 'Rayo de estrellas', kind: 'stars', color: 0xfde047, shout: '¡Zum!',
-           rescue: { shout: '¡Te encontré!' } },
+           rescue: { shout: '¡A bordo!' } },
   powerSound() {   // rayo espacial que baja + brillo
     sweep('square', 1800, 300, 0.3, 0.05);
     [1318, 1760, 2349].forEach((f, i) => sweep('sine', f, f * 1.02, 0.25, 0.06, 0.08 + i * 0.05));
