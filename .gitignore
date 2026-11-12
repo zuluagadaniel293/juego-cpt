@@ -6,3 +6,4 @@ Thumbs.db
 muestras_voces/
 .env
 herramientas/.elevenlabs_key
+herramientas/.gemini_key
