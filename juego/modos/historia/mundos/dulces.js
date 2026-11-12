@@ -5,7 +5,7 @@
 registrarMundo('candy', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
   theme: { label: 'Dulces', mission: 'encender a Chispita', missionCount: 'Brillo de Chispita', catcherName: 'el frasco de brillo', bg: 0x831843, accent: 0xf9a8d4,
-           targetLabel: 'Chispita, la estrella dorada', targetObj: 'a Chispita, la estrella dorada',
+           targetLabel: 'Chispita, la estrella dorada', cueLabel: 'el corazón rosado', targetObj: 'a Chispita, la estrella dorada',
            villain: 'Ácido', villainObj: 'a Ácido', chase: '¡Persíguelo!',
            rescueTitle: '¡Enciende a Chispita!' },
 

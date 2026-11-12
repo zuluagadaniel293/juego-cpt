@@ -73,7 +73,7 @@ Object.assign(GameScene.prototype, {
     this.pathGoal.setPosition(goal.x + 52, goal.y - 4).setVisible(true);
     this.pathHero.setVisible(false);
     this.pathGuide.setVisible(true).setPosition(start.x, start.y - 18).setAlpha(1);
-    this.fb.setText('¡Mira el camino del amigo!').setColor('#ffffff').setAlpha(1);
+    this.fb.setText('¡Mira el camino de ' + this.charName(this.pathGuideRole) + '!').setColor('#ffffff').setAlpha(1);
     // el amigo salta de piedra en piedra dejando huellas
     route.forEach(([cc, rr], i) => this.time.delayedCall(500 + i * stepMs, () => {
       if (this.ended || this.pathCur !== c) return;

@@ -96,7 +96,7 @@ class GameScene extends Phaser.Scene {
       this.missionIcon = fit(this.add.image(W - 20 - this.missionText.width - 20, 54, this.keys.target), 30).setDepth(5);
     }
 
-    this.fb = this.add.text(W / 2, CLASSIC_LIKE.includes(this.mg) ? H / 2 + 140 : 70, '',
+    this.fb = this.add.text(W / 2, CLASSIC_LIKE.includes(this.mg) ? H / 2 + 140 : 100, '',
       { font: 'bold 38px Arial', color: '#86efac' }).setOrigin(0.5).setDepth(10);
 
     this.setupMinigame();
@@ -142,7 +142,7 @@ class GameScene extends Phaser.Scene {
         txt(x, exY + 8 + (i === 1 ? -26 : 0), '👣', 24);
       });
       yes(680, this.keys.target, 50);
-      txt(470, exY + 84, 'Mira el camino del amigo... ¡y repítelo de memoria!', 22, '#86efac');
+      txt(470, exY + 84, 'Mira el camino de ' + this.charName(guide) + '... ¡y repítelo de memoria!', 22, '#86efac');
     } else if (this.mg === 'dodge') {
       // tres poderes como sombras; el del medio se detiene (verde): ahí hay que ponerse
       const k = dodgeTex(this, (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).powers[0]);
@@ -186,7 +186,7 @@ class GameScene extends Phaser.Scene {
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
       if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
     } else if (this.mg === 'path') {
-      const guideName = ((STORY[this.themeKey].companions || []).find(k => k.role === raceHelper(this.themeKey)) || {}).name || 'Tu amigo';
+      const guideName = this.charName(raceHelper(this.themeKey));
       const rest = ' ' + guideName + ' salta de piedra en piedra hasta ' + what + '. Cuando sus huellas se borren, lleva a tu personaje por el mismo camino.'
         + ((this.level || 1) >= 4 ? ' ¡Ojo! El villano deja huellas falsas.' : '');
       if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca la piedra de al lado para avanzar.' + rest; }
@@ -357,6 +357,7 @@ class GameScene extends Phaser.Scene {
 
   begin() {
     this.intro.forEach(o => o.destroy());
+    this.showReminder();
     this.mgObjects.forEach(o => o.setVisible(true));
     this.t0 = performance.now();
     this.started = true;
@@ -373,6 +374,58 @@ class GameScene extends Phaser.Scene {
   }
 
   elapsed() { return performance.now() - this.t0; }
+
+  // ---------- Nombres de los personajes (siempre por su nombre, nunca "el amigo") ----------
+  charName(role) {
+    const c = (STORY[this.themeKey].companions || []).find(k => k.role === role);
+    return c ? c.name : this.theme.villain;
+  }
+  charThe(role) {   // con artículo si lo lleva: "el Hada del Bosque", "la Capitana Estrella", "Zuri"
+    const c = (STORY[this.themeKey].companions || []).find(k => k.role === role);
+    return c ? (c.the || c.name) : this.theme.villain;
+  }
+  // de qué personaje es una imagen (para llamarlo por su nombre)
+  nameOfKey(key) {
+    const tex = TEX[this.themeKey];
+    const role = ['friend1', 'friend2', 'friend3'].find(r => tex[r] === key);
+    return role ? this.charName(role) : null;
+  }
+
+  // ---------- Recordatorio fijo arriba: qué hay que hacer en este juego, con nombres ----------
+  reminderText() {
+    const th = this.theme, noun = s => s.replace(/^al /, 'el ').replace(/^a /, '');
+    // solo el nombre: "a Lumi" en vez de "a Lumi, el hada rosada"
+    const what = (this.chars ? th.villainObj : th.targetObj).split(',')[0], who = noun(what);
+    const tex = TEX[this.themeKey];
+    if (this.mg === 'classic') return 'Toca solo cuando aparezca ' + who;
+    if (this.mg === 'notx') return 'Toca todo, MENOS cuando aparezca ' + who;
+    if (this.mg === 'ax') {
+      const cueRole = ['friend1', 'friend2', 'friend3'].find(r => tex[r] === this.keys.dists[0]);
+      const cue = this.chars && cueRole ? this.charThe(cueRole) : th.cueLabel || 'la pista';
+      return 'Toca ' + what + ' solo si justo antes salió ' + cue;
+    }
+    if (this.mg === 'catch') return 'Atrapa solo ' + what + ' con ' + (this.chars ? 'la red' : th.catcherName || 'la canasta');
+    if (this.mg === 'race') return this.runnerRole ? this.charThe(this.runnerRole).replace(/^./, m => m.toUpperCase()) + ' persigue: alcanza solo ' + what : 'Alcanza solo ' + what;
+    if (this.mg === 'find') return 'Encuentra ' + what + '. Si no está, no toques nada';
+    if (this.mg === 'dodge') return 'Ponte en el carril del poder que se detiene';
+    if (this.mg === 'path') return 'Sigue de memoria el camino de ' + this.charName(raceHelper(this.themeKey));
+    return '';
+  }
+  showReminder() {
+    const s = this.reminderText();
+    if (!s) return;
+    const W = GAME_W, y = 52;
+    const t = this.add.text(W / 2 + 14, y, s, { font: 'bold 17px Arial', color: '#ffffff' }).setOrigin(0.5).setDepth(6);
+    const iconKey = this.mg === 'path' ? TEX[this.themeKey][raceHelper(this.themeKey)]
+      : this.mg === 'dodge' ? dodgeTex(this, (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).powers[0]) || TEX[this.themeKey].villain : this.keys.target;
+    const icon = fit(this.add.image(t.x - t.width / 2 - 20, y, iconKey), 28).setDepth(6);
+    const g = this.add.graphics().setDepth(5);
+    g.fillStyle(0x0f172a, 0.72);
+    g.fillRoundedRect(icon.x - 24, y - 17, t.width + 62, 34, 17);
+    g.lineStyle(2, this.theme.accent, 0.8); g.strokeRoundedRect(icon.x - 24, y - 17, t.width + 62, 34, 17);
+    // el contador de la misión, un poco más abajo para no chocar
+    if (this.missionText) { this.missionText.setY(86); this.missionIcon.setY(86); }
+  }
 
   // Pausa (botón Salir): al seguir, se corren los tiempos para no contar la pausa en la sesión ni en los TR
   resumeFromPause(ms) {
@@ -496,7 +549,9 @@ class GameScene extends Phaser.Scene {
     const friendly = this.chars && this.mg === 'notx';
     if ((p.rescue && !this.chars) || friendly) {
       rescueSound();
-      this.fb.setText(friendly ? CAST_WORD.notx : p.rescue.shout).setAlpha(1);
+      // en Menos uno con personajes se deja pasar al amigo, llamándolo por su nombre
+      const passName = friendly && this.current ? this.nameOfKey(this.current.key) : null;
+      this.fb.setText(friendly ? (passName ? '¡Pasa, ' + passName + '!' : CAST_WORD.notx) : p.rescue.shout).setAlpha(1);
       // si el protagonista está en pantalla, de él salen unas estrellitas hacia el rescatado
       if (c) for (let i = 0; i < 3; i++) {
         const s = fit(this.add.image(ox, oy, 'magicstar'), 26).setDepth(9);

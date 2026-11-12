@@ -5,7 +5,7 @@
 registrarMundo('space', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
   theme: { label: 'Espacio', mission: 'llevar a Bip y sus hermanitos a la base', missionCount: 'Aliens a bordo', catcherName: 'la nave de rescate', bg: 0x172554, accent: 0xfb923c,
-           targetLabel: 'Bip, el alien verde', targetObj: 'a Bip y sus hermanitos',
+           targetLabel: 'Bip, el alien verde', cueLabel: 'el alien azul', targetObj: 'a Bip y sus hermanitos',
            villain: 'Capitán Meteoro', villainObj: 'al Capitán Meteoro', chase: '¡Persíguelo!',
            rescueTitle: '¡Sube a Bip a la nave!' },
 

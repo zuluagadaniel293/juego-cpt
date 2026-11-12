@@ -4,7 +4,7 @@
 registrarMundo('robots', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
   theme: { label: 'Robots', mission: 'recargar a Botón', missionCount: 'Energía de Botón', catcherName: 'la estación de carga', bg: 0x1e1b4b, accent: 0x22d3ee,
-           targetLabel: 'Botón, el robotito azul', targetObj: 'a Botón, el robotito azul',
+           targetLabel: 'Botón, el robotito azul', cueLabel: 'el robotito rojo', targetObj: 'a Botón, el robotito azul',
            villain: 'Glitch', villainObj: 'a Glitch', chase: '¡Persíguelo!',
            rescueTitle: '¡Recarga a Botón!' },
 

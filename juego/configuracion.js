@@ -47,7 +47,7 @@ const MG = {
   dodge:   { label: 'Esquiva',   verb: 'Te salvaste', desc: 'Ponte donde\nse detiene uno' },
   // Camino = un amigo recorre un camino de piedra en piedra y el niño lo repite de memoria (memoria de trabajo
   // visoespacial, como el Corsi pero siguiendo una ruta). juego/escenas/camino.js
-  path:    { label: 'Camino',    verb: 'Recorriste',  desc: 'Recuerda el camino\ndel amigo' }
+  path:    { label: 'Camino',    verb: 'Recorriste',  desc: 'Recuerda el camino\nque te muestran' }
 };
 // Juegos que funcionan como el Clásico (un estímulo en el centro; se responde con ESPACIO o tocando)
 const CLASSIC_LIKE = ['classic', 'notx', 'ax'];

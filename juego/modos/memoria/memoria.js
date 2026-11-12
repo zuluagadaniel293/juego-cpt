@@ -75,6 +75,20 @@ class MemoryScene extends Phaser.Scene {
 
   elapsed() { return performance.now() - this.t0; }
 
+  // Recordatorio fijo arriba: qué hay que hacer (adelante o al revés), con el nombre de quien aparece
+  showReminder() {
+    const who = (this.chars ? this.theme.villainObj : this.keys.label).split(',')[0].replace(/^al /, 'el ').replace(/^a /, '');
+    const s = this.dir === 'bwd' ? 'Toca donde apareció ' + who + ', AL REVÉS: del último al primero'
+      : 'Toca donde apareció ' + who + ', en el mismo orden';
+    if (this.reminder && this.reminder.text === s) return;
+    if (this.reminder) this.reminder.objs.forEach(o => o.destroy());
+    const W = GAME_W, y = 27;
+    const t = this.add.text(W / 2 + 40, y, s, { font: 'bold 16px Arial', color: '#ffffff' }).setOrigin(0.5).setDepth(6);
+    const g = this.add.graphics().setDepth(5);
+    g.fillStyle(0x0f172a, 0.72); g.fillRoundedRect(t.x - t.width / 2 - 16, y - 15, t.width + 32, 30, 15);
+    this.reminder = { text: s, objs: [t, g] };
+  }
+
   // Pausa (botón Salir): al seguir, se corren los tiempos para no contar la pausa
   resumeFromPause(ms) {
     if (this.t0 !== null) this.t0 += ms;
@@ -165,6 +179,7 @@ class MemoryScene extends Phaser.Scene {
       steps.splice(Phaser.Math.Between(1, steps.length), 0, { i, key });   // nunca de primero
     });
     this.msg.setText('Mira con atención...').setColor('#ffffff');
+    this.showReminder();
     const show = this.params.showMs, step = show + this.params.gapMs;
     steps.forEach((s, k) => this.time.delayedCall(400 + k * step, () => this.flash(s.i, s.key, show)));
     this.time.delayedCall(400 + steps.length * step, () => {

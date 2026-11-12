@@ -5,7 +5,7 @@
 registrarMundo('fantasy', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
   theme: { label: 'Dragones y fantasía', mission: 'llevar a los dragoncitos dorados a su nido', missionCount: 'Dragoncitos en el nido', catcherName: 'el nido', bg: 0x1f3a2a, accent: 0xfacc15,
-           targetLabel: 'el dragón bebé dorado', targetObj: 'a los dragoncitos dorados',
+           targetLabel: 'el dragón bebé dorado', cueLabel: 'el dragoncito rojo', targetObj: 'a los dragoncitos dorados',
            villain: 'Morgana', villainObj: 'a Morgana', chase: '¡Persíguela!',
            rescueTitle: '¡Lleva a los dragoncitos al nido!' },
 

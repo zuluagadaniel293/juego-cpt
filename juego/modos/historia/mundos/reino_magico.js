@@ -5,7 +5,7 @@
 registrarMundo('kingdom', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
   theme: { label: 'Reino mágico', mission: 'liberar a Lumi del hechizo', missionCount: 'Burbujas rotas', catcherName: 'la flor mágica', bg: 0x4a1d4a, accent: 0xf472b6,
-           targetLabel: 'Lumi, el hada rosada', targetObj: 'a Lumi, el hada rosada',
+           targetLabel: 'Lumi, el hada rosada', cueLabel: 'el hada azul', targetObj: 'a Lumi, el hada rosada',
            villain: 'Duende Pícaro', villainObj: 'al Duende Pícaro', chase: '¡Persíguelo!',
            rescueTitle: '¡Libera a Lumi!' },
 
