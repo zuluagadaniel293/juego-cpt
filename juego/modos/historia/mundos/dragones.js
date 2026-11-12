@@ -26,14 +26,14 @@ registrarMundo('fantasy', {
     mgLinesCast: {
       classic: '¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.',
       catch: '¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!',
-      race: '¡Morgana huye entre los magos del bosque! Cambia de camino y atrápala solo a ella.',
+      race: '¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.',
       find: 'Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!',
       memory: '¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!',
       ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!',
+    bossLine: '¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.',
     chapters: [
       { place: 'El Nido', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?' },
@@ -45,7 +45,7 @@ registrarMundo('fantasy', {
         line: 'La cueva está llena de dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!' },
       // Jefe final: primero se atrapa a la villana con la red y, cuando escapa, se la persigue
       { place: 'El Volcán', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Fue la hechicera Morgana! Atrápala con la red y, si escapa, ¡persíguela!' }
+        line: '¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.' }
     ],
     ending: '¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

@@ -17,8 +17,8 @@
       "firma": "f58a90aff2"
     },
     "5": {
-      "texto": "¡Ahí está Sombra en persona! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "e30a3d2ddc"
+      "texto": "¡Sombra se esconde en su guarida! Primero sigue sus señales y después atrápalo entre mis amigos héroes.",
+      "firma": "d576d85830"
     },
     "end": {
       "texto": "¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!",
@@ -81,8 +81,8 @@
       "firma": "f17050833b"
     },
     "boss": {
-      "texto": "¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Esta vez no se escapará. ¡Vamos a atraparlo!",
-      "firma": "ae269d0e8d"
+      "texto": "¡Sombra se esconde en su guarida! Primero sigue sus señales y después atrápalo entre mis amigos héroes.",
+      "firma": "d576d85830"
     },
     "cast_classic": {
       "texto": "¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.",
@@ -101,12 +101,12 @@
       "firma": "33f1bab3e5"
     },
     "cast_race": {
-      "texto": "¡Sombra corre entre mis amigos héroes! Cambia de carril y atrápalo solo a él.",
-      "firma": "aeabf5fd3a"
+      "texto": "¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.",
+      "firma": "9d83b8ddb3"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra corre entre mis amigos héroes! Cambia de carril y atrápalo solo a él.",
-      "firma": "a1b6944842"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.",
+      "firma": "c42cbf77d0"
     },
     "cast_find": {
       "texto": "Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!",
@@ -267,8 +267,8 @@
       "firma": "dd3e658e99"
     },
     "5": {
-      "texto": "¡Fue la hechicera Morgana! Atrápala con la red y, si escapa, ¡persíguela!",
-      "firma": "0e8b983f29"
+      "texto": "¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.",
+      "firma": "fa2bae04ec"
     },
     "end": {
       "texto": "¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!",
@@ -331,8 +331,8 @@
       "firma": "ba491424ba"
     },
     "boss": {
-      "texto": "¡Fue la hechicera Morgana! Se esconde entre los magos del bosque. ¡Esta vez no se escapará!",
-      "firma": "4eca549e5e"
+      "texto": "¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.",
+      "firma": "fa2bae04ec"
     },
     "cast_classic": {
       "texto": "¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.",
@@ -351,12 +351,12 @@
       "firma": "ff2345b090"
     },
     "cast_race": {
-      "texto": "¡Morgana huye entre los magos del bosque! Cambia de camino y atrápala solo a ella.",
-      "firma": "e514d946a6"
+      "texto": "¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.",
+      "firma": "6e23d6101a"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana huye entre los magos del bosque! Cambia de camino y atrápala solo a ella.",
-      "firma": "ac64785ab9"
+      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.",
+      "firma": "2564a63e37"
     },
     "cast_find": {
       "texto": "Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!",
@@ -517,8 +517,8 @@
       "firma": "eca1b14470"
     },
     "5": {
-      "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "8615d3d37b"
+      "texto": "¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.",
+      "firma": "38379fb3c9"
     },
     "end": {
       "texto": "¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.",
@@ -581,8 +581,8 @@
       "firma": "073ba349f2"
     },
     "boss": {
-      "texto": "¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. ¡Atrapémoslo!",
-      "firma": "a55255d653"
+      "texto": "¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.",
+      "firma": "38379fb3c9"
     },
     "cast_classic": {
       "texto": "¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.",
@@ -601,12 +601,12 @@
       "firma": "e5a925a0ee"
     },
     "cast_race": {
-      "texto": "¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Atrápalo solo a él.",
-      "firma": "828277399d"
+      "texto": "¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.",
+      "firma": "b3534f809c"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Atrápalo solo a él.",
-      "firma": "2d4046f6ab"
+      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.",
+      "firma": "bb40da0fb1"
     },
     "cast_find": {
       "texto": "La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
@@ -767,8 +767,8 @@
       "firma": "639d5115f2"
     },
     "5": {
-      "texto": "¡El Capitán Meteoro quiere llevarse a Bip! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "4428b9375d"
+      "texto": "¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.",
+      "firma": "2ad765ae7c"
     },
     "end": {
       "texto": "¡Atrapamos al Capitán Meteoro y Bip volvió a casa! Toda la galaxia está feliz gracias a ti.",
@@ -831,8 +831,8 @@
       "firma": "fdad8e827f"
     },
     "boss": {
-      "texto": "¡El Capitán Meteoro quiere llevarse a Bip en su nave pirata! Se esconde entre la tripulación. ¡Atrapémoslo!",
-      "firma": "7e07917fed"
+      "texto": "¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.",
+      "firma": "2ad765ae7c"
     },
     "cast_classic": {
       "texto": "¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.",
@@ -851,12 +851,12 @@
       "firma": "c69394d4af"
     },
     "cast_race": {
-      "texto": "¡El Capitán Meteoro corre por la nave entre la tripulación! Atrápalo solo a él.",
-      "firma": "c797433223"
+      "texto": "¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.",
+      "firma": "3f772c21cf"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro corre por la nave entre la tripulación! Atrápalo solo a él.",
-      "firma": "8987c5cdad"
+      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.",
+      "firma": "f766e6eeec"
     },
     "cast_find": {
       "texto": "La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
@@ -1017,8 +1017,8 @@
       "firma": "c4aae622a4"
     },
     "5": {
-      "texto": "¡Fue el Pulpo Tinta quien escondió a Perla! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "5c84dd6a45"
+      "texto": "¡El Pulpo Tinta escondió a Perla en la fosa oscura! Primero rescátala y después atrapa al pulpo entre los animales del mar.",
+      "firma": "0de384fff0"
     },
     "end": {
       "texto": "¡Atrapamos al Pulpo Tinta y Perla volvió al arrecife! Todo el mar está feliz gracias a ti.",
@@ -1081,8 +1081,8 @@
       "firma": "3c3cf6f19c"
     },
     "boss": {
-      "texto": "¡Fue el Pulpo Tinta quien escondió a Perla! Se esconde entre los animales del mar. ¡Atrapémoslo!",
-      "firma": "421d44870c"
+      "texto": "¡El Pulpo Tinta escondió a Perla en la fosa oscura! Primero rescátala y después atrapa al pulpo entre los animales del mar.",
+      "firma": "0de384fff0"
     },
     "cast_classic": {
       "texto": "¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.",
@@ -1101,12 +1101,12 @@
       "firma": "1957e9a02f"
     },
     "cast_race": {
-      "texto": "¡El Pulpo Tinta nada entre los animales del mar! Atrápalo solo a él.",
-      "firma": "0a523df65b"
+      "texto": "¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.",
+      "firma": "fdeb025835"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta nada entre los animales del mar! Atrápalo solo a él.",
-      "firma": "7c59f2aff6"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.",
+      "firma": "2208d6ec85"
     },
     "cast_find": {
       "texto": "Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
@@ -1267,8 +1267,8 @@
       "firma": "d83b590350"
     },
     "5": {
-      "texto": "¡El Pterodáctilo Ladrón llevó a Dino a su nido! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "6c95f62b54"
+      "texto": "¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.",
+      "firma": "6face38f20"
     },
     "end": {
       "texto": "¡Atrapamos al Pterodáctilo Ladrón y Dino volvió con su familia! Todo el valle está feliz gracias a ti.",
@@ -1331,8 +1331,8 @@
       "firma": "2d97452bf4"
     },
     "boss": {
-      "texto": "¡El Pterodáctilo Ladrón quiere esconder a Dino en su nido! Se esconde entre los dinosaurios. ¡Atrapémoslo!",
-      "firma": "c49f5abc3f"
+      "texto": "¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.",
+      "firma": "6face38f20"
     },
     "cast_classic": {
       "texto": "¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.",
@@ -1351,12 +1351,12 @@
       "firma": "32c2780adb"
     },
     "cast_race": {
-      "texto": "¡El Pterodáctilo Ladrón corre entre los dinosaurios! Atrápalo solo a él.",
-      "firma": "ec288bb115"
+      "texto": "¡El Pterodáctilo Ladrón corre entre los dinosaurios! Alcánzalo solo a él.",
+      "firma": "2a6c766f34"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón corre entre los dinosaurios! Atrápalo solo a él.",
-      "firma": "fed0baa0ef"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón corre entre los dinosaurios! Alcánzalo solo a él.",
+      "firma": "d6761254c7"
     },
     "cast_find": {
       "texto": "Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
@@ -1517,8 +1517,8 @@
       "firma": "4d0f0d637b"
     },
     "5": {
-      "texto": "¡Glitch se metió al centro de control con Botón! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "2ee36a99fa"
+      "texto": "¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.",
+      "firma": "43eaa71899"
     },
     "end": {
       "texto": "¡Atrapamos a Glitch y Botón volvió a sonreír! Todos los robots funcionan gracias a ti.",
@@ -1581,8 +1581,8 @@
       "firma": "3c32a2aee2"
     },
     "boss": {
-      "texto": "¡Glitch quiere apagar a Botón para siempre! Se esconde entre mis amigos robots. ¡Atrapémoslo!",
-      "firma": "5475920268"
+      "texto": "¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.",
+      "firma": "43eaa71899"
     },
     "cast_classic": {
       "texto": "¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.",
@@ -1601,12 +1601,12 @@
       "firma": "ecb2ebe70d"
     },
     "cast_race": {
-      "texto": "¡Glitch corre entre mis amigos robots! Atrápalo solo a él.",
-      "firma": "9fdf1895c7"
+      "texto": "¡Glitch corre entre mis amigos robots! Alcánzalo solo a él.",
+      "firma": "269a705102"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch corre entre mis amigos robots! Atrápalo solo a él.",
-      "firma": "3394a43a85"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch corre entre mis amigos robots! Alcánzalo solo a él.",
+      "firma": "139492ff60"
     },
     "cast_find": {
       "texto": "Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
@@ -1767,8 +1767,8 @@
       "firma": "87786c3bcb"
     },
     "5": {
-      "texto": "¡La Serpiente Silbona llevó a Arcoíris a su cueva! Atrápala con la red y, si escapa, ¡persíguela!",
-      "firma": "fbbfbf6c68"
+      "texto": "¡La Serpiente Silbona tiene a Arcoíris en su cueva! Primero rescátalo y después atrapa a la serpiente entre los animales de la selva.",
+      "firma": "caa964bf4c"
     },
     "end": {
       "texto": "¡Atrapamos a la Serpiente Silbona y Arcoíris volvió a su nido! Toda la selva está feliz gracias a ti.",
@@ -1831,8 +1831,8 @@
       "firma": "93fa7d59f1"
     },
     "boss": {
-      "texto": "¡La Serpiente Silbona quiere hipnotizar a Arcoíris! Se esconde entre los animales de la selva. ¡Atrapémosla!",
-      "firma": "faff401ce4"
+      "texto": "¡La Serpiente Silbona tiene a Arcoíris en su cueva! Primero rescátalo y después atrapa a la serpiente entre los animales de la selva.",
+      "firma": "caa964bf4c"
     },
     "cast_classic": {
       "texto": "¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.",
@@ -1851,12 +1851,12 @@
       "firma": "77a46c6fd6"
     },
     "cast_race": {
-      "texto": "¡La Serpiente Silbona se arrastra entre los animales de la selva! Atrápala solo a ella.",
-      "firma": "bebfcea3c3"
+      "texto": "¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.",
+      "firma": "51a6358b38"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se arrastra entre los animales de la selva! Atrápala solo a ella.",
-      "firma": "34fc2b4010"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.",
+      "firma": "b3367a46c4"
     },
     "cast_find": {
       "texto": "Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
@@ -2017,8 +2017,8 @@
       "firma": "4bf75a120c"
     },
     "5": {
-      "texto": "¡Ácido llevó a Chispita a su fábrica agria! Atrápalo con la red y, si escapa, ¡persíguelo!",
-      "firma": "f78d7a8bb8"
+      "texto": "¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.",
+      "firma": "33b30b4553"
     },
     "end": {
       "texto": "¡Atrapamos a Ácido y Chispita volvió a brillar! Todo el reino de los dulces está feliz gracias a ti.",
@@ -2081,8 +2081,8 @@
       "firma": "c0afc3ea6d"
     },
     "boss": {
-      "texto": "¡Ácido quiere volver agria a Chispita! Se esconde entre mis amigos dulces. ¡Atrapémoslo!",
-      "firma": "a24bba2d7f"
+      "texto": "¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.",
+      "firma": "33b30b4553"
     },
     "cast_classic": {
       "texto": "¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.",
@@ -2101,12 +2101,12 @@
       "firma": "bbe9f4e429"
     },
     "cast_race": {
-      "texto": "¡Ácido corre entre mis amigos dulces! Atrápalo solo a él.",
-      "firma": "54a2311172"
+      "texto": "¡Ácido corre entre mis amigos dulces! Alcánzalo solo a él.",
+      "firma": "98a8aac79d"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido corre entre mis amigos dulces! Atrápalo solo a él.",
-      "firma": "957b21794d"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido corre entre mis amigos dulces! Alcánzalo solo a él.",
+      "firma": "b58941ce03"
     },
     "cast_find": {
       "texto": "Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",

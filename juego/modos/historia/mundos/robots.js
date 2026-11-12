@@ -26,14 +26,14 @@ registrarMundo('robots', {
     mgLinesCast: {
       classic: '¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.',
       catch: '¡Glitch cae entre mis amigos robots! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡Glitch corre entre mis amigos robots! Atrápalo solo a él.',
+      race: '¡Glitch corre entre mis amigos robots! Alcánzalo solo a él.',
       find: 'Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡Glitch salta de pantalla en pantalla! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!',
       ax: 'Glitch solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Glitch quiere apagar a Botón para siempre! Se esconde entre mis amigos robots. ¡Atrapémoslo!',
+    bossLine: '¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.',
     chapters: [
       { place: 'El Taller de Inventos', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy Chip, inventor. Glitch escondió a Botón... Búscalo: es el robotito azul con la cara sonriente en su pantalla.' },
@@ -44,7 +44,7 @@ registrarMundo('robots', {
       { place: 'El Laboratorio', mg: 'find', level: 4, sec: 90,
         line: 'En el laboratorio hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!' },
       { place: 'El Centro de Control', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Glitch se metió al centro de control con Botón! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.' }
     ],
     ending: '¡Atrapamos a Glitch y Botón volvió a sonreír! Todos los robots funcionan gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

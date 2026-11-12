@@ -26,14 +26,14 @@ registrarMundo('jungle', {
     mgLinesCast: {
       classic: '¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.',
       catch: '¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!',
-      race: '¡La Serpiente Silbona se arrastra entre los animales de la selva! Atrápala solo a ella.',
+      race: '¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.',
       find: 'Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!',
       memory: '¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!',
       ax: 'La Serpiente Silbona solo aparece justo después de {pista}: esa es la pista. ¡Tócala solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡La Serpiente Silbona quiere hipnotizar a Arcoíris! Se esconde entre los animales de la selva. ¡Atrapémosla!',
+    bossLine: '¡La Serpiente Silbona tiene a Arcoíris en su cueva! Primero rescátalo y después atrapa a la serpiente entre los animales de la selva.',
     chapters: [
       { place: 'La Orilla del Río', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris... Búscalo: es el tucán con el pico de todos los colores.' },
@@ -44,7 +44,7 @@ registrarMundo('jungle', {
       { place: 'El Templo Antiguo', mg: 'find', level: 4, sec: 90,
         line: 'En el templo hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!' },
       { place: 'La Cueva de la Serpiente', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡La Serpiente Silbona llevó a Arcoíris a su cueva! Atrápala con la red y, si escapa, ¡persíguela!' }
+        line: '¡La Serpiente Silbona tiene a Arcoíris en su cueva! Primero rescátalo y después atrapa a la serpiente entre los animales de la selva.' }
     ],
     ending: '¡Atrapamos a la Serpiente Silbona y Arcoíris volvió a su nido! Toda la selva está feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

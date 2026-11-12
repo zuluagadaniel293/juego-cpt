@@ -27,11 +27,13 @@ class GameScene extends Phaser.Scene {
       this.params = challengeParams(data.level, data.minigame);
     }
     this.mg = this.params.minigame;
+    this.twist = worldTwist(this);   // giro del mundo (gravedad cero, corriente...): solo Historia y Desafío
     this.powers = this.mode !== 'prueba';   // la Prueba fija conserva el feedback simple de siempre
     // Qué se busca: la señal/objetivo de siempre, o el villano escondido entre los amigos ("nivel de personajes").
-    // El jefe final siempre es de personajes; en la Historia lo sortea cada capítulo; en el Desafío, cada nivel al
-    // azar; la Prueba fija siempre con señales, para comparar sesiones.
-    this.chars = this.boss || (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
+    // Jefe final: primero se rescata al objetivo del mundo (señales) y después se atrapa al villano (personajes).
+    // En la Historia lo sortea cada capítulo; en el Desafío, cada nivel al azar; la Prueba fija siempre con
+    // señales, para comparar sesiones.
+    this.chars = this.boss ? this.phase > 0 : (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
       : this.mode === 'desafio' ? Math.random() < 0.5 : false);
     const tex = TEX[this.themeKey];
     // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
@@ -54,6 +56,8 @@ class GameScene extends Phaser.Scene {
     }
     this.log = [];
     this.castBusy = false;     // escena de personajes en curso (una a la vez)
+    // Phaser reutiliza la escena: lo de la partida anterior se borra aquí
+    this.lead = null; this.lastCast = null; this.friendSceneDone = false;
     this.lastWasCue = false;   // Pista: si lo anterior fue la pista
     this.trial = 0;
     this.current = null;
@@ -87,11 +91,10 @@ class GameScene extends Phaser.Scene {
     // Pantalla de preparación
     let title, what;
     if (this.boss) {
-      // cada fase del jefe es un juego al azar; en la segunda, el villano se escapó la primera vez
-      const again = this.phase > 0 ? '¡' + th.villain + ' escapó! ' : '';
-      title = this.mg === 'race' ? again + th.chase
-        : this.mg === 'catch' ? again + '¡Atrápalo con la red!' : again + '¡Encuentra ' + th.villainObj + '!';
-      what = th.villainObj;
+      // cada fase del jefe es un juego al azar: primero se rescata al objetivo y luego se atrapa al villano
+      title = this.phase === 0 ? th.rescueTitle || '¡Rescata ' + th.targetObj + '!'
+        : '¡Ahora ' + ({ race: 'alcanza', catch: 'atrapa', classic: 'vigila', find: 'encuentra' }[this.mg] || 'atrapa') + ' ' + th.villainObj + '!';
+      what = this.chars ? th.villainObj : th.targetObj;
     } else {
       title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
       what = this.chars ? th.villainObj : th.targetObj;
@@ -155,6 +158,8 @@ class GameScene extends Phaser.Scene {
       else { icon(220, ctrlY, '🖱️'); explain = 'Haz clic sobre ' + what + '. Si no está, no hagas clic'; }
     }
     txt(330, ctrlY, explain, 22, '#ffffff', { align: 'left', wordWrap: { width: 560 }, lineSpacing: 6 }).setOrigin(0, 0.5);
+    // lo nuevo de este mundo
+    if (this.twist) txt(W / 2, 410, '✨ ' + this.twist.name + ': ' + this.twist.desc, 19, '#fde047', { wordWrap: { width: 800 } });
 
     // Empezar cuando el niño esté listo (botón, o ESPACIO / ENTER en computador)
     const btn = add(this.add.rectangle(W / 2, 462, 260, 62, th.accent).setInteractive({ useHandCursor: true }));
@@ -305,6 +310,7 @@ class GameScene extends Phaser.Scene {
     if (this.lead) this.time.delayedCall(1200, () => this.moveLead());
     this.scheduleAudio();
     this.scheduleVisual();
+    startTwistAmbient(this);
   }
 
   elapsed() { return performance.now() - this.t0; }
@@ -369,6 +375,7 @@ class GameScene extends Phaser.Scene {
       phase: this.boss ? this.phase + 1 : '',
       minigame: this.mg,
       stim_set: this.chars ? 'personajes' : 'senales',
+      twist: this.twist ? this.twist.name : '',
       trial: trial,
       stimulus_type: type,
       stimulus_key: key,
@@ -394,7 +401,7 @@ class GameScene extends Phaser.Scene {
   }
   praise() {
     rewardSound();
-    this.fb.setText(this.chars ? '¡Atrapado!' : '¡Bien!').setAlpha(1);
+    this.fb.setText(this.chars ? CAST_WORD[this.mg] : '¡Bien!').setAlpha(1);
     this.tweens.add({ targets: this.fb, alpha: 0, duration: 600 });
   }
 
@@ -417,15 +424,17 @@ class GameScene extends Phaser.Scene {
     }
     // Si el objetivo es un compañero (hermanito de Chispa, Lumi), se le rescata: nada de atacarlo.
     // El poder de ataque queda para el villano (jefe final) o, en Superhéroes, para la señal de Sombra.
-    if (p.rescue && !this.chars) {
+    // En Menos uno con personajes lo que se toca son los amigos (se les deja pasar): tampoco se les ataca.
+    const friendly = this.chars && this.mg === 'notx';
+    if ((p.rescue && !this.chars) || friendly) {
       rescueSound();
-      this.fb.setText(p.rescue.shout).setAlpha(1);
+      this.fb.setText(friendly ? CAST_WORD.notx : p.rescue.shout).setAlpha(1);
       this.tweens.add({ targets: this.fb, alpha: 0, duration: 800 });
       this.rescueEffect(tx, ty);
       return;
     }
     POWER_SOUNDS[this.themeKey]();
-    this.fb.setText(this.chars ? '¡Atrapado!' : p.shout).setAlpha(1);
+    this.fb.setText(this.chars ? CAST_WORD[this.mg] : p.shout).setAlpha(1);
     this.tweens.add({ targets: this.fb, alpha: 0, duration: 700 });
     const sx = c ? ox : tx, sy = c ? oy : 0;   // sin lanzador en pantalla, el poder cae desde arriba
     if (p.kind === 'bolt') {
@@ -502,7 +511,9 @@ class GameScene extends Phaser.Scene {
     if (this.elapsed() >= P.sessionMs) { this.finish(); return; }
     this.trial++;
     const s = this.pickStimulus();
-    fit(this.stim.setTexture(s.key).setVisible(true).setAlpha(1), 160);
+    this.tweens.killTweensOf(this.stim);
+    fit(this.stim.setTexture(s.key).setVisible(true).setAlpha(1).setPosition(GAME_W / 2, GAME_H / 2).setAngle(0), 160);
+    twistItem(this, this.stim);
     this.current = { trial: this.trial, type: s.type, key: s.key, cond: s.cond, onset: performance.now(), responded: false, rt: null };
     this.time.delayedCall(P.stimMs, () => this.endTrial());
   }
@@ -560,8 +571,10 @@ class GameScene extends Phaser.Scene {
     }
     if (lane !== null) this.lastLane = lane;
     this.trial++;
-    this.items.push({ img, lane, trial: this.trial, type: s.type, key: s.key, onset: performance.now(), resolved: false,
-      hidden: this.mg === 'catch' && !!this.revealY });
+    const item = { img, lane, trial: this.trial, type: s.type, key: s.key, onset: performance.now(), resolved: false,
+      hidden: this.mg === 'catch' && !!this.revealY };
+    this.items.push(item);
+    twistItem(this, img, item);
   }
   resolveItem(it, got) {
     it.resolved = true;
@@ -588,7 +601,7 @@ class GameScene extends Phaser.Scene {
     if (this.cursors.right.isDown) this.basket.x = Math.min(W - 70, this.basket.x + 650 * dt);
     for (const it of this.items) {
       if (it.gone) continue;
-      it.img.y += this.fallSpeed * dt;
+      it.img.y += this.fallSpeed * dt * updateTwistItem(this, it, dt);
       if (it.hidden && it.img.y >= this.revealY) {
         // se descubre: el tiempo de reacción se cuenta desde aquí (cuando ya se puede saber qué es)
         it.hidden = false;
@@ -617,7 +630,7 @@ class GameScene extends Phaser.Scene {
     this.dashes.forEach(d => { d.x -= dx; if (d.x < -60) d.x += 9 * 120; });
     for (const it of this.items) {
       if (it.gone) continue;
-      it.img.x -= dx;
+      it.img.x -= dx * updateTwistItem(this, it, dt);
       if (!it.resolved && it.img.x <= this.runner.x + 25) this.resolveItem(it, it.lane === this.lane);
       if (!it.gone && it.img.x < -60) { it.img.destroy(); it.gone = true; }
     }
@@ -646,6 +659,7 @@ class GameScene extends Phaser.Scene {
       const img = fit(this.add.image(cx + Phaser.Math.Between(-30, 30), cy + Phaser.Math.Between(-20, 20), key), 100)
         .setInteractive({ useHandCursor: true });
       img.on('pointerdown', () => this.findTap(ft, isTarget, key, img));
+      twistItem(this, img);
       ft.imgs.push(img);
     }
     ft.timer = this.time.delayedCall(P.displayMs, () => this.findEnd(ft, null));
@@ -798,8 +812,12 @@ class GameScene extends Phaser.Scene {
     // distractores) ni en Carrera (el villano ya va adelante).
     // (con personajes tampoco: el villano y los amigos ya son los estímulos). Cada mundo tiene un solo amigo al que
     // el villano ataca y persigue: si ese amigo está acompañando en la esquina, esas escenas no salen.
+    // Además, en todos los mundos: el villano se roba el tesoro (desde el nivel 2) y su escena propia (desde el 3).
+    const villainName = this.theme.villain.toLowerCase().replace(/[^a-záéíóúñ]+/g, '_');
+    const extra = [{ name: villainName + '_roba_tesoro', kind: 'steal', minLevel: 2 },
+      { name: villainName + '_lanza_' + (WORLD_SPLASH[this.themeKey] || WORLD_SPLASH.heroes).name, kind: 'splash', minLevel: 3 }];
     const cast = this.mode === 'prueba' || this.chars || this.mg === 'race' ? []
-      : (D.cast || []).filter(c => (this.level || 0) >= c.minLevel && !(c.friend && c.friend === this.buddyRole));
+      : (D.cast || []).concat(extra).filter(c => (this.level || 0) >= c.minLevel && !(c.friend && c.friend === this.buddyRole));
     if (!P.visual || !list.length) return;
     const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);
     this.time.delayedCall(d, () => {
@@ -808,16 +826,17 @@ class GameScene extends Phaser.Scene {
       for (let k = 0; k < (P.visualCount || 1); k++) {
         this.time.delayedCall(k * 450, () => {
           if (this.ended) return;
-          const v = Phaser.Utils.Array.GetRandom(this.castBusy ? list : list.concat(cast));
-          this.showVisualDistractor(v);
-          this.logDistractor('visual_distractor', v.name);
+          // la escena del amigo (pelea o persecución) sale una sola vez por nivel, y ninguna escena se repite seguida
+          const free = cast.filter(c => c.name !== this.lastCast && !(c.friend && this.friendSceneDone));
+          const v = Phaser.Utils.Array.GetRandom(this.castBusy ? list : list.concat(free));
+          this.logDistractor('visual_distractor', this.showVisualDistractor(v) || v.name);
         });
       }
       this.scheduleVisual();
     });
   }
   showVisualDistractor(v) {
-    if (['fight', 'sneak', 'chase', 'peek', 'face'].includes(v.kind)) { this.showCastScene(v); return; }
+    if (['fight', 'sneak', 'chase', 'peek', 'face', 'steal', 'splash'].includes(v.kind)) return this.showCastScene(v);
     const W = GAME_W, H = GAME_H;
     const fromLeft = Math.random() < 0.5;
     const y = v.kind === 'walk' ? H - 32 : Phaser.Math.Between(62, 112);
@@ -840,6 +859,8 @@ class GameScene extends Phaser.Scene {
     const W = GAME_W, H = GAME_H, tex = TEX[this.themeKey], DEPTH = -1;
     if (c.kind === 'face' && !tex.villain_face) c = Object.assign({}, c, { kind: 'peek' });   // sin la imagen de la cara
     this.castBusy = true;
+    this.lastCast = c.name;
+    if (c.friend) this.friendSceneDone = true;
     const objs = [];
     const end = () => { objs.forEach(o => o.destroy()); this.castBusy = false; };
     const friendRole = c.friend || c.kind === 'fight' || c.kind === 'chase' ? this.castFriend(c.friend) : null;
@@ -854,7 +875,17 @@ class GameScene extends Phaser.Scene {
       const friend = fit(this.add.image(off, feet, pose(friendRole, 'help')).setOrigin(0.5, 1), 100).setDepth(DEPTH).setFlipX(!left);
       const villain = fit(this.add.image(off, feet, tex.villain_run).setOrigin(0.5, 1), 100).setDepth(DEPTH).setFlipX(left);   // se miran de frente
       const cower = tex[friendRole + '_cower'];
+      const wins = Math.random() < 0.4;   // a veces el amigo se defiende y el villano huye asustado
       if (cower) this.time.delayedCall(950, () => { if (friend.active) fit(friend.setTexture(cower), 80); });
+      if (wins) this.time.delayedCall(1700, () => {
+        if (!friend.active) return;
+        fit(friend.setTexture(tex[friendRole]), 100);
+        fit(villain.setTexture(tex.villain_scared || tex.villain_run), 100).setFlipX(!left);
+        const ok = this.add.text(fx + 30 * dir, y - 70, '¡Toma!', { font: 'bold 22px Arial', color: '#86efac', stroke: '#14532d', strokeThickness: 5 })
+          .setOrigin(0.5).setDepth(DEPTH);
+        objs.push(ok);
+        this.tweens.add({ targets: villain, x: off, duration: 450 });
+      });
       objs.push(friend, villain);
       this.tweens.add({ targets: friend, x: fx, duration: 350 });
       this.tweens.add({ targets: villain, x: vx, duration: 350, onComplete: () => {
@@ -869,6 +900,11 @@ class GameScene extends Phaser.Scene {
         }));
       } });
       this.time.delayedCall(2600, () => this.tweens.add({ targets: [friend, villain], x: off, duration: 350, onComplete: end }));
+      return wins ? c.name + '_gana_amigo' : c.name;
+    } else if (c.kind === 'steal') {
+      showStealScene(this, objs, end, DEPTH);
+    } else if (c.kind === 'splash') {
+      showSplashScene(this, objs, end, DEPTH);
     } else if (c.kind === 'peek') {
       // sube desde abajo en una esquina, se ríe (se sacude) y se vuelve a esconder.
       // Abajo a la izquierda están el protagonista (Clásico y Encuentra) y el compañero: sale por la derecha.
@@ -908,11 +944,22 @@ class GameScene extends Phaser.Scene {
         const villainKey = c.villainPose ? tex[c.villainPose] : tex.villain_run;
         const first = c.flee ? pose(friendRole, 'flee') : villainKey;
         const second = c.flee ? tex.villain_run : tex[friendRole];
-        this.tweens.add({ targets: runner(first), x: to, duration: 4200 });
+        // a veces el villano se tropieza a mitad de camino y el amigo se escapa
+        const trip = c.flee && Math.random() < 0.4;
+        this.tweens.add({ targets: runner(first), x: to, duration: 4200, onComplete: trip ? end : undefined });
         this.time.delayedCall(700, () => {
           if (!this.scene.isActive()) return;
-          this.tweens.add({ targets: runner(second), x: to, duration: 4200, onComplete: end });
+          const chaser = runner(second);
+          this.tweens.add({ targets: chaser, x: trip ? W / 2 : to, duration: trip ? 2100 : 4200, onComplete: trip ? () => {
+            this.tweens.killTweensOf(chaser);
+            this.tweens.add({ targets: chaser, angle: 90 * (left ? 1 : -1), y: chaser.y + 10, duration: 200 });
+            const plaf = this.add.text(chaser.x, chaser.y - 40, '¡PLAF!', { font: 'bold 22px Arial', color: '#fde047', stroke: '#7c2d12', strokeThickness: 5 })
+              .setOrigin(0.5).setDepth(DEPTH);
+            objs.push(plaf);
+            this.tweens.add({ targets: [chaser, plaf], alpha: 0, duration: 500, delay: 900 });
+          } : end });
         });
+        if (trip) return c.name + '_gana_amigo';
       }
     }
   }

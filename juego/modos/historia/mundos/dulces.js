@@ -26,14 +26,14 @@ registrarMundo('candy', {
     mgLinesCast: {
       classic: '¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.',
       catch: '¡Ácido cae entre mis amigos dulces! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡Ácido corre entre mis amigos dulces! Atrápalo solo a él.',
+      race: '¡Ácido corre entre mis amigos dulces! Alcánzalo solo a él.',
       find: 'Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!',
       ax: 'Ácido solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Ácido quiere volver agria a Chispita! Se esconde entre mis amigos dulces. ¡Atrapémoslo!',
+    bossLine: '¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.',
     chapters: [
       { place: 'El Bosque de Chupetines', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy Gomi, un osito de gomita. Ácido escondió a Chispita... Búscala: es la gomita estrella dorada.' },
@@ -44,7 +44,7 @@ registrarMundo('candy', {
       { place: 'El Castillo de Galleta', mg: 'find', level: 4, sec: 90,
         line: 'En el castillo hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!' },
       { place: 'La Fábrica Agria', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Ácido llevó a Chispita a su fábrica agria! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.' }
     ],
     ending: '¡Atrapamos a Ácido y Chispita volvió a brillar! Todo el reino de los dulces está feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

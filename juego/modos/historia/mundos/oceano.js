@@ -26,14 +26,14 @@ registrarMundo('ocean', {
     mgLinesCast: {
       classic: '¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.',
       catch: '¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Pulpo Tinta nada entre los animales del mar! Atrápalo solo a él.',
+      race: '¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.',
       find: 'Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!',
       ax: 'El Pulpo Tinta solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Fue el Pulpo Tinta quien escondió a Perla! Se esconde entre los animales del mar. ¡Atrapémoslo!',
+    bossLine: '¡El Pulpo Tinta escondió a Perla en la fosa oscura! Primero rescátala y después atrapa al pulpo entre los animales del mar.',
     chapters: [
       { place: 'El Arrecife de Coral', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla... Búscala: es el caballito de mar rosado con una perla en la cola.' },
@@ -44,7 +44,7 @@ registrarMundo('ocean', {
       { place: 'La Cueva de Cristales', mg: 'find', level: 4, sec: 90,
         line: 'En la cueva hay muchos caballitos juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!' },
       { place: 'La Fosa Oscura', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Fue el Pulpo Tinta quien escondió a Perla! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡El Pulpo Tinta escondió a Perla en la fosa oscura! Primero rescátala y después atrapa al pulpo entre los animales del mar.' }
     ],
     ending: '¡Atrapamos al Pulpo Tinta y Perla volvió al arrecife! Todo el mar está feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

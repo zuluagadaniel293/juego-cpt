@@ -26,8 +26,8 @@ class StoryResultsScene extends Phaser.Scene {
 
     const passed = stars >= PASS_STARS;
     if (passed && this.boss) newChapterOrder(this.themeKey);   // al volver a jugar el mundo, otro orden de juegos
-    const title = passed ? (this.boss ? '¡Atrapaste a ' + th.villain + '!' : '¡Capítulo superado!') : '¡Casi lo logras!';
-    drawKidSummary(this, s, stars, this.boss ? 'Atrapaste' : MG[this.mg].verb, title);
+    const title = passed ? (this.boss ? '¡Misión cumplida!' : '¡Capítulo superado!') : '¡Casi lo logras!';
+    drawKidSummary(this, s, stars, this.boss ? 'Acertaste' : MG[this.mg].verb, title);
     // al vencer al jefe se abre el mundo siguiente del mapa (si hay)
     const ks = Object.keys(THEMES), next = ks[ks.indexOf(this.themeKey) + 1];
     const bossMsg = next ? '¡Se abrió el mundo ' + THEMES[next].label + '!' : '¡Venciste el desafío final!';

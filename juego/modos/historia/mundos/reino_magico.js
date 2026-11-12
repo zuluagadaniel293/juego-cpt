@@ -26,14 +26,14 @@ registrarMundo('kingdom', {
     mgLinesCast: {
       classic: '¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.',
       catch: '¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Atrápalo solo a él.',
+      race: '¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.',
       find: 'La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!',
       ax: 'El Duende Pícaro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Fue el Duende Pícaro quien lanzó el hechizo! Se esconde entre la gente del castillo. ¡Atrapémoslo!',
+    bossLine: '¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.',
     chapters: [
       { place: 'El Jardín', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.' },
@@ -45,7 +45,7 @@ registrarMundo('kingdom', {
         line: 'En la torre hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!' },
       // Jefe final: primero se atrapa al villano con la red y, cuando escapa, se le persigue
       { place: 'El Salón del Trono', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Fue el Duende Pícaro quien lanzó el hechizo! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.' }
     ],
     ending: '¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

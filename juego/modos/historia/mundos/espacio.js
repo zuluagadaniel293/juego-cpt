@@ -26,14 +26,14 @@ registrarMundo('space', {
     mgLinesCast: {
       classic: '¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.',
       catch: '¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Capitán Meteoro corre por la nave entre la tripulación! Atrápalo solo a él.',
+      race: '¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.',
       find: 'La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!',
       ax: 'El Capitán Meteoro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Capitán Meteoro quiere llevarse a Bip en su nave pirata! Se esconde entre la tripulación. ¡Atrapémoslo!',
+    bossLine: '¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.',
     chapters: [
       { place: 'La Base Lunar', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió en la base lunar... Búscalo: es verde y tiene una estrella en la antena.' },
@@ -44,7 +44,7 @@ registrarMundo('space', {
       { place: 'El Planeta de Cristal', mg: 'find', level: 4, sec: 90,
         line: 'En el planeta de cristal hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!' },
       { place: 'La Nave Pirata', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Capitán Meteoro quiere llevarse a Bip! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.' }
     ],
     ending: '¡Atrapamos al Capitán Meteoro y Bip volvió a casa! Toda la galaxia está feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

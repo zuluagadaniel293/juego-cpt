@@ -45,6 +45,11 @@ const MG = {
 };
 // Juegos que funcionan como el Clásico (un estímulo en el centro; se responde con ESPACIO o tocando)
 const CLASSIC_LIKE = ['classic', 'notx', 'ax'];
+// Misión de cada juego cuando se busca al villano entre los amigos: así no todo es "atrapar".
+// Clásico = vigilar y descubrirlo · Atrapa = atraparlo con la red · Carrera = alcanzarlo · Encuentra = descubrir su escondite ·
+// Menos uno = dejar pasar a los amigos · Pista = descubrir su truco
+const CAST_WORD = { classic: '¡Te vi!', catch: '¡Atrapado!', race: '¡Alcanzado!', find: '¡Te encontré!',
+  notx: '¡Pasa, amigo!', ax: '¡Descubierto!', memory: '¡Lo seguiste!' };
 
 // Dificultad según el nivel (Desafío) o el capítulo (Historia): corto al principio, pero ya con reto.
 function challengeParams(level, minigame) {

@@ -5,7 +5,8 @@ registrarMundo('heroes', {
   // targetLabel: para mostrar · targetObj: para instrucciones ("Atrapa solo ___")
   theme: { label: 'Superhéroes', bg: 0x0f2a4a, accent: 0xfde047,
            targetLabel: 'la señal de Sombra', targetObj: 'la señal de Sombra',
-           villain: 'Sombra', villainObj: 'a Sombra', chase: '¡Persíguelo!' },
+           villain: 'Sombra', villainObj: 'a Sombra', chase: '¡Persíguelo!',
+           rescueTitle: '¡Sigue la señal de Sombra!' },   // jefe final, 1.ª fase (aquí no se rescata a nadie)
 
   story: {
     hero: 'Héroe Rayo',
@@ -26,14 +27,14 @@ registrarMundo('heroes', {
     mgLinesCast: {
       classic: '¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.',
       catch: '¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡Sombra corre entre mis amigos héroes! Cambia de carril y atrápalo solo a él.',
+      race: '¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.',
       find: 'Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!',
       memory: '¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!',
       ax: 'Sombra solo aparece justo después de {pista}: esa es la pista. ¡Toca a Sombra solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Ahí está Sombra en persona, escondido entre mis amigos héroes! Esta vez no se escapará. ¡Vamos a atraparlo!',
+    bossLine: '¡Sombra se esconde en su guarida! Primero sigue sus señales y después atrápalo entre mis amigos héroes.',
     chapters: [
       { place: 'El Centro', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!' },
@@ -45,7 +46,7 @@ registrarMundo('heroes', {
         line: 'En la torre hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!' },
       // Jefe final: primero se atrapa al villano con la red y, cuando escapa, se le persigue
       { place: 'Guarida de Sombra', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Ahí está Sombra en persona! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡Sombra se esconde en su guarida! Primero sigue sus señales y después atrápalo entre mis amigos héroes.' }
     ],
     ending: '¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

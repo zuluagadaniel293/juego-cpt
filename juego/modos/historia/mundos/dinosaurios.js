@@ -26,14 +26,14 @@ registrarMundo('dinos', {
     mgLinesCast: {
       classic: '¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.',
       catch: '¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Pterodáctilo Ladrón corre entre los dinosaurios! Atrápalo solo a él.',
+      race: '¡El Pterodáctilo Ladrón corre entre los dinosaurios! Alcánzalo solo a él.',
       find: 'Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡El Pterodáctilo Ladrón salta de roca en roca! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!',
       ax: 'El Pterodáctilo Ladrón solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Pterodáctilo Ladrón quiere esconder a Dino en su nido! Se esconde entre los dinosaurios. ¡Atrapémoslo!',
+    bossLine: '¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.',
     chapters: [
       { place: 'El Valle de Helechos', mg: 'classic', level: 1, sec: 45,
         line: '¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino... Búscalo: es el triceratops naranja con manchas amarillas.' },
@@ -44,7 +44,7 @@ registrarMundo('dinos', {
       { place: 'La Cueva de las Pinturas', mg: 'find', level: 4, sec: 90,
         line: 'En la cueva hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!' },
       { place: 'El Nido en la Montaña', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Pterodáctilo Ladrón llevó a Dino a su nido! Atrápalo con la red y, si escapa, ¡persíguelo!' }
+        line: '¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.' }
     ],
     ending: '¡Atrapamos al Pterodáctilo Ladrón y Dino volvió con su familia! Todo el valle está feliz gracias a ti.',
     // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño

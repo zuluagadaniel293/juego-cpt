@@ -134,7 +134,8 @@ reacción mide cuánto tarda el niño en decidir y moverse, no cuánto se demora
 
 ## Jefe final
 Sus dos fases salen al azar entre Clásico, Atrapa, Carrera, Encuentra y Memoria (la columna `fase_jefe` dice cuál
-fue la 1 y cuál la 2). Si una fase es Memoria, sus caminos aparecen en el mismo CSV como `camino_memoria`, con
+fue la 1 y cuál la 2). En la fase 1 se **rescata** al objetivo del mundo (`estimulos` = `senales`) y en la fase 2 se
+**atrapa** al villano entre sus amigos (`personajes`). Si una fase es Memoria, sus caminos aparecen en el mismo CSV como `camino_memoria`, con
 resultado `recordo_el_camino` o `se_equivoco_de_camino`.
 
 ## Niveles de señales y niveles de personajes
@@ -144,3 +145,20 @@ La columna `estimulos` dice qué se buscaba en ese nivel:
 En la Historia cada capítulo sortea el tipo (al menos uno de cada uno por mundo); en el Desafío, cada nivel al azar.
 La Prueba fija usa siempre señales, para poder comparar sesiones. Sirve para ver si al niño le cuesta más distinguir
 señales (símbolos) o personajes (figuras parecidas, como Héroe Noche y Sombra).
+
+## Giro de cada mundo
+La columna `giro_del_mundo` dice qué cambia en ese mundo para que no todos se jueguen igual (desde el capítulo 2 de la
+Historia y el nivel 2 del Desafío; vacía = sin giro). Cambia cómo se ven o se mueven las cosas, no qué hay que responder:
+- Superhéroes: sin giro (es el primer mundo).
+- Dragones `Niebla mágica`: niebla por los bordes, detrás de todo.
+- Reino mágico `Hechizo giratorio`: los objetos llegan girando.
+- Espacio `Gravedad cero`: los objetos flotan de lado a lado.
+- Océano `Corriente marina`: la corriente empuja lo que cae hacia un lado; burbujas por los bordes.
+- Dinosaurios `Temblor`: cada 9 a 15 s la pantalla tiembla un momento (queda como distractor `temblor`).
+- Robots `Modo turbo`: unos objetos llegan más rápido y otros más lento (en promedio, igual).
+- Selva `Lluvia de hojas`: caen hojas por detrás de los objetos.
+- Dulces `Gomitas saltarinas`: los objetos llegan dando saltitos; chispitas de colores por detrás.
+La Prueba fija y el modo Memoria nunca tienen giro. Al comparar mundos, conviene tener en cuenta esta columna.
+
+Escenas nuevas de los personajes (columna `que_aparecio` en los distractores): `<villano>_roba_tesoro`, `<villano>_lanza_<algo>`
+(escena propia de cada mundo, por un borde) y `..._gana_amigo` cuando en la pelea o la persecución el amigo se salva.

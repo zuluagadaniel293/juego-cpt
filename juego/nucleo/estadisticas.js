@@ -102,6 +102,7 @@ function downloadCSV(log, name) {
     ['fase_jefe', r => r.phase],
     ['minijuego', r => (MG[r.minigame] ? MG[r.minigame].label : r.minigame)],
     ['estimulos', r => r.stim_set],   // senales (lo de siempre) o personajes (el villano entre los amigos)
+    ['giro_del_mundo', r => r.twist],   // lo que cambia en ese mundo (gravedad cero, corriente...); vacío = sin giro
     ['ensayo', r => r.trial],
     ['tipo_estimulo', r => CSV_TEXT.stimulus_type[r.stimulus_type] || r.stimulus_type],
     ['que_aparecio', r => stimulusLabel(r.theme, r.stimulus_key)],

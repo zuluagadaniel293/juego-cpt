@@ -34,7 +34,7 @@ class MemoryScene extends Phaser.Scene {
     this.prevLog = data.prevLog || [];
     const tex = TEX[this.themeKey];
     // nivel de personajes (como en los otros juegos): el villano salta de escondite y los amigos distraen
-    this.chars = this.boss || (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
+    this.chars = this.boss ? this.phase > 0 : (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
       : this.mode === 'desafio' ? Math.random() < 0.5 : false);
     // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
     this.buddyRole = this.companionRole();
@@ -57,6 +57,7 @@ class MemoryScene extends Phaser.Scene {
     }
     this.log = [];
     this.castBusy = false;     // escena de personajes en curso (una a la vez)
+    this.lastCast = null; this.friendSceneDone = false;   // la escena del amigo, una vez por nivel
     this.trial = 0;
     this.result = { fwd: 0, bwd: 0 };
     this.t0 = null;
@@ -95,7 +96,8 @@ class MemoryScene extends Phaser.Scene {
     const panel = add(this.add.graphics());
     panel.fillStyle(0x0f172a, 0.9); panel.fillRoundedRect(80, 50, W - 160, H - 100, 26);
     this.tiles.forEach(t => t.setVisible(false));
-    add(this.add.text(W / 2, 100, dir === 'fwd' ? (this.chars ? (this.phase > 0 ? '¡' + th.villain + ' escapó! ' : '') + '¡Sigue el camino de ' + th.villain + '!' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!',
+    add(this.add.text(W / 2, 100, dir === 'fwd' ? (this.chars ? (this.boss ? '¡Ahora sigue el rastro de ' : '¡Sigue el camino de ') + th.villain + '!'
+      : this.boss ? (th.rescueTitle || '¡Rescata ' + th.targetObj + '!') + ' Sigue su camino' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!',
       { font: 'bold 34px Arial', color: hexColor(th.accent) }).setOrigin(0.5));
     const tex = TEX[this.themeKey];
     if (flashes) {   // el objetivo (sí) y el distractor de las casillas (no)
