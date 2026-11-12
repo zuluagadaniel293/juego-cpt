@@ -172,7 +172,7 @@ function loadSfx(file) {
   const ctx = getCtx();
   if (!ctx) return Promise.resolve(null);
   if (!sfxCache[file]) {
-    sfxCache[file] = fetch((window.SFX_BASE || 'assets/') + file).then(r => r.arrayBuffer()).then(b => ctx.decodeAudioData(b)).then(buf => {
+    sfxCache[file] = fetch((window.SFX_BASE === undefined ? 'assets/' : window.SFX_BASE) + file).then(r => r.arrayBuffer()).then(b => ctx.decodeAudioData(b)).then(buf => {
       const d = buf.getChannelData(0), n = Math.min(d.length, buf.sampleRate * SFX_MAX_S);
       let sum = 0, cnt = 0, peak = 0;
       for (let i = 0; i < n; i++) {
