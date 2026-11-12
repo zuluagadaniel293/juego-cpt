@@ -931,6 +931,7 @@ class GameScene extends Phaser.Scene {
       const x = side ? 70 : W - 70;
       const img = fit(this.add.image(x, H + 80, tex.villain_laugh), 120).setDepth(DEPTH).setFlipX(!side);
       objs.push(img);
+      this.villainSpot = { x, y: H - 90, t: this.time.now };
       this.tweens.add({ targets: img, y: H - 60, duration: 450, ease: 'Back.easeOut', onComplete: () => {
         this.tweens.add({ targets: img, angle: { from: -5, to: 5 }, duration: 120, yoyo: true, repeat: 7 });
         this.time.delayedCall(2000, () => this.tweens.add({ targets: img, y: H + 80, duration: 400, onComplete: end }));
@@ -941,6 +942,7 @@ class GameScene extends Phaser.Scene {
       const off = left ? -70 : W + 70, inX = left ? 40 : W - 40;
       const img = fit(this.add.image(off, y, tex.villain_face), 110).setDepth(DEPTH).setFlipX(!left).setAngle(18 * dir);
       objs.push(img);
+      this.villainSpot = { x: inX, y, t: this.time.now };   // de aquí sale su hechizo (juego/nucleo/hechizos.js)
       this.tweens.add({ targets: img, x: inX, duration: 500, ease: 'Sine.easeOut', onComplete: () => {
         this.tweens.add({ targets: img, angle: 8 * dir, duration: 300, yoyo: true, repeat: 2 });
         this.time.delayedCall(1800, () => this.tweens.add({ targets: img, x: off, duration: 400, onComplete: end }));

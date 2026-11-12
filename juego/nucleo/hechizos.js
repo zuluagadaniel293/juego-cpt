@@ -35,12 +35,14 @@ function runThreatFx(scene, chapterIdx) {
   if (!list || scene.mode === 'prueba' || scene.threatBusy) return;
   const [fx, arg] = (list[chapterIdx] || list[0]).split(':');
   scene.threatBusy = true;
-  // empieza cuando el villano ya dijo buena parte de la frase
-  scene.time.delayedCall(900, () => {
+  // cuando el villano ya dijo buena parte de la frase, lanza el hechizo: cruza la pantalla, le cae a alguien
+  // (o a algo) y ahí empieza el efecto. Los que se mueven solos (robar, meteoritos...) empiezan directo.
+  scene.time.delayedCall(600, () => {
     if (scene.ended) { scene.threatBusy = false; return; }
     const objs = [];
     const done = () => { objs.forEach(o => o.destroy()); scene.threatBusy = false; };
-    (THREAT_DRAW[fx] || THREAT_DRAW.takeover)(scene, objs, arg);
+    const start = () => (THREAT_DRAW[fx] || THREAT_DRAW.takeover)(scene, objs, arg);
+    if (['steal', 'kidnap', 'meteors', 'mess'].includes(fx)) start(); else castSpell(scene, fx, start);
     scene.logDistractor('visual_distractor', 'hechizo_' + fx + (arg ? '_' + arg : ''));
     // al final todo se desvanece y el fondo vuelve a ser el de antes
     scene.time.delayedCall(THREAT_MS, () => {
@@ -48,6 +50,67 @@ function runThreatFx(scene, chapterIdx) {
       if (!live.length) { done(); return; }
       scene.tweens.add({ targets: live, alpha: 0, duration: 700, onComplete: done });
     });
+  });
+}
+
+// ---------- El hechizo viaja: sale del villano, cruza la pantalla en arco y le cae al amigo o al fondo ----------
+// Va por detrás de los objetos del juego (no los tapa), pero delante de los personajes del fondo.
+const SPELL_LOOK = {   // color y dibujo de cada hechizo (imagen común si existe)
+  freeze: [0x7dd3fc, 'hz_crystal_1'], fire: [0xf97316, 'hz_fire_1'], melt: [0xf9a8d4, null], ink: [0x312e81, null],
+  sour: [0xd9f99d, null], glitch: [0x22c55e, null], hypno: [0xc084fc, null], vines: [0x22c55e, null], seal: [0x78716c, null],
+  stamp: [0x7c3aed, null], takeover: [0x7c3aed, null], flood: [0x38bdf8, null], smoke: [0x64748b, null], dark: [0x1e1b4b, null]
+};
+function castSpell(scene, fx, onHit) {
+  const W = GAME_W, H = GAME_H, [color, key] = SPELL_LOOK[fx] || [0xa855f7, null];
+  // desde donde se asomó el villano (si fue hace poco); si no, desde un borde
+  const spot = scene.villainSpot && scene.time.now - scene.villainSpot.t < 4000 ? scene.villainSpot
+    : { x: Math.random() < 0.5 ? -20 : W + 20, y: Phaser.Math.Between(150, 300) };
+  // a quién le cae: al amigo de la esquina (si está), o a un punto del fondo, abajo
+  const buddy = scene.buddy && scene.buddy.active ? scene.buddy : null;
+  const tx = buddy ? buddy.x : Phaser.Math.Between(300, W - 300), ty = buddy ? buddy.y - buddy.displayHeight * 0.55 : H - 70;
+  const orb = key && scene.textures.exists(key) ? fit(scene.add.image(spot.x, spot.y, key), 58)
+    : scene.add.circle(spot.x, spot.y, 19, color, 1).setStrokeStyle(5, 0xffffff, 0.85);
+  orb.setDepth(-0.5);
+  const glow = scene.add.circle(spot.x, spot.y, 34, color, 0.35).setDepth(-0.6);
+  sweep('sine', 900, 300, 0.7, 0.04);
+  const cx = (spot.x + tx) / 2, cy = Math.min(spot.y, ty) - 160;   // arco por arriba
+  const p = { t: 0 };
+  scene.tweens.add({ targets: p, t: 1, duration: 850, ease: 'Sine.easeIn',
+    onUpdate: () => {
+      const u = 1 - p.t, x = u * u * spot.x + 2 * u * p.t * cx + p.t * p.t * tx, y = u * u * spot.y + 2 * u * p.t * cy + p.t * p.t * ty;
+      orb.setPosition(x, y); glow.setPosition(x, y); orb.angle += 12;
+      if (Math.random() < 0.6) {   // estela
+        const tr = scene.add.circle(x, y, Phaser.Math.Between(4, 8), color, 0.7).setDepth(-0.7);
+        scene.tweens.add({ targets: tr, scale: 0, alpha: 0, duration: 380, onComplete: () => tr.destroy() });
+      }
+    },
+    onComplete: () => {
+      orb.destroy(); glow.destroy();
+      // ¡pum! un anillo y chispas donde cae
+      const ring = scene.add.circle(tx, ty, 20).setStrokeStyle(6, color, 1).setDepth(-0.5);
+      scene.tweens.add({ targets: ring, scale: 3, alpha: 0, duration: 450, onComplete: () => ring.destroy() });
+      for (let i = 0; i < 10; i++) {
+        const sp = scene.add.circle(tx, ty, 5, color, 1).setDepth(-0.5), a = Math.random() * 6.28, d = Phaser.Math.Between(40, 90);
+        scene.tweens.add({ targets: sp, x: tx + Math.cos(a) * d, y: ty + Math.sin(a) * d, alpha: 0, duration: 450, onComplete: () => sp.destroy() });
+      }
+      noise(0.25, 0.05, 'lowpass', 900, 200);
+      if (buddy) hitBuddy(scene, buddy, color);
+      onHit();
+    } });
+}
+// el amigo recibe el hechizo: se encoge del susto (o se cubre, si tiene esa pose), cambia de color un momento y se recupera
+function hitBuddy(scene, buddy, color) {
+  if (!buddy.active || scene.buddyJumping) return;
+  const tex = TEX[scene.themeKey], cower = tex[scene.buddyRole + '_cower'], normal = tex[scene.buddyRole];
+  scene.buddyJumping = true;   // así no salta a celebrar mientras tanto
+  if (cower) fit(buddy.setTexture(cower), 90);
+  buddy.setTint(color);
+  scene.tweens.add({ targets: buddy, x: buddy.x + 6, duration: 70, yoyo: true, repeat: 5 });
+  scene.time.delayedCall(1500, () => {
+    if (!buddy.active) return;
+    buddy.clearTint();
+    if (cower) fit(buddy.setTexture(normal), 104);
+    scene.buddyJumping = false;
   });
 }
 

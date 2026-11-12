@@ -47,10 +47,6 @@
   "principal": 3,
   "quitar": []
  },
- "rugido": {
-  "principal": 2,
-  "quitar": []
- },
  "pajaros": {
   "principal": 3,
   "quitar": []
@@ -158,6 +154,10 @@
   "quitar": [
    2
   ]
+ },
+ "rugido": {
+  "principal": 2,
+  "quitar": []
  },
  "volcan": {
   "principal": 2,

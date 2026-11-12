@@ -127,7 +127,7 @@ registrarMundo('fantasy', {
         sound() { for (let i = 0; i < 9; i++) noise(0.035, 0.14, 'highpass', 2800, null, i * 0.08 + (i > 4 ? 0.4 : 0)); } }   // parloteo de ardilla
     ],
     sounds: {
-      rugido()  { noise(0.9, 0.22, 'lowpass', 500, 120); sweep('sawtooth', 120, 70, 0.9, 0.08); },
+      // sin rugido: sonaba muy fuerte y asustaba (los dragones de este mundo son amigos)
       pajaros() { [0, 0.15, 0.3, 0.7, 0.85].forEach(d => sweep('sine', 2500, 3800, 0.1, 0.05, d)); },
       viento()  { noise(1.6, 0.12, 'bandpass', 300, 900); }
     }
