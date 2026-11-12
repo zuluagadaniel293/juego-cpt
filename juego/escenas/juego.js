@@ -270,8 +270,8 @@ class GameScene extends Phaser.Scene {
         this.mgObjects.push(d);
       }
       const tex = TEX[this.themeKey];
-      // pose corriendo decidido (friendN_run); si no hay, la de huir; si tampoco, su imagen normal
-      const runKey = this.runnerRole ? tex[this.runnerRole + '_run'] || tex[this.runnerRole + '_flee'] || tex[this.runnerRole] : tex.hero_run;
+      // pose corriendo decidido (friendN_run); si todavía no hay, su imagen normal
+      const runKey = this.runnerRole ? tex[this.runnerRole + '_run'] || tex[this.runnerRole] : tex.hero_run;
       this.runner = fit(this.add.image(170, this.lanes[1], runKey), 104).setDepth(4);
       this.mgObjects.push(this.runner);
       this.bob = this.tweens.add({ targets: this.runner, angle: { from: -4, to: 4 }, duration: 160, yoyo: true, repeat: -1 });

@@ -99,8 +99,9 @@ function startMinigame(scene, data) {
 }
 
 const hexColor = n => '#' + n.toString(16).padStart(6, '0');
-// El amigo que corre en la Carrera de cada mundo: el que tiene pose corriendo (assets/manifest.js: friendN_run o friendN_flee)
-function raceHelper(theme) {
-  const tex = TEX[theme] || {};
-  return ['friend1', 'friend2', 'friend3'].find(f => tex[f + '_run'] || tex[f + '_flee']) || 'friend1';
-}
+// El amigo que corre en la Carrera de cada mundo, persiguiendo para ayudar. No es el que el villano ataca y persigue
+// (ese tiene sus propias escenas) ni el que se parece al villano (friend3, distractor difícil).
+// Su pose corriendo es friendN_run en assets/manifest.js (si falta, corre con su imagen normal).
+const RACE_HELPER = { heroes: 'friend2', fantasy: 'friend1', kingdom: 'friend2', space: 'friend2', ocean: 'friend2',
+  dinos: 'friend2', robots: 'friend2', jungle: 'friend2', candy: 'friend2' };
+function raceHelper(theme) { return RACE_HELPER[theme] || 'friend2'; }

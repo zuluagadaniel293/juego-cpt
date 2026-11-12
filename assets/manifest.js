@@ -17,7 +17,7 @@
 //                     (si faltan, usan "villain") · villain_face: solo la cara, espiando desde un lado (si falta, no sale)
 //   friend1_help, friend1_cower, friend1_flee   poses del amigo 1 (igual friend2_..., friend3_...): pidiendo ayuda,
 //                     cubriéndose del ataque, huyendo asustado. Si faltan, se usa su imagen normal.
-//   friend1_run ...   amigo corriendo decidido: el que persigue en la Carrera (si falta, usa la pose de huir)
+//   friend1_run ...   amigo corriendo decidido: el que persigue en la Carrera (ver RACE_HELPER en juego/nucleo/mundos.js)
 //   friend1_cheer ...  amigo celebrando: el compañero de la esquina cambia a esta pose al saltar cuando el niño acierta
 //   friend1, friend2  amigos: distractores del jefe final
 //   friend3           amigo parecido al villano (distractor difícil del jefe final)
