@@ -31,7 +31,7 @@ class WorldMapScene extends Phaser.Scene {
         this.add.text(x, y + 96, 'Cerrado', { font: 'bold 15px Arial', color: '#94a3b8' }).setOrigin(0.5);
         objs[0].setInteractive({ useHandCursor: true }).on('pointerdown', () => teaseLocked(this, objs, lockedWorldHint(w)));
       } else if (th) {
-        const done = (story[w] || []).filter(s => s > 0).length;
+        const done = (story[w] || []).filter(s => s >= PASS_STARS).length;
         const c = this.add.circle(x, y, 52, th.bg).setStrokeStyle(5, th.accent).setInteractive({ useHandCursor: true });
         fit(this.add.image(x, y, TEX[w].target), 70);
         this.add.text(x, y + 72, th.label.split(' ')[0], { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5);
