@@ -408,8 +408,9 @@ class GameScene extends Phaser.Scene {
     if (c) this.tweens.add({ targets: c, scale: c.scale * 1.12, duration: 90, yoyo: true });
     if (!hit) {
       fizzleSound();
+      const pk = sizeScale(this, 'puff', 20);   // la nube mide unos 20 px, sea imagen o dibujo
       const em = this.add.particles(ox, oy, 'puff', { speed: { min: 20, max: 60 }, lifespan: 450,
-        scale: { start: 0.8, end: 0 }, alpha: { start: 0.6, end: 0 }, emitting: false }).setDepth(9);
+        scale: { start: 0.8 * pk, end: 0 }, alpha: { start: 0.6, end: 0 }, emitting: false }).setDepth(9);
       em.explode(8);
       this.time.delayedCall(600, () => em.destroy());
       return;

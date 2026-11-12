@@ -284,6 +284,7 @@ window.ASSETS = {
     magicstar:   'comunes/estrella_magica.png',  // poder de la Reina Luna
     heart:       'comunes/corazon.png',          // rescate de compañeros
     spark:       'comunes/chispa.png',           // brillos al acertar
+    puff:        'comunes/humo.png',             // humito cuando el poder falla (tocó otro personaje)
     icon_map:    'comunes/icono_mapa.png',
     icon_trophy: 'comunes/icono_trofeo.png',
     icon_lock:   'comunes/icono_candado.png',
