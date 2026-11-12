@@ -33,6 +33,9 @@ class BootScene extends Phaser.Scene {
       // poses del villano para las escenas de fondo (escabulléndose, riéndose): si faltan, la imagen normal
       ['villain_sneak', 'villain_laugh', 'villain_taunt', 'villain_run', 'villain_scared'].forEach(n => { if (!TEX[t][n]) TEX[t][n] = TEX[t].villain; });
     });
+    // vista previa para el equipo: index.html?desbloqueo=fantasy muestra la pantalla de "¡Mundo desbloqueado!"
+    const preview = new URLSearchParams(location.search).get('desbloqueo');
+    if (preview && THEMES[preview]) { this.scene.start('WorldUnlocked', { theme: preview }); return; }
     this.scene.start('Mode');
   }
   makeCaught(t) {

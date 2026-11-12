@@ -20,6 +20,7 @@ function speakTTS(text, theme, onEnd) {
     u.lang = v ? v.lang : 'es-MX';
     u.pitch = STORY[theme].voice.pitch;   // tono más agudo: suena a personaje infantil
     u.rate = 1.0;
+    u.volume = VOICE_VOLUME;
     if (onEnd) u.onend = onEnd;
     window.speechSynthesis.speak(u);
   } catch (e) { if (onEnd) onEnd(); }
@@ -33,6 +34,7 @@ function playVoice(theme, id, text, onEnd) {
   const file = ((window.VOICES || {})[theme] || {})[id] || assetFile(theme, 'voice_' + id);
   if (!file) { speakTTS(text, theme, done); return; }
   currentVoice = new Audio('assets/' + file);
+  currentVoice.volume = VOICE_VOLUME;
   currentVoice.onended = done;
   currentVoice.play().catch(() => speakTTS(text, theme, done));
 }
@@ -44,7 +46,7 @@ function playClip(theme, id, volume) {
     || ((window.VOICES || {})[theme] || {})[id];
   if (!file) return false;
   const a = new Audio('assets/' + file);
-  a.volume = volume === undefined ? 0.8 : volume;
+  a.volume = volume === undefined ? CLIP_VOLUME : volume;
   a.play().catch(() => {});
   return true;
 }
@@ -55,11 +57,20 @@ function stopVoice() {
 }
 
 // ======================= AUDIO (Web Audio, sin archivos) =======================
-let audioCtx = null;
+let audioCtx = null, audioOut = null;
+// Volumen general: todos los sonidos hechos con código y las grabaciones pasan por aquí (las voces, por VOICE_VOLUME)
+const MASTER_VOLUME = 0.75;
+const VOICE_VOLUME = 0.75;   // narrador y presentaciones
+const CLIP_VOLUME = 0.6;     // voces de los personajes como distractores (risas, "¡ayuda!")
 function getCtx() {
   if (!audioCtx) {
     const AC = window.AudioContext || window.webkitAudioContext;
-    if (AC) audioCtx = new AC();
+    if (AC) {
+      audioCtx = new AC();
+      audioOut = audioCtx.createGain();
+      audioOut.gain.value = MASTER_VOLUME;
+      audioOut.connect(audioCtx.destination);
+    }
   }
   if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
   return audioCtx;
@@ -74,7 +85,7 @@ function tone(freq, dur, vol, type) {
   g.gain.setValueAtTime(vol, ctx.currentTime);
   g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
   o.connect(g);
-  g.connect(ctx.destination);
+  g.connect(audioOut);
   o.start();
   o.stop(ctx.currentTime + dur);
 }
@@ -104,7 +115,7 @@ function noise(dur, vol, filterType, f0, f1, delay) {   // ruido filtrado: truen
   const g = ctx.createGain();
   g.gain.setValueAtTime(vol, t);
   g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-  src.connect(f); f.connect(g); g.connect(ctx.destination);
+  src.connect(f); f.connect(g); g.connect(audioOut);
   src.start(t); src.stop(t + dur);
 }
 function sweep(type, f0, f1, dur, vol, delay) {           // tono que sube o baja
@@ -117,7 +128,7 @@ function sweep(type, f0, f1, dur, vol, delay) {           // tono que sube o baj
   const g = ctx.createGain();
   g.gain.setValueAtTime(vol, t);
   g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-  o.connect(g); g.connect(ctx.destination);
+  o.connect(g); g.connect(audioOut);
   o.start(t); o.stop(t + dur);
 }
 // Envolvente: sube, se mantiene y baja (así las cosas "llegan" y "se van", en vez de empezar fuerte y apagarse)
@@ -150,13 +161,13 @@ function planeSound(dir) {
   const n = ctx.createBufferSource(); n.buffer = noiseBuf; n.loop = true;
   const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.7;
   bp.frequency.setValueAtTime(900, t); bp.frequency.linearRampToValueAtTime(1300, t + a); bp.frequency.exponentialRampToValueAtTime(380, t + dur);
-  chain([n, bp, envGain(ctx, t, 0.16, a, s, r), panNode(ctx, t, -0.9 * dir, 0.9 * dir, dur), ctx.destination]);
+  chain([n, bp, envGain(ctx, t, 0.16, a, s, r), panNode(ctx, t, -0.9 * dir, 0.9 * dir, dur), audioOut]);
   [0, 4].forEach(det => {   // zumbido grave del motor
     const o = ctx.createOscillator(); o.type = 'sawtooth';
     o.frequency.setValueAtTime(128 + det, t); o.frequency.setValueAtTime(128 + det, t + a * 0.8);
     o.frequency.exponentialRampToValueAtTime(96 + det, t + a + s + 0.6);
     const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 520;
-    chain([o, lp, envGain(ctx, t, 0.035, a, s, r), panNode(ctx, t, -0.9 * dir, 0.9 * dir, dur), ctx.destination]);
+    chain([o, lp, envGain(ctx, t, 0.035, a, s, r), panNode(ctx, t, -0.9 * dir, 0.9 * dir, dur), audioOut]);
     o.start(t); o.stop(t + dur + 0.1);
   });
   n.start(t); n.stop(t + dur + 0.1);
@@ -199,7 +210,7 @@ function playSfx(file, level, pan) {
     g.gain.linearRampToValueAtTime(vol, t + 0.03);
     g.gain.setValueAtTime(vol, t + Math.max(0.03, len - 0.4));
     g.gain.linearRampToValueAtTime(0.0001, t + len);
-    chain([src, g, pan ? panNode(ctx, t, pan, pan, len) : null, ctx.destination]);
+    chain([src, g, pan ? panNode(ctx, t, pan, pan, len) : null, audioOut]);
     src.start(t); src.stop(t + len + 0.05);
   });
   return true;
