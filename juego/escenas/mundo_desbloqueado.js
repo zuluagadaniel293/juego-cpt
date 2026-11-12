@@ -6,6 +6,27 @@ class WorldUnlockedScene extends Phaser.Scene {
   constructor() { super('WorldUnlocked'); }
   init(data) { this.themeKey = data.theme; }
   create() {
+    // Los navegadores no dejan sonar nada hasta que la persona toca la página. Jugando, el niño ya tocó antes
+    // (para llegar al mapa); si no (por ejemplo, con el enlace de vista previa), se espera un toque.
+    const ctx = getCtx();
+    if (ctx && ctx.state === 'running') { this.play(); return; }
+    const W = GAME_W, H = GAME_H;
+    this.cameras.main.setBackgroundColor(0x020617);
+    const lock = fit(this.add.image(W / 2, H / 2 - 40, 'icon_lock'), 110);
+    this.tweens.add({ targets: lock, scale: lock.scale * 1.08, duration: 600, yoyo: true, repeat: -1 });
+    const t = this.add.text(W / 2, H / 2 + 70, '👆 Toca para descubrir tu mundo nuevo', { font: 'bold 30px Arial', color: '#fde047' }).setOrigin(0.5);
+    let started = false;
+    const go = () => {
+      if (started) return;
+      started = true;
+      getCtx();
+      lock.destroy(); t.destroy();
+      this.play();
+    };
+    this.input.once('pointerdown', go);
+    this.input.keyboard.once('keydown', go);
+  }
+  play() {
     const W = GAME_W, H = GAME_H, key = this.themeKey, th = THEMES[key], tex = TEX[key], st = STORY[key];
     this.cameras.main.setBackgroundColor(0x020617);
     drawBackdrop(this, key, 0, 0);
