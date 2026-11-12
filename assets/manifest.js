@@ -104,19 +104,21 @@ window.ASSETS = {
     villain_laugh: 'reino_magico/duende_risa.png',       // escenas de fondo: se asoma riéndose
     villain_taunt: 'reino_magico/duende_burla.png',      // presenta el capítulo 4
     villain_run:   'reino_magico/duende_corriendo.png',  // huye del Guardia
+    villain_scared:'reino_magico/duende_asustado.png',
     villain_face:  'reino_magico/duende_cara.png',       // espía desde un lado
+    friend1_help:  'reino_magico/guardia_ayuda.png',     // pelea: el Guardia pide ayuda
+    friend1_cower: 'reino_magico/guardia_cubre.png',     // pelea: se cubre cuando lo atacan
+    friend1_flee:  'reino_magico/guardia_huye.png',
     treasure: 'reino_magico/tesoro_pastel.png',
     friend1: 'reino_magico/guardia.png',
     friend2: 'reino_magico/bufon.png',
     friend3: 'reino_magico/duende_amable.png',
-    friend1_cheer: 'reino_magico/guardia_celebra.png',
-    friend2_cheer: 'reino_magico/bufon_celebra.png',
-    friend3_cheer: 'reino_magico/duende_celebra.png',
+    end:     'reino_magico/final.jpg',
     bg_1:    'reino_magico/fondo_1_jardin.jpg',
-    bg_2:    'reino_magico/fondo_2_la_cocina.png',
-    bg_3:    'reino_magico/fondo_3_la_biblioteca.png',
-    bg_4:    'reino_magico/fondo_4_la_torre.png',
-    bg_5:    'reino_magico/fondo_5_el_salon_del_trono.png',
+    bg_2:    'reino_magico/fondo_2_la_cocina.jpg',
+    bg_3:    'reino_magico/fondo_3_la_biblioteca.jpg',
+    bg_4:    'reino_magico/fondo_4_la_torre.jpg',
+    bg_5:    'reino_magico/fondo_5_el_salon_del_trono.jpg',
     distractor_libro_volador: 'reino_magico/libro_volador.png',
     distractor_escoba_magica: 'reino_magico/escoba_magica.png',
     distractor_raton:         'reino_magico/raton.png'
@@ -289,6 +291,10 @@ window.ASSETS = {
     villain_taunt: 'dulces/acido_burla.png',
     villain_run:   'dulces/acido_corriendo.png',
     villain_scared:'dulces/acido_asustado.png',
+    villain_face:  'dulces/acido_cara.png',
+    friend1_help:  'dulces/jengi_ayuda.png',
+    friend1_cower: 'dulces/jengi_cubre.png',
+    friend1_flee:  'dulces/jengi_huye.png',
     treasure:      'dulces/tesoro_galleta.png',
     friend1:       'dulces/jengi.png',
     friend2:       'dulces/nube.png',

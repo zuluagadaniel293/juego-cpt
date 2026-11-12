@@ -80,6 +80,7 @@ registrarMundo('kingdom', {
     // fight = pelea en un borde · peek = el villano se asoma riéndose · sneak = cruza por arriba de puntillas ·
     // chase = el villano huye y el amigo lo persigue
     cast: [
+      { name: 'pelea_duende_guardia', kind: 'fight', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
       { name: 'guardia_persigue_duende', kind: 'chase', friend: 'friend1', voice: 'ayuda', minLevel: 2 },
       { name: 'duende_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
       { name: 'duende_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
