@@ -34,13 +34,26 @@ for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano',
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f + '.js'), 'utf8'), sb);
 }
 const fichas = JSON.parse(fs.readFileSync(path.join(CAND, 'candidatos.json'), 'utf8'));
+// Lo que el equipo eligió en herramientas/probar_sonidos.html (botón "Guardar mi elección"): manda sobre lo de arriba.
+// Formato: { gato: { principal: 3, quitar: [1] }, ... }
+const ELECCION_PATH = path.join(CAND, 'eleccion.json');
+const ELECCION = fs.existsSync(ELECCION_PATH) ? JSON.parse(fs.readFileSync(ELECCION_PATH, 'utf8')) : {};
+for (const [name, e] of Object.entries(ELECCION)) {
+  if (e.principal) ELEGIDO[name] = e.principal;
+  for (let i = 1; i <= 3; i++) {
+    const id = name + '_' + i, k = DESCARTAR.indexOf(id);
+    if ((e.quitar || []).includes(i)) { if (k < 0) DESCARTAR.push(id); } else if (k >= 0) DESCARTAR.splice(k, 1);
+  }
+}
 const out = path.join(ROOT, 'assets/sonidos'), outAmb = path.join(out, 'ambiente');
 fs.mkdirSync(outAmb, { recursive: true });
-const sfx = {}, ambient = {}, creditos = [];
+const sfx = {}, ambient = {}, creditos = [], estado = {};
 for (const [key, m] of Object.entries(mundos)) {
   const names = m.distractors.visual.map(v => v.name).concat(Object.keys(m.distractors.sounds || {}));
   ambient[key] = [];
   for (const name of names) {
+    // estado de cada opción, para la página de prueba (principal / fondo / quitar)
+    estado[name] = { principal: ELEGIDO[name] || 0, quitar: (fichas[name] || []).map((o, i) => i + 1).filter(i => DESCARTAR.includes(name + '_' + i)) };
     const opts = fichas[name] || [];
     const pick = ELEGIDO[name] || 0;
     opts.forEach((o, i) => {
@@ -64,4 +77,5 @@ fs.writeFileSync(path.join(ROOT, 'assets/sonidos.js'),
   'window.SFX_FILES = ' + JSON.stringify(sfx, null, 2) + ';\n' +
   'window.SFX_AMBIENT = ' + JSON.stringify(ambient, null, 2) + ';\n');
 fs.writeFileSync(path.join(out, 'FUENTES.txt'), 'Sonidos de Freesound.org con licencia Creative Commons 0 (uso libre, sin dar créditos).\n\n' + [...new Set(creditos)].join('\n') + '\n');
+fs.writeFileSync(path.join(CAND, 'eleccion_actual.json'), JSON.stringify(estado, null, 1) + '\n');
 console.log('característicos:', Object.keys(sfx).length, '· ambientación:', Object.values(ambient).reduce((n, a) => n + a.length, 0));

@@ -1,0 +1,226 @@
+{
+ "avion": {
+  "principal": 0,
+  "quitar": []
+ },
+ "pajaro": {
+  "principal": 2,
+  "quitar": []
+ },
+ "gato": {
+  "principal": 3,
+  "quitar": []
+ },
+ "sirena": {
+  "principal": 2,
+  "quitar": [
+   3
+  ]
+ },
+ "bocina": {
+  "principal": 2,
+  "quitar": []
+ },
+ "silbato": {
+  "principal": 3,
+  "quitar": [
+   2
+  ]
+ },
+ "mariposa": {
+  "principal": 1,
+  "quitar": []
+ },
+ "murcielago": {
+  "principal": 2,
+  "quitar": []
+ },
+ "ardilla": {
+  "principal": 3,
+  "quitar": []
+ },
+ "rugido": {
+  "principal": 3,
+  "quitar": []
+ },
+ "pajaros": {
+  "principal": 3,
+  "quitar": []
+ },
+ "viento": {
+  "principal": 2,
+  "quitar": []
+ },
+ "libro_volador": {
+  "principal": 2,
+  "quitar": []
+ },
+ "escoba_magica": {
+  "principal": 3,
+  "quitar": []
+ },
+ "raton": {
+  "principal": 2,
+  "quitar": []
+ },
+ "campanas": {
+  "principal": 2,
+  "quitar": []
+ },
+ "puerta": {
+  "principal": 3,
+  "quitar": []
+ },
+ "reloj": {
+  "principal": 2,
+  "quitar": []
+ },
+ "cohete": {
+  "principal": 2,
+  "quitar": []
+ },
+ "satelite": {
+  "principal": 3,
+  "quitar": []
+ },
+ "rover": {
+  "principal": 1,
+  "quitar": []
+ },
+ "radio": {
+  "principal": 1,
+  "quitar": []
+ },
+ "alarma": {
+  "principal": 3,
+  "quitar": [
+   1
+  ]
+ },
+ "motor": {
+  "principal": 2,
+  "quitar": []
+ },
+ "medusa": {
+  "principal": 1,
+  "quitar": []
+ },
+ "banco_de_peces": {
+  "principal": 2,
+  "quitar": [
+   1
+  ]
+ },
+ "estrella_de_mar": {
+  "principal": 2,
+  "quitar": []
+ },
+ "burbujas": {
+  "principal": 1,
+  "quitar": []
+ },
+ "ballena": {
+  "principal": 2,
+  "quitar": []
+ },
+ "corriente": {
+  "principal": 2,
+  "quitar": [
+   1
+  ]
+ },
+ "libelula": {
+  "principal": 1,
+  "quitar": []
+ },
+ "arqueopterix": {
+  "principal": 1,
+  "quitar": []
+ },
+ "lagartija": {
+  "principal": 1,
+  "quitar": []
+ },
+ "pisada": {
+  "principal": 3,
+  "quitar": []
+ },
+ "volcan": {
+  "principal": 2,
+  "quitar": []
+ },
+ "engranaje": {
+  "principal": 1,
+  "quitar": []
+ },
+ "avion_de_papel": {
+  "principal": 2,
+  "quitar": []
+ },
+ "aspiradora": {
+  "principal": 1,
+  "quitar": []
+ },
+ "pitido": {
+  "principal": 1,
+  "quitar": []
+ },
+ "error": {
+  "principal": 3,
+  "quitar": []
+ },
+ "maquina": {
+  "principal": 1,
+  "quitar": []
+ },
+ "mariposa_azul": {
+  "principal": 3,
+  "quitar": []
+ },
+ "guacamaya": {
+  "principal": 3,
+  "quitar": []
+ },
+ "rana": {
+  "principal": 1,
+  "quitar": []
+ },
+ "mono": {
+  "principal": 1,
+  "quitar": []
+ },
+ "lluvia": {
+  "principal": 1,
+  "quitar": []
+ },
+ "tambor": {
+  "principal": 1,
+  "quitar": []
+ },
+ "caramelo": {
+  "principal": 1,
+  "quitar": []
+ },
+ "globo_chicle": {
+  "principal": 1,
+  "quitar": []
+ },
+ "osito_verde": {
+  "principal": 1,
+  "quitar": []
+ },
+ "campanita": {
+  "principal": 2,
+  "quitar": []
+ },
+ "burbujeo": {
+  "principal": 1,
+  "quitar": []
+ },
+ "crujido": {
+  "principal": 1,
+  "quitar": [
+   3
+  ]
+ }
+}

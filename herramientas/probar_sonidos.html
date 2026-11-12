@@ -3,73 +3,162 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Probar sonidos</title>
+<title>Elegir sonidos</title>
 <style>
-  :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #fde047; --new: #4ade80; --amb: #93c5fd; }
+  :root { --bg: #0f172a; --card: #1e293b; --line: #334155; --text: #f1f5f9; --muted: #94a3b8; --accent: #fde047;
+          --main: #4ade80; --amb: #93c5fd; --off: #f87171; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 16px Arial, sans-serif; }
-  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 120px; }
   h1 { margin: 0 0 6px; font-size: 28px; }
-  p.lead { color: var(--muted); margin: 0 0 24px; line-height: 1.5; }
+  p.lead { color: var(--muted); margin: 0 0 20px; line-height: 1.5; }
+  .legend span { display: inline-block; border-radius: 6px; padding: 2px 8px; font-weight: bold; color: #0f172a; margin-right: 4px; }
   section { background: var(--card); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
-  h2 { margin: 0 0 12px; font-size: 20px; color: var(--accent); }
-  .row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid #334155; flex-wrap: wrap; }
+  h2 { margin: 0 0 8px; font-size: 20px; color: var(--accent); }
+  .row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); flex-wrap: wrap; }
   .row:first-of-type { border-top: 0; }
-  .name { flex: 1 1 180px; }
-  .kind { color: var(--muted); font-size: 13px; }
-  button { font: bold 15px Arial; border: 0; border-radius: 10px; padding: 9px 14px; cursor: pointer; background: #cbd5e1; color: #0f172a; }
-  button.rec { background: var(--new); }
-  button.amb { background: var(--amb); padding: 7px 10px; font-size: 13px; }
+  .name { flex: 0 0 160px; padding-top: 8px; font-weight: bold; }
+  .name small { display: block; font-weight: normal; color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .row.changed .name::after { content: ' ✎'; color: var(--accent); }
+  .opts { display: flex; gap: 10px; flex-wrap: wrap; flex: 1; }
+  .opt { background: #0f172a; border: 2px solid var(--line); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 6px; min-width: 150px; }
+  .opt.principal { border-color: var(--main); }
+  .opt.fondo { border-color: var(--amb); }
+  .opt.quitar { border-color: var(--off); opacity: 0.55; }
+  button { font: bold 14px Arial; border: 0; border-radius: 8px; padding: 8px 12px; cursor: pointer; background: #cbd5e1; color: #0f172a; }
+  .play { width: 100%; }
+  .seg { display: flex; gap: 4px; }
+  .seg button { flex: 1; padding: 6px 4px; font-size: 12px; background: #334155; color: var(--muted); }
+  .seg button.on[data-s="principal"] { background: var(--main); color: #0f172a; }
+  .seg button.on[data-s="fondo"] { background: var(--amb); color: #0f172a; }
+  .seg button.on[data-s="quitar"] { background: var(--off); color: #0f172a; }
+  .seg button:disabled { cursor: not-allowed; opacity: 0.4; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; background: #020617; border-top: 1px solid var(--line); padding: 12px 16px; }
+  .bar div { max-width: 980px; margin: 0 auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .bar .save { background: var(--accent); font-size: 16px; padding: 12px 18px; }
+  .bar .msg { color: var(--muted); flex: 1; min-width: 200px; }
+  @media (max-width: 600px) { .name { flex-basis: 100%; } .opt { min-width: 0; flex: 1 1 140px; } }
 </style>
 </head>
 <body>
 <main>
-  <h1>Sonidos de los distractores</h1>
-  <p class="lead">Así suenan en el juego, con el volumen ya emparejado. Verde = grabación real · gris = hecho con código (solo el avión, que pasa de un lado al otro).
-    Cada mundo tiene además sus sonidos de ambientación (en azul), que suenan más bajito de fondo cada 9 a 16 segundos.</p>
+  <h1>Elegir sonidos</h1>
+  <p class="lead">Escucha cada opción y marca qué hacer con ella. Cada sonido tiene una sola principal.<br>
+    <span class="legend"><span style="background:var(--main)">Principal</span> suena cuando aparece el personaje u objeto ·
+    <span style="background:var(--amb)">Fondo</span> suena bajito de ambientación ·
+    <span style="background:var(--off)">Quitar</span> no se usa</span><br>
+    Al terminar, presiona <b>Guardar mi elección</b> abajo: se descarga un archivo y me avisas.</p>
   <div id="list"></div>
 </main>
-<script>window.SFX_BASE = '../assets/';</script>
-<script src="../assets/sonidos.js?v=4"></script>
-<script src="../juego/nucleo/mundos.js?v=4"></script>
-<script src="../juego/nucleo/sonido.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/superheroes.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/dragones.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/reino_magico.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/espacio.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/oceano.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/dinosaurios.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/robots.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/selva.js?v=4"></script>
-<script src="../juego/modos/historia/mundos/dulces.js?v=4"></script>
+<div class="bar"><div>
+  <button class="save" id="save">💾 Guardar mi elección</button>
+  <button id="reset">Volver a como estaba</button>
+  <span class="msg" id="msg">Sin cambios todavía.</span>
+</div></div>
+<script>window.SFX_BASE = '';</script>
+<script src="../juego/nucleo/mundos.js?v=5"></script>
+<script src="../juego/nucleo/sonido.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/superheroes.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/dragones.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/reino_magico.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/espacio.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/oceano.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/dinosaurios.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/robots.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/selva.js?v=5"></script>
+<script src="../juego/modos/historia/mundos/dulces.js?v=5"></script>
 <script>
+const STORE = 'cpt_eleccion_sonidos';
 const label = n => n.replace(/_/g, ' ');
-const list = document.getElementById('list');
-Object.keys(THEMES).forEach(key => {
-  const D = DISTRACTORS[key], sec = document.createElement('section');
-  sec.innerHTML = '<h2>' + THEMES[key].label + '</h2>';
-  const row = (name, kind, play, rec) => {
-    const r = document.createElement('div'); r.className = 'row';
-    r.innerHTML = '<div class="name">' + label(name) + '<div class="kind">' + kind + (rec ? ' · grabación real' : ' · hecho con código') + '</div></div>';
-    const b = document.createElement('button'); if (rec) b.className = 'rec';
-    b.textContent = '▶ Escuchar'; b.onclick = () => { getCtx(); play(); };
-    r.appendChild(b); sec.appendChild(r);
-  };
-  // como en el juego: la grabación si la hay; si no, el sonido hecho con código
-  (D.visual || []).filter(v => v.sound).forEach(v => row(v.name, 'cruza por ' + (v.kind === 'walk' ? 'abajo' : 'arriba'),
-    () => playNamedSfx(v.name) || v.sound(1), !!SFX_FILES[v.name]));
-  Object.entries(D.sounds || {}).forEach(([n, f]) => row(n, 'sonido suelto', () => playNamedSfx(n) || f(), !!SFX_FILES[n]));
-  const amb = (SFX_AMBIENT[key] || []);
-  if (amb.length) {
-    const r = document.createElement('div'); r.className = 'row';
-    r.innerHTML = '<div class="name">Ambientación<div class="kind">bajito, de fondo</div></div>';
-    amb.forEach(a => {
-      const b = document.createElement('button'); b.className = 'amb'; b.textContent = '▶ ' + label(a.name);
-      b.onclick = () => { getCtx(); playSfx(a.file, AMBIENT_LEVEL); }; r.appendChild(b);
+const msg = document.getElementById('msg');
+let fichas = {}, original = {}, eleccion = {};
+
+// estado de una opción (1, 2, 3) de un sonido
+const stateOf = (name, i) => eleccion[name].principal === i ? 'principal' : eleccion[name].quitar.includes(i) ? 'quitar' : 'fondo';
+function setState(name, i, s) {
+  const e = eleccion[name];
+  e.quitar = e.quitar.filter(q => q !== i);
+  if (s === 'principal') e.principal = i;           // la principal anterior pasa a fondo
+  else if (s === 'quitar') e.quitar.push(i);
+  e.quitar.sort();
+  save(); render();
+}
+function changes() {
+  return Object.keys(eleccion).filter(n => JSON.stringify(eleccion[n]) !== JSON.stringify(original[n]));
+}
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify(eleccion)); } catch (e) { /* sin almacenamiento: se pierde al cerrar */ }
+}
+function play(file) { getCtx(); playSfx('sonidos_candidatos/' + file, SFX_LEVEL); }
+
+function render() {
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  const changed = changes();
+  Object.keys(THEMES).forEach(key => {
+    const D = DISTRACTORS[key], sec = document.createElement('section');
+    sec.innerHTML = '<h2>' + THEMES[key].label + '</h2>';
+    const names = (D.visual || []).filter(v => v.sound).map(v => [v.name, 'cruza por ' + (v.kind === 'walk' ? 'abajo' : 'arriba')])
+      .concat(Object.keys(D.sounds || {}).map(n => [n, 'sonido suelto']));
+    names.forEach(([name, kind]) => {
+      const row = document.createElement('div'); row.className = 'row' + (changed.includes(name) ? ' changed' : '');
+      row.innerHTML = '<div class="name">' + label(name) + '<small>' + kind + '</small></div>';
+      const opts = document.createElement('div'); opts.className = 'opts';
+      if (!(fichas[name] || []).length || !eleccion[name] || !eleccion[name].principal) {
+        // el avión: hecho con código (pasa de un lado al otro)
+        const b = document.createElement('button'); b.textContent = '▶ Escuchar (hecho con código)';
+        const v = (D.visual || []).find(x => x.name === name);
+        b.onclick = () => { getCtx(); v ? v.sound(1) : D.sounds[name](); };
+        opts.appendChild(b);
+        row.appendChild(opts); sec.appendChild(row);
+        return;
+      }
+      (fichas[name] || []).forEach((o, k) => {
+        const i = k + 1, st = stateOf(name, i);
+        const box = document.createElement('div'); box.className = 'opt ' + st;
+        const p = document.createElement('button'); p.className = 'play'; p.textContent = '▶ Opción ' + i;
+        p.title = o.name + ' · ' + o.duracion + ' s'; p.onclick = () => play(o.file);
+        const seg = document.createElement('div'); seg.className = 'seg';
+        [['principal', 'Principal'], ['fondo', 'Fondo'], ['quitar', 'Quitar']].forEach(([s, t]) => {
+          const b = document.createElement('button'); b.dataset.s = s; b.textContent = t;
+          if (s === st) b.classList.add('on');
+          // la principal no se puede quitar ni pasar a fondo directamente: primero se elige otra principal
+          if (st === 'principal' && s !== 'principal') { b.disabled = true; b.title = 'Primero elige otra opción como principal'; }
+          b.onclick = () => setState(name, i, s);
+          seg.appendChild(b);
+        });
+        box.append(p, seg); opts.appendChild(box);
+      });
+      row.appendChild(opts); sec.appendChild(row);
     });
-    sec.appendChild(r);
-  }
-  list.appendChild(sec);
-});
+    list.appendChild(sec);
+  });
+  msg.textContent = changed.length ? 'Cambiaste ' + changed.length + ' sonido' + (changed.length > 1 ? 's' : '') + ': ' + changed.map(label).join(', ')
+    : 'Sin cambios todavía.';
+}
+
+document.getElementById('save').onclick = () => {
+  const out = {};
+  changes().forEach(n => { out[n] = eleccion[n]; });
+  if (!Object.keys(out).length) { msg.textContent = 'No hay cambios para guardar.'; return; }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' }));
+  a.download = 'eleccion_sonidos.json';
+  a.click();
+  msg.textContent = '✔ Se descargó eleccion_sonidos.json en tu carpeta de Descargas. Avísame y lo aplico al juego.';
+};
+document.getElementById('reset').onclick = () => {
+  eleccion = JSON.parse(JSON.stringify(original)); save(); render();
+};
+
+Promise.all([fetch('sonidos_candidatos/candidatos.json?v=5').then(r => r.json()), fetch('sonidos_candidatos/eleccion_actual.json?v=' + Date.now()).then(r => r.json())])
+  .then(([f, e]) => {
+    fichas = f; original = e;
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORE) || 'null'); } catch (err) { saved = null; }
+    eleccion = JSON.parse(JSON.stringify(original));
+    if (saved) Object.keys(saved).forEach(n => { if (eleccion[n]) eleccion[n] = saved[n]; });   // lo que ya habías marcado
+    render();
+  });
 </script>
 </body>
 </html>
