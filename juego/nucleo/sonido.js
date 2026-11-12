@@ -120,6 +120,47 @@ function sweep(type, f0, f1, dur, vol, delay) {           // tono que sube o baj
   o.connect(g); g.connect(ctx.destination);
   o.start(t); o.stop(t + dur);
 }
+// Envolvente: sube, se mantiene y baja (así las cosas "llegan" y "se van", en vez de empezar fuerte y apagarse)
+function envGain(ctx, t, vol, a, s, r) {
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + a);
+  g.gain.setValueAtTime(vol, t + a + s);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + a + s + r);
+  return g;
+}
+// Paneo de un lado al otro (si el navegador lo permite)
+function panNode(ctx, t, from, to, dur) {
+  if (!ctx.createStereoPanner) return null;
+  const p = ctx.createStereoPanner();
+  p.pan.setValueAtTime(from, t);
+  p.pan.linearRampToValueAtTime(to, t + dur);
+  return p;
+}
+// conecta los nodos en fila (se salta los que no existen)
+function chain(nodes) { const ns = nodes.filter(Boolean); for (let i = 0; i < ns.length - 1; i++) ns[i].connect(ns[i + 1]); }
+// Avión que pasa: el rugido de las turbinas se acerca, pasa por encima (el tono baja, como en la vida real)
+// y se aleja hacia el otro lado. dir: 1 = de izquierda a derecha, -1 = al revés
+function planeSound(dir) {
+  const ctx = getCtx();
+  if (!ctx) return;
+  const t = ctx.currentTime, dur = 4.6, a = 1.9, s = 0.5, r = dur - a - s;
+  dir = dir || (Math.random() < 0.5 ? 1 : -1);
+  if (!noiseBuf) noise(0.01, 0.0001, 'lowpass', 100);   // crea el ruido base
+  const n = ctx.createBufferSource(); n.buffer = noiseBuf; n.loop = true;
+  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.7;
+  bp.frequency.setValueAtTime(900, t); bp.frequency.linearRampToValueAtTime(1300, t + a); bp.frequency.exponentialRampToValueAtTime(380, t + dur);
+  chain([n, bp, envGain(ctx, t, 0.16, a, s, r), panNode(ctx, t, -0.9 * dir, 0.9 * dir, dur), ctx.destination]);
+  [0, 4].forEach(det => {   // zumbido grave del motor
+    const o = ctx.createOscillator(); o.type = 'sawtooth';
+    o.frequency.setValueAtTime(128 + det, t); o.frequency.setValueAtTime(128 + det, t + a * 0.8);
+    o.frequency.exponentialRampToValueAtTime(96 + det, t + a + s + 0.6);
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 520;
+    chain([o, lp, envGain(ctx, t, 0.035, a, s, r), panNode(ctx, t, -0.9 * dir, 0.9 * dir, dur), ctx.destination]);
+    o.start(t); o.stop(t + dur + 0.1);
+  });
+  n.start(t); n.stop(t + dur + 0.1);
+}
 function rescueSound() {   // rescatar a un compañero: campanitas suaves que suben
   [784, 988, 1175, 1568].forEach((f, i) => sweep('sine', f, f * 1.005, 0.3, 0.07, i * 0.07));
   noise(0.4, 0.03, 'highpass', 5000, null, 0.1);

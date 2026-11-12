@@ -121,7 +121,7 @@ registrarMundo('heroes', {
     },
     visual: [
       { name: 'avion', kind: 'fly', size: 100,
-        sound() { noise(3.2, 0.07, 'bandpass', 350, 1100); sweep('sawtooth', 140, 95, 3.2, 0.015); } },   // avión que pasa,
+        sound(dir) { planeSound(dir); } },   // avión que pasa de un lado al otro (juego/nucleo/sonido.js)
       { name: 'pajaro', kind: 'fly', size: 65,
         sound() { [0, 0.22, 0.44, 1.2, 1.42].forEach(d => sweep('sine', 2600, 3900, 0.11, 0.06, d)); } },   // pío pío,
       { name: 'gato', kind: 'walk', size: 85,

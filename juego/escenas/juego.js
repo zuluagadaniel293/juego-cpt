@@ -848,7 +848,7 @@ class GameScene extends Phaser.Scene {
     if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
     // Desde el nivel 2 suena mientras pasa (avión, pájaro, gato, murciélago...): distractor visual y auditivo a la vez
     if (v.sound && (this.level || 0) >= 2 && this.mode !== 'prueba') {
-      v.sound();
+      v.sound(fromLeft ? 1 : -1);   // hacia dónde va (el avión suena de un lado al otro)
       this.logDistractor('audio_distractor', 'sonido_' + v.name);
     }
   }

@@ -25,8 +25,8 @@
 <main>
   <h1>Sonidos de los distractores</h1>
   <p class="lead">Así suenan las cosas que cruzan por los bordes y los sonidos sueltos de cada mundo. Donde dice
-    <span class="tag">NUEVO</span> hay una versión mejorada para comparar con la actual. Usa audífonos o parlantes:
-    el avión pasa de un lado al otro.</p>
+    <span class="tag">NUEVO</span> hay versiones nuevas para comparar con la actual. Usa audífonos o parlantes:
+    el avión (Superhéroes) pasa de un lado al otro.</p>
   <div id="list"></div>
 </main>
 <script src="../juego/nucleo/mundos.js"></script>
@@ -41,72 +41,33 @@
 <script src="../juego/modos/historia/mundos/selva.js"></script>
 <script src="../juego/modos/historia/mundos/dulces.js"></script>
 <script>
-// ---------- Versiones nuevas (para comparar) ----------
-// Envolvente: sube, se mantiene y baja (así las cosas "llegan" y "se van", en vez de empezar fuerte y apagarse)
-function envGain(ctx, t, vol, a, s, r) {
-  const g = ctx.createGain();
-  g.gain.setValueAtTime(0.0001, t);
-  g.gain.exponentialRampToValueAtTime(vol, t + a);
-  g.gain.setValueAtTime(vol, t + a + s);
-  g.gain.exponentialRampToValueAtTime(0.0001, t + a + s + r);
-  return g;
+// ---------- Versiones nuevas para comparar (usan envGain y chain de juego/nucleo/sonido.js) ----------
+// Un "miau": tono que sube y baja, pasado por un filtro que se abre y se cierra como una boca (m → i → a → u)
+function meow(o) {
+  const ctx = getCtx(); if (!ctx) return;
+  const t0 = ctx.currentTime + (o.delay || 0), len = o.len;
+  const osc = ctx.createOscillator(); osc.type = o.wave;
+  osc.frequency.setValueAtTime(o.f[0], t0);
+  osc.frequency.exponentialRampToValueAtTime(o.f[1], t0 + len * 0.35);
+  osc.frequency.exponentialRampToValueAtTime(o.f[2], t0 + len);
+  const lfo = ctx.createOscillator(), lg = ctx.createGain();   // temblor de la voz
+  lfo.frequency.value = o.vib[0]; lg.gain.value = o.vib[1]; lfo.connect(lg); lg.connect(osc.frequency);
+  const mouth = ctx.createBiquadFilter(); mouth.type = 'lowpass'; mouth.Q.value = o.q;
+  mouth.frequency.setValueAtTime(o.m[0], t0);
+  mouth.frequency.exponentialRampToValueAtTime(o.m[1], t0 + len * 0.35);
+  mouth.frequency.exponentialRampToValueAtTime(o.m[2], t0 + len);
+  chain([osc, mouth, envGain(ctx, t0, o.vol, 0.05, len * 0.5, len * 0.45), ctx.destination]);
+  osc.start(t0); lfo.start(t0); osc.stop(t0 + len + 0.05); lfo.stop(t0 + len + 0.05);
 }
-// Paneo de un lado al otro (si el navegador lo permite)
-function pan(ctx, t, from, to, dur) {
-  if (!ctx.createStereoPanner) return null;
-  const p = ctx.createStereoPanner();
-  p.pan.setValueAtTime(from, t);
-  p.pan.linearRampToValueAtTime(to, t + dur);
-  return p;
-}
-// conecta los nodos en fila (se salta los que no existen)
-function chain(ctx, nodes) { const ns = nodes.filter(Boolean); for (let i = 0; i < ns.length - 1; i++) ns[i].connect(ns[i + 1]); }
-
-const NEW_SOUNDS = {
-  // avión: un rugido de turbinas que se acerca, pasa por encima (baja un poco el tono) y se aleja hacia el otro lado
-  avion() {
-    const ctx = getCtx(); if (!ctx) return;
-    const t = ctx.currentTime, dur = 4.6, a = 1.9, s = 0.5, r = dur - a - s;
-    const dir = Math.random() < 0.5 ? 1 : -1;
-    if (!noiseBuf) noise(0.01, 0.0001, 'lowpass', 100);   // crea el ruido base
-    // turbinas: ruido filtrado que se va oscureciendo al alejarse
-    const n = ctx.createBufferSource(); n.buffer = noiseBuf; n.loop = true;
-    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.7;
-    bp.frequency.setValueAtTime(900, t); bp.frequency.linearRampToValueAtTime(1300, t + a); bp.frequency.exponentialRampToValueAtTime(380, t + dur);
-    chain(ctx, [n, bp, envGain(ctx, t, 0.16, a, s, r), pan(ctx, t, -0.9 * dir, 0.9 * dir, dur), ctx.destination]);
-    // zumbido grave del motor, con efecto Doppler (el tono baja al pasar)
-    [0, 4].forEach(det => {
-      const o = ctx.createOscillator(); o.type = 'sawtooth';
-      o.frequency.setValueAtTime(128 + det, t); o.frequency.setValueAtTime(128 + det, t + a * 0.8);
-      o.frequency.exponentialRampToValueAtTime(96 + det, t + a + s + 0.6);
-      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 520;
-      chain(ctx, [o, lp, envGain(ctx, t, 0.035, a, s, r), pan(ctx, t, -0.9 * dir, 0.9 * dir, dur), ctx.destination]);
-      o.start(t); o.stop(t + dur + 0.1);
-    });
-    n.start(t); n.stop(t + dur + 0.1);
-  },
-  // gato: un "miau" con la boca que se abre y se cierra (m-i-a-u), con vibrato
-  gato() {
-    const ctx = getCtx(); if (!ctx) return;
-    const meow = (t0, len, f0, peak, end, vol) => {
-      const o = ctx.createOscillator(); o.type = 'sawtooth';
-      o.frequency.setValueAtTime(f0, t0);
-      o.frequency.exponentialRampToValueAtTime(peak, t0 + len * 0.3);
-      o.frequency.exponentialRampToValueAtTime(end, t0 + len);
-      const lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 7; lg.gain.value = 14;
-      lfo.connect(lg); lg.connect(o.frequency);
-      const g = envGain(ctx, t0, vol, 0.07, len * 0.55, len * 0.38);
-      // dos "formantes": filtros que cambian como la boca (i → a → u)
-      [[350, 900, 420, 7], [2300, 1500, 950, 9]].forEach(([fa, fb, fc, q]) => {
-        const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = q;
-        f.frequency.setValueAtTime(fa, t0); f.frequency.linearRampToValueAtTime(fb, t0 + len * 0.4); f.frequency.linearRampToValueAtTime(fc, t0 + len);
-        o.connect(f); f.connect(g);
-      });
-      g.connect(ctx.destination);
-      o.start(t0); lfo.start(t0); o.stop(t0 + len + 0.05); lfo.stop(t0 + len + 0.05);
-    };
-    const t = ctx.currentTime;
-    meow(t, 0.75, 480, 720, 430, 0.5);
+const CAT_VERSIONS = {
+  // gatito: agudo, corto y tierno ("miu")
+  'Gatito': () => meow({ wave: 'triangle', len: 0.5, f: [820, 1250, 760], m: [900, 4200, 1100], q: 4, vib: [8, 25], vol: 0.22 }),
+  // gato de dibujo animado: más largo, con la boca bien marcada ("miaaau")
+  'Gato de caricatura': () => meow({ wave: 'square', len: 0.8, f: [520, 760, 430], m: [500, 2600, 600], q: 7, vib: [6, 14], vol: 0.09 }),
+  // dos maullidos seguidos, como si llamara ("miau, miau")
+  'Miau doble': () => {
+    meow({ wave: 'sawtooth', len: 0.42, f: [600, 880, 520], m: [600, 3000, 700], q: 6, vib: [7, 16], vol: 0.11 });
+    meow({ wave: 'sawtooth', len: 0.5, f: [560, 820, 470], m: [600, 2800, 650], q: 6, vib: [7, 16], vol: 0.11, delay: 0.55 });
   }
 };
 
@@ -116,16 +77,20 @@ const list = document.getElementById('list');
 Object.keys(THEMES).forEach(key => {
   const D = DISTRACTORS[key], sec = document.createElement('section');
   sec.innerHTML = '<h2>' + THEMES[key].label + '</h2>';
-  const add = (label, kind, play, fresh) => {
+  // extra: versiones nuevas para comparar, como [['Gatito', fn], ...]
+  const add = (label, kind, play, extra) => {
     const row = document.createElement('div'); row.className = 'row';
-    row.innerHTML = '<div class="name">' + label + (fresh ? '<span class="tag">NUEVO</span>' : '') + '<div class="kind">' + kind + '</div></div>';
-    const b1 = document.createElement('button'); b1.textContent = fresh ? '▶ Actual' : '▶ Escuchar'; b1.onclick = () => { getCtx(); play(); };
+    row.innerHTML = '<div class="name">' + label + (extra ? '<span class="tag">NUEVO</span>' : '') + '<div class="kind">' + kind + '</div></div>';
+    const b1 = document.createElement('button'); b1.textContent = extra ? '▶ Actual' : '▶ Escuchar'; b1.onclick = () => { getCtx(); play(); };
     row.appendChild(b1);
-    if (fresh) { const b2 = document.createElement('button'); b2.className = 'new'; b2.textContent = '▶ Nuevo'; b2.onclick = () => { getCtx(); fresh(); }; row.appendChild(b2); }
+    (extra || []).forEach(([name, fn]) => {
+      const b = document.createElement('button'); b.className = 'new'; b.textContent = '▶ ' + name; b.onclick = () => { getCtx(); fn(); };
+      row.appendChild(b);
+    });
     sec.appendChild(row);
   };
   (D.visual || []).filter(v => v.sound).forEach(v => add(NAMES[v.name] || v.name.replace(/_/g, ' '), 'cruza por ' + (v.kind === 'walk' ? 'abajo' : 'arriba'), () => v.sound(),
-    key === 'heroes' ? NEW_SOUNDS[v.name] : null));
+    key === 'heroes' && v.name === 'gato' ? Object.entries(CAT_VERSIONS) : null));
   Object.entries(D.sounds || {}).forEach(([n, f]) => add(n.replace(/_/g, ' '), 'sonido suelto (sin imagen)', f));
   list.appendChild(sec);
 });
