@@ -30,6 +30,7 @@ window.SFX_FILES = {
   "estrella_de_mar": "sonidos/estrella_de_mar.mp3",
   "burbujas": "sonidos/burbujas.mp3",
   "ballena": "sonidos/ballena.mp3",
+  "corriente": "sonidos/corriente.mp3",
   "libelula": "sonidos/libelula.mp3",
   "arqueopterix": "sonidos/arqueopterix.mp3",
   "lagartija": "sonidos/lagartija.mp3",
@@ -39,6 +40,7 @@ window.SFX_FILES = {
   "avion_de_papel": "sonidos/avion_de_papel.mp3",
   "aspiradora": "sonidos/aspiradora.mp3",
   "pitido": "sonidos/pitido.mp3",
+  "error": "sonidos/error.mp3",
   "maquina": "sonidos/maquina.mp3",
   "mariposa_azul": "sonidos/mariposa_azul.mp3",
   "guacamaya": "sonidos/guacamaya.mp3",
@@ -277,10 +279,6 @@ window.SFX_AMBIENT = {
     },
     {
       "name": "corriente",
-      "file": "sonidos/ambiente/ocean_corriente_2.mp3"
-    },
-    {
-      "name": "corriente",
       "file": "sonidos/ambiente/ocean_corriente_3.mp3"
     }
   ],
@@ -362,6 +360,14 @@ window.SFX_AMBIENT = {
     {
       "name": "pitido",
       "file": "sonidos/ambiente/robots_pitido_3.mp3"
+    },
+    {
+      "name": "error",
+      "file": "sonidos/ambiente/robots_error_1.mp3"
+    },
+    {
+      "name": "error",
+      "file": "sonidos/ambiente/robots_error_2.mp3"
     },
     {
       "name": "maquina",

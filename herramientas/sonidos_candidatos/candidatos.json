@@ -1192,36 +1192,36 @@
   "corriente": [
     {
       "file": "corriente_1.mp3",
-      "id": 124544,
-      "name": "underwater explosion.wav",
-      "autor": "cubix",
-      "duracion": 5.59,
+      "id": 550257,
+      "name": "MONSTER SOUND.wav",
+      "autor": "F1L1H",
+      "duracion": 5.56,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/124544/",
-      "calificacion": 4,
-      "descargas": 2866
+      "url": "https://freesound.org/s/550257/",
+      "calificacion": 3.8,
+      "descargas": 90
     },
     {
       "file": "corriente_2.mp3",
-      "id": 162253,
-      "name": "Underwater Diver Engineer Work",
-      "autor": "qubodup",
-      "duracion": 5.84,
+      "id": 707005,
+      "name": "sea, underwater, dive, deep sea, dark, ambience_1.wav",
+      "autor": "FALL-E",
+      "duracion": 5.38,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/162253/",
-      "calificacion": 4.5,
-      "descargas": 827
+      "url": "https://freesound.org/s/707005/",
+      "calificacion": 4.4,
+      "descargas": 155
     },
     {
       "file": "corriente_3.mp3",
-      "id": 455251,
-      "name": "Retro, Underwater Shot",
-      "autor": "LilMati",
-      "duracion": 1,
+      "id": 658472,
+      "name": "Dive Deep SFX",
+      "autor": "The-Sacha-Rush",
+      "duracion": 7.38,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/455251/",
-      "calificacion": 4.5,
-      "descargas": 955
+      "url": "https://freesound.org/s/658472/",
+      "calificacion": 4.6,
+      "descargas": 602
     }
   ],
   "arqueopterix": [
@@ -1472,36 +1472,36 @@
   "error": [
     {
       "file": "error_1.mp3",
-      "id": 493163,
-      "name": "Buzzer sounds (Wrong answer / Error)",
-      "autor": "Breviceps",
-      "duracion": 2.77,
+      "id": 757287,
+      "name": "Glitched and Malfunction Alien Robot Sound",
+      "autor": "Mastersoundboy2005",
+      "duracion": 3.16,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/493163/",
-      "calificacion": 4.6,
-      "descargas": 9991
+      "url": "https://freesound.org/s/757287/",
+      "calificacion": 4.5,
+      "descargas": 49
     },
     {
       "file": "error_2.mp3",
-      "id": 700641,
-      "name": "Incorrect Buzzer",
-      "autor": "Producing_RayLite",
-      "duracion": 0.6,
+      "id": 505751,
+      "name": "Computer Breaking Sound",
+      "autor": "thehorriblejoke",
+      "duracion": 1.04,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/700641/",
-      "calificacion": 4.7,
-      "descargas": 3923
+      "url": "https://freesound.org/s/505751/",
+      "calificacion": 4.9,
+      "descargas": 1216
     },
     {
       "file": "error_3.mp3",
-      "id": 531701,
-      "name": "Buzzer",
-      "autor": "Rickplayer",
-      "duracion": 1,
+      "id": 128504,
+      "name": "Computer Glitch 6.wav",
+      "autor": "ecfike",
+      "duracion": 2.04,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/531701/",
-      "calificacion": 4.4,
-      "descargas": 443
+      "url": "https://freesound.org/s/128504/",
+      "calificacion": 4.8,
+      "descargas": 175
     }
   ],
   "maquina": [

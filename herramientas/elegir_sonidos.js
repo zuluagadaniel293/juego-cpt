@@ -9,21 +9,22 @@ const vm = require('vm');
 const ROOT = path.join(__dirname, '..');
 const CAND = path.join(__dirname, 'sonidos_candidatos');
 
-// Opción característica de cada sonido (1, 2 o 3). 0 = se queda el sonido hecho con código.
+// Opción característica de cada sonido (1, 2 o 3).
 // gato, pájaro, murciélago y rana: elegidos por el equipo; el resto, las grabaciones más cortas y suaves.
 const ELEGIDO = {
   gato: 3, pajaro: 2, murcielago: 2, rana: 1,
   ardilla: 3, raton: 2, guacamaya: 3, mono: 1, ballena: 2, libelula: 1, sirena: 2, bocina: 2, silbato: 3, campanas: 2,
   puerta: 3, reloj: 2, lluvia: 1, aspiradora: 1, pajaros: 3, mariposa: 1, viento: 2, rugido: 3, libro_volador: 2,
   escoba_magica: 3, cohete: 2, satelite: 3, rover: 1, radio: 1, alarma: 3, motor: 2, medusa: 1, banco_de_peces: 2,
-  estrella_de_mar: 2, burbujas: 1, corriente: 0, arqueopterix: 1, lagartija: 1, pisada: 3, volcan: 2, engranaje: 1,
+  estrella_de_mar: 2, burbujas: 1, corriente: 2, arqueopterix: 1, lagartija: 1, pisada: 3, volcan: 2, engranaje: 1,
   avion_de_papel: 2, pitido: 1, maquina: 1, mariposa_azul: 3, tambor: 1, caramelo: 1, globo_chicle: 1, osito_verde: 1,
   campanita: 2, burbujeo: 1, crujido: 1,
-  // el "error" se queda con el sonido de código: un zumbador real suena a "respuesta incorrecta" y confundiría al niño
-  error: 0
+  // "error": una falla de computador, no un zumbador (sonaría a "respuesta incorrecta" y confundiría al niño)
+  error: 3
 };
+// El avión no tiene grabación: se queda el hecho con código, que pasa de un lado al otro (juego/nucleo/sonido.js)
 // Opciones que no sirven ni para ambientar (molestas, fuertes o que no tienen que ver)
-const DESCARTAR = ['corriente_1', 'crujido_3', 'alarma_1', 'sirena_3', 'silbato_2', 'banco_de_peces_1', 'error_1', 'error_2', 'error_3'];
+const DESCARTAR = ['corriente_1', 'crujido_3', 'alarma_1', 'sirena_3', 'silbato_2', 'banco_de_peces_1'];
 
 // sonidos de cada mundo (lo que cruza por los bordes y los sonidos sueltos)
 const mundos = {};
