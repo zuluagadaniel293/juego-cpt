@@ -22,7 +22,7 @@ registrarMundo('robots', {
       ax: 'Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!',
       memory: '¡Botón salta de enchufe en enchufe buscando energía! Mira bien su camino y repítelo.',
       dodge: '¡Glitch lanza tres errores a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para no fallar!',
-      path: '¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.'
+      path: 'Zumbi conoce el camino del circuito hasta Botón. ¡Mira por dónde pasa y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -35,7 +35,7 @@ registrarMundo('robots', {
       notx: '¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!',
       ax: 'Glitch solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
       dodge: '¡Glitch lanza tres errores a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para no fallar!',
-      path: '¡Botón está al final del circuito! Sigue el cable sin salirte para llevarle energía.'
+      path: 'Zumbi conoce el camino del circuito hasta Botón. ¡Mira por dónde pasa y repítelo de memoria!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.',

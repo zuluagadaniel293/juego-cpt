@@ -196,16 +196,19 @@ CC0; lista en `assets/sonidos/FUENTES.txt`), con el volumen emparejado y suave. 
 bajito un sonido de ambientación del mundo: queda como distractor auditivo `ambiente_<nombre>`. La Prueba fija no tiene
 ni sonidos de mundo ni ambientación.
 
-## Camino (formato tipo precisión visomotora)
-El niño lleva al protagonista por un camino hasta la meta (la misión del mundo), arrastrando el dedo o el ratón,
-o con las flechas. Si se sale, el personaje se pone gris y no avanza hasta que vuelva. Con el nivel el camino es
-más angosto y con más curvas. Desde el nivel 3 es **"Recuerda el camino"**: se ve unos segundos y luego se borra casi del todo.
+## Camino (recordar el camino del amigo)
+Un amigo (el mismo que ayuda en la Carrera) recorre un camino saltando de piedra en piedra hasta la meta (la misión
+del mundo) y deja huellas. Las huellas se borran y el niño lleva al protagonista por el mismo camino, de memoria,
+tocando la piedra de al lado o con las flechas. Es memoria de trabajo visoespacial, como el Corsi pero siguiendo una ruta.
+Con el nivel: caminos más largos y con más vueltas, y el amigo salta más rápido. En el nivel 1 las huellas quedan
+muy suaves (de práctica). Desde el nivel 4 el villano deja **huellas falsas** (moradas) mientras el amigo camina.
 
 | `condicion` | Fila | Resultado |
 |---|---|---|
-| `camino_visible` / `camino_de_memoria` | Un camino completo (objetivo) | `acierto` = llegó a la meta · `omision` = se acabó el tiempo sin llegar |
-| `se_salio` | Cada vez que se salió (distractor) | `error_impulsivo` |
+| `camino_de_memoria` | Un camino completo (objetivo) | `acierto` = llegó a la meta · `omision` = se acabó el tiempo sin llegar |
+| `piedra_equivocada` | Cada piedra equivocada (distractor) | `error_impulsivo` |
 
-- **`salidas`**: veces que se salió en ese camino · **`tiempo_fuera_ms`**: tiempo total fuera · **`ancho_camino`**: ancho en px.
-- **`tiempo_reaccion_ms`**: en la fila del camino, lo que tardó en recorrerlo; en las de salida, en qué momento se salió.
-- **Para interpretar**: muchas salidas con caminos rápidos = se mueve sin control (impulsividad motora). Pocas salidas pero muy lento = cuidadoso. En `camino_de_memoria`, más salidas que en el visible = le cuesta recordarlo.
+- **`largo_camino`**: pasos del camino · **`errores_camino`**: piedras equivocadas en ese camino · **`ayudas`**: veces que brilló la piedra correcta (sale después de 2 errores seguidos en el mismo paso).
+- **`paso`**: en qué paso se equivocó (en las filas de piedra equivocada). Errores al final del camino = se le olvidó la parte larga.
+- **`tiempo_reaccion_ms`**: en la fila del camino, lo que tardó en recorrerlo; en las de error, cuánto pensó antes de ese paso.
+- Las huellas falsas del villano quedan como `distractor_visual` (`huella_falsa_del_villano`).

@@ -134,11 +134,15 @@ class GameScene extends Phaser.Scene {
     const no = (x, k) => { add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444)); add(fit(this.add.image(x, exY, k), 84)); };
     const dists = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
     if (this.mg === 'path') {
-      yes(330, this.keys.target);
-      txt(330, exY + 84, '¡Llega hasta aquí!', 22, '#86efac');
-      const road = add(this.add.graphics());
-      road.lineStyle(34, th.accent, 0.5); road.lineBetween(520, exY + 20, 600, exY - 20); road.lineBetween(600, exY - 20, 690, exY + 10);
-      txt(605, exY + 84, 'Sin salirte del camino', 22, '#fca5a5');
+      // el amigo guía y sus huellas sobre las piedras, hasta la meta
+      const tex = TEX[this.themeKey], guide = raceHelper(this.themeKey);
+      add(fit(this.add.image(250, exY, tex[guide + '_run'] || tex[guide]), 96));
+      [370, 460, 550].forEach((x, i) => {
+        add(this.add.ellipse(x, exY + 10 + (i === 1 ? -26 : 0), 76, 46, 0xe2e8f0, 0.3).setStrokeStyle(3, th.accent, 0.6));
+        txt(x, exY + 8 + (i === 1 ? -26 : 0), '👣', 24);
+      });
+      yes(680, this.keys.target, 50);
+      txt(470, exY + 84, 'Mira el camino del amigo... ¡y repítelo de memoria!', 22, '#86efac');
     } else if (this.mg === 'dodge') {
       // tres poderes como sombras; el del medio se detiene (verde): ahí hay que ponerse
       const k = dodgeTex(this, (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).powers[0]);
@@ -182,9 +186,11 @@ class GameScene extends Phaser.Scene {
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
       if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
     } else if (this.mg === 'path') {
-      const rest = ' Lleva a tu personaje por el camino hasta ' + what + ' sin salirte.' + ((this.level || 1) >= 3 ? ' ¡Ojo! El camino se borra: recuérdalo.' : '');
-      if (touch) { icon(220, ctrlY, '👆〰'); explain = 'Arrastra el dedo.' + rest; }
-      else { icon(220, ctrlY, '🖱️'); explain = 'Arrastra con el ratón (o usa las flechas).' + rest; }
+      const guideName = ((STORY[this.themeKey].companions || []).find(k => k.role === raceHelper(this.themeKey)) || {}).name || 'Tu amigo';
+      const rest = ' ' + guideName + ' salta de piedra en piedra hasta ' + what + '. Cuando sus huellas se borren, lleva a tu personaje por el mismo camino.'
+        + ((this.level || 1) >= 4 ? ' ¡Ojo! El villano deja huellas falsas.' : '');
+      if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca la piedra de al lado para avanzar.' + rest; }
+      else { keycap(220, ctrlY - 32, 58, '↑'); keycap(185, ctrlY + 34, 58, '←'); keycap(255, ctrlY + 34, 58, '→'); explain = 'Avanza con las flechas (o tocando la piedra).' + rest; }
     } else if (this.mg === 'dodge') {
       const of = th.villainObj.replace(/^al /, 'del ').replace(/^a /, 'de ');
       const side = (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).side;
@@ -454,7 +460,6 @@ class GameScene extends Phaser.Scene {
     else if (this.mg === 'path') {
       // si se queda mucho rato sin llegar después del tiempo, se termina igual
       if (this.elapsed() > this.params.sessionMs + 20000) { this.endPath(false); this.finish(); return; }
-      this.updatePath(dt);
     }
   }
 

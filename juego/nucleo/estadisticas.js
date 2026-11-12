@@ -78,7 +78,7 @@ const CSV_TEXT = {
   condition: {
     responder: 'responder', no_responder: 'no_responder',
     cambiar: 'cambiar_de_carril', quedarse: 'quedarse',   // Esquiva
-    camino_visible: 'camino_visible', camino_de_memoria: 'camino_de_memoria', salida: 'se_salio',   // Camino
+    camino_de_memoria: 'camino_de_memoria', paso_equivocado: 'piedra_equivocada',   // Camino
     A: 'pista', AX: 'pista_y_objetivo', AY: 'pista_sin_objetivo', BX: 'objetivo_sin_pista', BY: 'ni_pista_ni_objetivo'
   },
   outcome: {
@@ -117,9 +117,10 @@ function downloadCSV(log, name) {
     ['condicion', r => CSV_TEXT.condition[r.condition] || r.condition],
     ['freno_ms', r => r.stop_ms],   // Esquiva: cuándo se descubrió el poder que se detiene (ms después de lanzados)
     ['se_adelanto', r => (r.anticipated === undefined ? '' : r.anticipated ? 'si' : 'no')],   // Esquiva: se movió antes de tiempo
-    ['salidas', r => r.exits],              // Camino: veces que se salió en ese camino
-    ['tiempo_fuera_ms', r => r.out_ms],     // Camino: tiempo total fuera del camino
-    ['ancho_camino', r => r.path_width],    // Camino: ancho del camino en px (más angosto = más difícil)
+    ['largo_camino', r => r.path_len],      // Camino: cuántos pasos tenía el camino
+    ['errores_camino', r => r.exits],       // Camino: piedras equivocadas en ese camino
+    ['ayudas', r => r.hints],               // Camino: veces que brilló la piedra correcta (tras 2 errores seguidos)
+    ['paso', r => r.step],                  // Camino: en qué paso se equivocó
     ['momento_ms', r => r.onset_ms],
     ['respondio', r => (r.responded === undefined ? '' : r.responded ? 'si' : 'no')],
     ['tiempo_reaccion_ms', r => r.rt_ms],

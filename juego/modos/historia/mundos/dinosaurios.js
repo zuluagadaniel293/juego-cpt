@@ -22,7 +22,7 @@ registrarMundo('dinos', {
       ax: 'Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!',
       memory: '¡El viento lleva la hoja dorada de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.',
       dodge: '¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!',
-      path: '¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.'
+      path: 'Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la hoja dorada).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -35,7 +35,7 @@ registrarMundo('dinos', {
       notx: '¡Al revés! Saluda a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!',
       ax: 'El Pterodáctilo Ladrón solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
       dodge: '¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!',
-      path: '¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.'
+      path: 'Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.',

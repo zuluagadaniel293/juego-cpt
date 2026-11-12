@@ -23,7 +23,7 @@ registrarMundo('kingdom', {
       ax: 'Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!',
       memory: '¡El hechizo hace saltar a Lumi de ventana en ventana! Mira bien su camino y repítelo para romperlo.',
       dodge: '¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!',
-      path: '¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.'
+      path: 'El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -36,7 +36,7 @@ registrarMundo('kingdom', {
       notx: '¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!',
       ax: 'El Duende Pícaro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
       dodge: '¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!',
-      path: '¡Lumi está hechizada al otro lado del castillo! Llévame por el pasillo hasta ella, sin salirte.'
+      path: 'El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.',

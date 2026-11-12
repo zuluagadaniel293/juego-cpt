@@ -45,9 +45,9 @@ const MG = {
   // Esquiva = el villano lanza 3 poderes como sombras; a mitad de camino uno se detiene y hay que ponerse en su
   // carril (esperar a ver cuál es, sin adivinar). juego/escenas/esquiva.js
   dodge:   { label: 'Esquiva',   verb: 'Te salvaste', desc: 'Ponte donde\nse detiene uno' },
-  // Camino = como las pruebas de precisión visomotora: llevar al personaje por el camino sin salirse
-  // (desde el nivel 3 el camino se borra: hay que recordarlo). juego/escenas/camino.js
-  path:    { label: 'Camino',    verb: 'Recorriste',  desc: 'Sigue el camino\nsin salirte' }
+  // Camino = un amigo recorre un camino de piedra en piedra y el niño lo repite de memoria (memoria de trabajo
+  // visoespacial, como el Corsi pero siguiendo una ruta). juego/escenas/camino.js
+  path:    { label: 'Camino',    verb: 'Recorriste',  desc: 'Recuerda el camino\ndel amigo' }
 };
 // Juegos que funcionan como el Clásico (un estímulo en el centro; se responde con ESPACIO o tocando)
 const CLASSIC_LIKE = ['classic', 'notx', 'ax'];

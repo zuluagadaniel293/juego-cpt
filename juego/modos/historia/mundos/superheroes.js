@@ -22,7 +22,7 @@ registrarMundo('heroes', {
       ax: 'Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!',
       memory: '¡Sombra pinta su señal en varios edificios, uno tras otro! Mira bien el orden y repítelo para borrarlas todas.',
       dodge: '¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!',
-      path: '¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.'
+      path: 'Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -35,7 +35,7 @@ registrarMundo('heroes', {
       notx: '¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!',
       ax: 'Sombra solo aparece justo después de {pista}: esa es la pista. ¡Toca a Sombra solo si justo antes salió {pista}!',
       dodge: '¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!',
-      path: '¡Sombra borró las calles con su humo! Lleva a Héroe Rayo por el camino hasta su señal, sin salirte.'
+      path: 'Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.',

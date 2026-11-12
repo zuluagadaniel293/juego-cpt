@@ -23,7 +23,7 @@ registrarMundo('candy', {
       ax: 'Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!',
       memory: '¡Chispita salta de dulce en dulce dejando chispitas! Mira bien su camino y repítelo.',
       dodge: '¡Ácido lanza tres chorros de jugo agrio! A mitad de camino uno se detiene: ¡ponte en su carril!',
-      path: '¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.'
+      path: 'Nube conoce el camino de caramelo hasta Chispita. ¡Mira por dónde salta y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -36,7 +36,7 @@ registrarMundo('candy', {
       notx: '¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!',
       ax: 'Ácido solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
       dodge: '¡Ácido lanza tres chorros de jugo agrio! A mitad de camino uno se detiene: ¡ponte en su carril!',
-      path: '¡Chispita está al final del camino de caramelo! Llévame hasta ella sin salirte.'
+      path: 'Nube conoce el camino de caramelo hasta Chispita. ¡Mira por dónde salta y repítelo de memoria!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.',
