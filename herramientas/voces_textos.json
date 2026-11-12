@@ -1,164 +1,164 @@
 {
   "heroes": {
     "1": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
-      "firma": "d046fac21c"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra está pintando su señal por toda la ciudad. ¡Toca solo la suya para borrarla!",
+      "firma": "576a20c3fe"
     },
     "2": {
-      "texto": "¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!",
-      "firma": "8f47307802"
+      "texto": "¡En Barrio Norte, Sombra lanza señales desde los tejados! Atrapa solo las suyas con el escudo de Escudo Verde.",
+      "firma": "ad7fc63baf"
     },
     "3": {
-      "texto": "¡Escapó al puerto! Corre por los muelles y agarra solo sus señales. ¡Vamos!",
-      "firma": "75e4a97171"
+      "texto": "¡Sombra escapó al puerto soltando señales! Escudo Verde lo persigue: alcanza solo las de Sombra.",
+      "firma": "607e3d17be"
     },
     "4": {
-      "texto": "En la torre hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!",
-      "firma": "f58a90aff2"
+      "texto": "Sombra llenó la torre de señales... ¡Encuentra la suya y bórrala! Y si no está, ¡no toques nada!",
+      "firma": "7752782193"
     },
     "5": {
-      "texto": "¡Sombra se esconde en su guarida! Primero sigue sus señales y después atrápalo entre mis amigos héroes.",
-      "firma": "d576d85830"
+      "texto": "¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.",
+      "firma": "b1e0c074a6"
     },
     "end": {
-      "texto": "¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!",
-      "firma": "3a2613b20a"
+      "texto": "¡Lo logramos! Borramos todas las señales y atrapamos a Sombra. La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!",
+      "firma": "1925795561"
     },
     "unlock": {
-      "texto": "¡Llegaste a Superhéroes! ¡Hola! ¡Soy Héroe Rayo! ¿Me ayudas?",
-      "firma": "425fa04688"
+      "texto": "¡Llegaste a Superhéroes! ¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¿Me ayudas?",
+      "firma": "c396af74b5"
     },
     "classic": {
-      "texto": "El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
-      "firma": "f4bbd6647f"
+      "texto": "Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya para borrarla con mi rayo!",
+      "firma": "04a62e9ef9"
     },
     "intro_classic": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
-      "firma": "d046fac21c"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya para borrarla con mi rayo!",
+      "firma": "646e967d0d"
     },
     "catch": {
-      "texto": "¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!",
-      "firma": "8f47307802"
+      "texto": "¡Sombra lanza sus señales desde los tejados! Mueve el escudo de Escudo Verde y atrapa solo las de Sombra... ¡deja caer las de mis amigos!",
+      "firma": "3bf4926f28"
     },
     "intro_catch": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra lanza su señal desde los tejados! Atrápala con la canasta... ¡y deja caer las de mis amigos!",
-      "firma": "a3d3faea3e"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra lanza sus señales desde los tejados! Mueve el escudo de Escudo Verde y atrapa solo las de Sombra... ¡deja caer las de mis amigos!",
+      "firma": "aaf8d31125"
     },
     "race": {
-      "texto": "¡Sombra escapó corriendo! Persíguelo y agarra solo sus señales. ¡Vamos!",
-      "firma": "be3bd3a14b"
+      "texto": "¡Sombra escapa soltando señales! Escudo Verde lo persigue: alcanza solo las señales de Sombra.",
+      "firma": "9dcfd0de02"
     },
     "intro_race": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra escapó corriendo! Persíguelo y agarra solo sus señales. ¡Vamos!",
-      "firma": "9a28f3352f"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra escapa soltando señales! Escudo Verde lo persigue: alcanza solo las señales de Sombra.",
+      "firma": "1666aa634b"
     },
     "find": {
-      "texto": "Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!",
-      "firma": "9eb85baa54"
+      "texto": "Sombra pegó su señal entre muchas otras... ¡Encuéntrala para borrarla! Y si no está, ¡no toques nada!",
+      "firma": "7db48c1078"
     },
     "intro_find": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Aquí hay muchas señales juntas... ¡Encuentra la de Sombra! Y si no está, ¡no toques nada!",
-      "firma": "91ee58b8bd"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra pegó su señal entre muchas otras... ¡Encuéntrala para borrarla! Y si no está, ¡no toques nada!",
+      "firma": "eb98755b3f"
     },
     "memory": {
-      "texto": "¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.",
-      "firma": "6aed8eb3e5"
+      "texto": "¡Sombra pinta su señal en varios edificios, uno tras otro! Mira bien el orden y repítelo para borrarlas todas.",
+      "firma": "136812cd09"
     },
     "intro_memory": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra dejó su señal en varios lugares, uno tras otro! Mira bien el camino que siguió y repítelo en el mismo orden.",
-      "firma": "a35d33a41b"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra pinta su señal en varios edificios, uno tras otro! Mira bien el orden y repítelo para borrarlas todas.",
+      "firma": "0a22c6bfeb"
     },
     "notx": {
-      "texto": "¡Esta vez es al revés! Toca todas las señales de mis amigos héroes... ¡pero NUNCA la de Sombra!",
-      "firma": "102e81027f"
+      "texto": "¡Al revés! Toca todas las señales de mis amigos héroes para encenderlas... ¡pero NUNCA la de Sombra!",
+      "firma": "fa8e89deb6"
     },
     "intro_notx": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Esta vez es al revés! Toca todas las señales de mis amigos héroes... ¡pero NUNCA la de Sombra!",
-      "firma": "b0f2b4ad67"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Al revés! Toca todas las señales de mis amigos héroes para encenderlas... ¡pero NUNCA la de Sombra!",
+      "firma": "1a00ff3e6b"
     },
     "ax": {
       "texto": "Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
       "firma": "dc07f0b301"
     },
     "intro_ax": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
-      "firma": "f17050833b"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
+      "firma": "bd7b95fc05"
     },
     "boss": {
-      "texto": "¡Sombra se esconde en su guarida! Primero sigue sus señales y después atrápalo entre mis amigos héroes.",
-      "firma": "d576d85830"
+      "texto": "¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.",
+      "firma": "b1e0c074a6"
     },
     "cast_classic": {
       "texto": "¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.",
       "firma": "b41a17683d"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.",
-      "firma": "1847cb39c3"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.",
+      "firma": "770f2e5b99"
     },
     "cast_catch": {
       "texto": "¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "89ee782bf1"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "33f1bab3e5"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "0b1061a619"
     },
     "cast_race": {
       "texto": "¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.",
       "firma": "9d83b8ddb3"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.",
-      "firma": "c42cbf77d0"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.",
+      "firma": "fe6323ad4b"
     },
     "cast_find": {
       "texto": "Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!",
       "firma": "9e445f09d3"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!",
-      "firma": "b9faa98f3c"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!",
+      "firma": "27ea2e82f7"
     },
     "cast_memory": {
       "texto": "¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.",
       "firma": "67bcc73b7b"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.",
-      "firma": "d4369e394d"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.",
+      "firma": "bf9a134a70"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!",
       "firma": "eda43ec353"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! ¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!",
-      "firma": "713537e33b"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!",
+      "firma": "1d0f970ed0"
     },
     "cast_ax_friend1": {
       "texto": "Sombra solo aparece justo después de la Capitana Estrella: esa es la pista. ¡Toca a Sombra solo si justo antes salió la Capitana Estrella!",
       "firma": "06183f98f0"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece justo después de la Capitana Estrella: esa es la pista. ¡Toca a Sombra solo si justo antes salió la Capitana Estrella!",
-      "firma": "5ed6b94f03"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra solo aparece justo después de la Capitana Estrella: esa es la pista. ¡Toca a Sombra solo si justo antes salió la Capitana Estrella!",
+      "firma": "64c6402a71"
     },
     "cast_ax_friend2": {
       "texto": "Sombra solo aparece justo después de Escudo Verde: esa es la pista. ¡Toca a Sombra solo si justo antes salió Escudo Verde!",
       "firma": "48a27c3fa0"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece justo después de Escudo Verde: esa es la pista. ¡Toca a Sombra solo si justo antes salió Escudo Verde!",
-      "firma": "29030c89c1"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra solo aparece justo después de Escudo Verde: esa es la pista. ¡Toca a Sombra solo si justo antes salió Escudo Verde!",
+      "firma": "4291ddc806"
     },
     "cast_ax_friend3": {
       "texto": "Sombra solo aparece justo después de Héroe Noche: esa es la pista. ¡Toca a Sombra solo si justo antes salió Héroe Noche!",
       "firma": "c3d85d90f7"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! ¡Soy Héroe Rayo! Sombra solo aparece justo después de Héroe Noche: esa es la pista. ¡Toca a Sombra solo si justo antes salió Héroe Noche!",
-      "firma": "5fca3498cc"
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra solo aparece justo después de Héroe Noche: esa es la pista. ¡Toca a Sombra solo si justo antes salió Héroe Noche!",
+      "firma": "b2dd004cfb"
     },
     "comp_1": {
       "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
@@ -173,8 +173,8 @@
       "firma": "fce379236b"
     },
     "comp_4": {
-      "texto": "¡Ja, ja! ¿Creen que pueden atraparme? ¡Nunca encontrarán todas mis señales!",
-      "firma": "f647ae10ae"
+      "texto": "¡Ja, ja! ¡Pintaré mi señal en cada rincón de la ciudad! ¡Nunca las borrarás todas!",
+      "firma": "ff75120a82"
     },
     "dist_risa_c1": {
       "texto": "¡Ja, ja, ja! ¡Nunca me atraparás!",
@@ -255,168 +255,168 @@
   },
   "fantasy": {
     "1": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió entre dragones de otras familias... ¿Me ayudas a encontrarlo?",
-      "firma": "c7734535ff"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos dorados y se escaparon del nido. ¡Toca solo a los dorados para llevarlos a casa!",
+      "firma": "e382c3a62a"
     },
     "2": {
-      "texto": "¡Los dragoncitos bajan volando del bosque! Atrapa solo a mi hermanito dorado.",
-      "firma": "0929dddb3b"
+      "texto": "¡Mis hermanitos vuelan sobre el bosque! Mueve el nido y recibe solo a los dragoncitos dorados.",
+      "firma": "54ab324670"
     },
     "3": {
-      "texto": "¡Mi hermanito está jugando en el río! Corre por la orilla y alcánzalo solo a él.",
-      "firma": "2610c72be9"
+      "texto": "¡Morgana huye por el río con mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.",
+      "firma": "b6d8bb857b"
     },
     "4": {
-      "texto": "La cueva está llena de dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
-      "firma": "dd3e658e99"
+      "texto": "En la cueva hay muchos dragoncitos... ¡Busca a los dorados! Y si no hay ninguno, ¡no toques nada!",
+      "firma": "3bb5a546b3"
     },
     "5": {
-      "texto": "¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.",
-      "firma": "fa2bae04ec"
+      "texto": "¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.",
+      "firma": "f105b6e64e"
     },
     "end": {
-      "texto": "¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!",
-      "firma": "0d77828e3e"
+      "texto": "¡Atrapamos a Morgana y todos mis hermanitos volvieron al nido! ¡Ahora eres parte de la familia de los dragones!",
+      "firma": "80842642d7"
     },
     "unlock": {
-      "texto": "¡Llegaste a Dragones y fantasía! ¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¿Me ayudas?",
-      "firma": "a8876f008c"
+      "texto": "¡Llegaste a Dragones y fantasía! ¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¿Me ayudas?",
+      "firma": "3b97225c55"
     },
     "classic": {
-      "texto": "Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!",
-      "firma": "89ab155b90"
+      "texto": "Mis hermanitos se mezclaron con dragones de otras familias... ¡Toca solo a los dorados para guiarlos al nido!",
+      "firma": "763f6fe29e"
     },
     "intro_classic": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!",
-      "firma": "e5c39faf62"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Mis hermanitos se mezclaron con dragones de otras familias... ¡Toca solo a los dorados para guiarlos al nido!",
+      "firma": "0a701f4ef0"
     },
     "catch": {
-      "texto": "¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.",
-      "firma": "f8633d7d8e"
+      "texto": "¡Mis hermanitos bajan volando! Mueve el nido y recibe solo a los dragoncitos dorados.",
+      "firma": "51589818a2"
     },
     "intro_catch": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Los dragoncitos bajan volando! Atrapa solo a mi hermanito dorado.",
-      "firma": "4d27178827"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Mis hermanitos bajan volando! Mueve el nido y recibe solo a los dragoncitos dorados.",
+      "firma": "905bcddd20"
     },
     "race": {
-      "texto": "¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.",
-      "firma": "e103a690c6"
+      "texto": "¡Morgana huye y se lleva a mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.",
+      "firma": "1c7847a3b6"
     },
     "intro_race": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Mi hermanito salió corriendo! Síguelo y alcánzalo solo a él.",
-      "firma": "3f0ba4ac8d"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana huye y se lleva a mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.",
+      "firma": "82fa509f78"
     },
     "find": {
-      "texto": "Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
-      "firma": "581a17c0a2"
+      "texto": "Mis hermanitos se escondieron entre muchos dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
+      "firma": "de5d97e372"
     },
     "intro_find": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Aquí hay muchos dragoncitos juntos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
-      "firma": "b610fc1c64"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Mis hermanitos se escondieron entre muchos dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!",
+      "firma": "5981dcea7d"
     },
     "memory": {
-      "texto": "¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.",
-      "firma": "ad811ba561"
+      "texto": "¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.",
+      "firma": "357d9b4ebb"
     },
     "intro_memory": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Mi hermanito salta de escondite en escondite! Mira bien por dónde pasó y repite su camino en el mismo orden.",
-      "firma": "afa42e3959"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.",
+      "firma": "decf591eea"
     },
     "notx": {
-      "texto": "¡Ahora es al revés! Toca a todos los dragoncitos... ¡menos a mi hermanito dorado!",
-      "firma": "907727c85a"
+      "texto": "¡Al revés! Los dragoncitos de otras familias van a su casa: tócalos a todos... ¡menos a los dorados, que van a mi nido!",
+      "firma": "d9a7bb9c85"
     },
     "intro_notx": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Ahora es al revés! Toca a todos los dragoncitos... ¡menos a mi hermanito dorado!",
-      "firma": "63b0c74b4a"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Al revés! Los dragoncitos de otras familias van a su casa: tócalos a todos... ¡menos a los dorados, que van a mi nido!",
+      "firma": "9a1e4b44f8"
     },
     "ax": {
-      "texto": "Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
-      "firma": "ce1141781b"
+      "texto": "Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
+      "firma": "5f4e650713"
     },
     "intro_ax": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Mi hermanito siempre sigue al dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
-      "firma": "ba491424ba"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
+      "firma": "8b06f9d9f9"
     },
     "boss": {
-      "texto": "¡Morgana encerró a mi hermanito en el volcán! Primero rescátalo y después atrapa a Morgana entre los magos.",
-      "firma": "fa2bae04ec"
+      "texto": "¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.",
+      "firma": "f105b6e64e"
     },
     "cast_classic": {
       "texto": "¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.",
       "firma": "e64df23632"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.",
-      "firma": "e3ff3bee52"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.",
+      "firma": "10764f236b"
     },
     "cast_catch": {
       "texto": "¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!",
       "firma": "89fbfb9bdd"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!",
-      "firma": "ff2345b090"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!",
+      "firma": "3712be7ade"
     },
     "cast_race": {
       "texto": "¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.",
       "firma": "6e23d6101a"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.",
-      "firma": "2564a63e37"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.",
+      "firma": "e5f4ab3725"
     },
     "cast_find": {
       "texto": "Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!",
       "firma": "b6c520700d"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!",
-      "firma": "9ed0950310"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!",
+      "firma": "24a72a0159"
     },
     "cast_memory": {
       "texto": "¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.",
       "firma": "72ac6fd4ba"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.",
-      "firma": "991b37314b"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.",
+      "firma": "487af0d755"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!",
       "firma": "6f5f94f938"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!",
-      "firma": "a1ca4295b3"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!",
+      "firma": "f403fa05b4"
     },
     "cast_ax_friend1": {
       "texto": "Morgana solo aparece justo después del Hada del Bosque: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Hada del Bosque!",
       "firma": "66683e082b"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece justo después del Hada del Bosque: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Hada del Bosque!",
-      "firma": "785638199e"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Morgana solo aparece justo después del Hada del Bosque: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Hada del Bosque!",
+      "firma": "501f2dbbb6"
     },
     "cast_ax_friend2": {
       "texto": "Morgana solo aparece justo después del Mago Abuelo: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Mago Abuelo!",
       "firma": "d7af3f1d49"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece justo después del Mago Abuelo: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Mago Abuelo!",
-      "firma": "66e66c6d91"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Morgana solo aparece justo después del Mago Abuelo: esa es la pista. ¡Toca a Morgana solo si justo antes salió el Mago Abuelo!",
+      "firma": "63e6d825da"
     },
     "cast_ax_friend3": {
       "texto": "Morgana solo aparece justo después de la Hechicera Buena: esa es la pista. ¡Toca a Morgana solo si justo antes salió la Hechicera Buena!",
       "firma": "13ffe3bb50"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. Morgana solo aparece justo después de la Hechicera Buena: esa es la pista. ¡Toca a Morgana solo si justo antes salió la Hechicera Buena!",
-      "firma": "3f0a53e1e2"
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Morgana solo aparece justo después de la Hechicera Buena: esa es la pista. ¡Toca a Morgana solo si justo antes salió la Hechicera Buena!",
+      "firma": "c011a8e4f9"
     },
     "comp_1": {
-      "texto": "¡Hola, Chispa! Soy el Hada del Bosque. Yo te ayudaré a buscar a tu hermanito.",
-      "firma": "1d2277e855"
+      "texto": "¡Hola, Chispa! Soy el Hada del Bosque. ¡Te ayudaré a llevar a tus hermanitos al nido!",
+      "firma": "fd2662c361"
     },
     "comp_2": {
       "texto": "Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!",
@@ -427,12 +427,12 @@
       "firma": "efc4476570"
     },
     "comp_4": {
-      "texto": "¡Ja, ja, ja! ¡Ese dragoncito dorado será mío! ¡Nadie podrá detenerme!",
-      "firma": "a62044d7de"
+      "texto": "¡Ja, ja, ja! ¡Esos dragoncitos dorados serán míos! ¡Nunca volverán a su nido!",
+      "firma": "811e3790e3"
     },
     "dist_risa_c1": {
-      "texto": "¡Ja, ja, ja! ¡Jamás lo encontrarás!",
-      "firma": "ba48b69d27"
+      "texto": "¡Ja, ja, ja! ¡Jamás volverán al nido!",
+      "firma": "92255522bc"
     },
     "dist_risa_c2": {
       "texto": "¡Ji, ji! ¡Mis hechizos nunca fallan!",
@@ -451,8 +451,8 @@
       "firma": "23812407a2"
     },
     "dist_burla_c1": {
-      "texto": "¿Buscas al dragón dorado? Yo sé dónde está...",
-      "firma": "9279992d67"
+      "texto": "¿Quieres llevar a los dragoncitos al nido? ¡Primero atrápame!",
+      "firma": "c0976bbdce"
     },
     "dist_burla_c2": {
       "texto": "¡Abracadabra! ¡Que todos los árboles se confundan!",
@@ -509,168 +509,168 @@
   },
   "kingdom": {
     "1": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por todo el castillo... Busca a Lumi, el hada rosada que cuida mi corona.",
-      "firma": "48fcdb4afe"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada. ¡Tócala solo a ella para romper el hechizo!",
+      "firma": "8d440c29e9"
     },
     "2": {
-      "texto": "¡Las hadas caen como polvo de estrellas en la cocina! Atrapa solo a Lumi.",
-      "firma": "b7a39a0be3"
+      "texto": "¡En la cocina, Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi.",
+      "firma": "81298569f1"
     },
     "3": {
-      "texto": "¡Lumi vuela entre los libros de la biblioteca! Corre por los pasillos y alcánzala solo a ella.",
-      "firma": "6c18c0fc60"
+      "texto": "¡El Duende huye por la biblioteca con Lumi! El Bufón lo persigue: alcanza solo a Lumi.",
+      "firma": "7bb6a1ae41"
     },
     "4": {
-      "texto": "En la torre hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!",
-      "firma": "eca1b14470"
+      "texto": "En la torre hay muchas hadas... ¡Encuentra a Lumi para liberarla! Y si no está, ¡no toques nada!",
+      "firma": "5467e92d96"
     },
     "5": {
-      "texto": "¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.",
-      "firma": "38379fb3c9"
+      "texto": "¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.",
+      "firma": "c7ca35d63b"
     },
     "end": {
-      "texto": "¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.",
-      "firma": "3ce2ce39de"
+      "texto": "¡Atrapamos al Duende Pícaro y Lumi quedó libre del hechizo! Todo el castillo brilla de nuevo gracias a ti.",
+      "firma": "fdfe574e82"
     },
     "unlock": {
-      "texto": "¡Llegaste a Reino mágico! ¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¿Me ayudas?",
-      "firma": "8af5d03f5d"
+      "texto": "¡Llegaste a Reino mágico! ¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¿Me ayudas?",
+      "firma": "5d018227cf"
     },
     "classic": {
-      "texto": "Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!",
-      "firma": "1d8e679c68"
+      "texto": "Lumi aparece entre otras hadas. ¡Tócala solo a ella para romper la burbuja del hechizo!",
+      "firma": "b255a042cb"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!",
-      "firma": "75929bdcde"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. Lumi aparece entre otras hadas. ¡Tócala solo a ella para romper la burbuja del hechizo!",
+      "firma": "36fedf207a"
     },
     "catch": {
-      "texto": "¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.",
-      "firma": "bdfd51fbcb"
+      "texto": "¡Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi para liberarla.",
+      "firma": "a9a716a0f5"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Las hadas caen como polvo de estrellas! Atrapa solo a Lumi.",
-      "firma": "21745eaff2"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi para liberarla.",
+      "firma": "7662e3a1ea"
     },
     "race": {
-      "texto": "¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.",
-      "firma": "4aa2f0804e"
+      "texto": "¡El Duende Pícaro huye llevándose a Lumi! El Bufón lo persigue: alcanza solo a Lumi.",
+      "firma": "608c40f20c"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Lumi vuela por los pasillos! Corre y alcánzala solo a ella.",
-      "firma": "2050dd142c"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro huye llevándose a Lumi! El Bufón lo persigue: alcanza solo a Lumi.",
+      "firma": "c8b06f367d"
     },
     "find": {
-      "texto": "Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!",
-      "firma": "21d65ef922"
+      "texto": "El Duende escondió a Lumi entre muchas hadas... ¡Encuéntrala para romper el hechizo! Y si no está, ¡no toques nada!",
+      "firma": "d1d242c738"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Aquí hay muchas hadas juntas... ¡Encuentra a Lumi! Y si no está, ¡no toques nada!",
-      "firma": "e8ab6e8ee4"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Duende escondió a Lumi entre muchas hadas... ¡Encuéntrala para romper el hechizo! Y si no está, ¡no toques nada!",
+      "firma": "e9e76eabbb"
     },
     "memory": {
-      "texto": "¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "c076f03b4a"
+      "texto": "¡El hechizo hace saltar a Lumi de ventana en ventana! Mira bien su camino y repítelo para romperlo.",
+      "firma": "712994daa1"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Lumi va dejando polvo mágico por donde vuela! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "8f607eea07"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El hechizo hace saltar a Lumi de ventana en ventana! Mira bien su camino y repítelo para romperlo.",
+      "firma": "d16c67cc70"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todas las hadas... ¡menos a Lumi!",
-      "firma": "85ad1f9fc2"
+      "texto": "¡Al revés! Saluda a todas las hadas del castillo... ¡pero no a Lumi, que está rompiendo su hechizo!",
+      "firma": "41219e9e73"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Al revés! Toca a todas las hadas... ¡menos a Lumi!",
-      "firma": "0dd07cb444"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡Al revés! Saluda a todas las hadas del castillo... ¡pero no a Lumi, que está rompiendo su hechizo!",
+      "firma": "2d0a28bf1a"
     },
     "ax": {
       "texto": "Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
       "firma": "be5d0a8221"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
-      "firma": "073ba349f2"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
+      "firma": "e9949d4315"
     },
     "boss": {
-      "texto": "¡El Duende Pícaro encerró a Lumi en el salón del trono! Primero rescátala y después atrapa al duende entre la gente del castillo.",
-      "firma": "38379fb3c9"
+      "texto": "¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.",
+      "firma": "c7ca35d63b"
     },
     "cast_classic": {
       "texto": "¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.",
       "firma": "2f0849a34c"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.",
-      "firma": "d71e2bcaad"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.",
+      "firma": "5e1caab352"
     },
     "cast_catch": {
       "texto": "¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "c00941e691"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "e5a925a0ee"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "17696170cc"
     },
     "cast_race": {
       "texto": "¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.",
       "firma": "b3534f809c"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.",
-      "firma": "bb40da0fb1"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.",
+      "firma": "b550911af4"
     },
     "cast_find": {
       "texto": "La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
       "firma": "849d6d9639"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "b5ec771a7e"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "593a7ef6b2"
     },
     "cast_memory": {
       "texto": "¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.",
       "firma": "d9c32b2be7"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.",
-      "firma": "b288622d4c"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.",
+      "firma": "e2cce729c1"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!",
       "firma": "4720af6dff"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!",
-      "firma": "f67413c102"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!",
+      "firma": "2228a77010"
     },
     "cast_ax_friend1": {
       "texto": "El Duende Pícaro solo aparece justo después del Guardia: esa es la pista. ¡Tócalo solo si justo antes salió el Guardia!",
       "firma": "2ebaf65469"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece justo después del Guardia: esa es la pista. ¡Tócalo solo si justo antes salió el Guardia!",
-      "firma": "bd1a77633f"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Duende Pícaro solo aparece justo después del Guardia: esa es la pista. ¡Tócalo solo si justo antes salió el Guardia!",
+      "firma": "41b83c751a"
     },
     "cast_ax_friend2": {
       "texto": "El Duende Pícaro solo aparece justo después del Bufón: esa es la pista. ¡Tócalo solo si justo antes salió el Bufón!",
       "firma": "f00f1609f4"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece justo después del Bufón: esa es la pista. ¡Tócalo solo si justo antes salió el Bufón!",
-      "firma": "0a22b3bb5f"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Duende Pícaro solo aparece justo después del Bufón: esa es la pista. ¡Tócalo solo si justo antes salió el Bufón!",
+      "firma": "86de837a94"
     },
     "cast_ax_friend3": {
       "texto": "El Duende Pícaro solo aparece justo después del Duende Amable: esa es la pista. ¡Tócalo solo si justo antes salió el Duende Amable!",
       "firma": "4069f3d5d9"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. El Duende Pícaro solo aparece justo después del Duende Amable: esa es la pista. ¡Tócalo solo si justo antes salió el Duende Amable!",
-      "firma": "c181d02bd9"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Duende Pícaro solo aparece justo después del Duende Amable: esa es la pista. ¡Tócalo solo si justo antes salió el Duende Amable!",
+      "firma": "259c2d5495"
     },
     "comp_1": {
-      "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a buscar a las hadas!",
-      "firma": "10c83aba02"
+      "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a liberar a Lumi!",
+      "firma": "872232e2cf"
     },
     "comp_2": {
       "texto": "¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.",
@@ -681,8 +681,8 @@
       "firma": "fe01b7ade7"
     },
     "comp_4": {
-      "texto": "¡Ji, ji, ji! ¡Escondí a las hadas por todo el castillo! ¡A ver si las encuentras!",
-      "firma": "6d5fa480cb"
+      "texto": "¡Ji, ji, ji! ¡Mi hechizo encierra a Lumi en burbujas! ¡Nunca la liberarás!",
+      "firma": "c1b85f5d54"
     },
     "dist_risa_c1": {
       "texto": "¡Ji, ji, ji! ¡No me pueden atrapar!",
@@ -713,8 +713,8 @@
       "firma": "8c8d28f55c"
     },
     "dist_burla_c3": {
-      "texto": "¡Escondí a Lumi entre las páginas! ¿O no?",
-      "firma": "044912ef32"
+      "texto": "¡Encerré a Lumi en una burbuja entre las páginas!",
+      "firma": "4c294885b1"
     },
     "dist_burla_c4": {
       "texto": "¡Subí todas las escaleras y tú no!",
@@ -763,168 +763,168 @@
   },
   "space": {
     "1": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió en la base lunar... Búscalo: es verde y tiene una estrella en la antena.",
-      "firma": "a79f20c1cb"
+      "texto": "¡Hola! Soy Nova. Bip y sus hermanitos se perdieron cerca de la base. ¡Toca solo a los aliens verdes para subirlos con el rayo!",
+      "firma": "0cae9da4cd"
     },
     "2": {
-      "texto": "¡Los aliens caen entre los asteroides! Atrapa solo a Bip.",
-      "firma": "f43fa68b02"
+      "texto": "¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.",
+      "firma": "a2796bb1a4"
     },
     "3": {
-      "texto": "¡Bip flota por los pasillos de la nave nodriza! Corre y alcánzalo solo a él.",
-      "firma": "a496cc8e74"
+      "texto": "¡El Capitán Meteoro huye por la nave nodriza con los hermanitos de Bip! Zuri lo persigue: alcanza solo a los aliens verdes.",
+      "firma": "17c672f1d3"
     },
     "4": {
-      "texto": "En el planeta de cristal hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!",
-      "firma": "639d5115f2"
+      "texto": "En el planeta de cristal hay muchos aliens... ¡Encuentra a los verdes! Y si no hay ninguno, ¡no toques nada!",
+      "firma": "6c6b5e5f43"
     },
     "5": {
-      "texto": "¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.",
-      "firma": "2ad765ae7c"
+      "texto": "¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.",
+      "firma": "3e0ea3fad8"
     },
     "end": {
-      "texto": "¡Atrapamos al Capitán Meteoro y Bip volvió a casa! Toda la galaxia está feliz gracias a ti.",
-      "firma": "779314736e"
+      "texto": "¡Atrapamos al Capitán Meteoro y Bip y sus hermanitos llegaron a la base! Toda la galaxia te lo agradece.",
+      "firma": "9f68088445"
     },
     "unlock": {
-      "texto": "¡Llegaste a Espacio! ¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¿Me ayudas?",
-      "firma": "721c2492f3"
+      "texto": "¡Llegaste a Espacio! ¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¿Me ayudas?",
+      "firma": "b0d9f9cd91"
     },
     "classic": {
-      "texto": "Bip es el alien verde con una estrella en la antena. ¡Toca solo cuando lo veas a él!",
-      "firma": "d31f226cbd"
+      "texto": "Bip y sus hermanitos flotan entre otros aliens. ¡Toca solo a los verdes para subirlos con el rayo de la nave!",
+      "firma": "91fa4f574c"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. Bip es el alien verde con una estrella en la antena. ¡Toca solo cuando lo veas a él!",
-      "firma": "4aad399c5e"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! Bip y sus hermanitos flotan entre otros aliens. ¡Toca solo a los verdes para subirlos con el rayo de la nave!",
+      "firma": "2f9ed735f5"
     },
     "catch": {
-      "texto": "¡Los aliens caen como lluvia de estrellas! Atrapa solo a Bip.",
-      "firma": "49b2ab5409"
+      "texto": "¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.",
+      "firma": "a2796bb1a4"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Los aliens caen como lluvia de estrellas! Atrapa solo a Bip.",
-      "firma": "9d689b8e7e"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.",
+      "firma": "8b7ad82e21"
     },
     "race": {
-      "texto": "¡Bip flota por la estación espacial! Corre y alcánzalo solo a él.",
-      "firma": "e94a6aa80a"
+      "texto": "¡El Capitán Meteoro huye con Bip y sus hermanitos! Zuri lo persigue: alcanza solo a los aliens verdes.",
+      "firma": "315f10c5c0"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Bip flota por la estación espacial! Corre y alcánzalo solo a él.",
-      "firma": "43f923c603"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro huye con Bip y sus hermanitos! Zuri lo persigue: alcanza solo a los aliens verdes.",
+      "firma": "def656b2fa"
     },
     "find": {
-      "texto": "Aquí hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!",
-      "firma": "4c2990b8ea"
+      "texto": "Bip y sus hermanitos se esconden entre muchos aliens... ¡Encuentra al verde! Y si no está, ¡no toques nada!",
+      "firma": "bc79c4ff3b"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. Aquí hay muchos aliens juntos... ¡Encuentra a Bip! Y si no está, ¡no toques nada!",
-      "firma": "139188598d"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! Bip y sus hermanitos se esconden entre muchos aliens... ¡Encuentra al verde! Y si no está, ¡no toques nada!",
+      "firma": "7624702973"
     },
     "memory": {
-      "texto": "¡Bip salta de planeta en planeta! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "26d7e4d500"
+      "texto": "¡Bip salta de asteroide en asteroide! Mira bien su camino y repítelo para guiar la nave.",
+      "firma": "ebb6bade22"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Bip salta de planeta en planeta! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "06cdcd3eb9"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡Bip salta de asteroide en asteroide! Mira bien su camino y repítelo para guiar la nave.",
+      "firma": "3d695746de"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todos los aliens... ¡menos a Bip!",
-      "firma": "10a20af67d"
+      "texto": "¡Al revés! Los otros aliens vuelven a sus planetas: tócalos a todos... ¡menos a Bip, que viene a la base!",
+      "firma": "3d148e39aa"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Al revés! Toca a todos los aliens... ¡menos a Bip!",
-      "firma": "5c23391c61"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡Al revés! Los otros aliens vuelven a sus planetas: tócalos a todos... ¡menos a Bip, que viene a la base!",
+      "firma": "e4a7648190"
     },
     "ax": {
       "texto": "Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!",
       "firma": "e1b03bb3fb"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!",
-      "firma": "fdad8e827f"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!",
+      "firma": "45af49022b"
     },
     "boss": {
-      "texto": "¡El Capitán Meteoro tiene a Bip en su nave pirata! Primero rescata a Bip y después atrapa al capitán entre la tripulación.",
-      "firma": "2ad765ae7c"
+      "texto": "¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.",
+      "firma": "3e0ea3fad8"
     },
     "cast_classic": {
       "texto": "¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.",
       "firma": "f8cb0ce5bb"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.",
-      "firma": "c05c02416d"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.",
+      "firma": "c7ad033d18"
     },
     "cast_catch": {
       "texto": "¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "f1df16dcdd"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "c69394d4af"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "000627c53a"
     },
     "cast_race": {
       "texto": "¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.",
       "firma": "3f772c21cf"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.",
-      "firma": "f766e6eeec"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.",
+      "firma": "237c2132ac"
     },
     "cast_find": {
       "texto": "La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
       "firma": "4d9e8d0245"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "d40ad1b017"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "f8af95b703"
     },
     "cast_memory": {
       "texto": "¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.",
       "firma": "a3f26e6a55"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.",
-      "firma": "efe2412537"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.",
+      "firma": "4dcbe973f4"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!",
       "firma": "81f8b73551"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!",
-      "firma": "3446e6b50c"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!",
+      "firma": "5060d551d5"
     },
     "cast_ax_friend1": {
       "texto": "El Capitán Meteoro solo aparece justo después de Robi: esa es la pista. ¡Tócalo solo si justo antes salió Robi!",
       "firma": "c5d025d226"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. El Capitán Meteoro solo aparece justo después de Robi: esa es la pista. ¡Tócalo solo si justo antes salió Robi!",
-      "firma": "c4faeb1c4e"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! El Capitán Meteoro solo aparece justo después de Robi: esa es la pista. ¡Tócalo solo si justo antes salió Robi!",
+      "firma": "1ba3e7c1b7"
     },
     "cast_ax_friend2": {
       "texto": "El Capitán Meteoro solo aparece justo después de Zuri: esa es la pista. ¡Tócalo solo si justo antes salió Zuri!",
       "firma": "8e57936a65"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. El Capitán Meteoro solo aparece justo después de Zuri: esa es la pista. ¡Tócalo solo si justo antes salió Zuri!",
-      "firma": "781ccb0d67"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! El Capitán Meteoro solo aparece justo después de Zuri: esa es la pista. ¡Tócalo solo si justo antes salió Zuri!",
+      "firma": "1d7911b0ea"
     },
     "cast_ax_friend3": {
       "texto": "El Capitán Meteoro solo aparece justo después de Cometa: esa es la pista. ¡Tócalo solo si justo antes salió Cometa!",
       "firma": "7777ce088b"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. El Capitán Meteoro solo aparece justo después de Cometa: esa es la pista. ¡Tócalo solo si justo antes salió Cometa!",
-      "firma": "2929ed0c73"
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! El Capitán Meteoro solo aparece justo después de Cometa: esa es la pista. ¡Tócalo solo si justo antes salió Cometa!",
+      "firma": "cb1491ae54"
     },
     "comp_1": {
-      "texto": "¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y busquemos a Bip!",
-      "firma": "bdbe9196f1"
+      "texto": "¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y llevemos a Bip a la base!",
+      "firma": "77d24627d3"
     },
     "comp_2": {
       "texto": "¡Hola, terrícola! Soy Zuri. En el espacio todo brilla y se mueve... ¡pero tú no te distraigas!",
@@ -935,8 +935,8 @@
       "firma": "c001e8b8e3"
     },
     "comp_4": {
-      "texto": "¡Ja, ja, ja! ¡Bip será mío! ¡A ver si lo encuentras antes que yo, astronauta!",
-      "firma": "9490231960"
+      "texto": "¡Ja, ja, ja! ¡Me llevaré a Bip y a todos sus hermanitos! ¡Nunca llegarán a la base!",
+      "firma": "2d07251482"
     },
     "dist_risa_c1": {
       "texto": "¡Ja, ja, ja! ¡Bip será mío!",
@@ -1017,180 +1017,180 @@
   },
   "ocean": {
     "1": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla... Búscala: es el caballito de mar rosado con una perla en la cola.",
-      "firma": "9a42b6a870"
+      "texto": "¡Hola! Soy Coral. El Pulpo Tinta quiere atrapar a Perla, el caballito rosado. ¡Tócala solo a ella para protegerla con una burbuja!",
+      "firma": "faea5a10b7"
     },
     "2": {
-      "texto": "¡Los caballitos bajan entre las burbujas del barco hundido! Atrapa solo a Perla.",
-      "firma": "e3dfe6e434"
+      "texto": "¡Perla baja hacia el barco hundido! Mueve la concha y guárdala solo a ella.",
+      "firma": "797800c244"
     },
     "3": {
-      "texto": "¡Perla nada entre las algas! Corre y alcánzala solo a ella.",
-      "firma": "b657f48f7e"
+      "texto": "¡El Pulpo Tinta persigue a Perla por el bosque de algas! Pinzas va tras él: alcanza solo a Perla.",
+      "firma": "3a6945a80e"
     },
     "4": {
-      "texto": "En la cueva hay muchos caballitos juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!",
-      "firma": "c4aae622a4"
+      "texto": "Perla se escondió en la cueva de cristales entre muchos caballitos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
+      "firma": "0eb4e1288b"
     },
     "5": {
-      "texto": "¡El Pulpo Tinta escondió a Perla en la fosa oscura! Primero rescátala y después atrapa al pulpo entre los animales del mar.",
-      "firma": "0de384fff0"
+      "texto": "¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.",
+      "firma": "0fe25ee5ec"
     },
     "end": {
-      "texto": "¡Atrapamos al Pulpo Tinta y Perla volvió al arrecife! Todo el mar está feliz gracias a ti.",
-      "firma": "91706e0181"
+      "texto": "¡Atrapamos al Pulpo Tinta y Perla está a salvo! El arrecife vuelve a brillar gracias a ti.",
+      "firma": "25c720b0c8"
     },
     "unlock": {
-      "texto": "¡Llegaste a Océano! ¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¿Me ayudas?",
-      "firma": "7106e278f0"
+      "texto": "¡Llegaste a Océano! ¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¿Me ayudas?",
+      "firma": "0f0b412819"
     },
     "classic": {
-      "texto": "Perla es el caballito de mar rosado con una perla en la cola. ¡Toca solo cuando la veas a ella!",
-      "firma": "4d0fbf3a8f"
+      "texto": "Perla nada entre otros caballitos. ¡Tócala solo a ella para cubrirla con una burbuja protectora!",
+      "firma": "ec6870682f"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Perla es el caballito de mar rosado con una perla en la cola. ¡Toca solo cuando la veas a ella!",
-      "firma": "4bbed0ba23"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Perla nada entre otros caballitos. ¡Tócala solo a ella para cubrirla con una burbuja protectora!",
+      "firma": "058129c28c"
     },
     "catch": {
-      "texto": "¡Los caballitos bajan con las burbujas! Atrapa solo a Perla.",
-      "firma": "3fec83bf26"
+      "texto": "¡Perla baja entre las burbujas! Mueve la concha y guárdala solo a ella, donde el pulpo no la alcanza.",
+      "firma": "ec9eb8dd04"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Los caballitos bajan con las burbujas! Atrapa solo a Perla.",
-      "firma": "3b7c434a0f"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡Perla baja entre las burbujas! Mueve la concha y guárdala solo a ella, donde el pulpo no la alcanza.",
+      "firma": "59ba0935b1"
     },
     "race": {
-      "texto": "¡Perla nada entre las corrientes! Corre y alcánzala solo a ella.",
-      "firma": "c7d7c75120"
+      "texto": "¡El Pulpo Tinta persigue a Perla! Pinzas va tras él: alcanza solo a Perla para protegerla.",
+      "firma": "05e45b1236"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Perla nada entre las corrientes! Corre y alcánzala solo a ella.",
-      "firma": "9ddbb25d5c"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta persigue a Perla! Pinzas va tras él: alcanza solo a Perla para protegerla.",
+      "firma": "f9aca1b27c"
     },
     "find": {
-      "texto": "Aquí hay muchos caballitos de mar juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!",
-      "firma": "9917d2219e"
+      "texto": "Perla se escondió del pulpo entre muchos caballitos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
+      "firma": "e21b75d009"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Aquí hay muchos caballitos de mar juntos... ¡Encuentra a Perla! Y si no está, ¡no toques nada!",
-      "firma": "73d9812f66"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Perla se escondió del pulpo entre muchos caballitos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
+      "firma": "cf0f9acd05"
     },
     "memory": {
-      "texto": "¡Perla va dejando burbujas por donde nada! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "89b32e18e2"
+      "texto": "¡Perla nada de coral en coral para escapar del pulpo! Mira bien su camino y repítelo.",
+      "firma": "97359bc075"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Perla va dejando burbujas por donde nada! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "8260e362aa"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡Perla nada de coral en coral para escapar del pulpo! Mira bien su camino y repítelo.",
+      "firma": "561d1db860"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todos los caballitos... ¡menos a Perla!",
-      "firma": "de35c9fba5"
+      "texto": "¡Al revés! Los otros caballitos salen a jugar: tócalos a todos... ¡menos a Perla, que se queda escondida!",
+      "firma": "44d22ca927"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Al revés! Toca a todos los caballitos... ¡menos a Perla!",
-      "firma": "5e1666e8a1"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡Al revés! Los otros caballitos salen a jugar: tócalos a todos... ¡menos a Perla, que se queda escondida!",
+      "firma": "a751ab1af3"
     },
     "ax": {
       "texto": "Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!",
       "firma": "d5158989c5"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!",
-      "firma": "3c3cf6f19c"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!",
+      "firma": "62cc2056e9"
     },
     "boss": {
-      "texto": "¡El Pulpo Tinta escondió a Perla en la fosa oscura! Primero rescátala y después atrapa al pulpo entre los animales del mar.",
-      "firma": "0de384fff0"
+      "texto": "¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.",
+      "firma": "0fe25ee5ec"
     },
     "cast_classic": {
       "texto": "¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.",
       "firma": "3a80a4516b"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.",
-      "firma": "1dd2767908"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.",
+      "firma": "710d425864"
     },
     "cast_catch": {
       "texto": "¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "cd1d12669f"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "1957e9a02f"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "95a5c9ec69"
     },
     "cast_race": {
       "texto": "¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.",
       "firma": "fdeb025835"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.",
-      "firma": "2208d6ec85"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.",
+      "firma": "f73b692a1d"
     },
     "cast_find": {
       "texto": "Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
       "firma": "254f441a6d"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "e6536f9b5e"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "3975fd7f89"
     },
     "cast_memory": {
       "texto": "¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.",
       "firma": "3b2d662dff"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.",
-      "firma": "a312811836"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.",
+      "firma": "d9b397c87d"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!",
       "firma": "7898327afb"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!",
-      "firma": "d1314f9490"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!",
+      "firma": "1aa0504548"
     },
     "cast_ax_friend1": {
       "texto": "El Pulpo Tinta solo aparece justo después de Delfi: esa es la pista. ¡Tócalo solo si justo antes salió Delfi!",
       "firma": "fcac4ee8ac"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. El Pulpo Tinta solo aparece justo después de Delfi: esa es la pista. ¡Tócalo solo si justo antes salió Delfi!",
-      "firma": "58fe34b8e1"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! El Pulpo Tinta solo aparece justo después de Delfi: esa es la pista. ¡Tócalo solo si justo antes salió Delfi!",
+      "firma": "375b44842d"
     },
     "cast_ax_friend2": {
       "texto": "El Pulpo Tinta solo aparece justo después de Pinzas: esa es la pista. ¡Tócalo solo si justo antes salió Pinzas!",
       "firma": "33c4aa56d6"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. El Pulpo Tinta solo aparece justo después de Pinzas: esa es la pista. ¡Tócalo solo si justo antes salió Pinzas!",
-      "firma": "ff2e694833"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! El Pulpo Tinta solo aparece justo después de Pinzas: esa es la pista. ¡Tócalo solo si justo antes salió Pinzas!",
+      "firma": "8360806ff4"
     },
     "cast_ax_friend3": {
       "texto": "El Pulpo Tinta solo aparece justo después de Pulpi: esa es la pista. ¡Tócalo solo si justo antes salió Pulpi!",
       "firma": "4282125569"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. El Pulpo Tinta solo aparece justo después de Pulpi: esa es la pista. ¡Tócalo solo si justo antes salió Pulpi!",
-      "firma": "20ffbf0136"
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! El Pulpo Tinta solo aparece justo después de Pulpi: esa es la pista. ¡Tócalo solo si justo antes salió Pulpi!",
+      "firma": "60f096d8c6"
     },
     "comp_1": {
-      "texto": "¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y busquemos a Perla!",
-      "firma": "548a69cab2"
+      "texto": "¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y protejamos a Perla!",
+      "firma": "876c5fa863"
     },
     "comp_2": {
       "texto": "¡Clic, clac! Soy Pinzas. Con mis gafas lo veo todo... ¡y tú también puedes si te concentras!",
       "firma": "9e91c9e4ac"
     },
     "comp_3": {
-      "texto": "Hola, soy Pulpi. No todos los pulpos somos traviesos. ¡Yo te ayudo a encontrar a Perla!",
-      "firma": "bb1c7f0b87"
+      "texto": "Hola, soy Pulpi. No todos los pulpos somos traviesos. ¡Yo te ayudo a proteger a Perla!",
+      "firma": "1ad48fe6e1"
     },
     "comp_4": {
-      "texto": "¡Je, je, je! ¡Escondí a Perla con mi tinta! ¡A ver si la encuentras!",
-      "firma": "1dd28cccc0"
+      "texto": "¡Je, je, je! ¡Con mi tinta atraparé a Perla! ¡No podrás protegerla!",
+      "firma": "960f743694"
     },
     "dist_risa_c1": {
       "texto": "¡Ja, ja! ¡Más tinta para todos!",
@@ -1213,8 +1213,8 @@
       "firma": "11530c36fe"
     },
     "dist_burla_c1": {
-      "texto": "¿Buscas a Perla? ¡Qué lástima!",
-      "firma": "cbdaae393c"
+      "texto": "¿Proteger a Perla? ¡Mi tinta llega a todas partes!",
+      "firma": "48494be5e7"
     },
     "dist_burla_c2": {
       "texto": "¡Encontré un tesoro en el barco y no te lo doy!",
@@ -1271,168 +1271,168 @@
   },
   "dinos": {
     "1": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino... Búscalo: es el triceratops naranja con manchas amarillas.",
-      "firma": "23b388486a"
+      "texto": "¡Hola! Soy Tito. Dino está débil porque el Pterodáctilo Ladrón se robó las hojas doradas. ¡Toca solo las hojas doradas para dárselas!",
+      "firma": "60bdb45a29"
     },
     "2": {
-      "texto": "¡Los triceratops bebés cruzan el río! Atrapa solo a Dino.",
-      "firma": "0a85d9295c"
+      "texto": "¡Caen hojas sobre el río! Mueve a Dino para que atrape con la boca solo las hojas doradas.",
+      "firma": "adacbb262d"
     },
     "3": {
-      "texto": "¡Dino corre cerca del volcán! Corre y alcánzalo solo a él.",
-      "firma": "3b5d24d954"
+      "texto": "¡El ladrón huye por el volcán soltando hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas.",
+      "firma": "f8e6d8bb6b"
     },
     "4": {
-      "texto": "En la cueva hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!",
-      "firma": "d83b590350"
+      "texto": "En la cueva hay hojas escondidas por todas partes... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!",
+      "firma": "1cc82a8769"
     },
     "5": {
-      "texto": "¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.",
-      "firma": "6face38f20"
+      "texto": "¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.",
+      "firma": "fd88e527f2"
     },
     "end": {
-      "texto": "¡Atrapamos al Pterodáctilo Ladrón y Dino volvió con su familia! Todo el valle está feliz gracias a ti.",
-      "firma": "e35e32ec6b"
+      "texto": "¡Atrapamos al Pterodáctilo Ladrón! Dino comió todas sus hojas doradas y ya está fuerte otra vez. ¡Todo el valle está feliz gracias a ti!",
+      "firma": "79e2bf75dc"
     },
     "unlock": {
-      "texto": "¡Llegaste a Dinosaurios! ¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¿Me ayudas?",
-      "firma": "70c14bafd9"
+      "texto": "¡Llegaste a Dinosaurios! ¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¿Me ayudas?",
+      "firma": "b40f4c0850"
     },
     "classic": {
-      "texto": "Dino es el triceratops naranja con manchas amarillas. ¡Toca solo cuando lo veas a él!",
-      "firma": "1e94a3f35a"
+      "texto": "Las hojas doradas brillan con destellos. ¡Toca solo cuando veas una hoja dorada, para dársela a Dino!",
+      "firma": "8cbbd9c703"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Dino es el triceratops naranja con manchas amarillas. ¡Toca solo cuando lo veas a él!",
-      "firma": "d15b10628b"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. Las hojas doradas brillan con destellos. ¡Toca solo cuando veas una hoja dorada, para dársela a Dino!",
+      "firma": "9e61f71b3a"
     },
     "catch": {
-      "texto": "¡Los triceratops bebés ruedan por la colina! Atrapa solo a Dino.",
-      "firma": "63b9bf4aba"
+      "texto": "¡El viento hace caer hojas de los árboles! Mueve a Dino para que atrape con la boca solo las hojas doradas.",
+      "firma": "42311e8ff7"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Los triceratops bebés ruedan por la colina! Atrapa solo a Dino.",
-      "firma": "c054059b0e"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El viento hace caer hojas de los árboles! Mueve a Dino para que atrape con la boca solo las hojas doradas.",
+      "firma": "6480bb7080"
     },
     "race": {
-      "texto": "¡Dino corre entre los helechos! Corre y alcánzalo solo a él.",
-      "firma": "9ab5860da0"
+      "texto": "¡El Pterodáctilo Ladrón huye y deja caer hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas para que no se las lleve.",
+      "firma": "548592e275"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Dino corre entre los helechos! Corre y alcánzalo solo a él.",
-      "firma": "09ad2bd170"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón huye y deja caer hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas para que no se las lleve.",
+      "firma": "dbf6a3ab70"
     },
     "find": {
-      "texto": "Aquí hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!",
-      "firma": "c84130a99d"
+      "texto": "El ladrón escondió las hojas entre los helechos... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!",
+      "firma": "9754d03176"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Aquí hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!",
-      "firma": "87d61d5420"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. El ladrón escondió las hojas entre los helechos... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!",
+      "firma": "a3e58d9078"
     },
     "memory": {
-      "texto": "¡Dino deja huellas de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "15b8c774c0"
+      "texto": "¡El viento lleva la hoja dorada de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "58523b6c4e"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Dino deja huellas de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "a5235ee50d"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El viento lleva la hoja dorada de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "7a8fdabc90"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todos los triceratops... ¡menos a Dino!",
-      "firma": "66c0a65bac"
+      "texto": "¡Al revés! Los dinosaurios del valle tienen hambre: dales todas las hojas... ¡menos las doradas, que son para Dino!",
+      "firma": "1d84e96e9e"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Al revés! Toca a todos los triceratops... ¡menos a Dino!",
-      "firma": "c314a37e02"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡Al revés! Los dinosaurios del valle tienen hambre: dales todas las hojas... ¡menos las doradas, que son para Dino!",
+      "firma": "157d0d02fe"
     },
     "ax": {
-      "texto": "Dino siempre llega después del triceratops azul. ¡Toca a Dino solo si justo antes salió el triceratops azul!",
-      "firma": "956cf4ee8a"
+      "texto": "Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!",
+      "firma": "90f0cd6011"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Dino siempre llega después del triceratops azul. ¡Toca a Dino solo si justo antes salió el triceratops azul!",
-      "firma": "2d97452bf4"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!",
+      "firma": "2c619fbd2e"
     },
     "boss": {
-      "texto": "¡El Pterodáctilo Ladrón tiene a Dino en su nido! Primero rescata a Dino y después atrapa al ladrón entre los dinosaurios.",
-      "firma": "6face38f20"
+      "texto": "¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.",
+      "firma": "fd88e527f2"
     },
     "cast_classic": {
-      "texto": "¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.",
-      "firma": "5a93da5501"
+      "texto": "¡El Pterodáctilo Ladrón se mezcla con los dinosaurios para robar más hojas! Toca solo cuando aparezca él.",
+      "firma": "577f41f3f3"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.",
-      "firma": "3a559e2f56"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón se mezcla con los dinosaurios para robar más hojas! Toca solo cuando aparezca él.",
+      "firma": "966931b89e"
     },
     "cast_catch": {
       "texto": "¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "76b33a5c42"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "32c2780adb"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "c03df1b745"
     },
     "cast_race": {
-      "texto": "¡El Pterodáctilo Ladrón corre entre los dinosaurios! Alcánzalo solo a él.",
-      "firma": "2a6c766f34"
+      "texto": "¡El Pterodáctilo Ladrón corre con la bolsa de hojas! Alcánzalo solo a él.",
+      "firma": "f0d69c8d15"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón corre entre los dinosaurios! Alcánzalo solo a él.",
-      "firma": "d6761254c7"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón corre con la bolsa de hojas! Alcánzalo solo a él.",
+      "firma": "fa59d7a613"
     },
     "cast_find": {
-      "texto": "Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "e85d51d9a4"
+      "texto": "El Pterodáctilo Ladrón se esconde entre los dinosaurios con su bolsa de hojas... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "56e4a77db5"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "1bb20773ce"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. El Pterodáctilo Ladrón se esconde entre los dinosaurios con su bolsa de hojas... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "da9b5f4204"
     },
     "cast_memory": {
-      "texto": "¡El Pterodáctilo Ladrón salta de roca en roca! Mira bien por dónde pasó y repite su camino.",
-      "firma": "2e6ecf7fa9"
+      "texto": "¡El Pterodáctilo Ladrón salta de roca en roca escondiendo hojas! Mira bien por dónde pasó y repite su camino.",
+      "firma": "a41ceb7009"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón salta de roca en roca! Mira bien por dónde pasó y repite su camino.",
-      "firma": "bd9aa69293"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón salta de roca en roca escondiendo hojas! Mira bien por dónde pasó y repite su camino.",
+      "firma": "b9c73e8a19"
     },
     "cast_notx": {
-      "texto": "¡Al revés! Toca a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!",
-      "firma": "20a401b561"
+      "texto": "¡Al revés! Saluda a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!",
+      "firma": "134b5c5d06"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Al revés! Toca a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!",
-      "firma": "1b0cc56acc"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡Al revés! Saluda a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!",
+      "firma": "f98f1b38d8"
     },
     "cast_ax_friend1": {
       "texto": "El Pterodáctilo Ladrón solo aparece justo después de Cuello Largo: esa es la pista. ¡Tócalo solo si justo antes salió Cuello Largo!",
       "firma": "30a6af97e7"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. El Pterodáctilo Ladrón solo aparece justo después de Cuello Largo: esa es la pista. ¡Tócalo solo si justo antes salió Cuello Largo!",
-      "firma": "743b44c865"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. El Pterodáctilo Ladrón solo aparece justo después de Cuello Largo: esa es la pista. ¡Tócalo solo si justo antes salió Cuello Largo!",
+      "firma": "0bd3cf97a5"
     },
     "cast_ax_friend2": {
       "texto": "El Pterodáctilo Ladrón solo aparece justo después de Pinchos: esa es la pista. ¡Tócalo solo si justo antes salió Pinchos!",
       "firma": "a2850a9e6a"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. El Pterodáctilo Ladrón solo aparece justo después de Pinchos: esa es la pista. ¡Tócalo solo si justo antes salió Pinchos!",
-      "firma": "435635de64"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. El Pterodáctilo Ladrón solo aparece justo después de Pinchos: esa es la pista. ¡Tócalo solo si justo antes salió Pinchos!",
+      "firma": "bbb8671605"
     },
     "cast_ax_friend3": {
       "texto": "El Pterodáctilo Ladrón solo aparece justo después de Plumi: esa es la pista. ¡Tócalo solo si justo antes salió Plumi!",
       "firma": "aa0f601adf"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. El Pterodáctilo Ladrón solo aparece justo después de Plumi: esa es la pista. ¡Tócalo solo si justo antes salió Plumi!",
-      "firma": "430b46c9ec"
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. El Pterodáctilo Ladrón solo aparece justo después de Plumi: esa es la pista. ¡Tócalo solo si justo antes salió Plumi!",
+      "firma": "3170ceb707"
     },
     "comp_1": {
-      "texto": "¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos a Dino juntos!",
-      "firma": "299f144438"
+      "texto": "¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos las hojas doradas para Dino!",
+      "firma": "4abaf58975"
     },
     "comp_2": {
       "texto": "¡Hola! Soy Pinchos. Tengo picos en la espalda, pero soy muy amigable. ¡Mira con atención!",
@@ -1443,12 +1443,12 @@
       "firma": "370d3eea6e"
     },
     "comp_4": {
-      "texto": "¡Ja, ja, ja! ¡Dino ya está en mi bolsa! ¡A ver si lo encuentras, explorador!",
-      "firma": "f94ff58ba5"
+      "texto": "¡Ja, ja, ja! ¡Todas las hojas doradas están en mi bolsa! ¡Dino se quedará sin comer!",
+      "firma": "8a545564f0"
     },
     "dist_risa_c1": {
-      "texto": "¡Ja, ja, ja! ¡Dino ya es mío!",
-      "firma": "a43e9220a6"
+      "texto": "¡Ja, ja, ja! ¡Las hojas doradas son mías!",
+      "firma": "2c4c4a1b2a"
     },
     "dist_risa_c2": {
       "texto": "¡Je, je! ¡Vuelo sobre el río y tú no!",
@@ -1487,8 +1487,8 @@
       "firma": "ba0ab096c3"
     },
     "dist_amenaza_c1": {
-      "texto": "¡Me llevaré a todos los bebés!",
-      "firma": "02fb6e037d"
+      "texto": "¡Me llevaré todas las hojas!",
+      "firma": "179202f27c"
     },
     "dist_amenaza_c2": {
       "texto": "¡Haré que el río se desborde!",
@@ -1525,168 +1525,168 @@
   },
   "robots": {
     "1": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch escondió a Botón... Búscalo: es el robotito azul con la cara sonriente en su pantalla.",
-      "firma": "8bca6c2a01"
+      "texto": "¡Hola! Soy Chip. Glitch le robó la energía a Botón, mi robotito azul. ¡Tócalo solo a él para recargarlo!",
+      "firma": "41601e47f5"
     },
     "2": {
-      "texto": "¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.",
-      "firma": "1a4a8d6c83"
+      "texto": "¡Los robotitos caen en la fábrica de engranajes! Mueve la estación de carga y recibe solo a Botón.",
+      "firma": "176f5ed80d"
     },
     "3": {
-      "texto": "¡Botón rueda por las calles de la ciudad digital! Corre y alcánzalo solo a él.",
-      "firma": "6400158ba2"
+      "texto": "¡Glitch huye por la ciudad digital con la energía de Botón! Zumbi lo persigue: alcanza solo a Botón.",
+      "firma": "66c00f0876"
     },
     "4": {
-      "texto": "En el laboratorio hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!",
-      "firma": "4d0f0d637b"
+      "texto": "En el laboratorio hay muchos robots... ¡Encuentra a Botón para recargarlo! Y si no está, ¡no toques nada!",
+      "firma": "66f745d15e"
     },
     "5": {
-      "texto": "¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.",
-      "firma": "43eaa71899"
+      "texto": "¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.",
+      "firma": "3f89363e13"
     },
     "end": {
-      "texto": "¡Atrapamos a Glitch y Botón volvió a sonreír! Todos los robots funcionan gracias a ti.",
-      "firma": "2540b83507"
+      "texto": "¡Atrapamos a Glitch y Botón está recargado y brillando! Todos los robots funcionan gracias a ti.",
+      "firma": "2229a358c6"
     },
     "unlock": {
-      "texto": "¡Llegaste a Robots! ¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¿Me ayudas?",
-      "firma": "be591ec1a0"
+      "texto": "¡Llegaste a Robots! ¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¿Me ayudas?",
+      "firma": "35178f0b1b"
     },
     "classic": {
-      "texto": "Botón es el robotito azul con la cara sonriente en su pantalla. ¡Toca solo cuando lo veas a él!",
-      "firma": "cd610187ee"
+      "texto": "Botón aparece entre otros robotitos. ¡Tócalo solo a él para darle un rayo de energía!",
+      "firma": "0477a8be63"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Botón es el robotito azul con la cara sonriente en su pantalla. ¡Toca solo cuando lo veas a él!",
-      "firma": "172dcddd82"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Botón aparece entre otros robotitos. ¡Tócalo solo a él para darle un rayo de energía!",
+      "firma": "6e68511032"
     },
     "catch": {
-      "texto": "¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.",
-      "firma": "1a4a8d6c83"
+      "texto": "¡Los robotitos caen de la banda de la fábrica! Mueve la estación de carga y recibe solo a Botón.",
+      "firma": "055196556d"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.",
-      "firma": "55a7cff619"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Los robotitos caen de la banda de la fábrica! Mueve la estación de carga y recibe solo a Botón.",
+      "firma": "8a5787d12c"
     },
     "race": {
-      "texto": "¡Botón rueda por la ciudad! Corre y alcánzalo solo a él.",
-      "firma": "ea74cdb006"
+      "texto": "¡Glitch huye con la energía de Botón! Zumbi lo persigue: alcanza solo a Botón para recargarlo.",
+      "firma": "2a56600883"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Botón rueda por la ciudad! Corre y alcánzalo solo a él.",
-      "firma": "43c5b9401d"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch huye con la energía de Botón! Zumbi lo persigue: alcanza solo a Botón para recargarlo.",
+      "firma": "bc621bf2b0"
     },
     "find": {
-      "texto": "Aquí hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!",
-      "firma": "b3ddefba89"
+      "texto": "Glitch escondió a Botón entre muchos robots... ¡Encuéntralo para recargarlo! Y si no está, ¡no toques nada!",
+      "firma": "86f603629e"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Aquí hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!",
-      "firma": "9e3837a582"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Glitch escondió a Botón entre muchos robots... ¡Encuéntralo para recargarlo! Y si no está, ¡no toques nada!",
+      "firma": "e6183b1fa2"
     },
     "memory": {
-      "texto": "¡Botón salta de máquina en máquina! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "fcc1934495"
+      "texto": "¡Botón salta de enchufe en enchufe buscando energía! Mira bien su camino y repítelo.",
+      "firma": "f446203689"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Botón salta de máquina en máquina! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "d8efeefcb5"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Botón salta de enchufe en enchufe buscando energía! Mira bien su camino y repítelo.",
+      "firma": "aebe321804"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todos los robotitos... ¡menos a Botón!",
-      "firma": "50e128e1d8"
+      "texto": "¡Al revés! Saluda a todos los robots... ¡pero no a Botón, que se está cargando!",
+      "firma": "f30bcae423"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Al revés! Toca a todos los robotitos... ¡menos a Botón!",
-      "firma": "0912f5775b"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Al revés! Saluda a todos los robots... ¡pero no a Botón, que se está cargando!",
+      "firma": "a0d49a3adf"
     },
     "ax": {
       "texto": "Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!",
       "firma": "c13191d512"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!",
-      "firma": "3c32a2aee2"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!",
+      "firma": "3cbcdd0dc5"
     },
     "boss": {
-      "texto": "¡Glitch tiene a Botón en el centro de control! Primero rescátalo y después atrapa a Glitch entre mis amigos robots.",
-      "firma": "43eaa71899"
+      "texto": "¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.",
+      "firma": "3f89363e13"
     },
     "cast_classic": {
       "texto": "¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.",
       "firma": "713a3798c6"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.",
-      "firma": "ce1f54e1dc"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.",
+      "firma": "7f8ec436fb"
     },
     "cast_catch": {
       "texto": "¡Glitch cae entre mis amigos robots! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "669536f326"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch cae entre mis amigos robots! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "ecb2ebe70d"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch cae entre mis amigos robots! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "d1b8249b71"
     },
     "cast_race": {
       "texto": "¡Glitch corre entre mis amigos robots! Alcánzalo solo a él.",
       "firma": "269a705102"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch corre entre mis amigos robots! Alcánzalo solo a él.",
-      "firma": "139492ff60"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch corre entre mis amigos robots! Alcánzalo solo a él.",
+      "firma": "c059a980d3"
     },
     "cast_find": {
       "texto": "Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
       "firma": "21f637c6a4"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "fdc877d49c"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "9fe9ceeaba"
     },
     "cast_memory": {
       "texto": "¡Glitch salta de pantalla en pantalla! Mira bien por dónde pasó y repite su camino.",
       "firma": "a129bef4f1"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch salta de pantalla en pantalla! Mira bien por dónde pasó y repite su camino.",
-      "firma": "f7ebbb44bb"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch salta de pantalla en pantalla! Mira bien por dónde pasó y repite su camino.",
+      "firma": "763064a959"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!",
       "firma": "8e230c11e1"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!",
-      "firma": "916be780fe"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!",
+      "firma": "2ef5fee1db"
     },
     "cast_ax_friend1": {
       "texto": "Glitch solo aparece justo después de Cable: esa es la pista. ¡Tócalo solo si justo antes salió Cable!",
       "firma": "961be7382b"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Glitch solo aparece justo después de Cable: esa es la pista. ¡Tócalo solo si justo antes salió Cable!",
-      "firma": "a3ddb5e2c2"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Glitch solo aparece justo después de Cable: esa es la pista. ¡Tócalo solo si justo antes salió Cable!",
+      "firma": "dcad443576"
     },
     "cast_ax_friend2": {
       "texto": "Glitch solo aparece justo después de Zumbi: esa es la pista. ¡Tócalo solo si justo antes salió Zumbi!",
       "firma": "ad2e47accf"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Glitch solo aparece justo después de Zumbi: esa es la pista. ¡Tócalo solo si justo antes salió Zumbi!",
-      "firma": "544fccd736"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Glitch solo aparece justo después de Zumbi: esa es la pista. ¡Tócalo solo si justo antes salió Zumbi!",
+      "firma": "6de3773bb4"
     },
     "cast_ax_friend3": {
       "texto": "Glitch solo aparece justo después de Antivirus: esa es la pista. ¡Tócalo solo si justo antes salió Antivirus!",
       "firma": "c3b27e7f9b"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Glitch solo aparece justo después de Antivirus: esa es la pista. ¡Tócalo solo si justo antes salió Antivirus!",
-      "firma": "8c71366272"
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Glitch solo aparece justo después de Antivirus: esa es la pista. ¡Tócalo solo si justo antes salió Antivirus!",
+      "firma": "a8e905d628"
     },
     "comp_1": {
-      "texto": "¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica nos ayudará a encontrar a Botón!",
-      "firma": "24d3e8bef4"
+      "texto": "¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica encontrará a Botón para recargarlo!",
+      "firma": "b4f298aad4"
     },
     "comp_2": {
       "texto": "¡Bzzz! Soy Zumbi, el dron. Vuelo rápido y miro desde arriba... ¡tú mira con mucha atención!",
@@ -1697,12 +1697,12 @@
       "firma": "d1171bf83a"
     },
     "comp_4": {
-      "texto": "¡Ji, ji, ji! ¡Desordené todos los robots! ¡A ver si encuentras a Botón, inventor!",
-      "firma": "fe34fc27f4"
+      "texto": "¡Ji, ji, ji! ¡Me comí la energía de Botón! ¡Nunca lo recargarás, inventor!",
+      "firma": "10950a8e8d"
     },
     "dist_risa_c1": {
-      "texto": "¡Ji, ji, ji! ¡Botón es mío!",
-      "firma": "fa1a9a8aa4"
+      "texto": "¡Ji, ji, ji! ¡La energía de Botón es mía!",
+      "firma": "371f7bfeef"
     },
     "dist_risa_c2": {
       "texto": "¡Je, je! ¡Desordené todos los engranajes!",
@@ -1779,168 +1779,168 @@
   },
   "jungle": {
     "1": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris... Búscalo: es el tucán con el pico de todos los colores.",
-      "firma": "b1d76f22c4"
+      "texto": "¡Hola! Soy Kiara. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Tócalo solo a él para devolverle un color!",
+      "firma": "0fd413624c"
     },
     "2": {
-      "texto": "¡Los pajaritos caen de los árboles gigantes! Atrapa solo a Arcoíris.",
-      "firma": "80d458664c"
+      "texto": "¡Arcoíris baja de los árboles gigantes! Mueve el nido y recíbelo solo a él.",
+      "firma": "a94b70a6ac"
     },
     "3": {
-      "texto": "¡Arcoíris vuela junto a la cascada! Corre y alcánzalo solo a él.",
-      "firma": "60f07721da"
+      "texto": "¡La serpiente huye por la cascada con los colores! Lento la persigue: alcanza solo a Arcoíris.",
+      "firma": "657f8a651d"
     },
     "4": {
-      "texto": "En el templo hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!",
-      "firma": "87786c3bcb"
+      "texto": "En el templo hay muchos pájaros... ¡Encuentra a Arcoíris para darle sus colores! Y si no está, ¡no toques nada!",
+      "firma": "7ac111c634"
     },
     "5": {
-      "texto": "¡La Serpiente Silbona tiene a Arcoíris en su cueva! Primero rescátalo y después atrapa a la serpiente entre los animales de la selva.",
-      "firma": "caa964bf4c"
+      "texto": "¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.",
+      "firma": "16d4433dc9"
     },
     "end": {
-      "texto": "¡Atrapamos a la Serpiente Silbona y Arcoíris volvió a su nido! Toda la selva está feliz gracias a ti.",
-      "firma": "c1b339deb5"
+      "texto": "¡Atrapamos a la Serpiente Silbona y Arcoíris recuperó todos sus colores! La selva brilla gracias a ti.",
+      "firma": "f3e5bc5d41"
     },
     "unlock": {
-      "texto": "¡Llegaste a Selva! ¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¿Me ayudas?",
-      "firma": "5ba59a1c2b"
+      "texto": "¡Llegaste a Selva! ¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¿Me ayudas?",
+      "firma": "1f3c28716d"
     },
     "classic": {
-      "texto": "Arcoíris es el tucán con el pico de todos los colores. ¡Toca solo cuando lo veas a él!",
-      "firma": "85bcbc8ae6"
+      "texto": "Arcoíris vuela entre otros pájaros. ¡Tócalo solo a él para devolverle un color!",
+      "firma": "a409d7f63a"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Arcoíris es el tucán con el pico de todos los colores. ¡Toca solo cuando lo veas a él!",
-      "firma": "add6245516"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Arcoíris vuela entre otros pájaros. ¡Tócalo solo a él para devolverle un color!",
+      "firma": "7ce6e74033"
     },
     "catch": {
-      "texto": "¡Los pajaritos caen de las ramas! Atrapa solo a Arcoíris.",
-      "firma": "7b5d38d753"
+      "texto": "¡Arcoíris baja de rama en rama! Mueve el nido y recíbelo solo a él.",
+      "firma": "158daeb9ed"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Los pajaritos caen de las ramas! Atrapa solo a Arcoíris.",
-      "firma": "7870eb37b0"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡Arcoíris baja de rama en rama! Mueve el nido y recíbelo solo a él.",
+      "firma": "b59c7b68ee"
     },
     "race": {
-      "texto": "¡Arcoíris vuela entre los árboles! Corre y alcánzalo solo a él.",
-      "firma": "2c1e065f3a"
+      "texto": "¡La Serpiente Silbona huye con los colores de Arcoíris! Lento la persigue: alcanza solo a Arcoíris.",
+      "firma": "aaf4d1eed6"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Arcoíris vuela entre los árboles! Corre y alcánzalo solo a él.",
-      "firma": "7f4d56e71a"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona huye con los colores de Arcoíris! Lento la persigue: alcanza solo a Arcoíris.",
+      "firma": "d9eead9c19"
     },
     "find": {
-      "texto": "Aquí hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!",
-      "firma": "09380eaa4f"
+      "texto": "Arcoíris se esconde entre muchos pájaros... ¡Encuéntralo para darle sus colores! Y si no está, ¡no toques nada!",
+      "firma": "fba055647d"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Aquí hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!",
-      "firma": "44b9c94f1b"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Arcoíris se esconde entre muchos pájaros... ¡Encuéntralo para darle sus colores! Y si no está, ¡no toques nada!",
+      "firma": "495b411cd1"
     },
     "memory": {
-      "texto": "¡Arcoíris salta de rama en rama! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "c9efd76cfe"
+      "texto": "¡Arcoíris vuela de árbol en árbol buscando sus colores! Mira bien su camino y repítelo.",
+      "firma": "72b3c8984f"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Arcoíris salta de rama en rama! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "cb757838ec"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡Arcoíris vuela de árbol en árbol buscando sus colores! Mira bien su camino y repítelo.",
+      "firma": "12bd26d6e7"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todos los pajaritos... ¡menos a Arcoíris!",
-      "firma": "d2543006c2"
+      "texto": "¡Al revés! Saluda a todos los pájaros de la selva... ¡pero no a Arcoíris, que descansa en su nido!",
+      "firma": "68d0b2c2a0"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Al revés! Toca a todos los pajaritos... ¡menos a Arcoíris!",
-      "firma": "49dc609012"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡Al revés! Saluda a todos los pájaros de la selva... ¡pero no a Arcoíris, que descansa en su nido!",
+      "firma": "777b1d9ca8"
     },
     "ax": {
       "texto": "Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!",
       "firma": "012ed22918"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!",
-      "firma": "93fa7d59f1"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!",
+      "firma": "263884b441"
     },
     "boss": {
-      "texto": "¡La Serpiente Silbona tiene a Arcoíris en su cueva! Primero rescátalo y después atrapa a la serpiente entre los animales de la selva.",
-      "firma": "caa964bf4c"
+      "texto": "¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.",
+      "firma": "16d4433dc9"
     },
     "cast_classic": {
       "texto": "¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.",
       "firma": "43c0832840"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.",
-      "firma": "629f2c5a2d"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.",
+      "firma": "c470b481f4"
     },
     "cast_catch": {
       "texto": "¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!",
       "firma": "7fb4856d73"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!",
-      "firma": "77a46c6fd6"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!",
+      "firma": "0fdc1cc1f1"
     },
     "cast_race": {
       "texto": "¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.",
       "firma": "51a6358b38"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.",
-      "firma": "b3367a46c4"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.",
+      "firma": "b3ead32228"
     },
     "cast_find": {
       "texto": "Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
       "firma": "36d48855e9"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
-      "firma": "b9f71afe89"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
+      "firma": "1aebba0940"
     },
     "cast_memory": {
       "texto": "¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.",
       "firma": "39d365c61e"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.",
-      "firma": "730897f72b"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.",
+      "firma": "20be5992fa"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!",
       "firma": "f9ff7472ad"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!",
-      "firma": "23e9c592e1"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!",
+      "firma": "e406dc63a8"
     },
     "cast_ax_friend1": {
       "texto": "La Serpiente Silbona solo aparece justo después de Jaguarcito: esa es la pista. ¡Tócala solo si justo antes salió Jaguarcito!",
       "firma": "69b2468891"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. La Serpiente Silbona solo aparece justo después de Jaguarcito: esa es la pista. ¡Tócala solo si justo antes salió Jaguarcito!",
-      "firma": "9b48315467"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! La Serpiente Silbona solo aparece justo después de Jaguarcito: esa es la pista. ¡Tócala solo si justo antes salió Jaguarcito!",
+      "firma": "50eb5e05d7"
     },
     "cast_ax_friend2": {
       "texto": "La Serpiente Silbona solo aparece justo después de Lento: esa es la pista. ¡Tócala solo si justo antes salió Lento!",
       "firma": "6903ee171c"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. La Serpiente Silbona solo aparece justo después de Lento: esa es la pista. ¡Tócala solo si justo antes salió Lento!",
-      "firma": "6db4dbaf85"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! La Serpiente Silbona solo aparece justo después de Lento: esa es la pista. ¡Tócala solo si justo antes salió Lento!",
+      "firma": "fd8c4bdf59"
     },
     "cast_ax_friend3": {
       "texto": "La Serpiente Silbona solo aparece justo después de Silvia: esa es la pista. ¡Tócala solo si justo antes salió Silvia!",
       "firma": "dfa84cac9a"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. La Serpiente Silbona solo aparece justo después de Silvia: esa es la pista. ¡Tócala solo si justo antes salió Silvia!",
-      "firma": "e6d11d388b"
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! La Serpiente Silbona solo aparece justo después de Silvia: esa es la pista. ¡Tócala solo si justo antes salió Silvia!",
+      "firma": "cb96a11b5f"
     },
     "comp_1": {
-      "texto": "¡Grrr... hola! Soy Jaguarcito. Tengo ojos de cazador. ¡Vamos a buscar a Arcoíris!",
-      "firma": "78e0314ae2"
+      "texto": "¡Grrr... hola! Soy Jaguarcito. Tengo ojos de cazador. ¡Vamos a devolverle los colores a Arcoíris!",
+      "firma": "5ab595ade8"
     },
     "comp_2": {
       "texto": "Hooola... soy Lento, el perezoso. Yo voy despacio... pero tú mira con mucha atención.",
@@ -1951,12 +1951,12 @@
       "firma": "db852dfb92"
     },
     "comp_4": {
-      "texto": "¡Sssí, sssí! ¡Essscondí a Arcoíris! ¡A ver si lo encuentrasss, exploradora!",
-      "firma": "42c6da04ea"
+      "texto": "¡Sssí, sssí! ¡Me quedé con los colores de Arcoíris! ¡Nunca se los devolverásss, exploradora!",
+      "firma": "7f0856344f"
     },
     "dist_risa_c1": {
-      "texto": "¡Jsss, jsss, jsss! ¡Arcoíris es mío!",
-      "firma": "2ca7c0604d"
+      "texto": "¡Jsss, jsss, jsss! ¡Los colores de Arcoíris son míos!",
+      "firma": "ea75c22a0f"
     },
     "dist_risa_c2": {
       "texto": "¡Je, je, je! ¡Me enrosqué en el árbol más alto!",
@@ -1999,8 +1999,8 @@
       "firma": "246036a89f"
     },
     "dist_amenaza_c2": {
-      "texto": "¡Me llevaré a Arcoíris a mi cueva!",
-      "firma": "7529130e2c"
+      "texto": "¡Me llevaré sus colores a mi cueva!",
+      "firma": "87ca795c0d"
     },
     "dist_amenaza_c3": {
       "texto": "¡Taparé la cascada con lianas!",
@@ -2033,168 +2033,168 @@
   },
   "candy": {
     "1": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido escondió a Chispita... Búscala: es la gomita estrella dorada.",
-      "firma": "d3df0e5108"
+      "texto": "¡Hola! Soy Gomi. Ácido le apagó el brillo a Chispita, mi amiga estrella. ¡Tócala solo a ella para encenderla!",
+      "firma": "b61de54ae6"
     },
     "2": {
-      "texto": "¡Las gomitas caen al río de chocolate! Atrapa solo a Chispita.",
-      "firma": "12b1e46900"
+      "texto": "¡Llueven dulces sobre el río de chocolate! Mueve el frasco de brillo y guarda solo a Chispita.",
+      "firma": "34ee7cfaac"
     },
     "3": {
-      "texto": "¡Chispita se desliza por la montaña de helado! Corre y alcánzala solo a ella.",
-      "firma": "4d8cb734f8"
+      "texto": "¡Ácido huye por la montaña de helado con el brillo de Chispita! Nube lo persigue: alcanza solo a Chispita.",
+      "firma": "4c8ec75df7"
     },
     "4": {
-      "texto": "En el castillo hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!",
-      "firma": "4bf75a120c"
+      "texto": "En el castillo de galleta hay muchos dulces... ¡Encuentra a Chispita para encenderla! Y si no está, ¡no toques nada!",
+      "firma": "0d1a8aece2"
     },
     "5": {
-      "texto": "¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.",
-      "firma": "33b30b4553"
+      "texto": "¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.",
+      "firma": "2d4ec63efe"
     },
     "end": {
-      "texto": "¡Atrapamos a Ácido y Chispita volvió a brillar! Todo el reino de los dulces está feliz gracias a ti.",
-      "firma": "7c66c3b727"
+      "texto": "¡Atrapamos a Ácido y Chispita brilla más que nunca! Todo el mundo de dulces es feliz gracias a ti.",
+      "firma": "58ae5b9a27"
     },
     "unlock": {
-      "texto": "¡Llegaste a Dulces! ¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¿Me ayudas?",
-      "firma": "e9264be7ff"
+      "texto": "¡Llegaste a Dulces! ¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¿Me ayudas?",
+      "firma": "0c2617279f"
     },
     "classic": {
-      "texto": "Chispita es la gomita estrella dorada. ¡Toca solo cuando la veas a ella!",
-      "firma": "c3dabf2b32"
+      "texto": "Chispita aparece entre otros dulces. ¡Tócala solo a ella para darle una chispa de brillo!",
+      "firma": "5137c38894"
     },
     "intro_classic": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Chispita es la gomita estrella dorada. ¡Toca solo cuando la veas a ella!",
-      "firma": "ffb2d253d4"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Chispita aparece entre otros dulces. ¡Tócala solo a ella para darle una chispa de brillo!",
+      "firma": "d511f3ae48"
     },
     "catch": {
-      "texto": "¡Llueven gomitas del cielo! Atrapa solo a Chispita.",
-      "firma": "3c6783e840"
+      "texto": "¡Llueven dulces del cielo! Mueve el frasco de brillo y guarda solo a Chispita.",
+      "firma": "5e66c1c69c"
     },
     "intro_catch": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Llueven gomitas del cielo! Atrapa solo a Chispita.",
-      "firma": "7a66acd08c"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Llueven dulces del cielo! Mueve el frasco de brillo y guarda solo a Chispita.",
+      "firma": "776e12dec4"
     },
     "race": {
-      "texto": "¡Chispita rueda por el camino de azúcar! Corre y alcánzala solo a ella.",
-      "firma": "b9af738cbd"
+      "texto": "¡Ácido huye con el brillo de Chispita! Nube lo persigue: alcanza solo a Chispita.",
+      "firma": "06ad8ef9e9"
     },
     "intro_race": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Chispita rueda por el camino de azúcar! Corre y alcánzala solo a ella.",
-      "firma": "cd8f3f07cf"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido huye con el brillo de Chispita! Nube lo persigue: alcanza solo a Chispita.",
+      "firma": "9cc757bda8"
     },
     "find": {
-      "texto": "Aquí hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!",
-      "firma": "6cba5d2b3d"
+      "texto": "Ácido escondió a Chispita entre muchos dulces... ¡Encuéntrala para encenderla! Y si no está, ¡no toques nada!",
+      "firma": "aaf2ac3482"
     },
     "intro_find": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Aquí hay muchas gomitas juntas... ¡Encuentra a Chispita! Y si no está, ¡no toques nada!",
-      "firma": "9b7e52bf2e"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Ácido escondió a Chispita entre muchos dulces... ¡Encuéntrala para encenderla! Y si no está, ¡no toques nada!",
+      "firma": "5b9997461f"
     },
     "memory": {
-      "texto": "¡Chispita salta de dulce en dulce! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "3e5ce4d46b"
+      "texto": "¡Chispita salta de dulce en dulce dejando chispitas! Mira bien su camino y repítelo.",
+      "firma": "0eb60e5a11"
     },
     "intro_memory": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Chispita salta de dulce en dulce! Mira bien su camino y repítelo en el mismo orden.",
-      "firma": "c8f468a6c5"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Chispita salta de dulce en dulce dejando chispitas! Mira bien su camino y repítelo.",
+      "firma": "32d13d14fb"
     },
     "notx": {
-      "texto": "¡Al revés! Toca a todas las gomitas... ¡menos a Chispita!",
-      "firma": "ff9ff7566c"
+      "texto": "¡Al revés! Saluda a todos los dulces... ¡pero no a Chispita, que está guardando su brillo!",
+      "firma": "e8d34c4efa"
     },
     "intro_notx": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Al revés! Toca a todas las gomitas... ¡menos a Chispita!",
-      "firma": "ee26ba1abb"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Al revés! Saluda a todos los dulces... ¡pero no a Chispita, que está guardando su brillo!",
+      "firma": "33e0371a97"
     },
     "ax": {
       "texto": "Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!",
       "firma": "026db569d7"
     },
     "intro_ax": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!",
-      "firma": "c0afc3ea6d"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!",
+      "firma": "1727b2b9ef"
     },
     "boss": {
-      "texto": "¡Ácido tiene a Chispita en su fábrica agria! Primero rescátala y después atrapa a Ácido entre mis amigos dulces.",
-      "firma": "33b30b4553"
+      "texto": "¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.",
+      "firma": "2d4ec63efe"
     },
     "cast_classic": {
       "texto": "¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.",
       "firma": "e64c7f9748"
     },
     "intro_cast_classic": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.",
-      "firma": "248e4981d7"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido se mezcla con mis amigos dulces! Toca solo cuando aparezca él.",
+      "firma": "aeac607f76"
     },
     "cast_catch": {
       "texto": "¡Ácido cae entre mis amigos dulces! Atrápalo con la red... ¡y deja pasar a los demás!",
       "firma": "abf3779943"
     },
     "intro_cast_catch": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido cae entre mis amigos dulces! Atrápalo con la red... ¡y deja pasar a los demás!",
-      "firma": "bbe9f4e429"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido cae entre mis amigos dulces! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "b85ff373db"
     },
     "cast_race": {
       "texto": "¡Ácido corre entre mis amigos dulces! Alcánzalo solo a él.",
       "firma": "98a8aac79d"
     },
     "intro_cast_race": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido corre entre mis amigos dulces! Alcánzalo solo a él.",
-      "firma": "b58941ce03"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido corre entre mis amigos dulces! Alcánzalo solo a él.",
+      "firma": "8966698bc4"
     },
     "cast_find": {
       "texto": "Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
       "firma": "9f555cc0db"
     },
     "intro_cast_find": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
-      "firma": "12a9dffe46"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "5521ac2000"
     },
     "cast_memory": {
       "texto": "¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.",
       "firma": "b69e7a0170"
     },
     "intro_cast_memory": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.",
-      "firma": "20055e59a6"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.",
+      "firma": "d72ae06411"
     },
     "cast_notx": {
       "texto": "¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!",
       "firma": "1f25b03f5c"
     },
     "intro_cast_notx": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!",
-      "firma": "c1ff668f3b"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!",
+      "firma": "38b597e0a5"
     },
     "cast_ax_friend1": {
       "texto": "Ácido solo aparece justo después de Jengi: esa es la pista. ¡Tócalo solo si justo antes salió Jengi!",
       "firma": "745826c7a4"
     },
     "intro_cast_ax_friend1": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Ácido solo aparece justo después de Jengi: esa es la pista. ¡Tócalo solo si justo antes salió Jengi!",
-      "firma": "0ce07b1a60"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Ácido solo aparece justo después de Jengi: esa es la pista. ¡Tócalo solo si justo antes salió Jengi!",
+      "firma": "4663018fae"
     },
     "cast_ax_friend2": {
       "texto": "Ácido solo aparece justo después de Nube: esa es la pista. ¡Tócalo solo si justo antes salió Nube!",
       "firma": "afff44b9e8"
     },
     "intro_cast_ax_friend2": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Ácido solo aparece justo después de Nube: esa es la pista. ¡Tócalo solo si justo antes salió Nube!",
-      "firma": "00c9079e66"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Ácido solo aparece justo después de Nube: esa es la pista. ¡Tócalo solo si justo antes salió Nube!",
+      "firma": "5283de7321"
     },
     "cast_ax_friend3": {
       "texto": "Ácido solo aparece justo después de Limonada: esa es la pista. ¡Tócalo solo si justo antes salió Limonada!",
       "firma": "6d082b115a"
     },
     "intro_cast_ax_friend3": {
-      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. Ácido solo aparece justo después de Limonada: esa es la pista. ¡Tócalo solo si justo antes salió Limonada!",
-      "firma": "74231bfc1b"
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Ácido solo aparece justo después de Limonada: esa es la pista. ¡Tócalo solo si justo antes salió Limonada!",
+      "firma": "b7767fd777"
     },
     "comp_1": {
-      "texto": "¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a buscar a Chispita!",
-      "firma": "8bb25204f2"
+      "texto": "¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a encender a Chispita!",
+      "firma": "a3a7565a2e"
     },
     "comp_2": {
       "texto": "Hola, soy Nube, de algodón de azúcar. Aquí todo es dulce y de colores... ¡pero tú no te distraigas!",
@@ -2205,12 +2205,12 @@
       "firma": "e5f99874d7"
     },
     "comp_4": {
-      "texto": "¡Grrr! ¡Los dulces me empalagan! ¡Escondí a Chispita y todo será agrio!",
-      "firma": "b7cae0f506"
+      "texto": "¡Grrr! ¡Los dulces me empalagan! ¡Le apagué el brillo a Chispita y todo será agrio!",
+      "firma": "d0f8efaaf3"
     },
     "dist_risa_c1": {
-      "texto": "¡Ja, ja, ja! ¡Chispita es mía!",
-      "firma": "3b1c269c45"
+      "texto": "¡Ja, ja, ja! ¡El brillo de Chispita es mío!",
+      "firma": "05ae0ce430"
     },
     "dist_risa_c2": {
       "texto": "¡Je, je! ¡Le eché limón al chocolate!",

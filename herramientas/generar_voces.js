@@ -155,9 +155,15 @@ for (const [key, cfg] of Object.entries(VOCES)) {
     const firma = crypto.createHash('md5').update(v.voz + v.tono + v.velocidad + texto).digest('hex').slice(0, 10);
     todos[key][id] = { texto, firma };
     if (!(fs.existsSync(file) && antes[key] && antes[key][id] && antes[key][id].firma === firma)) {
-      const r = spawnSync(cmd[0], cmd.slice(1).concat(['--voice', v.voz, '--pitch=' + v.tono, '--rate=' + v.velocidad,
-        '--text', texto, '--write-media', file]), { encoding: 'utf8' });
-      if (r.status !== 0) { console.error('No se pudo grabar', key, id, r.stderr || r.error); process.exit(1); }
+      // el servicio a veces falla por un momento ("No audio was received"): se reintenta 3 veces antes de rendirse
+      let r;
+      for (let intento = 1; intento <= 3; intento++) {
+        r = spawnSync(cmd[0], cmd.slice(1).concat(['--voice', v.voz, '--pitch=' + v.tono, '--rate=' + v.velocidad,
+          '--text', texto, '--write-media', file]), { encoding: 'utf8' });
+        if (r.status === 0) break;
+        spawnSync(process.execPath, ['-e', 'setTimeout(()=>{},' + 3000 * intento + ')']);   // espera antes de reintentar
+      }
+      if (r.status !== 0) { console.error('No se pudo grabar', key, id, String(r.stderr || r.error).trim().split(String.fromCharCode(10)).pop()); process.exit(1); }
       grabados++;
       console.log('grabado', cfg.carpeta + '/' + id + '.mp3');
     }
