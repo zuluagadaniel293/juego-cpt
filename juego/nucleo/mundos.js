@@ -99,3 +99,8 @@ function startMinigame(scene, data) {
 }
 
 const hexColor = n => '#' + n.toString(16).padStart(6, '0');
+// El amigo que corre en la Carrera de cada mundo: el que tiene pose corriendo (assets/manifest.js: friendN_run o friendN_flee)
+function raceHelper(theme) {
+  const tex = TEX[theme] || {};
+  return ['friend1', 'friend2', 'friend3'].find(f => tex[f + '_run'] || tex[f + '_flee']) || 'friend1';
+}

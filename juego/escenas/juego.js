@@ -38,7 +38,10 @@ class GameScene extends Phaser.Scene {
     const tex = TEX[this.themeKey];
     // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
     this.buddyRole = this.companionRole();
-    const pals = ['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole);
+    // Carrera: corre siempre el mismo amigo de cada mundo (el que tiene pose corriendo) y el protagonista, arriba
+    // a la izquierda, le lanza su poder a lo que agarra. En la Prueba fija corre el protagonista, como siempre.
+    this.runnerRole = this.mg === 'race' && this.powers ? raceHelper(this.themeKey) : null;
+    const pals = ['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole && f !== this.runnerRole);
     this.keys = this.chars
       ? { target: tex.villain, dists: [tex[pals[0]], tex[pals[1]]], similar: tex[pals.includes('friend3') ? 'friend3' : pals[1]] }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3 };
@@ -231,9 +234,6 @@ class GameScene extends Phaser.Scene {
     const W = GAME_W, H = GAME_H;
     this.mgObjects = [];
     this.caster = null;
-    // Carrera: corre el amigo que acompaña el capítulo (si hay) y el protagonista, arriba a la izquierda, le lanza
-    // su poder a lo que agarra. Sin amigo (jefe final, capítulo 4, Prueba fija), corre el protagonista.
-    this.runnerRole = this.mg === 'race' && this.powers ? this.companionRole() : null;
     if (CLASSIC_LIKE.includes(this.mg)) {
       this.stim = this.add.image(W / 2, H / 2, this.keys.target).setVisible(false);
       this.input.keyboard.on('keydown-SPACE', () => this.respond());
@@ -270,7 +270,8 @@ class GameScene extends Phaser.Scene {
         this.mgObjects.push(d);
       }
       const tex = TEX[this.themeKey];
-      const runKey = this.runnerRole ? tex[this.runnerRole + '_flee'] || tex[this.runnerRole] : tex.hero_run;
+      // pose corriendo decidido (friendN_run); si no hay, la de huir; si tampoco, su imagen normal
+      const runKey = this.runnerRole ? tex[this.runnerRole + '_run'] || tex[this.runnerRole + '_flee'] || tex[this.runnerRole] : tex.hero_run;
       this.runner = fit(this.add.image(170, this.lanes[1], runKey), 104).setDepth(4);
       this.mgObjects.push(this.runner);
       this.bob = this.tweens.add({ targets: this.runner, angle: { from: -4, to: 4 }, duration: 160, yoyo: true, repeat: -1 });
@@ -729,8 +730,8 @@ class GameScene extends Phaser.Scene {
     this.buddy = null;
     this.buddyRole = this.companionRole();
     this.buddyJumping = false;
-    if (!this.buddyRole || this.runnerRole) return;   // en Carrera el amigo es el que corre
-    const x = this.caster ? 170 : 66;   // en Clásico y Encuentra, al lado del protagonista
+    if (!this.buddyRole || this.buddyRole === this.runnerRole) return;   // si es el que corre en la Carrera, no está en la esquina
+    const x = this.caster && !this.runnerRole ? 170 : 66;   // en Carrera el protagonista está arriba: el amigo, en la esquina   // en Clásico y Encuentra, al lado del protagonista
     this.buddy = fit(this.add.image(x, GAME_H - 6, TEX[this.themeKey][this.buddyRole]).setOrigin(0.5, 1), 104).setDepth(-1);
     this.buddyY = this.buddy.y;
     this.tweens.add({ targets: this.buddy, angle: { from: -3, to: 3 }, duration: 900, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
