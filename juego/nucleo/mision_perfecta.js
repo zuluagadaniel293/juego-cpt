@@ -8,7 +8,10 @@ const TREASURES = {
   fantasy: { name: 'la Gema de Fuego',    style: 'gem' },
   kingdom: { name: 'el Pastel Real',      style: 'cake' },
   space:   { name: 'la Medalla de la Galaxia', style: 'gem' },
-  ocean:   { name: 'la Brújula del Capitán',   style: 'gem' }
+  ocean:   { name: 'la Brújula del Capitán',   style: 'gem' },
+  dinos:   { name: 'el Fósil Dorado',          style: 'gem' },
+  robots:  { name: 'el Engranaje Dorado',      style: 'gem' },
+  jungle:  { name: 'el Medallón de Jade',      style: 'gem' }
 };
 const PERFECT_LEVELS = 3;
 
@@ -159,6 +162,7 @@ function perfectCelebration(scene, theme) {
 // Pantalla inicial: el tesoro pequeño de cada mundo, centrados
 function drawPerfectMission(scene, x, y) {
   scene.add.text(x, y - 18, 'Misión perfecta: 3 niveles al 100%', { font: 'bold 16px Arial', color: '#e2e8f0' }).setOrigin(0.5);
-  const ts = Object.keys(TREASURES), step = ts.length > 3 ? 52 : 70;
-  ts.forEach((t, i) => drawTreasure(scene, t, x + (i - (ts.length - 1) / 2) * step, y + 18, 19, perfectPieces(t)));
+  // con muchos mundos, más pequeños y juntos para no tapar la barra de la Misión del día
+  const ts = Object.keys(TREASURES), step = ts.length > 5 ? 40 : ts.length > 3 ? 52 : 70, r = ts.length > 5 ? 16 : 19;
+  ts.forEach((t, i) => drawTreasure(scene, t, x + (i - (ts.length - 1) / 2) * step, y + 18, r, perfectPieces(t)));
 }

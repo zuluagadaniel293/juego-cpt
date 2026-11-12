@@ -30,7 +30,10 @@ const REPARTO = {
   fantasy: { carpeta: 'dragones',     villain: 'sarah',   friend1: 'laura',   friend2: 'bill',    friend3: 'matilda' },
   kingdom: { carpeta: 'reino_magico', villain: 'callum',  friend1: 'chris',   friend2: 'eric',    friend3: 'river' },
   space:   { carpeta: 'espacio',      villain: 'charlie', friend1: 'river',   friend2: 'lily',    friend3: 'will' },
-  ocean:   { carpeta: 'oceano',       villain: 'roger',   friend1: 'laura',   friend2: 'eric',    friend3: 'chris' }
+  ocean:   { carpeta: 'oceano',       villain: 'roger',   friend1: 'laura',   friend2: 'eric',    friend3: 'chris' },
+  dinos:   { carpeta: 'dinosaurios',  villain: 'callum',  friend1: 'bill',    friend2: 'will',    friend3: 'lily' },
+  robots:  { carpeta: 'robots',       villain: 'charlie', friend1: 'chris',   friend2: 'jessica', friend3: 'liam' },
+  jungle:  { carpeta: 'selva',        villain: 'sarah',   friend1: 'river',   friend2: 'eric',    friend3: 'laura' }
 };
 // Emoción de cada tipo de frase (etiqueta de Eleven v3 que va antes del texto)
 const EMOCION = { risa: '[evil laugh]', burla: '[mischievously]', amenaza: '[menacing]', ayuda: '[scared]', alto: '[shouting]' };

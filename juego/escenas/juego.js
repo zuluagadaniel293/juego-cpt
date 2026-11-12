@@ -432,12 +432,23 @@ class GameScene extends Phaser.Scene {
       const fl = this.add.rectangle(0, 0, GAME_W, GAME_H, 0xffffff, 0.2).setOrigin(0).setDepth(9);
       this.tweens.add({ targets: fl, alpha: 0, duration: 160, onComplete: () => fl.destroy() });
       this.impact(tx, ty);
+    } else if (p.kind === 'roar') {
+      // rugido (Tito): 3 ondas que viajan hacia el objetivo y crecen
+      for (let i = 0; i < 3; i++) {
+        const ring = this.add.circle(sx, sy, 16, p.color, 0).setStrokeStyle(6, p.color, 0.9).setDepth(9);
+        this.tweens.add({ targets: ring, x: tx, y: ty, scale: 3, alpha: 0.2, duration: 260, delay: i * 70,
+          onComplete: () => { ring.destroy(); if (i === 2) this.impact(tx, ty); } });
+      }
+      this.cameras.main.shake(180, 0.006);
     } else {
-      const n = p.kind === 'stars' || p.kind === 'bubbles' ? 5 : 1;
+      const n = p.kind === 'stars' || p.kind === 'bubbles' || p.kind === 'leaves' ? 5 : 1;
       for (let i = 0; i < n; i++) {
-        // burbujas (Coral): círculos transparentes con borde blanco; si no, estrellas o bola de fuego
+        // burbujas (Coral): círculos transparentes con borde blanco · hojas (Kiara): óvalos verdes con borde oscuro ·
+        // si no, estrellas o bola de fuego
         const proj = p.kind === 'bubbles'
           ? this.add.circle(sx, sy, Phaser.Math.Between(10, 18), p.color, 0.35).setStrokeStyle(3, 0xffffff, 0.9).setDepth(9)
+          : p.kind === 'leaves'
+          ? this.add.ellipse(sx, sy, 34, 16, Phaser.Utils.Array.GetRandom([p.color, 0x22c55e, 0x86efac]), 1).setStrokeStyle(3, 0x14532d, 1).setDepth(9)
           : fit(this.add.image(sx, sy, p.kind === 'fire' ? 'fireball' : 'magicstar'), p.kind === 'fire' ? 56 : 40).setDepth(9);
         const jitter = () => (n > 1 ? Phaser.Math.Between(-30, 30) : 0);
         this.tweens.add({ targets: proj, x: tx + jitter(), y: ty + jitter(), angle: 360, duration: 170, delay: i * 35,

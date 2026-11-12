@@ -26,7 +26,10 @@ const VOCES = {
   fantasy: { carpeta: 'dragones',     voz: 'es-CO-SalomeNeural',  tono: '+35Hz', velocidad: '+6%' },   // Chispa
   kingdom: { carpeta: 'reino_magico', voz: 'es-MX-DaliaNeural',   tono: '+12Hz', velocidad: '+0%' },   // Reina Luna
   space:   { carpeta: 'espacio',      voz: 'es-AR-ElenaNeural',   tono: '+25Hz', velocidad: '+4%' },   // Nova
-  ocean:   { carpeta: 'oceano',       voz: 'es-US-PalomaNeural',  tono: '+25Hz', velocidad: '+4%' }    // Coral
+  ocean:   { carpeta: 'oceano',       voz: 'es-US-PalomaNeural',  tono: '+25Hz', velocidad: '+4%' },   // Coral
+  dinos:   { carpeta: 'dinosaurios',  voz: 'es-AR-TomasNeural',   tono: '+25Hz', velocidad: '+6%' },   // Tito
+  robots:  { carpeta: 'robots',       voz: 'es-US-AlonsoNeural',  tono: '+25Hz', velocidad: '+6%' },   // Chip
+  jungle:  { carpeta: 'selva',        voz: 'es-EC-AndreaNeural',  tono: '+25Hz', velocidad: '+4%' }    // Kiara
 };
 // Voces del villano y de los 3 amigos de cada mundo (presentan capítulos y hacen de distractores auditivos).
 // Voces latinoamericanas con cambios de tono pequeños: si se cambia mucho el tono, suenan a robot.
@@ -60,6 +63,24 @@ const VOCES_REPARTO = {
     friend1: { voz: 'es-US-AlonsoNeural',    tono: '+14Hz', velocidad: '+6%' },   // Delfi
     friend2: { voz: 'es-CO-GonzaloNeural',   tono: '+8Hz',  velocidad: '+4%' },   // Pinzas
     friend3: { voz: 'es-EC-LuisNeural',      tono: '+12Hz', velocidad: '+3%' }    // Pulpi
+  },
+  dinos: {
+    villain: { voz: 'es-MX-JorgeNeural',     tono: '+6Hz',  velocidad: '+4%' },   // Pterodáctilo Ladrón
+    friend1: { voz: 'es-CR-JuanNeural',      tono: '-6Hz',  velocidad: '-6%' },   // Cuello Largo
+    friend2: { voz: 'es-PE-AlexNeural',      tono: '+12Hz', velocidad: '+6%' },   // Pinchos
+    friend3: { voz: 'es-VE-PaolaNeural',     tono: '+12Hz', velocidad: '+3%' }    // Plumi
+  },
+  robots: {
+    villain: { voz: 'es-EC-LuisNeural',      tono: '+14Hz', velocidad: '+8%' },   // Glitch
+    friend1: { voz: 'es-CO-GonzaloNeural',   tono: '+10Hz', velocidad: '+4%' },   // Cable
+    friend2: { voz: 'es-CR-MariaNeural',     tono: '+14Hz', velocidad: '+6%' },   // Zumbi
+    friend3: { voz: 'es-VE-SebastianNeural', tono: '+4Hz',  velocidad: '+0%' }    // Antivirus
+  },
+  jungle: {
+    villain: { voz: 'es-PE-CamilaNeural',    tono: '-2Hz',  velocidad: '-4%' },   // Serpiente Silbona
+    friend1: { voz: 'es-PE-AlexNeural',      tono: '+14Hz', velocidad: '+6%' },   // Jaguarcito
+    friend2: { voz: 'es-MX-JorgeNeural',     tono: '-6Hz',  velocidad: '-25%' },  // Lento
+    friend3: { voz: 'es-CR-MariaNeural',     tono: '+8Hz',  velocidad: '+0%' }    // Silvia
   }
 };
 const AMIGOS = ['friend1', 'friend2', 'friend3'];
@@ -69,7 +90,7 @@ const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax'];
 const mundos = {};
 const sandbox = { registrarMundo: (key, m) => { mundos[key] = m; } };
 vm.createContext(sandbox);
-for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano']) {
+for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano', 'dinosaurios', 'robots', 'selva']) {
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f + '.js'), 'utf8'), sandbox);
 }
 

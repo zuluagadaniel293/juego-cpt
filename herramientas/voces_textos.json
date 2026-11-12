@@ -1424,5 +1424,851 @@
       "texto": "¡El Pulpo Tinta me pintó de negro! ¡Socorro!",
       "firma": "750a5843a7"
     }
+  },
+  "dinos": {
+    "1": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino... Búscalo: es el triceratops naranja con manchas amarillas.",
+      "firma": "23b388486a"
+    },
+    "2": {
+      "texto": "¡Los triceratops bebés cruzan el río! Atrapa solo a Dino.",
+      "firma": "0a85d9295c"
+    },
+    "3": {
+      "texto": "¡Dino corre cerca del volcán! Corre y alcánzalo solo a él.",
+      "firma": "3b5d24d954"
+    },
+    "4": {
+      "texto": "En la cueva hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!",
+      "firma": "d83b590350"
+    },
+    "5": {
+      "texto": "¡El Pterodáctilo Ladrón llevó a Dino a su nido! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "6c95f62b54"
+    },
+    "end": {
+      "texto": "¡Atrapamos al Pterodáctilo Ladrón y Dino volvió con su familia! Todo el valle está feliz gracias a ti.",
+      "firma": "e35e32ec6b"
+    },
+    "classic": {
+      "texto": "Dino es el triceratops naranja con manchas amarillas. ¡Toca solo cuando lo veas a él!",
+      "firma": "1e94a3f35a"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Dino es el triceratops naranja con manchas amarillas. ¡Toca solo cuando lo veas a él!",
+      "firma": "d15b10628b"
+    },
+    "catch": {
+      "texto": "¡Los triceratops bebés ruedan por la colina! Atrapa solo a Dino.",
+      "firma": "63b9bf4aba"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Los triceratops bebés ruedan por la colina! Atrapa solo a Dino.",
+      "firma": "c054059b0e"
+    },
+    "race": {
+      "texto": "¡Dino corre entre los helechos! Corre y alcánzalo solo a él.",
+      "firma": "9ab5860da0"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Dino corre entre los helechos! Corre y alcánzalo solo a él.",
+      "firma": "09ad2bd170"
+    },
+    "find": {
+      "texto": "Aquí hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!",
+      "firma": "c84130a99d"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Aquí hay muchos triceratops juntos... ¡Encuentra a Dino! Y si no está, ¡no toques nada!",
+      "firma": "87d61d5420"
+    },
+    "memory": {
+      "texto": "¡Dino deja huellas de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "15b8c774c0"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Dino deja huellas de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "a5235ee50d"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todos los triceratops... ¡menos a Dino!",
+      "firma": "66c0a65bac"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Al revés! Toca a todos los triceratops... ¡menos a Dino!",
+      "firma": "c314a37e02"
+    },
+    "ax": {
+      "texto": "Dino siempre llega después del triceratops azul. ¡Toca a Dino solo si justo antes salió el triceratops azul!",
+      "firma": "956cf4ee8a"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Dino siempre llega después del triceratops azul. ¡Toca a Dino solo si justo antes salió el triceratops azul!",
+      "firma": "2d97452bf4"
+    },
+    "boss": {
+      "texto": "¡El Pterodáctilo Ladrón quiere esconder a Dino en su nido! Se esconde entre los dinosaurios. ¡Atrapémoslo!",
+      "firma": "c49f5abc3f"
+    },
+    "cast_classic": {
+      "texto": "¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.",
+      "firma": "5a93da5501"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Toca solo cuando aparezca él.",
+      "firma": "3a559e2f56"
+    },
+    "cast_catch": {
+      "texto": "¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "76b33a5c42"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "32c2780adb"
+    },
+    "cast_race": {
+      "texto": "¡El Pterodáctilo Ladrón corre entre los dinosaurios! Atrápalo solo a él.",
+      "firma": "ec288bb115"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón corre entre los dinosaurios! Atrápalo solo a él.",
+      "firma": "fed0baa0ef"
+    },
+    "cast_find": {
+      "texto": "Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "e85d51d9a4"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. Los dinosaurios y el Pterodáctilo Ladrón están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "1bb20773ce"
+    },
+    "cast_memory": {
+      "texto": "¡El Pterodáctilo Ladrón salta de roca en roca! Mira bien por dónde pasó y repite su camino.",
+      "firma": "2e6ecf7fa9"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡El Pterodáctilo Ladrón salta de roca en roca! Mira bien por dónde pasó y repite su camino.",
+      "firma": "bd9aa69293"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!",
+      "firma": "20a401b561"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¡Al revés! Toca a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!",
+      "firma": "1b0cc56acc"
+    },
+    "cast_ax_friend1": {
+      "texto": "El Pterodáctilo Ladrón solo aparece justo después de Cuello Largo: esa es la pista. ¡Tócalo solo si justo antes salió Cuello Largo!",
+      "firma": "30a6af97e7"
+    },
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. El Pterodáctilo Ladrón solo aparece justo después de Cuello Largo: esa es la pista. ¡Tócalo solo si justo antes salió Cuello Largo!",
+      "firma": "743b44c865"
+    },
+    "cast_ax_friend2": {
+      "texto": "El Pterodáctilo Ladrón solo aparece justo después de Pinchos: esa es la pista. ¡Tócalo solo si justo antes salió Pinchos!",
+      "firma": "a2850a9e6a"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. El Pterodáctilo Ladrón solo aparece justo después de Pinchos: esa es la pista. ¡Tócalo solo si justo antes salió Pinchos!",
+      "firma": "435635de64"
+    },
+    "cast_ax_friend3": {
+      "texto": "El Pterodáctilo Ladrón solo aparece justo después de Plumi: esa es la pista. ¡Tócalo solo si justo antes salió Plumi!",
+      "firma": "aa0f601adf"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. El Pterodáctilo Ladrón solo aparece justo después de Plumi: esa es la pista. ¡Tócalo solo si justo antes salió Plumi!",
+      "firma": "430b46c9ec"
+    },
+    "comp_1": {
+      "texto": "¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos a Dino juntos!",
+      "firma": "299f144438"
+    },
+    "comp_2": {
+      "texto": "¡Hola! Soy Pinchos. Tengo picos en la espalda, pero soy muy amigable. ¡Mira con atención!",
+      "firma": "2ef8089bdd"
+    },
+    "comp_3": {
+      "texto": "Hola, soy Plumi. Me parezco al ladrón, pero yo llevo bufanda y no antifaz. ¡Soy de los buenos!",
+      "firma": "370d3eea6e"
+    },
+    "comp_4": {
+      "texto": "¡Ja, ja, ja! ¡Dino ya está en mi bolsa! ¡A ver si lo encuentras, explorador!",
+      "firma": "f94ff58ba5"
+    },
+    "dist_risa_c1": {
+      "texto": "¡Ja, ja, ja! ¡Dino ya es mío!",
+      "firma": "a43e9220a6"
+    },
+    "dist_risa_c2": {
+      "texto": "¡Je, je! ¡Vuelo sobre el río y tú no!",
+      "firma": "7c48e39e1e"
+    },
+    "dist_risa_c3": {
+      "texto": "¡Ja, ja! ¡El humo del volcán me esconde!",
+      "firma": "345a0ae170"
+    },
+    "dist_risa_c4": {
+      "texto": "¡Je, je, je! ¡Yo también sé pintar en la cueva!",
+      "firma": "271a8c08de"
+    },
+    "dist_risa_c5": {
+      "texto": "¡Ja, ja, ja! ¡Bienvenido a mi nido!",
+      "firma": "473a179582"
+    },
+    "dist_burla_c1": {
+      "texto": "¡Nunca me alcanzarás, explorador!",
+      "firma": "e7311373ff"
+    },
+    "dist_burla_c2": {
+      "texto": "¡Te vas a mojar los zapatos, ja!",
+      "firma": "0cb3a1ff1b"
+    },
+    "dist_burla_c3": {
+      "texto": "¡Uy, qué calor! ¿Te cansaste?",
+      "firma": "9da06976ef"
+    },
+    "dist_burla_c4": {
+      "texto": "¡En la oscuridad no ves nada!",
+      "firma": "83fc9163ad"
+    },
+    "dist_burla_c5": {
+      "texto": "¡Tu lupa no te sirve contra mí!",
+      "firma": "ba0ab096c3"
+    },
+    "dist_amenaza_c1": {
+      "texto": "¡Me llevaré a todos los bebés!",
+      "firma": "02fb6e037d"
+    },
+    "dist_amenaza_c2": {
+      "texto": "¡Me robaré todos los huevos del río!",
+      "firma": "7ca3037fc2"
+    },
+    "dist_amenaza_c3": {
+      "texto": "¡Despertaré al volcán!",
+      "firma": "6ca3d5d7ac"
+    },
+    "dist_amenaza_c4": {
+      "texto": "¡Borraré todas las pinturas de la cueva!",
+      "firma": "07d4412597"
+    },
+    "dist_amenaza_c5": {
+      "texto": "¡Nadie sube a mi montaña!",
+      "firma": "2f9e6848d0"
+    },
+    "dist_ayuda_c1_friend1": {
+      "texto": "¡Ay, no! ¡Ayuda, Tito! ¡Me picoteó!",
+      "firma": "d7343b89ff"
+    },
+    "dist_ayuda_c2_friend1": {
+      "texto": "¡Me resbalé en las piedras del río! ¡Ayuda!",
+      "firma": "e7e485c3de"
+    },
+    "dist_ayuda_c3_friend1": {
+      "texto": "¡El humo me hace toser! ¡Tito!",
+      "firma": "e29fba4077"
+    },
+    "dist_ayuda_c4_friend1": {
+      "texto": "¡Mi cuello no cabe en la cueva! ¡Ayuda!",
+      "firma": "a90cc48159"
+    },
+    "dist_ayuda_c1_friend2": {
+      "texto": "¡Me quitó mi merienda! ¡Ayuda, Tito!",
+      "firma": "9cd0c444bf"
+    },
+    "dist_ayuda_c2_friend2": {
+      "texto": "¡La corriente me arrastra! ¡Socorro!",
+      "firma": "0c5546087d"
+    },
+    "dist_ayuda_c3_friend2": {
+      "texto": "¡Se me calientan los picos! ¡Ayuda!",
+      "firma": "2cbc6c245f"
+    },
+    "dist_ayuda_c4_friend2": {
+      "texto": "¡Está muy oscuro aquí! ¡Tito, ven!",
+      "firma": "32a1aba6d6"
+    },
+    "dist_ayuda_c1_friend3": {
+      "texto": "¡Yo no soy el ladrón! ¡Socorro!",
+      "firma": "2b2f8d808e"
+    },
+    "dist_ayuda_c2_friend3": {
+      "texto": "¡Mira mi bufanda, soy Plumi! ¡Ayuda!",
+      "firma": "4e77f3e9c6"
+    },
+    "dist_ayuda_c3_friend3": {
+      "texto": "¡Me confunden con el Pterodáctilo Ladrón! ¡Ayuda, Tito!",
+      "firma": "847b9afd04"
+    },
+    "dist_ayuda_c4_friend3": {
+      "texto": "¡El ladrón me quitó la bufanda! ¡Socorro!",
+      "firma": "f3d03bb5f0"
+    }
+  },
+  "robots": {
+    "1": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch escondió a Botón... Búscalo: es el robotito azul con la cara sonriente en su pantalla.",
+      "firma": "8bca6c2a01"
+    },
+    "2": {
+      "texto": "¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.",
+      "firma": "1a4a8d6c83"
+    },
+    "3": {
+      "texto": "¡Botón rueda por las calles de la ciudad digital! Corre y alcánzalo solo a él.",
+      "firma": "6400158ba2"
+    },
+    "4": {
+      "texto": "En el laboratorio hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!",
+      "firma": "4d0f0d637b"
+    },
+    "5": {
+      "texto": "¡Glitch se metió al centro de control con Botón! Atrápalo con la red y, si escapa, ¡persíguelo!",
+      "firma": "2ee36a99fa"
+    },
+    "end": {
+      "texto": "¡Atrapamos a Glitch y Botón volvió a sonreír! Todos los robots funcionan gracias a ti.",
+      "firma": "2540b83507"
+    },
+    "classic": {
+      "texto": "Botón es el robotito azul con la cara sonriente en su pantalla. ¡Toca solo cuando lo veas a él!",
+      "firma": "cd610187ee"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Botón es el robotito azul con la cara sonriente en su pantalla. ¡Toca solo cuando lo veas a él!",
+      "firma": "172dcddd82"
+    },
+    "catch": {
+      "texto": "¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.",
+      "firma": "1a4a8d6c83"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Los robotitos caen de la banda de la fábrica! Atrapa solo a Botón.",
+      "firma": "55a7cff619"
+    },
+    "race": {
+      "texto": "¡Botón rueda por la ciudad! Corre y alcánzalo solo a él.",
+      "firma": "ea74cdb006"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Botón rueda por la ciudad! Corre y alcánzalo solo a él.",
+      "firma": "43c5b9401d"
+    },
+    "find": {
+      "texto": "Aquí hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!",
+      "firma": "b3ddefba89"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Aquí hay muchos robotitos juntos... ¡Encuentra a Botón! Y si no está, ¡no toques nada!",
+      "firma": "9e3837a582"
+    },
+    "memory": {
+      "texto": "¡Botón salta de máquina en máquina! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "fcc1934495"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Botón salta de máquina en máquina! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "d8efeefcb5"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todos los robotitos... ¡menos a Botón!",
+      "firma": "50e128e1d8"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Al revés! Toca a todos los robotitos... ¡menos a Botón!",
+      "firma": "0912f5775b"
+    },
+    "ax": {
+      "texto": "Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!",
+      "firma": "c13191d512"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!",
+      "firma": "3c32a2aee2"
+    },
+    "boss": {
+      "texto": "¡Glitch quiere apagar a Botón para siempre! Se esconde entre mis amigos robots. ¡Atrapémoslo!",
+      "firma": "5475920268"
+    },
+    "cast_classic": {
+      "texto": "¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.",
+      "firma": "713a3798c6"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch se mezcla con mis amigos robots! Toca solo cuando aparezca él.",
+      "firma": "ce1f54e1dc"
+    },
+    "cast_catch": {
+      "texto": "¡Glitch cae entre mis amigos robots! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "669536f326"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch cae entre mis amigos robots! Atrápalo con la red... ¡y deja pasar a los demás!",
+      "firma": "ecb2ebe70d"
+    },
+    "cast_race": {
+      "texto": "¡Glitch corre entre mis amigos robots! Atrápalo solo a él.",
+      "firma": "9fdf1895c7"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch corre entre mis amigos robots! Atrápalo solo a él.",
+      "firma": "3394a43a85"
+    },
+    "cast_find": {
+      "texto": "Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "21f637c6a4"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Mis amigos robots y Glitch están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!",
+      "firma": "fdc877d49c"
+    },
+    "cast_memory": {
+      "texto": "¡Glitch salta de pantalla en pantalla! Mira bien por dónde pasó y repite su camino.",
+      "firma": "a129bef4f1"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Glitch salta de pantalla en pantalla! Mira bien por dónde pasó y repite su camino.",
+      "firma": "f7ebbb44bb"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!",
+      "firma": "8e230c11e1"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¡Al revés! Toca a todos mis amigos robots... ¡pero NUNCA a Glitch!",
+      "firma": "916be780fe"
+    },
+    "cast_ax_friend1": {
+      "texto": "Glitch solo aparece justo después de Cable: esa es la pista. ¡Tócalo solo si justo antes salió Cable!",
+      "firma": "961be7382b"
+    },
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Glitch solo aparece justo después de Cable: esa es la pista. ¡Tócalo solo si justo antes salió Cable!",
+      "firma": "a3ddb5e2c2"
+    },
+    "cast_ax_friend2": {
+      "texto": "Glitch solo aparece justo después de Zumbi: esa es la pista. ¡Tócalo solo si justo antes salió Zumbi!",
+      "firma": "ad2e47accf"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Glitch solo aparece justo después de Zumbi: esa es la pista. ¡Tócalo solo si justo antes salió Zumbi!",
+      "firma": "544fccd736"
+    },
+    "cast_ax_friend3": {
+      "texto": "Glitch solo aparece justo después de Antivirus: esa es la pista. ¡Tócalo solo si justo antes salió Antivirus!",
+      "firma": "c3b27e7f9b"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. Glitch solo aparece justo después de Antivirus: esa es la pista. ¡Tócalo solo si justo antes salió Antivirus!",
+      "firma": "8c71366272"
+    },
+    "comp_1": {
+      "texto": "¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica nos ayudará a encontrar a Botón!",
+      "firma": "24d3e8bef4"
+    },
+    "comp_2": {
+      "texto": "¡Bzzz! Soy Zumbi, el dron. Vuelo rápido y miro desde arriba... ¡tú mira con mucha atención!",
+      "firma": "73794ff116"
+    },
+    "comp_3": {
+      "texto": "Soy Antivirus. Estoy hecho de cuadritos como Glitch, pero yo tengo escudo. ¡Protejo a los robots!",
+      "firma": "d1171bf83a"
+    },
+    "comp_4": {
+      "texto": "¡Ji, ji, ji! ¡Desordené todos los robots! ¡A ver si encuentras a Botón, inventor!",
+      "firma": "fe34fc27f4"
+    },
+    "dist_risa_c1": {
+      "texto": "¡Ji, ji, ji! ¡Botón es mío!",
+      "firma": "fa1a9a8aa4"
+    },
+    "dist_risa_c2": {
+      "texto": "¡Je, je! ¡Desordené todos los engranajes!",
+      "firma": "1e687d2787"
+    },
+    "dist_risa_c3": {
+      "texto": "¡Ja, ja! ¡Apagué las luces de la ciudad!",
+      "firma": "de32d52be8"
+    },
+    "dist_risa_c4": {
+      "texto": "¡Ji, ji! ¡Mezclé todas tus pociones!",
+      "firma": "3274663b5a"
+    },
+    "dist_risa_c5": {
+      "texto": "¡Ja, ja, ja! ¡Bienvenido a mi centro de control!",
+      "firma": "b87c38d8ff"
+    },
+    "dist_burla_c1": {
+      "texto": "¡Error, error! ¡No me encuentras!",
+      "firma": "49274b8667"
+    },
+    "dist_burla_c2": {
+      "texto": "¡Tu banda va al revés, ja!",
+      "firma": "bde4963d36"
+    },
+    "dist_burla_c3": {
+      "texto": "¡Soy más rápido que tu internet!",
+      "firma": "20291e1905"
+    },
+    "dist_burla_c4": {
+      "texto": "¡Tus inventos no funcionan!",
+      "firma": "45f331e5ea"
+    },
+    "dist_burla_c5": {
+      "texto": "¡Tu llave inglesa no me asusta!",
+      "firma": "5dc110b427"
+    },
+    "dist_amenaza_c1": {
+      "texto": "¡Desconfiguraré todos tus robots!",
+      "firma": "5ffca92c91"
+    },
+    "dist_amenaza_c2": {
+      "texto": "¡Romperé todas las máquinas!",
+      "firma": "8cae987fb7"
+    },
+    "dist_amenaza_c3": {
+      "texto": "¡Toda la ciudad será mía!",
+      "firma": "a199e8f249"
+    },
+    "dist_amenaza_c4": {
+      "texto": "¡Borraré todos tus inventos!",
+      "firma": "0fac53c9b1"
+    },
+    "dist_amenaza_c5": {
+      "texto": "¡Apagaré a todos los robots para siempre!",
+      "firma": "edc1886b01"
+    },
+    "dist_ayuda_c1_friend1": {
+      "texto": "¡Guau! ¡Ayuda, Chip! ¡Glitch me desconectó!",
+      "firma": "a9bbacb00a"
+    },
+    "dist_ayuda_c2_friend1": {
+      "texto": "¡Me atoré en la banda! ¡Ayuda!",
+      "firma": "05b14c5a49"
+    },
+    "dist_ayuda_c3_friend1": {
+      "texto": "¡Se me acaba la batería! ¡Chip!",
+      "firma": "3d0ce39bf1"
+    },
+    "dist_ayuda_c4_friend1": {
+      "texto": "¡Me cambió los botones! ¡Ayuda, Chip!",
+      "firma": "f4b1c5c07a"
+    },
+    "dist_ayuda_c1_friend2": {
+      "texto": "¡Mis hélices no giran! ¡Ayuda, Chip!",
+      "firma": "e532d5a1f7"
+    },
+    "dist_ayuda_c2_friend2": {
+      "texto": "¡Un engranaje me golpeó! ¡Socorro!",
+      "firma": "28918c53cf"
+    },
+    "dist_ayuda_c3_friend2": {
+      "texto": "¡Perdí la señal! ¡Ayuda!",
+      "firma": "7a8992a65d"
+    },
+    "dist_ayuda_c4_friend2": {
+      "texto": "¡Me encerraron en una caja! ¡Chip!",
+      "firma": "158a790860"
+    },
+    "dist_ayuda_c1_friend3": {
+      "texto": "¡Yo no soy Glitch! ¡Socorro!",
+      "firma": "913590cb45"
+    },
+    "dist_ayuda_c2_friend3": {
+      "texto": "¡Mira mi escudo, soy Antivirus! ¡Ayuda!",
+      "firma": "1e52b6d473"
+    },
+    "dist_ayuda_c3_friend3": {
+      "texto": "¡Me confunden con Glitch! ¡Ayuda, Chip!",
+      "firma": "c8d97c400c"
+    },
+    "dist_ayuda_c4_friend3": {
+      "texto": "¡Glitch me quitó el escudo! ¡Socorro!",
+      "firma": "1219acfe9c"
+    }
+  },
+  "jungle": {
+    "1": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris... Búscalo: es el tucán con el pico de todos los colores.",
+      "firma": "b1d76f22c4"
+    },
+    "2": {
+      "texto": "¡Los pajaritos caen de los árboles gigantes! Atrapa solo a Arcoíris.",
+      "firma": "80d458664c"
+    },
+    "3": {
+      "texto": "¡Arcoíris vuela junto a la cascada! Corre y alcánzalo solo a él.",
+      "firma": "60f07721da"
+    },
+    "4": {
+      "texto": "En el templo hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!",
+      "firma": "87786c3bcb"
+    },
+    "5": {
+      "texto": "¡La Serpiente Silbona llevó a Arcoíris a su cueva! Atrápala con la red y, si escapa, ¡persíguela!",
+      "firma": "fbbfbf6c68"
+    },
+    "end": {
+      "texto": "¡Atrapamos a la Serpiente Silbona y Arcoíris volvió a su nido! Toda la selva está feliz gracias a ti.",
+      "firma": "c1b339deb5"
+    },
+    "classic": {
+      "texto": "Arcoíris es el tucán con el pico de todos los colores. ¡Toca solo cuando lo veas a él!",
+      "firma": "85bcbc8ae6"
+    },
+    "intro_classic": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Arcoíris es el tucán con el pico de todos los colores. ¡Toca solo cuando lo veas a él!",
+      "firma": "add6245516"
+    },
+    "catch": {
+      "texto": "¡Los pajaritos caen de las ramas! Atrapa solo a Arcoíris.",
+      "firma": "7b5d38d753"
+    },
+    "intro_catch": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Los pajaritos caen de las ramas! Atrapa solo a Arcoíris.",
+      "firma": "7870eb37b0"
+    },
+    "race": {
+      "texto": "¡Arcoíris vuela entre los árboles! Corre y alcánzalo solo a él.",
+      "firma": "2c1e065f3a"
+    },
+    "intro_race": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Arcoíris vuela entre los árboles! Corre y alcánzalo solo a él.",
+      "firma": "7f4d56e71a"
+    },
+    "find": {
+      "texto": "Aquí hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!",
+      "firma": "09380eaa4f"
+    },
+    "intro_find": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Aquí hay muchos pajaritos juntos... ¡Encuentra a Arcoíris! Y si no está, ¡no toques nada!",
+      "firma": "44b9c94f1b"
+    },
+    "memory": {
+      "texto": "¡Arcoíris salta de rama en rama! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "c9efd76cfe"
+    },
+    "intro_memory": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Arcoíris salta de rama en rama! Mira bien su camino y repítelo en el mismo orden.",
+      "firma": "cb757838ec"
+    },
+    "notx": {
+      "texto": "¡Al revés! Toca a todos los pajaritos... ¡menos a Arcoíris!",
+      "firma": "d2543006c2"
+    },
+    "intro_notx": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Al revés! Toca a todos los pajaritos... ¡menos a Arcoíris!",
+      "firma": "49dc609012"
+    },
+    "ax": {
+      "texto": "Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!",
+      "firma": "012ed22918"
+    },
+    "intro_ax": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!",
+      "firma": "93fa7d59f1"
+    },
+    "boss": {
+      "texto": "¡La Serpiente Silbona quiere hipnotizar a Arcoíris! Se esconde entre los animales de la selva. ¡Atrapémosla!",
+      "firma": "faff401ce4"
+    },
+    "cast_classic": {
+      "texto": "¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.",
+      "firma": "43c0832840"
+    },
+    "intro_cast_classic": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.",
+      "firma": "629f2c5a2d"
+    },
+    "cast_catch": {
+      "texto": "¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!",
+      "firma": "7fb4856d73"
+    },
+    "intro_cast_catch": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!",
+      "firma": "77a46c6fd6"
+    },
+    "cast_race": {
+      "texto": "¡La Serpiente Silbona se arrastra entre los animales de la selva! Atrápala solo a ella.",
+      "firma": "bebfcea3c3"
+    },
+    "intro_cast_race": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se arrastra entre los animales de la selva! Atrápala solo a ella.",
+      "firma": "34fc2b4010"
+    },
+    "cast_find": {
+      "texto": "Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
+      "firma": "36d48855e9"
+    },
+    "intro_cast_find": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!",
+      "firma": "b9f71afe89"
+    },
+    "cast_memory": {
+      "texto": "¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.",
+      "firma": "39d365c61e"
+    },
+    "intro_cast_memory": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.",
+      "firma": "730897f72b"
+    },
+    "cast_notx": {
+      "texto": "¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!",
+      "firma": "f9ff7472ad"
+    },
+    "intro_cast_notx": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!",
+      "firma": "23e9c592e1"
+    },
+    "cast_ax_friend1": {
+      "texto": "La Serpiente Silbona solo aparece justo después de Jaguarcito: esa es la pista. ¡Tócala solo si justo antes salió Jaguarcito!",
+      "firma": "69b2468891"
+    },
+    "intro_cast_ax_friend1": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. La Serpiente Silbona solo aparece justo después de Jaguarcito: esa es la pista. ¡Tócala solo si justo antes salió Jaguarcito!",
+      "firma": "9b48315467"
+    },
+    "cast_ax_friend2": {
+      "texto": "La Serpiente Silbona solo aparece justo después de Lento: esa es la pista. ¡Tócala solo si justo antes salió Lento!",
+      "firma": "6903ee171c"
+    },
+    "intro_cast_ax_friend2": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. La Serpiente Silbona solo aparece justo después de Lento: esa es la pista. ¡Tócala solo si justo antes salió Lento!",
+      "firma": "6db4dbaf85"
+    },
+    "cast_ax_friend3": {
+      "texto": "La Serpiente Silbona solo aparece justo después de Silvia: esa es la pista. ¡Tócala solo si justo antes salió Silvia!",
+      "firma": "dfa84cac9a"
+    },
+    "intro_cast_ax_friend3": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. La Serpiente Silbona solo aparece justo después de Silvia: esa es la pista. ¡Tócala solo si justo antes salió Silvia!",
+      "firma": "e6d11d388b"
+    },
+    "comp_1": {
+      "texto": "¡Grrr... hola! Soy Jaguarcito. Tengo ojos de cazador. ¡Vamos a buscar a Arcoíris!",
+      "firma": "78e0314ae2"
+    },
+    "comp_2": {
+      "texto": "Hooola... soy Lento, el perezoso. Yo voy despacio... pero tú mira con mucha atención.",
+      "firma": "4c6beebb53"
+    },
+    "comp_3": {
+      "texto": "Hola, soy Silvia. Soy serpiente, pero buena: llevo una flor y no sombrero. ¡Yo te ayudo!",
+      "firma": "db852dfb92"
+    },
+    "comp_4": {
+      "texto": "¡Sssí, sssí! ¡Essscondí a Arcoíris! ¡A ver si lo encuentrasss, exploradora!",
+      "firma": "42c6da04ea"
+    },
+    "dist_risa_c1": {
+      "texto": "¡Jsss, jsss, jsss! ¡Arcoíris es mío!",
+      "firma": "2ca7c0604d"
+    },
+    "dist_risa_c2": {
+      "texto": "¡Je, je, je! ¡Me enrosqué en el árbol más alto!",
+      "firma": "b6347d8f48"
+    },
+    "dist_risa_c3": {
+      "texto": "¡Jsss, jsss! ¡El agua no me moja!",
+      "firma": "c1d74db87f"
+    },
+    "dist_risa_c4": {
+      "texto": "¡Je, je! ¡El templo es mi casa!",
+      "firma": "eb69992e6f"
+    },
+    "dist_risa_c5": {
+      "texto": "¡Jsss, jsss, jsss! ¡Bienvenida a mi cueva!",
+      "firma": "f8654ba506"
+    },
+    "dist_burla_c1": {
+      "texto": "¡Ssssigue buscando, exploradora!",
+      "firma": "86a5c9dd77"
+    },
+    "dist_burla_c2": {
+      "texto": "¡Desde aquí arriba te veo, y tú a mí no!",
+      "firma": "1323e756b0"
+    },
+    "dist_burla_c3": {
+      "texto": "¡Te vas a resbalar en las piedras!",
+      "firma": "2481c8365f"
+    },
+    "dist_burla_c4": {
+      "texto": "¡Mira mis ojos... te vas a marear!",
+      "firma": "9b2ee1a8aa"
+    },
+    "dist_burla_c5": {
+      "texto": "¡Tus hojas me hacen cosquillas!",
+      "firma": "a729f938e0"
+    },
+    "dist_amenaza_c1": {
+      "texto": "¡Hipnotizaré a todos los animales!",
+      "firma": "246036a89f"
+    },
+    "dist_amenaza_c2": {
+      "texto": "¡Me llevaré todos los nidos!",
+      "firma": "da5db01628"
+    },
+    "dist_amenaza_c3": {
+      "texto": "¡Taparé la cascada!",
+      "firma": "e8ce4e0ae7"
+    },
+    "dist_amenaza_c4": {
+      "texto": "¡Me quedaré con el tesoro del templo!",
+      "firma": "19c487ba7d"
+    },
+    "dist_amenaza_c5": {
+      "texto": "¡De mi cueva nadie sale!",
+      "firma": "fbdd67f568"
+    },
+    "dist_ayuda_c1_friend1": {
+      "texto": "¡Ay, no! ¡Ayuda, Kiara! ¡Me enrolló!",
+      "firma": "baa109d53f"
+    },
+    "dist_ayuda_c2_friend1": {
+      "texto": "¡No puedo bajar del árbol! ¡Ayuda!",
+      "firma": "325e5f613f"
+    },
+    "dist_ayuda_c3_friend1": {
+      "texto": "¡Me caí al agua! ¡Kiara!",
+      "firma": "c597cdf2a7"
+    },
+    "dist_ayuda_c4_friend1": {
+      "texto": "¡Me quedé encerrado en el templo! ¡Ayuda!",
+      "firma": "b7561e9edb"
+    },
+    "dist_ayuda_c1_friend2": {
+      "texto": "¡Ayuuuda... Kiara... me atrapó!",
+      "firma": "46a8ebfa63"
+    },
+    "dist_ayuda_c2_friend2": {
+      "texto": "¡Se rompió mi rama! ¡Socorro!",
+      "firma": "920060e182"
+    },
+    "dist_ayuda_c3_friend2": {
+      "texto": "¡La cascada me empuja! ¡Ayuda!",
+      "firma": "fd7ad225f4"
+    },
+    "dist_ayuda_c4_friend2": {
+      "texto": "¡Me dormí y me encerraron! ¡Kiara!",
+      "firma": "989323ef00"
+    },
+    "dist_ayuda_c1_friend3": {
+      "texto": "¡Yo no soy la Serpiente Silbona! ¡Socorro!",
+      "firma": "efcbb58c29"
+    },
+    "dist_ayuda_c2_friend3": {
+      "texto": "¡Mira mi flor, soy Silvia! ¡Ayuda!",
+      "firma": "d1ad17e7c8"
+    },
+    "dist_ayuda_c3_friend3": {
+      "texto": "¡Me confunden con la Serpiente Silbona! ¡Ayuda, Kiara!",
+      "firma": "3fe8efbd68"
+    },
+    "dist_ayuda_c4_friend3": {
+      "texto": "¡La Silbona me quitó la flor! ¡Socorro!",
+      "firma": "c838ff3dd6"
+    }
   }
 }
