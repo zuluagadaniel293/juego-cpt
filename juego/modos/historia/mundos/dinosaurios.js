@@ -124,7 +124,7 @@ registrarMundo('dinos', {
     ],
     sounds: {
       pisada()  { [0, 0.8].forEach(d => { sweep('sine', 70, 40, 0.4, 0.12, d); noise(0.3, 0.05, 'lowpass', 200, 100, d); }); },
-      rugido()  { sweep('sawtooth', 140, 70, 1.2, 0.04); noise(1.2, 0.04, 'lowpass', 400, 150); },
+      // sin rugido: la grabación sonaba muy fuerte y asustaba
       volcan()  { noise(2.0, 0.06, 'lowpass', 300, 120); }
     }
   },

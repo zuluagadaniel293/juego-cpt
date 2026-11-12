@@ -34,7 +34,6 @@ window.SFX_FILES = {
   "arqueopterix": "sonidos/arqueopterix.mp3",
   "lagartija": "sonidos/lagartija.mp3",
   "pisada": "sonidos/pisada.mp3",
-  "rugido": "sonidos/rugido.mp3",
   "volcan": "sonidos/volcan.mp3",
   "engranaje": "sonidos/engranaje.mp3",
   "avion_de_papel": "sonidos/avion_de_papel.mp3",
@@ -274,14 +273,6 @@ window.SFX_AMBIENT = {
     {
       "name": "pisada",
       "file": "sonidos/ambiente/dinos_pisada_3.mp3"
-    },
-    {
-      "name": "rugido",
-      "file": "sonidos/ambiente/dinos_rugido_1.mp3"
-    },
-    {
-      "name": "rugido",
-      "file": "sonidos/ambiente/dinos_rugido_3.mp3"
     }
   ],
   "robots": [
