@@ -44,7 +44,8 @@ Cada fila es **un evento**:
 | `momento_ms` | Cuándo apareció, en milisegundos desde el inicio (60000 = minuto 1) |
 | `respondio` | si / no |
 | `tiempo_reaccion_ms` | Cuánto tardó en responder (solo si respondió) |
-| `freno_ms` | Solo en Esquiva: cuándo se detuvo el poder (ver la sección Esquiva) |
+| `freno_ms` | Solo en Esquiva: cuándo se descubrió el poder que se detiene (ver la sección Esquiva) |
+| `se_adelanto` | Solo en Esquiva: si se movió antes de tiempo |
 | `resultado` | Ver la tabla siguiente |
 
 ## Resultados
@@ -127,19 +128,20 @@ En la **Zona de adultos** se puede elegir cualquiera de las tres pruebas fijas (
 con los mismos parámetros para comparar sesiones. La pantalla de resultados muestra los errores por condición.
 **No es un diagnóstico**: sirve para seguir el progreso del niño.
 
-## Esquiva (formato tipo "señal de parar" o Stop-Signal)
-El villano, arriba, le lanza sus poderes al protagonista, que está abajo en uno de 3 carriles y se mueve con las
-flechas (o tocando a un lado). Una sombra en el suelo avisa dónde va a caer.
+## Esquiva
+El villano lanza **3 poderes a la vez**, uno por carril, que llegan como **sombras iguales**. A mitad de camino se
+descubren y **uno se detiene** (desaparece y su carril se ilumina en verde): hay que ponerse en ese carril antes de
+que lleguen los otros dos. Según cómo está dibujado el poder, el villano lo lanza **de frente** (se estrella en la
+pared de atrás; el protagonista se mueve arriba/abajo) o lo **deja caer** desde arriba (Espacio: se mueve a los lados).
 
 | `condicion` | Qué pasa | `tipo_estimulo` | Resultado |
 |---|---|---|---|
-| `esquivar` | El poder baja directo: hay que cambiarse de carril | objetivo | `acierto` = lo esquivó · `omision` = le cayó encima |
-| `frenar` | El poder se detiene en el aire (brilla en rojo) y se devuelve: hay que NO moverse | distractor | `ignoro_bien` = se quedó quieto · `error_impulsivo` = se movió |
+| `cambiar_de_carril` | El que se detiene está en otro carril | objetivo | `acierto` = llegó a tiempo · `omision` = le cayó un poder |
+| `quedarse` | El que se detiene está justo donde ya estaba | distractor | `ignoro_bien` = se quedó · `error_impulsivo` = se movió antes de tiempo o terminó en otro carril |
 
-- Frena más o menos 1 de cada 4 poderes. Cada villano tiene 2 poderes: el primero siempre baja directo y el segundo es el que puede frenar (a veces frena y a veces no).
-- **`freno_ms`**: cuántos ms después de lanzado se detuvo el poder (vacío si no frenó). Con el nivel frena más tarde (del 40 % al 65 % del camino), así que es más difícil aguantarse.
-- **`tiempo_reaccion_ms`**: cuándo se movió por primera vez después del lanzamiento. Si se mueve en un `frenar`, también se guarda.
-- **Para interpretar**: muchos `error_impulsivo` en `frenar` = le cuesta frenar un movimiento ya empezado (inhibición). Muchas `omision` en `esquivar` = reacciona tarde o se distrae.
+- **`se_adelanto`**: si se movió **antes** de que se descubriera cuál se detenía (adivinó en vez de esperar: impulsividad).
+- **`tiempo_reaccion_ms`**: desde que se descubrió el seguro hasta su primer movimiento (negativo = se adelantó).
+- **`freno_ms`**: cuántos ms después del lanzamiento se descubrió el seguro. Con el nivel se descubre más tarde (del 40 % al 65 % del camino) y los poderes van más rápido.
 - Las estrellas cuentan los errores sobre todos los lanzamientos. Solo motivan: no cambian lo que se guarda en el CSV.
 
 ## Atrapa: objetos que se descubren al cruzar la línea

@@ -77,7 +77,7 @@ const CSV_TEXT = {
   // Menos uno y Pista: qué tipo de estímulo era (ver GUIA_CSV.md)
   condition: {
     responder: 'responder', no_responder: 'no_responder',
-    esquivar: 'esquivar', frenar: 'frenar',   // Esquiva
+    cambiar: 'cambiar_de_carril', quedarse: 'quedarse',   // Esquiva
     camino_visible: 'camino_visible', camino_de_memoria: 'camino_de_memoria', salida: 'se_salio',   // Camino
     A: 'pista', AX: 'pista_y_objetivo', AY: 'pista_sin_objetivo', BX: 'objetivo_sin_pista', BY: 'ni_pista_ni_objetivo'
   },
@@ -115,7 +115,8 @@ function downloadCSV(log, name) {
     ['tipo_estimulo', r => CSV_TEXT.stimulus_type[r.stimulus_type] || r.stimulus_type],
     ['que_aparecio', r => stimulusLabel(r.theme, r.stimulus_key)],
     ['condicion', r => CSV_TEXT.condition[r.condition] || r.condition],
-    ['freno_ms', r => r.stop_ms],   // Esquiva: cuándo se detuvo el poder (ms después de lanzado)
+    ['freno_ms', r => r.stop_ms],   // Esquiva: cuándo se descubrió el poder que se detiene (ms después de lanzados)
+    ['se_adelanto', r => (r.anticipated === undefined ? '' : r.anticipated ? 'si' : 'no')],   // Esquiva: se movió antes de tiempo
     ['salidas', r => r.exits],              // Camino: veces que se salió en ese camino
     ['tiempo_fuera_ms', r => r.out_ms],     // Camino: tiempo total fuera del camino
     ['ancho_camino', r => r.path_width],    // Camino: ancho del camino en px (más angosto = más difícil)

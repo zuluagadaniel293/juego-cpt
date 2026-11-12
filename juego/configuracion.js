@@ -42,9 +42,9 @@ const MG = {
   notx:    { label: 'Menos uno', verb: 'Acertaste',   desc: 'Toca todo menos\nla del villano' },
   // Pista = como el AX-CPT: se responde al objetivo SOLO si justo antes apareció la pista (memoria de trabajo)
   ax:      { label: 'Pista',     verb: 'Encontraste', desc: 'Solo si antes\nsalió la pista' },
-  // Esquiva = como la tarea de la señal de parar (Stop-Signal): esquivar los poderes del villano, y quedarse quieto
-  // cuando el poder frena en el aire (juego/escenas/esquiva.js)
-  dodge:   { label: 'Esquiva',   verb: 'Esquivaste',  desc: 'Esquiva, pero si\nfrena, ¡quieto!' },
+  // Esquiva = el villano lanza 3 poderes como sombras; a mitad de camino uno se detiene y hay que ponerse en su
+  // carril (esperar a ver cuál es, sin adivinar). juego/escenas/esquiva.js
+  dodge:   { label: 'Esquiva',   verb: 'Te salvaste', desc: 'Ponte donde\nse detiene uno' },
   // Camino = como las pruebas de precisión visomotora: llevar al personaje por el camino sin salirse
   // (desde el nivel 3 el camino se borra: hay que recordarlo). juego/escenas/camino.js
   path:    { label: 'Camino',    verb: 'Recorriste',  desc: 'Sigue el camino\nsin salirte' }
@@ -90,10 +90,9 @@ function challengeParams(level, minigame) {
     // Pista (AX-CPT): tras la pista sale el objetivo el 70% de las veces (AX); sin pista, a veces sale la pista
     // (A) o el objetivo solo (BX, la trampa que mide si recordó la pista)
     axCueProb: 0.3, axAfterCue: 0.7, axLureProb: 0.12,
-    // Esquiva: lo que tarda el poder en caer, cuántos frenan y en qué momento del camino frenan (más tarde = más
-    // difícil aguantarse). Entre poderes, la pausa de isiMin a isiMax.
-    dodgeTravelMs: Math.max(1100, 2300 - 120 * L),
-    dodgeStopProb: 0.25,
+    // Esquiva: lo que tardan los poderes en llegar y en qué parte del camino se descubre el que se detiene
+    // (más tarde = menos tiempo para moverse y más ganas de adivinar antes)
+    dodgeTravelMs: Math.max(1200, 2400 - 120 * L),
     dodgeStopFrac: Math.min(0.65, 0.4 + 0.03 * L)
   };
 }

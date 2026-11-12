@@ -140,15 +140,14 @@ class GameScene extends Phaser.Scene {
       road.lineStyle(34, th.accent, 0.5); road.lineBetween(520, exY + 20, 600, exY - 20); road.lineBetween(600, exY - 20, 690, exY + 10);
       txt(605, exY + 84, 'Sin salirte del camino', 22, '#fca5a5');
     } else if (this.mg === 'dodge') {
-      // los 2 poderes del villano: el que baja directo y el que puede frenar
-      const pw = DODGE_POWERS[this.themeKey] || DODGE_POWERS.heroes;
-      [[300, pw[0], '¡Quítate del camino!', 0x22c55e, '#86efac'], [660, pw[1], 'Si frena en rojo: ¡quieto!', 0xef4444, '#fca5a5']]
-        .forEach(([x, p, s, col, tc]) => {
-          add(this.add.circle(x, exY, 60, col, 0.15).setStrokeStyle(4, col));
-          const k = dodgeTex(this, p.img);
-          if (k) { const im = add(fit(this.add.image(x, exY, k), 84)); if (p.tint) im.setTint(p.tint); }
-          txt(x, exY + 84, s, 22, tc);
-        });
+      // tres poderes como sombras; el del medio se detiene (verde): ahí hay que ponerse
+      const k = dodgeTex(this, (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).powers[0]);
+      [330, 480, 630].forEach((x, i) => {
+        const safe = i === 1, col = safe ? 0x22c55e : 0xef4444;
+        add(this.add.circle(x, exY, 56, col, 0.15).setStrokeStyle(4, col));
+        if (k) { const im = add(fit(this.add.image(x, exY, k), 76)); if (!safe) im.setTint(0x0f172a); else im.setAlpha(0.45); }
+      });
+      txt(480, exY + 84, '¡Ponte donde se detiene uno!', 22, '#86efac');
     } else if (this.mg === 'notx' || this.mg === 'ax') {
       this.playDemo(add, txt);   // demostración animada paso a paso
     } else {
@@ -188,8 +187,10 @@ class GameScene extends Phaser.Scene {
       else { icon(220, ctrlY, '🖱️'); explain = 'Arrastra con el ratón (o usa las flechas).' + rest; }
     } else if (this.mg === 'dodge') {
       const of = th.villainObj.replace(/^al /, 'del ').replace(/^a /, 'de ');
-      const rest = ' Esquiva los poderes ' + of + '... pero si un poder frena en el aire, ¡no te muevas!';
-      if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Toca a un lado de tu personaje para moverte.' + rest; }
+      const side = (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).side;
+      const rest = ' Los poderes ' + of + ' llegan como sombras. A mitad de camino uno se detiene: ¡ponte en su carril! No te muevas antes de tiempo.';
+      if (touch) { icon(220, ctrlY, side ? '👆↕' : '👆↔'); explain = 'Toca ' + (side ? 'arriba o abajo' : 'a un lado') + ' de tu personaje para moverte.' + rest; }
+      else if (side) { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = 'Muévete con las flechas.' + rest; }
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Muévete con las flechas.' + rest; }
     } else if (this.mg === 'race') {
       if (touch) { icon(220, ctrlY, '👆'); explain = chase + 'Toca arriba o abajo de tu personaje para cambiar de carril. Alcanza solo ' + what; }
@@ -782,6 +783,7 @@ class GameScene extends Phaser.Scene {
     this.buddy = null;
     this.buddyRole = this.companionRole();
     this.buddyJumping = false;
+    if (this.mg === 'dodge') return;   // en Esquiva el protagonista usa toda la pantalla
     if (!this.buddyRole || this.buddyRole === this.runnerRole) return;   // si es el que corre en la Carrera, no está en la esquina
     const x = this.caster && !this.runnerRole ? 170 : 66;   // en Carrera el protagonista está arriba: el amigo, en la esquina   // en Clásico y Encuentra, al lado del protagonista
     this.buddy = fit(this.add.image(x, GAME_H - 6, TEX[this.themeKey][this.buddyRole]).setOrigin(0.5, 1), 104).setDepth(-1);

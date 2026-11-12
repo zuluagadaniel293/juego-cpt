@@ -22,7 +22,7 @@ registrarMundo('fantasy', {
       notx: '¡Al revés! Los dragoncitos de otras familias van a su casa: tócalos a todos... ¡menos a los dorados, que van a mi nido!',
       ax: 'Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
       memory: '¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.',
-      dodge: '¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!',
+      dodge: '¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!',
       path: '¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
@@ -35,7 +35,7 @@ registrarMundo('fantasy', {
       memory: '¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!',
       ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!',
-      dodge: '¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!',
+      dodge: '¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!',
       path: '¡Un dragoncito dorado está lejos del nido! Llévame por el camino del bosque hasta él, sin salirte.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
