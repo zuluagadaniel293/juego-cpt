@@ -83,14 +83,36 @@
   "murcielago": [
     {
       "file": "murcielago_1.mp3",
-      "id": 445958,
-      "name": "Cartoon - Bat / Mouse Squeak",
-      "autor": "Breviceps",
-      "duracion": 0.42,
+      "id": 109828,
+      "name": "TubeSqueak06_NTG3.wav",
+      "autor": "uwesoundboiz",
+      "duracion": 0.76,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/445958/",
-      "calificacion": 4.8,
-      "descargas": 7128
+      "url": "https://freesound.org/s/109828/",
+      "calificacion": 4.3,
+      "descargas": 175
+    },
+    {
+      "file": "murcielago_2.mp3",
+      "id": 109825,
+      "name": "TubeSqueak03_NTG3.wav",
+      "autor": "uwesoundboiz",
+      "duracion": 0.5,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/109825/",
+      "calificacion": 4.5,
+      "descargas": 192
+    },
+    {
+      "file": "murcielago_3.mp3",
+      "id": 109823,
+      "name": "TubeSqueak01_NTG3.wav",
+      "autor": "uwesoundboiz",
+      "duracion": 0.66,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/109823/",
+      "calificacion": 5,
+      "descargas": 175
     }
   ],
   "ardilla": [
@@ -586,36 +608,25 @@
   "aspiradora": [
     {
       "file": "aspiradora_1.mp3",
-      "id": 817673,
-      "name": "250726 - Vacuum cleaner - Philips PowerPro 7000 series - handle and tube sound",
-      "autor": "Sadiquecat",
-      "duracion": 4.1,
+      "id": 875419,
+      "name": "MOTRSrvo_Robotic Servo Short Arm Movement",
+      "autor": "harrisonlace",
+      "duracion": 1.07,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/817673/",
-      "calificacion": 0,
-      "descargas": 7
+      "url": "https://freesound.org/s/875419/",
+      "calificacion": 4.8,
+      "descargas": 78
     },
     {
       "file": "aspiradora_2.mp3",
-      "id": 817670,
-      "name": "250726 - Vacuum cleaner - Philips PowerPro 7000 series - Top handle n bucket lock Opening",
-      "autor": "Sadiquecat",
-      "duracion": 3.41,
+      "id": 207321,
+      "name": "Machine Shutdown",
+      "autor": "PatrickLieberkind",
+      "duracion": 5.97,
       "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/817670/",
-      "calificacion": 0,
-      "descargas": 7
-    },
-    {
-      "file": "aspiradora_3.mp3",
-      "id": 817669,
-      "name": "250726 - Vacuum cleaner - Philips PowerPro 7000 series - Top handle n bucket lock Opening n closing",
-      "autor": "Sadiquecat",
-      "duracion": 4.81,
-      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
-      "url": "https://freesound.org/s/817669/",
-      "calificacion": 0,
-      "descargas": 14
+      "url": "https://freesound.org/s/207321/",
+      "calificacion": 4.7,
+      "descargas": 12363
     }
   ],
   "pajaros": [
@@ -651,6 +662,1139 @@
       "url": "https://freesound.org/s/519105/",
       "calificacion": 4.8,
       "descargas": 1221
+    }
+  ],
+  "mariposa": [
+    {
+      "file": "mariposa_1.mp3",
+      "id": 244981,
+      "name": "Wing Flap (Flag Flapping) 6a",
+      "autor": "ani_music",
+      "duracion": 0.46,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/244981/",
+      "calificacion": 4.3,
+      "descargas": 3114
+    },
+    {
+      "file": "mariposa_2.mp3",
+      "id": 244980,
+      "name": "Wing Flap (Flag Flapping) 7a",
+      "autor": "ani_music",
+      "duracion": 0.38,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/244980/",
+      "calificacion": 4.3,
+      "descargas": 3883
+    },
+    {
+      "file": "mariposa_3.mp3",
+      "id": 244979,
+      "name": "Wing Flap (Flag Flapping) 1a",
+      "autor": "ani_music",
+      "duracion": 0.55,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/244979/",
+      "calificacion": 4.5,
+      "descargas": 2935
+    }
+  ],
+  "viento": [
+    {
+      "file": "viento_1.mp3",
+      "id": 471854,
+      "name": "Wind gust",
+      "autor": "wintuh",
+      "duracion": 5.39,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/471854/",
+      "calificacion": 4.6,
+      "descargas": 1469
+    },
+    {
+      "file": "viento_2.mp3",
+      "id": 738085,
+      "name": "WindGust",
+      "autor": "phuonglamb",
+      "duracion": 3.82,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/738085/",
+      "calificacion": 4.9,
+      "descargas": 685
+    },
+    {
+      "file": "viento_3.mp3",
+      "id": 381853,
+      "name": "wind_gust_short_sqeeeek.wav",
+      "autor": "sqeeeek",
+      "duracion": 2.08,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/381853/",
+      "calificacion": 4.6,
+      "descargas": 2414
+    }
+  ],
+  "rugido": [
+    {
+      "file": "rugido_1.mp3",
+      "id": 532155,
+      "name": "mighty dragon roaring",
+      "autor": "soundmast123",
+      "duracion": 3.99,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/532155/",
+      "calificacion": 4.7,
+      "descargas": 886
+    },
+    {
+      "file": "rugido_2.mp3",
+      "id": 442964,
+      "name": "Dragon Roar",
+      "autor": "qubodup",
+      "duracion": 3.1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/442964/",
+      "calificacion": 4.6,
+      "descargas": 3775
+    },
+    {
+      "file": "rugido_3.mp3",
+      "id": 85568,
+      "name": "DRAGON_ROAR.wav",
+      "autor": "JoelAudio",
+      "duracion": 2.47,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/85568/",
+      "calificacion": 4.6,
+      "descargas": 27242
+    }
+  ],
+  "libro_volador": [
+    {
+      "file": "libro_volador_1.mp3",
+      "id": 573067,
+      "name": "page_flipping_b.wav",
+      "autor": "j1987",
+      "duracion": 2.59,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/573067/",
+      "calificacion": 4.8,
+      "descargas": 414
+    },
+    {
+      "file": "libro_volador_2.mp3",
+      "id": 676674,
+      "name": "Page flip.wav",
+      "autor": "cameronpride",
+      "duracion": 0.63,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/676674/",
+      "calificacion": 4.6,
+      "descargas": 897
+    },
+    {
+      "file": "libro_volador_3.mp3",
+      "id": 730910,
+      "name": "FlippingPages",
+      "autor": "SlaVaXX",
+      "duracion": 3.43,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/730910/",
+      "calificacion": 4.4,
+      "descargas": 251
+    }
+  ],
+  "escoba_magica": [
+    {
+      "file": "escoba_magica_1.mp3",
+      "id": 423792,
+      "name": "Little Whoosh 1",
+      "autor": "ch_ase",
+      "duracion": 2.03,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/423792/",
+      "calificacion": 4.6,
+      "descargas": 5210
+    },
+    {
+      "file": "escoba_magica_2.mp3",
+      "id": 60019,
+      "name": "Quadruple Whoosh!!!",
+      "autor": "qubodup",
+      "duracion": 1.41,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/60019/",
+      "calificacion": 4.6,
+      "descargas": 6678
+    },
+    {
+      "file": "escoba_magica_3.mp3",
+      "id": 60025,
+      "name": "Double Whoosh 2",
+      "autor": "qubodup",
+      "duracion": 0.93,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/60025/",
+      "calificacion": 4.6,
+      "descargas": 3739
+    }
+  ],
+  "cohete": [
+    {
+      "file": "cohete_1.mp3",
+      "id": 857959,
+      "name": "Rocket Launch",
+      "autor": "gracenew",
+      "duracion": 2.9,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/857959/",
+      "calificacion": 4.9,
+      "descargas": 237
+    },
+    {
+      "file": "cohete_2.mp3",
+      "id": 521377,
+      "name": "Rocket Launch",
+      "autor": "Jarusca",
+      "duracion": 1.41,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/521377/",
+      "calificacion": 4.9,
+      "descargas": 5765
+    },
+    {
+      "file": "cohete_3.mp3",
+      "id": 170824,
+      "name": "Short Rocket Launch Station Standby for RTS Game",
+      "autor": "qubodup",
+      "duracion": 1.13,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/170824/",
+      "calificacion": 4.8,
+      "descargas": 548
+    }
+  ],
+  "satelite": [
+    {
+      "file": "satelite_1.mp3",
+      "id": 339131,
+      "name": "Beep Oops.wav",
+      "autor": "IndigoRay",
+      "duracion": 0.95,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/339131/",
+      "calificacion": 4.3,
+      "descargas": 400
+    },
+    {
+      "file": "satelite_2.mp3",
+      "id": 339129,
+      "name": "Beep Select.wav",
+      "autor": "IndigoRay",
+      "duracion": 0.39,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/339129/",
+      "calificacion": 3.9,
+      "descargas": 2662
+    },
+    {
+      "file": "satelite_3.mp3",
+      "id": 806096,
+      "name": "1025 hz beep censor",
+      "autor": "Sadiquecat",
+      "duracion": 0.4,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/806096/",
+      "calificacion": 4.9,
+      "descargas": 556
+    }
+  ],
+  "rover": [
+    {
+      "file": "rover_1.mp3",
+      "id": 740244,
+      "name": "Servo 6",
+      "autor": "JoontheFloof",
+      "duracion": 0.5,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/740244/",
+      "calificacion": 5,
+      "descargas": 75
+    },
+    {
+      "file": "rover_2.mp3",
+      "id": 740242,
+      "name": "Servo 4",
+      "autor": "JoontheFloof",
+      "duracion": 0.75,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/740242/",
+      "calificacion": 5,
+      "descargas": 76
+    },
+    {
+      "file": "rover_3.mp3",
+      "id": 740245,
+      "name": "Servo 7",
+      "autor": "JoontheFloof",
+      "duracion": 2,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/740245/",
+      "calificacion": 4.7,
+      "descargas": 147
+    }
+  ],
+  "radio": [
+    {
+      "file": "radio_1.mp3",
+      "id": 724706,
+      "name": "Glitchy Radio Static - Industrial SFX",
+      "autor": "9voltplasma",
+      "duracion": 1.75,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/724706/",
+      "calificacion": 5,
+      "descargas": 250
+    },
+    {
+      "file": "radio_2.mp3",
+      "id": 701330,
+      "name": "Walkie Talkie radio static",
+      "autor": "SEF7",
+      "duracion": 3.9,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/701330/",
+      "calificacion": 4.9,
+      "descargas": 629
+    },
+    {
+      "file": "radio_3.mp3",
+      "id": 235431,
+      "name": "Radio Static",
+      "autor": "stondi",
+      "duracion": 3.94,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/235431/",
+      "calificacion": 4.6,
+      "descargas": 2241
+    }
+  ],
+  "alarma": [
+    {
+      "file": "alarma_1.mp3",
+      "id": 242856,
+      "name": "Nuclear Alarm",
+      "autor": "plasterbrain",
+      "duracion": 2.17,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/242856/",
+      "calificacion": 4.8,
+      "descargas": 3360
+    },
+    {
+      "file": "alarma_2.mp3",
+      "id": 780800,
+      "name": "UIGlitch_User interface glitch sound, error, beep, alarm",
+      "autor": "pryanic",
+      "duracion": 1.11,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/780800/",
+      "calificacion": 4.3,
+      "descargas": 413
+    },
+    {
+      "file": "alarma_3.mp3",
+      "id": 333176,
+      "name": "beam_sound.wav",
+      "autor": "opensystem",
+      "duracion": 0.63,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/333176/",
+      "calificacion": 4.9,
+      "descargas": 1703
+    }
+  ],
+  "motor": [
+    {
+      "file": "motor_1.mp3",
+      "id": 130885,
+      "name": "FX background drone - spaceship (+FX).wav",
+      "autor": "Karma-Ron",
+      "duracion": 3.76,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/130885/",
+      "calificacion": 4.7,
+      "descargas": 1966
+    },
+    {
+      "file": "motor_2.mp3",
+      "id": 861960,
+      "name": "Soft Subtle Sci-Fi Hovercraft Engine Humm",
+      "autor": "qubodup",
+      "duracion": 2.39,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/861960/",
+      "calificacion": 5,
+      "descargas": 202
+    },
+    {
+      "file": "motor_3.mp3",
+      "id": 861970,
+      "name": "Retro 1930 Space Ship Engine Loop 2",
+      "autor": "qubodup",
+      "duracion": 5.11,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/861970/",
+      "calificacion": 0,
+      "descargas": 56
+    }
+  ],
+  "medusa": [
+    {
+      "file": "medusa_1.mp3",
+      "id": 192496,
+      "name": "Bubbles Light Short Descend.wav",
+      "autor": "murraysortz",
+      "duracion": 2.04,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/192496/",
+      "calificacion": 4.8,
+      "descargas": 290
+    },
+    {
+      "file": "medusa_2.mp3",
+      "id": 539819,
+      "name": "Bubbles 004.wav",
+      "autor": "ristooooo1",
+      "duracion": 3.34,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/539819/",
+      "calificacion": 4.8,
+      "descargas": 6339
+    },
+    {
+      "file": "medusa_3.mp3",
+      "id": 832418,
+      "name": "Bubble Button",
+      "autor": "kodshin",
+      "duracion": 0.4,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/832418/",
+      "calificacion": 4.9,
+      "descargas": 293
+    }
+  ],
+  "banco_de_peces": [
+    {
+      "file": "banco_de_peces_1.mp3",
+      "id": 627922,
+      "name": "sip and mouth swish.wav",
+      "autor": "EverydayEldritch",
+      "duracion": 3.62,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/627922/",
+      "calificacion": 4.5,
+      "descargas": 439
+    },
+    {
+      "file": "banco_de_peces_2.mp3",
+      "id": 151286,
+      "name": "Water 5.aif",
+      "autor": "timgormly",
+      "duracion": 0.75,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/151286/",
+      "calificacion": 5,
+      "descargas": 379
+    },
+    {
+      "file": "banco_de_peces_3.mp3",
+      "id": 151285,
+      "name": "Water 8.aif",
+      "autor": "timgormly",
+      "duracion": 1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/151285/",
+      "calificacion": 4.7,
+      "descargas": 236
+    }
+  ],
+  "estrella_de_mar": [
+    {
+      "file": "estrella_de_mar_1.mp3",
+      "id": 88497,
+      "name": "Squish.wav",
+      "autor": "davidou",
+      "duracion": 2.71,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/88497/",
+      "calificacion": 3.7,
+      "descargas": 2714
+    },
+    {
+      "file": "estrella_de_mar_2.mp3",
+      "id": 578795,
+      "name": "squish 4.mp3",
+      "autor": "nomiqbomi",
+      "duracion": 0.72,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/578795/",
+      "calificacion": 5,
+      "descargas": 171
+    },
+    {
+      "file": "estrella_de_mar_3.mp3",
+      "id": 578793,
+      "name": "squish 3.mp3",
+      "autor": "nomiqbomi",
+      "duracion": 0.72,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/578793/",
+      "calificacion": 5,
+      "descargas": 156
+    }
+  ],
+  "burbujas": [
+    {
+      "file": "burbujas_1.mp3",
+      "id": 840042,
+      "name": "Bubbles",
+      "autor": "hotpin7",
+      "duracion": 1.19,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/840042/",
+      "calificacion": 4.6,
+      "descargas": 516
+    },
+    {
+      "file": "burbujas_2.mp3",
+      "id": 539819,
+      "name": "Bubbles 004.wav",
+      "autor": "ristooooo1",
+      "duracion": 3.34,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/539819/",
+      "calificacion": 4.8,
+      "descargas": 6339
+    },
+    {
+      "file": "burbujas_3.mp3",
+      "id": 539823,
+      "name": "Bubbles 001.wav",
+      "autor": "ristooooo1",
+      "duracion": 4.8,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/539823/",
+      "calificacion": 4.8,
+      "descargas": 7444
+    }
+  ],
+  "corriente": [
+    {
+      "file": "corriente_1.mp3",
+      "id": 124544,
+      "name": "underwater explosion.wav",
+      "autor": "cubix",
+      "duracion": 5.59,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/124544/",
+      "calificacion": 4,
+      "descargas": 2866
+    },
+    {
+      "file": "corriente_2.mp3",
+      "id": 162253,
+      "name": "Underwater Diver Engineer Work",
+      "autor": "qubodup",
+      "duracion": 5.84,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/162253/",
+      "calificacion": 4.5,
+      "descargas": 827
+    },
+    {
+      "file": "corriente_3.mp3",
+      "id": 455251,
+      "name": "Retro, Underwater Shot",
+      "autor": "LilMati",
+      "duracion": 1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/455251/",
+      "calificacion": 4.5,
+      "descargas": 955
+    }
+  ],
+  "arqueopterix": [
+    {
+      "file": "arqueopterix_1.mp3",
+      "id": 543115,
+      "name": "bird_flapping_7.wav",
+      "autor": "Clusman",
+      "duracion": 1.14,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/543115/",
+      "calificacion": 4.6,
+      "descargas": 256
+    },
+    {
+      "file": "arqueopterix_2.mp3",
+      "id": 543112,
+      "name": "bird_flapping_4.wav",
+      "autor": "Clusman",
+      "duracion": 2.47,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/543112/",
+      "calificacion": 4.5,
+      "descargas": 334
+    },
+    {
+      "file": "arqueopterix_3.mp3",
+      "id": 543109,
+      "name": "bird_flapping_10.wav",
+      "autor": "Clusman",
+      "duracion": 1.22,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/543109/",
+      "calificacion": 4,
+      "descargas": 309
+    }
+  ],
+  "lagartija": [
+    {
+      "file": "lagartija_1.mp3",
+      "id": 398692,
+      "name": "Shake, Pepples, Short Scurry Med.wav",
+      "autor": "bbrocer",
+      "duracion": 0.62,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/398692/",
+      "calificacion": 4.5,
+      "descargas": 169
+    },
+    {
+      "file": "lagartija_2.mp3",
+      "id": 398693,
+      "name": "Shake, Pepples, Short Scurry Low.wav",
+      "autor": "bbrocer",
+      "duracion": 0.79,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/398693/",
+      "calificacion": 4,
+      "descargas": 259
+    },
+    {
+      "file": "lagartija_3.mp3",
+      "id": 398694,
+      "name": "Shake, Pepples, Short Roll - Scurry.wav",
+      "autor": "bbrocer",
+      "duracion": 0.96,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/398694/",
+      "calificacion": 4.6,
+      "descargas": 252
+    }
+  ],
+  "pisada": [
+    {
+      "file": "pisada_1.mp3",
+      "id": 815039,
+      "name": "Big robot footstep 005",
+      "autor": "AudioPapkin",
+      "duracion": 2.03,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/815039/",
+      "calificacion": 4.6,
+      "descargas": 544
+    },
+    {
+      "file": "pisada_2.mp3",
+      "id": 813054,
+      "name": "Big robot footstep 003",
+      "autor": "AudioPapkin",
+      "duracion": 1.82,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/813054/",
+      "calificacion": 5,
+      "descargas": 408
+    },
+    {
+      "file": "pisada_3.mp3",
+      "id": 813053,
+      "name": "Big robot footstep 002",
+      "autor": "AudioPapkin",
+      "duracion": 1.63,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/813053/",
+      "calificacion": 5,
+      "descargas": 494
+    }
+  ],
+  "volcan": [
+    {
+      "file": "volcan_1.mp3",
+      "id": 337850,
+      "name": "metal-hinges-rumble.wav",
+      "autor": "newagesoup",
+      "duracion": 1.6,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/337850/",
+      "calificacion": 4.7,
+      "descargas": 477
+    },
+    {
+      "file": "volcan_2.mp3",
+      "id": 132868,
+      "name": "Monster Long Rumble 1.wav",
+      "autor": "ecfike",
+      "duracion": 3.01,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/132868/",
+      "calificacion": 4.8,
+      "descargas": 686
+    },
+    {
+      "file": "volcan_3.mp3",
+      "id": 482877,
+      "name": "Rumble02.wav",
+      "autor": "CantikFrantik",
+      "duracion": 4.8,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/482877/",
+      "calificacion": 4.5,
+      "descargas": 269
+    }
+  ],
+  "engranaje": [
+    {
+      "file": "engranaje_1.mp3",
+      "id": 477630,
+      "name": "Plastic Grind Mechanism 1_5",
+      "autor": "Joao_Janz",
+      "duracion": 1.3,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/477630/",
+      "calificacion": 5,
+      "descargas": 276
+    },
+    {
+      "file": "engranaje_2.mp3",
+      "id": 708474,
+      "name": "SFX Bicycle Gear_Int_ Changing Bike Gear",
+      "autor": "Group39",
+      "duracion": 1.94,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/708474/",
+      "calificacion": 4.8,
+      "descargas": 221
+    },
+    {
+      "file": "engranaje_3.mp3",
+      "id": 410557,
+      "name": "Bycicle grears in reverse.wav",
+      "autor": "MichelleGrobler",
+      "duracion": 2.32,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/410557/",
+      "calificacion": 4.6,
+      "descargas": 1959
+    }
+  ],
+  "avion_de_papel": [
+    {
+      "file": "avion_de_papel_1.mp3",
+      "id": 234547,
+      "name": "Big Swoosh",
+      "autor": "Electroviolence",
+      "duracion": 2.53,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/234547/",
+      "calificacion": 4.8,
+      "descargas": 953
+    },
+    {
+      "file": "avion_de_papel_2.mp3",
+      "id": 585255,
+      "name": "swoosh-3-double.mp3",
+      "autor": "lesaucisson",
+      "duracion": 0.63,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/585255/",
+      "calificacion": 4.7,
+      "descargas": 3624
+    },
+    {
+      "file": "avion_de_papel_3.mp3",
+      "id": 585256,
+      "name": "swoosh-2.mp3",
+      "autor": "lesaucisson",
+      "duracion": 0.38,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/585256/",
+      "calificacion": 4.6,
+      "descargas": 12651
+    }
+  ],
+  "pitido": [
+    {
+      "file": "pitido_1.mp3",
+      "id": 363251,
+      "name": "Beeping Robot or Machine",
+      "autor": "Jofae",
+      "duracion": 1.56,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/363251/",
+      "calificacion": 4.6,
+      "descargas": 3164
+    },
+    {
+      "file": "pitido_2.mp3",
+      "id": 367851,
+      "name": "Beeping Machine",
+      "autor": "Jofae",
+      "duracion": 1.46,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/367851/",
+      "calificacion": 3.8,
+      "descargas": 985
+    },
+    {
+      "file": "pitido_3.mp3",
+      "id": 460824,
+      "name": "Robot beep",
+      "autor": "soundsofscienceupf",
+      "duracion": 2.84,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/460824/",
+      "calificacion": 3.8,
+      "descargas": 307
+    }
+  ],
+  "error": [
+    {
+      "file": "error_1.mp3",
+      "id": 493163,
+      "name": "Buzzer sounds (Wrong answer / Error)",
+      "autor": "Breviceps",
+      "duracion": 2.77,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/493163/",
+      "calificacion": 4.6,
+      "descargas": 9991
+    },
+    {
+      "file": "error_2.mp3",
+      "id": 700641,
+      "name": "Incorrect Buzzer",
+      "autor": "Producing_RayLite",
+      "duracion": 0.6,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/700641/",
+      "calificacion": 4.7,
+      "descargas": 3923
+    },
+    {
+      "file": "error_3.mp3",
+      "id": 531701,
+      "name": "Buzzer",
+      "autor": "Rickplayer",
+      "duracion": 1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/531701/",
+      "calificacion": 4.4,
+      "descargas": 443
+    }
+  ],
+  "maquina": [
+    {
+      "file": "maquina_1.mp3",
+      "id": 168989,
+      "name": "Designa Factory Sounds0002.wav",
+      "autor": "janusnovak",
+      "duracion": 3.22,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/168989/",
+      "calificacion": 3.5,
+      "descargas": 216
+    },
+    {
+      "file": "maquina_2.mp3",
+      "id": 168988,
+      "name": "Designa Factory Sounds0003.wav",
+      "autor": "janusnovak",
+      "duracion": 5.84,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/168988/",
+      "calificacion": 5,
+      "descargas": 494
+    },
+    {
+      "file": "maquina_3.mp3",
+      "id": 146258,
+      "name": "machine_small_switched_off.wav",
+      "autor": "Ferdinger",
+      "duracion": 4.34,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/146258/",
+      "calificacion": 4.3,
+      "descargas": 136
+    }
+  ],
+  "mariposa_azul": [
+    {
+      "file": "mariposa_azul_1.mp3",
+      "id": 244981,
+      "name": "Wing Flap (Flag Flapping) 6a",
+      "autor": "ani_music",
+      "duracion": 0.46,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/244981/",
+      "calificacion": 4.3,
+      "descargas": 3114
+    },
+    {
+      "file": "mariposa_azul_2.mp3",
+      "id": 244980,
+      "name": "Wing Flap (Flag Flapping) 7a",
+      "autor": "ani_music",
+      "duracion": 0.38,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/244980/",
+      "calificacion": 4.3,
+      "descargas": 3883
+    },
+    {
+      "file": "mariposa_azul_3.mp3",
+      "id": 244979,
+      "name": "Wing Flap (Flag Flapping) 1a",
+      "autor": "ani_music",
+      "duracion": 0.55,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/244979/",
+      "calificacion": 4.5,
+      "descargas": 2935
+    }
+  ],
+  "tambor": [
+    {
+      "file": "tambor_1.mp3",
+      "id": 697219,
+      "name": "Bass Drum A1.wav",
+      "autor": "gis_sweden",
+      "duracion": 0.79,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/697219/",
+      "calificacion": 4,
+      "descargas": 82
+    },
+    {
+      "file": "tambor_2.mp3",
+      "id": 673514,
+      "name": "Unholy Snare Drum 2",
+      "autor": "TheEndOfACycle",
+      "duracion": 1.38,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/673514/",
+      "calificacion": 5,
+      "descargas": 114
+    },
+    {
+      "file": "tambor_3.mp3",
+      "id": 673495,
+      "name": "Smack Snare Drum",
+      "autor": "TheEndOfACycle",
+      "duracion": 1.34,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/673495/",
+      "calificacion": 5,
+      "descargas": 100
+    }
+  ],
+  "caramelo": [
+    {
+      "file": "caramelo_1.mp3",
+      "id": 590215,
+      "name": "SFX_STICKERRIPPER_candyWrapper_40.wav",
+      "autor": "MrFossy",
+      "duracion": 0.38,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/590215/",
+      "calificacion": 5,
+      "descargas": 35
+    },
+    {
+      "file": "caramelo_2.mp3",
+      "id": 269338,
+      "name": "Candy Wrapper Crinkle",
+      "autor": "BluetoothBoy",
+      "duracion": 3.76,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/269338/",
+      "calificacion": 3,
+      "descargas": 305
+    },
+    {
+      "file": "caramelo_3.mp3",
+      "id": 872385,
+      "name": "Candy Wrapper",
+      "autor": "cb9382",
+      "duracion": 1.72,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/872385/",
+      "calificacion": 0,
+      "descargas": 32
+    }
+  ],
+  "globo_chicle": [
+    {
+      "file": "globo_chicle_1.mp3",
+      "id": 724414,
+      "name": "Bubble Gum (Popping)",
+      "autor": "moodyfingers",
+      "duracion": 0.61,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/724414/",
+      "calificacion": 3.9,
+      "descargas": 275
+    }
+  ],
+  "osito_verde": [
+    {
+      "file": "osito_verde_1.mp3",
+      "id": 861823,
+      "name": "Squeaky Toy 5",
+      "autor": "qubodup",
+      "duracion": 0.33,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/861823/",
+      "calificacion": 5,
+      "descargas": 63
+    },
+    {
+      "file": "osito_verde_2.mp3",
+      "id": 861824,
+      "name": "Squeaky Toy 6",
+      "autor": "qubodup",
+      "duracion": 0.45,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/861824/",
+      "calificacion": 4.5,
+      "descargas": 73
+    },
+    {
+      "file": "osito_verde_3.mp3",
+      "id": 861826,
+      "name": "Squeaky Toy 8",
+      "autor": "qubodup",
+      "duracion": 0.34,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/861826/",
+      "calificacion": 5,
+      "descargas": 60
+    }
+  ],
+  "campanita": [
+    {
+      "file": "campanita_1.mp3",
+      "id": 791474,
+      "name": "Bell 01 OS",
+      "autor": "Sadiquecat",
+      "duracion": 3.43,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/791474/",
+      "calificacion": 5,
+      "descargas": 122
+    },
+    {
+      "file": "campanita_2.mp3",
+      "id": 452371,
+      "name": "Small Bell",
+      "autor": "steffcaffrey",
+      "duracion": 2.1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/452371/",
+      "calificacion": 4.5,
+      "descargas": 1887
+    },
+    {
+      "file": "campanita_3.mp3",
+      "id": 791475,
+      "name": "Bell 02 OS",
+      "autor": "Sadiquecat",
+      "duracion": 3.85,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/791475/",
+      "calificacion": 4.8,
+      "descargas": 102
+    }
+  ],
+  "burbujeo": [
+    {
+      "file": "burbujeo_1.mp3",
+      "id": 844241,
+      "name": "Bubbling Water Notification – UI Alert (CC0)",
+      "autor": "ATP2-kh",
+      "duracion": 1.07,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/844241/",
+      "calificacion": 4.8,
+      "descargas": 355
+    },
+    {
+      "file": "burbujeo_2.mp3",
+      "id": 539819,
+      "name": "Bubbles 004.wav",
+      "autor": "ristooooo1",
+      "duracion": 3.34,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/539819/",
+      "calificacion": 4.8,
+      "descargas": 6339
+    },
+    {
+      "file": "burbujeo_3.mp3",
+      "id": 539823,
+      "name": "Bubbles 001.wav",
+      "autor": "ristooooo1",
+      "duracion": 4.8,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/539823/",
+      "calificacion": 4.8,
+      "descargas": 7444
+    }
+  ],
+  "crujido": [
+    {
+      "file": "crujido_1.mp3",
+      "id": 316926,
+      "name": "Bite potato chips",
+      "autor": "sammy214",
+      "duracion": 2.4,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/316926/",
+      "calificacion": 4.1,
+      "descargas": 1456
+    },
+    {
+      "file": "crujido_2.mp3",
+      "id": 334210,
+      "name": "Eating Biscuit",
+      "autor": "WasabiWielder",
+      "duracion": 2.72,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/334210/",
+      "calificacion": 3.6,
+      "descargas": 1673
+    },
+    {
+      "file": "crujido_3.mp3",
+      "id": 33906,
+      "name": "aluminum02.wav",
+      "autor": "Necrosensual",
+      "duracion": 1.1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/33906/",
+      "calificacion": 5,
+      "descargas": 236
     }
   ]
 }
