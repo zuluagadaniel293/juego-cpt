@@ -16,9 +16,9 @@ class MinigameSelectScene extends Phaser.Scene {
     this.add.text(W / 2, 104, th.label, { font: 'bold 20px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
 
     const tex = TEX[this.themeKey];
-    const icons = { classic: tex.target, catch: tex.catcher, race: tex.hero_run, find: 'icon_find', memory: 'icon_memory' };
+    const icons = { classic: tex.target, catch: tex.catcher, race: tex.hero_run, find: 'icon_find', memory: 'icon_memory', dodge: tex.fx_fly_1 || tex.villain };
     // 7 juegos en 2 filas: los 4 de atención (CPT) arriba; Memoria y los formatos de examen (Menos uno, Pista) abajo
-    const rows = [['classic', 'catch', 'race', 'find'], ['memory', 'notx', 'ax']];
+    const rows = [['classic', 'catch', 'race', 'find'], ['memory', 'notx', 'ax', 'dodge']];
     rows.forEach((row, r) => row.forEach((mg, i) => {
       const x = W / 2 + (i - (row.length - 1) / 2) * 230, y = r === 0 ? 242 : 442;
       const card = drawCard(this, x, y, 210, 178, 0xffffff, 0.07, th.accent);

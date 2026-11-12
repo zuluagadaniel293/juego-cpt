@@ -54,7 +54,9 @@ function levelStats(log) {
 function starsFor(s, mg) {
   if (mg === 'memory') return s.hitRate >= 0.8 ? 3 : s.hitRate >= 0.6 ? 2 : s.hitRate >= 0.4 ? 1 : 0;
   const hitRate = s.targets ? s.hitRate : 1;
-  const base = mg === 'find' ? s.trials : s.distractors;
+  // Encuentra y Esquiva: los errores se cuentan sobre todos los intentos (en Esquiva frenan pocos poderes por nivel,
+  // y un solo error no debe quitar todas las estrellas)
+  const base = mg === 'find' || mg === 'dodge' ? s.trials : s.distractors;
   const commRate = base ? s.commissions / base : 0;
   if (hitRate >= 0.9 && commRate <= 0.1) return 3;
   if (hitRate >= 0.75 && commRate <= 0.25) return 2;
@@ -71,6 +73,7 @@ const CSV_TEXT = {
   // Menos uno y Pista: qué tipo de estímulo era (ver GUIA_CSV.md)
   condition: {
     responder: 'responder', no_responder: 'no_responder',
+    esquivar: 'esquivar', frenar: 'frenar',   // Esquiva
     A: 'pista', AX: 'pista_y_objetivo', AY: 'pista_sin_objetivo', BX: 'objetivo_sin_pista', BY: 'ni_pista_ni_objetivo'
   },
   outcome: {
@@ -107,6 +110,7 @@ function downloadCSV(log, name) {
     ['tipo_estimulo', r => CSV_TEXT.stimulus_type[r.stimulus_type] || r.stimulus_type],
     ['que_aparecio', r => stimulusLabel(r.theme, r.stimulus_key)],
     ['condicion', r => CSV_TEXT.condition[r.condition] || r.condition],
+    ['freno_ms', r => r.stop_ms],   // Esquiva: cuándo se detuvo el poder (ms después de lanzado)
     ['momento_ms', r => r.onset_ms],
     ['respondio', r => (r.responded === undefined ? '' : r.responded ? 'si' : 'no')],
     ['tiempo_reaccion_ms', r => r.rt_ms],

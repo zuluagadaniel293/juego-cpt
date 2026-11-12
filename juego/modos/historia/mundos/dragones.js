@@ -21,7 +21,8 @@ registrarMundo('fantasy', {
       find: 'Mis hermanitos se escondieron entre muchos dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
       notx: '¡Al revés! Los dragoncitos de otras familias van a su casa: tócalos a todos... ¡menos a los dorados, que van a mi nido!',
       ax: 'Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
-      memory: '¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.'
+      memory: '¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.',
+      dodge: '¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -32,7 +33,8 @@ registrarMundo('fantasy', {
       find: 'Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!',
       memory: '¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!',
-      ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!'
+      ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!',
+      dodge: '¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.',

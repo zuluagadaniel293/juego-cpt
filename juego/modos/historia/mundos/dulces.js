@@ -21,7 +21,8 @@ registrarMundo('candy', {
       find: 'Ácido escondió a Chispita entre muchos dulces... ¡Encuéntrala para encenderla! Y si no está, ¡no toques nada!',
       notx: '¡Al revés! Saluda a todos los dulces... ¡pero no a Chispita, que está guardando su brillo!',
       ax: 'Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!',
-      memory: '¡Chispita salta de dulce en dulce dejando chispitas! Mira bien su camino y repítelo.'
+      memory: '¡Chispita salta de dulce en dulce dejando chispitas! Mira bien su camino y repítelo.',
+      dodge: '¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -32,7 +33,8 @@ registrarMundo('candy', {
       find: 'Mis amigos dulces y Ácido están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡Ácido salta de dulce en dulce! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos mis amigos dulces... ¡pero NUNCA a Ácido!',
-      ax: 'Ácido solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
+      ax: 'Ácido solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
+      dodge: '¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.',

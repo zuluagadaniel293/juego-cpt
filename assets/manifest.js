@@ -388,6 +388,15 @@ window.ASSETS = {
     hz_wall_metal: 'comunes/hechizos/pared_metal.png',
     hz_water: 'comunes/hechizos/agua.png',
     hz_ink: 'comunes/hechizos/nube_tinta.png',
+    // marcas que dejan los poderes al caer (Esquiva, juego/escenas/esquiva.js)
+    mk_charco: 'comunes/marcas/charco_agua.png',
+    mk_crater: 'comunes/marcas/crater.png',
+    mk_espiral: 'comunes/marcas/espiral.png',
+    mk_estallido: 'comunes/marcas/estallido_magico.png',
+    mk_hojas: 'comunes/marcas/hojas.png',
+    mk_libro: 'comunes/marcas/libro_abierto.png',
+    mk_fuego: 'comunes/marcas/quemadura_fuego.png',
+    mk_rayo: 'comunes/marcas/quemadura_rayo.png',
     basket:      'comunes/canasta.png',          // minijuego Atrapa
     net:         'comunes/red.png',              // atrapar al villano
     fireball:    'comunes/bola_de_fuego.png',    // poder de Chispa

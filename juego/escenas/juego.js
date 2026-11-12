@@ -27,7 +27,8 @@ class GameScene extends Phaser.Scene {
       this.params = challengeParams(data.level, data.minigame);
     }
     this.mg = this.params.minigame;
-    this.twist = worldTwist(this);   // giro del mundo (gravedad cero, corriente...): solo Historia y Desafío
+    this.twist = worldTwist(this);
+    if (this.mg === 'dodge' && this.twist && this.twist.motion) this.twist = null;   // en Esquiva solo los giros de ambiente   // giro del mundo (gravedad cero, corriente...): solo Historia y Desafío
     this.powers = this.mode !== 'prueba';   // la Prueba fija conserva el feedback simple de siempre
     // Qué se busca: la señal/objetivo de siempre, o el villano escondido entre los amigos ("nivel de personajes").
     // Jefe final: primero se rescata al objetivo del mundo (señales) y después se atrapa al villano (personajes).
@@ -35,6 +36,7 @@ class GameScene extends Phaser.Scene {
     // señales, para comparar sesiones.
     this.chars = this.boss ? this.phase > 0 : (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
       : this.mode === 'desafio' ? Math.random() < 0.5 : false);
+    if (this.mg === 'dodge') this.chars = false;   // en Esquiva siempre lanza el villano
     const tex = TEX[this.themeKey];
     // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
     this.buddyRole = this.companionRole();
@@ -87,7 +89,7 @@ class GameScene extends Phaser.Scene {
     // Contador de la misión del mundo ("Hojas para Dino: 3"): solo para motivar, no cambia estrellas ni datos.
     // No sale en la Prueba fija, ni cuando se busca al villano, ni en Menos uno (ahí se toca a los demás).
     this.missionCount = 0; this.missionText = null;
-    if (this.mode !== 'prueba' && !this.chars && th.missionCount && this.mg !== 'notx') {
+    if (this.mode !== 'prueba' && !this.chars && th.missionCount && this.mg !== 'notx' && this.mg !== 'dodge') {
       // arriba a la derecha, bajo el botón de salir (a la izquierda están el protagonista y el compañero)
       this.missionText = this.add.text(W - 20, 54, th.missionCount + ': 0',
         { font: 'bold 17px Arial', color: '#ffffff', stroke: '#0f172a', strokeThickness: 4 }).setOrigin(1, 0.5).setDepth(5);
@@ -131,7 +133,17 @@ class GameScene extends Phaser.Scene {
     const yes = (x, k, r) => { add(this.add.circle(x, exY, r || 64, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e)); add(fit(this.add.image(x, exY, k), (r || 64) * 1.5)); };
     const no = (x, k) => { add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444)); add(fit(this.add.image(x, exY, k), 84)); };
     const dists = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
-    if (this.mg === 'notx' || this.mg === 'ax') {
+    if (this.mg === 'dodge') {
+      // los 2 poderes del villano: el que baja directo y el que puede frenar
+      const pw = DODGE_POWERS[this.themeKey] || DODGE_POWERS.heroes;
+      [[300, pw[0], '¡Quítate del camino!', 0x22c55e, '#86efac'], [660, pw[1], 'Si frena en rojo: ¡quieto!', 0xef4444, '#fca5a5']]
+        .forEach(([x, p, s, col, tc]) => {
+          add(this.add.circle(x, exY, 60, col, 0.15).setStrokeStyle(4, col));
+          const k = dodgeTex(this, p.img);
+          if (k) { const im = add(fit(this.add.image(x, exY, k), 84)); if (p.tint) im.setTint(p.tint); }
+          txt(x, exY + 84, s, 22, tc);
+        });
+    } else if (this.mg === 'notx' || this.mg === 'ax') {
       this.playDemo(add, txt);   // demostración animada paso a paso
     } else {
       yes(260, this.keys.target);
@@ -164,6 +176,11 @@ class GameScene extends Phaser.Scene {
       if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Arrastra el dedo para mover ' + holder + '. Atrapa solo ' + what + ' y esquiva lo demás'; }
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
       if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
+    } else if (this.mg === 'dodge') {
+      const of = th.villainObj.replace(/^al /, 'del ').replace(/^a /, 'de ');
+      const rest = ' Esquiva los poderes ' + of + '... pero si un poder frena en el aire, ¡no te muevas!';
+      if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Toca a un lado de tu personaje para moverte.' + rest; }
+      else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Muévete con las flechas.' + rest; }
     } else if (this.mg === 'race') {
       if (touch) { icon(220, ctrlY, '👆'); explain = chase + 'Toca arriba o abajo de tu personaje para cambiar de carril. Alcanza solo ' + what; }
       else { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = chase + 'Cambia de carril con las flechas. Alcanza solo ' + what; }
@@ -308,6 +325,7 @@ class GameScene extends Phaser.Scene {
         else if (y > this.runner.y + 30) move(1);
       });
     }
+    if (this.mg === 'dodge') this.setupDodge();   // juego/escenas/esquiva.js
     // En Clásico y Encuentra, el protagonista aparece abajo a la izquierda y lanza su poder.
     // En Carrera, si corre el amigo, el protagonista va arriba a la izquierda (encima de la pista) y le lanza el poder.
     if (this.powers && (CLASSIC_LIKE.includes(this.mg) || this.mg === 'find' || this.runnerRole)) {
@@ -326,6 +344,7 @@ class GameScene extends Phaser.Scene {
     this.started = true;
     if (CLASSIC_LIKE.includes(this.mg)) this.nextTrial();
     else if (this.mg === 'find') this.nextFindTrial();
+    else if (this.mg === 'dodge') this.time.delayedCall(500, () => this.nextDodge());
     else this.scheduleSpawn();
     if (this.lead) this.time.delayedCall(1200, () => this.moveLead());
     this.scheduleAudio();
@@ -824,9 +843,10 @@ class GameScene extends Phaser.Scene {
   // El villano dice algo y se le ve: en Carrera ya está adelante (se sacude riéndose); en los demás juegos sale
   // en su escena de fondo con esa voz (o se asoma por una esquina si esa voz no tiene escena propia)
   villainSpeaks(name) {
-    if (this.mg === 'race') {
+    if (this.mg === 'race' || this.mg === 'dodge') {
       this.castVoice(name);
-      if (this.lead) this.tweens.add({ targets: this.lead, scale: this.lead.scale * 1.15, duration: 150, yoyo: true, repeat: 3 });
+      const who = this.lead || this.dodgeVillain;
+      if (who) this.tweens.add({ targets: who, scale: this.lead.scale * 1.15, duration: 150, yoyo: true, repeat: 3 });
       return;
     }
     const D = DISTRACTORS[this.themeKey];
@@ -841,7 +861,7 @@ class GameScene extends Phaser.Scene {
     const P = this.params;
     const D = DISTRACTORS[this.themeKey];
     const list = D.visual
-      .filter(v => !((this.mg === 'catch' || this.mg === 'memory') && v.kind === 'walk'));   // abajo está la canasta / las casillas
+      .filter(v => !((this.mg === 'catch' || this.mg === 'memory' || this.mg === 'dodge') && v.kind === 'walk'));   // abajo está la canasta / las casillas
     // Personajes del mundo (villano y amigos) desde su nivel. No en el jefe final (ahí ya son el objetivo y los
     // distractores) ni en Carrera (el villano ya va adelante).
     // (con personajes tampoco: el villano y los amigos ya son los estímulos). Cada mundo tiene un solo amigo al que
@@ -850,7 +870,7 @@ class GameScene extends Phaser.Scene {
     const villainName = this.theme.villain.toLowerCase().replace(/[^a-záéíóúñ]+/g, '_');
     const extra = [{ name: villainName + '_roba_tesoro', kind: 'steal', minLevel: 2 },
       { name: villainName + '_lanza_' + (WORLD_SPLASH[this.themeKey] || WORLD_SPLASH.heroes).name, kind: 'splash', minLevel: 3 }];
-    const cast = this.mode === 'prueba' || this.chars || this.mg === 'race' ? []
+    const cast = this.mode === 'prueba' || this.chars || this.mg === 'race' || this.mg === 'dodge' ? []
       : (D.cast || []).concat(extra).filter(c => (this.level || 0) >= c.minLevel && !(c.friend && c.friend === this.buddyRole));
     if (!P.visual || !list.length) return;
     const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);

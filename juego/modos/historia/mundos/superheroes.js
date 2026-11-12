@@ -20,7 +20,8 @@ registrarMundo('heroes', {
       find: 'Sombra pegó su señal entre muchas otras... ¡Encuéntrala para borrarla! Y si no está, ¡no toques nada!',
       notx: '¡Al revés! Toca todas las señales de mis amigos héroes para encenderlas... ¡pero NUNCA la de Sombra!',
       ax: 'Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!',
-      memory: '¡Sombra pinta su señal en varios edificios, uno tras otro! Mira bien el orden y repítelo para borrarlas todas.'
+      memory: '¡Sombra pinta su señal en varios edificios, uno tras otro! Mira bien el orden y repítelo para borrarlas todas.',
+      dodge: '¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -31,7 +32,8 @@ registrarMundo('heroes', {
       find: 'Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!',
       memory: '¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!',
-      ax: 'Sombra solo aparece justo después de {pista}: esa es la pista. ¡Toca a Sombra solo si justo antes salió {pista}!'
+      ax: 'Sombra solo aparece justo después de {pista}: esa es la pista. ¡Toca a Sombra solo si justo antes salió {pista}!',
+      dodge: '¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.',

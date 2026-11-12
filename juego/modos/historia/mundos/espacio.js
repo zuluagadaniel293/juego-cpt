@@ -21,7 +21,8 @@ registrarMundo('space', {
       find: 'Bip y sus hermanitos se esconden entre muchos aliens... ¡Encuentra al verde! Y si no está, ¡no toques nada!',
       notx: '¡Al revés! Los otros aliens vuelven a sus planetas: tócalos a todos... ¡menos a Bip, que viene a la base!',
       ax: 'Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!',
-      memory: '¡Bip salta de asteroide en asteroide! Mira bien su camino y repítelo para guiar la nave.'
+      memory: '¡Bip salta de asteroide en asteroide! Mira bien su camino y repítelo para guiar la nave.',
+      dodge: '¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -32,7 +33,8 @@ registrarMundo('space', {
       find: 'La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
       memory: '¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!',
-      ax: 'El Capitán Meteoro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!'
+      ax: 'El Capitán Meteoro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
+      dodge: '¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.',

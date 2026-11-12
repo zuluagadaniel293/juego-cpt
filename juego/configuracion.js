@@ -41,7 +41,10 @@ const MG = {
   // Menos uno = como el Conners CPT-3: se responde a todo MENOS al objetivo (aparece 1 de cada 10 veces)
   notx:    { label: 'Menos uno', verb: 'Acertaste',   desc: 'Toca todo menos\nla del villano' },
   // Pista = como el AX-CPT: se responde al objetivo SOLO si justo antes apareció la pista (memoria de trabajo)
-  ax:      { label: 'Pista',     verb: 'Encontraste', desc: 'Solo si antes\nsalió la pista' }
+  ax:      { label: 'Pista',     verb: 'Encontraste', desc: 'Solo si antes\nsalió la pista' },
+  // Esquiva = como la tarea de la señal de parar (Stop-Signal): esquivar los poderes del villano, y quedarse quieto
+  // cuando el poder frena en el aire (juego/escenas/esquiva.js)
+  dodge:   { label: 'Esquiva',   verb: 'Esquivaste',  desc: 'Esquiva, pero si\nfrena, ¡quieto!' }
 };
 // Juegos que funcionan como el Clásico (un estímulo en el centro; se responde con ESPACIO o tocando)
 const CLASSIC_LIKE = ['classic', 'notx', 'ax'];
@@ -83,7 +86,12 @@ function challengeParams(level, minigame) {
     noGoProb: 0.1,
     // Pista (AX-CPT): tras la pista sale el objetivo el 70% de las veces (AX); sin pista, a veces sale la pista
     // (A) o el objetivo solo (BX, la trampa que mide si recordó la pista)
-    axCueProb: 0.3, axAfterCue: 0.7, axLureProb: 0.12
+    axCueProb: 0.3, axAfterCue: 0.7, axLureProb: 0.12,
+    // Esquiva: lo que tarda el poder en caer, cuántos frenan y en qué momento del camino frenan (más tarde = más
+    // difícil aguantarse). Entre poderes, la pausa de isiMin a isiMax.
+    dodgeTravelMs: Math.max(1100, 2300 - 120 * L),
+    dodgeStopProb: 0.25,
+    dodgeStopFrac: Math.min(0.65, 0.4 + 0.03 * L)
   };
 }
 

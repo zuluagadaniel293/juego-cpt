@@ -91,7 +91,7 @@ const VOCES_REPARTO = {
   }
 };
 const AMIGOS = ['friend1', 'friend2', 'friend3'];
-const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax'];
+const JUEGOS = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax', 'dodge'];
 
 // 1. Leer los mundos (solo hace falta lo que pasan a registrarMundo)
 const mundos = {};

@@ -37,13 +37,14 @@ Cada fila es **un evento**:
 | `nivel` | Nivel de dificultad (1 = más fácil) |
 | `capitulo` | Capítulo de la Historia (1 a 5) |
 | `fase_jefe` | En el jefe final: 1 = atrapar con la red, 2 = persecución |
-| `minijuego` | Clásico, Atrapa, Carrera o Encuentra |
+| `minijuego` | Clásico, Atrapa, Carrera, Encuentra, Menos uno, Pista o Esquiva |
 | `ensayo` | Número de estímulo dentro de la partida (1, 2, 3...) |
 | `tipo_estimulo` | **objetivo** (había que responder) o **distractor** (había que ignorarlo) |
 | `que_aparecio` | Qué imagen apareció (por ejemplo `senal_de_sombra`, `dragon_bebe_rojo`) o qué distractor del entorno |
 | `momento_ms` | Cuándo apareció, en milisegundos desde el inicio (60000 = minuto 1) |
 | `respondio` | si / no |
 | `tiempo_reaccion_ms` | Cuánto tardó en responder (solo si respondió) |
+| `freno_ms` | Solo en Esquiva: cuándo se detuvo el poder (ver la sección Esquiva) |
 | `resultado` | Ver la tabla siguiente |
 
 ## Resultados
@@ -125,6 +126,21 @@ Mide atención sostenida y **memoria de trabajo** (hay que recordar la pista).
 En la **Zona de adultos** se puede elegir cualquiera de las tres pruebas fijas (CPT clásico, Menos uno, Pista), siempre
 con los mismos parámetros para comparar sesiones. La pantalla de resultados muestra los errores por condición.
 **No es un diagnóstico**: sirve para seguir el progreso del niño.
+
+## Esquiva (formato tipo "señal de parar" o Stop-Signal)
+El villano, arriba, le lanza sus poderes al protagonista, que está abajo en uno de 3 carriles y se mueve con las
+flechas (o tocando a un lado). Una sombra en el suelo avisa dónde va a caer.
+
+| `condicion` | Qué pasa | `tipo_estimulo` | Resultado |
+|---|---|---|---|
+| `esquivar` | El poder baja directo: hay que cambiarse de carril | objetivo | `acierto` = lo esquivó · `omision` = le cayó encima |
+| `frenar` | El poder se detiene en el aire (brilla en rojo) y se devuelve: hay que NO moverse | distractor | `ignoro_bien` = se quedó quieto · `error_impulsivo` = se movió |
+
+- Frena más o menos 1 de cada 4 poderes. Cada villano tiene 2 poderes: el primero siempre baja directo y el segundo es el que puede frenar (a veces frena y a veces no).
+- **`freno_ms`**: cuántos ms después de lanzado se detuvo el poder (vacío si no frenó). Con el nivel frena más tarde (del 40 % al 65 % del camino), así que es más difícil aguantarse.
+- **`tiempo_reaccion_ms`**: cuándo se movió por primera vez después del lanzamiento. Si se mueve en un `frenar`, también se guarda.
+- **Para interpretar**: muchos `error_impulsivo` en `frenar` = le cuesta frenar un movimiento ya empezado (inhibición). Muchas `omision` en `esquivar` = reacciona tarde o se distrae.
+- Las estrellas cuentan los errores sobre todos los lanzamientos. Solo motivan: no cambian lo que se guarda en el CSV.
 
 ## Atrapa: objetos que se descubren al cruzar la línea
 Desde el nivel 2, en Atrapa los objetos caen como **sombras iguales** y solo muestran qué son al cruzar una línea
