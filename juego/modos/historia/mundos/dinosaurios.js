@@ -21,7 +21,8 @@ registrarMundo('dinos', {
       notx: '¡Al revés! Los dinosaurios del valle tienen hambre: dales todas las hojas... ¡menos las doradas, que son para Dino!',
       ax: 'Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!',
       memory: '¡El viento lleva la hoja dorada de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.',
-      dodge: '¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!'
+      dodge: '¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!',
+      path: '¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la hoja dorada).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,7 +34,8 @@ registrarMundo('dinos', {
       memory: '¡El Pterodáctilo Ladrón salta de roca en roca escondiendo hojas! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Saluda a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!',
       ax: 'El Pterodáctilo Ladrón solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
-      dodge: '¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!'
+      dodge: '¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!',
+      path: '¡Hay una hoja dorada al final del sendero! Llévame hasta ella sin salirte del camino.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.',

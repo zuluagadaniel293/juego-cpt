@@ -29,7 +29,7 @@ function registrarMundo(key, m) {
 // Memoria), de preferencia los que no salieron en los capítulos. Así ningún mundo repite siempre lo mismo.
 // La dificultad la pone el nivel (1, 2, 3, 4 y 6 el jefe), no el juego. El orden se guarda para que el mapa
 // no cambie mientras el niño avanza, y se vuelve a sortear cuando vence al jefe final.
-const STORY_GAMES = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax', 'dodge'];
+const STORY_GAMES = ['classic', 'catch', 'race', 'find', 'memory', 'notx', 'ax', 'dodge', 'path'];
 const BOSS_GAMES = ['classic', 'catch', 'race', 'find', 'memory'];
 const ORDER_KEY = 'cpt_order_v3';   // v3: el jefe también sortea sus 2 fases
 function storyOrder(theme) {
@@ -51,8 +51,8 @@ function storyOrder(theme) {
 }
 // ¿El capítulo i es de personajes (el villano escondido entre los amigos)?
 function chapterChars(theme, i) {
-  // en Esquiva siempre es el villano el que lanza: no hay versión de personajes
-  return !STORY[theme].chapters[i].boss && storyOrder(theme).chars[i] && storyOrder(theme).chapters[i] !== 'dodge';
+  // en Esquiva (siempre lanza el villano) y en Camino no hay versión de personajes
+  return !STORY[theme].chapters[i].boss && storyOrder(theme).chars[i] && !['dodge', 'path'].includes(storyOrder(theme).chapters[i]);
 }
 const chapterGames = theme => storyOrder(theme).chapters;
 function chapterGame(theme, i) {

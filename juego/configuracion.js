@@ -44,7 +44,10 @@ const MG = {
   ax:      { label: 'Pista',     verb: 'Encontraste', desc: 'Solo si antes\nsalió la pista' },
   // Esquiva = como la tarea de la señal de parar (Stop-Signal): esquivar los poderes del villano, y quedarse quieto
   // cuando el poder frena en el aire (juego/escenas/esquiva.js)
-  dodge:   { label: 'Esquiva',   verb: 'Esquivaste',  desc: 'Esquiva, pero si\nfrena, ¡quieto!' }
+  dodge:   { label: 'Esquiva',   verb: 'Esquivaste',  desc: 'Esquiva, pero si\nfrena, ¡quieto!' },
+  // Camino = como las pruebas de precisión visomotora: llevar al personaje por el camino sin salirse
+  // (desde el nivel 3 el camino se borra: hay que recordarlo). juego/escenas/camino.js
+  path:    { label: 'Camino',    verb: 'Recorriste',  desc: 'Sigue el camino\nsin salirte' }
 };
 // Juegos que funcionan como el Clásico (un estímulo en el centro; se responde con ESPACIO o tocando)
 const CLASSIC_LIKE = ['classic', 'notx', 'ax'];

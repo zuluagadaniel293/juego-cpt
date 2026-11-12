@@ -46,7 +46,7 @@ class ChapterMapScene extends Phaser.Scene {
         // en los demás), con un "?" y un candado pequeño, para dar curiosidad. Encuentra y Memoria usan el objetivo:
         // sus íconos vienen en baldosa y la silueta sería un cuadrado
         const what = ch.boss || chapterChars(this.themeKey, i) ? TEX[this.themeKey].villain
-          : { classic: TEX[this.themeKey].target, catch: TEX[this.themeKey].catcher, race: TEX[this.themeKey].hero_run, find: TEX[this.themeKey].target, dodge: TEX[this.themeKey].fx_fly_1 || TEX[this.themeKey].villain,
+          : { classic: TEX[this.themeKey].target, catch: TEX[this.themeKey].catcher, race: TEX[this.themeKey].hero_run, find: TEX[this.themeKey].target, dodge: TEX[this.themeKey].fx_fly_1 || TEX[this.themeKey].villain, path: TEX[this.themeKey].hero_run || TEX[this.themeKey].hero,
               memory: TEX[this.themeKey].target, notx: TEX[this.themeKey].target, ax: TEX[this.themeKey].dist1 }[chapterGame(this.themeKey, i)];
         const objs = mysteryNode(this, x, y, r, silhouetteOf(this, what), ch.boss ? 0x7c3aed : undefined);
         objs.push(fit(this.add.image(x - r * 0.7, y + r * 0.7, 'icon_lock'), ch.boss ? 30 : 24));

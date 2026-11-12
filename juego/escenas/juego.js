@@ -28,7 +28,7 @@ class GameScene extends Phaser.Scene {
     }
     this.mg = this.params.minigame;
     this.twist = worldTwist(this);
-    if (this.mg === 'dodge' && this.twist && this.twist.motion) this.twist = null;   // en Esquiva solo los giros de ambiente   // giro del mundo (gravedad cero, corriente...): solo Historia y Desafío
+    if ((this.mg === 'dodge' || this.mg === 'path') && this.twist && this.twist.motion) this.twist = null;   // en Esquiva solo los giros de ambiente   // giro del mundo (gravedad cero, corriente...): solo Historia y Desafío
     this.powers = this.mode !== 'prueba';   // la Prueba fija conserva el feedback simple de siempre
     // Qué se busca: la señal/objetivo de siempre, o el villano escondido entre los amigos ("nivel de personajes").
     // Jefe final: primero se rescata al objetivo del mundo (señales) y después se atrapa al villano (personajes).
@@ -36,7 +36,7 @@ class GameScene extends Phaser.Scene {
     // señales, para comparar sesiones.
     this.chars = this.boss ? this.phase > 0 : (this.mode === 'historia' ? chapterChars(this.themeKey, this.chapter)
       : this.mode === 'desafio' ? Math.random() < 0.5 : false);
-    if (this.mg === 'dodge') this.chars = false;   // en Esquiva siempre lanza el villano
+    if (this.mg === 'dodge' || this.mg === 'path') this.chars = false;   // en Esquiva siempre lanza el villano
     const tex = TEX[this.themeKey];
     // Los amigos que pueden salir como distractores: nunca el compañero que acompaña en la esquina
     this.buddyRole = this.companionRole();
@@ -133,7 +133,13 @@ class GameScene extends Phaser.Scene {
     const yes = (x, k, r) => { add(this.add.circle(x, exY, r || 64, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e)); add(fit(this.add.image(x, exY, k), (r || 64) * 1.5)); };
     const no = (x, k) => { add(this.add.circle(x, exY, 56, 0xef4444, 0.12).setStrokeStyle(3, 0xef4444)); add(fit(this.add.image(x, exY, k), 84)); };
     const dists = [this.keys.dists[0], this.keys.dists[1]].filter(Boolean);
-    if (this.mg === 'dodge') {
+    if (this.mg === 'path') {
+      yes(330, this.keys.target);
+      txt(330, exY + 84, '¡Llega hasta aquí!', 22, '#86efac');
+      const road = add(this.add.graphics());
+      road.lineStyle(34, th.accent, 0.5); road.lineBetween(520, exY + 20, 600, exY - 20); road.lineBetween(600, exY - 20, 690, exY + 10);
+      txt(605, exY + 84, 'Sin salirte del camino', 22, '#fca5a5');
+    } else if (this.mg === 'dodge') {
       // los 2 poderes del villano: el que baja directo y el que puede frenar
       const pw = DODGE_POWERS[this.themeKey] || DODGE_POWERS.heroes;
       [[300, pw[0], '¡Quítate del camino!', 0x22c55e, '#86efac'], [660, pw[1], 'Si frena en rojo: ¡quieto!', 0xef4444, '#fca5a5']]
@@ -176,6 +182,10 @@ class GameScene extends Phaser.Scene {
       if (touch) { icon(220, ctrlY, '👆↔'); explain = 'Arrastra el dedo para mover ' + holder + '. Atrapa solo ' + what + ' y esquiva lo demás'; }
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Mueve ' + holder + ' con las flechas (o el ratón). Atrapa solo ' + what + ' y esquiva lo demás'; }
       if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
+    } else if (this.mg === 'path') {
+      const rest = ' Lleva a tu personaje por el camino hasta ' + what + ' sin salirte.' + ((this.level || 1) >= 3 ? ' ¡Ojo! El camino se borra: recuérdalo.' : '');
+      if (touch) { icon(220, ctrlY, '👆〰'); explain = 'Arrastra el dedo.' + rest; }
+      else { icon(220, ctrlY, '🖱️'); explain = 'Arrastra con el ratón (o usa las flechas).' + rest; }
     } else if (this.mg === 'dodge') {
       const of = th.villainObj.replace(/^al /, 'del ').replace(/^a /, 'de ');
       const rest = ' Esquiva los poderes ' + of + '... pero si un poder frena en el aire, ¡no te muevas!';
@@ -326,6 +336,7 @@ class GameScene extends Phaser.Scene {
       });
     }
     if (this.mg === 'dodge') this.setupDodge();   // juego/escenas/esquiva.js
+    if (this.mg === 'path') this.setupPath();     // juego/escenas/camino.js
     // En Clásico y Encuentra, el protagonista aparece abajo a la izquierda y lanza su poder.
     // En Carrera, si corre el amigo, el protagonista va arriba a la izquierda (encima de la pista) y le lanza el poder.
     if (this.powers && (CLASSIC_LIKE.includes(this.mg) || this.mg === 'find' || this.runnerRole)) {
@@ -345,6 +356,7 @@ class GameScene extends Phaser.Scene {
     if (CLASSIC_LIKE.includes(this.mg)) this.nextTrial();
     else if (this.mg === 'find') this.nextFindTrial();
     else if (this.mg === 'dodge') this.time.delayedCall(500, () => this.nextDodge());
+    else if (this.mg === 'path') this.nextPath();
     else this.scheduleSpawn();
     if (this.lead) this.time.delayedCall(1200, () => this.moveLead());
     this.scheduleAudio();
@@ -438,6 +450,11 @@ class GameScene extends Phaser.Scene {
     this.bar.width = this.barW * Math.min(1, this.elapsed() / this.params.sessionMs);
     if (this.mg === 'catch') this.updateCatch(dt);
     else if (this.mg === 'race') this.updateRace(dt);
+    else if (this.mg === 'path') {
+      // si se queda mucho rato sin llegar después del tiempo, se termina igual
+      if (this.elapsed() > this.params.sessionMs + 20000) { this.endPath(false); this.finish(); return; }
+      this.updatePath(dt);
+    }
   }
 
   ring(x, y) {
@@ -861,7 +878,7 @@ class GameScene extends Phaser.Scene {
     const P = this.params;
     const D = DISTRACTORS[this.themeKey];
     const list = D.visual
-      .filter(v => !((this.mg === 'catch' || this.mg === 'memory' || this.mg === 'dodge') && v.kind === 'walk'));   // abajo está la canasta / las casillas
+      .filter(v => !((this.mg === 'catch' || this.mg === 'memory' || this.mg === 'dodge' || this.mg === 'path') && v.kind === 'walk'));   // abajo está la canasta / las casillas
     // Personajes del mundo (villano y amigos) desde su nivel. No en el jefe final (ahí ya son el objetivo y los
     // distractores) ni en Carrera (el villano ya va adelante).
     // (con personajes tampoco: el villano y los amigos ya son los estímulos). Cada mundo tiene un solo amigo al que

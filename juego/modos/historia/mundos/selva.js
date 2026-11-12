@@ -22,7 +22,8 @@ registrarMundo('jungle', {
       notx: '¡Al revés! Saluda a todos los pájaros de la selva... ¡pero no a Arcoíris, que descansa en su nido!',
       ax: 'Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!',
       memory: '¡Arcoíris vuela de árbol en árbol buscando sus colores! Mira bien su camino y repítelo.',
-      dodge: '¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!'
+      dodge: '¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!',
+      path: '¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -34,7 +35,8 @@ registrarMundo('jungle', {
       memory: '¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!',
       ax: 'La Serpiente Silbona solo aparece justo después de {pista}: esa es la pista. ¡Tócala solo si justo antes salió {pista}!',
-      dodge: '¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!'
+      dodge: '¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!',
+      path: '¡Arcoíris está al final del sendero de la selva! Llévame hasta él sin salirte del camino.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.',

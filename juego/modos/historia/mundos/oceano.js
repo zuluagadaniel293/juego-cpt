@@ -21,7 +21,8 @@ registrarMundo('ocean', {
       notx: '¡Al revés! Los otros caballitos salen a jugar: tócalos a todos... ¡menos a Perla, que se queda escondida!',
       ax: 'Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!',
       memory: '¡Perla nada de coral en coral para escapar del pulpo! Mira bien su camino y repítelo.',
-      dodge: '¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!'
+      dodge: '¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!',
+      path: '¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
@@ -33,7 +34,8 @@ registrarMundo('ocean', {
       memory: '¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.',
       notx: '¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!',
       ax: 'El Pulpo Tinta solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
-      dodge: '¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!'
+      dodge: '¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!',
+      path: '¡Perla está al otro lado del arrecife! Nada por el camino de arena hasta ella, sin salirte, que el pulpo acecha.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
     bossLine: '¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.',

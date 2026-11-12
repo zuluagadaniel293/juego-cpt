@@ -16,12 +16,14 @@ class MinigameSelectScene extends Phaser.Scene {
     this.add.text(W / 2, 104, th.label, { font: 'bold 20px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
 
     const tex = TEX[this.themeKey];
-    const icons = { classic: tex.target, catch: tex.catcher, race: tex.hero_run, find: 'icon_find', memory: 'icon_memory', dodge: tex.fx_fly_1 || tex.villain };
-    // 7 juegos en 2 filas: los 4 de atención (CPT) arriba; Memoria y los formatos de examen (Menos uno, Pista) abajo
-    const rows = [['classic', 'catch', 'race', 'find'], ['memory', 'notx', 'ax', 'dodge']];
+    const icons = { classic: tex.target, catch: tex.catcher, race: tex.hero_run, find: 'icon_find', memory: 'icon_memory', dodge: tex.fx_fly_1 || tex.villain, path: tex.hero_run || tex.hero };
+    // 9 juegos en 2 filas: arriba los de atención (CPT) y Memoria; abajo los formatos de examen (Menos uno, Pista),
+    // Esquiva y Camino
+    const rows = [['classic', 'catch', 'race', 'find', 'memory'], ['notx', 'ax', 'dodge', 'path']];
     rows.forEach((row, r) => row.forEach((mg, i) => {
-      const x = W / 2 + (i - (row.length - 1) / 2) * 230, y = r === 0 ? 242 : 442;
-      const card = drawCard(this, x, y, 210, 178, 0xffffff, 0.07, th.accent);
+      const step = row.length > 4 ? 186 : 230, cw = step - 12;   // con 5 juegos en la fila, tarjetas más angostas
+      const x = W / 2 + (i - (row.length - 1) / 2) * step, y = r === 0 ? 242 : 442;
+      const card = drawCard(this, x, y, cw, 178, 0xffffff, 0.07, th.accent);
       const iy = y - 46;
       if (mg === 'notx') {          // la señal del villano tachada: "a esta no"
         fit(this.add.image(x, iy, tex.target), 62);
@@ -40,7 +42,7 @@ class MinigameSelectScene extends Phaser.Scene {
       const current = levels[this.themeKey + '_' + mg] || 1;   // nivel en que quedó la última vez
       this.add.text(x, y + 71, 'Nivel ' + current + (rec ? '  ·  récord ' + rec : ''),
         { font: 'bold 14px Arial', color: hexColor(th.accent) }).setOrigin(0.5);
-      const zone = this.add.zone(x, y, 210, 178).setInteractive({ useHandCursor: true });
+      const zone = this.add.zone(x, y, cw, 178).setInteractive({ useHandCursor: true });
       zone.on('pointerover', () => card.setAlpha(0.75));
       zone.on('pointerout', () => card.setAlpha(1));
       zone.on('pointerdown', () => {

@@ -193,3 +193,17 @@ Los sonidos de lo que cruza por los bordes y los sonidos sueltos son grabaciones
 CC0; lista en `assets/sonidos/FUENTES.txt`), con el volumen emparejado y suave. Además, cada 9 a 16 segundos suena
 bajito un sonido de ambientación del mundo: queda como distractor auditivo `ambiente_<nombre>`. La Prueba fija no tiene
 ni sonidos de mundo ni ambientación.
+
+## Camino (formato tipo precisión visomotora)
+El niño lleva al protagonista por un camino hasta la meta (la misión del mundo), arrastrando el dedo o el ratón,
+o con las flechas. Si se sale, el personaje se pone gris y no avanza hasta que vuelva. Con el nivel el camino es
+más angosto y con más curvas. Desde el nivel 3 es **"Recuerda el camino"**: se ve unos segundos y luego se borra casi del todo.
+
+| `condicion` | Fila | Resultado |
+|---|---|---|
+| `camino_visible` / `camino_de_memoria` | Un camino completo (objetivo) | `acierto` = llegó a la meta · `omision` = se acabó el tiempo sin llegar |
+| `se_salio` | Cada vez que se salió (distractor) | `error_impulsivo` |
+
+- **`salidas`**: veces que se salió en ese camino · **`tiempo_fuera_ms`**: tiempo total fuera · **`ancho_camino`**: ancho en px.
+- **`tiempo_reaccion_ms`**: en la fila del camino, lo que tardó en recorrerlo; en las de salida, en qué momento se salió.
+- **Para interpretar**: muchas salidas con caminos rápidos = se mueve sin control (impulsividad motora). Pocas salidas pero muy lento = cuidadoso. En `camino_de_memoria`, más salidas que en el visible = le cuesta recordarlo.
