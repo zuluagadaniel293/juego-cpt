@@ -169,5 +169,5 @@ y luego vuelve a la normalidad. Pasa detrás de los objetos del juego y queda co
 `dark` (se apagan las luces), `freeze` (hielo), `fire` (fuego o calor), `ink` (tinta), `sour` (todo agrio), `glitch` (falla de
 computador), `hypno` (espirales), `vines` (enredaderas o algas), `seal` (paredes que cierran los lados), `meteors` (lluvia de
 rocas), `stamp` (marcas del villano), `mess_<cosa>` (cosas volando), `steal` (roba el tesoro), `kidnap` (se lleva al
-personaje), `takeover` (el fondo se tiñe con su color), `flood` (sube el agua), `smoke` (humo).
+personaje), `takeover` (el fondo se tiñe con su color), `flood` (sube el agua), `smoke` (humo), `melt` (el helado se derrite).
 

@@ -350,6 +350,25 @@ window.ASSETS = {
   },
   // Objetos e íconos que comparten todos los mundos (carpeta assets/comunes)
   comunes: {
+    // hechizos de los villanos (juego/nucleo/hechizos.js): si falta alguno, se dibuja con formas simples
+    hz_ice_top: 'comunes/hechizos/hielo_arriba.png',
+    hz_ice_floor: 'comunes/hechizos/hielo_suelo.png',
+    hz_crystal_1: 'comunes/hechizos/cristal_1.png',
+    hz_crystal_2: 'comunes/hechizos/cristal_2.png',
+    hz_crystal_3: 'comunes/hechizos/cristal_3.png',
+    hz_fire_wall: 'comunes/hechizos/fuego_muro.png',
+    hz_fire_1: 'comunes/hechizos/fuego_1.png',
+    hz_fire_2: 'comunes/hechizos/fuego_2.png',
+    hz_melt: 'comunes/hechizos/helado_chorrea.png',
+    hz_melt_puddle: 'comunes/hechizos/helado_charco.png',
+    hz_vine: 'comunes/hechizos/enredadera.png',
+    hz_alga: 'comunes/hechizos/alga.png',
+    hz_liana: 'comunes/hechizos/liana.png',
+    hz_wall_rock: 'comunes/hechizos/pared_roca.png',
+    hz_wall_brick: 'comunes/hechizos/pared_ladrillo.png',
+    hz_wall_metal: 'comunes/hechizos/pared_metal.png',
+    hz_water: 'comunes/hechizos/agua.png',
+    hz_ink: 'comunes/hechizos/nube_tinta.png',
     basket:      'comunes/canasta.png',          // minijuego Atrapa
     net:         'comunes/red.png',              // atrapar al villano
     fireball:    'comunes/bola_de_fuego.png',    // poder de Chispa

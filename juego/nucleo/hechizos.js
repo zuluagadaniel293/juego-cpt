@@ -6,16 +6,29 @@
 // Efecto de cada amenaza, en el orden de los capítulos (los textos están en distractors.voices.amenaza de cada mundo)
 const THREAT_FX = {
   heroes:  ['takeover', 'stamp', 'smoke', 'dark', 'seal'],
-  fantasy: ['kidnap', 'vines', 'freeze', 'seal', 'fire'],
+  fantasy: ['kidnap', 'vines', 'freeze', 'seal', 'fire'],   // plantas, paredes: ver PLANT y WALL
   kingdom: ['dark', 'mess:escoba_magica', 'mess:libro_volador', 'seal', 'takeover'],
   space:   ['takeover', 'meteors', 'dark', 'freeze', 'seal'],
   ocean:   ['dark', 'ink', 'vines', 'ink', 'seal'],
   dinos:   ['kidnap', 'flood', 'fire', 'dark', 'seal'],
   robots:  ['glitch', 'glitch', 'dark', 'glitch', 'dark'],
   jungle:  ['hypno', 'kidnap', 'vines', 'steal', 'seal'],
-  candy:   ['sour', 'sour', 'fire', 'takeover', 'seal']
+  candy:   ['sour', 'sour', 'melt', 'takeover', 'seal']
 };
 const THREAT_MS = 5500;   // cuánto dura el efecto
+// Qué planta crece y qué pared cierra en cada mundo (imágenes comunes de assets/comunes/hechizos)
+const PLANT = { ocean: 'hz_alga', jungle: 'hz_liana' };   // los demás: enredadera con flores
+const WALL = { space: 'hz_wall_metal', robots: 'hz_wall_metal', candy: 'hz_wall_metal', heroes: 'hz_wall_brick', kingdom: 'hz_wall_brick' };   // los demás: roca
+const has = (scene, k) => scene.textures.exists(k);
+// imagen que entra desde fuera de la pantalla hasta su sitio (x, y), detrás de los objetos del juego
+function slideIn(scene, objs, key, x, y, w, h, from, delay) {
+  const img = scene.add.image(x, y, key).setDepth(-2).setDisplaySize(w, h);
+  objs.push(img);
+  const to = { x: img.x, y: img.y };
+  img.x += from.x || 0; img.y += from.y || 0;
+  scene.tweens.add({ targets: img, x: to.x, y: to.y, duration: 700, delay: delay || 0, ease: 'Sine.easeOut' });
+  return img;
+}
 
 function runThreatFx(scene, chapterIdx) {
   const list = THREAT_FX[scene.themeKey];
@@ -53,6 +66,16 @@ const THREAT_DRAW = {
   // se congela: tinte celeste y escarcha que crece por abajo y por los lados
   freeze(scene, objs) {
     tint(scene, objs, 0xbae6fd, 0.35);
+    if (has(scene, 'hz_ice_top')) {
+      slideIn(scene, objs, 'hz_ice_top', GAME_W / 2, 30, GAME_W + 20, 90, { y: -100 });
+      slideIn(scene, objs, 'hz_ice_floor', GAME_W / 2, GAME_H - 22, GAME_W + 20, 60, { y: 80 });
+      [[45, 170], [GAME_W - 45, 230], [50, 380], [GAME_W - 50, 420]].forEach(([x, y], i) => {
+        const c = fit(scene.add.image(x, y, 'hz_crystal_' + (i % 3 + 1)), 70).setDepth(-2);
+        const sc = c.scale; c.setScale(0); objs.push(c);
+        scene.tweens.add({ targets: c, scale: sc, duration: 400, delay: 300 + i * 150, ease: 'Back.easeOut' });
+      });
+      return;
+    }
     for (let i = 0; i < 14; i++) {
       const bottom = i < 8, x = bottom ? Phaser.Math.Between(0, GAME_W) : edgeX(), y = bottom ? GAME_H - Phaser.Math.Between(0, 30) : Phaser.Math.Between(80, 480);
       const c = scene.add.star(x, y, 6, 6, Phaser.Math.Between(16, 30), 0xffffff, 0.85).setStrokeStyle(2, 0x7dd3fc).setDepth(-2).setScale(0);
@@ -63,6 +86,16 @@ const THREAT_DRAW = {
   // fuego o calor: resplandor naranja desde abajo y chispas que suben
   fire(scene, objs) {
     tint(scene, objs, 0xea580c, 0.25);
+    if (has(scene, 'hz_fire_wall')) {
+      const wall = slideIn(scene, objs, 'hz_fire_wall', GAME_W / 2, GAME_H - 35, GAME_W + 40, 90, { y: 100 });
+      scene.tweens.add({ targets: wall, scaleY: wall.scaleY * 1.12, duration: 260, yoyo: true, repeat: -1, delay: 700 });
+      [[40, 200], [GAME_W - 40, 260], [45, 360], [GAME_W - 45, 400]].forEach(([x, y], i) => {
+        const f = fit(scene.add.image(x, y, 'hz_fire_' + (i % 2 + 1)), 60).setDepth(-2).setOrigin(0.5, 1);
+        const sc = f.scale; f.setScale(0); objs.push(f);
+        scene.tweens.add({ targets: f, scale: sc, duration: 300, delay: 400 + i * 150,
+          onComplete: () => scene.tweens.add({ targets: f, scaleY: sc * 1.15, duration: 200, yoyo: true, repeat: -1 }) });
+      });
+    }
     const glow = scene.add.rectangle(0, GAME_H, GAME_W, 120, 0xf97316, 0.45).setOrigin(0, 1).setDepth(-3);
     objs.push(glow);
     scene.tweens.add({ targets: glow, alpha: 0.25, duration: 400, yoyo: true, repeat: -1 });
@@ -77,9 +110,11 @@ const THREAT_DRAW = {
   ink(scene, objs) {
     tint(scene, objs, 0x1e1b4b, 0.25);
     [[0, 0], [GAME_W, 0], [0, GAME_H], [GAME_W, GAME_H]].forEach(([x, y], i) => {
-      const b = scene.add.circle(x, y, 150, 0x1e1b4b, 0.8).setDepth(-2).setScale(0);
+      const b = has(scene, 'hz_ink') ? fit(scene.add.image(x, y, 'hz_ink'), 380).setAlpha(0.9).setFlipX(i % 2 === 1)
+        : scene.add.circle(x, y, 150, 0x1e1b4b, 0.8);
+      const sc = b.scale; b.setDepth(-2).setScale(0);
       objs.push(b);
-      scene.tweens.add({ targets: b, scale: 1, duration: 800, delay: i * 150, ease: 'Back.easeOut' });
+      scene.tweens.add({ targets: b, scale: sc, duration: 800, delay: i * 150, ease: 'Back.easeOut' });
     });
   },
   // todo se vuelve agrio: tinte amarillo verdoso y gotas de limón por los bordes
@@ -117,6 +152,18 @@ const THREAT_DRAW = {
   },
   // enredaderas o algas que crecen desde abajo por los bordes
   vines(scene, objs) {
+    const plant = PLANT[scene.themeKey] || 'hz_vine';
+    if (has(scene, plant)) {
+      [35, 100, GAME_W - 100, GAME_W - 35].forEach((x, i) => {
+        const img = scene.add.image(x, GAME_H, plant).setOrigin(0.5, 1).setDepth(-2);
+        img.setScale(Phaser.Math.FloatBetween(0.75, 0.9) * GAME_H / img.height).setFlipX(i >= 2);
+        objs.push(img);
+        img.y = GAME_H + img.displayHeight;
+        scene.tweens.add({ targets: img, y: GAME_H, duration: 1200, delay: i * 150, ease: 'Sine.easeOut',
+          onComplete: () => scene.tweens.add({ targets: img, angle: i % 2 ? 3 : -3, duration: 900, yoyo: true, repeat: -1 }) });
+      });
+      return;
+    }
     [40, 110, GAME_W - 110, GAME_W - 40].forEach((x, i) => {
       const g = scene.add.graphics().setDepth(-2);
       g.lineStyle(10, 0x15803d, 1);
@@ -132,6 +179,12 @@ const THREAT_DRAW = {
   // se cierra: paredes de piedra entran por los dos lados
   seal(scene, objs) {
     tint(scene, objs, 0x0f172a, 0.3);
+    const wall = WALL[scene.themeKey] || 'hz_wall_rock';
+    if (has(scene, wall)) {
+      [0, 1].forEach(side => slideIn(scene, objs, wall, side ? GAME_W - 60 : 60, GAME_H / 2, 120, GAME_H + 10, { x: side ? 140 : -140 }).setFlipX(side === 1));
+      scene.time.delayedCall(650, () => scene.cameras.main.shake(200, 0.003));
+      return;
+    }
     [0, 1].forEach(side => {
       const g = scene.add.graphics().setDepth(-2);
       g.fillStyle(0x57534e, 1); g.fillRect(0, 0, 90, GAME_H);
@@ -190,10 +243,32 @@ const THREAT_DRAW = {
   },
   // inundación: el agua sube desde abajo
   flood(scene, objs) {
+    if (has(scene, 'hz_water')) {
+      const w = scene.add.image(GAME_W / 2, GAME_H + 80, 'hz_water').setDepth(-2).setDisplaySize(GAME_W + 40, 160).setAlpha(0.9);
+      objs.push(w);
+      scene.tweens.add({ targets: w, y: GAME_H - 60, duration: 1200, ease: 'Sine.easeOut', onComplete: () =>
+        scene.tweens.add({ targets: w, y: GAME_H - 48, x: GAME_W / 2 + 12, duration: 700, yoyo: true, repeat: -1 }) });
+      return;
+    }
     const w = scene.add.rectangle(0, GAME_H, GAME_W, 130, 0x38bdf8, 0.45).setOrigin(0, 0).setDepth(-2);
     objs.push(w);
     scene.tweens.add({ targets: w, y: GAME_H - 130, duration: 1200, ease: 'Sine.easeOut', onComplete: () =>
       scene.tweens.add({ targets: w, y: GAME_H - 118, duration: 600, yoyo: true, repeat: -1 }) });
+  },
+  // se derrite: el helado chorrea desde arriba y deja un charco abajo (si faltan las imágenes, calor)
+  melt(scene, objs) {
+    if (!has(scene, 'hz_melt')) return THREAT_DRAW.fire(scene, objs);
+    tint(scene, objs, 0xfbcfe8, 0.25);
+    const top = scene.add.image(GAME_W / 2, 0, 'hz_melt').setOrigin(0.5, 0).setDepth(-2).setDisplaySize(GAME_W + 20, 150);
+    objs.push(top);
+    top.y = -150;
+    scene.tweens.add({ targets: top, y: 0, duration: 900, ease: 'Sine.easeOut',
+      onComplete: () => scene.tweens.add({ targets: top, displayHeight: 185, duration: 1800 }) });
+    [160, GAME_W - 160].forEach((x, i) => {
+      const p = fit(scene.add.image(x, GAME_H - 25, 'hz_melt_puddle'), 260).setDepth(-2);
+      const sc = p.scale; p.setScale(0); objs.push(p);
+      scene.tweens.add({ targets: p, scale: sc, duration: 900, delay: 800 + i * 200 });
+    });
   },
   // humo gris que cubre los bordes
   smoke(scene, objs) {
