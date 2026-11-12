@@ -31,5 +31,12 @@ class PruebaSelectScene extends Phaser.Scene {
       zone.on('pointerout', () => card.setAlpha(1));
       zone.on('pointerdown', () => { getCtx(); this.scene.start('Menu', { mode: 'prueba', minigame: pr.mg }); });
     });
+    // Modo demostración: abre todos los mundos (para mostrar el juego) sin tocar las estrellas del niño.
+    // Al apagarlo, los mundos vuelven a abrirse de a uno según su progreso.
+    const on = unlockAll();
+    const demo = this.add.text(W / 2, GAME_H - 26,
+      (on ? '☑' : '☐') + ' Modo demostración: todos los mundos abiertos', { font: 'bold 17px Arial', color: on ? '#fde047' : '#94a3b8' })
+      .setOrigin(0.5).setInteractive({ useHandCursor: true });
+    demo.on('pointerdown', () => { store.set('cpt_unlock_all', !on); this.scene.restart(); });
   }
 }

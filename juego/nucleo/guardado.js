@@ -11,3 +11,21 @@ const getMemory = () => store.get('cpt_memory', {});             // { heroes: { 
 const getStory =() => store.get('cpt_story', {});               // { heroes: [3,2,0,0,0], ... }
 const chapterStars = theme => (getStory()[theme] || [0, 0, 0, 0, 0]);
 const totalStars = () => Object.values(getStory()).reduce((a, arr) => a + arr.reduce((x, y) => x + y, 0), 0);
+
+// Mundos que se abren de a uno: el primero siempre; cada uno de los demás, al vencer al jefe final (capítulo 5)
+// del anterior, en el orden del mapa. Un mundo donde el niño ya ganó estrellas sigue abierto.
+// En la Zona de adultos se pueden abrir todos (modo demostración), sin tocar el progreso del niño.
+const unlockAll = () => store.get('cpt_unlock_all', false);
+function previousWorld(theme) {
+  const ks = Object.keys(THEMES), i = ks.indexOf(theme);
+  return i > 0 ? ks[i - 1] : null;
+}
+function worldUnlocked(theme) {
+  const prev = previousWorld(theme);
+  return !prev || unlockAll() || chapterStars(prev)[4] > 0 || chapterStars(theme).some(s => s > 0);
+}
+// Frase para cuando el niño toca un mundo cerrado
+function lockedWorldHint(theme) {
+  const prev = previousWorld(theme);
+  return '¡Atrapa ' + THEMES[prev].villainObj + ' en ' + THEMES[prev].label + ' para abrir este mundo!';
+}

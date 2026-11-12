@@ -23,7 +23,14 @@ class WorldMapScene extends Phaser.Scene {
     MAP_WORLDS.forEach((w, i) => {
       const [x, y] = pos[i];
       const th = THEMES[w];
-      if (th) {
+      if (th && !worldUnlocked(w)) {
+        // mundo cerrado: la silueta de lo que se busca ahí, con candado; se abre al vencer al jefe del anterior
+        const objs = mysteryNode(this, x, y, 52, silhouetteOf(this, TEX[w].target), th.accent);
+        objs.push(fit(this.add.image(x - 37, y + 37, 'icon_lock'), 26));
+        this.add.text(x, y + 72, th.label.split(' ')[0], { font: 'bold 18px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(0.55);
+        this.add.text(x, y + 96, 'Cerrado', { font: 'bold 15px Arial', color: '#94a3b8' }).setOrigin(0.5);
+        objs[0].setInteractive({ useHandCursor: true }).on('pointerdown', () => teaseLocked(this, objs, lockedWorldHint(w)));
+      } else if (th) {
         const done = (story[w] || []).filter(s => s > 0).length;
         const c = this.add.circle(x, y, 52, th.bg).setStrokeStyle(5, th.accent).setInteractive({ useHandCursor: true });
         fit(this.add.image(x, y, TEX[w].target), 70);

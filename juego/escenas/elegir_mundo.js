@@ -28,15 +28,26 @@ class MenuScene extends Phaser.Scene {
       const row = Math.floor(i / perRow), inRow = row ? keys.length - perRow : perRow, col = i - row * perRow;
       const x = W / 2 + (col - (inRow - 1) / 2) * (cw + gap);
       const y = rows > 1 ? 240 + row * (ch + 12) : 330;
-      const card = this.add.rectangle(x, y, cw, ch, th.bg).setStrokeStyle(4, th.accent).setInteractive({ useHandCursor: true });
+      // Desafío y Memoria: los mundos cerrados (se abren al vencer al jefe del anterior) salen como silueta con candado.
+      // La Prueba fija (adultos) siempre los tiene todos.
+      const locked = this.mode !== 'prueba' && !worldUnlocked(key);
+      const card = this.add.rectangle(x, y, cw, ch, locked ? 0x334155 : th.bg).setStrokeStyle(4, locked ? 0x64748b : th.accent)
+        .setInteractive({ useHandCursor: true });
+      const pic = locked ? silhouetteOf(this, TEX[key].target) || TEX[key].target : TEX[key].target;
+      const img = rows > 1 ? fit(this.add.image(x, y - 34, pic), 86) : fit(this.add.image(x, y - 70, pic), small ? 110 : 128);
       const name = rows > 1
-        ? (fit(this.add.image(x, y - 34, TEX[key].target), 86),
-           this.add.text(x, y + 28, th.label, { font: 'bold 20px Arial', color: '#ffffff' }).setOrigin(0.5))
-        : (fit(this.add.image(x, y - 70, TEX[key].target), small ? 110 : 128),
-           this.add.text(x, y + 30, th.label, { font: 'bold ' + (small ? 21 : 24) + 'px Arial', color: '#ffffff' }).setOrigin(0.5));
+        ? this.add.text(x, y + 28, th.label, { font: 'bold 20px Arial', color: '#ffffff' }).setOrigin(0.5)
+        : this.add.text(x, y + 30, th.label, { font: 'bold ' + (small ? 21 : 24) + 'px Arial', color: '#ffffff' }).setOrigin(0.5);
       if (name.width > cw - 14) name.setScale((cw - 14) / name.width);   // nombres largos: se encogen para caber
-      this.add.text(x, rows > 1 ? y + 58 : y + 85, rows > 1 ? th.targetLabel : 'Objeto especial:\n' + th.targetLabel,
-        { font: (rows > 1 ? 14 : small ? 15 : 17) + 'px Arial', color: '#e2e8f0', align: 'center', wordWrap: { width: cw - 20 } }).setOrigin(0.5);
+      const sub = this.add.text(x, rows > 1 ? y + 58 : y + 85,
+        locked ? 'Cerrado' : rows > 1 ? th.targetLabel : 'Objeto especial:\n' + th.targetLabel,
+        { font: (rows > 1 ? 14 : small ? 15 : 17) + 'px Arial', color: locked ? '#94a3b8' : '#e2e8f0', align: 'center', wordWrap: { width: cw - 20 } }).setOrigin(0.5);
+      if (locked) {
+        name.setAlpha(0.55);
+        const lock = fit(this.add.image(x + cw / 2 - 22, y - ch / 2 + 22, 'icon_lock'), 28);
+        card.on('pointerdown', () => teaseLocked(this, [card, img, name, sub, lock], lockedWorldHint(key)));
+        return;
+      }
       card.on('pointerover', () => card.setScale(1.04));
       card.on('pointerout', () => card.setScale(1));
       card.on('pointerdown', () => {
