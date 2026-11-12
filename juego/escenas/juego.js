@@ -311,6 +311,7 @@ class GameScene extends Phaser.Scene {
     this.scheduleAudio();
     this.scheduleVisual();
     startTwistAmbient(this);
+    if (this.mode !== 'prueba') { preloadWorldSfx(this.themeKey); startAmbientSounds(this); }
   }
 
   elapsed() { return performance.now() - this.t0; }
@@ -782,7 +783,8 @@ class GameScene extends Phaser.Scene {
       const name = names.length ? Phaser.Utils.Array.GetRandom(names) : 'tono';
       if (name.startsWith('voz_')) { if (onlyVoice) this.castVoice(name.slice(4)); else this.villainSpeaks(name.slice(4)); }
       else {
-        if (names.length) sounds[name](); else distractorSound();
+        // la grabación real si la hay (assets/sonidos.js); si no, el sonido hecho con código
+        if (names.length) { if (!playNamedSfx(name)) sounds[name](); } else distractorSound();
         this.logDistractor('audio_distractor', name);
       }
       this.scheduleAudio();
@@ -848,7 +850,9 @@ class GameScene extends Phaser.Scene {
     if (v.kind === 'fly') this.tweens.add({ targets: img, y: y - 14, duration: 350, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
     // Desde el nivel 2 suena mientras pasa (avión, pájaro, gato, murciélago...): distractor visual y auditivo a la vez
     if (v.sound && (this.level || 0) >= 2 && this.mode !== 'prueba') {
-      v.sound(fromLeft ? 1 : -1);   // hacia dónde va (el avión suena de un lado al otro)
+      // grabación real, sonando del lado por donde entra; si no hay, el sonido hecho con código
+      // (el avión suena de un lado al otro)
+      if (!playNamedSfx(v.name, fromLeft ? -0.5 : 0.5)) v.sound(fromLeft ? 1 : -1);
       this.logDistractor('audio_distractor', 'sonido_' + v.name);
     }
   }

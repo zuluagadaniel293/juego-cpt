@@ -185,3 +185,18 @@ function showStealScene(scene, objs, end, DEPTH) {
   scene.tweens.add({ targets: [v, loot], x: '+=' + (to - from), duration: 3800, onComplete: end });
   sweep('square', 900, 500, 0.15, 0.03);
 }
+
+// ---------- Ambientación: de vez en cuando, bajito, un sonido del mundo (pájaros, lluvia, máquinas...) ----------
+// Son las otras grabaciones de cada mundo (assets/sonidos.js). Suenan de un lado o del otro y quedan en el CSV.
+function startAmbientSounds(scene) {
+  const list = (window.SFX_AMBIENT || {})[scene.themeKey] || [];
+  if (!list.length) return;
+  const next = () => scene.time.delayedCall(Phaser.Math.Between(9000, 16000), () => {
+    if (scene.ended) return;
+    const a = Phaser.Utils.Array.GetRandom(list);
+    playSfx(a.file, AMBIENT_LEVEL, Phaser.Math.FloatBetween(-0.7, 0.7));
+    scene.logDistractor('audio_distractor', 'ambiente_' + a.name);
+    next();
+  });
+  next();
+}

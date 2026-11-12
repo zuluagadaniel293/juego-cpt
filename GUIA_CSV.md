@@ -171,3 +171,9 @@ computador), `hypno` (espirales), `vines` (enredaderas o algas), `seal` (paredes
 rocas), `stamp` (marcas del villano), `mess_<cosa>` (cosas volando), `steal` (roba el tesoro), `kidnap` (se lleva al
 personaje), `takeover` (el fondo se tiñe con su color), `flood` (sube el agua), `smoke` (humo), `melt` (el helado se derrite).
 
+
+## Sonidos reales y ambientación
+Los sonidos de lo que cruza por los bordes y los sonidos sueltos son grabaciones reales con licencia libre (Freesound,
+CC0; lista en `assets/sonidos/FUENTES.txt`), con el volumen emparejado y suave. Además, cada 9 a 16 segundos suena
+bajito un sonido de ambientación del mundo: queda como distractor auditivo `ambiente_<nombre>`. La Prueba fija no tiene
+ni sonidos de mundo ni ambientación.

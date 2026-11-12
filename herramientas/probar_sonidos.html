@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Probar sonidos</title>
 <style>
-  :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #fde047; --new: #4ade80; }
+  :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #fde047; --new: #4ade80; --amb: #93c5fd; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 16px Arial, sans-serif; }
   main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
   h1 { margin: 0 0 6px; font-size: 28px; }
@@ -17,18 +17,19 @@
   .name { flex: 1 1 180px; }
   .kind { color: var(--muted); font-size: 13px; }
   button { font: bold 15px Arial; border: 0; border-radius: 10px; padding: 9px 14px; cursor: pointer; background: #cbd5e1; color: #0f172a; }
-  button.new { background: var(--new); }
-  .tag { font-size: 12px; font-weight: bold; color: #0f172a; background: var(--new); border-radius: 6px; padding: 2px 6px; margin-left: 6px; }
+  button.rec { background: var(--new); }
+  button.amb { background: var(--amb); padding: 7px 10px; font-size: 13px; }
 </style>
 </head>
 <body>
 <main>
   <h1>Sonidos de los distractores</h1>
-  <p class="lead">Así suenan las cosas que cruzan por los bordes y los sonidos sueltos de cada mundo. Donde dice
-    <span class="tag">NUEVO</span> hay versiones nuevas para comparar con la actual. Usa audífonos o parlantes:
-    el avión (Superhéroes) pasa de un lado al otro.</p>
+  <p class="lead">Así suenan en el juego, con el volumen ya emparejado. Verde = grabación real · gris = hecho con código.
+    Cada mundo tiene además sus sonidos de ambientación (en azul), que suenan más bajito de fondo cada 9 a 16 segundos.</p>
   <div id="list"></div>
 </main>
+<script>window.SFX_BASE = '../assets/';</script>
+<script src="../assets/sonidos.js"></script>
 <script src="../juego/nucleo/mundos.js"></script>
 <script src="../juego/nucleo/sonido.js"></script>
 <script src="../juego/modos/historia/mundos/superheroes.js"></script>
@@ -41,95 +42,32 @@
 <script src="../juego/modos/historia/mundos/selva.js"></script>
 <script src="../juego/modos/historia/mundos/dulces.js"></script>
 <script>
-// ---------- Versiones nuevas para comparar (usan envGain y chain de juego/nucleo/sonido.js) ----------
-// Un "miau": tono que sube y baja, pasado por un filtro que se abre y se cierra como una boca (m → i → a → u)
-function meow(o) {
-  const ctx = getCtx(); if (!ctx) return;
-  const t0 = ctx.currentTime + (o.delay || 0), len = o.len;
-  const osc = ctx.createOscillator(); osc.type = o.wave;
-  osc.frequency.setValueAtTime(o.f[0], t0);
-  osc.frequency.exponentialRampToValueAtTime(o.f[1], t0 + len * 0.35);
-  osc.frequency.exponentialRampToValueAtTime(o.f[2], t0 + len);
-  const lfo = ctx.createOscillator(), lg = ctx.createGain();   // temblor de la voz
-  lfo.frequency.value = o.vib[0]; lg.gain.value = o.vib[1]; lfo.connect(lg); lg.connect(osc.frequency);
-  const mouth = ctx.createBiquadFilter(); mouth.type = 'lowpass'; mouth.Q.value = o.q;
-  mouth.frequency.setValueAtTime(o.m[0], t0);
-  mouth.frequency.exponentialRampToValueAtTime(o.m[1], t0 + len * 0.35);
-  mouth.frequency.exponentialRampToValueAtTime(o.m[2], t0 + len);
-  chain([osc, mouth, envGain(ctx, t0, o.vol, 0.05, len * 0.5, len * 0.45), ctx.destination]);
-  osc.start(t0); lfo.start(t0); osc.stop(t0 + len + 0.05); lfo.stop(t0 + len + 0.05);
-}
-const CAT_VERSIONS = {
-  // gatito: agudo, corto y tierno ("miu")
-  'Gatito': () => meow({ wave: 'triangle', len: 0.5, f: [820, 1250, 760], m: [900, 4200, 1100], q: 4, vib: [8, 25], vol: 0.22 }),
-  // gato de dibujo animado: más largo, con la boca bien marcada ("miaaau")
-  'Gato de caricatura': () => meow({ wave: 'square', len: 0.8, f: [520, 760, 430], m: [500, 2600, 600], q: 7, vib: [6, 14], vol: 0.09 }),
-  // dos maullidos seguidos, como si llamara ("miau, miau")
-  'Miau doble': () => {
-    meow({ wave: 'sawtooth', len: 0.42, f: [600, 880, 520], m: [600, 3000, 700], q: 6, vib: [7, 16], vol: 0.11 });
-    meow({ wave: 'sawtooth', len: 0.5, f: [560, 820, 470], m: [600, 2800, 650], q: 6, vib: [7, 16], vol: 0.11, delay: 0.55 });
-  }
-};
-
-// ---------- Grabaciones reales para elegir (Freesound, licencia CC0: herramientas/buscar_sonidos.js) ----------
-// Se escuchan solo los primeros 3 segundos, como quedarían en el juego.
-let playing = null;
-function playFile(file) {
-  if (playing) playing.pause();
-  playing = new Audio('sonidos_candidatos/' + file);
-  playing.play().catch(() => {});   // si se toca otro botón muy rápido, no pasa nada
-  const a = playing;
-  setTimeout(() => { if (a === playing) a.pause(); }, 3000);
-}
-// el sonido actual (hecho con código) con ese nombre, en cualquier mundo
-function currentSound(name) {
-  for (const key of Object.keys(DISTRACTORS)) {
-    const D = DISTRACTORS[key], v = (D.visual || []).find(x => x.name === name && x.sound);
-    if (v) return [THEMES[key].label, () => v.sound()];
-    if (D.sounds && D.sounds[name]) return [THEMES[key].label, D.sounds[name]];
-  }
-  return null;
-}
-fetch('sonidos_candidatos/candidatos.json').then(r => r.json()).then(fichas => {
-  const sec = document.createElement('section');
-  sec.innerHTML = '<h2>Grabaciones reales para elegir</h2><p class="kind" style="margin:0 0 8px">Gris = el sonido actual (hecho con código) · ' +
-    'verde = grabaciones reales con licencia libre. Dime el número que te guste de cada uno (por ejemplo "gato 2").</p>';
-  Object.entries(fichas).forEach(([name, opts]) => {
-    if (!opts.length) return;
-    const row = document.createElement('div'); row.className = 'row';
-    const cur = currentSound(name);
-    row.innerHTML = '<div class="name">' + name.replace(/_/g, ' ') + '<div class="kind">' + (cur ? cur[0] : '') + '</div></div>';
-    if (cur) { const b = document.createElement('button'); b.textContent = '▶ Actual'; b.onclick = () => { getCtx(); cur[1](); }; row.appendChild(b); }
-    opts.forEach((o, i) => {
-      const b = document.createElement('button'); b.className = 'new'; b.textContent = '▶ ' + (i + 1);
-      b.title = o.name + ' (' + o.duracion + ' s)'; b.onclick = () => playFile(o.file); row.appendChild(b);
-    });
-    sec.appendChild(row);
-  });
-  list.prepend(sec);
-});
-
-// ---------- Lista ----------
-const NAMES = { avion: 'Avión', pajaro: 'Pájaro', gato: 'Gato' };
+const label = n => n.replace(/_/g, ' ');
 const list = document.getElementById('list');
 Object.keys(THEMES).forEach(key => {
   const D = DISTRACTORS[key], sec = document.createElement('section');
   sec.innerHTML = '<h2>' + THEMES[key].label + '</h2>';
-  // extra: versiones nuevas para comparar, como [['Gatito', fn], ...]
-  const add = (label, kind, play, extra) => {
-    const row = document.createElement('div'); row.className = 'row';
-    row.innerHTML = '<div class="name">' + label + (extra ? '<span class="tag">NUEVO</span>' : '') + '<div class="kind">' + kind + '</div></div>';
-    const b1 = document.createElement('button'); b1.textContent = extra ? '▶ Actual' : '▶ Escuchar'; b1.onclick = () => { getCtx(); play(); };
-    row.appendChild(b1);
-    (extra || []).forEach(([name, fn]) => {
-      const b = document.createElement('button'); b.className = 'new'; b.textContent = '▶ ' + name; b.onclick = () => { getCtx(); fn(); };
-      row.appendChild(b);
-    });
-    sec.appendChild(row);
+  const row = (name, kind, play, rec) => {
+    const r = document.createElement('div'); r.className = 'row';
+    r.innerHTML = '<div class="name">' + label(name) + '<div class="kind">' + kind + (rec ? ' · grabación real' : ' · hecho con código') + '</div></div>';
+    const b = document.createElement('button'); if (rec) b.className = 'rec';
+    b.textContent = '▶ Escuchar'; b.onclick = () => { getCtx(); play(); };
+    r.appendChild(b); sec.appendChild(r);
   };
-  (D.visual || []).filter(v => v.sound).forEach(v => add(NAMES[v.name] || v.name.replace(/_/g, ' '), 'cruza por ' + (v.kind === 'walk' ? 'abajo' : 'arriba'), () => v.sound(),
-    key === 'heroes' && v.name === 'gato' ? Object.entries(CAT_VERSIONS) : null));
-  Object.entries(D.sounds || {}).forEach(([n, f]) => add(n.replace(/_/g, ' '), 'sonido suelto (sin imagen)', f));
+  // como en el juego: la grabación si la hay; si no, el sonido hecho con código
+  (D.visual || []).filter(v => v.sound).forEach(v => row(v.name, 'cruza por ' + (v.kind === 'walk' ? 'abajo' : 'arriba'),
+    () => playNamedSfx(v.name) || v.sound(1), !!SFX_FILES[v.name]));
+  Object.entries(D.sounds || {}).forEach(([n, f]) => row(n, 'sonido suelto', () => playNamedSfx(n) || f(), !!SFX_FILES[n]));
+  const amb = (SFX_AMBIENT[key] || []);
+  if (amb.length) {
+    const r = document.createElement('div'); r.className = 'row';
+    r.innerHTML = '<div class="name">Ambientación<div class="kind">bajito, de fondo</div></div>';
+    amb.forEach(a => {
+      const b = document.createElement('button'); b.className = 'amb'; b.textContent = '▶ ' + label(a.name);
+      b.onclick = () => { getCtx(); playSfx(a.file, AMBIENT_LEVEL); }; r.appendChild(b);
+    });
+    sec.appendChild(r);
+  }
   list.appendChild(sec);
 });
 </script>
