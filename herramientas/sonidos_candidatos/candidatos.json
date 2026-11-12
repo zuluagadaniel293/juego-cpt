@@ -1,0 +1,656 @@
+{
+  "gato": [
+    {
+      "file": "gato_1.mp3",
+      "id": 448084,
+      "name": "Cute Kitten Meow",
+      "autor": "Breviceps",
+      "duracion": 0.6,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/448084/",
+      "calificacion": 4.8,
+      "descargas": 3412
+    },
+    {
+      "file": "gato_2.mp3",
+      "id": 156643,
+      "name": "catmeow1",
+      "autor": "Yoyodaman234",
+      "duracion": 0.86,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/156643/",
+      "calificacion": 4.8,
+      "descargas": 2310
+    },
+    {
+      "file": "gato_3.mp3",
+      "id": 479272,
+      "name": "New Cat Meow 1",
+      "autor": "steffcaffrey",
+      "duracion": 0.92,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/479272/",
+      "calificacion": 4.8,
+      "descargas": 1974
+    },
+    {
+      "file": "gato_4.mp3",
+      "id": 262309,
+      "name": "Cat Purr/Twit4.wav",
+      "autor": "steffcaffrey",
+      "duracion": 0.37,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/262309/",
+      "calificacion": 4.9,
+      "descargas": 1791
+    }
+  ],
+  "pajaro": [
+    {
+      "file": "pajaro_1.mp3",
+      "id": 233255,
+      "name": "Single Bird Chirp",
+      "autor": "alegemaate",
+      "duracion": 0.31,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/233255/",
+      "calificacion": 4.4,
+      "descargas": 2414
+    },
+    {
+      "file": "pajaro_2.mp3",
+      "id": 511094,
+      "name": "Happy Bird Singing",
+      "autor": "se2001",
+      "duracion": 2.65,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/511094/",
+      "calificacion": 4.6,
+      "descargas": 1478
+    },
+    {
+      "file": "pajaro_3.mp3",
+      "id": 387534,
+      "name": "corne.wav",
+      "autor": "Soundwarf",
+      "duracion": 0.91,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/387534/",
+      "calificacion": 4.6,
+      "descargas": 1324
+    }
+  ],
+  "murcielago": [
+    {
+      "file": "murcielago_1.mp3",
+      "id": 445958,
+      "name": "Cartoon - Bat / Mouse Squeak",
+      "autor": "Breviceps",
+      "duracion": 0.42,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/445958/",
+      "calificacion": 4.8,
+      "descargas": 7128
+    }
+  ],
+  "ardilla": [
+    {
+      "file": "ardilla_1.mp3",
+      "id": 753942,
+      "name": "Rodents - Eastern Gray Squirrel, Bark and Chatter, Slightly Reverberant, B/G Insects, Distant",
+      "autor": "TheKingOfGeeks360",
+      "duracion": 6.27,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/753942/",
+      "calificacion": 4.5,
+      "descargas": 54
+    },
+    {
+      "file": "ardilla_2.mp3",
+      "id": 509507,
+      "name": "Red Squirrel.wav",
+      "autor": "BullSam",
+      "duracion": 4,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/509507/",
+      "calificacion": 4.8,
+      "descargas": 530
+    },
+    {
+      "file": "ardilla_3.mp3",
+      "id": 640992,
+      "name": "Ground Squirrel First Chirp",
+      "autor": "burgersmoke",
+      "duracion": 1.8,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/640992/",
+      "calificacion": 5,
+      "descargas": 199
+    }
+  ],
+  "raton": [
+    {
+      "file": "raton_1.mp3",
+      "id": 188043,
+      "name": "Mouse",
+      "autor": "AntumDeluge",
+      "duracion": 0.93,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/188043/",
+      "calificacion": 4.3,
+      "descargas": 8387
+    },
+    {
+      "file": "raton_2.mp3",
+      "id": 445958,
+      "name": "Cartoon - Bat / Mouse Squeak",
+      "autor": "Breviceps",
+      "duracion": 0.42,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/445958/",
+      "calificacion": 4.8,
+      "descargas": 7128
+    },
+    {
+      "file": "raton_3.mp3",
+      "id": 536753,
+      "name": "Rat.ogg",
+      "autor": "egomassive",
+      "duracion": 1.12,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/536753/",
+      "calificacion": 4.6,
+      "descargas": 6541
+    }
+  ],
+  "rana": [
+    {
+      "file": "rana_1.mp3",
+      "id": 536759,
+      "name": "Frog.ogg",
+      "autor": "egomassive",
+      "duracion": 0.57,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/536759/",
+      "calificacion": 4.8,
+      "descargas": 6420
+    },
+    {
+      "file": "rana_2.mp3",
+      "id": 354132,
+      "name": "Frog croaking sound effect",
+      "autor": "betterchinese",
+      "duracion": 1.97,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/354132/",
+      "calificacion": 4.8,
+      "descargas": 3743
+    },
+    {
+      "file": "rana_3.mp3",
+      "id": 251938,
+      "name": "frog.mp3",
+      "autor": "BinaryMonkFlint",
+      "duracion": 0.52,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/251938/",
+      "calificacion": 4.5,
+      "descargas": 3181
+    }
+  ],
+  "guacamaya": [
+    {
+      "file": "guacamaya_1.mp3",
+      "id": 839918,
+      "name": "Parrots - White-winged Parakeets",
+      "autor": "TheKingOfGeeks360",
+      "duracion": 4.07,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/839918/",
+      "calificacion": 5,
+      "descargas": 23
+    },
+    {
+      "file": "guacamaya_2.mp3",
+      "id": 777593,
+      "name": "Parrots - African Gray; Whistle",
+      "autor": "TheKingOfGeeks360",
+      "duracion": 1.14,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/777593/",
+      "calificacion": 5,
+      "descargas": 70
+    },
+    {
+      "file": "guacamaya_3.mp3",
+      "id": 856996,
+      "name": "Parrot Screaming Chirps",
+      "autor": "samrad20",
+      "duracion": 1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/856996/",
+      "calificacion": 5,
+      "descargas": 54
+    }
+  ],
+  "mono": [
+    {
+      "file": "mono_1.mp3",
+      "id": 773002,
+      "name": "honda-monkey-sound-7",
+      "autor": "jonatantevaniemi",
+      "duracion": 5.59,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/773002/",
+      "calificacion": 5,
+      "descargas": 17
+    },
+    {
+      "file": "mono_2.mp3",
+      "id": 772987,
+      "name": "honda-monkey-sound-15",
+      "autor": "jonatantevaniemi",
+      "duracion": 5.44,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/772987/",
+      "calificacion": 4,
+      "descargas": 13
+    },
+    {
+      "file": "mono_3.mp3",
+      "id": 772984,
+      "name": "honda-monkey-sound-12",
+      "autor": "jonatantevaniemi",
+      "duracion": 5.48,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/772984/",
+      "calificacion": 5,
+      "descargas": 15
+    }
+  ],
+  "ballena": [
+    {
+      "file": "ballena_1.mp3",
+      "id": 275472,
+      "name": "fake whales.ogg",
+      "autor": "adharca",
+      "duracion": 8,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/275472/",
+      "calificacion": 4.4,
+      "descargas": 1579
+    },
+    {
+      "file": "ballena_2.mp3",
+      "id": 88449,
+      "name": "Baleines.wav",
+      "autor": "davidou",
+      "duracion": 5.6,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/88449/",
+      "calificacion": 4.5,
+      "descargas": 16847
+    },
+    {
+      "file": "ballena_3.mp3",
+      "id": 563690,
+      "name": "Long howl) whale and monster.wav",
+      "autor": "J.R.Mythical",
+      "duracion": 5.59,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/563690/",
+      "calificacion": 4.7,
+      "descargas": 1323
+    }
+  ],
+  "libelula": [
+    {
+      "file": "libelula_1.mp3",
+      "id": 390733,
+      "name": "Buzzing Insect Short.mp3",
+      "autor": "FunWithSound",
+      "duracion": 1.02,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/390733/",
+      "calificacion": 4.5,
+      "descargas": 1469
+    },
+    {
+      "file": "libelula_2.mp3",
+      "id": 846433,
+      "name": "Insects - Bee; Honeybee, Buzz, Close Perspective",
+      "autor": "TheKingOfGeeks360",
+      "duracion": 3.81,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/846433/",
+      "calificacion": 5,
+      "descargas": 235
+    },
+    {
+      "file": "libelula_3.mp3",
+      "id": 642010,
+      "name": "Fly buzzing my head at a lake",
+      "autor": "burgersmoke",
+      "duracion": 4.68,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/642010/",
+      "calificacion": 4.9,
+      "descargas": 557
+    }
+  ],
+  "sirena": [
+    {
+      "file": "sirena_1.mp3",
+      "id": 268221,
+      "name": "police siren one loop loop able",
+      "autor": "szpury",
+      "duracion": 0.71,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/268221/",
+      "calificacion": 4.7,
+      "descargas": 2256
+    },
+    {
+      "file": "sirena_2.mp3",
+      "id": 536773,
+      "name": "Siren.ogg",
+      "autor": "egomassive",
+      "duracion": 0.92,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/536773/",
+      "calificacion": 4.6,
+      "descargas": 2137
+    },
+    {
+      "file": "sirena_3.mp3",
+      "id": 58017,
+      "name": "airhorn.wav",
+      "autor": "guitarguy1985",
+      "duracion": 1.01,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/58017/",
+      "calificacion": 3.5,
+      "descargas": 1314
+    }
+  ],
+  "bocina": [
+    {
+      "file": "bocina_1.mp3",
+      "id": 434878,
+      "name": "Car Honking",
+      "autor": "MicktheMicGuy",
+      "duracion": 0.87,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/434878/",
+      "calificacion": 4.6,
+      "descargas": 13218
+    },
+    {
+      "file": "bocina_2.mp3",
+      "id": 423990,
+      "name": "Car horn beep beep two beeps honk honk",
+      "autor": "AmishRob",
+      "duracion": 0.7,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/423990/",
+      "calificacion": 4.6,
+      "descargas": 9447
+    },
+    {
+      "file": "bocina_3.mp3",
+      "id": 32417,
+      "name": "car_horn.wav",
+      "autor": "KRAFTWERK2K1",
+      "duracion": 0.92,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/32417/",
+      "calificacion": 3.8,
+      "descargas": 7905
+    }
+  ],
+  "silbato": [
+    {
+      "file": "silbato_1.mp3",
+      "id": 197973,
+      "name": "Whistle Project 3.wav",
+      "autor": "MacSounds1",
+      "duracion": 1.98,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/197973/",
+      "calificacion": 4.8,
+      "descargas": 1243
+    },
+    {
+      "file": "silbato_2.mp3",
+      "id": 320150,
+      "name": "Wolf Whistle",
+      "autor": "OwlStorm",
+      "duracion": 1.52,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/320150/",
+      "calificacion": 4.3,
+      "descargas": 4404
+    },
+    {
+      "file": "silbato_3.mp3",
+      "id": 161662,
+      "name": "\"Coach\" Whistle.aiff",
+      "autor": "connersaw8",
+      "duracion": 0.89,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/161662/",
+      "calificacion": 3.9,
+      "descargas": 10466
+    }
+  ],
+  "campanas": [
+    {
+      "file": "campanas_1.mp3",
+      "id": 462030,
+      "name": "angle bells_2.wav",
+      "autor": "15HVojta_Michael",
+      "duracion": 3.64,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/462030/",
+      "calificacion": 4,
+      "descargas": 250
+    },
+    {
+      "file": "campanas_2.mp3",
+      "id": 677007,
+      "name": "Falcon Leg Bells 3.mp3",
+      "autor": "itiman",
+      "duracion": 2.35,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/677007/",
+      "calificacion": 4.5,
+      "descargas": 62
+    },
+    {
+      "file": "campanas_3.mp3",
+      "id": 677005,
+      "name": "Falcon Leg Bells 1.mp3",
+      "autor": "itiman",
+      "duracion": 1.03,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/677005/",
+      "calificacion": 4,
+      "descargas": 60
+    }
+  ],
+  "puerta": [
+    {
+      "file": "puerta_1.mp3",
+      "id": 700705,
+      "name": "Metal Door Squeaking 8 (Medium)",
+      "autor": "MathewHenry",
+      "duracion": 1.88,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/700705/",
+      "calificacion": 5,
+      "descargas": 734
+    },
+    {
+      "file": "puerta_2.mp3",
+      "id": 676988,
+      "name": "Stretch - Short",
+      "autor": "NearTheAtmoshphere",
+      "duracion": 1.13,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/676988/",
+      "calificacion": 5,
+      "descargas": 654
+    },
+    {
+      "file": "puerta_3.mp3",
+      "id": 590167,
+      "name": "Creaking in Room 13.wav",
+      "autor": "Greg_Surr",
+      "duracion": 1.91,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/590167/",
+      "calificacion": 5,
+      "descargas": 571
+    }
+  ],
+  "reloj": [
+    {
+      "file": "reloj_1.mp3",
+      "id": 188033,
+      "name": "Ticking Clock",
+      "autor": "AntumDeluge",
+      "duracion": 3.66,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/188033/",
+      "calificacion": 3.4,
+      "descargas": 13140
+    },
+    {
+      "file": "reloj_2.mp3",
+      "id": 212181,
+      "name": "Loopable Ticking Clock",
+      "autor": "OwlStorm",
+      "duracion": 3.99,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/212181/",
+      "calificacion": 4.8,
+      "descargas": 4449
+    },
+    {
+      "file": "reloj_3.mp3",
+      "id": 54848,
+      "name": "Ticking Clock.wav",
+      "autor": "Izkhanilov",
+      "duracion": 2.01,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/54848/",
+      "calificacion": 3.3,
+      "descargas": 3897
+    }
+  ],
+  "lluvia": [
+    {
+      "file": "lluvia_1.mp3",
+      "id": 486255,
+      "name": "R22-17-Smooth Rain on Roof.wav",
+      "autor": "craigsmith",
+      "duracion": 10,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/486255/",
+      "calificacion": 4.3,
+      "descargas": 194
+    },
+    {
+      "file": "lluvia_2.mp3",
+      "id": 486256,
+      "name": "R22-18-Hard Driving Rain on Pavement.wav",
+      "autor": "craigsmith",
+      "duracion": 8.33,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/486256/",
+      "calificacion": 4,
+      "descargas": 217
+    },
+    {
+      "file": "lluvia_3.mp3",
+      "id": 387064,
+      "name": "Car Rain.wav",
+      "autor": "Smukey9",
+      "duracion": 8.32,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/387064/",
+      "calificacion": 4.6,
+      "descargas": 752
+    }
+  ],
+  "aspiradora": [
+    {
+      "file": "aspiradora_1.mp3",
+      "id": 817673,
+      "name": "250726 - Vacuum cleaner - Philips PowerPro 7000 series - handle and tube sound",
+      "autor": "Sadiquecat",
+      "duracion": 4.1,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/817673/",
+      "calificacion": 0,
+      "descargas": 7
+    },
+    {
+      "file": "aspiradora_2.mp3",
+      "id": 817670,
+      "name": "250726 - Vacuum cleaner - Philips PowerPro 7000 series - Top handle n bucket lock Opening",
+      "autor": "Sadiquecat",
+      "duracion": 3.41,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/817670/",
+      "calificacion": 0,
+      "descargas": 7
+    },
+    {
+      "file": "aspiradora_3.mp3",
+      "id": 817669,
+      "name": "250726 - Vacuum cleaner - Philips PowerPro 7000 series - Top handle n bucket lock Opening n closing",
+      "autor": "Sadiquecat",
+      "duracion": 4.81,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/817669/",
+      "calificacion": 0,
+      "descargas": 14
+    }
+  ],
+  "pajaros": [
+    {
+      "file": "pajaros_1.mp3",
+      "id": 511094,
+      "name": "Happy Bird Singing",
+      "autor": "se2001",
+      "duracion": 2.65,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/511094/",
+      "calificacion": 4.6,
+      "descargas": 1478
+    },
+    {
+      "file": "pajaros_2.mp3",
+      "id": 395829,
+      "name": "Bird-Sing.mp3",
+      "autor": "Wakerone",
+      "duracion": 3.25,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/395829/",
+      "calificacion": 4.1,
+      "descargas": 1456
+    },
+    {
+      "file": "pajaros_3.mp3",
+      "id": 519105,
+      "name": "Bird 02.wav",
+      "autor": "LilMati",
+      "duracion": 4,
+      "licencia": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://freesound.org/s/519105/",
+      "calificacion": 4.8,
+      "descargas": 1221
+    }
+  ]
+}

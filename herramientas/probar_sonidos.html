@@ -71,6 +71,44 @@ const CAT_VERSIONS = {
   }
 };
 
+// ---------- Grabaciones reales para elegir (Freesound, licencia CC0: herramientas/buscar_sonidos.js) ----------
+// Se escuchan solo los primeros 3 segundos, como quedarían en el juego.
+let playing = null;
+function playFile(file) {
+  if (playing) playing.pause();
+  playing = new Audio('sonidos_candidatos/' + file);
+  playing.play().catch(() => {});   // si se toca otro botón muy rápido, no pasa nada
+  const a = playing;
+  setTimeout(() => { if (a === playing) a.pause(); }, 3000);
+}
+// el sonido actual (hecho con código) con ese nombre, en cualquier mundo
+function currentSound(name) {
+  for (const key of Object.keys(DISTRACTORS)) {
+    const D = DISTRACTORS[key], v = (D.visual || []).find(x => x.name === name && x.sound);
+    if (v) return [THEMES[key].label, () => v.sound()];
+    if (D.sounds && D.sounds[name]) return [THEMES[key].label, D.sounds[name]];
+  }
+  return null;
+}
+fetch('sonidos_candidatos/candidatos.json').then(r => r.json()).then(fichas => {
+  const sec = document.createElement('section');
+  sec.innerHTML = '<h2>Grabaciones reales para elegir</h2><p class="kind" style="margin:0 0 8px">Gris = el sonido actual (hecho con código) · ' +
+    'verde = grabaciones reales con licencia libre. Dime el número que te guste de cada uno (por ejemplo "gato 2").</p>';
+  Object.entries(fichas).forEach(([name, opts]) => {
+    if (!opts.length) return;
+    const row = document.createElement('div'); row.className = 'row';
+    const cur = currentSound(name);
+    row.innerHTML = '<div class="name">' + name.replace(/_/g, ' ') + '<div class="kind">' + (cur ? cur[0] : '') + '</div></div>';
+    if (cur) { const b = document.createElement('button'); b.textContent = '▶ Actual'; b.onclick = () => { getCtx(); cur[1](); }; row.appendChild(b); }
+    opts.forEach((o, i) => {
+      const b = document.createElement('button'); b.className = 'new'; b.textContent = '▶ ' + (i + 1);
+      b.title = o.name + ' (' + o.duracion + ' s)'; b.onclick = () => playFile(o.file); row.appendChild(b);
+    });
+    sec.appendChild(row);
+  });
+  list.prepend(sec);
+});
+
 // ---------- Lista ----------
 const NAMES = { avion: 'Avión', pajaro: 'Pájaro', gato: 'Gato' };
 const list = document.getElementById('list');
