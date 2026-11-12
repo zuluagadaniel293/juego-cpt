@@ -84,6 +84,14 @@
       "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!",
       "firma": "bd7b95fc05"
     },
+    "dodge": {
+      "texto": "¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
+      "firma": "785cee72e7"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
+      "firma": "2a323c2de8"
+    },
     "boss": {
       "texto": "¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.",
       "firma": "b1e0c074a6"
@@ -159,6 +167,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! Sombra solo aparece justo después de Héroe Noche: esa es la pista. ¡Toca a Sombra solo si justo antes salió Héroe Noche!",
       "firma": "b2dd004cfb"
+    },
+    "cast_dodge": {
+      "texto": "¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
+      "firma": "785cee72e7"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ¡Sombra me lanza bolas de humo desde los tejados! Muévete para esquivarlas... pero si una frena en el aire, ¡quédate quieto!",
+      "firma": "2a323c2de8"
     },
     "comp_1": {
       "texto": "¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!",
@@ -338,6 +354,14 @@
       "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!",
       "firma": "8b06f9d9f9"
     },
+    "dodge": {
+      "texto": "¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
+      "firma": "b2ca9c5200"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
+      "firma": "d7bc272c56"
+    },
     "boss": {
       "texto": "¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.",
       "firma": "f105b6e64e"
@@ -413,6 +437,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! Morgana solo aparece justo después de la Hechicera Buena: esa es la pista. ¡Toca a Morgana solo si justo antes salió la Hechicera Buena!",
       "firma": "c011a8e4f9"
+    },
+    "cast_dodge": {
+      "texto": "¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
+      "firma": "b2ca9c5200"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ¡Morgana me lanza hechizos para que no llegue al nido! Esquívalos... pero si uno frena en el aire, ¡no te muevas!",
+      "firma": "d7bc272c56"
     },
     "comp_1": {
       "texto": "¡Hola, Chispa! Soy el Hada del Bosque. ¡Te ayudaré a llevar a tus hermanitos al nido!",
@@ -592,6 +624,14 @@
       "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!",
       "firma": "e9949d4315"
     },
+    "dodge": {
+      "texto": "¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "45d6c20a07"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "471406ed45"
+    },
     "boss": {
       "texto": "¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.",
       "firma": "c7ca35d63b"
@@ -667,6 +707,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. El Duende Pícaro solo aparece justo después del Duende Amable: esa es la pista. ¡Tócalo solo si justo antes salió el Duende Amable!",
       "firma": "259c2d5495"
+    },
+    "cast_dodge": {
+      "texto": "¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "45d6c20a07"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro me lanza pasteles y libros! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "471406ed45"
     },
     "comp_1": {
       "texto": "¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a liberar a Lumi!",
@@ -846,6 +894,14 @@
       "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!",
       "firma": "45af49022b"
     },
+    "dodge": {
+      "texto": "¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
+      "firma": "3e1630e549"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
+      "firma": "ef7a17963d"
+    },
     "boss": {
       "texto": "¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.",
       "firma": "3e0ea3fad8"
@@ -921,6 +977,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! El Capitán Meteoro solo aparece justo después de Cometa: esa es la pista. ¡Tócalo solo si justo antes salió Cometa!",
       "firma": "cb1491ae54"
+    },
+    "cast_dodge": {
+      "texto": "¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
+      "firma": "3e1630e549"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ¡El Capitán Meteoro me lanza meteoritos para que no lleve a Bip a la base! Esquívalos... pero si uno frena, ¡no te muevas!",
+      "firma": "ef7a17963d"
     },
     "comp_1": {
       "texto": "¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y llevemos a Bip a la base!",
@@ -1100,6 +1164,14 @@
       "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!",
       "firma": "62cc2056e9"
     },
+    "dodge": {
+      "texto": "¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
+      "firma": "0227ff0af2"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
+      "firma": "5db27f7cbd"
+    },
     "boss": {
       "texto": "¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.",
       "firma": "0fe25ee5ec"
@@ -1175,6 +1247,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! El Pulpo Tinta solo aparece justo después de Pulpi: esa es la pista. ¡Tócalo solo si justo antes salió Pulpi!",
       "firma": "60f096d8c6"
+    },
+    "cast_dodge": {
+      "texto": "¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
+      "firma": "0227ff0af2"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ¡El Pulpo Tinta me lanza tinta para que no proteja a Perla! Esquívala... pero si algo frena en el agua, ¡quédate quieto!",
+      "firma": "5db27f7cbd"
     },
     "comp_1": {
       "texto": "¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y protejamos a Perla!",
@@ -1354,6 +1434,14 @@
       "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!",
       "firma": "2c619fbd2e"
     },
+    "dodge": {
+      "texto": "¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
+      "firma": "b197c9645f"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
+      "firma": "c2d64ec2d2"
+    },
     "boss": {
       "texto": "¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.",
       "firma": "fd88e527f2"
@@ -1429,6 +1517,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. El Pterodáctilo Ladrón solo aparece justo después de Plumi: esa es la pista. ¡Tócalo solo si justo antes salió Plumi!",
       "firma": "3170ceb707"
+    },
+    "cast_dodge": {
+      "texto": "¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
+      "firma": "b197c9645f"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ¡El Pterodáctilo Ladrón me lanza barro para que no le lleve hojas a Dino! Esquívalo... pero si algo frena en el aire, ¡no te muevas!",
+      "firma": "c2d64ec2d2"
     },
     "comp_1": {
       "texto": "¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos las hojas doradas para Dino!",
@@ -1608,6 +1704,14 @@
       "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Botón siempre llega después del robotito rojo. ¡Toca a Botón solo si justo antes salió el robotito rojo!",
       "firma": "3cbcdd0dc5"
     },
+    "dodge": {
+      "texto": "¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "3397dc86e3"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "c9077e2bda"
+    },
     "boss": {
       "texto": "¡Glitch guardó la última energía de Botón en el centro de control! Primero recarga a Botón y después atrapa a Glitch entre los robots.",
       "firma": "3f89363e13"
@@ -1683,6 +1787,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! Glitch solo aparece justo después de Antivirus: esa es la pista. ¡Tócalo solo si justo antes salió Antivirus!",
       "firma": "a8e905d628"
+    },
+    "cast_dodge": {
+      "texto": "¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "3397dc86e3"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy Chip, inventor. Glitch, un virus travieso, le robó la energía a Botón, mi robotito azul. ¡Hay que recargarlo! ¡Glitch me lanza errores para que no recargue a Botón! Esquívalos... pero si uno frena en el aire, ¡quédate quieto!",
+      "firma": "c9077e2bda"
     },
     "comp_1": {
       "texto": "¡Guau, bip! Soy Cable, el perro robot de Chip. ¡Mi nariz electrónica encontrará a Botón para recargarlo!",
@@ -1862,6 +1974,14 @@
       "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!",
       "firma": "263884b441"
     },
+    "dodge": {
+      "texto": "¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
+      "firma": "e537d40338"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
+      "firma": "c82c4da08e"
+    },
     "boss": {
       "texto": "¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.",
       "firma": "16d4433dc9"
@@ -1937,6 +2057,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! La Serpiente Silbona solo aparece justo después de Silvia: esa es la pista. ¡Tócala solo si justo antes salió Silvia!",
       "firma": "cb96a11b5f"
+    },
+    "cast_dodge": {
+      "texto": "¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
+      "firma": "e537d40338"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ¡La Serpiente Silbona me lanza hipnosis para que no le devuelva los colores a Arcoíris! Esquívala... pero si algo frena, ¡no te muevas!",
+      "firma": "c82c4da08e"
     },
     "comp_1": {
       "texto": "¡Grrr... hola! Soy Jaguarcito. Tengo ojos de cazador. ¡Vamos a devolverle los colores a Arcoíris!",
@@ -2116,6 +2244,14 @@
       "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Chispita siempre llega después del corazón rosado. ¡Toca a Chispita solo si justo antes salió el corazón rosado!",
       "firma": "1727b2b9ef"
     },
+    "dodge": {
+      "texto": "¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
+      "firma": "c571b2124c"
+    },
+    "intro_dodge": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
+      "firma": "501c0f959a"
+    },
     "boss": {
       "texto": "¡Ácido guarda el último brillo de Chispita en la fábrica agria! Primero enciéndela y después atrapa a Ácido entre mis amigos.",
       "firma": "2d4ec63efe"
@@ -2191,6 +2327,14 @@
     "intro_cast_ax_friend3": {
       "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! Ácido solo aparece justo después de Limonada: esa es la pista. ¡Tócalo solo si justo antes salió Limonada!",
       "firma": "b7767fd777"
+    },
+    "cast_dodge": {
+      "texto": "¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
+      "firma": "c571b2124c"
+    },
+    "intro_cast_dodge": {
+      "texto": "¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, le apagó el brillo a Chispita, mi amiga estrella. ¡Hay que encenderla otra vez! ¡Ácido me lanza jugo agrio para que no encienda a Chispita! Esquívalo... pero si algo frena en el aire, ¡quédate quieto!",
+      "firma": "501c0f959a"
     },
     "comp_1": {
       "texto": "¡Hola! Soy Jengi, la galleta de jengibre. ¡Corre, corre, que vamos a encender a Chispita!",
