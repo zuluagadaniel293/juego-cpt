@@ -107,6 +107,8 @@ function textos(key, m) {
   const st = m.story, yo = VOCES[key], t = {};
   st.chapters.forEach((ch, i) => { t[String(i + 1)] = [ch.line, yo]; });
   t.end = [st.ending, yo];
+  // pantalla de "¡Mundo desbloqueado!" (igual que unlockLine en juego/nucleo/mundos.js)
+  t.unlock = ['¡Llegaste a ' + m.theme.label + '! ' + st.intro + '¿Me ayudas?', yo];
   JUEGOS.forEach(mg => {
     t[mg] = [st.mgLines[mg], yo];
     t['intro_' + mg] = [st.intro + st.mgLines[mg], yo];

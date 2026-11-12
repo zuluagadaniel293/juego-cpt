@@ -24,6 +24,10 @@
       "texto": "¡Lo logramos! ¡Atrapamos a Sombra! La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!",
       "firma": "3a2613b20a"
     },
+    "unlock": {
+      "texto": "¡Llegaste a Superhéroes! ¡Hola! ¡Soy Héroe Rayo! ¿Me ayudas?",
+      "firma": "425fa04688"
+    },
     "classic": {
       "texto": "El villano Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya!",
       "firma": "f4bbd6647f"
@@ -273,6 +277,10 @@
     "end": {
       "texto": "¡Atrapamos a Morgana y mi hermanito está a salvo! ¡Ahora eres parte de la familia de los dragones!",
       "firma": "0d77828e3e"
+    },
+    "unlock": {
+      "texto": "¡Llegaste a Dragones y fantasía! ¡Hola! ¡Soy Chispa! Mi hermanito, un dragón bebé dorado, se perdió. ¿Me ayudas?",
+      "firma": "a8876f008c"
     },
     "classic": {
       "texto": "Está escondido entre dragones de otras familias... ¡Toca solo cuando aparezca él!",
@@ -524,6 +532,10 @@
       "texto": "¡Atrapamos al Duende Pícaro y Lumi volvió a casa! Todo el reino está feliz gracias a ti.",
       "firma": "3ce2ce39de"
     },
+    "unlock": {
+      "texto": "¡Llegaste a Reino mágico! ¡Hola! Soy la Reina Luna. Un hechizo dispersó a las hadas por el castillo. ¿Me ayudas?",
+      "firma": "8af5d03f5d"
+    },
     "classic": {
       "texto": "Lumi, el hada rosada, aparece entre las demás hadas. ¡Toca solo cuando la veas a ella!",
       "firma": "1d8e679c68"
@@ -773,6 +785,10 @@
     "end": {
       "texto": "¡Atrapamos al Capitán Meteoro y Bip volvió a casa! Toda la galaxia está feliz gracias a ti.",
       "firma": "779314736e"
+    },
+    "unlock": {
+      "texto": "¡Llegaste a Espacio! ¡Hola! Soy Nova, astronauta. Bip, mi amiguito alien, se perdió entre otros aliens. ¿Me ayudas?",
+      "firma": "721c2492f3"
     },
     "classic": {
       "texto": "Bip es el alien verde con una estrella en la antena. ¡Toca solo cuando lo veas a él!",
@@ -1024,6 +1040,10 @@
       "texto": "¡Atrapamos al Pulpo Tinta y Perla volvió al arrecife! Todo el mar está feliz gracias a ti.",
       "firma": "91706e0181"
     },
+    "unlock": {
+      "texto": "¡Llegaste a Océano! ¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta escondió a Perla, el caballito de mar rosado. ¿Me ayudas?",
+      "firma": "7106e278f0"
+    },
     "classic": {
       "texto": "Perla es el caballito de mar rosado con una perla en la cola. ¡Toca solo cuando la veas a ella!",
       "firma": "4d0fbf3a8f"
@@ -1273,6 +1293,10 @@
     "end": {
       "texto": "¡Atrapamos al Pterodáctilo Ladrón y Dino volvió con su familia! Todo el valle está feliz gracias a ti.",
       "firma": "e35e32ec6b"
+    },
+    "unlock": {
+      "texto": "¡Llegaste a Dinosaurios! ¡Hola! Soy Tito, explorador de dinosaurios. El Pterodáctilo Ladrón se llevó a Dino, el triceratops bebé. ¿Me ayudas?",
+      "firma": "70c14bafd9"
     },
     "classic": {
       "texto": "Dino es el triceratops naranja con manchas amarillas. ¡Toca solo cuando lo veas a él!",
@@ -1524,6 +1548,10 @@
       "texto": "¡Atrapamos a Glitch y Botón volvió a sonreír! Todos los robots funcionan gracias a ti.",
       "firma": "2540b83507"
     },
+    "unlock": {
+      "texto": "¡Llegaste a Robots! ¡Hola! Soy Chip, inventor. Glitch, un virus travieso, desordenó los robots y escondió a Botón, mi robotito azul. ¿Me ayudas?",
+      "firma": "be591ec1a0"
+    },
     "classic": {
       "texto": "Botón es el robotito azul con la cara sonriente en su pantalla. ¡Toca solo cuando lo veas a él!",
       "firma": "cd610187ee"
@@ -1774,6 +1802,10 @@
       "texto": "¡Atrapamos a la Serpiente Silbona y Arcoíris volvió a su nido! Toda la selva está feliz gracias a ti.",
       "firma": "c1b339deb5"
     },
+    "unlock": {
+      "texto": "¡Llegaste a Selva! ¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona escondió a Arcoíris, el tucán bebé. ¿Me ayudas?",
+      "firma": "5ba59a1c2b"
+    },
     "classic": {
       "texto": "Arcoíris es el tucán con el pico de todos los colores. ¡Toca solo cuando lo veas a él!",
       "firma": "85bcbc8ae6"
@@ -2023,6 +2055,10 @@
     "end": {
       "texto": "¡Atrapamos a Ácido y Chispita volvió a brillar! Todo el reino de los dulces está feliz gracias a ti.",
       "firma": "7c66c3b727"
+    },
+    "unlock": {
+      "texto": "¡Llegaste a Dulces! ¡Hola! Soy Gomi, un osito de gomita. Ácido, el limón gruñón, escondió a Chispita, mi amiga estrella. ¿Me ayudas?",
+      "firma": "e9264be7ff"
     },
     "classic": {
       "texto": "Chispita es la gomita estrella dorada. ¡Toca solo cuando la veas a ella!",

@@ -45,6 +45,8 @@ class WorldUnlockedScene extends Phaser.Scene {
         onComplete: () => this.tweens.add({ targets: target, y: 255, duration: 1100, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' }) });
       this.fanfare();
       this.reveal(th, tex, st);
+      // después de la fanfarria, el protagonista presenta su mundo
+      this.time.delayedCall(1100, () => playVoice(this.themeKey, 'unlock', unlockLine(this.themeKey)));
       this.confetti(th);
     });
   }
@@ -84,8 +86,8 @@ class WorldUnlockedScene extends Phaser.Scene {
 
     // botones
     this.time.delayedCall(1100, () => {
-      makeButton(this, W / 2 - 110, 472, 300, 62, '¡Vamos a jugar!', th.accent, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
-      makeButton(this, W / 2 + 165, 472, 210, 54, 'Ver el mapa', 0xcbd5e1, () => this.scene.start('WorldMap'));
+      makeButton(this, W / 2 - 110, 472, 300, 62, '¡Vamos a jugar!', th.accent, () => { stopVoice(); this.scene.start('ChapterMap', { theme: this.themeKey }); });
+      makeButton(this, W / 2 + 165, 472, 210, 54, 'Ver el mapa', 0xcbd5e1, () => { stopVoice(); this.scene.start('WorldMap'); });
     });
   }
 

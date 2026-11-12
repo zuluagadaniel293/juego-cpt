@@ -105,3 +105,5 @@ const hexColor = n => '#' + n.toString(16).padStart(6, '0');
 const RACE_HELPER = { heroes: 'friend2', fantasy: 'friend1', kingdom: 'friend2', space: 'friend2', ocean: 'friend2',
   dinos: 'friend2', robots: 'friend2', jungle: 'friend2', candy: 'friend2' };
 function raceHelper(theme) { return RACE_HELPER[theme] || 'friend2'; }
+// Lo que dice el protagonista en la pantalla de "¡Mundo desbloqueado!" (su audio: 'unlock', herramientas/generar_voces.js)
+function unlockLine(theme) { return '¡Llegaste a ' + THEMES[theme].label + '! ' + STORY[theme].intro + '¿Me ayudas?'; }
