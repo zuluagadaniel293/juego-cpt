@@ -111,26 +111,12 @@ registrarMundo('heroes', {
         '¡Apagaré todas las luces de la ciudad!',
         '¡Nadie sale de mi guarida!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Héroe Rayo, por aquí! ¡No puedo soltarme!',
-          '¡Ay, no! ¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!',
-          '¡Sombra me empujó al muelle! ¡Ayuda!',
-          '¡Está muy oscuro! ¡Héroe Rayo, ayúdame!'
-        ],
-        friend2: [
-          '¡Mi escudo no aguanta más! ¡Ayúdame!',
-          '¡Sombra me quitó el escudo! ¡Ayuda!',
-          '¡Me atraparon entre las cajas del puerto! ¡Socorro!',
-          '¡Héroe Rayo, Sombra está en la torre! ¡Ayuda!'
-        ],
-        friend3: [
-          '¡Yo no soy Sombra! ¡Socorro!',
-          '¡Me confunden con Sombra! ¡Ayúdame, Héroe Rayo!',
-          '¡Sombra me dejó atrapado en un barco! ¡Ayuda!',
-          '¡Mi luna no brilla! ¡Ayúdame, Héroe Rayo!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Héroe Rayo, por aquí! ¡No puedo soltarme!',
+        '¡Ay, no! ¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!',
+        '¡Sombra me empujó al muelle! ¡Ayuda!',
+        '¡Está muy oscuro! ¡Héroe Rayo, ayúdame!'
+      ] }
     },
     visual: [
       { name: 'avion', kind: 'fly', size: 100,

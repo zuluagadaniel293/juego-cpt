@@ -14,17 +14,11 @@ window.VOICES_ELEVEN = {
     "dist_amenaza_c1": [
       "voces/superheroes/eleven/dist_amenaza_c1.mp3"
     ],
-    "dist_ayuda_c1_friend1": [
-      "voces/superheroes/eleven/dist_ayuda_c1_friend1.mp3"
+    "dist_ayuda_c1": [
+      "voces/superheroes/eleven/dist_ayuda_c1.mp3"
     ],
-    "dist_ayuda_c2_friend1": [
-      "voces/superheroes/eleven/dist_ayuda_c2_friend1.mp3"
-    ],
-    "dist_ayuda_c1_friend2": [
-      "voces/superheroes/eleven/dist_ayuda_c1_friend2.mp3"
-    ],
-    "dist_ayuda_c1_friend3": [
-      "voces/superheroes/eleven/dist_ayuda_c1_friend3.mp3"
+    "dist_ayuda_c2": [
+      "voces/superheroes/eleven/dist_ayuda_c2.mp3"
     ]
   },
   "fantasy": {
@@ -40,17 +34,8 @@ window.VOICES_ELEVEN = {
     "dist_amenaza_c2": [
       "voces/dragones/eleven/dist_amenaza_c2.mp3"
     ],
-    "dist_ayuda_c1_friend1": [
-      "voces/dragones/eleven/dist_ayuda_c1_friend1.mp3"
-    ],
-    "dist_ayuda_c1_friend2": [
-      "voces/dragones/eleven/dist_ayuda_c1_friend2.mp3"
-    ],
-    "dist_ayuda_c1_friend3": [
-      "voces/dragones/eleven/dist_ayuda_c1_friend3.mp3"
-    ],
-    "dist_alto_c1": [
-      "voces/dragones/eleven/dist_alto_c1.mp3"
+    "dist_ayuda_c1": [
+      "voces/dragones/eleven/dist_ayuda_c1.mp3"
     ]
   },
   "kingdom": {
@@ -66,14 +51,8 @@ window.VOICES_ELEVEN = {
     "dist_amenaza_c1": [
       "voces/reino_magico/eleven/dist_amenaza_c1.mp3"
     ],
-    "dist_ayuda_c1_friend1": [
-      "voces/reino_magico/eleven/dist_ayuda_c1_friend1.mp3"
-    ],
-    "dist_ayuda_c1_friend2": [
-      "voces/reino_magico/eleven/dist_ayuda_c1_friend2.mp3"
-    ],
-    "dist_ayuda_c1_friend3": [
-      "voces/reino_magico/eleven/dist_ayuda_c1_friend3.mp3"
+    "dist_ayuda_c1": [
+      "voces/reino_magico/eleven/dist_ayuda_c1.mp3"
     ]
   },
   "space": {
@@ -89,17 +68,11 @@ window.VOICES_ELEVEN = {
     "dist_amenaza_c1": [
       "voces/espacio/eleven/dist_amenaza_c1.mp3"
     ],
-    "dist_ayuda_c1_friend1": [
-      "voces/espacio/eleven/dist_ayuda_c1_friend1.mp3"
+    "dist_ayuda_c1": [
+      "voces/espacio/eleven/dist_ayuda_c1.mp3"
     ],
-    "dist_ayuda_c2_friend1": [
-      "voces/espacio/eleven/dist_ayuda_c2_friend1.mp3"
-    ],
-    "dist_ayuda_c1_friend2": [
-      "voces/espacio/eleven/dist_ayuda_c1_friend2.mp3"
-    ],
-    "dist_ayuda_c1_friend3": [
-      "voces/espacio/eleven/dist_ayuda_c1_friend3.mp3"
+    "dist_ayuda_c2": [
+      "voces/espacio/eleven/dist_ayuda_c2.mp3"
     ]
   },
   "ocean": {
@@ -115,17 +88,11 @@ window.VOICES_ELEVEN = {
     "dist_amenaza_c1": [
       "voces/oceano/eleven/dist_amenaza_c1.mp3"
     ],
-    "dist_ayuda_c1_friend1": [
-      "voces/oceano/eleven/dist_ayuda_c1_friend1.mp3"
+    "dist_ayuda_c1": [
+      "voces/oceano/eleven/dist_ayuda_c1.mp3"
     ],
-    "dist_ayuda_c2_friend1": [
-      "voces/oceano/eleven/dist_ayuda_c2_friend1.mp3"
-    ],
-    "dist_ayuda_c3_friend2": [
-      "voces/oceano/eleven/dist_ayuda_c3_friend2.mp3"
-    ],
-    "dist_ayuda_c1_friend3": [
-      "voces/oceano/eleven/dist_ayuda_c1_friend3.mp3"
+    "dist_ayuda_c2": [
+      "voces/oceano/eleven/dist_ayuda_c2.mp3"
     ]
   }
 };

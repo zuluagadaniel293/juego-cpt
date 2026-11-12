@@ -107,26 +107,12 @@ registrarMundo('robots', {
         '¡Borraré todos tus inventos!',
         '¡Apagaré a todos los robots para siempre!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Guau! ¡Ayuda, Chip! ¡Glitch me desconectó!',
-          '¡Me atoré en la banda! ¡Ayuda!',
-          '¡Se me acaba la batería! ¡Chip!',
-          '¡Me cambió los botones! ¡Ayuda, Chip!'
-        ],
-        friend2: [
-          '¡Mis hélices no giran! ¡Ayuda, Chip!',
-          '¡Un engranaje me golpeó! ¡Socorro!',
-          '¡Perdí la señal! ¡Ayuda!',
-          '¡Me encerraron en una caja! ¡Chip!'
-        ],
-        friend3: [
-          '¡Yo no soy Glitch! ¡Socorro!',
-          '¡Mira mi escudo, soy Antivirus! ¡Ayuda!',
-          '¡Me confunden con Glitch! ¡Ayuda, Chip!',
-          '¡Glitch me quitó el escudo! ¡Socorro!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Guau! ¡Ayuda, Chip! ¡Glitch me desconectó!',
+        '¡Me atoré en la banda! ¡Ayuda!',
+        '¡Se me acaba la batería! ¡Chip!',
+        '¡Me cambió los botones! ¡Ayuda, Chip!'
+      ] }
     },
     visual: [
       { name: 'engranaje', kind: 'fly', size: 85,

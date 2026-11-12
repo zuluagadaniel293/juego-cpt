@@ -106,26 +106,12 @@ registrarMundo('jungle', {
         '¡Me quedaré con el tesoro del templo!',
         '¡De mi cueva nadie sale!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Ay, no! ¡Ayuda, Kiara! ¡Me enrolló!',
-          '¡No puedo bajar del árbol! ¡Ayuda!',
-          '¡Me caí al agua! ¡Kiara!',
-          '¡Me quedé encerrado en el templo! ¡Ayuda!'
-        ],
-        friend2: [
-          '¡Ayuuuda... Kiara... me atrapó!',
-          '¡Se rompió mi rama! ¡Socorro!',
-          '¡La cascada me empuja! ¡Ayuda!',
-          '¡Me dormí y me encerraron! ¡Kiara!'
-        ],
-        friend3: [
-          '¡Yo no soy la Serpiente Silbona! ¡Socorro!',
-          '¡Mira mi flor, soy Silvia! ¡Ayuda!',
-          '¡Me confunden con la Serpiente Silbona! ¡Ayuda, Kiara!',
-          '¡La Silbona me quitó la flor! ¡Socorro!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Ay, no! ¡Ayuda, Kiara! ¡Me enrolló!',
+        '¡No puedo bajar del árbol! ¡Ayuda!',
+        '¡Me caí al agua! ¡Kiara!',
+        '¡Me quedé encerrado en el templo! ¡Ayuda!'
+      ] }
     },
     visual: [
       { name: 'mariposa_azul', kind: 'fly', size: 85,

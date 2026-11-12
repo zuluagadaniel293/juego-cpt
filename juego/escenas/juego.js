@@ -796,9 +796,10 @@ class GameScene extends Phaser.Scene {
       .filter(v => !((this.mg === 'catch' || this.mg === 'memory') && v.kind === 'walk'));   // abajo está la canasta / las casillas
     // Personajes del mundo (villano y amigos) desde su nivel. No en el jefe final (ahí ya son el objetivo y los
     // distractores) ni en Carrera (el villano ya va adelante).
-    // (con personajes tampoco: el villano y los amigos ya son los estímulos)
+    // (con personajes tampoco: el villano y los amigos ya son los estímulos). Cada mundo tiene un solo amigo al que
+    // el villano ataca y persigue: si ese amigo está acompañando en la esquina, esas escenas no salen.
     const cast = this.mode === 'prueba' || this.chars || this.mg === 'race' ? []
-      : (D.cast || []).filter(c => (this.level || 0) >= c.minLevel);
+      : (D.cast || []).filter(c => (this.level || 0) >= c.minLevel && !(c.friend && c.friend === this.buddyRole));
     if (!P.visual || !list.length) return;
     const d = Phaser.Math.Between(P.visualEvery[0], P.visualEvery[1]);
     this.time.delayedCall(d, () => {

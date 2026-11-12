@@ -105,26 +105,12 @@ registrarMundo('ocean', {
         '¡Taparé la cueva con tinta!',
         '¡De la fosa nadie sale!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Coral, por aquí, rápido!',
-          '¡Ay, no! ¡Ayuda, Coral! ¡La tinta no me deja ver!',
-          '¡Me atoré entre las algas! ¡Ayuda!',
-          '¡Está muy oscuro en la cueva! ¡Coral!'
-        ],
-        friend2: [
-          '¡Una ola me volteó! ¡Ayuda, Coral!',
-          '¡Me quedé atrapado en el barco! ¡Socorro!',
-          '¡Me enredé en las algas! ¡Ayuda!',
-          '¡Se me cayeron las gafas en la cueva! ¡Ayuda!'
-        ],
-        friend3: [
-          '¡Yo soy el pulpo bueno! ¡Socorro!',
-          '¡No fui yo, fue el Pulpo Tinta! ¡Ayuda!',
-          '¡Me confunden con el Pulpo Tinta! ¡Ayuda, Coral!',
-          '¡El Pulpo Tinta me pintó de negro! ¡Socorro!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Coral, por aquí, rápido!',
+        '¡Ay, no! ¡Ayuda, Coral! ¡La tinta no me deja ver!',
+        '¡Me atoré entre las algas! ¡Ayuda!',
+        '¡Está muy oscuro en la cueva! ¡Coral!'
+      ] }
     },
     visual: [
       { name: 'medusa', kind: 'fly', size: 85,

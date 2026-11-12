@@ -107,26 +107,12 @@ registrarMundo('candy', {
         '¡Me quedaré con el castillo!',
         '¡De mi fábrica nadie sale dulce!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Ay, no! ¡Ayuda, Gomi! ¡Me quiere morder!',
-          '¡Me caí al chocolate! ¡Ayuda!',
-          '¡Me estoy congelando en el helado! ¡Gomi!',
-          '¡Se me rompió un brazo de galleta! ¡Ayuda!'
-        ],
-        friend2: [
-          '¡Me está deshaciendo! ¡Ayuda, Gomi!',
-          '¡El chocolate me empapa! ¡Socorro!',
-          '¡Me resbalo en el helado! ¡Ayuda!',
-          '¡Me quedé atorada en el castillo! ¡Gomi!'
-        ],
-        friend3: [
-          '¡Yo no soy Ácido! ¡Socorro!',
-          '¡Mira mi moño, soy Limonada! ¡Ayuda!',
-          '¡Me confunden con Ácido! ¡Ayuda, Gomi!',
-          '¡Ácido me quitó el moño! ¡Socorro!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Ay, no! ¡Ayuda, Gomi! ¡Me quiere morder!',
+        '¡Me caí al chocolate! ¡Ayuda!',
+        '¡Me estoy congelando en el helado! ¡Gomi!',
+        '¡Se me rompió un brazo de galleta! ¡Ayuda!'
+      ] }
     },
     visual: [
       { name: 'caramelo', kind: 'fly', size: 85,

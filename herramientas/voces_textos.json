@@ -232,53 +232,21 @@
       "texto": "¡Nadie sale de mi guarida!",
       "firma": "c51f626c5d"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Héroe Rayo, por aquí! ¡No puedo soltarme!",
       "firma": "7b9dc7ee3e"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Ay, no! ¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!",
       "firma": "035238afc4"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Sombra me empujó al muelle! ¡Ayuda!",
       "firma": "acf8f6bb34"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Está muy oscuro! ¡Héroe Rayo, ayúdame!",
       "firma": "fe5eb0070d"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Mi escudo no aguanta más! ¡Ayúdame!",
-      "firma": "c6aa9847df"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡Sombra me quitó el escudo! ¡Ayuda!",
-      "firma": "ff3956e809"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡Me atraparon entre las cajas del puerto! ¡Socorro!",
-      "firma": "727f9c7950"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Héroe Rayo, Sombra está en la torre! ¡Ayuda!",
-      "firma": "879c12d207"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo no soy Sombra! ¡Socorro!",
-      "firma": "29d484cbdf"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Me confunden con Sombra! ¡Ayúdame, Héroe Rayo!",
-      "firma": "91898cfbf8"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Sombra me dejó atrapado en un barco! ¡Ayuda!",
-      "firma": "5556de9635"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡Mi luna no brilla! ¡Ayúdame, Héroe Rayo!",
-      "firma": "dd1dfaf99e"
     }
   },
   "fantasy": {
@@ -514,69 +482,21 @@
       "texto": "¡Nadie escapa de mi volcán!",
       "firma": "41fb033223"
     },
-    "dist_ayuda_c1_friend1": {
-      "texto": "¡Ay, mis alas! ¡Ayuda, Chispa!",
-      "firma": "348416988e"
-    },
-    "dist_ayuda_c2_friend1": {
-      "texto": "¡Morgana me enredó en las ramas! ¡Ayuda!",
-      "firma": "5583548afd"
-    },
-    "dist_ayuda_c3_friend1": {
-      "texto": "¡Se me mojaron las alas en el río! ¡Chispa!",
-      "firma": "10e11b55a0"
-    },
-    "dist_ayuda_c4_friend1": {
-      "texto": "¡Me perdí en la cueva! ¡Ayúdame, Chispa!",
-      "firma": "a7ce3deeba"
-    },
-    "dist_ayuda_c1_friend2": {
+    "dist_ayuda_c1": {
       "texto": "¡Ay, ay, ay, mi barba! ¡Chispa, ayúdame!",
       "firma": "a5c4ff08af"
     },
-    "dist_ayuda_c2_friend2": {
+    "dist_ayuda_c2": {
       "texto": "¡Morgana convirtió mi sombrero en un sapo! ¡Ayuda!",
       "firma": "b604496c06"
     },
-    "dist_ayuda_c3_friend2": {
+    "dist_ayuda_c3": {
       "texto": "¡Me caigo al río! ¡Chispa, ayúdame!",
       "firma": "d3e8d307cd"
     },
-    "dist_ayuda_c4_friend2": {
+    "dist_ayuda_c4": {
       "texto": "¡Mi varita no funciona en la cueva! ¡Socorro!",
       "firma": "e353175613"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Morgana me quitó la varita! ¡Ayuda!",
-      "firma": "98a1d4346c"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Yo no soy Morgana! ¡Soy la hechicera buena! ¡Socorro!",
-      "firma": "757a1b8543"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Morgana hechizó mi escoba! ¡Ayuda, Chispa!",
-      "firma": "2b38bae619"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡Morgana me encerró en un cristal! ¡Ayuda!",
-      "firma": "54b71d724d"
-    },
-    "dist_alto_c1": {
-      "texto": "¡Alto ahí, Morgana! ¡Deja a los dragones!",
-      "firma": "15f3ad7e5b"
-    },
-    "dist_alto_c2": {
-      "texto": "¡Morgana, devuélvele el hermanito a Chispa!",
-      "firma": "44611c2092"
-    },
-    "dist_alto_c3": {
-      "texto": "¡No huyas, Morgana! ¡Te vi en el río!",
-      "firma": "e94c33f3ef"
-    },
-    "dist_alto_c4": {
-      "texto": "¡Sal de la cueva, Morgana! ¡Te tengo!",
-      "firma": "b021b5958e"
     }
   },
   "kingdom": {
@@ -812,53 +732,21 @@
       "texto": "¡Ahora el castillo es mío!",
       "firma": "85138357aa"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Alto ahí, duende! ¡Ayuda, majestad, se escapa!",
       "firma": "b7edfbb4fd"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Majestad, el duende se metió en la cocina! ¡Ayuda!",
       "firma": "8eab2a8f12"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Me tiró los libros encima! ¡Socorro!",
       "firma": "57f1c10d81"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡El duende me encerró en la torre! ¡Ayuda!",
       "firma": "fd6f1e4754"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Esto no es un chiste! ¡Ayuda, majestad!",
-      "firma": "d180b58d8c"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡Me cayó la sopa en el gorro! ¡Ayuda!",
-      "firma": "e80b8320e6"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡El duende me escondió los cascabeles! ¡Socorro!",
-      "firma": "a8d9db8873"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Majestad, no me puedo bajar de la torre!",
-      "firma": "b53b05e2a8"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo soy el duende bueno! ¡Socorro!",
-      "firma": "44a5fa2283"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡No fui yo, majestad! ¡Fue el otro duende!",
-      "firma": "2d2df3e35a"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡El Duende Pícaro me quiere atrapar! ¡Ayuda!",
-      "firma": "d2fa9560bd"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡Majestad, me confunden con el pícaro! ¡Ayuda!",
-      "firma": "cce45a19a9"
     }
   },
   "space": {
@@ -1094,53 +982,21 @@
       "texto": "¡Nadie escapa del Capitán Meteoro!",
       "firma": "84dc3822a9"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Ay, no! ¡Ayuda, Nova! ¡Me atraparon!",
       "firma": "dfbbecc075"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Nova, mis circuitos fallan!",
       "firma": "8e2707fced"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Se me acabó la batería! ¡Ayuda, Nova!",
       "firma": "7e219bb81d"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Me resbalo en los cristales! ¡Ayuda!",
       "firma": "210f3bcf8d"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Me quitaron mi nave! ¡Ayuda!",
-      "firma": "a6e2ab5f98"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡Un asteroide viene hacia mí! ¡Ayuda, Nova!",
-      "firma": "42ad98bf8a"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡Me encerraron en la nave! ¡Socorro!",
-      "firma": "d041ad38d6"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Mis cuatro brazos no alcanzan! ¡Ayuda!",
-      "firma": "166dd7d79f"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo no soy el pirata! ¡Socorro!",
-      "firma": "bba2d7d7ec"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Mi cohete se apagó! ¡Ayuda, Nova!",
-      "firma": "b91dea73c1"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Me confunden con el Capitán Meteoro! ¡Ayuda!",
-      "firma": "17b67077bb"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡El pirata me robó la capa! ¡Socorro!",
-      "firma": "1bdf9f26eb"
     }
   },
   "ocean": {
@@ -1376,53 +1232,21 @@
       "texto": "¡De la fosa nadie sale!",
       "firma": "c908cc93ed"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Coral, por aquí, rápido!",
       "firma": "6ef94f665d"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Ay, no! ¡Ayuda, Coral! ¡La tinta no me deja ver!",
       "firma": "7694ef2223"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Me atoré entre las algas! ¡Ayuda!",
       "firma": "cc0e9ac5af"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Está muy oscuro en la cueva! ¡Coral!",
       "firma": "286485a2d8"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Una ola me volteó! ¡Ayuda, Coral!",
-      "firma": "f4b78d7f1d"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡Me quedé atrapado en el barco! ¡Socorro!",
-      "firma": "3108cea671"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡Me enredé en las algas! ¡Ayuda!",
-      "firma": "4c9d97a473"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Se me cayeron las gafas en la cueva! ¡Ayuda!",
-      "firma": "060e8557fd"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo soy el pulpo bueno! ¡Socorro!",
-      "firma": "d67aa269f7"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡No fui yo, fue el Pulpo Tinta! ¡Ayuda!",
-      "firma": "d90c405e6d"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Me confunden con el Pulpo Tinta! ¡Ayuda, Coral!",
-      "firma": "d050c29a15"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡El Pulpo Tinta me pintó de negro! ¡Socorro!",
-      "firma": "750a5843a7"
     }
   },
   "dinos": {
@@ -1658,53 +1482,21 @@
       "texto": "¡Nadie sube a mi montaña!",
       "firma": "2f9e6848d0"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Ay, no! ¡Ayuda, Tito! ¡Me picoteó!",
       "firma": "d7343b89ff"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Me resbalé en las piedras del río! ¡Ayuda!",
       "firma": "e7e485c3de"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡El humo me hace toser! ¡Tito!",
       "firma": "e29fba4077"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Mi cuello no cabe en la cueva! ¡Ayuda!",
       "firma": "a90cc48159"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Me quitó mi merienda! ¡Ayuda, Tito!",
-      "firma": "9cd0c444bf"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡La corriente me arrastra! ¡Socorro!",
-      "firma": "0c5546087d"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡Se me calientan los picos! ¡Ayuda!",
-      "firma": "2cbc6c245f"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Está muy oscuro aquí! ¡Tito, ven!",
-      "firma": "32a1aba6d6"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo no soy el ladrón! ¡Socorro!",
-      "firma": "2b2f8d808e"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Mira mi bufanda, soy Plumi! ¡Ayuda!",
-      "firma": "4e77f3e9c6"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Me confunden con el Pterodáctilo Ladrón! ¡Ayuda, Tito!",
-      "firma": "847b9afd04"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡El ladrón me quitó la bufanda! ¡Socorro!",
-      "firma": "f3d03bb5f0"
     }
   },
   "robots": {
@@ -1940,53 +1732,21 @@
       "texto": "¡Apagaré a todos los robots para siempre!",
       "firma": "edc1886b01"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Guau! ¡Ayuda, Chip! ¡Glitch me desconectó!",
       "firma": "a9bbacb00a"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Me atoré en la banda! ¡Ayuda!",
       "firma": "05b14c5a49"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Se me acaba la batería! ¡Chip!",
       "firma": "3d0ce39bf1"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Me cambió los botones! ¡Ayuda, Chip!",
       "firma": "f4b1c5c07a"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Mis hélices no giran! ¡Ayuda, Chip!",
-      "firma": "e532d5a1f7"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡Un engranaje me golpeó! ¡Socorro!",
-      "firma": "28918c53cf"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡Perdí la señal! ¡Ayuda!",
-      "firma": "7a8992a65d"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Me encerraron en una caja! ¡Chip!",
-      "firma": "158a790860"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo no soy Glitch! ¡Socorro!",
-      "firma": "913590cb45"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Mira mi escudo, soy Antivirus! ¡Ayuda!",
-      "firma": "1e52b6d473"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Me confunden con Glitch! ¡Ayuda, Chip!",
-      "firma": "c8d97c400c"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡Glitch me quitó el escudo! ¡Socorro!",
-      "firma": "1219acfe9c"
     }
   },
   "jungle": {
@@ -2222,53 +1982,21 @@
       "texto": "¡De mi cueva nadie sale!",
       "firma": "fbdd67f568"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Ay, no! ¡Ayuda, Kiara! ¡Me enrolló!",
       "firma": "baa109d53f"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡No puedo bajar del árbol! ¡Ayuda!",
       "firma": "325e5f613f"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Me caí al agua! ¡Kiara!",
       "firma": "c597cdf2a7"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Me quedé encerrado en el templo! ¡Ayuda!",
       "firma": "b7561e9edb"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Ayuuuda... Kiara... me atrapó!",
-      "firma": "46a8ebfa63"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡Se rompió mi rama! ¡Socorro!",
-      "firma": "920060e182"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡La cascada me empuja! ¡Ayuda!",
-      "firma": "fd7ad225f4"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Me dormí y me encerraron! ¡Kiara!",
-      "firma": "989323ef00"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo no soy la Serpiente Silbona! ¡Socorro!",
-      "firma": "efcbb58c29"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Mira mi flor, soy Silvia! ¡Ayuda!",
-      "firma": "d1ad17e7c8"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Me confunden con la Serpiente Silbona! ¡Ayuda, Kiara!",
-      "firma": "3fe8efbd68"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡La Silbona me quitó la flor! ¡Socorro!",
-      "firma": "c838ff3dd6"
     }
   },
   "candy": {
@@ -2504,53 +2232,21 @@
       "texto": "¡De mi fábrica nadie sale dulce!",
       "firma": "eb0633cf05"
     },
-    "dist_ayuda_c1_friend1": {
+    "dist_ayuda_c1": {
       "texto": "¡Ay, no! ¡Ayuda, Gomi! ¡Me quiere morder!",
       "firma": "659cab3b61"
     },
-    "dist_ayuda_c2_friend1": {
+    "dist_ayuda_c2": {
       "texto": "¡Me caí al chocolate! ¡Ayuda!",
       "firma": "61bdbfee03"
     },
-    "dist_ayuda_c3_friend1": {
+    "dist_ayuda_c3": {
       "texto": "¡Me estoy congelando en el helado! ¡Gomi!",
       "firma": "62a8cfa1c5"
     },
-    "dist_ayuda_c4_friend1": {
+    "dist_ayuda_c4": {
       "texto": "¡Se me rompió un brazo de galleta! ¡Ayuda!",
       "firma": "a051af88c8"
-    },
-    "dist_ayuda_c1_friend2": {
-      "texto": "¡Me está deshaciendo! ¡Ayuda, Gomi!",
-      "firma": "9562d8aa87"
-    },
-    "dist_ayuda_c2_friend2": {
-      "texto": "¡El chocolate me empapa! ¡Socorro!",
-      "firma": "ee67409ebb"
-    },
-    "dist_ayuda_c3_friend2": {
-      "texto": "¡Me resbalo en el helado! ¡Ayuda!",
-      "firma": "970d54eff3"
-    },
-    "dist_ayuda_c4_friend2": {
-      "texto": "¡Me quedé atorada en el castillo! ¡Gomi!",
-      "firma": "aee847baaf"
-    },
-    "dist_ayuda_c1_friend3": {
-      "texto": "¡Yo no soy Ácido! ¡Socorro!",
-      "firma": "bbeee9763d"
-    },
-    "dist_ayuda_c2_friend3": {
-      "texto": "¡Mira mi moño, soy Limonada! ¡Ayuda!",
-      "firma": "372343cb59"
-    },
-    "dist_ayuda_c3_friend3": {
-      "texto": "¡Me confunden con Ácido! ¡Ayuda, Gomi!",
-      "firma": "a3fae1091a"
-    },
-    "dist_ayuda_c4_friend3": {
-      "texto": "¡Ácido me quitó el moño! ¡Socorro!",
-      "firma": "28f73d602a"
     }
   }
 }

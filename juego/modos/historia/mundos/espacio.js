@@ -107,26 +107,12 @@ registrarMundo('space', {
         '¡Me quedaré con todos los cristales!',
         '¡Nadie escapa del Capitán Meteoro!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Ay, no! ¡Ayuda, Nova! ¡Me atraparon!',
-          '¡Nova, mis circuitos fallan!',
-          '¡Se me acabó la batería! ¡Ayuda, Nova!',
-          '¡Me resbalo en los cristales! ¡Ayuda!'
-        ],
-        friend2: [
-          '¡Me quitaron mi nave! ¡Ayuda!',
-          '¡Un asteroide viene hacia mí! ¡Ayuda, Nova!',
-          '¡Me encerraron en la nave! ¡Socorro!',
-          '¡Mis cuatro brazos no alcanzan! ¡Ayuda!'
-        ],
-        friend3: [
-          '¡Yo no soy el pirata! ¡Socorro!',
-          '¡Mi cohete se apagó! ¡Ayuda, Nova!',
-          '¡Me confunden con el Capitán Meteoro! ¡Ayuda!',
-          '¡El pirata me robó la capa! ¡Socorro!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Ay, no! ¡Ayuda, Nova! ¡Me atraparon!',
+        '¡Nova, mis circuitos fallan!',
+        '¡Se me acabó la batería! ¡Ayuda, Nova!',
+        '¡Me resbalo en los cristales! ¡Ayuda!'
+      ] }
     },
     visual: [
       { name: 'cohete', kind: 'fly', size: 100,

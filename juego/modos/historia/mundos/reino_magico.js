@@ -111,26 +111,12 @@ registrarMundo('kingdom', {
         '¡Cerraré la torre con llave!',
         '¡Ahora el castillo es mío!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Alto ahí, duende! ¡Ayuda, majestad, se escapa!',
-          '¡Majestad, el duende se metió en la cocina! ¡Ayuda!',
-          '¡Me tiró los libros encima! ¡Socorro!',
-          '¡El duende me encerró en la torre! ¡Ayuda!'
-        ],
-        friend2: [
-          '¡Esto no es un chiste! ¡Ayuda, majestad!',
-          '¡Me cayó la sopa en el gorro! ¡Ayuda!',
-          '¡El duende me escondió los cascabeles! ¡Socorro!',
-          '¡Majestad, no me puedo bajar de la torre!'
-        ],
-        friend3: [
-          '¡Yo soy el duende bueno! ¡Socorro!',
-          '¡No fui yo, majestad! ¡Fue el otro duende!',
-          '¡El Duende Pícaro me quiere atrapar! ¡Ayuda!',
-          '¡Majestad, me confunden con el pícaro! ¡Ayuda!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Alto ahí, duende! ¡Ayuda, majestad, se escapa!',
+        '¡Majestad, el duende se metió en la cocina! ¡Ayuda!',
+        '¡Me tiró los libros encima! ¡Socorro!',
+        '¡El duende me encerró en la torre! ¡Ayuda!'
+      ] }
     },
     visual: [
       { name: 'libro_volador', kind: 'fly', size: 75,

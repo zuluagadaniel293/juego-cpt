@@ -107,26 +107,12 @@ registrarMundo('dinos', {
         '¡Borraré todas las pinturas de la cueva!',
         '¡Nadie sube a mi montaña!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Ay, no! ¡Ayuda, Tito! ¡Me picoteó!',
-          '¡Me resbalé en las piedras del río! ¡Ayuda!',
-          '¡El humo me hace toser! ¡Tito!',
-          '¡Mi cuello no cabe en la cueva! ¡Ayuda!'
-        ],
-        friend2: [
-          '¡Me quitó mi merienda! ¡Ayuda, Tito!',
-          '¡La corriente me arrastra! ¡Socorro!',
-          '¡Se me calientan los picos! ¡Ayuda!',
-          '¡Está muy oscuro aquí! ¡Tito, ven!'
-        ],
-        friend3: [
-          '¡Yo no soy el ladrón! ¡Socorro!',
-          '¡Mira mi bufanda, soy Plumi! ¡Ayuda!',
-          '¡Me confunden con el Pterodáctilo Ladrón! ¡Ayuda, Tito!',
-          '¡El ladrón me quitó la bufanda! ¡Socorro!'
-        ]
-      } }
+      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Ay, no! ¡Ayuda, Tito! ¡Me picoteó!',
+        '¡Me resbalé en las piedras del río! ¡Ayuda!',
+        '¡El humo me hace toser! ¡Tito!',
+        '¡Mi cuello no cabe en la cueva! ¡Ayuda!'
+      ] }
     },
     visual: [
       { name: 'libelula', kind: 'fly', size: 85,

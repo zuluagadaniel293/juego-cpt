@@ -82,7 +82,7 @@ registrarMundo('fantasy', {
     cast: [
       { name: 'pelea_morgana_mago', kind: 'fight', friend: 'friend2', voice: 'ayuda', minLevel: 2 },
       { name: 'morgana_se_asoma', kind: 'peek', voice: 'risa', minLevel: 1 },
-      { name: 'hada_persigue_morgana', kind: 'chase', friend: 'friend1', villainPose: 'villain_scared', voice: 'alto', minLevel: 2 },
+      { name: 'morgana_persigue_mago', kind: 'chase', flee: true, friend: 'friend2', voice: 'ayuda', minLevel: 2 },
       { name: 'morgana_escabulle', kind: 'sneak', voice: 'burla', minLevel: 1 },
       { name: 'morgana_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
@@ -111,32 +111,12 @@ registrarMundo('fantasy', {
         '¡Cerraré la cueva para siempre!',
         '¡Nadie escapa de mi volcán!'
       ] },
-      ayuda:   { who: 'friend', text: {
-        friend1: [
-          '¡Ay, mis alas! ¡Ayuda, Chispa!',
-          '¡Morgana me enredó en las ramas! ¡Ayuda!',
-          '¡Se me mojaron las alas en el río! ¡Chispa!',
-          '¡Me perdí en la cueva! ¡Ayúdame, Chispa!'
-        ],
-        friend2: [
-          '¡Ay, ay, ay, mi barba! ¡Chispa, ayúdame!',
-          '¡Morgana convirtió mi sombrero en un sapo! ¡Ayuda!',
-          '¡Me caigo al río! ¡Chispa, ayúdame!',
-          '¡Mi varita no funciona en la cueva! ¡Socorro!'
-        ],
-        friend3: [
-          '¡Morgana me quitó la varita! ¡Ayuda!',
-          '¡Yo no soy Morgana! ¡Soy la hechicera buena! ¡Socorro!',
-          '¡Morgana hechizó mi escoba! ¡Ayuda, Chispa!',
-          '¡Morgana me encerró en un cristal! ¡Ayuda!'
-        ]
-      } },
-      alto:    { who: 'friend1', text: [
-        '¡Alto ahí, Morgana! ¡Deja a los dragones!',
-        '¡Morgana, devuélvele el hermanito a Chispa!',
-        '¡No huyas, Morgana! ¡Te vi en el río!',
-        '¡Sal de la cueva, Morgana! ¡Te tengo!'
-      ] }
+      ayuda:   { who: 'friend2', text: [   // solo el amigo que el villano ataca y persigue
+        '¡Ay, ay, ay, mi barba! ¡Chispa, ayúdame!',
+        '¡Morgana convirtió mi sombrero en un sapo! ¡Ayuda!',
+        '¡Me caigo al río! ¡Chispa, ayúdame!',
+        '¡Mi varita no funciona en la cueva! ¡Socorro!'
+      ] },
     },
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60,
