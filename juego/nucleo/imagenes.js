@@ -5,7 +5,9 @@
 const ASSET_NAMES = ['target', 'dist1', 'dist2', 'dist3', 'hero', 'hero_run', 'villain', 'villain_caught',
   'villain_sneak', 'villain_laugh', 'villain_taunt', 'villain_run', 'villain_scared', 'villain_face',
   ...['friend1', 'friend2', 'friend3'].flatMap(f => [f + '_help', f + '_cower', f + '_flee', f + '_cheer']),
-  'friend1', 'friend2', 'friend3', 'net', 'end', 'treasure', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
+  'friend1', 'friend2', 'friend3', 'net', 'end', 'treasure', 'bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5',
+  // giros y escena propia del villano (juego/nucleo/giros.js): si faltan, se dibujan con formas simples
+  'fx_fly_1', 'fx_fly_2', 'fx_fly_3', 'fx_splat', 'fx_amb_1', 'fx_amb_2', 'fx_amb_3', 'fx_amb_4', 'fx_amb_5', 'fx_dust'];
 const ASSETS = window.ASSETS || {};
 const COMMON_ASSETS = ASSETS.comunes || {};   // objetos e íconos de todos los mundos
 
@@ -23,6 +25,7 @@ function fallbackKey(theme, name) {
   if (name === 'net') return 'net';
   if (/^villain_(sneak|laugh|taunt|run|scared|face)$/.test(name)) return null;   // poses: si faltan, la imagen del villano
   if (/^friend\d_(help|cower|flee|cheer)$/.test(name)) return null;                   // poses: si faltan, la imagen del amigo
+  if (name.startsWith('fx_')) return null;   // giros: si faltan, formas simples
   if (name === 'end' || name === 'villain_caught' || name === 'treasure' || name.startsWith('bg_')) return null; // se generan aparte
   if (name === 'friend3' && theme !== 'heroes') return theme + '_friend1';
   return theme + '_' + name;

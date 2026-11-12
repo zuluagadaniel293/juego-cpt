@@ -60,11 +60,18 @@ function updateTwistItem(scene, it, dt) {
   return m === 'turbo' ? tw.k : 1;
 }
 
+// Imágenes de un papel numerado que existen (fx_fly_1..3, fx_amb_1..5); vacío = se dibuja con formas simples
+function fxKeys(theme, base) {
+  const tex = TEX[theme] || {};
+  return [1, 2, 3, 4, 5].map(i => tex[base + '_' + i]).filter(Boolean);
+}
+
 // Lo que pasa por detrás de todo (no tapa los objetos del juego) y los temblores
 function startTwistAmbient(scene) {
   const t = scene.twist;
   if (!t) return;
-  const W = GAME_W, H = GAME_H, DEPTH = -2;
+  const W = GAME_W, H = GAME_H, DEPTH = -2, amb = fxKeys(scene.themeKey, 'fx_amb');
+  const pic = (x, y, px) => fit(scene.add.image(x, y, Phaser.Utils.Array.GetRandom(amb)), px).setDepth(DEPTH);
   const loop = (min, max, fn) => {
     const go = () => { if (scene.ended) return; fn(); scene.time.delayedCall(Phaser.Math.Between(min, max), go); };
     scene.time.delayedCall(Phaser.Math.Between(min, max), go);
@@ -73,24 +80,28 @@ function startTwistAmbient(scene) {
     // nubes de niebla por la franja de arriba o la de abajo
     const top = Math.random() < 0.5, y = top ? Phaser.Math.Between(70, 130) : Phaser.Math.Between(470, 520);
     const left = Math.random() < 0.5;
-    const f = scene.add.ellipse(left ? -200 : W + 200, y, Phaser.Math.Between(260, 380), 70, 0xe9d5ff, 0.22).setDepth(DEPTH);
-    scene.tweens.add({ targets: f, x: left ? W + 200 : -200, duration: Phaser.Math.Between(9000, 13000), onComplete: () => f.destroy() });
+    const f = amb.length ? pic(left ? -220 : W + 220, y, Phaser.Math.Between(320, 420)).setAlpha(0.55)
+      : scene.add.ellipse(left ? -200 : W + 200, y, Phaser.Math.Between(260, 380), 70, 0xe9d5ff, 0.22).setDepth(DEPTH);
+    scene.tweens.add({ targets: f, x: left ? W + 220 : -220, duration: Phaser.Math.Between(9000, 13000), onComplete: () => f.destroy() });
   });
   if (t.ambient === 'bubbles') loop(500, 1100, () => {
     const x = Math.random() < 0.5 ? Phaser.Math.Between(15, 90) : Phaser.Math.Between(W - 90, W - 15);
-    const b = scene.add.circle(x, H + 20, Phaser.Math.Between(5, 13), 0xbae6fd, 0.25).setStrokeStyle(2, 0xffffff, 0.6).setDepth(DEPTH);
+    const b = amb.length ? pic(x, H + 20, Phaser.Math.Between(12, 28)).setAlpha(0.7)
+      : scene.add.circle(x, H + 20, Phaser.Math.Between(5, 13), 0xbae6fd, 0.25).setStrokeStyle(2, 0xffffff, 0.6).setDepth(DEPTH);
     scene.tweens.add({ targets: b, y: -20, x: x + Phaser.Math.Between(-20, 20), duration: Phaser.Math.Between(3500, 5500), onComplete: () => b.destroy() });
   });
   if (t.ambient === 'leaves') loop(600, 1200, () => {
     const x = Phaser.Math.Between(20, W - 20);
-    const l = scene.add.ellipse(x, -20, 26, 12, Phaser.Utils.Array.GetRandom([0x22c55e, 0x16a34a, 0x86efac, 0xa3e635]), 0.85)
-      .setStrokeStyle(2, 0x14532d, 0.8).setDepth(DEPTH);
+    const l = amb.length ? pic(x, -20, Phaser.Math.Between(28, 40)).setAlpha(0.9)
+      : scene.add.ellipse(x, -20, 26, 12, Phaser.Utils.Array.GetRandom([0x22c55e, 0x16a34a, 0x86efac, 0xa3e635]), 0.85)
+        .setStrokeStyle(2, 0x14532d, 0.8).setDepth(DEPTH);
     scene.tweens.add({ targets: l, y: H + 20, x: x + Phaser.Math.Between(-80, 80), angle: Phaser.Math.Between(-360, 360),
       duration: Phaser.Math.Between(5000, 7500), onComplete: () => l.destroy() });
   });
   if (t.ambient === 'sprinkles') loop(250, 600, () => {
     const x = Phaser.Math.Between(10, W - 10);
-    const s = scene.add.rectangle(x, -10, 12, 4, Phaser.Utils.Array.GetRandom([0xf472b6, 0x60a5fa, 0xfde047, 0x4ade80, 0xffffff]), 0.8).setDepth(DEPTH)
+    const s = (amb.length ? pic(x, -10, Phaser.Math.Between(11, 15)).setAlpha(0.85)
+      : scene.add.rectangle(x, -10, 12, 4, Phaser.Utils.Array.GetRandom([0xf472b6, 0x60a5fa, 0xfde047, 0x4ade80, 0xffffff]), 0.8).setDepth(DEPTH))
       .setAngle(Phaser.Math.Between(0, 180));
     scene.tweens.add({ targets: s, y: H + 10, angle: s.angle + 360, duration: Phaser.Math.Between(4000, 6000), onComplete: () => s.destroy() });
   });
@@ -101,6 +112,12 @@ function startTwistAmbient(scene) {
     const bum = scene.add.text(Math.random() < 0.5 ? 90 : W - 90, 70, '¡BUM!',
       { font: 'bold 26px Arial', color: '#fde68a', stroke: '#78350f', strokeThickness: 6 }).setOrigin(0.5).setDepth(DEPTH).setScale(0.5);
     scene.tweens.add({ targets: bum, scale: 1.2, alpha: 0, duration: 800, onComplete: () => bum.destroy() });
+    // nubes de polvo en las dos esquinas de abajo (detrás de todo)
+    const dust = TEX[scene.themeKey].fx_dust;
+    if (dust) [70, W - 70].forEach(x => {
+      const d = fit(scene.add.image(x, H - 20, dust), 150).setDepth(DEPTH).setAlpha(0.85).setOrigin(0.5, 1);
+      scene.tweens.add({ targets: d, y: H - 40, scale: d.scale * 1.25, alpha: 0, duration: 1300, onComplete: () => d.destroy() });
+    });
     scene.logDistractor('visual_distractor', 'temblor');
   });
 }
@@ -109,13 +126,13 @@ function startTwistAmbient(scene) {
 // Lo que lanza cae en el borde (nunca en el centro, donde están los objetos del juego) y se desvanece.
 const WORLD_SPLASH = {
   heroes:  { name: 'humo', say: '¡PUF!', color: 0x334155, shape: 'blob' },
-  fantasy: { name: 'hechizo', say: '¡ZAP!', color: 0xa855f7, shape: 'star' },
+  fantasy: { name: 'hechizo', say: '¡ZAP!', color: 0xa855f7, shape: 'star', facesLeft: true },
   kingdom: { name: 'pastelazo', say: '¡SPLAT!', color: 0xfbcfe8, shape: 'blob' },
-  space:   { name: 'meteoritos', say: '¡PUM!', color: 0x78716c, shape: 'rock' },
+  space:   { name: 'meteoritos', say: '¡PUM!', color: 0x78716c, shape: 'rock', facesLeft: true },
   ocean:   { name: 'tinta', say: '¡TINTA!', color: 0x111827, shape: 'blob' },
   dinos:   { name: 'barro', say: '¡PLOF!', color: 0x92400e, shape: 'blob' },
   robots:  { name: 'error', say: '¡ERROR!', color: 0x22c55e, shape: 'pixel' },
-  jungle:  { name: 'hipnosis', say: '¡SSS!', color: 0xc084fc, shape: 'ring' },
+  jungle:  { name: 'hipnosis', say: '¡SSS!', color: 0xc084fc, shape: 'ring', spin: true },
   candy:   { name: 'jugo_agrio', say: '¡AGRIO!', color: 0xfde047, shape: 'blob' }
 };
 function showSplashScene(scene, objs, end, DEPTH) {
@@ -136,14 +153,22 @@ function showSplashScene(scene, objs, end, DEPTH) {
       const tx = left ? Phaser.Math.Between(15, 100) : Phaser.Math.Between(W - 100, W - 15);
       const ty = Phaser.Math.Clamp(y + Phaser.Math.Between(-170, 170), 70, 500);
       const r = Phaser.Math.Between(10, 18);
-      const blob = sp.shape === 'pixel' ? scene.add.rectangle(inX, y, r * 1.6, r * 1.6, sp.color, 0.9)
+      // con imagen: lo que lanza (mirando hacia donde va) y, al caer, su mancha; si no, una forma simple
+      const flyKeys = fxKeys(scene.themeKey, 'fx_fly'), splat = tex.fx_splat;
+      const goesRight = tx > inX;
+      const blob = flyKeys.length ? fit(scene.add.image(inX, y, Phaser.Utils.Array.GetRandom(flyKeys)), Phaser.Math.Between(38, 50))
+          .setFlipX(sp.facesLeft ? goesRight : !goesRight)
+        : sp.shape === 'pixel' ? scene.add.rectangle(inX, y, r * 1.6, r * 1.6, sp.color, 0.9)
         : sp.shape === 'ring' ? scene.add.circle(inX, y, r, sp.color, 0).setStrokeStyle(5, sp.color, 0.9)
         : sp.shape === 'star' ? scene.add.star(inX, y, 5, r * 0.5, r * 1.2, sp.color, 0.9)
         : scene.add.circle(inX, y, r, sp.color, sp.shape === 'rock' ? 1 : 0.85);
       blob.setDepth(DEPTH);
       objs.push(blob);
-      scene.tweens.add({ targets: blob, x: tx, y: ty, duration: 320, delay: i * 120, ease: 'Quad.easeOut',
-        onComplete: () => scene.tweens.add({ targets: blob, scale: 1.8, alpha: 0, duration: 1400, delay: 300 }) });
+      if (sp.spin) scene.tweens.add({ targets: blob, angle: 360, duration: 500, repeat: -1 });
+      scene.tweens.add({ targets: blob, x: tx, y: ty, duration: 320, delay: i * 120, ease: 'Quad.easeOut', onComplete: () => {
+        if (splat) fit(blob.setTexture(splat).setFlipX(false).setAngle(0), Phaser.Math.Between(60, 80));
+        scene.tweens.add({ targets: blob, scale: blob.scale * (splat ? 1.15 : 1.8), alpha: 0, duration: 1400, delay: 300 });
+      } });
     }
     scene.time.delayedCall(2300, () => scene.tweens.add({ targets: [v, say], x: off, alpha: 0, duration: 400, onComplete: end }));
   } });

@@ -22,6 +22,8 @@
 //   friend3           amigo parecido al villano (distractor difícil del jefe final)
 //   net               red para atrapar al villano
 //   end               ilustración del final del mundo
+//   fx_fly_1..3, fx_splat  lo que lanza el villano en su escena propia y la mancha que deja (si faltan, se dibujan)
+//   fx_amb_1..5       lo que pasa por detrás en el giro del mundo (niebla, burbujas, hojas, chispas) · fx_dust: polvo del temblor
 //   bg_1 ... bg_5     fondo de cada capítulo
 //   voice_1 ... voice_5, voice_end   voz del personaje en cada capítulo y en el final (MP3)
 //   distractor_<nombre>   distractor del entorno (cruza por los bordes). Nombres de cada mundo:
@@ -45,6 +47,9 @@ window.ASSETS = {
     friend1_help:  'superheroes/capitan_ayuda.png',      // pelea: la Capitana pide ayuda
     friend1_cower: 'superheroes/capitan_cubriendose.png',// pelea: se cubre cuando la atacan
     friend1_flee:  'superheroes/capitan_huye.png',       // huye llorando de Sombra
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'superheroes/giro_humo_volando.png',
+    fx_splat: 'superheroes/giro_humo_mancha.png',
     treasure: 'superheroes/tesoro_escudo.png',   // Misión perfecta
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
@@ -78,6 +83,9 @@ window.ASSETS = {
     friend2_help:  'dragones/mago_ayuda.png',            // pelea: el Mago Abuelo suplica asustado
     friend2_cower: 'dragones/mago_cubre.png',            // pelea: se cubre cuando lo atacan
     friend2_flee:  'dragones/mago_huye.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'dragones/giro_hechizo.png',
+    fx_amb_1: 'dragones/giro_niebla.png',
     treasure: 'dragones/tesoro_gema.png',
     friend1: 'dragones/hada_del_bosque.png',
     friend2: 'dragones/mago_abuelo.png',
@@ -109,6 +117,9 @@ window.ASSETS = {
     friend1_help:  'reino_magico/guardia_ayuda.png',     // pelea: el Guardia pide ayuda
     friend1_cower: 'reino_magico/guardia_cubre.png',     // pelea: se cubre cuando lo atacan
     friend1_flee:  'reino_magico/guardia_huye.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'reino_magico/giro_pastelazo.png',
+    fx_splat: 'reino_magico/giro_pastelazo_mancha.png',
     treasure: 'reino_magico/tesoro_pastel.png',
     friend1: 'reino_magico/guardia.png',
     friend2: 'reino_magico/bufon.png',
@@ -137,6 +148,10 @@ window.ASSETS = {
     villain_run:   'espacio/meteoro_corriendo.png',
     villain_scared:'espacio/meteoro_asustado.png',
     villain_face:  'espacio/meteoro_cara.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'espacio/giro_meteorito_1.png',
+    fx_fly_2: 'espacio/giro_meteorito_2.png',
+    fx_fly_3: 'espacio/giro_meteorito_3.png',
     treasure:      'espacio/tesoro_medalla.png',
     friend1:       'espacio/robi.png',
     friend1_help:  'espacio/robi_ayuda.png',
@@ -168,6 +183,10 @@ window.ASSETS = {
     villain_run:   'oceano/pulpo_corriendo.png',
     villain_scared:'oceano/pulpo_asustado.png',
     villain_face:  'oceano/pulpo_cara.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'oceano/giro_tinta_volando.png',
+    fx_splat: 'oceano/giro_tinta_mancha.png',
+    fx_amb_1: 'oceano/giro_burbuja.png',
     treasure:      'oceano/tesoro_brujula.png',
     friend1:       'oceano/delfi.png',
     friend1_help:  'oceano/delfi_ayuda.png',
@@ -199,6 +218,10 @@ window.ASSETS = {
     villain_run:   'dinosaurios/ptero_corriendo.png',
     villain_scared:'dinosaurios/ptero_asustado.png',
     villain_face:  'dinosaurios/ptero_cara.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'dinosaurios/giro_barro_volando.png',
+    fx_splat: 'dinosaurios/giro_barro_mancha.png',
+    fx_dust: 'dinosaurios/giro_polvo.png',
     treasure:      'dinosaurios/tesoro_amonite.png',
     friend1:       'dinosaurios/cuello_largo.png',
     friend1_help:  'dinosaurios/cuello_largo_ayuda.png',
@@ -230,6 +253,9 @@ window.ASSETS = {
     villain_run:   'robots/glitch_corriendo.png',
     villain_scared:'robots/glitch_asustado.png',
     villain_face:  'robots/glitch_cara.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'robots/giro_error_volando.png',
+    fx_splat: 'robots/giro_error_mancha.png',
     treasure:      'robots/tesoro_engranaje.png',
     friend1:       'robots/cable.png',
     friend1_help:  'robots/cable_ayuda.png',
@@ -261,6 +287,11 @@ window.ASSETS = {
     villain_run:   'selva/serpiente_corriendo.png',
     villain_scared:'selva/serpiente_asustada.png',
     villain_face:  'selva/serpiente_cara.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'selva/giro_hipnosis.png',
+    fx_amb_1: 'selva/giro_hoja_1.png',
+    fx_amb_2: 'selva/giro_hoja_2.png',
+    fx_amb_3: 'selva/giro_hoja_3.png',
     treasure:      'selva/tesoro_medallon.png',
     friend1:       'selva/jaguarcito.png',
     friend1_help:  'selva/jaguarcito_ayuda.png',
@@ -295,6 +326,14 @@ window.ASSETS = {
     friend1_help:  'dulces/jengi_ayuda.png',
     friend1_cower: 'dulces/jengi_cubre.png',
     friend1_flee:  'dulces/jengi_huye.png',
+    // giro del mundo y escena propia del villano (juego/nucleo/giros.js)
+    fx_fly_1: 'dulces/giro_jugo_volando.png',
+    fx_splat: 'dulces/giro_jugo_mancha.png',
+    fx_amb_1: 'dulces/giro_chispa_1.png',
+    fx_amb_2: 'dulces/giro_chispa_2.png',
+    fx_amb_3: 'dulces/giro_chispa_3.png',
+    fx_amb_4: 'dulces/giro_chispa_4.png',
+    fx_amb_5: 'dulces/giro_chispa_5.png',
     treasure:      'dulces/tesoro_galleta.png',
     friend1:       'dulces/jengi.png',
     friend2:       'dulces/nube.png',
