@@ -41,6 +41,7 @@ window.ASSETS = {
     villain_taunt: 'superheroes/sombra_encorvado.png',   // presenta el capítulo 4
     villain_run:   'superheroes/sombra_corriendo.png',   // persigue a la Capitana
     villain_face:  'superheroes/sombra_cara.png',        // espía desde un lado
+    villain_scared:'superheroes/sombra_asustado.png',
     friend1_help:  'superheroes/capitan_ayuda.png',      // pelea: la Capitana pide ayuda
     friend1_cower: 'superheroes/capitan_cubriendose.png',// pelea: se cubre cuando la atacan
     friend1_flee:  'superheroes/capitan_huye.png',       // huye llorando de Sombra
@@ -48,14 +49,12 @@ window.ASSETS = {
     friend1: 'superheroes/capitan_estrella.png',
     friend2: 'superheroes/escudo_verde.png',
     friend3: 'superheroes/heroe_noche.png',
-    friend1_cheer: 'superheroes/capitana_celebra.png',   // el compañero celebra cuando el niño acierta
-    friend2_cheer: 'superheroes/escudo_celebra.png',
-    friend3_cheer: 'superheroes/heroe_noche_celebra.png',
-    bg_1:    'superheroes/fondo_1_el_centro.png',
+    end:     'superheroes/final.jpg',
+    bg_1:    'superheroes/fondo_1_el_centro.jpg',
     bg_2:    'superheroes/fondo_2_barrio_norte.png',
-    bg_3:    'superheroes/fondo_3_el_puerto.png',
-    bg_4:    'superheroes/fondo_4_la_torre.png',
-    bg_5:    'superheroes/fondo_5_guarida_de_sombra.png',
+    bg_3:    'superheroes/fondo_3_el_puerto.jpg',
+    bg_4:    'superheroes/fondo_4_la_torre.jpg',
+    bg_5:    'superheroes/fondo_5_guarida_de_sombra.jpg',
     distractor_avion:  'superheroes/avion.png',
     distractor_pajaro: 'superheroes/pajaro.png',
     distractor_gato:   'superheroes/gato.png',
