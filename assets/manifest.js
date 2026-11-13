@@ -422,6 +422,7 @@ window.ASSETS = {
     puff:        'comunes/humo.png',             // humito cuando el poder falla (tocó otro personaje)
     icon_map:    'comunes/icono_mapa.png',
     icon_trophy: 'comunes/icono_trofeo.png',
+    icon_exam:   'comunes/icono_examen.png',
     icon_lock:   'comunes/icono_candado.png',
     icon_find:   'comunes/icono_lupa.png',
     icon_memory: 'comunes/icono_memoria.png'     // modo Memoria

@@ -33,7 +33,7 @@ class ModeScene extends Phaser.Scene {
     modeCard(480, 0xfb923c, 'icon_trophy', 'Desafío', 'Cada vez más difícil.\n¿Hasta qué nivel llegas?',
       best ? 'Tu récord: nivel ' + best : '', () => this.scene.start('Menu', { mode: 'desafio' }));
     const exams = playerSessions(currentPlayerId()).filter(s => s.mode === 'prueba' || s.mode === 'memoria').length;
-    modeCard(790, 0xa78bfa, '📝', 'Modo Examen', 'Practica como en la\nprueba de verdad',
+    modeCard(790, 0xa78bfa, 'icon_exam', 'Modo Examen', 'Practica como en la\nprueba de verdad',
       exams ? 'Lo has hecho ' + exams + (exams === 1 ? ' vez' : ' veces') : '', () => this.scene.start('PruebaSelect'));
     this.memoryIcon();   // deja lista la imagen del ícono de Memoria (la usan el Desafío y la Prueba fija)
 
