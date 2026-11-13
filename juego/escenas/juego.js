@@ -878,9 +878,13 @@ class GameScene extends Phaser.Scene {
     return this.mode === 'historia' ? this.chapter : ((this.level || 1) - 1) % 4;
   }
   // ¿Tiene frase en este capítulo? (las de los amigos van hasta el capítulo 4: en el jefe ellos son los distractores)
+  // Las del villano se turnan entre sus frases; las del amigo ("¡ayuda!") no suenan en el jefe (ahí los amigos son
+  // los distractores). pool = frases comunes a todos los mundos (juego/nucleo/voces_comunes.js).
   hasVoice(name) {
     const v = (DISTRACTORS[this.themeKey].voices || {})[name], k = this.voiceChapter();
-    return !!v && (Array.isArray(v.text) ? !!v.text[k] : !!v.text.friend1[k]);
+    if (!v) return false;
+    if (v.who !== 'villain' && k >= 4) return false;
+    return v.pool ? !!(VOICE_POOLS[v.pool] || []).length : !!(v.text && v.text.length);
   }
   // Voz de un distractor. Las del amigo ("¡ayuda!") están grabadas con la voz de cada amigo.
   // No suena si es la voz de un amigo en particular que ahora es el compañero (no puede estar en dos lados).
@@ -888,10 +892,12 @@ class GameScene extends Phaser.Scene {
     const v = (DISTRACTORS[this.themeKey].voices || {})[name];
     if (!v || !this.hasVoice(name)) return;
     if (v.who !== 'friend' && v.who !== 'villain' && v.who === this.buddyRole) return;
-    const base = 'dist_' + name + '_c' + (this.voiceChapter() + 1);
-    const id = v.who === 'friend' ? base + '_' + (friendRole || this.castFriend()) : base;
-    if (playClip(this.themeKey, id)) this.logDistractor('audio_distractor', 'voz_' + name);
-    if (name === 'amenaza') runThreatFx(this, this.voiceChapter());   // lo que amenaza pasa en el fondo (juego/nucleo/hechizos.js)
+    // común: una al azar de su grupo · del mundo: la del capítulo, turnándose ('dist_burla_1', 'dist_burla_2'...)
+    const idx = v.pool ? Phaser.Math.Between(0, VOICE_POOLS[v.pool].length - 1) : this.voiceChapter() % v.text.length;
+    const played = v.pool ? playClip('comunes', 'pool_' + v.pool + '_' + (idx + 1))
+      : playClip(this.themeKey, 'dist_' + name + '_' + (idx + 1));
+    if (played) this.logDistractor('audio_distractor', 'voz_' + name);
+    if (name === 'amenaza') runThreatFx(this, idx);   // lo que amenaza pasa en el fondo (juego/nucleo/hechizos.js)
   }
 
   // Sonidos: en la Prueba fija, el tono de siempre; en los mundos, sonidos del propio mundo

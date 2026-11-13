@@ -1,0 +1,67 @@
+{
+  "voces/superheroes/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Mi señal está por todas partes!",
+    "voz": "liam",
+    "firma": "bc16e07531"
+  },
+  "voces/superheroes/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Esta ciudad será mía!",
+    "voz": "liam",
+    "firma": "7d6cc95666"
+  },
+  "voces/reino_magico/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Psst! ¡Por aquí! ¡No, por allá!",
+    "voz": "callum",
+    "firma": "85206e3d08"
+  },
+  "voces/espacio/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Nunca me alcanzarás, astronauta!",
+    "voz": "charlie",
+    "firma": "65ea754622"
+  },
+  "voces/espacio/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Todo el espacio será mío!",
+    "voz": "charlie",
+    "firma": "0ed0b8cfaf"
+  },
+  "voces/oceano/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡El mar entero será oscuro!",
+    "voz": "roger",
+    "firma": "97c305aec2"
+  },
+  "voces/comunes/eleven/pool_risa_m_1.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Nunca me atraparás!",
+    "voz": "liam",
+    "firma": "3e86b21101"
+  },
+  "voces/comunes/eleven/pool_risa_m_2.mp3": {
+    "texto": "[evil laugh] ¡Jo, jo, jo! Aquí estoy... ¿o no?",
+    "voz": "liam",
+    "firma": "b91a23d86e"
+  },
+  "voces/comunes/eleven/pool_risa_m_3.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji, ji! ¡No me pueden atrapar!",
+    "voz": "callum",
+    "firma": "b7ba0a2111"
+  },
+  "voces/comunes/eleven/pool_risa_m_4.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¿Dónde estaré?",
+    "voz": "callum",
+    "firma": "6078c5ecd3"
+  },
+  "voces/comunes/eleven/pool_risa_m_5.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¡No me ves, no me ves!",
+    "voz": "roger",
+    "firma": "0b06ce8b5d"
+  },
+  "voces/comunes/eleven/pool_risa_f_1.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Jamás lo encontrarás!",
+    "voz": "sarah",
+    "firma": "f766f6f25b"
+  },
+  "voces/comunes/eleven/pool_risa_f_2.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji! ¡Mis hechizos nunca fallan!",
+    "voz": "sarah",
+    "firma": "eca36da4e2"
+  }
+}

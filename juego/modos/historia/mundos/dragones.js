@@ -12,55 +12,50 @@ registrarMundo('fantasy', {
   story: {
     hero: 'Chispa, la dragona',
     voice: { pitch: 1.45 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos, los dragoncitos dorados, y se escaparon del nido. ¡Hay que llevarlos de vuelta! ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy Chispa. ¡Ayúdame a llevar a mis hermanitos al nido!',
     mgLines: {
-      classic: 'Mis hermanitos se mezclaron con dragones de otras familias... ¡Toca solo a los dorados para guiarlos al nido!',
-      catch: '¡Mis hermanitos bajan volando! Mueve el nido y recibe solo a los dragoncitos dorados.',
-      race: '¡Morgana huye y se lleva a mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.',
-      find: 'Mis hermanitos se escondieron entre muchos dragoncitos... ¡Busca al dorado! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Los dragoncitos de otras familias van a su casa: tócalos a todos... ¡menos a los dorados, que van a mi nido!',
-      ax: 'Mis hermanitos siempre llegan después del dragoncito rojo. ¡Toca al dorado solo si justo antes apareció el rojo!',
-      memory: '¡Un dragoncito dorado vuela de árbol en árbol! Mira bien su camino y repítelo para llevarlo al nido.',
-      dodge: '¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!',
-      path: 'El Hada del Bosque sabe dónde está un dragoncito dorado. ¡Mira su camino de piedra en piedra y repítelo de memoria!'
+      classic: '¡Toca solo a los dragoncitos dorados!',
+      catch: '¡Recibe con el nido solo a los dragoncitos dorados!',
+      race: '¡El Hada del Bosque persigue a Morgana! Alcanza solo a los dorados.',
+      find: '¡Busca al dragoncito dorado! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca a todos los dragoncitos... ¡menos a los dorados!',
+      ax: 'Toca al dorado solo si justo antes salió el dragoncito rojo.',
+      memory: '¡Mira por dónde vuela mi hermanito y repite su camino!',
+      dodge: '¡Morgana lanza hechizos! Ponte donde se detenga uno.',
+      path: '¡Mira el camino del Hada del Bosque y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡Morgana se esconde entre los magos del bosque! Toca solo cuando aparezca ella.',
-      catch: '¡Morgana baja volando entre los magos buenos! Atrápala con la red... ¡y deja pasar a los demás!',
-      race: '¡Morgana huye entre los magos del bosque! Cambia de camino y alcánzala solo a ella.',
-      find: 'Los magos y Morgana están todos juntos... ¡Encuentra a Morgana! Y si no está, ¡no toques nada!',
-      memory: '¡Morgana se esconde de árbol en árbol! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a todos los magos buenos... ¡pero NUNCA a Morgana!',
-      ax: 'Morgana solo aparece justo después de {pista}: esa es la pista. ¡Toca a Morgana solo si justo antes salió {pista}!',
-      dodge: '¡Morgana lanza tres hechizos a la vez! A mitad de camino uno se detiene: ¡ponte en su carril para salvarte!',
-      path: 'El Hada del Bosque sabe dónde está un dragoncito dorado. ¡Mira su camino de piedra en piedra y repítelo de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡Morgana se esconde entre los magos! Tócala solo a ella.',
+      catch: '¡Atrapa a Morgana con la red y deja pasar a los magos!',
+      race: '¡Morgana huye entre los magos! Alcánzala solo a ella.',
+      find: '¡Busca a Morgana! Si no está, no toques nada.',
+      memory: '¡Mira por dónde salta Morgana y repite su camino!',
+      notx: '¡Al revés! Toca a los magos buenos... ¡menos a Morgana!',
+      ax: 'Toca a Morgana solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.',
+    bossLine: '¡Morgana está en el volcán! Salva a los últimos dragoncitos y atrápala.',
     chapters: [
-      { place: 'El Nido', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! ¡Soy Chispa! Morgana asustó a mis hermanitos dorados y se escaparon del nido. ¡Toca solo a los dorados para llevarlos a casa!' },
-      { place: 'El Bosque', mg: 'catch', level: 2, sec: 60,
-        line: '¡Mis hermanitos vuelan sobre el bosque! Mueve el nido y recibe solo a los dragoncitos dorados.' },
-      { place: 'El Río', mg: 'race', level: 3, sec: 75,
-        line: '¡Morgana huye por el río con mis hermanitos! El Hada del Bosque la persigue: alcanza solo a los dragoncitos dorados.' },
-      { place: 'La Cueva', mg: 'find', level: 4, sec: 90,
-        line: 'En la cueva hay muchos dragoncitos... ¡Busca a los dorados! Y si no hay ninguno, ¡no toques nada!' },
+      { place: 'El Nido', mg: 'classic', level: 1, sec: 45 },
+      { place: 'El Bosque', mg: 'catch', level: 2, sec: 60 },
+      { place: 'El Río', mg: 'race', level: 3, sec: 75 },
+      { place: 'La Cueva', mg: 'find', level: 4, sec: 90 },
       // Jefe final: primero se atrapa a la villana con la red y, cuando escapa, se la persigue
-      { place: 'El Volcán', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Morgana encerró a los últimos dragoncitos en el volcán! Primero llévalos al nido y después atrapa a Morgana entre los magos.' }
+      { place: 'El Volcán', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Atrapamos a Morgana y todos mis hermanitos volvieron al nido! ¡Ahora eres parte de la familia de los dragones!',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Atrapamos a Morgana y mis hermanitos volvieron al nido! ¡Gracias!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Hada del Bosque', the: 'el Hada del Bosque', line: '¡Hola, Chispa! Soy el Hada del Bosque. ¡Te ayudaré a llevar a tus hermanitos al nido!' },
-      { role: 'friend2', name: 'Mago Abuelo', the: 'el Mago Abuelo', line: 'Soy el Mago Abuelo. He visto magia extraña por aquí... ¡Mantén los ojos bien abiertos!' },
-      { role: 'friend3', name: 'Hechicera Buena', the: 'la Hechicera Buena', line: 'Soy la Hechicera Buena. Me visto parecido a Morgana, ¡pero yo protejo a los dragones!' },
-      { role: 'villain', name: 'Morgana', line: '¡Ja, ja, ja! ¡Esos dragoncitos dorados serán míos! ¡Nunca volverán a su nido!' }
+      { role: 'friend1', name: 'Hada del Bosque', the: 'el Hada del Bosque' },
+      { role: 'friend2', name: 'Mago Abuelo', the: 'el Mago Abuelo', line: 'Soy el Mago Abuelo. ¡Cuidado, que Morgana anda cerca!' },
+      { role: 'friend3', name: 'Hechicera Buena', the: 'la Hechicera Buena' },
+      { role: 'villain', name: 'Morgana', line: '¡Ja, ja, ja! ¡Esos dragoncitos nunca volverán al nido!' }
     ]
   },
 
@@ -93,36 +88,20 @@ registrarMundo('fantasy', {
       { name: 'morgana_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Jamás volverán al nido!',
-        '¡Ji, ji! ¡Mis hechizos nunca fallan!',
-        '¡Ja, ja! ¡El río se llevó a tu hermanito!',
-        '¡Je, je, je! ¡En la cueva nadie me encuentra!',
-        '¡Ja, ja, ja! ¡El volcán es mi casa, dragoncita!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_f' },
       burla:   { who: 'villain', text: [
-        '¿Quieres llevar a los dragoncitos al nido? ¡Primero atrápame!',
-        '¡Abracadabra! ¡Que todos los árboles se confundan!',
-        '¡Pintaré a todos los dragones de dorado!',
-        '¡Los cristales brillan más que tu hermanito!',
+        '¿Quieres llevarlos al nido? ¡Primero atrápame!',
         '¡Tu fuego no me hace ni cosquillas!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡Me llevaré todos los dragones del nido!',
         '¡Llenaré el bosque de enredaderas!',
-        '¡Congelaré el río con mi varita!',
-        '¡Cerraré la cueva para siempre!',
-        '¡Nadie escapa de mi volcán!'
+        '¡Congelaré el río con mi varita!'
       ] },
-      ayuda:   { who: 'friend2', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Ay, ay, ay, mi barba! ¡Chispa, ayúdame!',
-        '¡Morgana convirtió mi sombrero en un sapo! ¡Ayuda!',
-        '¡Me caigo al río! ¡Chispa, ayúdame!',
-        '¡Mi varita no funciona en la cueva! ¡Socorro!'
-      ] },
+      ayuda:   { who: 'friend2', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60,

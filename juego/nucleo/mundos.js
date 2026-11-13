@@ -70,8 +70,8 @@ function newChapterOrder(theme) {
   store.set(ORDER_KEY, all);
 }
 // Lo que dice el personaje al empezar el capítulo, y el nombre de su audio (ver herramientas/generar_voces.js):
-// '1'...'4' = texto original del capítulo · 'race' = texto del juego · 'intro_race' = saludo + texto del juego
-// (capítulo 1) · 'boss' = jefe final
+// 'race' = frase del juego · 'cast_race' = la de personajes · 'boss' = jefe final.
+// En el capítulo 1, antes suena el saludo del mundo (introLine), que se graba una sola vez.
 function chapterLine(theme, i) {
   const st = STORY[theme], ch = st.chapters[i];
   if (ch.boss) return { text: st.bossLine, voice: 'boss' };
@@ -83,10 +83,15 @@ function chapterLine(theme, i) {
       line = line.split('{pista}').join(c.the || c.name).replace(/\bde el /g, 'del ');   // "de el Hada" → "del Hada"
       id += '_' + cue;
     }
-    return i === 0 ? { text: st.intro + line, voice: 'intro_' + id } : { text: line, voice: id };
+    return { text: line, voice: id };
   }
-  if (mg === ch.mg) return { text: ch.line, voice: String(i + 1) };
-  return i === 0 ? { text: st.intro + st.mgLines[mg], voice: 'intro_' + mg } : { text: st.mgLines[mg], voice: mg };
+  return { text: st.mgLines[mg], voice: mg };
+}
+function introLine(theme) { return { text: STORY[theme].intro, voice: 'intro' }; }
+// Los 3 que hablan en cada mundo: el protagonista, el villano y este amigo (el que el villano ataca y persigue)
+function speakingFriend(theme) {
+  const a = ((DISTRACTORS[theme] || {}).voices || {}).ayuda;
+  return a ? a.who : 'friend1';
 }
 // Pista con personajes: la pista es el primer amigo que no es el compañero del capítulo (igual que en el juego)
 function axCueRole(theme, i) {
@@ -106,5 +111,5 @@ const hexColor = n => '#' + n.toString(16).padStart(6, '0');
 const RACE_HELPER = { heroes: 'friend2', fantasy: 'friend1', kingdom: 'friend2', space: 'friend2', ocean: 'friend2',
   dinos: 'friend2', robots: 'friend2', jungle: 'friend2', candy: 'friend2' };
 function raceHelper(theme) { return RACE_HELPER[theme] || 'friend2'; }
-// Lo que dice el protagonista en la pantalla de "¡Mundo desbloqueado!" (su audio: 'unlock', herramientas/generar_voces.js)
-function unlockLine(theme) { return '¡Llegaste a ' + THEMES[theme].label + '! ' + STORY[theme].intro + '¿Me ayudas?'; }
+// Mensaje de "¡Mundo desbloqueado!": el mismo en todos los mundos (un solo audio, en assets/voces/comunes)
+function unlockLine() { return UNLOCK_LINE; }

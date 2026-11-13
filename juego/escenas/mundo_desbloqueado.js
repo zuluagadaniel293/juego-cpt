@@ -66,8 +66,8 @@ class WorldUnlockedScene extends Phaser.Scene {
         onComplete: () => this.tweens.add({ targets: target, y: 255, duration: 1100, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' }) });
       this.fanfare();
       this.reveal(th, tex, st);
-      // después de la fanfarria, el protagonista presenta su mundo
-      this.time.delayedCall(1100, () => playVoice(this.themeKey, 'unlock', unlockLine(this.themeKey)));
+      // después de la fanfarria, el mensaje de felicitación (el mismo en todos los mundos)
+      this.time.delayedCall(1100, () => playVoice(this.themeKey, 'unlock', unlockLine()));
       this.confetti(th);
     });
   }
@@ -81,8 +81,8 @@ class WorldUnlockedScene extends Phaser.Scene {
     const name = this.add.text(W / 2, 118, th.label, { font: 'bold 42px Arial', color: hexColor(th.accent), stroke: '#0f172a', strokeThickness: 8 })
       .setOrigin(0.5).setAlpha(0).setScale(1.6);
     this.tweens.add({ targets: name, alpha: 1, scale: 1, duration: 450, delay: 350, ease: 'Back.easeOut' });
-    // quién necesita ayuda, en una franja oscura entre el protagonista y los amigos
-    const who = this.add.text(W / 2, 385, st.hero.split(',')[0] + ' necesita tu ayuda para ' + (th.mission || 'encontrar ' + th.targetObj),
+    // el mismo mensaje que dice la voz (igual en todos los mundos), en una franja oscura
+    const who = this.add.text(W / 2, 385, unlockLine(),
       { font: 'bold 19px Arial', color: '#ffffff', align: 'center', wordWrap: { width: 380 } }).setOrigin(0.5).setAlpha(0).setDepth(2);
     const pill = this.add.graphics().setAlpha(0).setDepth(1);
     pill.fillStyle(0x0f172a, 0.75);

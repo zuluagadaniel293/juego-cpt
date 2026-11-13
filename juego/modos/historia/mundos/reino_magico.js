@@ -12,55 +12,50 @@ registrarMundo('kingdom', {
   story: {
     hero: 'Reina Luna',
     voice: { pitch: 1.35 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy la Reina Luna. ¡Ayúdame a liberar a Lumi del hechizo!',
     mgLines: {
-      classic: 'Lumi aparece entre otras hadas. ¡Tócala solo a ella para romper la burbuja del hechizo!',
-      catch: '¡Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi para liberarla.',
-      race: '¡El Duende Pícaro huye llevándose a Lumi! El Bufón lo persigue: alcanza solo a Lumi.',
-      find: 'El Duende escondió a Lumi entre muchas hadas... ¡Encuéntrala para romper el hechizo! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Saluda a todas las hadas del castillo... ¡pero no a Lumi, que está rompiendo su hechizo!',
-      ax: 'Lumi siempre llega después del hada azul. ¡Toca a Lumi solo si justo antes salió el hada azul!',
-      memory: '¡El hechizo hace saltar a Lumi de ventana en ventana! Mira bien su camino y repítelo para romperlo.',
-      dodge: '¡El Duende Pícaro lanza tres pasteles a la vez! A mitad de camino uno se detiene: ¡ponte en su carril!',
-      path: 'El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!'
+      classic: '¡Toca solo a Lumi para romper su burbuja!',
+      catch: '¡Recibe con la flor mágica solo a Lumi!',
+      race: '¡El Bufón persigue al Duende Pícaro! Alcanza solo a Lumi.',
+      find: '¡Busca a Lumi! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca a todas las hadas... ¡menos a Lumi!',
+      ax: 'Toca a Lumi solo si justo antes salió el hada azul.',
+      memory: '¡Mira por dónde salta Lumi y repite su camino!',
+      dodge: '¡El Duende Pícaro lanza pasteles! Ponte donde se detenga uno.',
+      path: '¡Mira el camino del Bufón y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡El Duende Pícaro se mezcla con la gente del castillo! Toca solo cuando aparezca él.',
-      catch: '¡El Duende Pícaro salta desde las torres entre la gente del castillo! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Duende Pícaro corre por los pasillos entre la gente del castillo! Alcánzalo solo a él.',
-      find: 'La gente del castillo y el Duende Pícaro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
-      memory: '¡El Duende Pícaro se esconde de sala en sala! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a toda la gente del castillo... ¡pero NUNCA al Duende Pícaro!',
-      ax: 'El Duende Pícaro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
-      dodge: '¡El Duende Pícaro lanza tres pasteles a la vez! A mitad de camino uno se detiene: ¡ponte en su carril!',
-      path: 'El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡El Duende Pícaro se mezcla con la gente del castillo! Tócalo solo a él.',
+      catch: '¡Atrapa al Duende Pícaro con la red y deja pasar a los demás!',
+      race: '¡El Duende Pícaro corre por el castillo! Alcánzalo solo a él.',
+      find: '¡Busca al Duende Pícaro! Si no está, no toques nada.',
+      memory: '¡Mira por dónde salta el Duende Pícaro y repite su camino!',
+      notx: '¡Al revés! Toca a todos... ¡menos al Duende Pícaro!',
+      ax: 'Toca al Duende Pícaro solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.',
+    bossLine: '¡Lumi está en la burbuja más grande! Libérala y atrapa al Duende Pícaro.',
     chapters: [
-      { place: 'El Jardín', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada. ¡Tócala solo a ella para romper el hechizo!' },
-      { place: 'La Cocina', mg: 'catch', level: 2, sec: 60,
-        line: '¡En la cocina, Lumi cae dentro de burbujas de hechizo! Mueve la flor mágica y recibe solo a Lumi.' },
-      { place: 'La Biblioteca', mg: 'race', level: 3, sec: 75,
-        line: '¡El Duende huye por la biblioteca con Lumi! El Bufón lo persigue: alcanza solo a Lumi.' },
-      { place: 'La Torre', mg: 'find', level: 4, sec: 90,
-        line: 'En la torre hay muchas hadas... ¡Encuentra a Lumi para liberarla! Y si no está, ¡no toques nada!' },
+      { place: 'El Jardín', mg: 'classic', level: 1, sec: 45 },
+      { place: 'La Cocina', mg: 'catch', level: 2, sec: 60 },
+      { place: 'La Biblioteca', mg: 'race', level: 3, sec: 75 },
+      { place: 'La Torre', mg: 'find', level: 4, sec: 90 },
       // Jefe final: primero se atrapa al villano con la red y, cuando escapa, se le persigue
-      { place: 'El Salón del Trono', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Duende Pícaro encerró a Lumi en su burbuja más grande! Primero libérala y después atrapa al duende entre los amigos del castillo.' }
+      { place: 'El Salón del Trono', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Atrapamos al Duende Pícaro y Lumi quedó libre del hechizo! Todo el castillo brilla de nuevo gracias a ti.',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Lumi está libre y atrapamos al Duende Pícaro! ¡El castillo brilla gracias a ti!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Guardia', the: 'el Guardia', line: '¡A sus órdenes, majestad! Soy el guardia del castillo. ¡Vamos a liberar a Lumi!' },
-      { role: 'friend2', name: 'Bufón', the: 'el Bufón', line: '¡Ja, ja! ¡Soy el bufón del reino! Aunque yo haga chistes, tú no pierdas la concentración.' },
-      { role: 'friend3', name: 'Duende Amable', the: 'el Duende Amable', line: 'Hola, soy el Duende Amable. No todos los duendes somos traviesos. ¡Yo te ayudo!' },
-      { role: 'villain', name: 'Duende Pícaro', line: '¡Ji, ji, ji! ¡Mi hechizo encierra a Lumi en burbujas! ¡Nunca la liberarás!' }
+      { role: 'friend1', name: 'Guardia', the: 'el Guardia', line: '¡A sus órdenes, majestad! ¡Vamos a liberar a Lumi!' },
+      { role: 'friend2', name: 'Bufón', the: 'el Bufón' },
+      { role: 'friend3', name: 'Duende Amable', the: 'el Duende Amable' },
+      { role: 'villain', name: 'Duende Pícaro', line: '¡Ji, ji, ji! ¡Nunca romperás mi hechizo!' }
     ]
   },
 
@@ -93,36 +88,20 @@ registrarMundo('kingdom', {
       { name: 'duende_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Ji, ji, ji! ¡No me pueden atrapar!',
-        '¡Je, je! ¿Dónde estaré?',
-        '¡Ji, ji! ¡Me escondí detrás de los libros!',
-        '¡Je, je, je! ¡Desde la torre se ve todo!',
-        '¡Ji, ji, ji! ¡Me senté en el trono!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_m' },
       burla:   { who: 'villain', text: [
         '¡Psst! ¡Por aquí! ¡No, por allá!',
-        '¡Me comí el pastel de la reina! ¡Ñam!',
-        '¡Encerré a Lumi en una burbuja entre las páginas!',
-        '¡Subí todas las escaleras y tú no!',
-        '¡Majestad, la corona me queda mejor a mí!'
+        '¡La corona me queda mejor a mí!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡Haré que anochezca en el jardín!',
-        '¡Haré volar todas las escobas de la cocina!',
         '¡Haré volar todos los libros del castillo!',
-        '¡Cerraré la torre con llave!',
-        '¡Ahora el castillo es mío!'
+        '¡Cerraré la torre con llave!'
       ] },
-      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Alto ahí, duende! ¡Ayuda, majestad, se escapa!',
-        '¡Majestad, el duende se metió en la cocina! ¡Ayuda!',
-        '¡Me tiró los libros encima! ¡Socorro!',
-        '¡El duende me encerró en la torre! ¡Ayuda!'
-      ] }
+      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'libro_volador', kind: 'fly', size: 75,

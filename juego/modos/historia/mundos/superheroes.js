@@ -11,55 +11,50 @@ registrarMundo('heroes', {
   story: {
     hero: 'Héroe Rayo',
     voice: { pitch: 1.25 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! ¡Soy Héroe Rayo! El villano Sombra está pintando su señal por toda la ciudad para asustar a la gente. ¡Hay que detenerlo! ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy Héroe Rayo. ¡Ayúdame a detener a Sombra!',
     mgLines: {
-      classic: 'Sombra esconde su señal entre las señales de mis amigos héroes. ¡Toca solo la suya para borrarla con mi rayo!',
-      catch: '¡Sombra lanza sus señales desde los tejados! Mueve el escudo de Escudo Verde y atrapa solo las de Sombra... ¡deja caer las de mis amigos!',
-      race: '¡Sombra escapa soltando señales! Escudo Verde lo persigue: alcanza solo las señales de Sombra.',
-      find: 'Sombra pegó su señal entre muchas otras... ¡Encuéntrala para borrarla! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Toca todas las señales de mis amigos héroes para encenderlas... ¡pero NUNCA la de Sombra!',
-      ax: 'Sombra solo aparece después de la señal de la Capitana Estrella. ¡Toca su señal solo si justo antes salió la de ella!',
-      memory: '¡Sombra pinta su señal en varios edificios, uno tras otro! Mira bien el orden y repítelo para borrarlas todas.',
-      dodge: '¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!',
-      path: 'Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!'
+      classic: '¡Toca solo la señal de Sombra para borrarla!',
+      catch: '¡Atrapa con el escudo solo las señales de Sombra!',
+      race: '¡Escudo Verde persigue a Sombra! Alcanza solo sus señales.',
+      find: '¡Busca la señal de Sombra! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca todas las señales... ¡menos la de Sombra!',
+      ax: 'Toca la señal de Sombra solo si justo antes salió la de la Capitana Estrella.',
+      memory: '¡Mira en qué orden pinta Sombra sus señales y repítelo!',
+      dodge: '¡Sombra lanza nubes de humo! Ponte donde se detenga una.',
+      path: '¡Mira el camino de Escudo Verde y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡Sombra se disfrazó y se mezcla con mis amigos héroes! Toca solo cuando aparezca él.',
-      catch: '¡Sombra cae desde los tejados entre mis amigos! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡Sombra corre entre mis amigos héroes! Cambia de carril y alcánzalo solo a él.',
-      find: 'Mis amigos y Sombra están todos juntos... ¡Encuentra a Sombra! Y si no está, ¡no toques nada!',
-      memory: '¡Sombra salta de techo en techo! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a todos mis amigos héroes... ¡pero NUNCA a Sombra!',
-      ax: 'Sombra solo aparece justo después de {pista}: esa es la pista. ¡Toca a Sombra solo si justo antes salió {pista}!',
-      dodge: '¡Sombra lanza tres nubes de humo a la vez! A mitad de camino una se detiene: ¡ponte en su carril para salvarte!',
-      path: 'Escudo Verde conoce el camino seguro hasta la señal de Sombra. ¡Mira por dónde salta y repítelo de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡Sombra se mezcla con mis amigos! Tócalo solo a él.',
+      catch: '¡Atrapa a Sombra con la red y deja pasar a mis amigos!',
+      race: '¡Sombra corre entre mis amigos! Alcánzalo solo a él.',
+      find: '¡Busca a Sombra! Si no está, no toques nada.',
+      memory: '¡Mira por dónde salta Sombra y repite su camino!',
+      notx: '¡Al revés! Toca a mis amigos... ¡menos a Sombra!',
+      ax: 'Toca a Sombra solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.',
+    bossLine: '¡Llegamos a la guarida! Borra sus últimas señales y atrapa a Sombra.',
     chapters: [
-      { place: 'El Centro', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! ¡Soy Héroe Rayo! Sombra está pintando su señal por toda la ciudad. ¡Toca solo la suya para borrarla!' },
-      { place: 'Barrio Norte', mg: 'catch', level: 2, sec: 60,
-        line: '¡En Barrio Norte, Sombra lanza señales desde los tejados! Atrapa solo las suyas con el escudo de Escudo Verde.' },
-      { place: 'El Puerto', mg: 'race', level: 3, sec: 75,
-        line: '¡Sombra escapó al puerto soltando señales! Escudo Verde lo persigue: alcanza solo las de Sombra.' },
-      { place: 'La Torre', mg: 'find', level: 4, sec: 90,
-        line: 'Sombra llenó la torre de señales... ¡Encuentra la suya y bórrala! Y si no está, ¡no toques nada!' },
+      { place: 'El Centro', mg: 'classic', level: 1, sec: 45 },
+      { place: 'Barrio Norte', mg: 'catch', level: 2, sec: 60 },
+      { place: 'El Puerto', mg: 'race', level: 3, sec: 75 },
+      { place: 'La Torre', mg: 'find', level: 4, sec: 90 },
       // Jefe final: primero se atrapa al villano con la red y, cuando escapa, se le persigue
-      { place: 'Guarida de Sombra', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡Sombra está en su guarida pintando su señal gigante! Primero borra sus últimas señales y después atrápalo entre mis amigos héroes.' }
+      { place: 'Guarida de Sombra', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Lo logramos! Borramos todas las señales y atrapamos a Sombra. La ciudad está a salvo gracias a ti. ¡Eres un gran héroe!',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Lo logramos! Atrapamos a Sombra y la ciudad está a salvo. ¡Eres un gran héroe!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Capitana Estrella', the: 'la Capitana Estrella', line: '¡Hola! Soy la Capitana Estrella. Sombra anda haciendo de las suyas por la ciudad. ¡Te acompaño en esta misión!' },
-      { role: 'friend2', name: 'Escudo Verde', the: 'Escudo Verde', line: '¡Soy Escudo Verde! Yo te cubro con mi escudo. ¡Tú concéntrate y no te distraigas con nada!' },
-      { role: 'friend3', name: 'Héroe Noche', the: 'Héroe Noche', line: 'Soy Héroe Noche. Me parezco un poco a Sombra, ¡pero soy de los buenos! Vamos juntos.' },
-      { role: 'villain', name: 'Sombra', line: '¡Ja, ja! ¡Pintaré mi señal en cada rincón de la ciudad! ¡Nunca las borrarás todas!' }
+      { role: 'friend1', name: 'Capitana Estrella', the: 'la Capitana Estrella', line: '¡Soy la Capitana Estrella! ¡Vamos juntos a detener a Sombra!' },
+      { role: 'friend2', name: 'Escudo Verde', the: 'Escudo Verde' },
+      { role: 'friend3', name: 'Héroe Noche', the: 'Héroe Noche' },
+      { role: 'villain', name: 'Sombra', line: '¡Ja, ja! ¡Pintaré mi señal en toda la ciudad!' }
     ]
   },
 
@@ -92,36 +87,20 @@ registrarMundo('heroes', {
       { name: 'sombra_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Nunca me atraparás!',
-        '¡Jo, jo, jo! Aquí estoy... ¿o no?',
-        '¡Je, je, je! ¡El puerto es mi escondite favorito!',
-        '¡Ja, ja! ¡De noche nadie me ve!',
-        '¡Ja, ja, ja! ¡Bienvenido a mi guarida, Héroe Rayo!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_m' },
       burla:   { who: 'villain', text: [
         '¡Mi señal está por todas partes!',
-        '¿Buscas mi señal? ¡Está detrás de ti! ¡Mentira!',
-        '¡Los barcos se llevaron mi señal! ¿O fui yo?',
-        '¡Desde la torre lo veo todo!',
         '¡Ni con tu rayo me vas a encontrar!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡Esta ciudad será mía!',
-        '¡Pintaré mi señal en cada casa del barrio!',
         '¡Cubriré el puerto de humo!',
-        '¡Apagaré todas las luces de la ciudad!',
-        '¡Nadie sale de mi guarida!'
+        '¡Apagaré todas las luces de la ciudad!'
       ] },
-      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Héroe Rayo, por aquí! ¡No puedo soltarme!',
-        '¡Ay, no! ¡Ayuda, Héroe Rayo! ¡Sombra me atrapó!',
-        '¡Sombra me empujó al muelle! ¡Ayuda!',
-        '¡Está muy oscuro! ¡Héroe Rayo, ayúdame!'
-      ] }
+      ayuda:   { who: 'friend1', pool: 'ayuda_f' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'avion', kind: 'fly', size: 100,

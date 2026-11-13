@@ -101,56 +101,74 @@ for (const f of ['superheroes', 'dragones', 'reino_magico', 'espacio', 'oceano',
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f + '.js'), 'utf8'), sandbox);
 }
 
-// 2. Todos los textos posibles de cada mundo (los mismos ids que usa chapterLine en juego/nucleo/mundos.js),
-// con la voz de quien lo dice: el protagonista, o el villano / el amigo ('dist_<nombre>', distractores)
+// 2. Todos los textos de cada mundo (los mismos ids que usa chapterLine en juego/nucleo/mundos.js), con la voz de
+// quien lo dice. Solo hablan 3 personajes por mundo: el protagonista, el villano y el amigo al que el villano ataca.
 function textos(key, m) {
   const st = m.story, yo = VOCES[key], t = {};
-  st.chapters.forEach((ch, i) => { t[String(i + 1)] = [ch.line, yo]; });
-  t.end = [st.ending, yo];
-  // pantalla de "¡Mundo desbloqueado!" (igual que unlockLine en juego/nucleo/mundos.js)
-  t.unlock = ['¡Llegaste a ' + m.theme.label + '! ' + st.intro + '¿Me ayudas?', yo];
-  JUEGOS.forEach(mg => {
-    t[mg] = [st.mgLines[mg], yo];
-    t['intro_' + mg] = [st.intro + st.mgLines[mg], yo];
-  });
-  if (st.bossLine) t.boss = [st.bossLine, yo];
-  // niveles de personajes (el villano entre los amigos): 'cast_race', y en el capítulo 1 'intro_cast_race'
+  const reparto = VOCES_REPARTO[key];
+  t.intro = [st.intro, yo];                       // saludo: suena antes de la frase del capítulo 1
+  JUEGOS.forEach(mg => { t[mg] = [st.mgLines[mg], yo]; });
+  // niveles de personajes (el villano entre los amigos): 'cast_race'
   Object.entries(st.mgLinesCast || {}).forEach(([mg, line]) => {
     if (line.includes('{pista}')) {
       // Pista: una versión por cada amigo que puede ser la pista ('cast_ax_friend2'...)
       (st.companions || []).filter(c => c.role !== 'villain').forEach(c => {
-        const l = line.split('{pista}').join(c.the || c.name).replace(/\bde el /g, 'del ');   // "de el Hada" → "del Hada"
-        t['cast_' + mg + '_' + c.role] = [l, yo];
-        t['intro_cast_' + mg + '_' + c.role] = [st.intro + l, yo];
+        t['cast_' + mg + '_' + c.role] = [line.split('{pista}').join(c.the || c.name).replace(/\bde el /g, 'del '), yo];
       });
-      return;
-    }
-    t['cast_' + mg] = [line, yo];
-    t['intro_cast_' + mg] = [st.intro + line, yo];
+    } else t['cast_' + mg] = [line, yo];
   });
-  const reparto = VOCES_REPARTO[key];
-  // quien presenta cada capítulo: 'comp_1' ... 'comp_4'
-  (st.companions || []).forEach((c, i) => { t['comp_' + (i + 1)] = [c.line, reparto[c.role]]; });
-  // distractores, una frase por capítulo: 'dist_risa_c2' (villano o un amigo en particular, capítulo 2) ·
-  // 'dist_ayuda_c2_friend3' (who: 'friend' = cada amigo con su propio texto)
+  t.boss = [st.bossLine, yo];
+  t.end = [st.ending, yo];
+  // quien presenta el capítulo (solo el villano y el amigo que habla tienen frase): 'comp_1' ... 'comp_4'
+  (st.companions || []).forEach((c, i) => { if (c.line) t['comp_' + (i + 1)] = [c.line, reparto[c.role]]; });
+  // burlas y amenazas del villano de este mundo: 'dist_burla_1', 'dist_burla_2'... (las risas y los "¡ayuda!"
+  // son comunes: ver COMUNES)
   Object.entries((m.distractors || {}).voices || {}).forEach(([name, v]) => {
-    if (v.who === 'friend') AMIGOS.forEach(f => v.text[f].forEach((s, k) => { t['dist_' + name + '_c' + (k + 1) + '_' + f] = [s, reparto[f]]; }));
-    else v.text.forEach((s, k) => { t['dist_' + name + '_c' + (k + 1)] = [s, reparto[v.who]]; });
+    (v.text || []).forEach((s, k) => { t['dist_' + name + '_' + (k + 1)] = [s, reparto[v.who]]; });
   });
   return t;
 }
 
-// 3. Grabar lo que falte o haya cambiado
+// 3. Frases comunes a todos los mundos (juego/nucleo/voces_comunes.js), en assets/voces/comunes
+const comunesSb = {};
+vm.createContext(comunesSb);
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/nucleo/voces_comunes.js'), 'utf8') +
+  '\nthis.UNLOCK_LINE = UNLOCK_LINE; this.VOICE_POOLS = VOICE_POOLS;', comunesSb);
+// voces de cada grupo (se van turnando): hombres y mujeres distintos para que no suenen todas iguales
+const VOCES_POOL = {
+  risa_m: [
+    { voz: 'es-VE-SebastianNeural', tono: '-4Hz', velocidad: '+0%' }, { voz: 'es-MX-JorgeNeural', tono: '+6Hz', velocidad: '+4%' },
+    { voz: 'es-EC-LuisNeural', tono: '+12Hz', velocidad: '+6%' }, { voz: 'es-CR-JuanNeural', tono: '-4Hz', velocidad: '+0%' }],
+  risa_f: [{ voz: 'es-PE-CamilaNeural', tono: '+4Hz', velocidad: '-2%' }, { voz: 'es-PE-CamilaNeural', tono: '-2Hz', velocidad: '-4%' }],
+  ayuda_m: [
+    { voz: 'es-PE-AlexNeural', tono: '+14Hz', velocidad: '+6%' }, { voz: 'es-CR-JuanNeural', tono: '+0Hz', velocidad: '+0%' },
+    { voz: 'es-US-AlonsoNeural', tono: '+14Hz', velocidad: '+6%' }, { voz: 'es-CO-GonzaloNeural', tono: '+10Hz', velocidad: '+4%' }],
+  ayuda_f: [
+    { voz: 'es-VE-PaolaNeural', tono: '+10Hz', velocidad: '+3%' }, { voz: 'es-CR-MariaNeural', tono: '+10Hz', velocidad: '+3%' },
+    { voz: 'es-CO-SalomeNeural', tono: '+14Hz', velocidad: '+0%' }]
+};
+function textosComunes() {
+  const t = { unlock: [comunesSb.UNLOCK_LINE, { voz: 'es-CO-SalomeNeural', tono: '+10Hz', velocidad: '+4%' }] };
+  Object.entries(comunesSb.VOICE_POOLS).forEach(([pool, list]) => list.forEach((s, k) => {
+    const vs = VOCES_POOL[pool];
+    t['pool_' + pool + '_' + (k + 1)] = [s, vs[k % vs.length]];
+  }));
+  return t;
+}
+
+// 4. Grabar lo que falte o haya cambiado, y borrar los audios que ya no usa nadie
 const cmd = (process.env.TTS_CMD || 'edge-tts').split(' ');
 const textosPath = path.join(__dirname, 'voces_textos.json');
 const antes = fs.existsSync(textosPath) ? JSON.parse(fs.readFileSync(textosPath, 'utf8')) : {};
 const mapa = {}, todos = {};
-let grabados = 0;
-for (const [key, cfg] of Object.entries(VOCES)) {
-  const dir = path.join(ROOT, 'assets/voces', cfg.carpeta);
+let grabados = 0, borrados = 0;
+const grupos = Object.entries(VOCES).map(([key, cfg]) => [key, cfg.carpeta, textos(key, mundos[key])])
+  .concat([['comunes', 'comunes', textosComunes()]]);
+for (const [key, carpeta, lista] of grupos) {
+  const dir = path.join(ROOT, 'assets/voces', carpeta);
   fs.mkdirSync(dir, { recursive: true });
   mapa[key] = {}; todos[key] = {};
-  for (const [id, [texto, v]] of Object.entries(textos(key, mundos[key]))) {
+  for (const [id, [texto, v]] of Object.entries(lista)) {
     const file = path.join(dir, id + '.mp3');
     const firma = crypto.createHash('md5').update(v.voz + v.tono + v.velocidad + texto).digest('hex').slice(0, 10);
     todos[key][id] = { texto, firma };
@@ -165,15 +183,21 @@ for (const [key, cfg] of Object.entries(VOCES)) {
       }
       if (r.status !== 0) { console.error('No se pudo grabar', key, id, String(r.stderr || r.error).trim().split(String.fromCharCode(10)).pop()); process.exit(1); }
       grabados++;
-      console.log('grabado', cfg.carpeta + '/' + id + '.mp3');
+      console.log('grabado', carpeta + '/' + id + '.mp3');
     }
-    mapa[key][id] = 'voces/' + cfg.carpeta + '/' + id + '.mp3';
+    mapa[key][id] = 'voces/' + carpeta + '/' + id + '.mp3';
+  }
+  // audios viejos que ya no corresponden a ningún texto (la carpeta eleven/ es de ElevenLabs: no se toca)
+  for (const f of fs.readdirSync(dir)) {
+    if (f.endsWith('.mp3') && !lista[f.slice(0, -4)]) { fs.unlinkSync(path.join(dir, f)); borrados++; }
   }
 }
+// el mensaje de "¡Mundo desbloqueado!" es el mismo en todos los mundos
+Object.keys(VOCES).forEach(key => { mapa[key].unlock = mapa.comunes.unlock; });
 // rutas relativas a assets/ (como en manifest.js)
 fs.writeFileSync(path.join(ROOT, 'assets/voces.js'),
   '// Generado por herramientas/generar_voces.js: no editar a mano.\n' +
   '// Audio de cada texto de los personajes (ids: ver chapterLine en juego/nucleo/mundos.js).\n' +
   'window.VOICES = ' + JSON.stringify(mapa, null, 2) + ';\n');
 fs.writeFileSync(textosPath, JSON.stringify(todos, null, 2) + '\n');
-console.log('Listo: ' + grabados + ' audios nuevos.');
+console.log('Listo: ' + grabados + ' audios nuevos, ' + borrados + ' viejos borrados.');

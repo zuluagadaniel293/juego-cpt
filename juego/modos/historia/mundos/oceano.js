@@ -11,54 +11,49 @@ registrarMundo('ocean', {
   story: {
     hero: 'Coral',
     voice: { pitch: 1.3 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Coral, buzo del arrecife. El Pulpo Tinta quiere atrapar a Perla, el caballito de mar rosado. ¡Hay que protegerla! ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy Coral. ¡Ayúdame a proteger a Perla del Pulpo Tinta!',
     mgLines: {
-      classic: 'Perla nada entre otros caballitos. ¡Tócala solo a ella para cubrirla con una burbuja protectora!',
-      catch: '¡Perla baja entre las burbujas! Mueve la concha y guárdala solo a ella, donde el pulpo no la alcanza.',
-      race: '¡El Pulpo Tinta persigue a Perla! Pinzas va tras él: alcanza solo a Perla para protegerla.',
-      find: 'Perla se escondió del pulpo entre muchos caballitos... ¡Encuéntrala! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Los otros caballitos salen a jugar: tócalos a todos... ¡menos a Perla, que se queda escondida!',
-      ax: 'Perla siempre llega después del caballito azul. ¡Toca a Perla solo si justo antes salió el caballito azul!',
-      memory: '¡Perla nada de coral en coral para escapar del pulpo! Mira bien su camino y repítelo.',
-      dodge: '¡El Pulpo Tinta lanza tres bolas de tinta! A mitad de camino una se detiene: ¡nada a su carril!',
-      path: 'Pinzas conoce el camino de rocas hasta Perla. ¡Mira por dónde pasa y repítelo de memoria!'
+      classic: '¡Toca solo a Perla para cubrirla con una burbuja!',
+      catch: '¡Guarda en la concha solo a Perla!',
+      race: '¡Pinzas persigue al Pulpo Tinta! Alcanza solo a Perla.',
+      find: '¡Busca a Perla! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca a todos los caballitos... ¡menos a Perla!',
+      ax: 'Toca a Perla solo si justo antes salió el caballito azul.',
+      memory: '¡Mira por dónde nada Perla y repite su camino!',
+      dodge: '¡El Pulpo Tinta lanza tinta! Nada a donde se detenga una bola.',
+      path: '¡Mira el camino de Pinzas y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡El Pulpo Tinta se mezcla con los animales del mar! Toca solo cuando aparezca él.',
-      catch: '¡El Pulpo Tinta baja entre los animales del mar! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Pulpo Tinta nada entre los animales del mar! Alcánzalo solo a él.',
-      find: 'Los animales del mar y el Pulpo Tinta están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
-      memory: '¡El Pulpo Tinta se esconde de roca en roca! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a todos los animales del mar... ¡pero NUNCA al Pulpo Tinta!',
-      ax: 'El Pulpo Tinta solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
-      dodge: '¡El Pulpo Tinta lanza tres bolas de tinta! A mitad de camino una se detiene: ¡nada a su carril!',
-      path: 'Pinzas conoce el camino de rocas hasta Perla. ¡Mira por dónde pasa y repítelo de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡El Pulpo Tinta se mezcla con los animales del mar! Tócalo solo a él.',
+      catch: '¡Atrapa al Pulpo Tinta con la red y deja pasar a los demás!',
+      race: '¡El Pulpo Tinta nada entre mis amigos! Alcánzalo solo a él.',
+      find: '¡Busca al Pulpo Tinta! Si no está, no toques nada.',
+      memory: '¡Mira por dónde pasa el Pulpo Tinta y repite su camino!',
+      notx: '¡Al revés! Toca a los animales del mar... ¡menos al Pulpo Tinta!',
+      ax: 'Toca al Pulpo Tinta solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.',
+    bossLine: '¡Perla está en la fosa oscura! Protégela y atrapa al Pulpo Tinta.',
     chapters: [
-      { place: 'El Arrecife de Coral', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Coral. El Pulpo Tinta quiere atrapar a Perla, el caballito rosado. ¡Tócala solo a ella para protegerla con una burbuja!' },
-      { place: 'El Barco Hundido', mg: 'catch', level: 2, sec: 60,
-        line: '¡Perla baja hacia el barco hundido! Mueve la concha y guárdala solo a ella.' },
-      { place: 'El Bosque de Algas', mg: 'race', level: 3, sec: 75,
-        line: '¡El Pulpo Tinta persigue a Perla por el bosque de algas! Pinzas va tras él: alcanza solo a Perla.' },
-      { place: 'La Cueva de Cristales', mg: 'find', level: 4, sec: 90,
-        line: 'Perla se escondió en la cueva de cristales entre muchos caballitos... ¡Encuéntrala! Y si no está, ¡no toques nada!' },
-      { place: 'La Fosa Oscura', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Pulpo Tinta acorraló a Perla en la fosa oscura! Primero protégela y después atrapa al pulpo entre mis amigos.' }
+      { place: 'El Arrecife de Coral', mg: 'classic', level: 1, sec: 45 },
+      { place: 'El Barco Hundido', mg: 'catch', level: 2, sec: 60 },
+      { place: 'El Bosque de Algas', mg: 'race', level: 3, sec: 75 },
+      { place: 'La Cueva de Cristales', mg: 'find', level: 4, sec: 90 },
+      { place: 'La Fosa Oscura', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Atrapamos al Pulpo Tinta y Perla está a salvo! El arrecife vuelve a brillar gracias a ti.',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Atrapamos al Pulpo Tinta y Perla está a salvo! ¡Gracias!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Delfi', the: 'Delfi', line: '¡Hola! Soy Delfi, el delfín más rápido del mar. ¡Nada conmigo y protejamos a Perla!' },
-      { role: 'friend2', name: 'Pinzas', the: 'Pinzas', line: '¡Clic, clac! Soy Pinzas. Con mis gafas lo veo todo... ¡y tú también puedes si te concentras!' },
-      { role: 'friend3', name: 'Pulpi', the: 'Pulpi', line: 'Hola, soy Pulpi. No todos los pulpos somos traviesos. ¡Yo te ayudo a proteger a Perla!' },
-      { role: 'villain', name: 'Pulpo Tinta', line: '¡Je, je, je! ¡Con mi tinta atraparé a Perla! ¡No podrás protegerla!' }
+      { role: 'friend1', name: 'Delfi', the: 'Delfi', line: '¡Hola! Soy Delfi. ¡Nada conmigo y protejamos a Perla!' },
+      { role: 'friend2', name: 'Pinzas', the: 'Pinzas' },
+      { role: 'friend3', name: 'Pulpi', the: 'Pulpi' },
+      { role: 'villain', name: 'Pulpo Tinta', line: '¡Je, je, je! ¡Con mi tinta atraparé a Perla!' }
     ]
   },
 
@@ -86,36 +81,20 @@ registrarMundo('ocean', {
       { name: 'pulpo_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Ja, ja! ¡Más tinta para todos!',
-        '¡Je, je! ¡No me ves, no me ves!',
-        '¡Ja, ja, ja! ¡Las algas me hacen cosquillas!',
-        '¡Je, je! ¡En la cueva me escondo mejor!',
-        '¡Ja, ja, ja! ¡Bienvenida a la fosa oscura!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_m' },
       burla:   { who: 'villain', text: [
-        '¿Proteger a Perla? ¡Mi tinta llega a todas partes!',
-        '¡Encontré un tesoro en el barco y no te lo doy!',
         '¡Tengo ocho brazos y tú solo dos!',
-        '¡Los cristales son míos, y Perla también!',
         '¡Tus burbujas no me asustan!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡El mar entero será oscuro!',
         '¡Hundiré otro barco con mi tinta!',
-        '¡Enredaré a todos en las algas!',
-        '¡Taparé la cueva con tinta!',
-        '¡De la fosa nadie sale!'
+        '¡Enredaré a todos en las algas!'
       ] },
-      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Coral, por aquí, rápido!',
-        '¡Ay, no! ¡Ayuda, Coral! ¡La tinta no me deja ver!',
-        '¡Me atoré entre las algas! ¡Ayuda!',
-        '¡Está muy oscuro en la cueva! ¡Coral!'
-      ] }
+      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'medusa', kind: 'fly', size: 85,

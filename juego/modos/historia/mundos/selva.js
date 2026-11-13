@@ -12,54 +12,49 @@ registrarMundo('jungle', {
   story: {
     hero: 'Kiara',
     voice: { pitch: 1.3 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Kiara, exploradora de la selva. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Hay que devolvérselos! ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy Kiara. ¡Ayúdame a devolverle los colores a Arcoíris!',
     mgLines: {
-      classic: 'Arcoíris vuela entre otros pájaros. ¡Tócalo solo a él para devolverle un color!',
-      catch: '¡Arcoíris baja de rama en rama! Mueve el nido y recíbelo solo a él.',
-      race: '¡La Serpiente Silbona huye con los colores de Arcoíris! Lento la persigue: alcanza solo a Arcoíris.',
-      find: 'Arcoíris se esconde entre muchos pájaros... ¡Encuéntralo para darle sus colores! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Saluda a todos los pájaros de la selva... ¡pero no a Arcoíris, que descansa en su nido!',
-      ax: 'Arcoíris siempre llega después del loro verde. ¡Toca a Arcoíris solo si justo antes salió el loro verde!',
-      memory: '¡Arcoíris vuela de árbol en árbol buscando sus colores! Mira bien su camino y repítelo.',
-      dodge: '¡La Serpiente Silbona lanza tres hipnosis! A mitad de camino una se detiene: ¡ponte en su carril!',
-      path: 'Lento conoce el camino hasta Arcoíris. ¡Mira por dónde pasa, despacito, y repítelo de memoria!'
+      classic: '¡Toca solo a Arcoíris para devolverle un color!',
+      catch: '¡Recibe con el nido solo a Arcoíris!',
+      race: '¡Lento persigue a la serpiente! Alcanza solo a Arcoíris.',
+      find: '¡Busca a Arcoíris! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca a todos los pájaros... ¡menos a Arcoíris!',
+      ax: 'Toca a Arcoíris solo si justo antes salió el loro verde.',
+      memory: '¡Mira por dónde vuela Arcoíris y repite su camino!',
+      dodge: '¡La serpiente lanza espirales! Ponte donde se detenga una.',
+      path: '¡Mira el camino de Lento y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡La Serpiente Silbona se mezcla con los animales de la selva! Toca solo cuando aparezca ella.',
-      catch: '¡La Serpiente Silbona cae de los árboles entre los animales! Atrápala con la red... ¡y deja pasar a los demás!',
-      race: '¡La Serpiente Silbona se arrastra entre los animales de la selva! Alcánzala solo a ella.',
-      find: 'Los animales de la selva y la Serpiente Silbona están todos juntos... ¡Encuéntrala! Y si no está, ¡no toques nada!',
-      memory: '¡La Serpiente Silbona se esconde de rama en rama! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a todos los animales de la selva... ¡pero NUNCA a la Serpiente Silbona!',
-      ax: 'La Serpiente Silbona solo aparece justo después de {pista}: esa es la pista. ¡Tócala solo si justo antes salió {pista}!',
-      dodge: '¡La Serpiente Silbona lanza tres hipnosis! A mitad de camino una se detiene: ¡ponte en su carril!',
-      path: 'Lento conoce el camino hasta Arcoíris. ¡Mira por dónde pasa, despacito, y repítelo de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡La Serpiente Silbona se mezcla con los animales! Tócala solo a ella.',
+      catch: '¡Atrapa a la Serpiente Silbona con la red y deja pasar a los demás!',
+      race: '¡La Serpiente Silbona huye entre los animales! Alcánzala solo a ella.',
+      find: '¡Busca a la Serpiente Silbona! Si no está, no toques nada.',
+      memory: '¡Mira por dónde pasa la Serpiente Silbona y repite su camino!',
+      notx: '¡Al revés! Toca a los animales... ¡menos a la Serpiente Silbona!',
+      ax: 'Toca a la Serpiente Silbona solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.',
+    bossLine: '¡Los últimos colores están en su cueva! Recupéralos y atrapa a la serpiente.',
     chapters: [
-      { place: 'La Orilla del Río', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Kiara. La Serpiente Silbona le robó los colores a Arcoíris, el tucán bebé. ¡Tócalo solo a él para devolverle un color!' },
-      { place: 'Los Árboles Gigantes', mg: 'catch', level: 2, sec: 60,
-        line: '¡Arcoíris baja de los árboles gigantes! Mueve el nido y recíbelo solo a él.' },
-      { place: 'La Cascada', mg: 'race', level: 3, sec: 75,
-        line: '¡La serpiente huye por la cascada con los colores! Lento la persigue: alcanza solo a Arcoíris.' },
-      { place: 'El Templo Antiguo', mg: 'find', level: 4, sec: 90,
-        line: 'En el templo hay muchos pájaros... ¡Encuentra a Arcoíris para darle sus colores! Y si no está, ¡no toques nada!' },
-      { place: 'La Cueva de la Serpiente', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡La Serpiente Silbona guarda los últimos colores en su cueva! Primero devuélveselos a Arcoíris y después atrapa a la serpiente entre mis amigos.' }
+      { place: 'La Orilla del Río', mg: 'classic', level: 1, sec: 45 },
+      { place: 'Los Árboles Gigantes', mg: 'catch', level: 2, sec: 60 },
+      { place: 'La Cascada', mg: 'race', level: 3, sec: 75 },
+      { place: 'El Templo Antiguo', mg: 'find', level: 4, sec: 90 },
+      { place: 'La Cueva de la Serpiente', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Atrapamos a la Serpiente Silbona y Arcoíris recuperó todos sus colores! La selva brilla gracias a ti.',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Arcoíris recuperó sus colores y atrapamos a la serpiente! ¡Gracias!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Jaguarcito', the: 'Jaguarcito', line: '¡Grrr... hola! Soy Jaguarcito. Tengo ojos de cazador. ¡Vamos a devolverle los colores a Arcoíris!' },
-      { role: 'friend2', name: 'Lento', the: 'Lento', line: 'Hooola... soy Lento, el perezoso. Yo voy despacio... pero tú mira con mucha atención.' },
-      { role: 'friend3', name: 'Silvia', the: 'Silvia', line: 'Hola, soy Silvia. Soy serpiente, pero buena: llevo una flor y no sombrero. ¡Yo te ayudo!' },
-      { role: 'villain', name: 'Serpiente Silbona', line: '¡Sssí, sssí! ¡Me quedé con los colores de Arcoíris! ¡Nunca se los devolverásss, exploradora!' }
+      { role: 'friend1', name: 'Jaguarcito', the: 'Jaguarcito', line: '¡Grrr, hola! Soy Jaguarcito. ¡Vamos a ayudar a Arcoíris!' },
+      { role: 'friend2', name: 'Lento', the: 'Lento' },
+      { role: 'friend3', name: 'Silvia', the: 'Silvia' },
+      { role: 'villain', name: 'Serpiente Silbona', line: '¡Sssí! ¡Los colores de Arcoíris son míosss!' }
     ]
   },
 
@@ -88,36 +83,20 @@ registrarMundo('jungle', {
       { name: 'serpiente_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Jsss, jsss, jsss! ¡Los colores de Arcoíris son míos!',
-        '¡Je, je, je! ¡Me enrosqué en el árbol más alto!',
-        '¡Jsss, jsss! ¡El agua no me moja!',
-        '¡Je, je! ¡El templo es mi casa!',
-        '¡Jsss, jsss, jsss! ¡Bienvenida a mi cueva!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_f' },
       burla:   { who: 'villain', text: [
         '¡Ssssigue buscando, exploradora!',
-        '¡Desde aquí arriba te veo, y tú a mí no!',
-        '¡Te vas a resbalar en las piedras!',
-        '¡Mira mis ojos... te vas a marear!',
-        '¡Tus hojas me hacen cosquillas!'
+        '¡Mira mis ojos... te vas a marear!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡Hipnotizaré a todos los animales!',
         '¡Me llevaré sus colores a mi cueva!',
-        '¡Taparé la cascada con lianas!',
-        '¡Me quedaré con el tesoro del templo!',
-        '¡De mi cueva nadie sale!'
+        '¡Taparé la cascada con lianas!'
       ] },
-      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Ay, no! ¡Ayuda, Kiara! ¡Me enrolló!',
-        '¡No puedo bajar del árbol! ¡Ayuda!',
-        '¡Me caí al agua! ¡Kiara!',
-        '¡Me quedé encerrado en el templo! ¡Ayuda!'
-      ] }
+      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'mariposa_azul', kind: 'fly', size: 85,

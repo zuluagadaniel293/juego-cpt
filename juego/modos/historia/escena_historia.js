@@ -17,7 +17,7 @@ class StoryScene extends Phaser.Scene {
     const tex = TEX[this.themeKey];
     const ch = st.chapters[this.chapter];
     const withVillain = this.ending || ch.boss;
-    const comp = !withVillain && st.companions ? st.companions[this.chapter] : null;   // quien presenta el capítulo
+    const comp = !withVillain && st.companions ? st.companions[this.chapter] : null;   // quien acompaña el capítulo
     const pair = withVillain || !!comp;   // dos personajes en pantalla
     this.cameras.main.setBackgroundColor(th.bg);
     if (!(this.ending && tex.end)) drawBackdrop(this, this.themeKey, this.ending ? 4 : this.chapter, 0.12);
@@ -80,8 +80,10 @@ class StoryScene extends Phaser.Scene {
     this.bubbleG = this.add.graphics();
     this.bubbleText = this.add.text(bubble.x + 28, bubble.y + 24, '',
       { font: 'bold ' + bubble.font + 'px Arial', color: '#0f172a', wordWrap: { width: bubble.wrap }, lineSpacing: 6 });
-    // diálogo: primero quien presenta el capítulo (si hay) y luego el protagonista
-    this.lines = (comp ? [{ text: comp.line, voice: 'comp_' + (this.chapter + 1), right: true }] : [])
+    // diálogo: primero quien presenta el capítulo (solo el villano y el amigo que habla tienen frase), luego el
+    // protagonista: en el capítulo 1, su saludo y después la frase del juego (dos audios encadenados)
+    this.lines = (comp && comp.line ? [{ text: comp.line, voice: 'comp_' + (this.chapter + 1), right: true }] : [])
+      .concat(this.chapter === 0 && !this.ending ? [Object.assign({ right: false }, introLine(this.themeKey))] : [])
       .concat({ text: said.text, voice: said.voice, right: false });
     this.talk();
   }

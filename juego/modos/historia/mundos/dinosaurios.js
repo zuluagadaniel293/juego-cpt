@@ -11,54 +11,49 @@ registrarMundo('dinos', {
   story: {
     hero: 'Tito',
     voice: { pitch: 1.3 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Tito, explorador de dinosaurios. Dino, el triceratops bebé, está muy débil: el Pterodáctilo Ladrón se robó todas las hojas doradas, su comida favorita. ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy Tito. ¡Ayúdame a darle hojas doradas a Dino!',
     mgLines: {
-      classic: 'Las hojas doradas brillan con destellos. ¡Toca solo cuando veas una hoja dorada, para dársela a Dino!',
-      catch: '¡El viento hace caer hojas de los árboles! Mueve a Dino para que atrape con la boca solo las hojas doradas.',
-      race: '¡El Pterodáctilo Ladrón huye y deja caer hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas para que no se las lleve.',
-      find: 'El ladrón escondió las hojas entre los helechos... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Los dinosaurios del valle tienen hambre: dales todas las hojas... ¡menos las doradas, que son para Dino!',
-      ax: 'Las hojas doradas crecen después del helecho verde. ¡Toca la hoja dorada solo si justo antes salió el helecho!',
-      memory: '¡El viento lleva la hoja dorada de piedra en piedra! Mira bien su camino y repítelo en el mismo orden.',
-      dodge: '¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!',
-      path: 'Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!'
+      classic: '¡Toca solo las hojas doradas para dárselas a Dino!',
+      catch: '¡Mueve a Dino para que atrape solo las hojas doradas!',
+      race: '¡Pinchos persigue al ladrón! Alcanza solo las hojas doradas.',
+      find: '¡Busca la hoja dorada! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca todas las hojas... ¡menos las doradas!',
+      ax: 'Toca la hoja dorada solo si justo antes salió el helecho verde.',
+      memory: '¡Mira por dónde vuela la hoja dorada y repite su camino!',
+      dodge: '¡El ladrón lanza bolas de barro! Ponte donde se detenga una.',
+      path: '¡Mira el camino de Pinchos y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la hoja dorada).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡El Pterodáctilo Ladrón se mezcla con los dinosaurios para robar más hojas! Toca solo cuando aparezca él.',
-      catch: '¡El Pterodáctilo Ladrón baja volando entre los dinosaurios! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Pterodáctilo Ladrón corre con la bolsa de hojas! Alcánzalo solo a él.',
-      find: 'El Pterodáctilo Ladrón se esconde entre los dinosaurios con su bolsa de hojas... ¡Encuéntralo! Y si no está, ¡no toques nada!',
-      memory: '¡El Pterodáctilo Ladrón salta de roca en roca escondiendo hojas! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Saluda a todos los dinosaurios... ¡pero NUNCA al Pterodáctilo Ladrón!',
-      ax: 'El Pterodáctilo Ladrón solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
-      dodge: '¡El Pterodáctilo Ladrón lanza tres bolas de barro! A mitad de camino una se detiene: ¡ponte en su carril!',
-      path: 'Pinchos sabe dónde hay una hoja dorada. ¡Mira su camino de piedra en piedra y repítelo de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Tócalo solo a él.',
+      catch: '¡Atrapa al Pterodáctilo Ladrón con la red y deja pasar a los demás!',
+      race: '¡El Pterodáctilo Ladrón huye con las hojas! Alcánzalo solo a él.',
+      find: '¡Busca al Pterodáctilo Ladrón! Si no está, no toques nada.',
+      memory: '¡Mira por dónde salta el Pterodáctilo Ladrón y repite su camino!',
+      notx: '¡Al revés! Toca a los dinosaurios... ¡menos al Pterodáctilo Ladrón!',
+      ax: 'Toca al Pterodáctilo Ladrón solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.',
+    bossLine: '¡Las últimas hojas están en su nido! Recupéralas y atrapa al ladrón.',
     chapters: [
-      { place: 'El Valle de Helechos', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Tito. Dino está débil porque el Pterodáctilo Ladrón se robó las hojas doradas. ¡Toca solo las hojas doradas para dárselas!' },
-      { place: 'El Río Prehistórico', mg: 'catch', level: 2, sec: 60,
-        line: '¡Caen hojas sobre el río! Mueve a Dino para que atrape con la boca solo las hojas doradas.' },
-      { place: 'El Volcán Humeante', mg: 'race', level: 3, sec: 75,
-        line: '¡El ladrón huye por el volcán soltando hojas! Pinchos lo persigue: lanza tu rugido solo a las hojas doradas.' },
-      { place: 'La Cueva de las Pinturas', mg: 'find', level: 4, sec: 90,
-        line: 'En la cueva hay hojas escondidas por todas partes... ¡Encuentra la hoja dorada! Y si no está, ¡no toques nada!' },
-      { place: 'El Nido en la Montaña', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Pterodáctilo Ladrón guarda las últimas hojas doradas en su nido! Primero recupéralas para Dino y después atrapa al ladrón entre los dinosaurios.' }
+      { place: 'El Valle de Helechos', mg: 'classic', level: 1, sec: 45 },
+      { place: 'El Río Prehistórico', mg: 'catch', level: 2, sec: 60 },
+      { place: 'El Volcán Humeante', mg: 'race', level: 3, sec: 75 },
+      { place: 'La Cueva de las Pinturas', mg: 'find', level: 4, sec: 90 },
+      { place: 'El Nido en la Montaña', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Atrapamos al Pterodáctilo Ladrón! Dino comió todas sus hojas doradas y ya está fuerte otra vez. ¡Todo el valle está feliz gracias a ti!',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Atrapamos al ladrón y Dino ya está fuerte otra vez! ¡Gracias!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Cuello Largo', the: 'Cuello Largo', line: '¡Hola, pequeño! Soy Cuello Largo. Desde aquí arriba veo todo el valle. ¡Busquemos las hojas doradas para Dino!' },
-      { role: 'friend2', name: 'Pinchos', the: 'Pinchos', line: '¡Hola! Soy Pinchos. Tengo picos en la espalda, pero soy muy amigable. ¡Mira con atención!' },
-      { role: 'friend3', name: 'Plumi', the: 'Plumi', line: 'Hola, soy Plumi. Me parezco al ladrón, pero yo llevo bufanda y no antifaz. ¡Soy de los buenos!' },
-      { role: 'villain', name: 'Pterodáctilo Ladrón', line: '¡Ja, ja, ja! ¡Todas las hojas doradas están en mi bolsa! ¡Dino se quedará sin comer!' }
+      { role: 'friend1', name: 'Cuello Largo', the: 'Cuello Largo', line: '¡Hola! Soy Cuello Largo. ¡Busquemos hojas doradas para Dino!' },
+      { role: 'friend2', name: 'Pinchos', the: 'Pinchos' },
+      { role: 'friend3', name: 'Plumi', the: 'Plumi' },
+      { role: 'villain', name: 'Pterodáctilo Ladrón', line: '¡Ja, ja, ja! ¡Todas las hojas doradas son mías!' }
     ]
   },
 
@@ -88,36 +83,20 @@ registrarMundo('dinos', {
       { name: 'ptero_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Las hojas doradas son mías!',
-        '¡Je, je! ¡Vuelo sobre el río y tú no!',
-        '¡Ja, ja! ¡El humo del volcán me esconde!',
-        '¡Je, je, je! ¡Yo también sé pintar en la cueva!',
-        '¡Ja, ja, ja! ¡Bienvenido a mi nido!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_m' },
       burla:   { who: 'villain', text: [
         '¡Nunca me alcanzarás, explorador!',
-        '¡Te vas a mojar los zapatos, ja!',
-        '¡Uy, qué calor! ¿Te cansaste?',
-        '¡En la oscuridad no ves nada!',
         '¡Tu lupa no te sirve contra mí!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡Me llevaré todas las hojas!',
         '¡Haré que el río se desborde!',
-        '¡Despertaré al volcán!',
-        '¡Apagaré las antorchas de la cueva!',
-        '¡Nadie sube a mi montaña!'
+        '¡Despertaré al volcán!'
       ] },
-      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Ay, no! ¡Ayuda, Tito! ¡Me picoteó!',
-        '¡Me resbalé en las piedras del río! ¡Ayuda!',
-        '¡El humo me hace toser! ¡Tito!',
-        '¡Mi cuello no cabe en la cueva! ¡Ayuda!'
-      ] }
+      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'libelula', kind: 'fly', size: 85,

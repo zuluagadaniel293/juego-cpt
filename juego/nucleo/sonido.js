@@ -31,7 +31,8 @@ function playVoice(theme, id, text, onEnd) {
   stopVoice();
   const turn = ++voiceTurn;
   const done = () => { if (onEnd && turn === voiceTurn) onEnd(); };
-  const file = ((window.VOICES || {})[theme] || {})[id] || assetFile(theme, 'voice_' + id);
+  const eleven = ((window.VOICES_ELEVEN || {})[theme] || {})[id];   // primero la versión con emoción (ElevenLabs)
+  const file = (eleven && eleven[0]) || ((window.VOICES || {})[theme] || {})[id] || assetFile(theme, 'voice_' + id);
   if (!file) { speakTTS(text, theme, done); return; }
   currentVoice = new Audio('assets/' + file);
   currentVoice.volume = VOICE_VOLUME;

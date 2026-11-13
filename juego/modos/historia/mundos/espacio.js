@@ -12,54 +12,49 @@ registrarMundo('space', {
   story: {
     hero: 'Nova',
     voice: { pitch: 1.3 },
-    // Los juegos salen en orden aleatorio: si a un capítulo le toca otro juego, se usa su texto de aquí
-    intro: '¡Hola! Soy Nova, astronauta. Por culpa del Capitán Meteoro, Bip y sus hermanitos, los aliens verdes, se perdieron en el espacio. ¡Hay que llevarlos a la base! ',
+    // Saludo: suena una sola vez, antes de la frase del primer capítulo (audio 'intro')
+    // Los juegos salen en orden aleatorio: cada capítulo usa la frase de su juego
+    intro: '¡Hola! Soy Nova. ¡Ayúdame a llevar a Bip y sus hermanitos a la base!',
     mgLines: {
-      classic: 'Bip y sus hermanitos flotan entre otros aliens. ¡Toca solo a los verdes para subirlos con el rayo de la nave!',
-      catch: '¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.',
-      race: '¡El Capitán Meteoro huye con Bip y sus hermanitos! Zuri lo persigue: alcanza solo a los aliens verdes.',
-      find: 'Bip y sus hermanitos se esconden entre muchos aliens... ¡Encuentra al verde! Y si no está, ¡no toques nada!',
-      notx: '¡Al revés! Los otros aliens vuelven a sus planetas: tócalos a todos... ¡menos a Bip, que viene a la base!',
-      ax: 'Bip siempre llega después del alien azul. ¡Toca a Bip solo si justo antes salió el alien azul!',
-      memory: '¡Bip salta de asteroide en asteroide! Mira bien su camino y repítelo para guiar la nave.',
-      dodge: '¡El Capitán Meteoro deja caer tres meteoritos! A mitad de camino uno se detiene: ¡ponte debajo de ese!',
-      path: 'Zuri conoce la ruta entre los asteroides hasta Bip. ¡Mira por dónde salta y repítela de memoria!'
+      classic: '¡Toca solo a los aliens verdes para subirlos a la nave!',
+      catch: '¡Sube a la nave de rescate solo a los aliens verdes!',
+      race: '¡Zuri persigue al Capitán Meteoro! Alcanza solo a los aliens verdes.',
+      find: '¡Busca al alien verde! Si no está, no toques nada.',
+      notx: '¡Al revés! Toca a todos los aliens... ¡menos a los verdes!',
+      ax: 'Toca a Bip solo si justo antes salió el alien azul.',
+      memory: '¡Mira por dónde salta Bip y repite su camino!',
+      dodge: '¡Caen meteoritos! Ponte debajo del que se detenga.',
+      path: '¡Mira el camino de Zuri y repítelo de memoria!'
     },
     // Niveles de personajes: el objetivo es el villano escondido entre los amigos (en vez de la señal).
     // En Pista, {pista} se cambia por el amigo que hace de pista (el primero que no es el compañero del capítulo).
-    mgLinesCast: {
-      classic: '¡El Capitán Meteoro se mezcla con la tripulación! Toca solo cuando aparezca él.',
-      catch: '¡El Capitán Meteoro cae del cielo entre la tripulación! Atrápalo con la red... ¡y deja pasar a los demás!',
-      race: '¡El Capitán Meteoro corre por la nave entre la tripulación! Alcánzalo solo a él.',
-      find: 'La tripulación y el Capitán Meteoro están todos juntos... ¡Encuéntralo! Y si no está, ¡no toques nada!',
-      memory: '¡El Capitán Meteoro salta de nave en nave! Mira bien por dónde pasó y repite su camino.',
-      notx: '¡Al revés! Toca a toda la tripulación... ¡pero NUNCA al Capitán Meteoro!',
-      ax: 'El Capitán Meteoro solo aparece justo después de {pista}: esa es la pista. ¡Tócalo solo si justo antes salió {pista}!',
-      dodge: '¡El Capitán Meteoro deja caer tres meteoritos! A mitad de camino uno se detiene: ¡ponte debajo de ese!',
-      path: 'Zuri conoce la ruta entre los asteroides hasta Bip. ¡Mira por dónde salta y repítela de memoria!'
+    mgLinesCast: {   // (Esquiva y Camino no tienen versión de personajes)
+      classic: '¡El Capitán Meteoro se mezcla con la tripulación! Tócalo solo a él.',
+      catch: '¡Atrapa al Capitán Meteoro con la red y deja pasar a los demás!',
+      race: '¡El Capitán Meteoro corre por la nave! Alcánzalo solo a él.',
+      find: '¡Busca al Capitán Meteoro! Si no está, no toques nada.',
+      memory: '¡Mira por dónde salta el Capitán Meteoro y repite su camino!',
+      notx: '¡Al revés! Toca a la tripulación... ¡menos al Capitán Meteoro!',
+      ax: 'Toca al Capitán Meteoro solo si justo antes salió {pista}.'
     },
     // Jefe final: sus 2 fases salen al azar (ver bossPhases en juego/nucleo/mundos.js); esto dice el protagonista antes
-    bossLine: '¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.',
+    bossLine: '¡Los últimos aliens están en la nave pirata! Rescátalos y atrapa al Capitán Meteoro.',
     chapters: [
-      { place: 'La Base Lunar', mg: 'classic', level: 1, sec: 45,
-        line: '¡Hola! Soy Nova. Bip y sus hermanitos se perdieron cerca de la base. ¡Toca solo a los aliens verdes para subirlos con el rayo!' },
-      { place: 'El Cinturón de Asteroides', mg: 'catch', level: 2, sec: 60,
-        line: '¡Los aliens caen entre los asteroides! Mueve la nave de rescate y sube solo a Bip y sus hermanitos.' },
-      { place: 'La Nave Nodriza', mg: 'race', level: 3, sec: 75,
-        line: '¡El Capitán Meteoro huye por la nave nodriza con los hermanitos de Bip! Zuri lo persigue: alcanza solo a los aliens verdes.' },
-      { place: 'El Planeta de Cristal', mg: 'find', level: 4, sec: 90,
-        line: 'En el planeta de cristal hay muchos aliens... ¡Encuentra a los verdes! Y si no hay ninguno, ¡no toques nada!' },
-      { place: 'La Nave Pirata', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }],
-        line: '¡El Capitán Meteoro tiene a los últimos hermanitos en su nave pirata! Primero súbelos a la nave de rescate y después atrapa al pirata.' }
+      { place: 'La Base Lunar', mg: 'classic', level: 1, sec: 45 },
+      { place: 'El Cinturón de Asteroides', mg: 'catch', level: 2, sec: 60 },
+      { place: 'La Nave Nodriza', mg: 'race', level: 3, sec: 75 },
+      { place: 'El Planeta de Cristal', mg: 'find', level: 4, sec: 90 },
+      { place: 'La Nave Pirata', boss: true, level: 6, phases: [{ mg: 'catch', sec: 60 }, { mg: 'race', sec: 60 }] }
     ],
-    ending: '¡Atrapamos al Capitán Meteoro y Bip y sus hermanitos llegaron a la base! Toda la galaxia te lo agradece.',
-    // Quién presenta cada capítulo (1 a 4): habla primero con su voz, y en los capítulos 1-3 acompaña al niño
-    // mientras juega. En el 4, el villano se burla. role = papel de la imagen (friend1, friend2, friend3, villain)
+    ending: '¡Bip y sus hermanitos llegaron a la base! ¡Toda la galaxia te lo agradece!',
+    // Quién acompaña cada capítulo (1 a 4). Solo hablan 3 personajes por mundo: el protagonista, el villano y el
+    // amigo al que el villano ataca (el de distractors.voices.ayuda); los demás acompañan sin hablar (sin line).
+    // role = papel de la imagen (friend1, friend2, friend3, villain)
     companions: [
-      { role: 'friend1', name: 'Robi', the: 'Robi', line: '¡Bip, bup! Soy Robi, tu robot copiloto. ¡Encendamos los motores y llevemos a Bip a la base!' },
-      { role: 'friend2', name: 'Zuri', the: 'Zuri', line: '¡Hola, terrícola! Soy Zuri. En el espacio todo brilla y se mueve... ¡pero tú no te distraigas!' },
-      { role: 'friend3', name: 'Cometa', the: 'Cometa', line: 'Soy Cometa, piloto de la galaxia. Mi casco se parece al del pirata, ¡pero yo soy de los buenos!' },
-      { role: 'villain', name: 'Capitán Meteoro', line: '¡Ja, ja, ja! ¡Me llevaré a Bip y a todos sus hermanitos! ¡Nunca llegarán a la base!' }
+      { role: 'friend1', name: 'Robi', the: 'Robi', line: '¡Bip, bup! Soy Robi, tu copiloto. ¡Encendamos los motores!' },
+      { role: 'friend2', name: 'Zuri', the: 'Zuri' },
+      { role: 'friend3', name: 'Cometa', the: 'Cometa' },
+      { role: 'villain', name: 'Capitán Meteoro', line: '¡Ja, ja, ja! ¡Bip y sus hermanitos nunca llegarán a la base!' }
     ]
   },
 
@@ -89,36 +84,20 @@ registrarMundo('space', {
       { name: 'meteoro_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Cada capítulo dice cosas distintas: text[0] = capítulo 1 ... text[3] = capítulo 4, text[4] = jefe final.
-    // who = villain, friend (un texto por amigo, con su voz) o un amigo en particular (friend1...)
+    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', text: [
-        '¡Ja, ja, ja! ¡Bip será mío!',
-        '¡Jo, jo! Estoy en otra galaxia...',
-        '¡Ja, ja! ¡Me colé en tu nave nodriza!',
-        '¡Je, je, je! ¡Los cristales me esconden!',
-        '¡Ja, ja, ja! ¡Bienvenida a mi nave pirata!'
-      ] },
+      risa:    { who: 'villain', pool: 'risa_m' },
       burla:   { who: 'villain', text: [
         '¡Nunca me alcanzarás, astronauta!',
-        '¡Esquiva las rocas si puedes!',
-        '¡Apreté todos los botones de tu nave!',
-        '¡Bip brilla, pero yo brillo más!',
         '¡Tu cohete es más lento que una tortuga!'
       ] },
       amenaza: { who: 'villain', text: [
         '¡Todo el espacio será mío!',
-        '¡Lanzaré los asteroides contra tu base!',
-        '¡Apagaré las luces de tu nave nodriza!',
-        '¡Congelaré el planeta de cristal!',
-        '¡Nadie escapa del Capitán Meteoro!'
+        '¡Lanzaré asteroides contra tu base!',
+        '¡Congelaré el planeta de cristal!'
       ] },
-      ayuda:   { who: 'friend1', text: [   // solo el amigo que el villano ataca y persigue
-        '¡Ay, no! ¡Ayuda, Nova! ¡Me atraparon!',
-        '¡Nova, mis circuitos fallan!',
-        '¡Se me acabó la batería! ¡Ayuda, Nova!',
-        '¡Me resbalo en los cristales! ¡Ayuda!'
-      ] }
+      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'cohete', kind: 'fly', size: 100,

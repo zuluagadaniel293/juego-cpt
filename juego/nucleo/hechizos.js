@@ -1,19 +1,19 @@
-// Lo que dice el villano pasa de verdad: cuando suelta su amenaza del capítulo ("¡Congelaré el río!"), el fondo
+// Lo que dice el villano pasa de verdad: cuando suelta una amenaza ("¡Congelaré el río!"), el fondo
 // cambia unos segundos (el río se congela) y luego vuelve a la normalidad.
 // Todo ocurre DETRÁS de los objetos del juego (no los tapa) y queda en el CSV como 'hechizo_<efecto>'.
 // Solo en Historia y Desafío (la Prueba fija no tiene voces de personajes).
 
-// Efecto de cada amenaza, en el orden de los capítulos (los textos están en distractors.voices.amenaza de cada mundo)
+// Efecto de cada amenaza, en el mismo orden que sus textos (distractors.voices.amenaza de cada mundo)
 const THREAT_FX = {
-  heroes:  ['takeover', 'stamp', 'smoke', 'dark', 'seal'],
-  fantasy: ['kidnap', 'vines', 'freeze', 'seal', 'fire'],   // plantas, paredes: ver PLANT y WALL
-  kingdom: ['dark', 'mess:escoba_magica', 'mess:libro_volador', 'seal', 'takeover'],
-  space:   ['takeover', 'meteors', 'dark', 'freeze', 'seal'],
-  ocean:   ['dark', 'ink', 'vines', 'ink', 'seal'],
-  dinos:   ['kidnap', 'flood', 'fire', 'dark', 'seal'],
-  robots:  ['glitch', 'glitch', 'dark', 'glitch', 'dark'],
-  jungle:  ['hypno', 'kidnap', 'vines', 'steal', 'seal'],
-  candy:   ['sour', 'sour', 'melt', 'takeover', 'seal']
+  heroes: ['takeover', 'smoke', 'dark'],
+  fantasy: ['kidnap', 'vines', 'freeze'],
+  kingdom: ['dark', 'mess:libro_volador', 'seal'],
+  space: ['takeover', 'meteors', 'freeze'],
+  ocean: ['dark', 'ink', 'vines'],
+  dinos: ['kidnap', 'flood', 'fire'],
+  robots: ['glitch', 'glitch', 'dark'],
+  jungle: ['hypno', 'kidnap', 'vines'],
+  candy: ['sour', 'melt', 'takeover']
 };
 const THREAT_MS = 5500;   // cuánto dura el efecto
 // Qué planta crece y qué pared cierra en cada mundo (imágenes comunes de assets/comunes/hechizos)
@@ -30,10 +30,10 @@ function slideIn(scene, objs, key, x, y, w, h, from, delay) {
   return img;
 }
 
-function runThreatFx(scene, chapterIdx) {
+function runThreatFx(scene, idx) {   // idx = cuál amenaza dijo el villano
   const list = THREAT_FX[scene.themeKey];
   if (!list || scene.mode === 'prueba' || scene.threatBusy) return;
-  const [fx, arg] = (list[chapterIdx] || list[0]).split(':');
+  const [fx, arg] = (list[idx] || list[0]).split(':');
   scene.threatBusy = true;
   // cuando el villano ya dijo buena parte de la frase, lanza el hechizo: cruza la pantalla, le cae a alguien
   // (o a algo) y ahí empieza el efecto. Los que se mueven solos (robar, meteoritos...) empiezan directo.
