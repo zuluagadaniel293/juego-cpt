@@ -318,5 +318,200 @@
     "texto": "[mischievously] ¡Tu fuego no me hace ni cosquillas!",
     "voz": "sarah",
     "firma": "8d9992f110"
+  },
+  "voces/comunes/eleven/unlock.mp3": {
+    "texto": "[excited] ¡Felicidades! ¡Desbloqueaste un nuevo mundo!",
+    "voz": "lily",
+    "firma": "1eade28141"
+  },
+  "voces/comunes/eleven/pool_risa_f_3.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja! ¡Atrápame si puedes!",
+    "voz": "matilda",
+    "firma": "9d08a3f785"
+  },
+  "voces/comunes/eleven/pool_ayuda_m_1.mp3": {
+    "texto": "[scared] ¡Ayuda! ¡Ayúdenme, por favor!",
+    "voz": "will",
+    "firma": "a68ef32b83"
+  },
+  "voces/comunes/eleven/pool_ayuda_m_2.mp3": {
+    "texto": "[scared] ¡Socorro! ¡Me atrapó!",
+    "voz": "eric",
+    "firma": "a16a061fac"
+  },
+  "voces/comunes/eleven/pool_ayuda_m_3.mp3": {
+    "texto": "[scared] ¡Ay, no! ¡Rápido, sálvame!",
+    "voz": "chris",
+    "firma": "59bfceb5be"
+  },
+  "voces/comunes/eleven/pool_ayuda_m_4.mp3": {
+    "texto": "[scared] ¡Auxilio! ¡No puedo soltarme!",
+    "voz": "bill",
+    "firma": "76f0023a13"
+  },
+  "voces/comunes/eleven/pool_ayuda_f_1.mp3": {
+    "texto": "[scared] ¡Ayuda! ¡Ayúdenme, por favor!",
+    "voz": "jessica",
+    "firma": "80630f5051"
+  },
+  "voces/comunes/eleven/pool_ayuda_f_2.mp3": {
+    "texto": "[scared] ¡Socorro! ¡Me atrapó!",
+    "voz": "laura",
+    "firma": "321f474873"
+  },
+  "voces/comunes/eleven/pool_ayuda_f_3.mp3": {
+    "texto": "[scared] ¡Ay, no! ¡No puedo soltarme!",
+    "voz": "lily",
+    "firma": "a874b76163"
+  },
+  "voces/dragones/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Me llevaré todos los dragones del nido!",
+    "voz": "sarah",
+    "firma": "97aac53396"
+  },
+  "voces/dragones/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Llenaré el bosque de enredaderas!",
+    "voz": "sarah",
+    "firma": "b9859e21d5"
+  },
+  "voces/dragones/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Congelaré el río con mi varita!",
+    "voz": "sarah",
+    "firma": "790705f394"
+  },
+  "voces/reino_magico/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy la Reina Luna. ¡Ayúdame a liberar a Lumi del hechizo!",
+    "voz": "matilda",
+    "firma": "d67512e124"
+  },
+  "voces/reino_magico/eleven/classic.mp3": {
+    "texto": "¡Toca solo a Lumi para romper su burbuja!",
+    "voz": "matilda",
+    "firma": "8fd5f5763c"
+  },
+  "voces/reino_magico/eleven/catch.mp3": {
+    "texto": "¡Recibe con la flor mágica solo a Lumi!",
+    "voz": "matilda",
+    "firma": "4cd0b36b40"
+  },
+  "voces/reino_magico/eleven/race.mp3": {
+    "texto": "¡El Bufón persigue al Duende Pícaro! Alcanza solo a Lumi.",
+    "voz": "matilda",
+    "firma": "91b9a78ef7"
+  },
+  "voces/reino_magico/eleven/find.mp3": {
+    "texto": "¡Busca a Lumi! Si no está, no toques nada.",
+    "voz": "matilda",
+    "firma": "ddb4abde29"
+  },
+  "voces/reino_magico/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde salta Lumi y repite su camino!",
+    "voz": "matilda",
+    "firma": "53fae452f8"
+  },
+  "voces/reino_magico/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todas las hadas... ¡menos a Lumi!",
+    "voz": "matilda",
+    "firma": "df22e2c402"
+  },
+  "voces/reino_magico/eleven/ax.mp3": {
+    "texto": "Toca a Lumi solo si justo antes salió el hada azul.",
+    "voz": "matilda",
+    "firma": "4f698484f9"
+  },
+  "voces/reino_magico/eleven/dodge.mp3": {
+    "texto": "¡El Duende Pícaro lanza pasteles! Ponte donde se detenga uno.",
+    "voz": "matilda",
+    "firma": "d04b65e88f"
+  },
+  "voces/reino_magico/eleven/path.mp3": {
+    "texto": "¡Mira el camino del Bufón y repítelo de memoria!",
+    "voz": "matilda",
+    "firma": "f7334f5685"
+  },
+  "voces/reino_magico/eleven/cast_classic.mp3": {
+    "texto": "¡El Duende Pícaro se mezcla con la gente del castillo! Tócalo solo a él.",
+    "voz": "matilda",
+    "firma": "83f8f86dd2"
+  },
+  "voces/reino_magico/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa al Duende Pícaro con la red y deja pasar a los demás!",
+    "voz": "matilda",
+    "firma": "9840ea84a8"
+  },
+  "voces/reino_magico/eleven/cast_race.mp3": {
+    "texto": "¡El Duende Pícaro corre por el castillo! Alcánzalo solo a él.",
+    "voz": "matilda",
+    "firma": "ce64d9b35e"
+  },
+  "voces/reino_magico/eleven/cast_find.mp3": {
+    "texto": "¡Busca al Duende Pícaro! Si no está, no toques nada.",
+    "voz": "matilda",
+    "firma": "d9b7cc1e5d"
+  },
+  "voces/reino_magico/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta el Duende Pícaro y repite su camino!",
+    "voz": "matilda",
+    "firma": "7d34d0f07c"
+  },
+  "voces/reino_magico/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a todos... ¡menos al Duende Pícaro!",
+    "voz": "matilda",
+    "firma": "0119b54fd1"
+  },
+  "voces/reino_magico/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca al Duende Pícaro solo si justo antes salió el Guardia.",
+    "voz": "matilda",
+    "firma": "0d34d27192"
+  },
+  "voces/reino_magico/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca al Duende Pícaro solo si justo antes salió el Bufón.",
+    "voz": "matilda",
+    "firma": "fc47d3b3a8"
+  },
+  "voces/reino_magico/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca al Duende Pícaro solo si justo antes salió el Duende Amable.",
+    "voz": "matilda",
+    "firma": "210c05a80b"
+  },
+  "voces/reino_magico/eleven/boss.mp3": {
+    "texto": "¡Lumi está en la burbuja más grande! Libérala y atrapa al Duende Pícaro.",
+    "voz": "matilda",
+    "firma": "b92599eb94"
+  },
+  "voces/reino_magico/eleven/end.mp3": {
+    "texto": "¡Lumi está libre y atrapamos al Duende Pícaro! ¡El castillo brilla gracias a ti!",
+    "voz": "matilda",
+    "firma": "b6acc8b11c"
+  },
+  "voces/reino_magico/eleven/comp_1.mp3": {
+    "texto": "¡A sus órdenes, majestad! ¡Vamos a liberar a Lumi!",
+    "voz": "chris",
+    "firma": "29aeb3013b"
+  },
+  "voces/reino_magico/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Ji, ji, ji! ¡Nunca romperás mi hechizo!",
+    "voz": "callum",
+    "firma": "32aeb0db00"
+  },
+  "voces/reino_magico/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡La corona me queda mejor a mí!",
+    "voz": "callum",
+    "firma": "6038cf246c"
+  },
+  "voces/reino_magico/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Haré que anochezca en el jardín!",
+    "voz": "callum",
+    "firma": "ef713eb6ac"
+  },
+  "voces/reino_magico/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Haré volar todos los libros del castillo!",
+    "voz": "callum",
+    "firma": "a3c304e20d"
+  },
+  "voces/reino_magico/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Cerraré la torre con llave!",
+    "voz": "callum",
+    "firma": "cd640891c4"
   }
 }

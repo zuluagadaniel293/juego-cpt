@@ -38,7 +38,7 @@ const REPARTO = {
   heroes:  { carpeta: 'superheroes',  hero: 'eric',    villain: 'liam',    friend: 'jessica' },   // Héroe Rayo · Sombra · Capitana Estrella
   fantasy: { carpeta: 'dragones',     hero: 'lily',    villain: 'sarah',   friend: 'bill' },      // Chispa · Morgana · Mago Abuelo
   kingdom: { carpeta: 'reino_magico', hero: 'matilda', villain: 'callum',  friend: 'chris' },     // Reina Luna · Duende Pícaro · Guardia
-  space:   { carpeta: 'espacio',      hero: 'aria',    villain: 'charlie', friend: 'river' },     // Nova · Capitán Meteoro · Robi
+  space:   { carpeta: 'espacio',      hero: 'matilda',  villain: 'charlie', friend: 'river' },     // Nova · Capitán Meteoro · Robi
   ocean:   { carpeta: 'oceano',       hero: 'jessica', villain: 'roger',   friend: 'eric' },      // Coral · Pulpo Tinta · Delfi
   dinos:   { carpeta: 'dinosaurios',  hero: 'will',    villain: 'callum',  friend: 'bill' },      // Tito · Pterodáctilo Ladrón · Cuello Largo
   robots:  { carpeta: 'robots',       hero: 'liam',    villain: 'charlie', friend: 'chris' },     // Chip · Glitch · Cable
@@ -50,7 +50,7 @@ const VOCES_POOL = {
   risa_m: ['liam', 'liam', 'callum', 'callum', 'roger'],
   risa_f: ['sarah', 'sarah', 'matilda'],
   ayuda_m: ['will', 'eric', 'chris', 'bill'],
-  ayuda_f: ['jessica', 'laura', 'aria']
+  ayuda_f: ['jessica', 'laura', 'lily']   // (Aria no se puede usar por API en el plan gratis)
 };
 const VOZ_UNLOCK = 'lily';
 // Emoción (etiqueta de Eleven v3 que va antes del texto)

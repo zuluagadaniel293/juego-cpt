@@ -1,45 +1,9 @@
 // Generado por herramientas/generar_voces.js: no editar a mano.
 // Audio de cada texto de los personajes (ids: ver chapterLine en juego/nucleo/mundos.js).
 window.VOICES = {
-  "heroes": {
-    "unlock": "voces/comunes/unlock.mp3"
-  },
-  "fantasy": {
-    "dist_amenaza_1": "voces/dragones/dist_amenaza_1.mp3",
-    "dist_amenaza_2": "voces/dragones/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/dragones/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
-  },
-  "kingdom": {
-    "intro": "voces/reino_magico/intro.mp3",
-    "classic": "voces/reino_magico/classic.mp3",
-    "catch": "voces/reino_magico/catch.mp3",
-    "race": "voces/reino_magico/race.mp3",
-    "find": "voces/reino_magico/find.mp3",
-    "memory": "voces/reino_magico/memory.mp3",
-    "notx": "voces/reino_magico/notx.mp3",
-    "ax": "voces/reino_magico/ax.mp3",
-    "dodge": "voces/reino_magico/dodge.mp3",
-    "path": "voces/reino_magico/path.mp3",
-    "cast_classic": "voces/reino_magico/cast_classic.mp3",
-    "cast_catch": "voces/reino_magico/cast_catch.mp3",
-    "cast_race": "voces/reino_magico/cast_race.mp3",
-    "cast_find": "voces/reino_magico/cast_find.mp3",
-    "cast_memory": "voces/reino_magico/cast_memory.mp3",
-    "cast_notx": "voces/reino_magico/cast_notx.mp3",
-    "cast_ax_friend1": "voces/reino_magico/cast_ax_friend1.mp3",
-    "cast_ax_friend2": "voces/reino_magico/cast_ax_friend2.mp3",
-    "cast_ax_friend3": "voces/reino_magico/cast_ax_friend3.mp3",
-    "boss": "voces/reino_magico/boss.mp3",
-    "end": "voces/reino_magico/end.mp3",
-    "comp_1": "voces/reino_magico/comp_1.mp3",
-    "comp_4": "voces/reino_magico/comp_4.mp3",
-    "dist_burla_2": "voces/reino_magico/dist_burla_2.mp3",
-    "dist_amenaza_1": "voces/reino_magico/dist_amenaza_1.mp3",
-    "dist_amenaza_2": "voces/reino_magico/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/reino_magico/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
-  },
+  "heroes": {},
+  "fantasy": {},
+  "kingdom": {},
   "space": {
     "intro": "voces/espacio/intro.mp3",
     "classic": "voces/espacio/classic.mp3",
@@ -66,8 +30,7 @@ window.VOICES = {
     "comp_4": "voces/espacio/comp_4.mp3",
     "dist_burla_2": "voces/espacio/dist_burla_2.mp3",
     "dist_amenaza_2": "voces/espacio/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/espacio/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
+    "dist_amenaza_3": "voces/espacio/dist_amenaza_3.mp3"
   },
   "ocean": {
     "intro": "voces/oceano/intro.mp3",
@@ -96,8 +59,7 @@ window.VOICES = {
     "dist_burla_1": "voces/oceano/dist_burla_1.mp3",
     "dist_burla_2": "voces/oceano/dist_burla_2.mp3",
     "dist_amenaza_2": "voces/oceano/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/oceano/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
+    "dist_amenaza_3": "voces/oceano/dist_amenaza_3.mp3"
   },
   "dinos": {
     "intro": "voces/dinosaurios/intro.mp3",
@@ -127,8 +89,7 @@ window.VOICES = {
     "dist_burla_2": "voces/dinosaurios/dist_burla_2.mp3",
     "dist_amenaza_1": "voces/dinosaurios/dist_amenaza_1.mp3",
     "dist_amenaza_2": "voces/dinosaurios/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/dinosaurios/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
+    "dist_amenaza_3": "voces/dinosaurios/dist_amenaza_3.mp3"
   },
   "robots": {
     "intro": "voces/robots/intro.mp3",
@@ -158,8 +119,7 @@ window.VOICES = {
     "dist_burla_2": "voces/robots/dist_burla_2.mp3",
     "dist_amenaza_1": "voces/robots/dist_amenaza_1.mp3",
     "dist_amenaza_2": "voces/robots/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/robots/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
+    "dist_amenaza_3": "voces/robots/dist_amenaza_3.mp3"
   },
   "jungle": {
     "intro": "voces/selva/intro.mp3",
@@ -189,8 +149,7 @@ window.VOICES = {
     "dist_burla_2": "voces/selva/dist_burla_2.mp3",
     "dist_amenaza_1": "voces/selva/dist_amenaza_1.mp3",
     "dist_amenaza_2": "voces/selva/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/selva/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
+    "dist_amenaza_3": "voces/selva/dist_amenaza_3.mp3"
   },
   "candy": {
     "intro": "voces/dulces/intro.mp3",
@@ -220,18 +179,7 @@ window.VOICES = {
     "dist_burla_2": "voces/dulces/dist_burla_2.mp3",
     "dist_amenaza_1": "voces/dulces/dist_amenaza_1.mp3",
     "dist_amenaza_2": "voces/dulces/dist_amenaza_2.mp3",
-    "dist_amenaza_3": "voces/dulces/dist_amenaza_3.mp3",
-    "unlock": "voces/comunes/unlock.mp3"
+    "dist_amenaza_3": "voces/dulces/dist_amenaza_3.mp3"
   },
-  "comunes": {
-    "unlock": "voces/comunes/unlock.mp3",
-    "pool_risa_f_3": "voces/comunes/pool_risa_f_3.mp3",
-    "pool_ayuda_m_1": "voces/comunes/pool_ayuda_m_1.mp3",
-    "pool_ayuda_m_2": "voces/comunes/pool_ayuda_m_2.mp3",
-    "pool_ayuda_m_3": "voces/comunes/pool_ayuda_m_3.mp3",
-    "pool_ayuda_m_4": "voces/comunes/pool_ayuda_m_4.mp3",
-    "pool_ayuda_f_1": "voces/comunes/pool_ayuda_f_1.mp3",
-    "pool_ayuda_f_2": "voces/comunes/pool_ayuda_f_2.mp3",
-    "pool_ayuda_f_3": "voces/comunes/pool_ayuda_f_3.mp3"
-  }
+  "comunes": {}
 };

@@ -1,6 +1,56 @@
 // Generado por herramientas/generar_voces_elevenlabs.js: no editar a mano.
 // Voces con emoción (ElevenLabs). Si hay varias versiones, el juego elige una al azar.
 window.VOICES_ELEVEN = {
+  "comunes": {
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
+    ],
+    "pool_risa_m_1": [
+      "voces/comunes/eleven/pool_risa_m_1.mp3"
+    ],
+    "pool_risa_m_2": [
+      "voces/comunes/eleven/pool_risa_m_2.mp3"
+    ],
+    "pool_risa_m_3": [
+      "voces/comunes/eleven/pool_risa_m_3.mp3"
+    ],
+    "pool_risa_m_4": [
+      "voces/comunes/eleven/pool_risa_m_4.mp3"
+    ],
+    "pool_risa_m_5": [
+      "voces/comunes/eleven/pool_risa_m_5.mp3"
+    ],
+    "pool_risa_f_1": [
+      "voces/comunes/eleven/pool_risa_f_1.mp3"
+    ],
+    "pool_risa_f_2": [
+      "voces/comunes/eleven/pool_risa_f_2.mp3"
+    ],
+    "pool_risa_f_3": [
+      "voces/comunes/eleven/pool_risa_f_3.mp3"
+    ],
+    "pool_ayuda_m_1": [
+      "voces/comunes/eleven/pool_ayuda_m_1.mp3"
+    ],
+    "pool_ayuda_m_2": [
+      "voces/comunes/eleven/pool_ayuda_m_2.mp3"
+    ],
+    "pool_ayuda_m_3": [
+      "voces/comunes/eleven/pool_ayuda_m_3.mp3"
+    ],
+    "pool_ayuda_m_4": [
+      "voces/comunes/eleven/pool_ayuda_m_4.mp3"
+    ],
+    "pool_ayuda_f_1": [
+      "voces/comunes/eleven/pool_ayuda_f_1.mp3"
+    ],
+    "pool_ayuda_f_2": [
+      "voces/comunes/eleven/pool_ayuda_f_2.mp3"
+    ],
+    "pool_ayuda_f_3": [
+      "voces/comunes/eleven/pool_ayuda_f_3.mp3"
+    ]
+  },
   "heroes": {
     "intro": [
       "voces/superheroes/eleven/intro.mp3"
@@ -85,6 +135,9 @@ window.VOICES_ELEVEN = {
     ],
     "dist_amenaza_3": [
       "voces/superheroes/eleven/dist_amenaza_3.mp3"
+    ],
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
     ]
   },
   "fantasy": {
@@ -162,11 +215,107 @@ window.VOICES_ELEVEN = {
     ],
     "dist_burla_2": [
       "voces/dragones/eleven/dist_burla_2.mp3"
+    ],
+    "dist_amenaza_1": [
+      "voces/dragones/eleven/dist_amenaza_1.mp3"
+    ],
+    "dist_amenaza_2": [
+      "voces/dragones/eleven/dist_amenaza_2.mp3"
+    ],
+    "dist_amenaza_3": [
+      "voces/dragones/eleven/dist_amenaza_3.mp3"
+    ],
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
     ]
   },
   "kingdom": {
+    "intro": [
+      "voces/reino_magico/eleven/intro.mp3"
+    ],
+    "classic": [
+      "voces/reino_magico/eleven/classic.mp3"
+    ],
+    "catch": [
+      "voces/reino_magico/eleven/catch.mp3"
+    ],
+    "race": [
+      "voces/reino_magico/eleven/race.mp3"
+    ],
+    "find": [
+      "voces/reino_magico/eleven/find.mp3"
+    ],
+    "memory": [
+      "voces/reino_magico/eleven/memory.mp3"
+    ],
+    "notx": [
+      "voces/reino_magico/eleven/notx.mp3"
+    ],
+    "ax": [
+      "voces/reino_magico/eleven/ax.mp3"
+    ],
+    "dodge": [
+      "voces/reino_magico/eleven/dodge.mp3"
+    ],
+    "path": [
+      "voces/reino_magico/eleven/path.mp3"
+    ],
+    "cast_classic": [
+      "voces/reino_magico/eleven/cast_classic.mp3"
+    ],
+    "cast_catch": [
+      "voces/reino_magico/eleven/cast_catch.mp3"
+    ],
+    "cast_race": [
+      "voces/reino_magico/eleven/cast_race.mp3"
+    ],
+    "cast_find": [
+      "voces/reino_magico/eleven/cast_find.mp3"
+    ],
+    "cast_memory": [
+      "voces/reino_magico/eleven/cast_memory.mp3"
+    ],
+    "cast_notx": [
+      "voces/reino_magico/eleven/cast_notx.mp3"
+    ],
+    "cast_ax_friend1": [
+      "voces/reino_magico/eleven/cast_ax_friend1.mp3"
+    ],
+    "cast_ax_friend2": [
+      "voces/reino_magico/eleven/cast_ax_friend2.mp3"
+    ],
+    "cast_ax_friend3": [
+      "voces/reino_magico/eleven/cast_ax_friend3.mp3"
+    ],
+    "boss": [
+      "voces/reino_magico/eleven/boss.mp3"
+    ],
+    "end": [
+      "voces/reino_magico/eleven/end.mp3"
+    ],
+    "comp_1": [
+      "voces/reino_magico/eleven/comp_1.mp3"
+    ],
+    "comp_4": [
+      "voces/reino_magico/eleven/comp_4.mp3"
+    ],
     "dist_burla_1": [
       "voces/reino_magico/eleven/dist_burla_1.mp3"
+    ],
+    "dist_burla_2": [
+      "voces/reino_magico/eleven/dist_burla_2.mp3"
+    ],
+    "dist_amenaza_1": [
+      "voces/reino_magico/eleven/dist_amenaza_1.mp3"
+    ],
+    "dist_amenaza_2": [
+      "voces/reino_magico/eleven/dist_amenaza_2.mp3"
+    ],
+    "dist_amenaza_3": [
+      "voces/reino_magico/eleven/dist_amenaza_3.mp3"
+    ],
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
     ]
   },
   "space": {
@@ -175,34 +324,37 @@ window.VOICES_ELEVEN = {
     ],
     "dist_amenaza_1": [
       "voces/espacio/eleven/dist_amenaza_1.mp3"
+    ],
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
     ]
   },
   "ocean": {
     "dist_amenaza_1": [
       "voces/oceano/eleven/dist_amenaza_1.mp3"
+    ],
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
     ]
   },
-  "comunes": {
-    "pool_risa_m_1": [
-      "voces/comunes/eleven/pool_risa_m_1.mp3"
-    ],
-    "pool_risa_m_2": [
-      "voces/comunes/eleven/pool_risa_m_2.mp3"
-    ],
-    "pool_risa_m_3": [
-      "voces/comunes/eleven/pool_risa_m_3.mp3"
-    ],
-    "pool_risa_m_4": [
-      "voces/comunes/eleven/pool_risa_m_4.mp3"
-    ],
-    "pool_risa_m_5": [
-      "voces/comunes/eleven/pool_risa_m_5.mp3"
-    ],
-    "pool_risa_f_1": [
-      "voces/comunes/eleven/pool_risa_f_1.mp3"
-    ],
-    "pool_risa_f_2": [
-      "voces/comunes/eleven/pool_risa_f_2.mp3"
+  "dinos": {
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
+    ]
+  },
+  "robots": {
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
+    ]
+  },
+  "jungle": {
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
+    ]
+  },
+  "candy": {
+    "unlock": [
+      "voces/comunes/eleven/unlock.mp3"
     ]
   }
 };
