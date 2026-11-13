@@ -657,12 +657,12 @@
       "firma": "e9949d4315"
     },
     "dodge": {
-      "texto": "¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
-      "firma": "cf2905cd1b"
+      "texto": "¡El Duende Pícaro lanza tres pasteles a la vez! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "d80968d501"
     },
     "intro_dodge": {
-      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
-      "firma": "fe74247721"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro lanza tres pasteles a la vez! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "47ad264110"
     },
     "path": {
       "texto": "El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!",
@@ -749,12 +749,12 @@
       "firma": "259c2d5495"
     },
     "cast_dodge": {
-      "texto": "¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
-      "firma": "cf2905cd1b"
+      "texto": "¡El Duende Pícaro lanza tres pasteles a la vez! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "d80968d501"
     },
     "intro_cast_dodge": {
-      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro lanza pasteles y libros! A mitad de camino uno se detiene: ¡ponte en su carril!",
-      "firma": "fe74247721"
+      "texto": "¡Hola! Soy la Reina Luna. El Duende Pícaro hechizó a Lumi, el hada rosada, y la encierra en burbujas por todo el castillo. ¡El Duende Pícaro lanza tres pasteles a la vez! A mitad de camino uno se detiene: ¡ponte en su carril!",
+      "firma": "47ad264110"
     },
     "cast_path": {
       "texto": "El Bufón conoce el camino hasta Lumi. ¡Mira por dónde salta y repítelo de memoria!",
