@@ -128,6 +128,17 @@ function lineChart(points, label) {
 }
 
 // ---------- secciones ----------
+// Todos los intentos de un grupo (cada vez que repitió), en orden, con su CSV. all = todas las partidas del jugador
+function attemptsHTML(all, list, placeTxt) {
+  if (!list.length) return '';
+  const rows = list.map((s, k) => '<tr><td class="num">' + (k + 1) + '</td><td>' + esc(placeTxt(s)) + '</td><td>' + esc(dateTxt(s.t)) + '</td>' +
+    statCells(s) + '<td class="mf-noprint">' + (s.log ? '<button data-csv="' + all.indexOf(s) + '">CSV</button>' : '<span class="mf-muted">sin filas</span>') +
+    '</td></tr>').join('');
+  return '<details class="mf-attempts"><summary>Ver cada intento (' + list.length + ')</summary><div class="mf-scroll"><table><thead><tr>' +
+    '<th class="num">#</th><th>Dónde</th><th>Fecha</th>' + STAT_HEAD + '<th class="mf-noprint"></th></tr></thead><tbody>' + rows +
+    '</tbody></table></div></details>';
+}
+
 function historiaHTML(id, sessions) {
   const story = rawStore.get(playerKey(id, 'cpt_story'), {});
   const worlds = Object.keys(THEMES).filter(t => sessions.some(s => s.mode === 'historia' && s.theme === t) || (story[t] || []).some(v => v));
@@ -150,6 +161,8 @@ function historiaHTML(id, sessions) {
       '<th class="num">Aciertos</th><th class="num">Omisiones</th><th class="num">Comisiones</th><th class="num">TR medio</th><th class="num">Variab. TR</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>' +
       '<p class="mf-muted">Medidas del último intento de cada capítulo.</p>' +
+      attemptsHTML(sessions, ws.slice().sort((a, b) => a.chapter - b.chapter || a.t - b.t),
+        s => (s.boss ? 'Jefe final' : 'Capítulo ' + (s.chapter + 1)) + (s.minigame && !s.boss ? ' · ' + gameName(s.minigame) : '')) +
       (done ? (ws.length ? reportHTML(ws, 'Informe de la historia: ' + worldName(t))
         : '<p class="mf-muted">El informe sale cuando haya partidas guardadas de este mundo (al volver a jugarlo).</p>') : '');
   }).join('');
@@ -168,7 +181,10 @@ function desafioHTML(sessions) {
   }).join('');
   return '<div class="mf-scroll"><table><thead><tr><th>Mundo</th><th>Juego</th><th class="num">Partidas</th><th class="num">Nivel máx. superado</th>' +
     '<th class="num">Último nivel</th>' + STAT_HEAD + '</tr></thead><tbody>' + rows + '</tbody></table></div>' +
-    '<p class="mf-muted">Medidas de la última partida de cada juego.</p>' + reportHTML(ds, 'Resumen del Desafío');
+    '<p class="mf-muted">Medidas de la última partida de cada juego.</p>' +
+    attemptsHTML(sessions, ds.slice().sort((a, b) => (a.theme + a.minigame).localeCompare(b.theme + b.minigame) || a.t - b.t),
+      s => worldName(s.theme) + ' · ' + gameName(s.minigame) + ' · nivel ' + s.level) +
+    reportHTML(ds, 'Resumen del Desafío');
 }
 
 function pruebaHTML(sessions) {

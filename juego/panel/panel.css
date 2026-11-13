@@ -69,3 +69,6 @@
   .mf-panel .mf-card, .mf-panel table { break-inside: avoid; }
   html, body { height: auto; background: #fff; }
 }
+.mf-panel .mf-attempts { margin: 6px 0 10px; }
+.mf-panel .mf-attempts summary { cursor: pointer; color: var(--mf-accent); font-weight: bold; padding: 4px 0; }
+@media print { .mf-panel .mf-attempts:not([open]) { display: none; } }
