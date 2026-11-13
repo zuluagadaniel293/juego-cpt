@@ -1,5 +1,5 @@
 // Camino: un amigo recorre un camino saltando de piedra en piedra hasta la meta (la misión del mundo) y deja
-// huellas. Las huellas se borran y el niño tiene que llevar al protagonista por ese mismo camino, de memoria.
+// su rastro (huellas, escarcha, confeti... según el mundo). El rastro se borra y el niño tiene que llevar al protagonista por ese mismo camino, de memoria.
 // Memoria de trabajo visoespacial (como el Corsi, pero siguiendo una ruta) + atención.
 // - Se juega tocando la piedra de al lado (o con las flechas). Si pisa una piedra que no era, la piedra se pone
 //   roja y no avanza (sin castigo); con 2 errores seguidos en el mismo paso, la piedra correcta brilla un momento.
@@ -18,7 +18,15 @@ Object.assign(GameScene.prototype, {
     this.pathStones = [];
     for (let c = 0; c < PATH_COLS; c++) for (let r = 0; r < PATH_ROWS; r++) {
       const { x, y } = pathXY(c, r);
+      // la piedra de cada mundo (path_stone); si falta, un óvalo. El óvalo queda siempre debajo: es el que se
+      // toca y el que brilla verde/rojo alrededor de la imagen.
       const st = this.add.ellipse(x, y, 92, 58, 0xe2e8f0, 0.28).setStrokeStyle(3, th.accent, 0.55).setDepth(0);
+      if (tex.path_stone) {
+        st.setSize(108, 72).setStrokeStyle().setFillStyle(0xffffff, 0);
+        const img = this.add.image(x, y, tex.path_stone).setDepth(0.5);
+        img.setScale(Math.min(96 / img.width, 64 / img.height));
+        st.img = img; this.mgObjects.push(img);
+      }
       st.cell = [c, r];
       st.setInteractive({ useHandCursor: true }).on('pointerdown', () => this.pathTap(c, r));
       this.pathStones.push(st); this.mgObjects.push(st);
@@ -66,7 +74,7 @@ Object.assign(GameScene.prototype, {
     const stepMs = Math.max(380, 700 - 40 * L);
     const fakes = (this.level || 1) >= 4 ? Math.min(3, 1 + Math.floor((L - 3) / 2)) : 0;
     this.pathPrints.forEach(p => p.destroy()); this.pathPrints = [];
-    this.pathStones.forEach(s => s.setFillStyle(0xe2e8f0, 0.28));
+    this.pathStones.forEach(s => this.pathPaint(s, 'idle'));
     const c = this.pathCur = { trial: this.trial, route, step: 0, errors: 0, streak: 0, playing: false, done: false,
       keepFaint: (this.level || 1) === 1, onset: null, lastMove: null };
     const start = pathXY(...route[0]), goal = pathXY(...route[route.length - 1]);
@@ -82,7 +90,7 @@ Object.assign(GameScene.prototype, {
       this.tweens.add({ targets: this.pathGuide, y: p.y - 18, duration: stepMs * 0.7, ease: 'Back.easeOut' });
       this.time.delayedCall(stepMs * 0.7, () => {
         if (this.pathCur !== c) return;
-        this.pathPrint(p.x, p.y, this.theme.accent);
+        this.pathPrint(p.x, p.y, this.theme.accent, false);
         tone(500 + i * 40, 0.06, 0.04, 'triangle');
       });
     }));
@@ -96,7 +104,7 @@ Object.assign(GameScene.prototype, {
       Phaser.Utils.Array.Shuffle(near).slice(0, fakes).forEach(([a, b], k) => this.time.delayedCall(700 + (k + 1) * stepMs * 1.6, () => {
         if (this.pathCur !== c) return;
         const p = pathXY(a, b);
-        this.pathPrint(p.x, p.y, 0x4c1d95);
+        this.pathPrint(p.x, p.y, 0x4c1d95, true);
         this.logDistractor('visual_distractor', 'huella_falsa_del_villano');
       }));
     }
@@ -110,12 +118,33 @@ Object.assign(GameScene.prototype, {
       this.tweens.add({ targets: this.fb, alpha: 0, duration: 900, delay: 900 });
       this.pathHero.setVisible(true).setPosition(start.x, start.y - 18);
       c.playing = true; c.onset = performance.now(); c.lastMove = c.onset;
-      this.pathStones.find(s => s.cell[0] === route[0][0] && s.cell[1] === route[0][1]).setFillStyle(0x86efac, 0.45);
+      this.pathPaint(this.pathStones.find(s => s.cell[0] === route[0][0] && s.cell[1] === route[0][1]), 'ok');
     });
   },
 
-  // huellas (dos pies con deditos)
-  pathPrint(x, y, color) {
+  // color de la piedra: 'idle' normal · 'ok' pisada bien (verde) · 'bad' equivocada (roja)
+  pathPaint(st, state) {
+    if (!st) return;
+    if (st.img) {
+      const halo = { idle: [0xffffff, 0], ok: [0x22c55e, 0.75], bad: [0xef4444, 0.8] }[state];
+      st.setFillStyle(halo[0], halo[1]);
+      if (state === 'idle') st.img.clearTint(); else st.img.setTint(state === 'ok' ? 0xbbf7d0 : 0xfca5a5);
+    } else st.setFillStyle(...{ idle: [0xe2e8f0, 0.28], ok: [0x86efac, 0.45], bad: [0xef4444, 0.5] }[state]);
+  },
+
+  // el rastro que deja el guía (path_trail de cada mundo: huellas, escarcha, confeti...); las falsas del villano
+  // son el mismo rastro pero oscuro. Si el mundo no tiene imagen, se dibujan dos huellitas.
+  pathPrint(x, y, color, fake) {
+    const tex = TEX[this.themeKey];
+    if (tex.path_trail) {
+      const im = this.add.image(x, y - 2, tex.path_trail).setDepth(1).setAngle(Phaser.Math.Between(-12, 12));
+      im.setScale(Math.min(62 / im.width, 50 / im.height));
+      if (fake) im.setTint(0x3b0764);
+      // brillo suave debajo, para que el rastro resalte sobre la piedra (la huella café sobre la roca café)
+      const glow = this.add.ellipse(x, y - 2, 74, 50, fake ? 0x0f0a1e : 0xffffff, fake ? 0.3 : 0.45).setDepth(0.9);
+      this.pathPrints.push(glow, im);
+      return im;
+    }
     const g = this.add.graphics().setDepth(1);
     g.fillStyle(color, 0.9);
     g.fillEllipse(x - 12, y + 4, 14, 22); g.fillEllipse(x + 12, y - 4, 14, 22);
@@ -138,15 +167,15 @@ Object.assign(GameScene.prototype, {
     if (cc === nc && rr === nr) {
       c.step++; c.streak = 0; c.lastMove = now;
       this.tweens.add({ targets: this.pathHero, x: p.x, y: p.y - 18, duration: 160, ease: 'Quad.easeOut' });
-      stone.setFillStyle(0x86efac, 0.45);
+      this.pathPaint(stone, 'ok');
       tone(600 + c.step * 40, 0.06, 0.04, 'triangle');
       if (c.step === c.route.length - 1) this.endPath(true);
     } else {
       // piedra equivocada: se pone roja, el personaje intenta y vuelve
       c.errors++; c.streak++;
       fizzleSound();
-      stone.setFillStyle(0xef4444, 0.5);
-      this.time.delayedCall(450, () => { if (this.pathCur === c && !c.done) stone.setFillStyle(0xe2e8f0, 0.28); });
+      this.pathPaint(stone, 'bad');
+      this.time.delayedCall(450, () => { if (this.pathCur === c && !c.done) this.pathPaint(stone, 'idle'); });
       const h = pathXY(hc, hr);
       this.tweens.add({ targets: this.pathHero, x: (h.x + p.x) / 2, y: (h.y + p.y) / 2 - 18, duration: 110, yoyo: true });
       this.logTrial(c.trial, 'distractor', 'piedra_equivocada', now, true, now - c.lastMove, 'commission');

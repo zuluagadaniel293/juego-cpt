@@ -24,6 +24,7 @@
 //   net               red para atrapar al villano
 //   end               ilustración del final del mundo
 //   fx_fly_1..3, fx_splat  lo que lanza el villano en su escena propia y la mancha que deja (si faltan, se dibujan)
+//   path_trail, path_stone   Camino: el rastro que deja el guía y la piedra donde se pisa (si faltan, se dibujan)
 //   fx_amb_1..5       lo que pasa por detrás en el giro del mundo (niebla, burbujas, hojas, chispas) · fx_dust: polvo del temblor
 //   bg_1 ... bg_5     fondo de cada capítulo
 //   voice_1 ... voice_5, voice_end   voz del personaje en cada capítulo y en el final (MP3)
@@ -33,6 +34,8 @@
 window.ASSETS = {
   heroes: {             // carpeta assets/superheroes
     catcher:       'superheroes/escudo_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'superheroes/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'superheroes/camino_piedra.png',   // Camino: piedra donde se pisa
     target:  'superheroes/senal_de_sombra.png',
     dist1:   'superheroes/senal_capitan_estrella.png',
     dist2:   'superheroes/senal_escudo_verde.png',
@@ -71,6 +74,8 @@ window.ASSETS = {
   },
   fantasy: {            // carpeta assets/dragones
     catcher:       'dragones/nido_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'dragones/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'dragones/camino_piedra.png',   // Camino: piedra donde se pisa
     target:  'dragones/dragon_bebe_dorado.png',
     dist1:   'dragones/dragon_bebe_rojo.png',
     dist2:   'dragones/dragon_bebe_azul.png',
@@ -107,6 +112,8 @@ window.ASSETS = {
   },
   kingdom: {            // carpeta assets/reino_magico
     catcher:       'reino_magico/flor_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'reino_magico/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'reino_magico/camino_piedra.png',   // Camino: piedra donde se pisa
     target:  'reino_magico/hada_rosada_lumi.png',
     dist1:   'reino_magico/hada_azul.png',
     dist2:   'reino_magico/hada_verde.png',
@@ -143,6 +150,8 @@ window.ASSETS = {
   },
   space: {            // carpeta assets/espacio · Nova busca a Bip
     catcher:       'espacio/nave_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'espacio/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'espacio/camino_piedra.png',   // Camino: piedra donde se pisa
     target:        'espacio/bip_alien_verde.png',
     dist1:         'espacio/alien_azul.png',
     dist2:         'espacio/alien_naranja.png',
@@ -180,6 +189,8 @@ window.ASSETS = {
   },
   ocean: {            // carpeta assets/oceano · Coral busca a Perla
     catcher:       'oceano/concha_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'oceano/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'oceano/camino_piedra.png',   // Camino: piedra donde se pisa
     target:        'oceano/perla_caballito_rosado.png',
     dist1:         'oceano/caballito_azul.png',
     dist2:         'oceano/caballito_verde.png',
@@ -217,6 +228,8 @@ window.ASSETS = {
   },
   dinos: {            // carpeta assets/dinosaurios · Tito busca a Dino
     catcher:       'dinosaurios/dino_boca_abierta.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'dinosaurios/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'dinosaurios/camino_piedra.png',   // Camino: piedra donde se pisa
     target:        'dinosaurios/hoja_dorada.png',      // la comida que le da fuerzas a Dino
     dist1:         'dinosaurios/helecho_verde.png',
     dist2:         'dinosaurios/hoja_seca.png',
@@ -254,6 +267,8 @@ window.ASSETS = {
   },
   robots: {            // carpeta assets/robots · Chip busca a Botón
     catcher:       'robots/carga_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'robots/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'robots/camino_piedra.png',   // Camino: piedra donde se pisa
     target:        'robots/boton_robot_azul.png',
     dist1:         'robots/robot_rojo.png',
     dist2:         'robots/robot_amarillo.png',
@@ -290,6 +305,8 @@ window.ASSETS = {
   },
   jungle: {            // carpeta assets/selva · Kiara busca a Arcoíris
     catcher:       'selva/nido_rama_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'selva/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'selva/camino_piedra.png',   // Camino: piedra donde se pisa
     target:        'selva/arcoiris_tucan.png',
     dist1:         'selva/tucan_naranja.png',
     dist2:         'selva/loro_verde.png',
@@ -328,6 +345,8 @@ window.ASSETS = {
   },
   candy: {             // carpeta assets/dulces · Gomi busca a Chispita
     catcher:       'dulces/frasco_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)
+    path_trail:    'dulces/camino_rastro.png',   // Camino: rastro que deja el guía
+    path_stone:    'dulces/camino_piedra.png',   // Camino: piedra donde se pisa
     target:        'dulces/chispita_estrella_dorada.png',
     dist1:         'dulces/estrella_verde.png',
     dist2:         'dulces/corazon_rosado.png',
