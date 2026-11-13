@@ -9,6 +9,7 @@
   html, body { margin: 0; height: 100%; background: #0f172a; }
   #game { width: 100%; height: 100%; }
 </style>
+<link rel="stylesheet" href="juego/panel/panel.css">
 </head>
 <body>
 <div id="game"></div>
@@ -35,6 +36,7 @@
     'juego/nucleo/dibujos.js',
     'juego/nucleo/interfaz.js',
     'juego/nucleo/estadisticas.js',
+    'juego/nucleo/sesiones.js',
     'juego/nucleo/mision_del_dia.js',
     'juego/nucleo/mision_perfecta.js',
     'juego/nucleo/giros.js',
@@ -53,6 +55,7 @@
 
     // Pantallas comunes y motor del juego
     'juego/escenas/inicio.js',
+    'juego/escenas/jugadores.js',
     'juego/escenas/elegir_modo.js',
     'juego/escenas/elegir_mundo.js',
     'juego/escenas/juego.js',
@@ -78,6 +81,7 @@
     // Prueba fija (zona de adultos)
     'juego/modos/prueba_fija/elegir_prueba.js',
     'juego/modos/prueba_fija/resultados_prueba.js',
+    'juego/panel/panel.js',
 
     'juego/arranque.js'
     ].forEach(function (f) { document.write('<script src="' + f + '?v=' + v + '"><\/script>'); });

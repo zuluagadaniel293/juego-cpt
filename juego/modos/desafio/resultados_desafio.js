@@ -15,11 +15,9 @@ class ChallengeResultsScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(th.bg);
     drawBackdrop(this, this.themeKey, (this.level - 1) % 5, 0.75);
 
-    const runLog = (this.registry.get('runLog') || []).concat(this.log);
-    this.registry.set('runLog', runLog);
-
     const s = levelStats(this.log, this.mg);
     const stars = starsFor(s, this.mg);
+    recordSession({ mode: 'desafio', theme: this.themeKey, level: this.level, minigame: this.mg, stars, log: this.log });
     // 2 o 3 estrellas: sube · 1: repite · 0: baja para practicar
     const next = stars >= 2 ? this.level + 1 : stars === 0 ? Math.max(1, this.level - 1) : this.level;
 
@@ -45,8 +43,8 @@ class ChallengeResultsScene extends Phaser.Scene {
 
     makeButton(this, W / 2, 410, 320, 64, next > this.level ? 'Siguiente nivel' : 'Seguir', th.accent,
       () => startMinigame(this, { mode: 'desafio', theme: this.themeKey, level: next, minigame: this.mg }));
-    makeButton(this, W / 2 - 170, 495, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadCSV(runLog, 'desafio_' + this.themeKey));
-    makeButton(this, W / 2 + 170, 495, 280, 50, 'Otro juego', 0xcbd5e1, () => this.scene.start('MinigameSelect', { theme: this.themeKey }));
+    // (el CSV y las medidas están en el Panel del profesional: el niño solo ve sus estrellas)
+    makeButton(this, W / 2, 495, 280, 50, 'Otro juego', 0xcbd5e1, () => this.scene.start('MinigameSelect', { theme: this.themeKey }));
     perfectMissionPanel(this, this.themeKey, this.log);
     missionCheck(this);
   }

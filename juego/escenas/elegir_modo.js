@@ -5,6 +5,8 @@ class ModeScene extends Phaser.Scene {
   constructor() { super('Mode'); }
   create() {
     const W = GAME_W, H = GAME_H;
+    // sin jugador elegido (por ejemplo, si lo borraron en el Panel) no se juega: el progreso es de cada niño
+    if (!currentPlayer()) { this.scene.start('Players'); return; }
     this.cameras.main.setBackgroundColor(0x0f172a);
     // Nombre del juego
     const logo = this.add.text(W / 2, 52, 'MISIÓN FOCO', { font: 'bold 54px Arial', color: '#fde047', stroke: '#7c3aed', strokeThickness: 10 })
@@ -34,11 +36,32 @@ class ModeScene extends Phaser.Scene {
     drawDailyMission(this, 330, 466);
     drawPerfectMission(this, 660, 466);
 
-    // Zona de adultos: prueba fija para comparar sesiones
-    // (abajo a la izquierda: la esquina derecha la tapa el botón "Powered by Netlify" en la versión publicada)
-    this.add.text(30, H - 24, 'Zona de adultos: Prueba fija', { font: 'bold 15px Arial', color: '#94a3b8' })
-      .setOrigin(0, 1).setInteractive({ useHandCursor: true })
-      .on('pointerdown', () => { getCtx(); this.scene.start('PruebaSelect'); });
+    // quién está jugando (arriba a la izquierda), con un botón para cambiar de jugador
+    const p = currentPlayer();
+    if (p) {
+      this.add.text(24, 20, '👤 ' + p.name, { font: 'bold 20px Arial', color: '#ffffff' });
+      this.add.text(24, 48, 'Cambiar de jugador', { font: 'bold 15px Arial', color: '#38bdf8' })
+        .setInteractive({ useHandCursor: true }).on('pointerdown', () => this.scene.start('Players'));
+    }
+    this.adultZone();
+  }
+  // Zona de adultos (Prueba fija y Panel del profesional): se entra manteniendo presionado 2 segundos, para que
+  // un niño no entre por error. Abajo a la izquierda: la esquina derecha la tapa el botón de Netlify.
+  adultZone() {
+    const H = GAME_H;
+    const label = this.add.text(30, H - 24, '🔒 Zona de adultos (mantén presionado)', { font: 'bold 15px Arial', color: '#94a3b8' })
+      .setOrigin(0, 1).setInteractive({ useHandCursor: true });
+    const bar = this.add.rectangle(30, H - 18, 0, 4, 0xfde047).setOrigin(0, 0.5);
+    let tw = null;
+    const cancel = () => { if (tw) { tw.stop(); tw = null; } bar.width = 0; };
+    label.on('pointerdown', () => {
+      getCtx();
+      cancel();
+      tw = this.tweens.add({ targets: bar, width: label.width, duration: 2000,
+        onComplete: () => this.scene.start('PruebaSelect') });
+    });
+    label.on('pointerup', cancel);
+    label.on('pointerout', cancel);
   }
   // Ícono de Memoria: tablero de casillas con un camino encendido (si no hay imagen icon_memory en comunes)
   memoryIcon() {

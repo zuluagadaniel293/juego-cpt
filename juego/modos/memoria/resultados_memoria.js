@@ -23,6 +23,7 @@ class MemoryResultsScene extends Phaser.Scene {
     // Referencia aproximada para 8-12 años: ~5 adelante y ~4 al revés
     const stars = r.fwd >= 5 && r.bwd >= 4 ? 3 : r.fwd >= 4 && r.bwd >= 3 ? 2 : r.fwd >= 3 ? 1 : 0;
     const right = this.log.filter(x => x.correct).length;
+    recordSession({ mode: 'memoria', theme: this.themeKey, minigame: 'memory', stars, memory: { fwd: r.fwd, bwd: r.bwd }, log: this.log });
 
     this.add.text(W / 2, 60, stars >= 2 ? '¡Memoria de héroe!' : '¡Buen entrenamiento!', { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 130, starsText(stars), { font: '56px Arial', color: '#fde047' }).setOrigin(0.5);

@@ -101,7 +101,11 @@ function stimulusLabel(theme, key) {
 function downloadCSV(log, name) {
   // solo Memoria: su propio CSV (si se mezcla con otro juego, como en el jefe final, va en este con todo lo demás)
   if (log.some(r => r.event_type === 'memory_trial') && !log.some(r => r.event_type === 'stimulus')) return downloadMemoryCSV(log, name);
-  const cols = [
+  saveCSV(csvCols(), log, name);
+}
+// Columnas del CSV general (y de Memoria, abajo): [nombre, cómo sacar el valor de cada fila]
+function csvCols() {
+  return [
     ['tipo_evento', r => CSV_TEXT.event_type[r.event_type] || r.event_type],
     ['modo', r => CSV_TEXT.mode[r.mode] || r.mode],
     ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
@@ -126,13 +130,13 @@ function downloadCSV(log, name) {
     ['tiempo_reaccion_ms', r => r.rt_ms],
     ['resultado', r => CSV_TEXT.outcome[r.outcome] || r.outcome]
   ];
-  saveCSV(cols, log, name);
 }
 // Memoria (tipo Corsi): una fila por camino (y por cada sonido o cosa que cruzó, si hubo).
 // Las casillas van numeradas del 1 al 9.
-function downloadMemoryCSV(log, name) {
+function downloadMemoryCSV(log, name) { saveCSV(memoryCsvCols(), log, name); }
+function memoryCsvCols() {
   const trial = f => r => (r.event_type === 'memory_trial' ? f(r) : '');
-  const cols = [
+  return [
     ['tipo_evento', r => (r.event_type === 'memory_trial' ? 'camino' : CSV_TEXT.event_type[r.event_type] || r.event_type)],
     ['modo', r => (r.mode === 'memoria' ? 'Memoria' : CSV_TEXT.mode[r.mode] || r.mode)],
     ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
@@ -152,7 +156,6 @@ function downloadMemoryCSV(log, name) {
     ['tiempo_primer_toque_ms', r => r.first_tap_ms],
     ['tiempo_total_respuesta_ms', r => r.total_ms]
   ];
-  saveCSV(cols, log, name);
 }
 function saveCSV(cols, log, name) {
   const cell = v => (v === undefined || v === null ? '' : String(v).replace(/;/g, ','));

@@ -1,7 +1,7 @@
 // Arranque del juego (va al final, después de cargar todo lo demás).
 
 const SCENES = [BootScene, ModeScene, MenuScene, MinigameSelectScene, WorldMapScene, ChapterMapScene, StoryScene,
-  GameScene, ResultsScene, ChallengeResultsScene, StoryResultsScene, MemoryScene, MemoryResultsScene, PruebaSelectScene, PauseScene, WorldUnlockedScene];
+  GameScene, ResultsScene, ChallengeResultsScene, StoryResultsScene, MemoryScene, MemoryResultsScene, PruebaSelectScene, PauseScene, WorldUnlockedScene, PlayersScene];
 
 // Alta resolución: el lienzo mide RES veces 960x540 y cada escena hace zoom x RES centrada,
 // así todo se sigue diseñando en 960x540 pero las imágenes y textos se ven nítidos en pantallas grandes.

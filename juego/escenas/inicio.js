@@ -36,7 +36,7 @@ class BootScene extends Phaser.Scene {
     // vista previa para el equipo: index.html?desbloqueo=fantasy muestra la pantalla de "¡Mundo desbloqueado!"
     const preview = new URLSearchParams(location.search).get('desbloqueo');
     if (preview && THEMES[preview]) { this.scene.start('WorldUnlocked', { theme: preview }); return; }
-    this.scene.start('Mode');
+    this.scene.start(currentPlayer() ? 'Mode' : 'Players');
   }
   makeCaught(t) {
     const key = t + '_caught', W = 220, H = 260;

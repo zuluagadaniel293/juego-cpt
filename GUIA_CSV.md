@@ -1,6 +1,24 @@
 # Cómo leer el CSV del juego
 
-Al terminar una partida, el botón **Descargar CSV** guarda un archivo con **todo lo que pasó, fila por fila**.
+Cada niño se registra con su nombre al abrir el juego (y recibe un código: P01, P02...). Todas sus partidas se guardan
+solas en ese navegador. El adulto las ve en la **Zona de adultos** (en la pantalla inicial, mantener presionado
+"Zona de adultos" 2 segundos) → **Panel del profesional**:
+
+- resultados por mundo, capítulo y nivel, y un **informe al terminar cada historia** (aciertos, omisiones, comisiones,
+  respuestas anticipadas, tiempo de reacción y su variabilidad, principio vs. final y efecto de los distractores);
+- **Descargar todo (CSV)**: todas las filas de todas las partidas del niño (este formato, con columnas de jugador al inicio);
+- **Resumen (CSV)**: una fila por partida con sus medidas, listo para SPSS o R;
+- **CSV sin nombre**: deja solo el código del niño (para compartir datos del estudio);
+- **Imprimir / PDF** del panel completo.
+
+El juego es entrenamiento y familiarización con las pruebas de atención: las medidas no se comparan con normas ni
+reemplazan una evaluación estandarizada. Los datos viven en el navegador de ese equipo: para un estudio, usar siempre
+el mismo equipo y descargar todo al final de cada sesión.
+
+Columnas extra al inicio de los CSV del panel: `codigo`, `jugador` (si no se marcó "sin nombre"), `edad`, `partida`
+(número de partida del niño), `fecha` (AAAA-MM-DD) y `hora`.
+
+Al terminar una partida en la Prueba fija o en Memoria, el botón **Descargar CSV** guarda un archivo con **todo lo que pasó, fila por fila**.
 Sirve para analizar la atención del niño en Excel, Google Sheets, SPSS, R, etc.
 
 ## Abrirlo

@@ -46,7 +46,6 @@ class MinigameSelectScene extends Phaser.Scene {
       zone.on('pointerover', () => card.setAlpha(0.75));
       zone.on('pointerout', () => card.setAlpha(1));
       zone.on('pointerdown', () => {
-        this.registry.set('runLog', []);
         startMinigame(this, { mode: 'desafio', theme: this.themeKey, level: current, minigame: mg });
       });
     }));

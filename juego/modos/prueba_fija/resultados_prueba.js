@@ -15,6 +15,7 @@ class ResultsScene extends Phaser.Scene {
     const s = computeStats(this.log);
     const ms = v => (isNaN(v) ? '—' : Math.round(v) + ' ms');
     const stars = s.hitRate >= 0.9 ? 3 : s.hitRate >= 0.7 ? 2 : 1;
+    recordSession({ mode: 'prueba', theme: this.themeKey, minigame: this.mg, stars, log: this.log });
 
     this.add.text(W / 2, 55, '¡Buen trabajo!', { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 120, starsText(stars), { font: '52px Arial', color: '#fde047' }).setOrigin(0.5);

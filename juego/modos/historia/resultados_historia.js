@@ -26,6 +26,7 @@ class StoryResultsScene extends Phaser.Scene {
     arr[this.chapter] = Math.max(arr[this.chapter], stars);
     story[this.themeKey] = arr;
     store.set('cpt_story', story);
+    recordSession({ mode: 'historia', theme: this.themeKey, chapter: this.chapter, minigame: this.mg, boss: this.boss, stars, log: this.log });
 
     const passed = stars >= PASS_STARS;
     if (passed && this.boss) newChapterOrder(this.themeKey);   // al volver a jugar el mundo, otro orden de juegos
@@ -50,9 +51,8 @@ class StoryResultsScene extends Phaser.Scene {
         () => startMinigame(this, { mode: 'historia', theme: this.themeKey, chapter: this.chapter,
           minigame: chapterGame(this.themeKey, this.chapter) }));
     }
-    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1,
-      () => downloadCSV(this.log, 'historia_' + this.themeKey + '_cap' + (this.chapter + 1)));
-    makeButton(this, W / 2 + 170, 490, 280, 50, 'Capítulos', 0xcbd5e1, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
+    // (el CSV y las medidas están en el Panel del profesional: el niño solo ve sus estrellas)
+    makeButton(this, W / 2, 490, 280, 50, 'Capítulos', 0xcbd5e1, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
     perfectMissionPanel(this, this.themeKey, this.log);
     missionCheck(this);
   }

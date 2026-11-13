@@ -19,8 +19,12 @@ class PruebaSelectScene extends Phaser.Scene {
     const W = GAME_W;
     this.cameras.main.setBackgroundColor(0x0f172a);
     backLink(this, 'Volver', () => this.scene.start('Mode'));
-    this.add.text(W / 2, 60, 'Zona de adultos: Prueba fija', { font: 'bold 38px Arial', color: '#ffffff' }).setOrigin(0.5);
-    this.add.text(W / 2, 108, 'Siempre con las mismas condiciones, para comparar sesiones. No es un diagnóstico.',
+    this.add.text(W / 2, 60, 'Zona de adultos', { font: 'bold 38px Arial', color: '#ffffff' }).setOrigin(0.5);
+    // resultados de cada niño, informes y descargas (juego/panel/panel.js)
+    const panel = this.add.text(W - 24, 22, '📊 Panel del profesional', { font: 'bold 18px Arial', color: '#0f172a',
+      backgroundColor: '#fde047', padding: { x: 12, y: 7 } }).setOrigin(1, 0).setInteractive({ useHandCursor: true });
+    panel.on('pointerdown', () => openPanel(this));
+    this.add.text(W / 2, 108, 'Prueba fija: siempre con las mismas condiciones, para comparar sesiones. No es un diagnóstico.',
       { font: '18px Arial', color: '#94a3b8' }).setOrigin(0.5);
     PRUEBAS.forEach((pr, i) => {
       const x = W / 2 + (i - (PRUEBAS.length - 1) / 2) * 226, y = 320;
