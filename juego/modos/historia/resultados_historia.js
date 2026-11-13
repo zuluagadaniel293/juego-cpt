@@ -51,8 +51,10 @@ class StoryResultsScene extends Phaser.Scene {
         () => startMinigame(this, { mode: 'historia', theme: this.themeKey, chapter: this.chapter,
           minigame: chapterGame(this.themeKey, this.chapter) }));
     }
-    // (el CSV y las medidas están en el Panel del profesional: el niño solo ve sus estrellas)
-    makeButton(this, W / 2, 490, 280, 50, 'Capítulos', 0xcbd5e1, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
+    // CSV de esta partida (todas las partidas quedan además en el Panel del profesional)
+    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1,
+      () => downloadCSV(this.log, 'historia_' + this.themeKey + '_cap' + (this.chapter + 1)));
+    makeButton(this, W / 2 + 170, 490, 280, 50, 'Capítulos', 0xcbd5e1, () => this.scene.start('ChapterMap', { theme: this.themeKey }));
     perfectMissionPanel(this, this.themeKey, this.log);
     missionCheck(this);
   }

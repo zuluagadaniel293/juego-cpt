@@ -18,7 +18,7 @@ el mismo equipo y descargar todo al final de cada sesión.
 Columnas extra al inicio de los CSV del panel: `codigo`, `jugador` (si no se marcó "sin nombre"), `edad`, `partida`
 (número de partida del niño), `fecha` (AAAA-MM-DD) y `hora`.
 
-Al terminar una partida en la Prueba fija o en Memoria, el botón **Descargar CSV** guarda un archivo con **todo lo que pasó, fila por fila**.
+Al terminar cualquier partida (capítulo de la Historia, nivel del Desafío, Prueba fija o Memoria), el botón **Descargar CSV** guarda un archivo con **todo lo que pasó, fila por fila**.
 Sirve para analizar la atención del niño en Excel, Google Sheets, SPSS, R, etc.
 
 ## Abrirlo

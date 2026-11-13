@@ -43,8 +43,10 @@ class ChallengeResultsScene extends Phaser.Scene {
 
     makeButton(this, W / 2, 410, 320, 64, next > this.level ? 'Siguiente nivel' : 'Seguir', th.accent,
       () => startMinigame(this, { mode: 'desafio', theme: this.themeKey, level: next, minigame: this.mg }));
-    // (el CSV y las medidas están en el Panel del profesional: el niño solo ve sus estrellas)
-    makeButton(this, W / 2, 495, 280, 50, 'Otro juego', 0xcbd5e1, () => this.scene.start('MinigameSelect', { theme: this.themeKey }));
+    // CSV de esta partida (todas las partidas quedan además en el Panel del profesional)
+    makeButton(this, W / 2 - 170, 495, 280, 50, 'Descargar CSV', 0xcbd5e1,
+      () => downloadCSV(this.log, 'desafio_' + this.themeKey + '_' + this.mg + '_nivel' + this.level));
+    makeButton(this, W / 2 + 170, 495, 280, 50, 'Otro juego', 0xcbd5e1, () => this.scene.start('MinigameSelect', { theme: this.themeKey }));
     perfectMissionPanel(this, this.themeKey, this.log);
     missionCheck(this);
   }
