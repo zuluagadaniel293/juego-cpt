@@ -13,66 +13,74 @@
 <body>
 <div id="game"></div>
 
-<!-- El orden importa: cada archivo usa lo que cargaron los anteriores. -->
 <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
-<script src="assets/manifest.js"></script>
-<script src="assets/voces.js"></script>
-<script src="assets/voces_eleven.js"></script>
-<script src="assets/sonidos.js"></script>
+<script>
+  // Archivos del juego, en orden (cada uno usa lo que cargaron los anteriores). Se piden siempre con ?v=hora para
+  // que el navegador no use una versión vieja guardada después de cada cambio (las imágenes y sonidos sí se guardan).
+  (function () {
+    var v = Date.now();
+    [
+    'assets/manifest.js',
+    'assets/voces.js',
+    'assets/voces_eleven.js',
+    'assets/sonidos.js',
 
-<!-- Configuración y piezas compartidas -->
-<script src="juego/configuracion.js"></script>
-<script src="juego/nucleo/mundos.js"></script>
-<script src="juego/nucleo/imagenes.js"></script>
-<script src="juego/nucleo/guardado.js"></script>
-<script src="juego/nucleo/sonido.js"></script>
-<script src="juego/nucleo/dibujos.js"></script>
-<script src="juego/nucleo/interfaz.js"></script>
-<script src="juego/nucleo/estadisticas.js"></script>
-<script src="juego/nucleo/mision_del_dia.js"></script>
-<script src="juego/nucleo/mision_perfecta.js"></script>
-<script src="juego/nucleo/giros.js"></script>
-<script src="juego/nucleo/hechizos.js"></script>
+    // Configuración y piezas compartidas
+    'juego/configuracion.js',
+    'juego/nucleo/mundos.js',
+    'juego/nucleo/imagenes.js',
+    'juego/nucleo/guardado.js',
+    'juego/nucleo/sonido.js',
+    'juego/nucleo/dibujos.js',
+    'juego/nucleo/interfaz.js',
+    'juego/nucleo/estadisticas.js',
+    'juego/nucleo/mision_del_dia.js',
+    'juego/nucleo/mision_perfecta.js',
+    'juego/nucleo/giros.js',
+    'juego/nucleo/hechizos.js',
 
-<!-- Mundos (con sus 5 niveles). También los usa el Desafío. -->
-<script src="juego/modos/historia/mundos/superheroes.js"></script>
-<script src="juego/modos/historia/mundos/dragones.js"></script>
-<script src="juego/modos/historia/mundos/reino_magico.js"></script>
-<script src="juego/modos/historia/mundos/espacio.js"></script>
-<script src="juego/modos/historia/mundos/oceano.js"></script>
-<script src="juego/modos/historia/mundos/dinosaurios.js"></script>
-<script src="juego/modos/historia/mundos/robots.js"></script>
-<script src="juego/modos/historia/mundos/selva.js"></script>
-<script src="juego/modos/historia/mundos/dulces.js"></script>
+    // Mundos (con sus 5 niveles). También los usa el Desafío.
+    'juego/modos/historia/mundos/superheroes.js',
+    'juego/modos/historia/mundos/dragones.js',
+    'juego/modos/historia/mundos/reino_magico.js',
+    'juego/modos/historia/mundos/espacio.js',
+    'juego/modos/historia/mundos/oceano.js',
+    'juego/modos/historia/mundos/dinosaurios.js',
+    'juego/modos/historia/mundos/robots.js',
+    'juego/modos/historia/mundos/selva.js',
+    'juego/modos/historia/mundos/dulces.js',
 
-<!-- Pantallas comunes y motor del juego -->
-<script src="juego/escenas/inicio.js"></script>
-<script src="juego/escenas/elegir_modo.js"></script>
-<script src="juego/escenas/elegir_mundo.js"></script>
-<script src="juego/escenas/juego.js"></script>
-<script src="juego/escenas/esquiva.js"></script>
-<script src="juego/escenas/camino.js"></script>
-<script src="juego/escenas/pausa.js"></script>
+    // Pantallas comunes y motor del juego
+    'juego/escenas/inicio.js',
+    'juego/escenas/elegir_modo.js',
+    'juego/escenas/elegir_mundo.js',
+    'juego/escenas/juego.js',
+    'juego/escenas/esquiva.js',
+    'juego/escenas/camino.js',
+    'juego/escenas/pausa.js',
 
-<!-- Modo Historia -->
-<script src="juego/modos/historia/mapa_mundos.js"></script>
-<script src="juego/escenas/mundo_desbloqueado.js"></script>
-<script src="juego/modos/historia/mapa_capitulos.js"></script>
-<script src="juego/modos/historia/escena_historia.js"></script>
-<script src="juego/modos/historia/resultados_historia.js"></script>
+    // Modo Historia
+    'juego/modos/historia/mapa_mundos.js',
+    'juego/escenas/mundo_desbloqueado.js',
+    'juego/modos/historia/mapa_capitulos.js',
+    'juego/modos/historia/escena_historia.js',
+    'juego/modos/historia/resultados_historia.js',
 
-<!-- Modo Desafío -->
-<script src="juego/modos/desafio/elegir_minijuego.js"></script>
-<script src="juego/modos/desafio/resultados_desafio.js"></script>
+    // Modo Desafío
+    'juego/modos/desafio/elegir_minijuego.js',
+    'juego/modos/desafio/resultados_desafio.js',
 
-<!-- Modo Memoria -->
-<script src="juego/modos/memoria/memoria.js"></script>
-<script src="juego/modos/memoria/resultados_memoria.js"></script>
+    // Modo Memoria
+    'juego/modos/memoria/memoria.js',
+    'juego/modos/memoria/resultados_memoria.js',
 
-<!-- Prueba fija (zona de adultos) -->
-<script src="juego/modos/prueba_fija/elegir_prueba.js"></script>
-<script src="juego/modos/prueba_fija/resultados_prueba.js"></script>
+    // Prueba fija (zona de adultos)
+    'juego/modos/prueba_fija/elegir_prueba.js',
+    'juego/modos/prueba_fija/resultados_prueba.js',
 
-<script src="juego/arranque.js"></script>
+    'juego/arranque.js'
+    ].forEach(function (f) { document.write('<script src="' + f + '?v=' + v + '"><\/script>'); });
+  })();
+</script>
 </body>
 </html>

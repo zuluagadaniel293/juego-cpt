@@ -44,6 +44,8 @@ class GameScene extends Phaser.Scene {
     // a la izquierda, le lanza su poder a lo que agarra. En la Prueba fija corre el protagonista, como siempre.
     this.runnerRole = this.mg === 'race' && this.powers ? raceHelper(this.themeKey) : null;
     const pals = ['friend1', 'friend2', 'friend3'].filter(f => f !== this.buddyRole && f !== this.runnerRole);
+    // si solo queda un personaje para mostrar (en la Carrera corre uno y otro acompaña), sale ese mismo dos veces
+    if (pals.length === 1) pals.push(pals[0]);
     this.keys = this.chars
       ? { target: tex.villain, dists: [tex[pals[0]], tex[pals[1]]], similar: tex[pals.includes('friend3') ? 'friend3' : pals[1]] }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3 };
