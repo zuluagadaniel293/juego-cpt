@@ -141,15 +141,17 @@ function historiaHTML(id, sessions) {
       const cs = ws.filter(s => s.chapter === ch);
       const last = cs[cs.length - 1];
       return '<tr><td>' + (ch === 4 ? 'Jefe final' : 'Capítulo ' + (ch + 1)) + '</td><td>' + esc(last ? (last.boss ? 'Jefe (varias fases)' : gameName(last.minigame)) : '') +
-        '</td><td class="num">' + cs.length + '</td><td>' + esc(starTxt(stars[ch])) + '</td>' +
-        (last ? statCells(last).replace(/<td>[★☆]*<\/td>$/, '') : '<td colspan="5" class="mf-muted">sin jugar</td>') + '</tr>';
+        '</td><td class="num">' + (cs.length || (stars[ch] ? '—' : 0)) + '</td><td>' + esc(starTxt(stars[ch])) + '</td>' +
+        (last ? statCells(last).replace(/<td>[★☆]*<\/td>$/, '')
+          : '<td colspan="5" class="mf-muted">' + (stars[ch] ? 'jugado antes de que se guardaran las partidas: sin medidas' : 'sin jugar') + '</td>') + '</tr>';
     }).join('');
     return '<h3>' + esc(worldName(t)) + ' · ' + (done ? '<span class="mf-done">Historia completada</span>' : passed + ' de 5 capítulos superados') + '</h3>' +
       '<div class="mf-scroll"><table><thead><tr><th>Capítulo</th><th>Juego</th><th class="num">Intentos</th><th>Mejor</th>' +
       '<th class="num">Aciertos</th><th class="num">Omisiones</th><th class="num">Comisiones</th><th class="num">TR medio</th><th class="num">Variab. TR</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>' +
       '<p class="mf-muted">Medidas del último intento de cada capítulo.</p>' +
-      (done ? reportHTML(ws, 'Informe de la historia: ' + worldName(t)) : '');
+      (done ? (ws.length ? reportHTML(ws, 'Informe de la historia: ' + worldName(t))
+        : '<p class="mf-muted">El informe sale cuando haya partidas guardadas de este mundo (al volver a jugarlo).</p>') : '');
   }).join('');
 }
 
