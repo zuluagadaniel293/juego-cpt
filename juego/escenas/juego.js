@@ -514,7 +514,7 @@ class GameScene extends Phaser.Scene {
     this.bar.width = this.barW * Math.min(1, this.elapsed() / this.params.sessionMs);
     if (this.mg === 'catch') this.updateCatch(dt);
     else if (this.mg === 'race') this.updateRace(dt);
-    else if (this.mg === 'dodge') this.dodgeWatch();
+    else if (this.mg === 'dodge') this.dodgeWatch(delta);
     else if (this.mg === 'path') {
       // si se queda mucho rato sin llegar después del tiempo, se termina igual
       if (this.elapsed() > this.params.sessionMs + 20000) { this.endPath(false); this.finish(); return; }

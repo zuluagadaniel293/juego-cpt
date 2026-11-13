@@ -92,7 +92,7 @@ function challengeParams(level, minigame) {
     axCueProb: 0.3, axAfterCue: 0.7, axLureProb: 0.12,
     // Esquiva: lo que tardan los poderes en llegar y en qué parte del camino se descubre el que se detiene
     // (más tarde = menos tiempo para moverse y más ganas de adivinar antes)
-    dodgeTravelMs: Math.max(1200, 2400 - 120 * L),
+    dodgeTravelMs: Math.max(900, 2400 - 150 * L),   // más rápido en niveles altos (pero una tanda a la vez)
     dodgeStopFrac: Math.min(0.65, 0.4 + 0.03 * L)
   };
 }

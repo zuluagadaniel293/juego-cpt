@@ -98,7 +98,7 @@ Object.assign(GameScene.prototype, {
   },
 
   nextDodge() {
-    if (this.ended) return;
+    if (this.ended || (this.dodgeCur && !this.dodgeCur.done)) return;   // nunca dos tandas a la vez
     if (this.elapsed() >= this.params.sessionMs) { this.finish(); return; }
     this.trial++;
     const v = this.dodgeVillain;
@@ -111,7 +111,7 @@ Object.assign(GameScene.prototype, {
     const P = this.params, cfg = this.dodgeCfg, side = cfg.side;
     const safe = Phaser.Math.Between(0, 2);
     const travel = P.dodgeTravelMs, revealAt = Math.round(travel * P.dodgeStopFrac);
-    this.dodgeStamp = this.time.now;
+    this.dodgeIdle = 0;
     const c = this.dodgeCur = { trial: this.trial, safe, startLane: this.dodgeLane, onset: performance.now(), revealAt,
       moved: false, firstMove: null, anticipated: false, revealed: false, revealTime: null, done: false, orbs: [] };
     sweep('sine', 700, 380, 0.4, 0.035);
@@ -124,11 +124,14 @@ Object.assign(GameScene.prototype, {
       const dur = side ? travel * (x0 - DODGE_WALL_X) / (x0 - DODGE_HERO_X) : travel;
       const orb = key ? fit(this.add.image(x0, y0, key), 78) : this.add.circle(x0, y0, 26, POWERS[this.themeKey].color, 1);
       if (key) { orb.setTint(0x0f172a); if (side && cfg.pointsRight) orb.setFlipX(true); }   // sombra: todas iguales
+      // cayendo: el dibujo (que viene en diagonal hacia abajo a la izquierda) se gira para apuntar a donde cae
+      if (!side && key) orb.setAngle(Phaser.Math.RadToDeg(Math.atan2(y1 - y0, x1 - x0)) - 135);
       orb.setDepth(5);
       if (side) this.tweens.add({ targets: orb, y: y1, duration: travel * 0.35, ease: 'Sine.easeOut' });   // se acomoda en su carril
-      const props = { targets: orb, x: x1, angle: cfg.spin || !side ? 300 : 0, duration: dur,
+      const props = { targets: orb, x: x1, duration: dur,
         ease: side ? 'Linear' : 'Quad.easeIn', onComplete: () => this.landOrb(c, lane, orb) };
       if (!side) props.y = y1;
+      if (cfg.spin) props.angle = 300;   // solo la espiral gira
       const tw = this.tweens.add(props);
       // el momento en que llega a donde está el protagonista: ¿estaba en ese carril?
       const check = this.time.delayedCall(travel, () => this.passHero(c, lane));
@@ -206,16 +209,20 @@ Object.assign(GameScene.prototype, {
     if (outcome === 'hit') this.dodgeCheer('¡A salvo!');
     else if (outcome === 'correct_rejection') this.dodgeCheer('¡Bien, ya estabas a salvo!');
     this.dodgeCur = null;
-    this.dodgeStamp = this.time.now;
-    this.time.delayedCall(Phaser.Math.Between(500, 1000), () => this.nextDodge());
+    this.dodgeIdle = 0;
+    // espera a que los que pasaron terminen de cruzar antes de la siguiente tanda (nunca dos tandas a la vez)
+    const gap = this.dodgeCfg.side ? this.params.dodgeTravelMs * 0.35 + 900 : 1000;
+    this.time.delayedCall(gap + Phaser.Math.Between(0, 400), () => this.nextDodge());
   },
 
   // Seguro: si por algo un lanzamiento no termina o no llega el siguiente, se retoma solo (lo llama update)
-  dodgeWatch() {
-    if (!this.started || this.ended || this.dodgeStamp === undefined) return;
-    const idle = this.time.now - this.dodgeStamp, limit = this.params.dodgeTravelMs * 2 + 2500;
-    if (this.dodgeCur && !this.dodgeCur.done && idle > limit) this.endDodge(this.dodgeCur);
-    else if (!this.dodgeCur && idle > 4000) { this.dodgeStamp = this.time.now; this.nextDodge(); }
+  // (cuenta el tiempo de juego que pasa, así una pausa o cambiar de pestaña no lo confunde)
+  dodgeWatch(delta) {
+    if (!this.started || this.ended || this.dodgeIdle === undefined) return;
+    this.dodgeIdle += Math.min(delta, 100);
+    const limit = this.params.dodgeTravelMs * 2 + 3000;
+    if (this.dodgeCur && !this.dodgeCur.done && this.dodgeIdle > limit) this.endDodge(this.dodgeCur);
+    else if (!this.dodgeCur && this.dodgeIdle > 6000) { this.dodgeIdle = 0; this.nextDodge(); }
   },
 
   dodgeCheer(msg) {
