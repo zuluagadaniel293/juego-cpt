@@ -28,7 +28,7 @@ function speakText(text) {
     const s = window.speechSynthesis;
     if (!s || !text) return;
     s.cancel();
-    const u = new SpeechSynthesisUtterance(String(text).replace(/\s+/g, ' ').replace(/([!?])\./g, '$1').replace(/[✔✘★👆]/g, ''));
+    const u = new SpeechSynthesisUtterance(String(text).replace(/\s+/g, ' ').replace(/([!?.])\./g, '$1').replace(/[✔✘★👆]/g, ''));
     const vs = s.getVoices();
     const v = vs.find(x => /^es[-_](CO|MX|US|419)/i.test(x.lang)) || vs.find(x => /^es/i.test(x.lang));
     if (v) u.voice = v;

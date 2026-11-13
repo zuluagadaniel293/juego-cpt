@@ -213,7 +213,7 @@ class GameScene extends Phaser.Scene {
       else { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = chase + 'Cambia de carril con las flechas. Alcanza solo ' + what; }
     } else {
       if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca ' + what + '. Si no está, no toques nada'; }
-      else { icon(220, ctrlY, '🖱️'); explain = 'Haz clic sobre ' + what + '. Si no está, no hagas clic'; }
+      else { icon(220, ctrlY, '🖱️'); explain = 'Haz clic sobre ' + what.replace(/^al /, 'el ').replace(/^a /, '') + '. Si no está, no hagas clic'; }
     }
     txt(330, ctrlY, explain, 22, '#ffffff', { align: 'left', wordWrap: { width: 560 }, lineSpacing: 6 }).setOrigin(0, 0.5);
     // leer en voz alta (solo en los de 5 a 7 años se lee al aparecer)
