@@ -153,7 +153,8 @@ class GameScene extends Phaser.Scene {
         add(this.add.circle(x, exY, 56, col, 0.15).setStrokeStyle(4, col));
         if (k) { const im = add(fit(this.add.image(x, exY, k), 76)); if (!safe) im.setTint(0x0f172a); else im.setAlpha(0.45); }
       });
-      txt(480, exY + 84, '¡Ponte donde se detiene uno!', 22, '#86efac');
+      const dw = DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes;
+      txt(480, exY + 84, '¡Ponte donde se detiene ' + dodgeUno(dw.one) + '!', 22, '#86efac');
     } else if (this.mg === 'notx' || this.mg === 'ax') {
       this.playDemo(add, txt);   // demostración animada paso a paso
     } else {
@@ -195,8 +196,9 @@ class GameScene extends Phaser.Scene {
       else { keycap(220, ctrlY - 32, 58, '↑'); keycap(185, ctrlY + 34, 58, '←'); keycap(255, ctrlY + 34, 58, '→'); explain = 'Avanza con las flechas (o tocando la piedra).' + rest; }
     } else if (this.mg === 'dodge') {
       const of = th.villainObj.replace(/^al /, 'del ').replace(/^a /, 'de ');
-      const side = (DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes).side;
-      const rest = ' Los poderes ' + of + ' llegan como sombras. A mitad de camino uno se detiene: ¡ponte en su carril! No te muevas antes de tiempo.';
+      const dw = DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes, side = dw.side;
+      const many = dw.many.replace(/^./, m => m.toUpperCase());
+      const rest = ' ' + many + ' ' + of + ' llegan como sombras. A mitad de camino ' + dodgeUno(dw.one) + ' se detiene: ¡ponte en su carril! No te muevas antes de tiempo.';
       if (touch) { icon(220, ctrlY, side ? '👆↕' : '👆↔'); explain = 'Toca ' + (side ? 'arriba o abajo' : 'a un lado') + ' de tu personaje para moverte.' + rest; }
       else if (side) { keycap(220, ctrlY - 32, 58, '↑'); keycap(220, ctrlY + 34, 58, '↓'); explain = 'Muévete con las flechas.' + rest; }
       else { keycap(185, ctrlY, 58, '←'); keycap(255, ctrlY, 58, '→'); explain = 'Muévete con las flechas.' + rest; }
@@ -409,7 +411,7 @@ class GameScene extends Phaser.Scene {
     if (this.mg === 'catch') return 'Atrapa solo ' + what + ' con ' + (this.chars ? 'la red' : th.catcherName || 'la canasta');
     if (this.mg === 'race') return this.runnerRole ? this.charThe(this.runnerRole).replace(/^./, m => m.toUpperCase()) + ' persigue: alcanza solo ' + what : 'Alcanza solo ' + what;
     if (this.mg === 'find') return 'Encuentra ' + what + '. Si no está, no toques nada';
-    if (this.mg === 'dodge') return 'Ponte en el carril del poder que se detiene';
+    if (this.mg === 'dodge') { const d = DODGE_WORLD[this.themeKey] || DODGE_WORLD.heroes; return 'Ponte en el carril ' + dodgeOf(d.one) + ' que se detiene'; }
     if (this.mg === 'path') return 'Sigue de memoria el camino de ' + this.charName(raceHelper(this.themeKey));
     return '';
   }
@@ -512,6 +514,7 @@ class GameScene extends Phaser.Scene {
     this.bar.width = this.barW * Math.min(1, this.elapsed() / this.params.sessionMs);
     if (this.mg === 'catch') this.updateCatch(dt);
     else if (this.mg === 'race') this.updateRace(dt);
+    else if (this.mg === 'dodge') this.dodgeWatch();
     else if (this.mg === 'path') {
       // si se queda mucho rato sin llegar después del tiempo, se termina igual
       if (this.elapsed() > this.params.sessionMs + 20000) { this.endPath(false); this.finish(); return; }
@@ -927,7 +930,7 @@ class GameScene extends Phaser.Scene {
     if (this.mg === 'race' || this.mg === 'dodge') {
       this.castVoice(name);
       const who = this.lead || this.dodgeVillain;
-      if (who) this.tweens.add({ targets: who, scale: this.lead.scale * 1.15, duration: 150, yoyo: true, repeat: 3 });
+      if (who) this.tweens.add({ targets: who, scale: who.scale * 1.15, duration: 150, yoyo: true, repeat: 3 });
       return;
     }
     const D = DISTRACTORS[this.themeKey];

@@ -13,16 +13,20 @@
 // powers: imágenes que se mezclan ('w:' = papel del propio mundo, 'mundo:papel' = de otro mundo, sin prefijo = común)
 // mark: marca que deja al chocar
 const DODGE_WORLD = {
-  heroes:  { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat' },
-  fantasy: { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'mk_estallido' },
-  kingdom: { side: true, pointsRight: true,  powers: ['w:fx_fly_1', 'w:distractor_libro_volador'], mark: 'w:fx_splat' },
-  space:   { side: false, powers: ['w:fx_fly_1', 'w:fx_fly_2', 'w:fx_fly_3'], mark: 'mk_crater' },
-  ocean:   { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'w:fx_splat' },
-  dinos:   { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat' },
-  robots:  { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat' },
-  jungle:  { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'mk_espiral', spin: true },
-  candy:   { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'w:fx_splat' }
+  heroes:  { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat', one: 'la nube de humo', many: 'las nubes de humo' },
+  fantasy: { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'mk_estallido', one: 'el hechizo', many: 'los hechizos' },
+  kingdom: { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat', one: 'el pastel', many: 'los pasteles' },
+  space:   { side: false, powers: ['w:fx_fly_1', 'w:fx_fly_2', 'w:fx_fly_3'], mark: 'mk_crater', one: 'el meteorito', many: 'los meteoritos' },
+  ocean:   { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'w:fx_splat', one: 'la bola de tinta', many: 'las bolas de tinta' },
+  dinos:   { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat', one: 'la bola de barro', many: 'las bolas de barro' },
+  robots:  { side: true, pointsRight: true,  powers: ['w:fx_fly_1'], mark: 'w:fx_splat', one: 'el bloque de error', many: 'los bloques de error' },
+  jungle:  { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'mk_espiral', spin: true, one: 'la espiral', many: 'las espirales' },
+  candy:   { side: true, pointsRight: false, powers: ['w:fx_fly_1'], mark: 'w:fx_splat', one: 'el chorro de jugo', many: 'los chorros de jugo' }
 };
+// "del meteorito" / "de la nube de humo"
+const dodgeOf = s => s.replace(/^el /, 'del ').replace(/^la /, 'de la ');
+// "uno" / "una" según lo que lanza
+const dodgeUno = s => (/^la /.test(s) ? 'una' : 'uno');
 const DODGE_COLS = [300, 480, 660];        // carriles cuando caen desde arriba
 const DODGE_ROWS = [205, 325, 445];        // carriles cuando vienen de frente
 const DODGE_FLOOR = GAME_H - 34;
@@ -56,7 +60,7 @@ Object.assign(GameScene.prototype, {
     } else {
       DODGE_COLS.forEach(x => { g.fillStyle(0xffffff, 0.1); g.fillEllipse(x, DODGE_FLOOR - 4, 150, 34); });
       this.dodgeHero = fit(this.add.image(DODGE_COLS[1], DODGE_FLOOR, tex.hero).setOrigin(0.5, 1), 130).setDepth(4);
-      this.dodgeVillain = fit(this.add.image(DODGE_COLS[1], 105, tex.villain_laugh || tex.villain), 110).setDepth(4);
+      this.dodgeVillain = fit(this.add.image(DODGE_COLS[1], 140, tex.villain_laugh || tex.villain), 100).setDepth(4);   // debajo del recordatorio
     }
     this.mgObjects.push(g, this.dodgeHero, this.dodgeVillain);
     this.tweens.add({ targets: this.dodgeVillain, angle: { from: -4, to: 4 }, duration: 600, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
@@ -107,6 +111,7 @@ Object.assign(GameScene.prototype, {
     const P = this.params, cfg = this.dodgeCfg, side = cfg.side;
     const safe = Phaser.Math.Between(0, 2);
     const travel = P.dodgeTravelMs, revealAt = Math.round(travel * P.dodgeStopFrac);
+    this.dodgeStamp = this.time.now;
     const c = this.dodgeCur = { trial: this.trial, safe, startLane: this.dodgeLane, onset: performance.now(), revealAt,
       moved: false, firstMove: null, anticipated: false, revealed: false, revealTime: null, done: false, orbs: [] };
     sweep('sine', 700, 380, 0.4, 0.035);
@@ -192,7 +197,8 @@ Object.assign(GameScene.prototype, {
     else { type = 'target'; outcome = safeNow ? 'hit' : 'omission'; }
     // tiempo de reacción: desde que se descubrió el carril seguro hasta su primer movimiento (negativo = se adelantó)
     const rt = c.firstMove === null ? null : c.firstMove - (c.revealTime || c.onset + c.revealAt);
-    this.logTrial(c.trial, type, 'poderes', c.onset, c.moved, rt, outcome);
+    // en el CSV, qué lanzó: "meteoritos", "nubes_de_humo"...
+    this.logTrial(c.trial, type, this.dodgeCfg.many.split(' ').slice(1).join('_'), c.onset, c.moved, rt, outcome);
     const row = this.log[this.log.length - 1];
     row.condition = stay ? 'quedarse' : 'cambiar';
     row.stop_ms = c.revealAt;
@@ -200,7 +206,16 @@ Object.assign(GameScene.prototype, {
     if (outcome === 'hit') this.dodgeCheer('¡A salvo!');
     else if (outcome === 'correct_rejection') this.dodgeCheer('¡Bien, ya estabas a salvo!');
     this.dodgeCur = null;
+    this.dodgeStamp = this.time.now;
     this.time.delayedCall(Phaser.Math.Between(500, 1000), () => this.nextDodge());
+  },
+
+  // Seguro: si por algo un lanzamiento no termina o no llega el siguiente, se retoma solo (lo llama update)
+  dodgeWatch() {
+    if (!this.started || this.ended || this.dodgeStamp === undefined) return;
+    const idle = this.time.now - this.dodgeStamp, limit = this.params.dodgeTravelMs * 2 + 2500;
+    if (this.dodgeCur && !this.dodgeCur.done && idle > limit) this.endDodge(this.dodgeCur);
+    else if (!this.dodgeCur && idle > 4000) { this.dodgeStamp = this.time.now; this.nextDodge(); }
   },
 
   dodgeCheer(msg) {
