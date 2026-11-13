@@ -1,219 +1,6 @@
 {
-  "heroes": {
-    "intro": {
-      "texto": "¡Hola! Soy Héroe Rayo. ¡Ayúdame a detener a Sombra!",
-      "firma": "d73684012a"
-    },
-    "classic": {
-      "texto": "¡Toca solo la señal de Sombra para borrarla!",
-      "firma": "87e9597ed8"
-    },
-    "catch": {
-      "texto": "¡Atrapa con el escudo solo las señales de Sombra!",
-      "firma": "71962b9411"
-    },
-    "race": {
-      "texto": "¡Escudo Verde persigue a Sombra! Alcanza solo sus señales.",
-      "firma": "910fe41f3e"
-    },
-    "find": {
-      "texto": "¡Busca la señal de Sombra! Si no está, no toques nada.",
-      "firma": "b7c909eafe"
-    },
-    "memory": {
-      "texto": "¡Mira en qué orden pinta Sombra sus señales y repítelo!",
-      "firma": "65f3616009"
-    },
-    "notx": {
-      "texto": "¡Al revés! Toca todas las señales... ¡menos la de Sombra!",
-      "firma": "b8e577a815"
-    },
-    "ax": {
-      "texto": "Toca la señal de Sombra solo si justo antes salió la de la Capitana Estrella.",
-      "firma": "324aa722d2"
-    },
-    "dodge": {
-      "texto": "¡Sombra lanza nubes de humo! Ponte donde se detenga una.",
-      "firma": "d0ddc32836"
-    },
-    "path": {
-      "texto": "¡Mira el camino de Escudo Verde y repítelo de memoria!",
-      "firma": "c0057634fe"
-    },
-    "cast_classic": {
-      "texto": "¡Sombra se mezcla con mis amigos! Tócalo solo a él.",
-      "firma": "b7a0fd8157"
-    },
-    "cast_catch": {
-      "texto": "¡Atrapa a Sombra con la red y deja pasar a mis amigos!",
-      "firma": "de9c5117c8"
-    },
-    "cast_race": {
-      "texto": "¡Sombra corre entre mis amigos! Alcánzalo solo a él.",
-      "firma": "9027b18e3e"
-    },
-    "cast_find": {
-      "texto": "¡Busca a Sombra! Si no está, no toques nada.",
-      "firma": "7855106f58"
-    },
-    "cast_memory": {
-      "texto": "¡Mira por dónde salta Sombra y repite su camino!",
-      "firma": "33525be672"
-    },
-    "cast_notx": {
-      "texto": "¡Al revés! Toca a mis amigos... ¡menos a Sombra!",
-      "firma": "54079af193"
-    },
-    "cast_ax_friend1": {
-      "texto": "Toca a Sombra solo si justo antes salió la Capitana Estrella.",
-      "firma": "28949fcbef"
-    },
-    "cast_ax_friend2": {
-      "texto": "Toca a Sombra solo si justo antes salió Escudo Verde.",
-      "firma": "1735b97a39"
-    },
-    "cast_ax_friend3": {
-      "texto": "Toca a Sombra solo si justo antes salió Héroe Noche.",
-      "firma": "c3c65cc363"
-    },
-    "boss": {
-      "texto": "¡Llegamos a la guarida! Borra sus últimas señales y atrapa a Sombra.",
-      "firma": "f0b04101b5"
-    },
-    "end": {
-      "texto": "¡Lo logramos! Atrapamos a Sombra y la ciudad está a salvo. ¡Eres un gran héroe!",
-      "firma": "d2f6234485"
-    },
-    "comp_1": {
-      "texto": "¡Soy la Capitana Estrella! ¡Vamos juntos a detener a Sombra!",
-      "firma": "d399f3d743"
-    },
-    "comp_4": {
-      "texto": "¡Ja, ja! ¡Pintaré mi señal en toda la ciudad!",
-      "firma": "80512cc204"
-    },
-    "dist_burla_1": {
-      "texto": "¡Mi señal está por todas partes!",
-      "firma": "1a84f25d6e"
-    },
-    "dist_burla_2": {
-      "texto": "¡Ni con tu rayo me vas a encontrar!",
-      "firma": "0e8bc2017a"
-    },
-    "dist_amenaza_1": {
-      "texto": "¡Esta ciudad será mía!",
-      "firma": "108a2992ba"
-    },
-    "dist_amenaza_2": {
-      "texto": "¡Cubriré el puerto de humo!",
-      "firma": "ae856da650"
-    },
-    "dist_amenaza_3": {
-      "texto": "¡Apagaré todas las luces de la ciudad!",
-      "firma": "a4a9e92f4b"
-    }
-  },
+  "heroes": {},
   "fantasy": {
-    "intro": {
-      "texto": "¡Hola! Soy Chispa. ¡Ayúdame a llevar a mis hermanitos al nido!",
-      "firma": "52bad3bef8"
-    },
-    "classic": {
-      "texto": "¡Toca solo a los dragoncitos dorados!",
-      "firma": "594b061fa1"
-    },
-    "catch": {
-      "texto": "¡Recibe con el nido solo a los dragoncitos dorados!",
-      "firma": "e182cda7f6"
-    },
-    "race": {
-      "texto": "¡El Hada del Bosque persigue a Morgana! Alcanza solo a los dorados.",
-      "firma": "660dd82e35"
-    },
-    "find": {
-      "texto": "¡Busca al dragoncito dorado! Si no está, no toques nada.",
-      "firma": "1ea1e9f9d2"
-    },
-    "memory": {
-      "texto": "¡Mira por dónde vuela mi hermanito y repite su camino!",
-      "firma": "1f1824dba7"
-    },
-    "notx": {
-      "texto": "¡Al revés! Toca a todos los dragoncitos... ¡menos a los dorados!",
-      "firma": "c71ea703a9"
-    },
-    "ax": {
-      "texto": "Toca al dorado solo si justo antes salió el dragoncito rojo.",
-      "firma": "4119596e92"
-    },
-    "dodge": {
-      "texto": "¡Morgana lanza hechizos! Ponte donde se detenga uno.",
-      "firma": "23842445d4"
-    },
-    "path": {
-      "texto": "¡Mira el camino del Hada del Bosque y repítelo de memoria!",
-      "firma": "38e150ca55"
-    },
-    "cast_classic": {
-      "texto": "¡Morgana se esconde entre los magos! Tócala solo a ella.",
-      "firma": "192315f93f"
-    },
-    "cast_catch": {
-      "texto": "¡Atrapa a Morgana con la red y deja pasar a los magos!",
-      "firma": "87b931eb12"
-    },
-    "cast_race": {
-      "texto": "¡Morgana huye entre los magos! Alcánzala solo a ella.",
-      "firma": "537428cdcf"
-    },
-    "cast_find": {
-      "texto": "¡Busca a Morgana! Si no está, no toques nada.",
-      "firma": "890f8c0e27"
-    },
-    "cast_memory": {
-      "texto": "¡Mira por dónde salta Morgana y repite su camino!",
-      "firma": "664e2002f1"
-    },
-    "cast_notx": {
-      "texto": "¡Al revés! Toca a los magos buenos... ¡menos a Morgana!",
-      "firma": "7c20f1deea"
-    },
-    "cast_ax_friend1": {
-      "texto": "Toca a Morgana solo si justo antes salió el Hada del Bosque.",
-      "firma": "f636916969"
-    },
-    "cast_ax_friend2": {
-      "texto": "Toca a Morgana solo si justo antes salió el Mago Abuelo.",
-      "firma": "40d0dcbae6"
-    },
-    "cast_ax_friend3": {
-      "texto": "Toca a Morgana solo si justo antes salió la Hechicera Buena.",
-      "firma": "aa906a712c"
-    },
-    "boss": {
-      "texto": "¡Morgana está en el volcán! Salva a los últimos dragoncitos y atrápala.",
-      "firma": "0b2582aff6"
-    },
-    "end": {
-      "texto": "¡Atrapamos a Morgana y mis hermanitos volvieron al nido! ¡Gracias!",
-      "firma": "873fed6c36"
-    },
-    "comp_2": {
-      "texto": "Soy el Mago Abuelo. ¡Cuidado, que Morgana anda cerca!",
-      "firma": "4535104bcd"
-    },
-    "comp_4": {
-      "texto": "¡Ja, ja, ja! ¡Esos dragoncitos nunca volverán al nido!",
-      "firma": "a1095816e9"
-    },
-    "dist_burla_1": {
-      "texto": "¿Quieres llevarlos al nido? ¡Primero atrápame!",
-      "firma": "c1c8a55909"
-    },
-    "dist_burla_2": {
-      "texto": "¡Tu fuego no me hace ni cosquillas!",
-      "firma": "8932282d4e"
-    },
     "dist_amenaza_1": {
       "texto": "¡Me llevaré todos los dragones del nido!",
       "firma": "46120d8682"
@@ -319,10 +106,6 @@
     "comp_4": {
       "texto": "¡Ji, ji, ji! ¡Nunca romperás mi hechizo!",
       "firma": "be3b26ddb9"
-    },
-    "dist_burla_1": {
-      "texto": "¡Psst! ¡Por aquí! ¡No, por allá!",
-      "firma": "72f65da800"
     },
     "dist_burla_2": {
       "texto": "¡La corona me queda mejor a mí!",
@@ -434,17 +217,9 @@
       "texto": "¡Ja, ja, ja! ¡Bip y sus hermanitos nunca llegarán a la base!",
       "firma": "9792f60773"
     },
-    "dist_burla_1": {
-      "texto": "¡Nunca me alcanzarás, astronauta!",
-      "firma": "72701b4ea7"
-    },
     "dist_burla_2": {
       "texto": "¡Tu cohete es más lento que una tortuga!",
       "firma": "fdd28edef9"
-    },
-    "dist_amenaza_1": {
-      "texto": "¡Todo el espacio será mío!",
-      "firma": "15b1674bbd"
     },
     "dist_amenaza_2": {
       "texto": "¡Lanzaré asteroides contra tu base!",
@@ -555,10 +330,6 @@
     "dist_burla_2": {
       "texto": "¡Tus burbujas no me asustan!",
       "firma": "db3feabe26"
-    },
-    "dist_amenaza_1": {
-      "texto": "¡El mar entero será oscuro!",
-      "firma": "5f2b6e3232"
     },
     "dist_amenaza_2": {
       "texto": "¡Hundiré otro barco con mi tinta!",
@@ -1029,34 +800,6 @@
     "unlock": {
       "texto": "¡Felicidades! ¡Desbloqueaste un nuevo mundo!",
       "firma": "ee2b84228e"
-    },
-    "pool_risa_m_1": {
-      "texto": "¡Ja, ja, ja! ¡Nunca me atraparás!",
-      "firma": "9864eb593e"
-    },
-    "pool_risa_m_2": {
-      "texto": "¡Jo, jo, jo! Aquí estoy... ¿o no?",
-      "firma": "696e57dc4c"
-    },
-    "pool_risa_m_3": {
-      "texto": "¡Ji, ji, ji! ¡No me pueden atrapar!",
-      "firma": "d683aa8e8d"
-    },
-    "pool_risa_m_4": {
-      "texto": "¡Je, je! ¿Dónde estaré?",
-      "firma": "33f4f46338"
-    },
-    "pool_risa_m_5": {
-      "texto": "¡Je, je! ¡No me ves, no me ves!",
-      "firma": "c844a00e6e"
-    },
-    "pool_risa_f_1": {
-      "texto": "¡Ja, ja, ja! ¡Jamás lo encontrarás!",
-      "firma": "ba48b69d27"
-    },
-    "pool_risa_f_2": {
-      "texto": "¡Ji, ji! ¡Mis hechizos nunca fallan!",
-      "firma": "b6fe32bbd0"
     },
     "pool_risa_f_3": {
       "texto": "¡Ja, ja! ¡Atrápame si puedes!",

@@ -2,7 +2,7 @@
 
 // ======================= VOZ DE LOS PERSONAJES =======================
 // Usa las voces generadas (assets/voces.js, con herramientas/generar_voces.js): una voz fija por personaje.
-// Si no hay, el audio que assets/manifest.js le asigne (voice_1 ... voice_5, voice_end); si no, la voz del navegador.
+// Primero la versión de ElevenLabs (assets/voces_eleven.js), si no la gratuita; si no hay ninguna, la voz del navegador.
 let currentVoice = null;
 function bestSpanishVoice() {
   try {
@@ -32,7 +32,7 @@ function playVoice(theme, id, text, onEnd) {
   const turn = ++voiceTurn;
   const done = () => { if (onEnd && turn === voiceTurn) onEnd(); };
   const eleven = ((window.VOICES_ELEVEN || {})[theme] || {})[id];   // primero la versión con emoción (ElevenLabs)
-  const file = (eleven && eleven[0]) || ((window.VOICES || {})[theme] || {})[id] || assetFile(theme, 'voice_' + id);
+  const file = (eleven && eleven[0]) || ((window.VOICES || {})[theme] || {})[id];
   if (!file) { speakTTS(text, theme, done); return; }
   currentVoice = new Audio('assets/' + file);
   currentVoice.volume = VOICE_VOLUME;

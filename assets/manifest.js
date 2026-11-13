@@ -27,7 +27,6 @@
 //   path_trail, path_stone   Camino: el rastro que deja el guía y la piedra donde se pisa (si faltan, se dibujan)
 //   fx_amb_1..5       lo que pasa por detrás en el giro del mundo (niebla, burbujas, hojas, chispas) · fx_dust: polvo del temblor
 //   bg_1 ... bg_5     fondo de cada capítulo
-//   voice_1 ... voice_5, voice_end   voz del personaje en cada capítulo y en el final (MP3)
 //   distractor_<nombre>   distractor del entorno (cruza por los bordes). Nombres de cada mundo:
 //                         superheroes: avion, pajaro, gato · dragones: mariposa, murcielago, ardilla
 //                         reino_magico: libro_volador, escoba_magica, raton
@@ -68,9 +67,7 @@ window.ASSETS = {
     bg_5:    'superheroes/fondo_5_guarida_de_sombra.jpg',
     distractor_avion:  'superheroes/avion.png',
     distractor_pajaro: 'superheroes/pajaro.png',
-    distractor_gato:   'superheroes/gato.png',
-    voice_1: 'superheroes/voz_capitulo_1.mp3',   // voces generadas por Leidy
-    voice_2: 'superheroes/voz_capitulo_2.mp3'
+    distractor_gato:   'superheroes/gato.png'
   },
   fantasy: {            // carpeta assets/dragones
     catcher:       'dragones/nido_atrapa.png',   // Atrapa: con qué se atrapa (en vez de la canasta)

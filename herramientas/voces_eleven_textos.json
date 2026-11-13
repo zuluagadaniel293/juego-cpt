@@ -63,5 +63,260 @@
     "texto": "[evil laugh] ¡Ji, ji! ¡Mis hechizos nunca fallan!",
     "voz": "sarah",
     "firma": "eca36da4e2"
+  },
+  "voces/superheroes/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Héroe Rayo. ¡Ayúdame a detener a Sombra!",
+    "voz": "eric",
+    "firma": "75ce33f5c2"
+  },
+  "voces/superheroes/eleven/classic.mp3": {
+    "texto": "¡Toca solo la señal de Sombra para borrarla!",
+    "voz": "eric",
+    "firma": "cffdee4d91"
+  },
+  "voces/superheroes/eleven/catch.mp3": {
+    "texto": "¡Atrapa con el escudo solo las señales de Sombra!",
+    "voz": "eric",
+    "firma": "7cbc63da10"
+  },
+  "voces/superheroes/eleven/race.mp3": {
+    "texto": "¡Escudo Verde persigue a Sombra! Alcanza solo sus señales.",
+    "voz": "eric",
+    "firma": "5f43042698"
+  },
+  "voces/superheroes/eleven/find.mp3": {
+    "texto": "¡Busca la señal de Sombra! Si no está, no toques nada.",
+    "voz": "eric",
+    "firma": "5ebdcb6e26"
+  },
+  "voces/superheroes/eleven/memory.mp3": {
+    "texto": "¡Mira en qué orden pinta Sombra sus señales y repítelo!",
+    "voz": "eric",
+    "firma": "90b8e1de04"
+  },
+  "voces/superheroes/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca todas las señales... ¡menos la de Sombra!",
+    "voz": "eric",
+    "firma": "42be415a92"
+  },
+  "voces/superheroes/eleven/ax.mp3": {
+    "texto": "Toca la señal de Sombra solo si justo antes salió la de la Capitana Estrella.",
+    "voz": "eric",
+    "firma": "e022d538dc"
+  },
+  "voces/superheroes/eleven/dodge.mp3": {
+    "texto": "¡Sombra lanza nubes de humo! Ponte donde se detenga una.",
+    "voz": "eric",
+    "firma": "33109698a8"
+  },
+  "voces/superheroes/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Escudo Verde y repítelo de memoria!",
+    "voz": "eric",
+    "firma": "1d2ecaad88"
+  },
+  "voces/superheroes/eleven/cast_classic.mp3": {
+    "texto": "¡Sombra se mezcla con mis amigos! Tócalo solo a él.",
+    "voz": "eric",
+    "firma": "ac853d8c12"
+  },
+  "voces/superheroes/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa a Sombra con la red y deja pasar a mis amigos!",
+    "voz": "eric",
+    "firma": "ce46049f45"
+  },
+  "voces/superheroes/eleven/cast_race.mp3": {
+    "texto": "¡Sombra corre entre mis amigos! Alcánzalo solo a él.",
+    "voz": "eric",
+    "firma": "a1ab735f89"
+  },
+  "voces/superheroes/eleven/cast_find.mp3": {
+    "texto": "¡Busca a Sombra! Si no está, no toques nada.",
+    "voz": "eric",
+    "firma": "2687d7f2fd"
+  },
+  "voces/superheroes/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta Sombra y repite su camino!",
+    "voz": "eric",
+    "firma": "aea539d512"
+  },
+  "voces/superheroes/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a mis amigos... ¡menos a Sombra!",
+    "voz": "eric",
+    "firma": "73ebee45d8"
+  },
+  "voces/superheroes/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca a Sombra solo si justo antes salió la Capitana Estrella.",
+    "voz": "eric",
+    "firma": "f5bea4385d"
+  },
+  "voces/superheroes/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca a Sombra solo si justo antes salió Escudo Verde.",
+    "voz": "eric",
+    "firma": "e51afddc27"
+  },
+  "voces/superheroes/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca a Sombra solo si justo antes salió Héroe Noche.",
+    "voz": "eric",
+    "firma": "d2b2a6b12b"
+  },
+  "voces/superheroes/eleven/boss.mp3": {
+    "texto": "¡Llegamos a la guarida! Borra sus últimas señales y atrapa a Sombra.",
+    "voz": "eric",
+    "firma": "baaee9d7b2"
+  },
+  "voces/superheroes/eleven/end.mp3": {
+    "texto": "¡Lo logramos! Atrapamos a Sombra y la ciudad está a salvo. ¡Eres un gran héroe!",
+    "voz": "eric",
+    "firma": "9c035e69c8"
+  },
+  "voces/superheroes/eleven/comp_1.mp3": {
+    "texto": "¡Soy la Capitana Estrella! ¡Vamos juntos a detener a Sombra!",
+    "voz": "jessica",
+    "firma": "2fbbe9135a"
+  },
+  "voces/superheroes/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Ja, ja! ¡Pintaré mi señal en toda la ciudad!",
+    "voz": "liam",
+    "firma": "9afd7ae1b3"
+  },
+  "voces/superheroes/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Ni con tu rayo me vas a encontrar!",
+    "voz": "liam",
+    "firma": "8a78cd56a2"
+  },
+  "voces/superheroes/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Cubriré el puerto de humo!",
+    "voz": "liam",
+    "firma": "3d5bc69c31"
+  },
+  "voces/superheroes/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Apagaré todas las luces de la ciudad!",
+    "voz": "liam",
+    "firma": "1f8d4a64cb"
+  },
+  "voces/dragones/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Chispa. ¡Ayúdame a llevar a mis hermanitos al nido!",
+    "voz": "lily",
+    "firma": "8287902e58"
+  },
+  "voces/dragones/eleven/classic.mp3": {
+    "texto": "¡Toca solo a los dragoncitos dorados!",
+    "voz": "lily",
+    "firma": "65c6254ef4"
+  },
+  "voces/dragones/eleven/catch.mp3": {
+    "texto": "¡Recibe con el nido solo a los dragoncitos dorados!",
+    "voz": "lily",
+    "firma": "8e62187374"
+  },
+  "voces/dragones/eleven/race.mp3": {
+    "texto": "¡El Hada del Bosque persigue a Morgana! Alcanza solo a los dorados.",
+    "voz": "lily",
+    "firma": "e0f07ea6ee"
+  },
+  "voces/dragones/eleven/find.mp3": {
+    "texto": "¡Busca al dragoncito dorado! Si no está, no toques nada.",
+    "voz": "lily",
+    "firma": "4231a64821"
+  },
+  "voces/dragones/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde vuela mi hermanito y repite su camino!",
+    "voz": "lily",
+    "firma": "2dcee2376f"
+  },
+  "voces/dragones/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todos los dragoncitos... ¡menos a los dorados!",
+    "voz": "lily",
+    "firma": "ef834766ec"
+  },
+  "voces/dragones/eleven/ax.mp3": {
+    "texto": "Toca al dorado solo si justo antes salió el dragoncito rojo.",
+    "voz": "lily",
+    "firma": "d95e5ce325"
+  },
+  "voces/dragones/eleven/dodge.mp3": {
+    "texto": "¡Morgana lanza hechizos! Ponte donde se detenga uno.",
+    "voz": "lily",
+    "firma": "fa24743717"
+  },
+  "voces/dragones/eleven/path.mp3": {
+    "texto": "¡Mira el camino del Hada del Bosque y repítelo de memoria!",
+    "voz": "lily",
+    "firma": "f80363abad"
+  },
+  "voces/dragones/eleven/cast_classic.mp3": {
+    "texto": "¡Morgana se esconde entre los magos! Tócala solo a ella.",
+    "voz": "lily",
+    "firma": "91048596e4"
+  },
+  "voces/dragones/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa a Morgana con la red y deja pasar a los magos!",
+    "voz": "lily",
+    "firma": "a5db4a876a"
+  },
+  "voces/dragones/eleven/cast_race.mp3": {
+    "texto": "¡Morgana huye entre los magos! Alcánzala solo a ella.",
+    "voz": "lily",
+    "firma": "98f4e321a1"
+  },
+  "voces/dragones/eleven/cast_find.mp3": {
+    "texto": "¡Busca a Morgana! Si no está, no toques nada.",
+    "voz": "lily",
+    "firma": "c3f71230b8"
+  },
+  "voces/dragones/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta Morgana y repite su camino!",
+    "voz": "lily",
+    "firma": "07bf39fd35"
+  },
+  "voces/dragones/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a los magos buenos... ¡menos a Morgana!",
+    "voz": "lily",
+    "firma": "86f476a391"
+  },
+  "voces/dragones/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca a Morgana solo si justo antes salió el Hada del Bosque.",
+    "voz": "lily",
+    "firma": "406c081643"
+  },
+  "voces/dragones/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca a Morgana solo si justo antes salió el Mago Abuelo.",
+    "voz": "lily",
+    "firma": "a3a5a26623"
+  },
+  "voces/dragones/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca a Morgana solo si justo antes salió la Hechicera Buena.",
+    "voz": "lily",
+    "firma": "ecc71dbfb3"
+  },
+  "voces/dragones/eleven/boss.mp3": {
+    "texto": "¡Morgana está en el volcán! Salva a los últimos dragoncitos y atrápala.",
+    "voz": "lily",
+    "firma": "fad941f81d"
+  },
+  "voces/dragones/eleven/end.mp3": {
+    "texto": "¡Atrapamos a Morgana y mis hermanitos volvieron al nido! ¡Gracias!",
+    "voz": "lily",
+    "firma": "1670d1bde6"
+  },
+  "voces/dragones/eleven/comp_2.mp3": {
+    "texto": "Soy el Mago Abuelo. ¡Cuidado, que Morgana anda cerca!",
+    "voz": "bill",
+    "firma": "e9bcf074c1"
+  },
+  "voces/dragones/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Ja, ja, ja! ¡Esos dragoncitos nunca volverán al nido!",
+    "voz": "sarah",
+    "firma": "d536962563"
+  },
+  "voces/dragones/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¿Quieres llevarlos al nido? ¡Primero atrápame!",
+    "voz": "sarah",
+    "firma": "86665e8c68"
+  },
+  "voces/dragones/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Tu fuego no me hace ni cosquillas!",
+    "voz": "sarah",
+    "firma": "8d9992f110"
   }
 }

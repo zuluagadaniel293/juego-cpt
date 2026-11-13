@@ -156,6 +156,13 @@ function textosComunes() {
   return t;
 }
 
+// Frases que ya tienen versión de ElevenLabs (assets/voces_eleven.js): la gratuita sobra, no se graba y se borra
+const elevenSb = { window: {} };
+vm.createContext(elevenSb);
+const elevenPath = path.join(ROOT, 'assets/voces_eleven.js');
+if (fs.existsSync(elevenPath)) vm.runInContext(fs.readFileSync(elevenPath, 'utf8'), elevenSb);
+const ELEVEN = elevenSb.window.VOICES_ELEVEN || {};
+
 // 4. Grabar lo que falte o haya cambiado, y borrar los audios que ya no usa nadie
 const cmd = (process.env.TTS_CMD || 'edge-tts').split(' ');
 const textosPath = path.join(__dirname, 'voces_textos.json');
@@ -170,6 +177,7 @@ for (const [key, carpeta, lista] of grupos) {
   mapa[key] = {}; todos[key] = {};
   for (const [id, [texto, v]] of Object.entries(lista)) {
     const file = path.join(dir, id + '.mp3');
+    if ((ELEVEN[key] || {})[id]) continue;   // ya está con ElevenLabs
     const firma = crypto.createHash('md5').update(v.voz + v.tono + v.velocidad + texto).digest('hex').slice(0, 10);
     todos[key][id] = { texto, firma };
     if (!(fs.existsSync(file) && antes[key] && antes[key][id] && antes[key][id].firma === firma)) {
@@ -189,11 +197,11 @@ for (const [key, carpeta, lista] of grupos) {
   }
   // audios viejos que ya no corresponden a ningún texto (la carpeta eleven/ es de ElevenLabs: no se toca)
   for (const f of fs.readdirSync(dir)) {
-    if (f.endsWith('.mp3') && !lista[f.slice(0, -4)]) { fs.unlinkSync(path.join(dir, f)); borrados++; }
+    if (f.endsWith('.mp3') && !mapa[key][f.slice(0, -4)]) { fs.unlinkSync(path.join(dir, f)); borrados++; }
   }
 }
 // el mensaje de "¡Mundo desbloqueado!" es el mismo en todos los mundos
-Object.keys(VOCES).forEach(key => { mapa[key].unlock = mapa.comunes.unlock; });
+Object.keys(VOCES).forEach(key => { if (mapa.comunes.unlock) mapa[key].unlock = mapa.comunes.unlock; });
 // rutas relativas a assets/ (como en manifest.js)
 fs.writeFileSync(path.join(ROOT, 'assets/voces.js'),
   '// Generado por herramientas/generar_voces.js: no editar a mano.\n' +

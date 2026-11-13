@@ -14,6 +14,7 @@
 //      node herramientas/generar_voces_elevenlabs.js --lista    (como --costo, y además lista cada frase pendiente)
 //      node herramientas/generar_voces_elevenlabs.js --mapa     (no genera nada; solo actualiza voces_eleven.js)
 //      node herramientas/generar_voces_elevenlabs.js            (genera lo que falte: GASTA CRÉDITOS)
+//      ... --solo comunes,superheroes                            (solo esas carpetas; sirve con --costo y --lista)
 //
 // Genera assets/voces/<carpeta>/eleven/<id>.mp3, assets/voces_eleven.js (window.VOICES_ELEVEN) y
 // herramientas/voces_eleven_textos.json (con qué texto y voz se grabó cada archivo).
@@ -88,6 +89,9 @@ Object.entries(sandbox.VOICE_POOLS).forEach(([pool, list]) => list.forEach((s, k
   FRASES.push(['comunes', 'comunes', 'pool_' + pool + '_' + (k + 1), pool, VOCES_POOL[pool][k % VOCES_POOL[pool].length],
     EMOCION[pool.split('_')[0]] + ' ' + s])));
 
+// las comunes primero: sirven en todos los mundos
+FRASES.sort((a, b) => (b[0] === 'comunes') - (a[0] === 'comunes'));
+
 const archivo = f => path.join('voces', f[1], 'eleven', f[2] + '.mp3');
 const firmasPath = path.join(__dirname, 'voces_eleven_textos.json');
 const firmas = fs.existsSync(firmasPath) ? JSON.parse(fs.readFileSync(firmasPath, 'utf8')) : {};
@@ -97,7 +101,9 @@ const clave = f => archivo(f).split(path.sep).join('/');
 const pendiente = f => !fs.existsSync(path.join(ROOT, 'assets', archivo(f))) || (firmas[clave(f)] && firmas[clave(f)].firma !== firma(f));
 
 (async () => {
-  const faltan = FRASES.filter(pendiente);
+  const soloArg = process.argv.find(a => a.startsWith('--solo'));
+  const solo = soloArg ? (soloArg.includes('=') ? soloArg.split('=')[1] : process.argv[process.argv.indexOf(soloArg) + 1]).split(',') : null;
+  const faltan = FRASES.filter(f => pendiente(f) && (!solo || solo.includes(f[1])));
   const costo = faltan.reduce((n, f) => n + f[5].length, 0);
   const total = FRASES.reduce((n, f) => n + f[5].length, 0);
   console.log('Frases: ' + FRASES.length + ' (' + total + ' caracteres) · faltan: ' + faltan.length + ' · costo: ' + costo + ' créditos');
