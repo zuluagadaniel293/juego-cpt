@@ -196,7 +196,7 @@ class GameScene extends Phaser.Scene {
       if (this.revealY) explain += '. ¡Ojo! Todo cae como sombra y se descubre al cruzar la línea amarilla: decide rápido';
     } else if (this.mg === 'path') {
       const guideName = this.charName(raceHelper(this.themeKey));
-      const rest = ' ' + guideName + ' salta de piedra en piedra hasta ' + what + '. Cuando sus huellas se borren, lleva a tu personaje por el mismo camino.'
+      const rest = ' ' + guideName + ' salta de piedra en piedra hasta ' + what.replace(/^al /, 'el ').replace(/^a /, '') + '. Cuando sus huellas se borren, lleva a tu personaje por el mismo camino.'
         + ((this.level || 1) >= 4 ? ' ¡Ojo! El villano deja huellas falsas.' : '');
       if (touch) { icon(220, ctrlY, '👆'); explain = 'Toca la piedra de al lado para avanzar.' + rest; }
       else { keycap(220, ctrlY - 32, 58, '↑'); keycap(185, ctrlY + 34, 58, '←'); keycap(255, ctrlY + 34, 58, '→'); explain = 'Avanza con las flechas (o tocando la piedra).' + rest; }
