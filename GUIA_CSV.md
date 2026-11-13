@@ -149,7 +149,8 @@ Mide atención sostenida y **memoria de trabajo** (hay que recordar la pista).
 | `ni_pista_ni_objetivo` | Ninguno (BY) | error al azar o por impulsividad |
 
 El **Modo Examen** es el tercer modo de la pantalla inicial (lo elige el niño): Clásico, Menos uno, Pista o Memoria, siempre
-con los mismos parámetros y estímulos para comparar sesiones. El niño ve solo sus estrellas; el Panel del profesional muestra
+con los mismos parámetros y estímulos para comparar sesiones. Como en el examen real, el niño **no ve nada de su resultado**:
+ni "¡Bien!" al acertar, ni barra de tiempo, ni estrellas al final (solo "¡Terminaste la prueba!"). El Panel del profesional muestra
 las medidas, un informe por tipo de prueba y, en Pista, cuántas veces respondió en cada condición (AX, BX, AY, BY).
 **No es un diagnóstico**: sirve para seguir el progreso del niño.
 

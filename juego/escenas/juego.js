@@ -91,8 +91,10 @@ class GameScene extends Phaser.Scene {
     }
     this.barW = W - barX - 140;   // a la derecha va el botón de salir
     addExitButton(this);
-    this.add.rectangle(barX, 20, this.barW, 10, 0xffffff, 0.2).setOrigin(0, 0.5);
+    const track = this.add.rectangle(barX, 20, this.barW, 10, 0xffffff, 0.2).setOrigin(0, 0.5);
     this.bar = this.add.rectangle(barX, 20, 0, 10, th.accent).setOrigin(0, 0.5);
+    // Modo Examen: sin barra de tiempo, como en el examen real (el niño no sabe cuánto falta)
+    if (this.mode === 'prueba') { track.setVisible(false); this.bar.setVisible(false); }
     // Contador de la misión del mundo ("Hojas para Dino: 3"): solo para motivar, no cambia estrellas ni datos.
     // No sale en la Prueba fija, ni cuando se busca al villano, ni en Menos uno (ahí se toca a los demás).
     this.missionCount = 0; this.missionText = null;
@@ -674,6 +676,8 @@ class GameScene extends Phaser.Scene {
     if (!this.started || this.ended || !c || c.responded) return;
     c.responded = true;
     c.rt = performance.now() - c.onset;
+    // Modo Examen: como en el CPT real, no se dice si estuvo bien o mal (solo se registra)
+    if (this.mode === 'prueba') return;
     this.castPower(GAME_W / 2, GAME_H / 2, c.type === 'target');
     if (c.type !== 'target') this.stim.setAlpha(0.35);  // error de comisión: feedback neutro, sin castigo
   }

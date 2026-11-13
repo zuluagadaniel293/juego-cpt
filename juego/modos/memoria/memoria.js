@@ -49,7 +49,8 @@ class MemoryScene extends Phaser.Scene {
     const W = GAME_W, th = this.theme;
     this.cameras.main.setBackgroundColor(th.bg);
     const idx = this.mode === 'historia' ? this.chapter : this.mode === 'desafio' ? (this.level - 1) % 5 : 0;
-    drawBackdrop(this, this.themeKey, idx, this.adaptive ? 0.82 : Math.max(0.55, 0.85 - 0.05 * (this.level - 1)));
+    // Modo Examen: fondo liso, como las otras pruebas fijas
+    if (!this.adaptive) drawBackdrop(this, this.themeKey, idx, Math.max(0.55, 0.85 - 0.05 * (this.level - 1)));
     addExitButton(this);   // ✕ Salir (pausa) arriba a la derecha, o ESC
     const tag = this.mode === 'desafio' ? 'Nivel ' + this.level : this.mode === 'historia' ? (this.boss ? 'Jefe final' : 'Capítulo ' + (this.chapter + 1)) : null;
     if (tag) {
@@ -223,17 +224,16 @@ class MemoryScene extends Phaser.Scene {
       onset_ms: Math.round(this.elapsed())
     });
 
+    // Modo Examen (Memoria adaptativa): como en el Corsi real, no se dice si estuvo bien o mal
     if (ok) {
-      rewardSound();
-      this.buddyCheer();
-      this.msg.setText('¡Muy bien!').setColor('#86efac');
+      if (!this.adaptive) { rewardSound(); this.buddyCheer(); this.msg.setText('¡Muy bien!').setColor('#86efac'); }
       this.phaseBest = Math.max(this.phaseBest, this.len);
       this.fails = 0;
     } else {
-      fizzleSound();
-      this.msg.setText('¡Casi! Intentemos otra').setColor('#fca5a5');
+      if (!this.adaptive) { fizzleSound(); this.msg.setText('¡Casi! Intentemos otra').setColor('#fca5a5'); }
       this.fails++;
     }
+    if (this.adaptive) this.msg.setText('');
 
     if (this.adaptive) {
       if (ok) {

@@ -29,10 +29,6 @@ class PruebaSelectScene extends Phaser.Scene {
       this.add.text(x, y - 105, pr.title, { font: 'bold 26px Arial', color: '#ffffff' }).setOrigin(0.5);
       this.add.text(x, y - 68, pr.like, { font: 'bold 15px Arial', color: '#38bdf8' }).setOrigin(0.5);
       this.add.text(x, y + 10, pr.desc, { font: '15px Arial', color: '#cbd5e1', align: 'center', lineSpacing: 6 }).setOrigin(0.5);
-      if (pr.mg === 'memory') {   // récord del span, como antes en la pantalla inicial
-        const mem = Math.max(0, ...Object.values(getMemory()).map(m => m.fwd));
-        if (mem) this.add.text(x, y + 84, 'Récord: ' + mem + ' pasos', { font: 'bold 14px Arial', color: '#a78bfa' }).setOrigin(0.5);
-      }
       this.add.text(x, y + 112, 'Elegir ›', { font: 'bold 20px Arial', color: '#fde047' }).setOrigin(0.5);
       const zone = this.add.zone(x, y, 212, 300).setInteractive({ useHandCursor: true });
       zone.on('pointerover', () => card.setAlpha(0.8));
