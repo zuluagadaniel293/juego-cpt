@@ -66,7 +66,7 @@ class PlayersScene extends Phaser.Scene {
     f.innerHTML =
       '<h2>¡Hola! ¿Cómo te llamas?</h2>' +
       '<label>Tu nombre<input name="name" maxlength="20" autocomplete="off" required></label>' +
-      '<label>Tu edad <small>(opcional)</small><input name="age" type="number" min="4" max="18" inputmode="numeric"></label>' +
+      '<label>Tu edad <small>(opcional: así el juego va a tu ritmo)</small><input name="age" type="number" min="3" max="99" inputmode="numeric"></label>' +
       '<div class="mf-row"><button type="button" class="mf-cancel">Cancelar</button><button type="submit">¡Listo!</button></div>';
     document.body.appendChild(f);
     this.form = f;

@@ -20,11 +20,10 @@ class GameScene extends Phaser.Scene {
       const spec = ch.phases ? bossPhases(this.themeKey)[this.phase] : { mg: chapterGame(this.themeKey, this.chapter), sec: ch.sec };
       this.boss = !!ch.boss;
       this.level = ch.level;
-      this.params = challengeParams(ch.level, spec.mg);
-      this.params.sessionMs = spec.sec * 1000;
+      this.params = forAge(Object.assign(challengeParams(ch.level, spec.mg), { sessionMs: spec.sec * 1000 }));
     } else {
       this.level = data.level;
-      this.params = challengeParams(data.level, data.minigame);
+      this.params = forAge(challengeParams(data.level, data.minigame));   // más despacio para los de 5 a 7 años
     }
     this.mg = this.params.minigame;
     this.twist = worldTwist(this);
@@ -217,6 +216,8 @@ class GameScene extends Phaser.Scene {
       else { icon(220, ctrlY, '🖱️'); explain = 'Haz clic sobre ' + what + '. Si no está, no hagas clic'; }
     }
     txt(330, ctrlY, explain, 22, '#ffffff', { align: 'left', wordWrap: { width: 560 }, lineSpacing: 6 }).setOrigin(0, 0.5);
+    // leer en voz alta (solo en los de 5 a 7 años se lee al aparecer)
+    addSpeakButton(this, W - 130, 58, () => title + '. ' + explain + (this.twist ? '. ' + this.twist.name + ': ' + this.twist.desc : ''), D + 1, it);
     // lo nuevo de este mundo
     if (this.twist) txt(W / 2, 410, '✨ ' + this.twist.name + ': ' + this.twist.desc, 19, '#fde047', { wordWrap: { width: 800 } });
 
@@ -228,6 +229,7 @@ class GameScene extends Phaser.Scene {
     const go = () => {
       if (gone) return; gone = true;
       if (this.demoTimer) { this.demoTimer.remove(); this.demoTimer = null; }
+      stopSpeaking();
       it.forEach(o => o.destroy());
       const ya = this.add.text(W / 2, H / 2, '¡Ya!', { font: 'bold 72px Arial', color: hexColor(th.accent) }).setOrigin(0.5).setDepth(D);
       this.tweens.add({ targets: ya, scale: 1.4, alpha: 0, duration: 700, onComplete: () => ya.destroy() });
@@ -500,6 +502,7 @@ class GameScene extends Phaser.Scene {
       phase: this.boss ? this.phase + 1 : '',
       minigame: this.mg,
       stim_set: this.mode === 'prueba' ? 'mixto' : this.chars ? 'personajes' : 'senales',
+      pace: this.params.pace || 1,
       twist: this.twist ? this.twist.name : '',
       trial: trial,
       stimulus_type: type,

@@ -115,6 +115,7 @@ function csvCols() {
     ['minijuego', r => (MG[r.minigame] ? MG[r.minigame].label : r.minigame)],
     ['estimulos', r => r.stim_set],   // senales (lo de siempre) o personajes (el villano entre los amigos)
     ['giro_del_mundo', r => r.twist],   // lo que cambia en ese mundo (gravedad cero, corriente...); vacío = sin giro
+    ['ritmo', r => r.pace],             // 1 = normal; 1.2 a 1.5 = más despacio para niños de 5 a 7 años
     ['ensayo', r => r.trial],
     ['tipo_estimulo', r => CSV_TEXT.stimulus_type[r.stimulus_type] || r.stimulus_type],
     ['que_aparecio', r => stimulusLabel(r.theme, r.stimulus_key)],
@@ -143,6 +144,7 @@ function memoryCsvCols() {
     ['nivel', r => r.level],
     ['capitulo', r => r.chapter],
     ['estimulos', r => r.stim_set],
+    ['ritmo', r => r.pace],
     ['fase', trial(r => (r.direction === 'fwd' ? 'adelante' : 'al_reves'))],
     ['ensayo', r => r.trial],
     ['largo_secuencia', r => r.length],

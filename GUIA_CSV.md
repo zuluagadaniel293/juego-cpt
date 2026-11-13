@@ -51,6 +51,7 @@ Cada fila es **un evento**:
 |---|---|
 | `tipo_evento` | estimulo / distractor_sonido / distractor_visual |
 | `modo` | Historia, Desafío o Modo Examen |
+| `ritmo` | 1 = ritmo normal. 1.2 (7 años), 1.35 (6 años) o 1.5 (5 años o menos) = más despacio: estímulos y pausas más largos, menos distractores y menos trampas. Sale de la edad puesta al registrarse. El Modo Examen va siempre a ritmo 1 |
 | `mundo` | Superhéroes, Dragones y fantasía, Reino mágico |
 | `nivel` | Nivel de dificultad (1 = más fácil) |
 | `capitulo` | Capítulo de la Historia (1 a 5) |

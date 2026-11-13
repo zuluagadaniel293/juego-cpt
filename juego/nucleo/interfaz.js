@@ -21,6 +21,37 @@ function drawCard(scene, x, y, w, h, fill, fillAlpha, stroke) {
   return g;
 }
 
+// ---------- Leer en voz alta (para los que todavía no leen bien) ----------
+// Usa la voz del navegador (no gasta créditos de ElevenLabs y lee cualquier texto, con los nombres de cada mundo).
+function speakText(text) {
+  try {
+    const s = window.speechSynthesis;
+    if (!s || !text) return;
+    s.cancel();
+    const u = new SpeechSynthesisUtterance(String(text).replace(/\s+/g, ' ').replace(/([!?])\./g, '$1').replace(/[✔✘★👆]/g, ''));
+    const vs = s.getVoices();
+    const v = vs.find(x => /^es[-_](CO|MX|US|419)/i.test(x.lang)) || vs.find(x => /^es/i.test(x.lang));
+    if (v) u.voice = v;
+    u.lang = v ? v.lang : 'es-CO';
+    u.rate = 0.95;
+    s.speak(u);
+  } catch (e) { /* sin voz disponible */ }
+}
+function stopSpeaking() { try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* nada */ } }
+// Niños de 5 a 7 años: las instrucciones se leen solas al aparecer
+const youngPlayer = () => { const p = currentPlayer(); const a = p ? parseInt(p.age, 10) : NaN; return a > 0 && a <= 7; };
+// Botón "🔊 Escuchar" que lee las instrucciones (getText devuelve el texto); list = objetos a borrar con la pantalla
+function addSpeakButton(scene, x, y, getText, depth, list) {
+  if (!window.speechSynthesis) return null;
+  const b = scene.add.text(x, y, '🔊 Escuchar', { font: 'bold 18px Arial', color: '#0f172a', backgroundColor: '#fde047',
+    padding: { x: 10, y: 6 } }).setOrigin(0.5).setDepth(depth || 0).setInteractive({ useHandCursor: true });
+  b.on('pointerdown', () => speakText(getText()));
+  if (list) list.push(b);
+  if (youngPlayer()) scene.time.delayedCall(500, () => { if (b.active) speakText(getText()); });
+  scene.events.once('shutdown', stopSpeaking);
+  return b;
+}
+
 function backLink(scene, label, cb) {
   scene.add.text(30, 26, '‹ ' + label, { font: 'bold 20px Arial', color: '#ffffff', stroke: '#0f172a', strokeThickness: 5 })
     .setInteractive({ useHandCursor: true }).on('pointerdown', cb);

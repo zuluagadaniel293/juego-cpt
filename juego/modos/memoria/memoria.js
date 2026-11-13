@@ -23,7 +23,7 @@ class MemoryScene extends Phaser.Scene {
       : this.mode === 'desafio' ? data.level : null;
     this.params = this.adaptive
       ? { showMs: CONFIG.MEMORY_SHOW_MS, gapMs: CONFIG.MEMORY_GAP_MS, flashes: 0, audio: false, visual: false }
-      : memoryParams(this.level);
+      : forAge(memoryParams(this.level));   // más despacio para los de 5 a 7 años
     // En la Historia, Memoria va solo hacia adelante (1, 2, 3): el "al revés" queda para el Desafío
     if (this.mode === 'historia') this.params = Object.assign({}, this.params, { fwdTrials: 6, bwdTrials: 0 });
     // lo usan los distractores del entorno (prestados del motor del juego)
@@ -113,9 +113,9 @@ class MemoryScene extends Phaser.Scene {
     const panel = add(this.add.graphics());
     panel.fillStyle(0x0f172a, 0.9); panel.fillRoundedRect(80, 50, W - 160, H - 100, 26);
     this.tiles.forEach(t => t.setVisible(false));
-    add(this.add.text(W / 2, 100, dir === 'fwd' ? (this.chars ? (this.boss ? '¡Ahora sigue el rastro de ' : '¡Sigue el camino de ') + th.villain + '!'
-      : this.boss ? (th.rescueTitle || '¡Rescata ' + th.targetObj + '!') + ' Sigue su camino' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!',
-      { font: 'bold 34px Arial', color: hexColor(th.accent) }).setOrigin(0.5));
+    const title = dir === 'fwd' ? (this.chars ? (this.boss ? '¡Ahora sigue el rastro de ' : '¡Sigue el camino de ') + th.villain + '!'
+      : this.boss ? (th.rescueTitle || '¡Rescata ' + th.targetObj + '!') + ' Sigue su camino' : 'Memoria: ¡sigue el camino!') : '¡Ahora al revés!';
+    add(this.add.text(W / 2, 100, title, { font: 'bold 34px Arial', color: hexColor(th.accent) }).setOrigin(0.5));
     const tex = TEX[this.themeKey];
     if (flashes) {   // el objetivo (sí) y el distractor de las casillas (no)
       add(this.add.circle(W / 2 - 110, 200, 62, 0x22c55e, 0.18).setStrokeStyle(4, 0x22c55e));
@@ -128,15 +128,18 @@ class MemoryScene extends Phaser.Scene {
       add(fit(this.add.image(W / 2, 200, this.keys.target), 110));
     }
     const tapWord = touch ? 'tócalas' : 'haz clic en ellas';
-    add(this.add.text(W / 2, 345, dir === 'fwd'
+    const how = dir === 'fwd'
       ? 'Mira en qué casillas aparece ' + this.keys.label + '.\nLuego ' + tapWord + ' en el mismo orden.'
-      : 'Ahora ' + tapWord + ' del último al primero.\nEjemplo: si apareció 1 → 2 → 3, tocas 3 → 2 → 1.',
-      { font: '24px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 10 }).setOrigin(0.5));
+      : 'Ahora ' + tapWord + ' del último al primero.\nEjemplo: si apareció 1 → 2 → 3, tocas 3 → 2 → 1.';
+    add(this.add.text(W / 2, 345, how, { font: '24px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 10 }).setOrigin(0.5));
+    // leer en voz alta (solo en los de 5 a 7 años se lee al aparecer)
+    addSpeakButton(this, W - 170, 82, () => title + '. ' + how.replace(/→/g, ',') + (flashes ? '. Recuerda este, e ignora los demás.' : ''), D + 1, it);
     const btn = add(this.add.rectangle(W / 2, 440, 260, 62, th.accent).setInteractive({ useHandCursor: true }));
     add(this.add.text(W / 2, 440, '¡Empezar!', { font: 'bold 26px Arial', color: '#0f172a' }).setOrigin(0.5));
     let gone = false;
     const go = () => {
       if (gone) return; gone = true;
+      stopSpeaking();
       it.forEach(o => o.destroy());
       this.tiles.forEach(t => t.setVisible(true));
       this.startPhase(dir);
@@ -218,7 +221,7 @@ class MemoryScene extends Phaser.Scene {
     this.log.push({
       event_type: 'memory_trial', mode: this.mode, theme: this.adaptive ? 'mixto' : this.themeKey, level: this.level || '',
       chapter: this.chapter === null ? '' : this.chapter + 1, minigame: 'memory',
-      stim_set: this.chars ? 'personajes' : 'senales', direction: this.dir, trial: this.trial, length: this.len, flashes: this.flashCount,
+      stim_set: this.chars ? 'personajes' : 'senales', pace: this.params.pace || 1, direction: this.dir, trial: this.trial, length: this.len, flashes: this.flashCount,
       shown: num(this.seq), expected: num(expected), answered: num(this.answer.map(a => a.i)),
       correct: ok, outcome: ok ? 'memory_ok' : 'memory_fail', phase: this.boss ? this.phase + 1 : '', first_tap_ms: Math.round(this.answer[0].ms), total_ms: Math.round(this.answer[this.answer.length - 1].ms),
       onset_ms: Math.round(this.elapsed())

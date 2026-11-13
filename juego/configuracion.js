@@ -97,6 +97,34 @@ function challengeParams(level, minigame) {
   };
 }
 
+// Niños pequeños (5 a 7 años): el mismo juego, pero más despacio y con menos distracciones, según la edad que se
+// puso al registrarse (sin edad, o de 8 en adelante, va normal). No se aplica al Modo Examen, que es igual para todos.
+// El factor queda en el CSV (columna ritmo: 1 = normal, 1.5 = 50 % más lento) para comparar por edades.
+function ageFactor() {
+  const p = typeof currentPlayer === 'function' ? currentPlayer() : null;
+  const a = p ? parseInt(p.age, 10) : NaN;
+  if (!a || a >= 8) return 1;
+  return a <= 5 ? 1.5 : a === 6 ? 1.35 : 1.2;
+}
+function forAge(P) {
+  const f = ageFactor();
+  if (f === 1) return Object.assign({}, P, { pace: 1 });
+  const q = Object.assign({}, P, { pace: f });
+  // más tiempo para ver y decidir
+  ['stimMs', 'isiMin', 'isiMax', 'travelMs', 'dodgeTravelMs', 'displayMs', 'spawnMin', 'spawnMax', 'showMs', 'gapMs']
+    .forEach(k => { if (typeof q[k] === 'number') q[k] = Math.round(q[k] * f); });
+  // menos distracciones y menos trampas
+  ['audioEvery', 'visualEvery'].forEach(k => { if (Array.isArray(q[k])) q[k] = q[k].map(v => Math.round(v * f)); });
+  q.visualCount = 1;
+  q.similarProb = (q.similarProb || 0) * 0.5;
+  q.extraProb = (q.extraProb || 0) * 0.5;
+  if (q.revealY) q.revealY = Math.round(q.revealY * 0.6);           // la línea donde se descubre queda más arriba
+  if (q.setSize) q.setSize = Math.max(3, q.setSize - 1);            // Encuentra: un objeto menos
+  if (q.flashes) q.flashes = Math.max(0, q.flashes - 1);            // Memoria: un distractor menos
+  q.similarFlash = false;
+  return q;
+}
+
 // Memoria en Historia y Desafío: la dificultad sube con el nivel, igual que en los otros juegos.
 // Nivel 1: caminos cortos, lentos y sin distractores. Luego: más rápido, al revés, sonidos y cosas que cruzan,
 // y objetos distractores que se encienden en las casillas (hay que recordar solo el objetivo).
