@@ -513,5 +513,830 @@
     "texto": "[menacing] ¡Cerraré la torre con llave!",
     "voz": "callum",
     "firma": "cd640891c4"
+  },
+  "voces/espacio/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Nova. ¡Ayúdame a llevar a Bip y sus hermanitos a la base!",
+    "voz": "matilda",
+    "firma": "2bd80a4140"
+  },
+  "voces/espacio/eleven/classic.mp3": {
+    "texto": "¡Toca solo a los aliens verdes para subirlos a la nave!",
+    "voz": "matilda",
+    "firma": "2572c600d2"
+  },
+  "voces/espacio/eleven/catch.mp3": {
+    "texto": "¡Sube a la nave de rescate solo a los aliens verdes!",
+    "voz": "matilda",
+    "firma": "5993044ff3"
+  },
+  "voces/espacio/eleven/race.mp3": {
+    "texto": "¡Zuri persigue al Capitán Meteoro! Alcanza solo a los aliens verdes.",
+    "voz": "matilda",
+    "firma": "8deb1c69cc"
+  },
+  "voces/espacio/eleven/find.mp3": {
+    "texto": "¡Busca al alien verde! Si no está, no toques nada.",
+    "voz": "matilda",
+    "firma": "192a896a46"
+  },
+  "voces/espacio/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde salta Bip y repite su camino!",
+    "voz": "matilda",
+    "firma": "6db472e862"
+  },
+  "voces/espacio/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todos los aliens... ¡menos a los verdes!",
+    "voz": "matilda",
+    "firma": "2784ab85f6"
+  },
+  "voces/espacio/eleven/ax.mp3": {
+    "texto": "Toca a Bip solo si justo antes salió el alien azul.",
+    "voz": "matilda",
+    "firma": "8d6e5209bf"
+  },
+  "voces/espacio/eleven/dodge.mp3": {
+    "texto": "¡Caen meteoritos! Ponte debajo del que se detenga.",
+    "voz": "matilda",
+    "firma": "60d9024f4a"
+  },
+  "voces/espacio/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Zuri y repítelo de memoria!",
+    "voz": "matilda",
+    "firma": "9b1c331bf5"
+  },
+  "voces/espacio/eleven/cast_classic.mp3": {
+    "texto": "¡El Capitán Meteoro se mezcla con la tripulación! Tócalo solo a él.",
+    "voz": "matilda",
+    "firma": "13e40a7eb0"
+  },
+  "voces/espacio/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa al Capitán Meteoro con la red y deja pasar a los demás!",
+    "voz": "matilda",
+    "firma": "c7e06afd78"
+  },
+  "voces/espacio/eleven/cast_race.mp3": {
+    "texto": "¡El Capitán Meteoro corre por la nave! Alcánzalo solo a él.",
+    "voz": "matilda",
+    "firma": "9e20cfff05"
+  },
+  "voces/espacio/eleven/cast_find.mp3": {
+    "texto": "¡Busca al Capitán Meteoro! Si no está, no toques nada.",
+    "voz": "matilda",
+    "firma": "37743c14aa"
+  },
+  "voces/espacio/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta el Capitán Meteoro y repite su camino!",
+    "voz": "matilda",
+    "firma": "639531a483"
+  },
+  "voces/espacio/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a la tripulación... ¡menos al Capitán Meteoro!",
+    "voz": "matilda",
+    "firma": "fdc2b117cf"
+  },
+  "voces/espacio/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca al Capitán Meteoro solo si justo antes salió Robi.",
+    "voz": "matilda",
+    "firma": "f8752ddfcf"
+  },
+  "voces/espacio/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca al Capitán Meteoro solo si justo antes salió Zuri.",
+    "voz": "matilda",
+    "firma": "34a14c4f6a"
+  },
+  "voces/espacio/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca al Capitán Meteoro solo si justo antes salió Cometa.",
+    "voz": "matilda",
+    "firma": "05eb9c9b18"
+  },
+  "voces/espacio/eleven/boss.mp3": {
+    "texto": "¡Los últimos aliens están en la nave pirata! Rescátalos y atrapa al Capitán Meteoro.",
+    "voz": "matilda",
+    "firma": "a49880e8ea"
+  },
+  "voces/espacio/eleven/end.mp3": {
+    "texto": "¡Bip y sus hermanitos llegaron a la base! ¡Toda la galaxia te lo agradece!",
+    "voz": "matilda",
+    "firma": "a929d1a22c"
+  },
+  "voces/espacio/eleven/comp_1.mp3": {
+    "texto": "¡Bip, bup! Soy Robi, tu copiloto. ¡Encendamos los motores!",
+    "voz": "river",
+    "firma": "281a3a390d"
+  },
+  "voces/espacio/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Ja, ja, ja! ¡Bip y sus hermanitos nunca llegarán a la base!",
+    "voz": "charlie",
+    "firma": "d2a83b4842"
+  },
+  "voces/espacio/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Tu cohete es más lento que una tortuga!",
+    "voz": "charlie",
+    "firma": "c92782bcf4"
+  },
+  "voces/espacio/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Lanzaré asteroides contra tu base!",
+    "voz": "charlie",
+    "firma": "bf524211cc"
+  },
+  "voces/espacio/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Congelaré el planeta de cristal!",
+    "voz": "charlie",
+    "firma": "766cf95c82"
+  },
+  "voces/oceano/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Coral. ¡Ayúdame a proteger a Perla del Pulpo Tinta!",
+    "voz": "jessica",
+    "firma": "dcc1ad2bb3"
+  },
+  "voces/oceano/eleven/classic.mp3": {
+    "texto": "¡Toca solo a Perla para cubrirla con una burbuja!",
+    "voz": "jessica",
+    "firma": "c313f141a0"
+  },
+  "voces/oceano/eleven/catch.mp3": {
+    "texto": "¡Guarda en la concha solo a Perla!",
+    "voz": "jessica",
+    "firma": "b4f49622d2"
+  },
+  "voces/oceano/eleven/race.mp3": {
+    "texto": "¡Pinzas persigue al Pulpo Tinta! Alcanza solo a Perla.",
+    "voz": "jessica",
+    "firma": "d8128e9168"
+  },
+  "voces/oceano/eleven/find.mp3": {
+    "texto": "¡Busca a Perla! Si no está, no toques nada.",
+    "voz": "jessica",
+    "firma": "b682ec1451"
+  },
+  "voces/oceano/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde nada Perla y repite su camino!",
+    "voz": "jessica",
+    "firma": "86f2ab7c43"
+  },
+  "voces/oceano/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todos los caballitos... ¡menos a Perla!",
+    "voz": "jessica",
+    "firma": "c5a413b86e"
+  },
+  "voces/oceano/eleven/ax.mp3": {
+    "texto": "Toca a Perla solo si justo antes salió el caballito azul.",
+    "voz": "jessica",
+    "firma": "46db4fc9e4"
+  },
+  "voces/oceano/eleven/dodge.mp3": {
+    "texto": "¡El Pulpo Tinta lanza tinta! Nada a donde se detenga una bola.",
+    "voz": "jessica",
+    "firma": "ed5228d33d"
+  },
+  "voces/oceano/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Pinzas y repítelo de memoria!",
+    "voz": "jessica",
+    "firma": "327bb1f81e"
+  },
+  "voces/oceano/eleven/cast_classic.mp3": {
+    "texto": "¡El Pulpo Tinta se mezcla con los animales del mar! Tócalo solo a él.",
+    "voz": "jessica",
+    "firma": "3d745a97d1"
+  },
+  "voces/oceano/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa al Pulpo Tinta con la red y deja pasar a los demás!",
+    "voz": "jessica",
+    "firma": "fe83ea0f32"
+  },
+  "voces/oceano/eleven/cast_race.mp3": {
+    "texto": "¡El Pulpo Tinta nada entre mis amigos! Alcánzalo solo a él.",
+    "voz": "jessica",
+    "firma": "9abefffa57"
+  },
+  "voces/oceano/eleven/cast_find.mp3": {
+    "texto": "¡Busca al Pulpo Tinta! Si no está, no toques nada.",
+    "voz": "jessica",
+    "firma": "60e5bc2fcd"
+  },
+  "voces/oceano/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde pasa el Pulpo Tinta y repite su camino!",
+    "voz": "jessica",
+    "firma": "65ccdd39c5"
+  },
+  "voces/oceano/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a los animales del mar... ¡menos al Pulpo Tinta!",
+    "voz": "jessica",
+    "firma": "ace2695279"
+  },
+  "voces/oceano/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca al Pulpo Tinta solo si justo antes salió Delfi.",
+    "voz": "jessica",
+    "firma": "bd12c94827"
+  },
+  "voces/oceano/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca al Pulpo Tinta solo si justo antes salió Pinzas.",
+    "voz": "jessica",
+    "firma": "f5e7371ea8"
+  },
+  "voces/oceano/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca al Pulpo Tinta solo si justo antes salió Pulpi.",
+    "voz": "jessica",
+    "firma": "b3e3aff699"
+  },
+  "voces/oceano/eleven/boss.mp3": {
+    "texto": "¡Perla está en la fosa oscura! Protégela y atrapa al Pulpo Tinta.",
+    "voz": "jessica",
+    "firma": "b912e52352"
+  },
+  "voces/oceano/eleven/end.mp3": {
+    "texto": "¡Atrapamos al Pulpo Tinta y Perla está a salvo! ¡Gracias!",
+    "voz": "jessica",
+    "firma": "10e91a7b6a"
+  },
+  "voces/oceano/eleven/comp_1.mp3": {
+    "texto": "¡Hola! Soy Delfi. ¡Nada conmigo y protejamos a Perla!",
+    "voz": "eric",
+    "firma": "e5012976b5"
+  },
+  "voces/oceano/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Je, je, je! ¡Con mi tinta atraparé a Perla!",
+    "voz": "roger",
+    "firma": "e35088ef09"
+  },
+  "voces/oceano/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Tengo ocho brazos y tú solo dos!",
+    "voz": "roger",
+    "firma": "44bc424c50"
+  },
+  "voces/oceano/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Tus burbujas no me asustan!",
+    "voz": "roger",
+    "firma": "aa9031c86d"
+  },
+  "voces/oceano/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Hundiré otro barco con mi tinta!",
+    "voz": "roger",
+    "firma": "f51493e58c"
+  },
+  "voces/oceano/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Enredaré a todos en las algas!",
+    "voz": "roger",
+    "firma": "eb2c881ec3"
+  },
+  "voces/dinosaurios/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Tito. ¡Ayúdame a darle hojas doradas a Dino!",
+    "voz": "will",
+    "firma": "a935e5f0da"
+  },
+  "voces/dinosaurios/eleven/classic.mp3": {
+    "texto": "¡Toca solo las hojas doradas para dárselas a Dino!",
+    "voz": "will",
+    "firma": "37a1f26af9"
+  },
+  "voces/dinosaurios/eleven/catch.mp3": {
+    "texto": "¡Mueve a Dino para que atrape solo las hojas doradas!",
+    "voz": "will",
+    "firma": "b4ab9d2460"
+  },
+  "voces/dinosaurios/eleven/race.mp3": {
+    "texto": "¡Pinchos persigue al ladrón! Alcanza solo las hojas doradas.",
+    "voz": "will",
+    "firma": "da700140fc"
+  },
+  "voces/dinosaurios/eleven/find.mp3": {
+    "texto": "¡Busca la hoja dorada! Si no está, no toques nada.",
+    "voz": "will",
+    "firma": "13e301212e"
+  },
+  "voces/dinosaurios/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde vuela la hoja dorada y repite su camino!",
+    "voz": "will",
+    "firma": "e17b2663f8"
+  },
+  "voces/dinosaurios/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca todas las hojas... ¡menos las doradas!",
+    "voz": "will",
+    "firma": "fcda82f69c"
+  },
+  "voces/dinosaurios/eleven/ax.mp3": {
+    "texto": "Toca la hoja dorada solo si justo antes salió el helecho verde.",
+    "voz": "will",
+    "firma": "5b9d35a406"
+  },
+  "voces/dinosaurios/eleven/dodge.mp3": {
+    "texto": "¡El ladrón lanza bolas de barro! Ponte donde se detenga una.",
+    "voz": "will",
+    "firma": "c36bf3b76a"
+  },
+  "voces/dinosaurios/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Pinchos y repítelo de memoria!",
+    "voz": "will",
+    "firma": "2638034131"
+  },
+  "voces/dinosaurios/eleven/cast_classic.mp3": {
+    "texto": "¡El Pterodáctilo Ladrón se mezcla con los dinosaurios! Tócalo solo a él.",
+    "voz": "will",
+    "firma": "dc0ce5263a"
+  },
+  "voces/dinosaurios/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa al Pterodáctilo Ladrón con la red y deja pasar a los demás!",
+    "voz": "will",
+    "firma": "dd1f8a8233"
+  },
+  "voces/dinosaurios/eleven/cast_race.mp3": {
+    "texto": "¡El Pterodáctilo Ladrón huye con las hojas! Alcánzalo solo a él.",
+    "voz": "will",
+    "firma": "3b93ed465e"
+  },
+  "voces/dinosaurios/eleven/cast_find.mp3": {
+    "texto": "¡Busca al Pterodáctilo Ladrón! Si no está, no toques nada.",
+    "voz": "will",
+    "firma": "d07fcba1dc"
+  },
+  "voces/dinosaurios/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta el Pterodáctilo Ladrón y repite su camino!",
+    "voz": "will",
+    "firma": "b84d1c08fc"
+  },
+  "voces/dinosaurios/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a los dinosaurios... ¡menos al Pterodáctilo Ladrón!",
+    "voz": "will",
+    "firma": "2e52f83fb6"
+  },
+  "voces/dinosaurios/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca al Pterodáctilo Ladrón solo si justo antes salió Cuello Largo.",
+    "voz": "will",
+    "firma": "c8a6caff97"
+  },
+  "voces/dinosaurios/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca al Pterodáctilo Ladrón solo si justo antes salió Pinchos.",
+    "voz": "will",
+    "firma": "39afb670a9"
+  },
+  "voces/dinosaurios/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca al Pterodáctilo Ladrón solo si justo antes salió Plumi.",
+    "voz": "will",
+    "firma": "2385f1ce4b"
+  },
+  "voces/dinosaurios/eleven/boss.mp3": {
+    "texto": "¡Las últimas hojas están en su nido! Recupéralas y atrapa al ladrón.",
+    "voz": "will",
+    "firma": "77ba94934c"
+  },
+  "voces/dinosaurios/eleven/end.mp3": {
+    "texto": "¡Atrapamos al ladrón y Dino ya está fuerte otra vez! ¡Gracias!",
+    "voz": "will",
+    "firma": "1507c4c2dc"
+  },
+  "voces/dinosaurios/eleven/comp_1.mp3": {
+    "texto": "¡Hola! Soy Cuello Largo. ¡Busquemos hojas doradas para Dino!",
+    "voz": "bill",
+    "firma": "38d64b742e"
+  },
+  "voces/dinosaurios/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Ja, ja, ja! ¡Todas las hojas doradas son mías!",
+    "voz": "callum",
+    "firma": "7c94c5e4a2"
+  },
+  "voces/dinosaurios/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Nunca me alcanzarás, explorador!",
+    "voz": "callum",
+    "firma": "5a85c6b61b"
+  },
+  "voces/dinosaurios/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Tu lupa no te sirve contra mí!",
+    "voz": "callum",
+    "firma": "f37c92f2b7"
+  },
+  "voces/dinosaurios/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Me llevaré todas las hojas!",
+    "voz": "callum",
+    "firma": "843fb38c6b"
+  },
+  "voces/dinosaurios/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Haré que el río se desborde!",
+    "voz": "callum",
+    "firma": "1464505882"
+  },
+  "voces/dinosaurios/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Despertaré al volcán!",
+    "voz": "callum",
+    "firma": "90ef201386"
+  },
+  "voces/robots/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Chip. ¡Ayúdame a recargar a Botón!",
+    "voz": "liam",
+    "firma": "7dd01a8632"
+  },
+  "voces/robots/eleven/classic.mp3": {
+    "texto": "¡Toca solo a Botón para darle energía!",
+    "voz": "liam",
+    "firma": "d287ff583d"
+  },
+  "voces/robots/eleven/catch.mp3": {
+    "texto": "¡Recibe con la estación de carga solo a Botón!",
+    "voz": "liam",
+    "firma": "522774e250"
+  },
+  "voces/robots/eleven/race.mp3": {
+    "texto": "¡Zumbi persigue a Glitch! Alcanza solo a Botón.",
+    "voz": "liam",
+    "firma": "941cbd78fe"
+  },
+  "voces/robots/eleven/find.mp3": {
+    "texto": "¡Busca a Botón! Si no está, no toques nada.",
+    "voz": "liam",
+    "firma": "fb3aa586b0"
+  },
+  "voces/robots/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde salta Botón y repite su camino!",
+    "voz": "liam",
+    "firma": "65e0ddce29"
+  },
+  "voces/robots/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todos los robots... ¡menos a Botón!",
+    "voz": "liam",
+    "firma": "5164f1188b"
+  },
+  "voces/robots/eleven/ax.mp3": {
+    "texto": "Toca a Botón solo si justo antes salió el robotito rojo.",
+    "voz": "liam",
+    "firma": "e9f9fe5c9b"
+  },
+  "voces/robots/eleven/dodge.mp3": {
+    "texto": "¡Glitch lanza bloques de error! Ponte donde se detenga uno.",
+    "voz": "liam",
+    "firma": "35f87f0036"
+  },
+  "voces/robots/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Zumbi y repítelo de memoria!",
+    "voz": "liam",
+    "firma": "088d38bf8e"
+  },
+  "voces/robots/eleven/cast_classic.mp3": {
+    "texto": "¡Glitch se mezcla con mis robots! Tócalo solo a él.",
+    "voz": "liam",
+    "firma": "24828a1f32"
+  },
+  "voces/robots/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa a Glitch con la red y deja pasar a mis robots!",
+    "voz": "liam",
+    "firma": "8d62114587"
+  },
+  "voces/robots/eleven/cast_race.mp3": {
+    "texto": "¡Glitch corre entre mis robots! Alcánzalo solo a él.",
+    "voz": "liam",
+    "firma": "0586d5fbbc"
+  },
+  "voces/robots/eleven/cast_find.mp3": {
+    "texto": "¡Busca a Glitch! Si no está, no toques nada.",
+    "voz": "liam",
+    "firma": "f40c7f6d44"
+  },
+  "voces/robots/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta Glitch y repite su camino!",
+    "voz": "liam",
+    "firma": "4224698494"
+  },
+  "voces/robots/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a mis robots... ¡menos a Glitch!",
+    "voz": "liam",
+    "firma": "513067f28f"
+  },
+  "voces/robots/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca a Glitch solo si justo antes salió Cable.",
+    "voz": "liam",
+    "firma": "a6c50db2bb"
+  },
+  "voces/robots/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca a Glitch solo si justo antes salió Zumbi.",
+    "voz": "liam",
+    "firma": "628e7ce8d5"
+  },
+  "voces/robots/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca a Glitch solo si justo antes salió Antivirus.",
+    "voz": "liam",
+    "firma": "4aa070e9cd"
+  },
+  "voces/robots/eleven/boss.mp3": {
+    "texto": "¡Glitch está en el centro de control! Recarga a Botón y atrapa a Glitch.",
+    "voz": "liam",
+    "firma": "14f818b68b"
+  },
+  "voces/robots/eleven/end.mp3": {
+    "texto": "¡Atrapamos a Glitch y Botón brilla otra vez! ¡Gracias!",
+    "voz": "liam",
+    "firma": "c32506e7a4"
+  },
+  "voces/robots/eleven/comp_1.mp3": {
+    "texto": "¡Guau, bip! Soy Cable. ¡Mi nariz encontrará a Botón!",
+    "voz": "chris",
+    "firma": "7d320222c2"
+  },
+  "voces/robots/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Ji, ji, ji! ¡Me comí la energía de Botón!",
+    "voz": "charlie",
+    "firma": "fe4ac619fd"
+  },
+  "voces/robots/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Error, error! ¡No me encuentras!",
+    "voz": "charlie",
+    "firma": "348fb7222b"
+  },
+  "voces/robots/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Soy más rápido que tu internet!",
+    "voz": "charlie",
+    "firma": "bebc03ad64"
+  },
+  "voces/robots/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Desconfiguraré todos tus robots!",
+    "voz": "charlie",
+    "firma": "dbf781e24d"
+  },
+  "voces/robots/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Romperé todas las máquinas!",
+    "voz": "charlie",
+    "firma": "d2d1c99ad9"
+  },
+  "voces/robots/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Apagaré todas las luces!",
+    "voz": "charlie",
+    "firma": "4dd452bfbf"
+  },
+  "voces/selva/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Kiara. ¡Ayúdame a devolverle los colores a Arcoíris!",
+    "voz": "laura",
+    "firma": "c7227c1962"
+  },
+  "voces/selva/eleven/classic.mp3": {
+    "texto": "¡Toca solo a Arcoíris para devolverle un color!",
+    "voz": "laura",
+    "firma": "ef19b26f8e"
+  },
+  "voces/selva/eleven/catch.mp3": {
+    "texto": "¡Recibe con el nido solo a Arcoíris!",
+    "voz": "laura",
+    "firma": "12fc84d343"
+  },
+  "voces/selva/eleven/race.mp3": {
+    "texto": "¡Lento persigue a la serpiente! Alcanza solo a Arcoíris.",
+    "voz": "laura",
+    "firma": "e3c30b23a3"
+  },
+  "voces/selva/eleven/find.mp3": {
+    "texto": "¡Busca a Arcoíris! Si no está, no toques nada.",
+    "voz": "laura",
+    "firma": "50c5004437"
+  },
+  "voces/selva/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde vuela Arcoíris y repite su camino!",
+    "voz": "laura",
+    "firma": "63a88487b4"
+  },
+  "voces/selva/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todos los pájaros... ¡menos a Arcoíris!",
+    "voz": "laura",
+    "firma": "03fea0dcb7"
+  },
+  "voces/selva/eleven/ax.mp3": {
+    "texto": "Toca a Arcoíris solo si justo antes salió el loro verde.",
+    "voz": "laura",
+    "firma": "319fbce9af"
+  },
+  "voces/selva/eleven/dodge.mp3": {
+    "texto": "¡La serpiente lanza espirales! Ponte donde se detenga una.",
+    "voz": "laura",
+    "firma": "242ab0aabf"
+  },
+  "voces/selva/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Lento y repítelo de memoria!",
+    "voz": "laura",
+    "firma": "ef525d505c"
+  },
+  "voces/selva/eleven/cast_classic.mp3": {
+    "texto": "¡La Serpiente Silbona se mezcla con los animales! Tócala solo a ella.",
+    "voz": "laura",
+    "firma": "6e1677cb35"
+  },
+  "voces/selva/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa a la Serpiente Silbona con la red y deja pasar a los demás!",
+    "voz": "laura",
+    "firma": "de6e7396df"
+  },
+  "voces/selva/eleven/cast_race.mp3": {
+    "texto": "¡La Serpiente Silbona huye entre los animales! Alcánzala solo a ella.",
+    "voz": "laura",
+    "firma": "75b7311d75"
+  },
+  "voces/selva/eleven/cast_find.mp3": {
+    "texto": "¡Busca a la Serpiente Silbona! Si no está, no toques nada.",
+    "voz": "laura",
+    "firma": "9ddf6b66c8"
+  },
+  "voces/selva/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde pasa la Serpiente Silbona y repite su camino!",
+    "voz": "laura",
+    "firma": "07ae058989"
+  },
+  "voces/selva/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a los animales... ¡menos a la Serpiente Silbona!",
+    "voz": "laura",
+    "firma": "2ebc4011a2"
+  },
+  "voces/selva/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca a la Serpiente Silbona solo si justo antes salió Jaguarcito.",
+    "voz": "laura",
+    "firma": "823c6eac0f"
+  },
+  "voces/selva/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca a la Serpiente Silbona solo si justo antes salió Lento.",
+    "voz": "laura",
+    "firma": "cb8603d98c"
+  },
+  "voces/selva/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca a la Serpiente Silbona solo si justo antes salió Silvia.",
+    "voz": "laura",
+    "firma": "0c98894af0"
+  },
+  "voces/selva/eleven/boss.mp3": {
+    "texto": "¡Los últimos colores están en su cueva! Recupéralos y atrapa a la serpiente.",
+    "voz": "laura",
+    "firma": "dff5cb757f"
+  },
+  "voces/selva/eleven/end.mp3": {
+    "texto": "¡Arcoíris recuperó sus colores y atrapamos a la serpiente! ¡Gracias!",
+    "voz": "laura",
+    "firma": "ef35f5cbf3"
+  },
+  "voces/selva/eleven/comp_1.mp3": {
+    "texto": "¡Grrr, hola! Soy Jaguarcito. ¡Vamos a ayudar a Arcoíris!",
+    "voz": "river",
+    "firma": "96c374284c"
+  },
+  "voces/selva/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Sssí! ¡Los colores de Arcoíris son míosss!",
+    "voz": "sarah",
+    "firma": "c2b305f0bd"
+  },
+  "voces/selva/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Ssssigue buscando, exploradora!",
+    "voz": "sarah",
+    "firma": "57c680eff9"
+  },
+  "voces/selva/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Mira mis ojos... te vas a marear!",
+    "voz": "sarah",
+    "firma": "7d18c58b6d"
+  },
+  "voces/selva/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Hipnotizaré a todos los animales!",
+    "voz": "sarah",
+    "firma": "585af45e38"
+  },
+  "voces/selva/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Me llevaré sus colores a mi cueva!",
+    "voz": "sarah",
+    "firma": "1d21e06b25"
+  },
+  "voces/selva/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Taparé la cascada con lianas!",
+    "voz": "sarah",
+    "firma": "8ab5815e50"
+  },
+  "voces/dulces/eleven/intro.mp3": {
+    "texto": "¡Hola! Soy Gomi. ¡Ayúdame a encender a Chispita!",
+    "voz": "charlie",
+    "firma": "2e03ad242c"
+  },
+  "voces/dulces/eleven/classic.mp3": {
+    "texto": "¡Toca solo a Chispita para darle brillo!",
+    "voz": "charlie",
+    "firma": "55d87291f3"
+  },
+  "voces/dulces/eleven/catch.mp3": {
+    "texto": "¡Guarda en el frasco de brillo solo a Chispita!",
+    "voz": "charlie",
+    "firma": "b528bf9ada"
+  },
+  "voces/dulces/eleven/race.mp3": {
+    "texto": "¡Nube persigue a Ácido! Alcanza solo a Chispita.",
+    "voz": "charlie",
+    "firma": "816c518c9f"
+  },
+  "voces/dulces/eleven/find.mp3": {
+    "texto": "¡Busca a Chispita! Si no está, no toques nada.",
+    "voz": "charlie",
+    "firma": "b5b51c82c3"
+  },
+  "voces/dulces/eleven/memory.mp3": {
+    "texto": "¡Mira por dónde salta Chispita y repite su camino!",
+    "voz": "charlie",
+    "firma": "7849a822b0"
+  },
+  "voces/dulces/eleven/notx.mp3": {
+    "texto": "¡Al revés! Toca a todos los dulces... ¡menos a Chispita!",
+    "voz": "charlie",
+    "firma": "6bb11f8243"
+  },
+  "voces/dulces/eleven/ax.mp3": {
+    "texto": "Toca a Chispita solo si justo antes salió el corazón rosado.",
+    "voz": "charlie",
+    "firma": "5144182fca"
+  },
+  "voces/dulces/eleven/dodge.mp3": {
+    "texto": "¡Ácido lanza chorros de jugo! Ponte donde se detenga uno.",
+    "voz": "charlie",
+    "firma": "f2c66e5583"
+  },
+  "voces/dulces/eleven/path.mp3": {
+    "texto": "¡Mira el camino de Nube y repítelo de memoria!",
+    "voz": "charlie",
+    "firma": "2b8d5751de"
+  },
+  "voces/dulces/eleven/cast_classic.mp3": {
+    "texto": "¡Ácido se mezcla con mis amigos dulces! Tócalo solo a él.",
+    "voz": "charlie",
+    "firma": "8a0afa986c"
+  },
+  "voces/dulces/eleven/cast_catch.mp3": {
+    "texto": "¡Atrapa a Ácido con la red y deja pasar a los demás!",
+    "voz": "charlie",
+    "firma": "7b861f580c"
+  },
+  "voces/dulces/eleven/cast_race.mp3": {
+    "texto": "¡Ácido corre entre mis amigos! Alcánzalo solo a él.",
+    "voz": "charlie",
+    "firma": "12429c1d5d"
+  },
+  "voces/dulces/eleven/cast_find.mp3": {
+    "texto": "¡Busca a Ácido! Si no está, no toques nada.",
+    "voz": "charlie",
+    "firma": "9afabfb898"
+  },
+  "voces/dulces/eleven/cast_memory.mp3": {
+    "texto": "¡Mira por dónde salta Ácido y repite su camino!",
+    "voz": "charlie",
+    "firma": "685b594aaa"
+  },
+  "voces/dulces/eleven/cast_notx.mp3": {
+    "texto": "¡Al revés! Toca a mis amigos dulces... ¡menos a Ácido!",
+    "voz": "charlie",
+    "firma": "200e976a3e"
+  },
+  "voces/dulces/eleven/cast_ax_friend1.mp3": {
+    "texto": "Toca a Ácido solo si justo antes salió Jengi.",
+    "voz": "charlie",
+    "firma": "0d94d9b806"
+  },
+  "voces/dulces/eleven/cast_ax_friend2.mp3": {
+    "texto": "Toca a Ácido solo si justo antes salió Nube.",
+    "voz": "charlie",
+    "firma": "a1f225a613"
+  },
+  "voces/dulces/eleven/cast_ax_friend3.mp3": {
+    "texto": "Toca a Ácido solo si justo antes salió Limonada.",
+    "voz": "charlie",
+    "firma": "e7dbf74af0"
+  },
+  "voces/dulces/eleven/boss.mp3": {
+    "texto": "¡Ácido está en la fábrica agria! Enciende a Chispita y atrapa a Ácido.",
+    "voz": "charlie",
+    "firma": "810969500d"
+  },
+  "voces/dulces/eleven/end.mp3": {
+    "texto": "¡Atrapamos a Ácido y Chispita brilla más que nunca! ¡Gracias!",
+    "voz": "charlie",
+    "firma": "c8b3919ec9"
+  },
+  "voces/dulces/eleven/comp_1.mp3": {
+    "texto": "¡Hola! Soy Jengi. ¡Corre, que vamos a encender a Chispita!",
+    "voz": "will",
+    "firma": "6443e7c17e"
+  },
+  "voces/dulces/eleven/comp_4.mp3": {
+    "texto": "[mischievously] ¡Grrr! ¡Le apagué el brillo a Chispita!",
+    "voz": "roger",
+    "firma": "d8e0aa2199"
+  },
+  "voces/dulces/eleven/dist_burla_1.mp3": {
+    "texto": "[mischievously] ¡Qué empalagoso eres, osito!",
+    "voz": "roger",
+    "firma": "9795523006"
+  },
+  "voces/dulces/eleven/dist_burla_2.mp3": {
+    "texto": "[mischievously] ¡Tus chispitas no me hacen nada!",
+    "voz": "roger",
+    "firma": "ce23f7f7d2"
+  },
+  "voces/dulces/eleven/dist_amenaza_1.mp3": {
+    "texto": "[menacing] ¡Volveré agrios todos los dulces!",
+    "voz": "roger",
+    "firma": "b624534db3"
+  },
+  "voces/dulces/eleven/dist_amenaza_2.mp3": {
+    "texto": "[menacing] ¡Derretiré tu montaña de helado!",
+    "voz": "roger",
+    "firma": "c6e975ce83"
+  },
+  "voces/dulces/eleven/dist_amenaza_3.mp3": {
+    "texto": "[menacing] ¡Me quedaré con el castillo!",
+    "voz": "roger",
+    "firma": "fcf7c5d10d"
   }
 }
