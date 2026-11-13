@@ -15,7 +15,7 @@ class ResultsScene extends Phaser.Scene {
     const s = computeStats(this.log);
     const ms = v => (isNaN(v) ? '—' : Math.round(v) + ' ms');
     const stars = s.hitRate >= 0.9 ? 3 : s.hitRate >= 0.7 ? 2 : 1;
-    recordSession({ mode: 'prueba', theme: this.themeKey, minigame: this.mg, stars, log: this.log });
+    recordSession({ mode: 'prueba', theme: 'mixto', minigame: this.mg, stars, log: this.log });
 
     this.add.text(W / 2, 55, '¡Buen trabajo!', { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 120, starsText(stars), { font: '52px Arial', color: '#fde047' }).setOrigin(0.5);
@@ -45,8 +45,8 @@ class ResultsScene extends Phaser.Scene {
     this.add.text(W / 2, 290, lines.join('\n'),
       { font: (this.mg === 'classic' ? 24 : 21) + 'px Arial', color: '#f1f5f9', align: 'center', lineSpacing: 12 }).setOrigin(0.5);
 
-    makeButton(this, W / 2 - 170, 470, 300, 60, 'Descargar CSV', 0xfde047, () => downloadCSV(this.log, 'prueba_' + (this.mg === 'classic' ? '' : this.mg + '_') + this.themeKey));
-    makeButton(this, W / 2 + 170, 470, 300, 60, 'Jugar de nuevo', 0x86efac, () => this.scene.start('Menu', { mode: 'prueba', minigame: this.mg }));
+    makeButton(this, W / 2 - 170, 470, 300, 60, 'Descargar CSV', 0xfde047, () => downloadCSV(this.log, 'prueba_' + ({ classic: 'clasico', notx: 'menos_uno', ax: 'pista' }[this.mg] || this.mg)));
+    makeButton(this, W / 2 + 170, 470, 300, 60, 'Jugar de nuevo', 0x86efac, () => this.scene.start('Game', { mode: 'prueba', theme: PRUEBA_BASE, minigame: this.mg }));
     missionCheck(this);
   }
 }

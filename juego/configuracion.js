@@ -116,6 +116,23 @@ function memoryParams(level) {
   });
 }
 
+// Prueba fija: UNA sola para todos los mundos (no se elige mundo), siempre con los mismos estímulos.
+// Objetivo: siempre Bip, el alien verde (del Espacio, que pone también los colores y la Memoria).
+// Lo que no se responde: personajes y objetos de los 9 mundos al azar (villanos, amigos y objetos especiales).
+// Pista (AX-CPT): siempre Chispita, la estrella dorada. Se dejan fuera los que se parecen al objetivo o a la pista
+// (los otros aliens y las otras estrellas), para que la prueba mida atención y no discriminación fina.
+const PRUEBA_BASE = 'space';
+const PRUEBA_CUE = ['candy', 'target'];
+function pruebaPool() {
+  const pool = [];
+  Object.keys(THEMES).forEach(t => {
+    ['villain', 'friend1', 'friend2', 'friend3'].forEach(k => pool.push(TEX[t][k]));
+    if (t !== PRUEBA_BASE && t !== PRUEBA_CUE[0]) pool.push(TEX[t].target);
+  });
+  return pool.filter(Boolean);
+}
+const worldLabel = t => (THEMES[t] ? THEMES[t].label : t === 'mixto' ? 'Todos los mundos' : t || '');
+
 // Prueba fija: siempre igual, para comparar sesiones. mg = 'classic' (como el TOVA), 'notx' (como el Conners)
 // o 'ax' (AX-CPT). Valores provisionales: confirmarlos con la literatura de cada prueba.
 function pruebaParams(mg) {

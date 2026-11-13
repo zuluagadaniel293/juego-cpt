@@ -23,7 +23,7 @@ class MemoryResultsScene extends Phaser.Scene {
     // Referencia aproximada para 8-12 años: ~5 adelante y ~4 al revés
     const stars = r.fwd >= 5 && r.bwd >= 4 ? 3 : r.fwd >= 4 && r.bwd >= 3 ? 2 : r.fwd >= 3 ? 1 : 0;
     const right = this.log.filter(x => x.correct).length;
-    recordSession({ mode: 'memoria', theme: this.themeKey, minigame: 'memory', stars, memory: { fwd: r.fwd, bwd: r.bwd }, log: this.log });
+    recordSession({ mode: 'memoria', theme: 'mixto', minigame: 'memory', stars, memory: { fwd: r.fwd, bwd: r.bwd }, log: this.log });
 
     this.add.text(W / 2, 60, stars >= 2 ? '¡Memoria de héroe!' : '¡Buen entrenamiento!', { font: 'bold 46px Arial', color: '#ffffff' }).setOrigin(0.5);
     this.add.text(W / 2, 130, starsText(stars), { font: '56px Arial', color: '#fde047' }).setOrigin(0.5);
@@ -33,8 +33,8 @@ class MemoryResultsScene extends Phaser.Scene {
       { font: 'bold 24px Arial', color: newRecord ? '#86efac' : hexColor(th.accent) }).setOrigin(0.5);
 
     makeButton(this, W / 2, 400, 320, 64, 'Jugar otra vez', th.accent, () => this.scene.start('Memory', { theme: this.themeKey }));
-    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadMemoryCSV(this.log, 'memoria_' + this.themeKey));
-    makeButton(this, W / 2 + 170, 490, 280, 50, 'Otro mundo', 0xcbd5e1, () => this.scene.start('Menu', { mode: 'memoria' }));
+    makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadMemoryCSV(this.log, 'prueba_memoria'));
+    makeButton(this, W / 2 + 170, 490, 280, 50, 'Zona de adultos', 0xcbd5e1, () => this.scene.start('PruebaSelect'));
     missionCheck(this);
   }
 }

@@ -49,6 +49,11 @@ class GameScene extends Phaser.Scene {
     this.keys = this.chars
       ? { target: tex.villain, dists: [tex[pals[0]], tex[pals[1]]], similar: tex[pals.includes('friend3') ? 'friend3' : pals[1]] }
       : { target: tex.target, dists: [tex.dist1, tex.dist2], similar: tex.dist3 };
+    // Prueba fija: objetivo fijo (Bip) entre personajes y objetos de todos los mundos (ver pruebaPool)
+    if (this.mode === 'prueba') {
+      const pool = pruebaPool(), cue = TEX[PRUEBA_CUE[0]][PRUEBA_CUE[1]];
+      this.keys = { target: tex.target, dists: this.mg === 'ax' ? [cue].concat(pool) : pool, others: pool, similar: tex.dist3 };
+    }
   }
 
   create() {
@@ -113,7 +118,7 @@ class GameScene extends Phaser.Scene {
       what = this.chars ? th.villainObj : th.targetObj;
     } else {
       title = tag ? tag + ' · ' + MG[this.mg].label : 'Prepárate...';
-      what = this.chars ? th.villainObj : th.targetObj;
+      what = this.chars ? th.villainObj : this.mode === 'prueba' ? 'a ' + th.targetLabel : th.targetObj;
     }
     const holder = this.chars ? 'la red' : (th.catcherName || 'la canasta');
     this.showHowToPlay(title, what, holder);
@@ -181,7 +186,7 @@ class GameScene extends Phaser.Scene {
     if (CLASSIC_LIKE.includes(this.mg)) {
       const act = touch ? 'Toca la pantalla' : 'Presiona ESPACIO';
       if (touch) icon(220, ctrlY, '👆'); else keycap(220, ctrlY, 210, 'ESPACIO');
-      explain = this.mg === 'notx' ? act + ' con cada ' + (this.chars ? 'personaje' : 'señal') + ' que aparezca, MENOS cuando veas ' + what
+      explain = this.mg === 'notx' ? act + ' con cada ' + (this.chars || this.mode === 'prueba' ? 'personaje' : 'señal') + ' que aparezca, MENOS cuando veas ' + what
         : this.mg === 'ax' ? act + ' cuando veas ' + what + ' justo después de la pista. Si sale sin la pista, ¡no toques!'
         : act + ' solo cuando veas ' + what;
     } else if (this.mg === 'catch') {
@@ -399,13 +404,14 @@ class GameScene extends Phaser.Scene {
   reminderText() {
     const th = this.theme, noun = s => s.replace(/^al /, 'el ').replace(/^a /, '');
     // solo el nombre: "a Lumi" en vez de "a Lumi, el hada rosada"
-    const what = (this.chars ? th.villainObj : th.targetObj).split(',')[0], who = noun(what);
+    const what = (this.chars ? th.villainObj : this.mode === 'prueba' ? 'a ' + th.targetLabel : th.targetObj).split(',')[0], who = noun(what);
     const tex = TEX[this.themeKey];
     if (this.mg === 'classic') return 'Toca solo cuando aparezca ' + who;
     if (this.mg === 'notx') return 'Toca todo, MENOS cuando aparezca ' + who;
     if (this.mg === 'ax') {
       const cueRole = ['friend1', 'friend2', 'friend3'].find(r => tex[r] === this.keys.dists[0]);
-      const cue = this.chars && cueRole ? this.charThe(cueRole) : th.cueLabel || 'la pista';
+      const cue = this.chars && cueRole ? this.charThe(cueRole)
+        : this.mode === 'prueba' ? THEMES[PRUEBA_CUE[0]].targetLabel.split(',')[0] : th.cueLabel || 'la pista';
       return 'Toca ' + what + ' solo si justo antes salió ' + cue;
     }
     if (this.mg === 'catch') return 'Atrapa solo ' + what + ' con ' + (this.chars ? 'la red' : th.catcherName || 'la canasta');
@@ -459,7 +465,8 @@ class GameScene extends Phaser.Scene {
       // Pista (AX-CPT): la pista (A) es la señal del primer amigo; el objetivo (X) se responde solo si viene
       // justo después de la pista. AX = responder · AY = pista sin objetivo · BX = objetivo sin pista (trampa:
       // si responde, no recordó la pista) · BY = ni pista ni objetivo
-      const other = () => (Math.random() < P.similarProb ? this.keys.similar : this.keys.dists[1]);
+      const other = () => (Math.random() < P.similarProb ? this.keys.similar
+        : this.keys.others ? Phaser.Utils.Array.GetRandom(this.keys.others) : this.keys.dists[1]);
       let s;
       if (this.lastWasCue) {
         s = Math.random() < P.axAfterCue ? { type: 'target', key: this.keys.target, cond: 'AX' }
@@ -485,12 +492,12 @@ class GameScene extends Phaser.Scene {
     this.log.push({
       event_type: 'stimulus',
       mode: this.mode,
-      theme: this.themeKey,
+      theme: this.mode === 'prueba' ? 'mixto' : this.themeKey,
       level: this.level || '',
       chapter: this.chapter === null ? '' : this.chapter + 1,
       phase: this.boss ? this.phase + 1 : '',
       minigame: this.mg,
-      stim_set: this.chars ? 'personajes' : 'senales',
+      stim_set: this.mode === 'prueba' ? 'mixto' : this.chars ? 'personajes' : 'senales',
       twist: this.twist ? this.twist.name : '',
       trial: trial,
       stimulus_type: type,
@@ -825,7 +832,7 @@ class GameScene extends Phaser.Scene {
     this.log.push({
       event_type: type,
       mode: this.mode,
-      theme: this.themeKey,
+      theme: this.mode === 'prueba' ? 'mixto' : this.themeKey,
       level: this.level || '',
       chapter: this.chapter === null ? '' : this.chapter + 1,
       phase: this.boss ? this.phase + 1 : '',

@@ -51,5 +51,5 @@ function exitTarget(scene) {
   if (scene.mode === 'historia') return ['ChapterMap', { theme: scene.themeKey }];
   if (scene.mode === 'desafio') return ['MinigameSelect', { theme: scene.themeKey }];
   if (scene.mode === 'prueba') return ['PruebaSelect', {}];
-  return ['Menu', { mode: 'memoria' }];
+  return ['PruebaSelect', {}];
 }

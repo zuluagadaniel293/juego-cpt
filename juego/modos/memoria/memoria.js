@@ -215,7 +215,7 @@ class MemoryScene extends Phaser.Scene {
     const ok = this.answer.every((a, k) => a.i === expected[k]);
     const num = arr => arr.map(i => i + 1).join('-');
     this.log.push({
-      event_type: 'memory_trial', mode: this.mode, theme: this.themeKey, level: this.level || '',
+      event_type: 'memory_trial', mode: this.mode, theme: this.adaptive ? 'mixto' : this.themeKey, level: this.level || '',
       chapter: this.chapter === null ? '' : this.chapter + 1, minigame: 'memory',
       stim_set: this.chars ? 'personajes' : 'senales', direction: this.dir, trial: this.trial, length: this.len, flashes: this.flashCount,
       shown: num(this.seq), expected: num(expected), answered: num(this.answer.map(a => a.i)),

@@ -108,7 +108,7 @@ function csvCols() {
   return [
     ['tipo_evento', r => CSV_TEXT.event_type[r.event_type] || r.event_type],
     ['modo', r => CSV_TEXT.mode[r.mode] || r.mode],
-    ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
+    ['mundo', r => worldLabel(r.theme)],
     ['nivel', r => r.level],
     ['capitulo', r => r.chapter],
     ['fase_jefe', r => r.phase],
@@ -139,7 +139,7 @@ function memoryCsvCols() {
   return [
     ['tipo_evento', r => (r.event_type === 'memory_trial' ? 'camino' : CSV_TEXT.event_type[r.event_type] || r.event_type)],
     ['modo', r => (r.mode === 'memoria' ? 'Memoria' : CSV_TEXT.mode[r.mode] || r.mode)],
-    ['mundo', r => (THEMES[r.theme] ? THEMES[r.theme].label : r.theme)],
+    ['mundo', r => worldLabel(r.theme)],
     ['nivel', r => r.level],
     ['capitulo', r => r.chapter],
     ['estimulos', r => r.stim_set],

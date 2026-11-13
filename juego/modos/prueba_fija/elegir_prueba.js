@@ -24,7 +24,7 @@ class PruebaSelectScene extends Phaser.Scene {
     const panel = this.add.text(W - 24, 22, '📊 Panel del profesional', { font: 'bold 18px Arial', color: '#0f172a',
       backgroundColor: '#fde047', padding: { x: 12, y: 7 } }).setOrigin(1, 0).setInteractive({ useHandCursor: true });
     panel.on('pointerdown', () => openPanel(this));
-    this.add.text(W / 2, 108, 'Prueba fija: siempre con las mismas condiciones, para comparar sesiones. No es un diagnóstico.',
+    this.add.text(W / 2, 108, 'Prueba fija: una sola para todos los mundos, siempre igual, para comparar sesiones. No es un diagnóstico.',
       { font: '18px Arial', color: '#94a3b8' }).setOrigin(0.5);
     PRUEBAS.forEach((pr, i) => {
       const x = W / 2 + (i - (PRUEBAS.length - 1) / 2) * 226, y = 320;
@@ -40,7 +40,9 @@ class PruebaSelectScene extends Phaser.Scene {
       const zone = this.add.zone(x, y, 212, 300).setInteractive({ useHandCursor: true });
       zone.on('pointerover', () => card.setAlpha(0.8));
       zone.on('pointerout', () => card.setAlpha(1));
-      zone.on('pointerdown', () => { getCtx(); this.scene.start('Menu', pr.mg === 'memory' ? { mode: 'memoria' } : { mode: 'prueba', minigame: pr.mg }); });
+      zone.on('pointerdown', () => { getCtx(); // una sola prueba para todos los mundos: empieza directo, sin elegir mundo
+        if (pr.mg === 'memory') this.scene.start('Memory', { theme: PRUEBA_BASE });
+        else this.scene.start('Game', { mode: 'prueba', theme: PRUEBA_BASE, minigame: pr.mg }); });
     });
     // Modo demostración: abre todos los mundos (para mostrar el juego) sin tocar las estrellas del niño.
     // Al apagarlo, los mundos vuelven a abrirse de a uno según su progreso.

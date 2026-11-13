@@ -15,7 +15,7 @@ const esc = s => String(s === undefined || s === null ? '' : s).replace(/[&<>"']
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pctTxt = (a, b) => (b ? Math.round(a / b * 100) + ' %' : '—');
 const msTxt = v => (typeof v === 'number' && isFinite(v) ? Math.round(v) + ' ms' : '—');
-const worldName = t => (THEMES[t] ? THEMES[t].label : t || '');
+const worldName = t => worldLabel(t);
 const gameName = mg => (MG[mg] ? MG[mg].label : mg || '');
 const dateTxt = t => new Date(t).toLocaleString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 const pad2 = n => String(n).padStart(2, '0');

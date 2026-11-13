@@ -90,6 +90,12 @@ Activa **Datos → Filtro** y filtra `tipo_evento = estimulo`.
 
 La pantalla de resultados de la **Prueba fija** ya muestra estas medidas calculadas para el adulto.
 
+**Prueba fija: una sola para todos los mundos.** No se elige mundo y los estímulos son siempre los mismos, para poder comparar sesiones:
+el objetivo es siempre **Bip, el alien verde**; lo que no se responde sale al azar de personajes y objetos de los 9 mundos
+(villanos, amigos y objetos especiales); en Pista, la pista es siempre **Chispita, la estrella dorada**. Se dejan fuera los que se parecen
+al objetivo o a la pista (los otros aliens y las otras estrellas). En el CSV, `mundo` = *Todos los mundos* y `estimulos` = *mixto*;
+`que_aparecio` dice cuál personaje u objeto salió en cada ensayo. Se cambia en `juego/configuracion.js` (`PRUEBA_BASE`, `PRUEBA_CUE`, `pruebaPool`).
+
 ## CSV de Memoria
 Memoria es una tarea tipo **Corsi** (memoria de trabajo visoespacial): el objetivo del mundo aparece en varias de las 9 casillas, una tras otra, y el niño las toca en el mismo orden (**adelante**) y luego del último al primero (**al revés**).
 
