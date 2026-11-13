@@ -2,10 +2,10 @@
 // terminar cada historia y las descargas (CSV de todas las partidas y resumen). Es una página HTML encima del
 // juego, para poder leerla con calma, desplazarla e imprimirla o guardarla como PDF.
 //
-// Misión Foco es entrenamiento y familiarización con las pruebas de atención: las medidas usan los mismos
+// Focus Quest es entrenamiento y familiarización con las pruebas de atención: las medidas usan los mismos
 // nombres que un CPT para que el profesional las reconozca, pero NO se comparan con normas ni dan un diagnóstico.
 
-const PANEL_NOTE = 'Misión Foco es un juego de entrenamiento y familiarización con las pruebas de atención. ' +
+const PANEL_NOTE = 'Focus Quest es un juego de entrenamiento y familiarización con las pruebas de atención. ' +
   'Las medidas usan los mismos nombres que un CPT para que sean fáciles de leer, pero no se comparan con normas ' +
   'ni reemplazan una evaluación estandarizada: describen cómo jugó este niño y cómo cambia con la práctica.';
 const MODE_LABEL = { historia: 'Historia', desafio: 'Desafío', prueba: 'Modo Examen', memoria: 'Modo Examen · Memoria' };
