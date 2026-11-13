@@ -87,10 +87,14 @@ registrarMundo('heroes', {
       { name: 'sombra_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // Risas (del villano) y "¡ayuda!" (del amigo que el villano ataca): una al azar cada vez;
     // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', pool: 'risa_m' },
+      risa:    { who: 'villain', random: true, text: [
+        '¡Ja, ja, ja! ¡Nunca me atraparás, Héroe Rayo!',
+        '¡Je, je! ¡Soy una sombra, no me ves!',
+        '¡Ja, ja! ¡La ciudad es mía!'
+      ] },
       burla:   { who: 'villain', text: [
         '¡Mi señal está por todas partes!',
         '¡Ni con tu rayo me vas a encontrar!'
@@ -100,7 +104,11 @@ registrarMundo('heroes', {
         '¡Cubriré el puerto de humo!',
         '¡Apagaré todas las luces de la ciudad!'
       ] },
-      ayuda:   { who: 'friend1', pool: 'ayuda_f' }   // solo el amigo que el villano ataca y persigue
+      ayuda:   { who: 'friend1', random: true, text: [
+        '¡Héroe Rayo, ayúdame!',
+        '¡Sombra me atrapó!',
+        '¡Rápido, Héroe Rayo, sálvame!'
+      ] }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'avion', kind: 'fly', size: 100,

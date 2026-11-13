@@ -84,10 +84,14 @@ registrarMundo('space', {
       { name: 'meteoro_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // Risas (del villano) y "¡ayuda!" (del amigo que el villano ataca): una al azar cada vez;
     // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', pool: 'risa_m' },
+      risa:    { who: 'villain', random: true, text: [
+        '¡Ja, ja, ja! ¡Nunca me alcanzarás, Nova!',
+        '¡Jo, jo! ¡Soy más rápido que un cometa!',
+        '¡Ja, ja! ¡Bip nunca llegará a la base!'
+      ] },
       burla:   { who: 'villain', text: [
         '¡Nunca me alcanzarás, astronauta!',
         '¡Tu cohete es más lento que una tortuga!'
@@ -97,7 +101,11 @@ registrarMundo('space', {
         '¡Lanzaré asteroides contra tu base!',
         '¡Congelaré el planeta de cristal!'
       ] },
-      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
+      ayuda:   { who: 'friend1', random: true, text: [
+        '¡Bip! ¡Nova, ayúdame!',
+        '¡El Capitán Meteoro me atrapó!',
+        '¡Rápido, Nova, sálvame!'
+      ] }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'cohete', kind: 'fly', size: 100,

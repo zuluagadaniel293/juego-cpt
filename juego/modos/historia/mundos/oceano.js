@@ -81,10 +81,14 @@ registrarMundo('ocean', {
       { name: 'pulpo_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // Risas (del villano) y "¡ayuda!" (del amigo que el villano ataca): una al azar cada vez;
     // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', pool: 'risa_m' },
+      risa:    { who: 'villain', random: true, text: [
+        '¡Je, je, je! ¡No me ves entre mi tinta!',
+        '¡Ja, ja! ¡Perla será mía, Coral!',
+        '¡Je, je! ¡Tengo ocho brazos para atraparte!'
+      ] },
       burla:   { who: 'villain', text: [
         '¡Tengo ocho brazos y tú solo dos!',
         '¡Tus burbujas no me asustan!'
@@ -94,7 +98,11 @@ registrarMundo('ocean', {
         '¡Hundiré otro barco con mi tinta!',
         '¡Enredaré a todos en las algas!'
       ] },
-      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
+      ayuda:   { who: 'friend1', random: true, text: [
+        '¡Coral, ayúdame!',
+        '¡El Pulpo Tinta me atrapó!',
+        '¡Rápido, Coral, no puedo nadar!'
+      ] }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'medusa', kind: 'fly', size: 85,

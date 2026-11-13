@@ -88,10 +88,14 @@ registrarMundo('fantasy', {
       { name: 'morgana_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // Risas (del villano) y "¡ayuda!" (del amigo que el villano ataca): una al azar cada vez;
     // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', pool: 'risa_f' },
+      risa:    { who: 'villain', random: true, text: [
+        '¡Ja, ja, ja! ¡Mis hechizos nunca fallan!',
+        '¡Ji, ji! ¡Atrápame si puedes, Chispa!',
+        '¡Ja, ja! ¡Los dragoncitos son míos!'
+      ] },
       burla:   { who: 'villain', text: [
         '¿Quieres llevarlos al nido? ¡Primero atrápame!',
         '¡Tu fuego no me hace ni cosquillas!'
@@ -101,7 +105,11 @@ registrarMundo('fantasy', {
         '¡Llenaré el bosque de enredaderas!',
         '¡Congelaré el río con mi varita!'
       ] },
-      ayuda:   { who: 'friend2', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
+      ayuda:   { who: 'friend2', random: true, text: [
+        '¡Chispa, ayúdame!',
+        '¡Morgana me hechizó!',
+        '¡Rápido, Chispa, no puedo moverme!'
+      ] }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'mariposa', kind: 'fly', size: 60,

@@ -45,13 +45,6 @@ const REPARTO = {
   jungle:  { carpeta: 'selva',        hero: 'laura',   villain: 'sarah',   friend: 'river' },     // Kiara · Serpiente Silbona · Jaguarcito
   candy:   { carpeta: 'dulces',       hero: 'charlie', villain: 'roger',   friend: 'will' }       // Gomi · Ácido · Jengi
 };
-// Frases comunes: voz de cada una, en orden (las primeras risas ya están grabadas con estas voces)
-const VOCES_POOL = {
-  risa_m: ['liam', 'liam', 'callum', 'callum', 'roger'],
-  risa_f: ['sarah', 'sarah', 'matilda'],
-  ayuda_m: ['will', 'eric', 'chris', 'bill'],
-  ayuda_f: ['jessica', 'laura', 'lily']   // (Aria no se puede usar por API en el plan gratis)
-};
 const VOZ_UNLOCK = 'lily';
 // Emoción (etiqueta de Eleven v3 que va antes del texto)
 const EMOCION = { risa: '[evil laugh]', burla: '[mischievously]', amenaza: '[menacing]', ayuda: '[scared]', unlock: '[excited]' };
@@ -65,7 +58,7 @@ for (const f of Object.values(REPARTO)) {
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/modos/historia/mundos', f.carpeta + '.js'), 'utf8'), sandbox);
 }
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/nucleo/voces_comunes.js'), 'utf8') +
-  '\nthis.UNLOCK_LINE = UNLOCK_LINE; this.VOICE_POOLS = VOICE_POOLS;', sandbox);
+  '\nthis.UNLOCK_LINE = UNLOCK_LINE;', sandbox);
 
 // [grupo del mapa, carpeta, id, quién (para mostrar), voz, texto a enviar]
 const FRASES = [];
@@ -82,12 +75,9 @@ for (const [key, r] of Object.entries(REPARTO)) {
   add('end', 'hero', st.ending);
   st.companions.forEach((c, i) => { if (c.line) add('comp_' + (i + 1), c.role === 'villain' ? 'villain' : 'friend', c.line, c.role === 'villain' ? EMOCION.burla : ''); });
   Object.entries(mundos[key].distractors.voices).forEach(([name, v]) =>
-    (v.text || []).forEach((s, k) => add('dist_' + name + '_' + (k + 1), 'villain', s, EMOCION[name])));
+    (v.text || []).forEach((s, k) => add('dist_' + name + '_' + (k + 1), v.who === 'villain' ? 'villain' : 'friend', s, EMOCION[name])));
 }
 FRASES.push(['comunes', 'comunes', 'unlock', 'desbloqueo', VOZ_UNLOCK, EMOCION.unlock + ' ' + sandbox.UNLOCK_LINE]);
-Object.entries(sandbox.VOICE_POOLS).forEach(([pool, list]) => list.forEach((s, k) =>
-  FRASES.push(['comunes', 'comunes', 'pool_' + pool + '_' + (k + 1), pool, VOCES_POOL[pool][k % VOCES_POOL[pool].length],
-    EMOCION[pool.split('_')[0]] + ' ' + s])));
 
 // las comunes primero: sirven en todos los mundos
 FRASES.sort((a, b) => (b[0] === 'comunes') - (a[0] === 'comunes'));

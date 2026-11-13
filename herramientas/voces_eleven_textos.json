@@ -29,41 +29,6 @@
     "voz": "roger",
     "firma": "97c305aec2"
   },
-  "voces/comunes/eleven/pool_risa_m_1.mp3": {
-    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Nunca me atraparás!",
-    "voz": "liam",
-    "firma": "3e86b21101"
-  },
-  "voces/comunes/eleven/pool_risa_m_2.mp3": {
-    "texto": "[evil laugh] ¡Jo, jo, jo! Aquí estoy... ¿o no?",
-    "voz": "liam",
-    "firma": "b91a23d86e"
-  },
-  "voces/comunes/eleven/pool_risa_m_3.mp3": {
-    "texto": "[evil laugh] ¡Ji, ji, ji! ¡No me pueden atrapar!",
-    "voz": "callum",
-    "firma": "b7ba0a2111"
-  },
-  "voces/comunes/eleven/pool_risa_m_4.mp3": {
-    "texto": "[evil laugh] ¡Je, je! ¿Dónde estaré?",
-    "voz": "callum",
-    "firma": "6078c5ecd3"
-  },
-  "voces/comunes/eleven/pool_risa_m_5.mp3": {
-    "texto": "[evil laugh] ¡Je, je! ¡No me ves, no me ves!",
-    "voz": "roger",
-    "firma": "0b06ce8b5d"
-  },
-  "voces/comunes/eleven/pool_risa_f_1.mp3": {
-    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Jamás lo encontrarás!",
-    "voz": "sarah",
-    "firma": "f766f6f25b"
-  },
-  "voces/comunes/eleven/pool_risa_f_2.mp3": {
-    "texto": "[evil laugh] ¡Ji, ji! ¡Mis hechizos nunca fallan!",
-    "voz": "sarah",
-    "firma": "eca36da4e2"
-  },
   "voces/superheroes/eleven/intro.mp3": {
     "texto": "¡Hola! Soy Héroe Rayo. ¡Ayúdame a detener a Sombra!",
     "voz": "eric",
@@ -323,46 +288,6 @@
     "texto": "[excited] ¡Felicidades! ¡Desbloqueaste un nuevo mundo!",
     "voz": "lily",
     "firma": "1eade28141"
-  },
-  "voces/comunes/eleven/pool_risa_f_3.mp3": {
-    "texto": "[evil laugh] ¡Ja, ja! ¡Atrápame si puedes!",
-    "voz": "matilda",
-    "firma": "9d08a3f785"
-  },
-  "voces/comunes/eleven/pool_ayuda_m_1.mp3": {
-    "texto": "[scared] ¡Ayuda! ¡Ayúdenme, por favor!",
-    "voz": "will",
-    "firma": "a68ef32b83"
-  },
-  "voces/comunes/eleven/pool_ayuda_m_2.mp3": {
-    "texto": "[scared] ¡Socorro! ¡Me atrapó!",
-    "voz": "eric",
-    "firma": "a16a061fac"
-  },
-  "voces/comunes/eleven/pool_ayuda_m_3.mp3": {
-    "texto": "[scared] ¡Ay, no! ¡Rápido, sálvame!",
-    "voz": "chris",
-    "firma": "59bfceb5be"
-  },
-  "voces/comunes/eleven/pool_ayuda_m_4.mp3": {
-    "texto": "[scared] ¡Auxilio! ¡No puedo soltarme!",
-    "voz": "bill",
-    "firma": "76f0023a13"
-  },
-  "voces/comunes/eleven/pool_ayuda_f_1.mp3": {
-    "texto": "[scared] ¡Ayuda! ¡Ayúdenme, por favor!",
-    "voz": "jessica",
-    "firma": "80630f5051"
-  },
-  "voces/comunes/eleven/pool_ayuda_f_2.mp3": {
-    "texto": "[scared] ¡Socorro! ¡Me atrapó!",
-    "voz": "laura",
-    "firma": "321f474873"
-  },
-  "voces/comunes/eleven/pool_ayuda_f_3.mp3": {
-    "texto": "[scared] ¡Ay, no! ¡No puedo soltarme!",
-    "voz": "lily",
-    "firma": "a874b76163"
   },
   "voces/dragones/eleven/dist_amenaza_1.mp3": {
     "texto": "[menacing] ¡Me llevaré todos los dragones del nido!",
@@ -1338,5 +1263,275 @@
     "texto": "[menacing] ¡Me quedaré con el castillo!",
     "voz": "roger",
     "firma": "fcf7c5d10d"
+  },
+  "voces/superheroes/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Nunca me atraparás, Héroe Rayo!",
+    "voz": "liam",
+    "firma": "6d080844d5"
+  },
+  "voces/superheroes/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¡Soy una sombra, no me ves!",
+    "voz": "liam",
+    "firma": "d96889701c"
+  },
+  "voces/superheroes/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja! ¡La ciudad es mía!",
+    "voz": "liam",
+    "firma": "2f9b64a238"
+  },
+  "voces/superheroes/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Héroe Rayo, ayúdame!",
+    "voz": "jessica",
+    "firma": "4b79bf09b5"
+  },
+  "voces/superheroes/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡Sombra me atrapó!",
+    "voz": "jessica",
+    "firma": "c2bc9dfbf7"
+  },
+  "voces/superheroes/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Héroe Rayo, sálvame!",
+    "voz": "jessica",
+    "firma": "664fae5718"
+  },
+  "voces/dragones/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Mis hechizos nunca fallan!",
+    "voz": "sarah",
+    "firma": "fb031c1c57"
+  },
+  "voces/dragones/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji! ¡Atrápame si puedes, Chispa!",
+    "voz": "sarah",
+    "firma": "d9bd7135a1"
+  },
+  "voces/dragones/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja! ¡Los dragoncitos son míos!",
+    "voz": "sarah",
+    "firma": "6b7204f8a0"
+  },
+  "voces/dragones/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Chispa, ayúdame!",
+    "voz": "bill",
+    "firma": "6ec0ea8a1a"
+  },
+  "voces/dragones/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡Morgana me hechizó!",
+    "voz": "bill",
+    "firma": "c8dda68342"
+  },
+  "voces/dragones/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Chispa, no puedo moverme!",
+    "voz": "bill",
+    "firma": "cf232c3e1f"
+  },
+  "voces/reino_magico/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji, ji! ¡Nunca me atraparás, majestad!",
+    "voz": "callum",
+    "firma": "2aa9727eeb"
+  },
+  "voces/reino_magico/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¡Mi hechizo es más fuerte!",
+    "voz": "callum",
+    "firma": "4d70df1501"
+  },
+  "voces/reino_magico/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji! ¿Dónde estaré?",
+    "voz": "callum",
+    "firma": "9fed7d4772"
+  },
+  "voces/reino_magico/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Majestad, ayúdeme!",
+    "voz": "chris",
+    "firma": "205ed0a412"
+  },
+  "voces/reino_magico/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡El Duende Pícaro me atrapó!",
+    "voz": "chris",
+    "firma": "9f8ab4079a"
+  },
+  "voces/reino_magico/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Reina Luna, rápido, sálveme!",
+    "voz": "chris",
+    "firma": "b320d48bda"
+  },
+  "voces/espacio/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Nunca me alcanzarás, Nova!",
+    "voz": "charlie",
+    "firma": "631b6b78cb"
+  },
+  "voces/espacio/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Jo, jo! ¡Soy más rápido que un cometa!",
+    "voz": "charlie",
+    "firma": "3a4b010921"
+  },
+  "voces/espacio/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja! ¡Bip nunca llegará a la base!",
+    "voz": "charlie",
+    "firma": "956f6c3c37"
+  },
+  "voces/espacio/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Bip! ¡Nova, ayúdame!",
+    "voz": "river",
+    "firma": "b472fe819b"
+  },
+  "voces/espacio/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡El Capitán Meteoro me atrapó!",
+    "voz": "river",
+    "firma": "0e6f107413"
+  },
+  "voces/espacio/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Nova, sálvame!",
+    "voz": "river",
+    "firma": "41d10383b3"
+  },
+  "voces/oceano/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Je, je, je! ¡No me ves entre mi tinta!",
+    "voz": "roger",
+    "firma": "fa06b1fe28"
+  },
+  "voces/oceano/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja! ¡Perla será mía, Coral!",
+    "voz": "roger",
+    "firma": "91eaf197fc"
+  },
+  "voces/oceano/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¡Tengo ocho brazos para atraparte!",
+    "voz": "roger",
+    "firma": "4d8b60e485"
+  },
+  "voces/oceano/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Coral, ayúdame!",
+    "voz": "eric",
+    "firma": "0fe23db526"
+  },
+  "voces/oceano/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡El Pulpo Tinta me atrapó!",
+    "voz": "eric",
+    "firma": "37148a5139"
+  },
+  "voces/oceano/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Coral, no puedo nadar!",
+    "voz": "eric",
+    "firma": "96d72ebc02"
+  },
+  "voces/dinosaurios/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Kraa, ja, ja! ¡Nunca me atraparás, Tito!",
+    "voz": "callum",
+    "firma": "da81a35b77"
+  },
+  "voces/dinosaurios/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja! ¡Las hojas doradas son mías!",
+    "voz": "callum",
+    "firma": "4f969f372a"
+  },
+  "voces/dinosaurios/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Kraa! ¡Vuelo más alto que tú!",
+    "voz": "callum",
+    "firma": "9009ea57ec"
+  },
+  "voces/dinosaurios/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Tito, ayúdame!",
+    "voz": "bill",
+    "firma": "39ad4bc505"
+  },
+  "voces/dinosaurios/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡El Pterodáctilo me atrapó!",
+    "voz": "bill",
+    "firma": "ba6411fa61"
+  },
+  "voces/dinosaurios/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Tito, sálvame!",
+    "voz": "bill",
+    "firma": "3c69f6f72b"
+  },
+  "voces/robots/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji, ji! ¡Error, error, no me encuentras!",
+    "voz": "charlie",
+    "firma": "311907eb96"
+  },
+  "voces/robots/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¡Nunca me atraparás, Chip!",
+    "voz": "charlie",
+    "firma": "b6adc802b4"
+  },
+  "voces/robots/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji! ¡La energía de Botón es mía!",
+    "voz": "charlie",
+    "firma": "e459dfb41b"
+  },
+  "voces/robots/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Guau, bip! ¡Chip, ayúdame!",
+    "voz": "chris",
+    "firma": "465c6e3a61"
+  },
+  "voces/robots/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡Glitch me atrapó!",
+    "voz": "chris",
+    "firma": "ac14cb0d37"
+  },
+  "voces/robots/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Chip, sálvame!",
+    "voz": "chris",
+    "firma": "3a82eebf0d"
+  },
+  "voces/selva/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Sss, ja, ja! ¡Nunca me atraparásss!",
+    "voz": "sarah",
+    "firma": "1ae9e94060"
+  },
+  "voces/selva/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Ji, ji! ¡Los colores son míosss, Kiara!",
+    "voz": "sarah",
+    "firma": "42340a4d3d"
+  },
+  "voces/selva/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Sss! ¿Dónde estaré, Kiara?",
+    "voz": "sarah",
+    "firma": "64609eb3c1"
+  },
+  "voces/selva/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Kiara, ayúdame!",
+    "voz": "river",
+    "firma": "3c4c0884c2"
+  },
+  "voces/selva/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡La Serpiente me atrapó!",
+    "voz": "river",
+    "firma": "02f80bd552"
+  },
+  "voces/selva/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Kiara, sálvame!",
+    "voz": "river",
+    "firma": "a47ed668ca"
+  },
+  "voces/dulces/eleven/dist_risa_1.mp3": {
+    "texto": "[evil laugh] ¡Ja, ja, ja! ¡Nunca me atraparás, Gomi!",
+    "voz": "roger",
+    "firma": "06a331bbc5"
+  },
+  "voces/dulces/eleven/dist_risa_2.mp3": {
+    "texto": "[evil laugh] ¡Je, je! ¡Chispita se quedará sin brillo!",
+    "voz": "roger",
+    "firma": "fec3b1fdc9"
+  },
+  "voces/dulces/eleven/dist_risa_3.mp3": {
+    "texto": "[evil laugh] ¡Grrr, ja, ja! ¡Soy el dulce más ácido!",
+    "voz": "roger",
+    "firma": "4422363b4b"
+  },
+  "voces/dulces/eleven/dist_ayuda_1.mp3": {
+    "texto": "[scared] ¡Gomi, ayúdame!",
+    "voz": "will",
+    "firma": "0b3e4c1097"
+  },
+  "voces/dulces/eleven/dist_ayuda_2.mp3": {
+    "texto": "[scared] ¡Ácido me atrapó!",
+    "voz": "will",
+    "firma": "15d42e0089"
+  },
+  "voces/dulces/eleven/dist_ayuda_3.mp3": {
+    "texto": "[scared] ¡Rápido, Gomi, sálvame!",
+    "voz": "will",
+    "firma": "b50299d7ec"
   }
 }

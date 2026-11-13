@@ -83,10 +83,14 @@ registrarMundo('robots', {
       { name: 'glitch_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // Risas (del villano) y "¡ayuda!" (del amigo que el villano ataca): una al azar cada vez;
     // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', pool: 'risa_m' },
+      risa:    { who: 'villain', random: true, text: [
+        '¡Ji, ji, ji! ¡Error, error, no me encuentras!',
+        '¡Je, je! ¡Nunca me atraparás, Chip!',
+        '¡Ji, ji! ¡La energía de Botón es mía!'
+      ] },
       burla:   { who: 'villain', text: [
         '¡Error, error! ¡No me encuentras!',
         '¡Soy más rápido que tu internet!'
@@ -96,7 +100,11 @@ registrarMundo('robots', {
         '¡Romperé todas las máquinas!',
         '¡Apagaré todas las luces!'
       ] },
-      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
+      ayuda:   { who: 'friend1', random: true, text: [
+        '¡Guau, bip! ¡Chip, ayúdame!',
+        '¡Glitch me atrapó!',
+        '¡Rápido, Chip, sálvame!'
+      ] }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'engranaje', kind: 'fly', size: 85,

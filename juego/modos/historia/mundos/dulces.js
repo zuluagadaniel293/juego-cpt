@@ -84,10 +84,14 @@ registrarMundo('candy', {
       { name: 'acido_espia', kind: 'face', voice: 'amenaza', minLevel: 3 }
     ],
     // Voces de los personajes (las graba herramientas/generar_voces.js; con emoción, generar_voces_elevenlabs.js).
-    // Las risas y los "¡ayuda!" son comunes a todos los mundos (pool: ver juego/nucleo/voces_comunes.js);
+    // Risas (del villano) y "¡ayuda!" (del amigo que el villano ataca): una al azar cada vez;
     // las burlas y amenazas son de este mundo y se turnan por capítulo. Las amenazas pasan de verdad (THREAT_FX).
     voices: {
-      risa:    { who: 'villain', pool: 'risa_m' },
+      risa:    { who: 'villain', random: true, text: [
+        '¡Ja, ja, ja! ¡Nunca me atraparás, Gomi!',
+        '¡Je, je! ¡Chispita se quedará sin brillo!',
+        '¡Grrr, ja, ja! ¡Soy el dulce más ácido!'
+      ] },
       burla:   { who: 'villain', text: [
         '¡Qué empalagoso eres, osito!',
         '¡Tus chispitas no me hacen nada!'
@@ -97,7 +101,11 @@ registrarMundo('candy', {
         '¡Derretiré tu montaña de helado!',
         '¡Me quedaré con el castillo!'
       ] },
-      ayuda:   { who: 'friend1', pool: 'ayuda_m' }   // solo el amigo que el villano ataca y persigue
+      ayuda:   { who: 'friend1', random: true, text: [
+        '¡Gomi, ayúdame!',
+        '¡Ácido me atrapó!',
+        '¡Rápido, Gomi, sálvame!'
+      ] }   // solo el amigo que el villano ataca y persigue
     },
     visual: [
       { name: 'caramelo', kind: 'fly', size: 85,

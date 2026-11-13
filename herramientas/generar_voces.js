@@ -133,26 +133,9 @@ function textos(key, m) {
 const comunesSb = {};
 vm.createContext(comunesSb);
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'juego/nucleo/voces_comunes.js'), 'utf8') +
-  '\nthis.UNLOCK_LINE = UNLOCK_LINE; this.VOICE_POOLS = VOICE_POOLS;', comunesSb);
-// voces de cada grupo (se van turnando): hombres y mujeres distintos para que no suenen todas iguales
-const VOCES_POOL = {
-  risa_m: [
-    { voz: 'es-VE-SebastianNeural', tono: '-4Hz', velocidad: '+0%' }, { voz: 'es-MX-JorgeNeural', tono: '+6Hz', velocidad: '+4%' },
-    { voz: 'es-EC-LuisNeural', tono: '+12Hz', velocidad: '+6%' }, { voz: 'es-CR-JuanNeural', tono: '-4Hz', velocidad: '+0%' }],
-  risa_f: [{ voz: 'es-PE-CamilaNeural', tono: '+4Hz', velocidad: '-2%' }, { voz: 'es-PE-CamilaNeural', tono: '-2Hz', velocidad: '-4%' }],
-  ayuda_m: [
-    { voz: 'es-PE-AlexNeural', tono: '+14Hz', velocidad: '+6%' }, { voz: 'es-CR-JuanNeural', tono: '+0Hz', velocidad: '+0%' },
-    { voz: 'es-US-AlonsoNeural', tono: '+14Hz', velocidad: '+6%' }, { voz: 'es-CO-GonzaloNeural', tono: '+10Hz', velocidad: '+4%' }],
-  ayuda_f: [
-    { voz: 'es-VE-PaolaNeural', tono: '+10Hz', velocidad: '+3%' }, { voz: 'es-CR-MariaNeural', tono: '+10Hz', velocidad: '+3%' },
-    { voz: 'es-CO-SalomeNeural', tono: '+14Hz', velocidad: '+0%' }]
-};
+  '\nthis.UNLOCK_LINE = UNLOCK_LINE;', comunesSb);
 function textosComunes() {
   const t = { unlock: [comunesSb.UNLOCK_LINE, { voz: 'es-CO-SalomeNeural', tono: '+10Hz', velocidad: '+4%' }] };
-  Object.entries(comunesSb.VOICE_POOLS).forEach(([pool, list]) => list.forEach((s, k) => {
-    const vs = VOCES_POOL[pool];
-    t['pool_' + pool + '_' + (k + 1)] = [s, vs[k % vs.length]];
-  }));
   return t;
 }
 
