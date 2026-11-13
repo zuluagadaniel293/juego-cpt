@@ -1,4 +1,4 @@
-// Panel del profesional (Zona de adultos): resultados de cada niño por mundo, capítulo y nivel, un informe al
+// Panel del profesional (Zona de resultados, abajo a la derecha de la pantalla inicial): resultados de cada niño por mundo, capítulo y nivel, un informe al
 // terminar cada historia y las descargas (CSV de todas las partidas y resumen). Es una página HTML encima del
 // juego, para poder leerla con calma, desplazarla e imprimirla o guardarla como PDF.
 //
@@ -8,7 +8,7 @@
 const PANEL_NOTE = 'Misión Foco es un juego de entrenamiento y familiarización con las pruebas de atención. ' +
   'Las medidas usan los mismos nombres que un CPT para que sean fáciles de leer, pero no se comparan con normas ' +
   'ni reemplazan una evaluación estandarizada: describen cómo jugó este niño y cómo cambia con la práctica.';
-const MODE_LABEL = { historia: 'Historia', desafio: 'Desafío', prueba: 'Prueba fija', memoria: 'Prueba fija · Memoria' };
+const MODE_LABEL = { historia: 'Historia', desafio: 'Desafío', prueba: 'Modo Examen', memoria: 'Modo Examen · Memoria' };
 
 // ---------- utilidades ----------
 const esc = s => String(s === undefined || s === null ? '' : s).replace(/[&<>"']/g, c =>
@@ -189,9 +189,21 @@ function desafioHTML(sessions) {
 
 function pruebaHTML(sessions) {
   const ps = sessions.filter(s => s.mode === 'prueba' || s.mode === 'memoria');
-  if (!ps.length) return '<p class="mf-muted">Todavía no ha hecho la Prueba fija.</p>';
+  if (!ps.length) return '<p class="mf-muted">Todavía no ha hecho el Modo Examen.</p>';
+  // Pista (AX-CPT): cuántas veces respondió en cada condición (BX = objetivo sin pista; AY = pista sin objetivo)
+  const axDetail = s => {
+    if (s.minigame !== 'ax' || !s.log) return '';
+    const st = unpackLog(s.log).filter(r => r.event_type === 'stimulus');
+    const c = k => { const r = st.filter(x => x.condition === k); return r.filter(x => x.responded).length + '/' + r.length; };
+    return 'Respondió: AX ' + c('AX') + ' · BX ' + c('BX') + ' · AY ' + c('AY') + ' · BY ' + c('BY');
+  };
   const rows = ps.map(s => '<tr><td>' + esc(dateTxt(s.t)) + '</td><td>' + esc(s.mode === 'memoria' ? 'Memoria' : gameName(s.minigame)) +
-    '</td><td>' + esc(worldName(s.theme)) + '</td>' + statCells(s) + '</tr>').join('');
+    '</td><td>' + esc(worldName(s.theme)) + '</td>' + statCells(s) + '<td class="mf-muted">' + esc(axDetail(s)) + '</td></tr>').join('');
+  // un informe por tipo de prueba (mismas medidas que el informe de la Historia)
+  const reports = ['classic', 'notx', 'ax'].map(mg => {
+    const g = ps.filter(s => s.mode === 'prueba' && s.minigame === mg);
+    return g.length ? reportHTML(g, 'Informe: ' + gameName(mg) + ' (' + plural(g.length, 'vez', 'veces') + ')') : '';
+  }).join('');
   // una gráfica por tipo de prueba (siempre las mismas condiciones: sirve para ver el cambio con la práctica)
   const charts = ['classic', 'notx', 'ax'].map(mg => {
     const pts = ps.filter(s => s.mode === 'prueba' && s.minigame === mg && s.stats && s.stats.targets)
@@ -200,7 +212,7 @@ function pruebaHTML(sessions) {
   }).join('');
   return '<p class="mf-muted">Siempre con las mismas condiciones: sirve para ver cómo cambia con la práctica.</p>' +
     '<div class="mf-scroll"><table><thead><tr><th>Fecha</th><th>Prueba</th><th>Mundo</th>' + STAT_HEAD +
-    '</tr></thead><tbody>' + rows + '</tbody></table></div>' + charts;
+    '<th>Pista por condición</th></tr></thead><tbody>' + rows + '</tbody></table></div>' + charts + reports;
 }
 
 function sesionesHTML(sessions) {
@@ -279,6 +291,9 @@ function openPanel(scene) {
       (p ? '<label><input type="checkbox" class="mf-anon"> CSV sin nombre (solo código)</label>' +
         '<button class="mf-primary mf-all">Descargar todo (CSV)</button><button class="mf-sum">Resumen (CSV)</button>' +
         '<button class="mf-print">Imprimir / PDF</button>' : '') +
+      // Modo demostración: abre todos los mundos (para mostrar el juego) sin tocar las estrellas del niño
+      '<label title="Para mostrar el juego: abre todos los mundos sin tocar las estrellas"><input type="checkbox" class="mf-demo"' +
+        (unlockAll() ? ' checked' : '') + '> Modo demostración (todos los mundos abiertos)</label>' +
       '<button class="mf-close">Cerrar</button></div></header>' +
       '<p class="mf-note">' + esc(PANEL_NOTE) + '</p><p class="mf-muted mf-space"></p>' +
       (!p ? '<p>Todavía no hay jugadores registrados.</p>' :
@@ -289,12 +304,13 @@ function openPanel(scene) {
           .map(([b, s]) => '<div class="mf-kpi"><b>' + esc(b) + '</b><span>' + esc(s) + '</span></div>').join('') + '</div>' +
         '<h2>Historia</h2>' + historiaHTML(p.id, sessions) +
         '<h2>Desafío</h2>' + desafioHTML(sessions) +
-        '<h2>Prueba fija</h2>' + pruebaHTML(sessions) +
+        '<h2>Modo Examen (prueba fija)</h2>' + pruebaHTML(sessions) +
         '<h2>Todas las partidas</h2>' + sesionesHTML(sessions) +
         '<p class="mf-noprint"><button class="mf-danger mf-del">Borrar a ' + esc(p.name) + ' y todos sus datos</button></p>') +
       '</div>';
     const q = s => el.querySelector(s);
     q('.mf-close').onclick = close;
+    q('.mf-demo').onchange = e => rawStore.set('cpt_unlock_all', e.target.checked);
     storageInfo().then(t => { const x = q('.mf-space'); if (x) x.textContent = t; });
     if (!p) return;
     const anon = () => q('.mf-anon').checked;

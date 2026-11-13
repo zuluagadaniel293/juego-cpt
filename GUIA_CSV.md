@@ -1,8 +1,8 @@
 # Cómo leer el CSV del juego
 
 Cada niño se registra con su nombre al abrir el juego (y recibe un código: P01, P02...). Todas sus partidas se guardan
-solas en ese navegador. El adulto las ve en la **Zona de adultos** (en la pantalla inicial, mantener presionado
-"Zona de adultos" 2 segundos) → **Panel del profesional**:
+solas en ese navegador. El adulto las ve en la **Zona de resultados** (en la pantalla inicial, abajo a la derecha:
+mantener presionado 2 segundos) → **Panel del profesional**. Ahí está también el *modo demostración* (todos los mundos abiertos):
 
 - resultados por mundo, capítulo y nivel, y un **informe al terminar cada historia** (aciertos, omisiones, comisiones,
   respuestas anticipadas, tiempo de reacción y su variabilidad, principio vs. final y efecto de los distractores);
@@ -50,7 +50,7 @@ Cada fila es **un evento**:
 | Columna | Qué significa |
 |---|---|
 | `tipo_evento` | estimulo / distractor_sonido / distractor_visual |
-| `modo` | Historia, Desafío o Prueba fija |
+| `modo` | Historia, Desafío o Modo Examen |
 | `mundo` | Superhéroes, Dragones y fantasía, Reino mágico |
 | `nivel` | Nivel de dificultad (1 = más fácil) |
 | `capitulo` | Capítulo de la Historia (1 a 5) |
@@ -100,7 +100,7 @@ al objetivo o a la pista (los otros aliens y las otras estrellas). En el CSV, `m
 Memoria es una tarea tipo **Corsi** (memoria de trabajo visoespacial): el objetivo del mundo aparece en varias de las 9 casillas, una tras otra, y el niño las toca en el mismo orden (**adelante**) y luego del último al primero (**al revés**).
 
 Se juega de dos formas:
-- **Memoria de la Zona de adultos (Prueba fija)**: la secuencia crece de a 1 al acertar; con 2 fallos seguidos en el mismo largo termina la fase. Sirve para medir el *span*.
+- **Memoria del Modo Examen (Prueba fija)**: la secuencia crece de a 1 al acertar; con 2 fallos seguidos en el mismo largo termina la fase. Sirve para medir el *span*.
 - **Historia y Desafío**: la dificultad la pone el nivel. Ajustada para niños de 8 años en adelante con TDAH (desde 2026-11-12): cada paso se ve entre 1 s (nivel 1) y 0,75 s como mínimo. Niveles 1 a 3: caminos que empiezan en 2; del 4 al 6, en 3; desde el 7, en 4. Desde el 2: sonidos del mundo y cosas que cruzan. Desde el 4, solo en el Desafío: fase al revés (3 caminos; en la Historia Memoria va siempre hacia adelante). Desde el 4 y 1 o 2 objetos distractores que se encienden en las casillas (hay que ignorarlos). Desde el 8 (solo Desafío): esos distractores se parecen al objetivo. Hay una cantidad fija de caminos; el largo sube 1 al acertar y baja 1 con 2 fallos seguidos.
 
 Nombre del archivo: `cpt_memoria_<mundo>_<fecha>_<hora>.csv` (o `cpt_historia_...` / `cpt_desafio_...`). Cada fila es **un camino**, o un sonido o una cosa que cruzó la pantalla.
@@ -148,8 +148,9 @@ Mide atención sostenida y **memoria de trabajo** (hay que recordar la pista).
 | `pista_sin_objetivo` | Pista y luego otra cosa (AY) | error: respondió por anticipación |
 | `ni_pista_ni_objetivo` | Ninguno (BY) | error al azar o por impulsividad |
 
-En la **Zona de adultos** se puede elegir cualquiera de las tres pruebas fijas (CPT clásico, Menos uno, Pista), siempre
-con los mismos parámetros para comparar sesiones. La pantalla de resultados muestra los errores por condición.
+El **Modo Examen** es el tercer modo de la pantalla inicial (lo elige el niño): Clásico, Menos uno, Pista o Memoria, siempre
+con los mismos parámetros y estímulos para comparar sesiones. El niño ve solo sus estrellas; el Panel del profesional muestra
+las medidas, un informe por tipo de prueba y, en Pista, cuántas veces respondió en cada condición (AX, BX, AY, BY).
 **No es un diagnóstico**: sirve para seguir el progreso del niño.
 
 ## Esquiva

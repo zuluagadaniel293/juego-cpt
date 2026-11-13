@@ -59,7 +59,7 @@ const totalStars = () => Object.values(getStory()).reduce((a, arr) => a + arr.re
 // Mundos que se abren de a uno: el primero siempre; cada uno de los demás, al vencer al jefe final (capítulo 5)
 // del anterior con al menos PASS_STARS estrellas, en el orden del mapa. Un mundo donde el niño ya ganó estrellas sigue abierto.
 // Lo que se abre en la Historia se abre también en Desafío, Memoria y Prueba fija: solo la Historia desbloquea mundos.
-// En la Zona de adultos se pueden abrir todos (modo demostración), sin tocar el progreso del niño.
+// Desde el Panel del profesional se pueden abrir todos (modo demostración), sin tocar el progreso del niño.
 const unlockAll = () => store.get('cpt_unlock_all', false);
 function previousWorld(theme) {
   const ks = Object.keys(THEMES), i = ks.indexOf(theme);

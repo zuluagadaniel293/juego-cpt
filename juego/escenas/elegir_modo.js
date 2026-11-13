@@ -1,5 +1,5 @@
-// Pantalla inicial: Historia, Desafío o Zona de adultos. (Memoria se juega en el Desafío, y la de medir el span
-// de memoria está en la Zona de adultos, con las otras pruebas fijas.)
+// Pantalla inicial: Historia, Desafío o Modo Examen (la prueba fija, igual a como será el examen real).
+// Abajo a la derecha, manteniendo presionado: la Zona de resultados (Panel del profesional), solo para adultos.
 
 class ModeScene extends Phaser.Scene {
   constructor() { super('Mode'); }
@@ -16,7 +16,8 @@ class ModeScene extends Phaser.Scene {
 
     const modeCard = (x, stroke, icon, title, desc, extra, onClick) => {
       const card = drawCard(this, x, 280, 280, 280, 0xffffff, 0.06, stroke);
-      fit(this.add.image(x, 210, icon), 110);
+      if (this.textures.exists(icon)) fit(this.add.image(x, 210, icon), 110);
+      else this.add.text(x, 210, icon, { font: '84px Arial' }).setOrigin(0.5);   // emoji
       this.add.text(x, 300, title, { font: 'bold 30px Arial', color: '#ffffff' }).setOrigin(0.5);
       this.add.text(x, 348, desc, { font: '17px Arial', color: '#cbd5e1', align: 'center' }).setOrigin(0.5);
       if (extra) this.add.text(x, 396, extra, { font: 'bold 16px Arial', color: hexColor(stroke) }).setOrigin(0.5);
@@ -26,15 +27,18 @@ class ModeScene extends Phaser.Scene {
       zone.on('pointerdown', () => { getCtx(); onClick(); });
     };
     const stars = totalStars();
-    modeCard(300, 0x38bdf8, 'icon_map', 'Historia', 'Viaja por los mundos\ny sigue la aventura',
+    modeCard(170, 0x38bdf8, 'icon_map', 'Historia', 'Viaja por los mundos\ny sigue la aventura',
       stars ? 'Tienes ' + stars + ' estrellas' : '', () => this.scene.start('WorldMap'));
     const best = Math.max(0, ...Object.values(getRecords()));
-    modeCard(660, 0xfb923c, 'icon_trophy', 'Desafío', 'Cada vez más difícil.\n¿Hasta qué nivel llegas?',
+    modeCard(480, 0xfb923c, 'icon_trophy', 'Desafío', 'Cada vez más difícil.\n¿Hasta qué nivel llegas?',
       best ? 'Tu récord: nivel ' + best : '', () => this.scene.start('Menu', { mode: 'desafio' }));
+    const exams = playerSessions(currentPlayerId()).filter(s => s.mode === 'prueba' || s.mode === 'memoria').length;
+    modeCard(790, 0xa78bfa, '📝', 'Modo Examen', 'Practica como en la\nprueba de verdad',
+      exams ? 'Lo has hecho ' + exams + (exams === 1 ? ' vez' : ' veces') : '', () => this.scene.start('PruebaSelect'));
     this.memoryIcon();   // deja lista la imagen del ícono de Memoria (la usan el Desafío y la Prueba fija)
 
-    drawDailyMission(this, 330, 466);
-    drawPerfectMission(this, 660, 466);
+    drawDailyMission(this, 300, 466);
+    drawPerfectMission(this, 640, 466);
 
     // quién está jugando (arriba a la izquierda), con un botón para cambiar de jugador
     const p = currentPlayer();
@@ -43,22 +47,22 @@ class ModeScene extends Phaser.Scene {
       this.add.text(24, 48, 'Cambiar de jugador', { font: 'bold 15px Arial', color: '#38bdf8' })
         .setInteractive({ useHandCursor: true }).on('pointerdown', () => this.scene.start('Players'));
     }
-    this.adultZone();
+    this.resultsZone();
   }
-  // Zona de adultos (Prueba fija y Panel del profesional): se entra manteniendo presionado 2 segundos, para que
-  // un niño no entre por error. Abajo a la izquierda: la esquina derecha la tapa el botón de Netlify.
-  adultZone() {
-    const H = GAME_H;
-    const label = this.add.text(30, H - 24, '🔒 Zona de adultos (mantén presionado)', { font: 'bold 15px Arial', color: '#94a3b8' })
-      .setOrigin(0, 1).setInteractive({ useHandCursor: true });
-    const bar = this.add.rectangle(30, H - 18, 0, 4, 0xfde047).setOrigin(0, 0.5);
+  // Zona de resultados (Panel del profesional): abajo a la derecha. Se entra manteniendo presionado 2 segundos,
+  // para que un niño no entre por error.
+  resultsZone() {
+    const W = GAME_W, H = GAME_H;
+    const label = this.add.text(W - 16, H - 8, '🔒 Zona de resultados (mantén presionado)', { font: 'bold 14px Arial', color: '#94a3b8' })
+      .setOrigin(1, 1).setInteractive({ useHandCursor: true });
+    const bar = this.add.rectangle(W - 16 - label.width, H - 4, 0, 4, 0xfde047).setOrigin(0, 0.5);
     let tw = null;
     const cancel = () => { if (tw) { tw.stop(); tw = null; } bar.width = 0; };
     label.on('pointerdown', () => {
       getCtx();
       cancel();
       tw = this.tweens.add({ targets: bar, width: label.width, duration: 2000,
-        onComplete: () => this.scene.start('PruebaSelect') });
+        onComplete: () => { tw = null; bar.width = 0; openPanel(this); } });
     });
     label.on('pointerup', cancel);
     label.on('pointerout', cancel);

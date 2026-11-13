@@ -34,7 +34,7 @@ class MemoryResultsScene extends Phaser.Scene {
 
     makeButton(this, W / 2, 400, 320, 64, 'Jugar otra vez', th.accent, () => this.scene.start('Memory', { theme: this.themeKey }));
     makeButton(this, W / 2 - 170, 490, 280, 50, 'Descargar CSV', 0xcbd5e1, () => downloadMemoryCSV(this.log, 'prueba_memoria'));
-    makeButton(this, W / 2 + 170, 490, 280, 50, 'Zona de adultos', 0xcbd5e1, () => this.scene.start('PruebaSelect'));
+    makeButton(this, W / 2 + 170, 490, 280, 50, 'Otra prueba', 0xcbd5e1, () => this.scene.start('PruebaSelect'));
     missionCheck(this);
   }
 }

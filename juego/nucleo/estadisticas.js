@@ -72,7 +72,7 @@ function starsFor(s, mg) {
 const CSV_TEXT = {
   event_type: { stimulus: 'estimulo', audio_distractor: 'distractor_sonido', visual_distractor: 'distractor_visual',
     memory_trial: 'camino_memoria' },
-  mode: { historia: 'Historia', desafio: 'Desafío', prueba: 'Prueba fija' },
+  mode: { historia: 'Historia', desafio: 'Desafío', prueba: 'Modo Examen' },
   stimulus_type: { target: 'objetivo', distractor: 'distractor' },
   // Menos uno y Pista: qué tipo de estímulo era (ver GUIA_CSV.md)
   condition: {

@@ -1,16 +1,17 @@
-// Zona de adultos: elegir cuál prueba fija aplicar. Las tres usan siempre los mismos parámetros (pruebaParams),
-// para comparar sesiones, y se parecen a los formatos de CPT que el niño puede encontrar en una evaluación.
+// Modo Examen: elegir cuál prueba fija hacer. Todas usan siempre los mismos parámetros (pruebaParams) y los mismos
+// estímulos (Bip entre personajes de todos los mundos), para comparar sesiones, y se parecen a los formatos de CPT
+// que el niño puede encontrar en una evaluación. Lo ve el niño: textos sencillos; las medidas van al Panel.
 
 const PRUEBAS = [
-  { mg: 'classic', title: 'CPT clásico', like: 'Formato tipo TOVA / K-CPT',
-    desc: 'Responde SOLO al objetivo,\nque aparece pocas veces.\nMide atención sostenida.' },
-  { mg: 'notx', title: 'Menos uno', like: 'Formato tipo Conners CPT-3',
-    desc: 'Responde a TODO menos al\nobjetivo (1 de cada 10).\nMide impulsividad.' },
-  { mg: 'ax', title: 'Pista', like: 'Formato tipo AX-CPT',
-    desc: 'Responde al objetivo solo si\njusto antes salió la pista.\nMide memoria de trabajo.' },
+  { mg: 'classic', title: 'Clásico', like: 'como el TOVA / K-CPT',
+    desc: 'Toca SOLO cuando\naparezca Bip.\n¡Sale pocas veces!' },
+  { mg: 'notx', title: 'Menos uno', like: 'como el Conners CPT-3',
+    desc: 'Toca TODO,\nmenos a Bip.\n¡Frena a tiempo!' },
+  { mg: 'ax', title: 'Pista', like: 'como el AX-CPT',
+    desc: 'Toca a Bip solo si\njusto antes salió\nChispita.' },
   // Memoria adaptativa (tipo Corsi): la secuencia crece hasta fallar 2 veces; mide el span adelante y al revés
-  { mg: 'memory', title: 'Memoria', like: 'Formato tipo Corsi',
-    desc: 'Repite el camino en orden\ny luego al revés. Crece\nhasta que falla. Mide el\nspan de memoria.' }
+  { mg: 'memory', title: 'Memoria', like: 'como el Corsi',
+    desc: 'Repite el camino\nde Bip en orden\ny luego al revés.' }
 ];
 
 class PruebaSelectScene extends Phaser.Scene {
@@ -19,12 +20,8 @@ class PruebaSelectScene extends Phaser.Scene {
     const W = GAME_W;
     this.cameras.main.setBackgroundColor(0x0f172a);
     backLink(this, 'Volver', () => this.scene.start('Mode'));
-    this.add.text(W / 2, 60, 'Zona de adultos', { font: 'bold 38px Arial', color: '#ffffff' }).setOrigin(0.5);
-    // resultados de cada niño, informes y descargas (juego/panel/panel.js)
-    const panel = this.add.text(W - 24, 22, '📊 Panel del profesional', { font: 'bold 18px Arial', color: '#0f172a',
-      backgroundColor: '#fde047', padding: { x: 12, y: 7 } }).setOrigin(1, 0).setInteractive({ useHandCursor: true });
-    panel.on('pointerdown', () => openPanel(this));
-    this.add.text(W / 2, 108, 'Prueba fija: una sola para todos los mundos, siempre igual, para comparar sesiones. No es un diagnóstico.',
+    this.add.text(W / 2, 60, 'Modo Examen', { font: 'bold 38px Arial', color: '#ffffff' }).setOrigin(0.5);
+    this.add.text(W / 2, 108, 'Así se ve la prueba de verdad: sin mundos ni sorpresas. ¡Concéntrate!',
       { font: '18px Arial', color: '#94a3b8' }).setOrigin(0.5);
     PRUEBAS.forEach((pr, i) => {
       const x = W / 2 + (i - (PRUEBAS.length - 1) / 2) * 226, y = 320;
@@ -44,12 +41,5 @@ class PruebaSelectScene extends Phaser.Scene {
         if (pr.mg === 'memory') this.scene.start('Memory', { theme: PRUEBA_BASE });
         else this.scene.start('Game', { mode: 'prueba', theme: PRUEBA_BASE, minigame: pr.mg }); });
     });
-    // Modo demostración: abre todos los mundos (para mostrar el juego) sin tocar las estrellas del niño.
-    // Al apagarlo, los mundos vuelven a abrirse de a uno según su progreso.
-    const on = unlockAll();
-    const demo = this.add.text(W / 2, GAME_H - 26,
-      (on ? '☑' : '☐') + ' Modo demostración: todos los mundos abiertos', { font: 'bold 17px Arial', color: on ? '#fde047' : '#94a3b8' })
-      .setOrigin(0.5).setInteractive({ useHandCursor: true });
-    demo.on('pointerdown', () => { store.set('cpt_unlock_all', !on); this.scene.restart(); });
   }
 }
