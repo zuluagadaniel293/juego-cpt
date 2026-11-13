@@ -58,7 +58,10 @@ class ChapterMapScene extends Phaser.Scene {
       this.add.text(x, y + r + 22, ch.place, { font: 'bold 17px Arial', color: '#ffffff' }).setOrigin(0.5).setAlpha(unlocked ? 1 : 0.55);
       if (unlocked) {
         node.setInteractive({ useHandCursor: true });
-        node.on('pointerdown', () => this.scene.start('Story', { theme: this.themeKey, chapter: i }));
+        node.on('pointerdown', () => showLastResult(this,
+          lastSession(x => x.mode === 'historia' && x.theme === this.themeKey && x.chapter === i),
+          'historia_' + this.themeKey + '_cap' + (i + 1) + '_anterior',
+          () => this.scene.start('Story', { theme: this.themeKey, chapter: i })));
       }
     });
   }
