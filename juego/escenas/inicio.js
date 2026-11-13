@@ -13,6 +13,7 @@ class BootScene extends Phaser.Scene {
     Object.entries(COMMON_ASSETS).forEach(([k, p]) => this.load.image('img_common_' + k, 'assets/' + p));
   }
   create() {
+    moveLogsToDb();   // filas de partidas viejas → IndexedDB (sesiones.js)
     buildTextures(this);
     // si hay imagen común, reemplaza al dibujo provisional con el mismo nombre ('basket', 'net', 'icon_map'...)
     Object.keys(COMMON_ASSETS).forEach(k => {

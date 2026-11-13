@@ -243,8 +243,20 @@ function downloadSummaryCSV(p, sessions, anon) {
 }
 
 // ---------- abrir y dibujar el panel ----------
+// Cuánto espacio usan los datos guardados en este navegador y si están protegidos de borrado automático
+function storageInfo() {
+  if (!navigator.storage || !navigator.storage.estimate) return Promise.resolve('');
+  const mb = b => (b / 1048576 < 10 ? (b / 1048576).toFixed(1) : Math.round(b / 1048576)) + ' MB';
+  return Promise.all([navigator.storage.estimate(), navigator.storage.persisted ? navigator.storage.persisted() : false])
+    .then(([e, kept]) => 'Datos guardados en este navegador: ' + mb(e.usage || 0) + ' usados de ' + mb(e.quota || 0) + ' disponibles' +
+      (kept ? ' · protegidos: el navegador no los borra solo.' : '.') +
+      ' Se guardan solo en este equipo y este navegador: descarguen "Todo (CSV)" de vez en cuando como copia.')
+    .catch(() => '');
+}
+
 function openPanel(scene) {
   if (document.querySelector('.mf-panel')) return;
+  askPersistentStorage();
   const kb = scene.input.keyboard;
   kb.enabled = false; kb.disableGlobalCapture();
   const el = document.createElement('div');
@@ -257,6 +269,9 @@ function openPanel(scene) {
     const players = getPlayers();
     const p = players.find(x => x.id === pid) || players[0];
     const sessions = p ? playerSessions(p.id) : [];
+    attachLogs(sessions).then(() => { if (el.isConnected) draw(players, p, sessions); });   // las filas están en IndexedDB
+  };
+  const draw = (players, p, sessions) => {
     const minutes = Math.round(sessions.reduce((a, s) => a + (s.log ? sessionMinutes(s) : 0), 0));
     el.innerHTML = '<div class="mf-wrap"><header><h1>Panel del profesional</h1><div class="mf-tools">' +
       (players.length ? '<label>Jugador <select class="mf-player">' + players.map(x => '<option value="' + x.id + '"' +
@@ -265,7 +280,7 @@ function openPanel(scene) {
         '<button class="mf-primary mf-all">Descargar todo (CSV)</button><button class="mf-sum">Resumen (CSV)</button>' +
         '<button class="mf-print">Imprimir / PDF</button>' : '') +
       '<button class="mf-close">Cerrar</button></div></header>' +
-      '<p class="mf-note">' + esc(PANEL_NOTE) + '</p>' +
+      '<p class="mf-note">' + esc(PANEL_NOTE) + '</p><p class="mf-muted mf-space"></p>' +
       (!p ? '<p>Todavía no hay jugadores registrados.</p>' :
         '<div class="mf-kpis">' +
         [[p.name, 'Jugador · ' + p.code], [p.age ? p.age + ' años' : '—', 'Edad'], [sessions.length, 'Partidas'],
@@ -280,6 +295,7 @@ function openPanel(scene) {
       '</div>';
     const q = s => el.querySelector(s);
     q('.mf-close').onclick = close;
+    storageInfo().then(t => { const x = q('.mf-space'); if (x) x.textContent = t; });
     if (!p) return;
     const anon = () => q('.mf-anon').checked;
     q('.mf-player').onchange = e => { pid = Number(e.target.value); render(); };

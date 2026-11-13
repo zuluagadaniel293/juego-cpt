@@ -42,6 +42,7 @@ function adoptOldProgress(id) {
 // Borra al jugador y todo lo suyo (desde el Panel del profesional)
 function removePlayer(id) {
   try { Object.keys(localStorage).filter(k => k.startsWith('cpt_p' + id + '_')).forEach(k => localStorage.removeItem(k)); } catch (e) { /* nada */ }
+  if (typeof deletePlayerLogs === 'function') deletePlayerLogs(id);   // y sus filas en IndexedDB (sesiones.js)
   rawStore.set('cpt_players', getPlayers().filter(p => p.id !== id));
   if (currentPlayerId() === id) rawStore.del('cpt_player');
 }
